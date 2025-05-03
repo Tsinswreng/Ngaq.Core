@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ngaq.Core", "Ngaq.Core.csproj", "{E0A7B20E-CD3A-FF28-7D82-53A5513A9FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E0A7B20E-CD3A-FF28-7D82-53A5513A9FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0A7B20E-CD3A-FF28-7D82-53A5513A9FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0A7B20E-CD3A-FF28-7D82-53A5513A9FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0A7B20E-CD3A-FF28-7D82-53A5513A9FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37A800BF-0BF1-46A6-BA34-53AA4A1C0DB8}
+	EndGlobalSection
+EndGlobal
