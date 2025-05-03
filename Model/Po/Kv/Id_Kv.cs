@@ -1,4 +1,4 @@
-using T_Val = System.Int128;
+using T_Val = System.Int64;
 
 namespace Ngaq.Core.Model.Po.Kv;
 using T_IdStruct = Id_Kv;

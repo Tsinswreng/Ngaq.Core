@@ -1,4 +1,4 @@
-namespace Ngaq.Core;
+namespace Ngaq.Core.Infra;
 
 public struct Answer<T>()
 	:I_Answer<T>
