@@ -16,4 +16,6 @@ public class Po_Word : I_PoBase{
 /// </summary>
 	public str WordFormId{get;set;}="";
 
+	public str Lang{get;set;}="";
+
 }
