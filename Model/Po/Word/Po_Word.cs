@@ -1,6 +1,10 @@
+#define Impl
 namespace Ngaq.Core.Model.Po.Word;
 
-public class Po_Word : I_PoBase{
+public class Po_Word
+	:I_PoBase
+	,I_Po_Word
+{
 
 
 	#region PoBase
@@ -11,11 +15,24 @@ public class Po_Word : I_PoBase{
 	public i64 Status{get;set;}
 	#endregion
 
-/// <summary>
-/// 詞形標識
-/// </summary>
-	public str WordFormId{get;set;}="";
 
-	public str Lang{get;set;}="";
+
+	#region I_Po_Word
+
+	/// <summary>
+	/// 詞形標識
+	/// </summary>
+	public str WordFormId{get;set;}
+	#if Impl
+		="";
+	#endif
+
+
+	public str Lang{get;set;}
+	#if Impl
+		="";
+	#endif
+
+	#endregion I_Po_Word
 
 }

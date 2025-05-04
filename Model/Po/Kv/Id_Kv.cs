@@ -1,7 +1,9 @@
-using T_Val = System.Int64;
+using T_Val = System.UInt128;
 
 namespace Ngaq.Core.Model.Po.Kv;
 using T_IdStruct = Id_Kv;
+using MassTransit;
+using System.Buffers.Binary;
 
 public struct Id_Kv(T_Val v)
 	:IEquatable<T_IdStruct>
@@ -9,7 +11,8 @@ public struct Id_Kv(T_Val v)
 	public T_Val Value{get;} = v;
 	public Id_Kv():this(0)
 	{
-
+		var bytes = NewId.Next().ToByteArray();
+		Value = BinaryPrimitives.ReadUInt128BigEndian(bytes);
 	}
 
 	public bool Equals(T_IdStruct other) {
