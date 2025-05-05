@@ -40,15 +40,15 @@ class Status{
 
 	public Stack<state_t> stack {get; set;} = new();
 
-	public W curChar {get; set;} = default;
+	public W CurChar {get; set;} = default;
 
-	public IList<W> buffer {get; set;} = new List<W>();
+	public IList<W> Buffer {get; set;} = new List<W>();
 
-	public IList<W> metadataBuf {get; set;} = new List<W>();
+	public IList<W> MetadataBuf {get; set;} = new List<W>();
 
-	public WordListTxtMetadata? metadata{get; set;}
+	public WordListTxtMetadata? Metadata{get; set;}
 
-	public IList<I_DateBlock> dateBlocks {get; set;} = new List<I_DateBlock>();
+	public IList<I_DateBlock> DateBlocks {get; set;} = new List<I_DateBlock>();
 
 	public W headOfWordDelimiter{get;set;} = default;
 
@@ -87,7 +87,7 @@ public class WordParser{
 	//讀ʹ果ˇ存
 	public IList<W> buffer{
 		get{
-			return _status.buffer;
+			return _status.Buffer;
 		}
 	}
 
@@ -152,7 +152,7 @@ public class WordParser{
 		// 	lineCol.line++;
 		// 	lineCol.col = 0;
 		// }
-		_status.curChar = ans;
+		_status.CurChar = ans;
 
 
 		return ans;
@@ -206,9 +206,9 @@ public class WordParser{
 	/// </summary>
 	/// <returns></returns>
 	public I_StrSegment bufferToStrSegmentEtClr(){
-		var start = _status.Pos - (u64)_status.buffer.Count;
-		var text = BufToStr(_status.buffer);
-		_status.buffer.Clear();
+		var start = _status.Pos - (u64)_status.Buffer.Count;
+		var text = BufToStr(_status.Buffer);
+		_status.Buffer.Clear();
 		return new StrSegment{
 			Start = start
 			,Text = text
@@ -222,7 +222,7 @@ public class WordParser{
 		if(obj == null){
 			Error("Invalid metadata");return 1;
 		}
-		_status.metadata = obj;
+		_status.Metadata = obj;
 		if(obj.Delimiter == null || obj.Delimiter.Length == 0){
 			Error("Invalid delimiter");return 1;
 		}
@@ -448,8 +448,8 @@ public class WordParser{
 	}
 
 	public nil headOfWordDelimiter(state_t stateToReturn){
-		buffer.Add(_status.curChar); // 加上 delimiter首字符
-		var delimiter = _status.metadata?.Delimiter??throw Error("_status.metadata?.Delimiter is");
+		buffer.Add(_status.CurChar); // 加上 delimiter首字符
+		var delimiter = _status.Metadata?.Delimiter??throw Error("_status.metadata?.Delimiter is");
 		for(var i = 1;i < delimiter.Length;i++){
 			var c =  NextByte();
 			buffer.Add(c);
@@ -504,7 +504,7 @@ public class WordParser{
 	}
 
 	public I_StrSegment parseWordBlockHead(){
-		buffer.Add(_status.curChar);
+		buffer.Add(_status.CurChar);
 		for(;;){
 			var c =  NextByte();
 			if( Eq(c, '\n') ){
@@ -738,7 +738,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 	}
 
 	nil Metadata(){
-		_status.buffer.Add(_status.curChar); // <
+		_status.Buffer.Add(_status.CurChar); // <
 		var metadataStatus = 0; //0:<metadata>; 1:content; 2:</metadata>
 		var bracesStack = new List<W>(); //元數據內json之大括號
 		var metadataContent = new List<W>();

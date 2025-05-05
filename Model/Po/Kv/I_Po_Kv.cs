@@ -4,7 +4,7 @@ public interface I_Po_Kv{
 
 	#region I_Po_Kv
 	public i64 SubjectIdType { get; set; } //`= (i64)E_SubjectIdType.Int64;
-	public Int128? SubjectId_I128{get;set;}
+	public UInt128? SubjectId_UInt128{get;set;}
 	public str? SubjectId_Str{get;set;}
 
 	public i64 KType { get; set; } //`= (i64)E_KvType.Str;
@@ -15,11 +15,11 @@ public interface I_Po_Kv{
 	public i64 KI64 { get; set; }
 	//public str KeyType {get; set;} = "";
 
-	public str? KDesc { get; set; }
+	public str? KDescr { get; set; }
 
 	public i64 VType { get; set; }
 
-	public str? VDesc { get; set; }
+	public str? VDescr { get; set; }
 
 	//[Column("str")]
 	public str? VStr { get; set; }

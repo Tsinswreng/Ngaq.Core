@@ -1,16 +1,16 @@
-using T_Val = System.UInt128;
+namespace Ngaq.Core.Model.Po.Word;
 
-namespace Ngaq.Core.Model.Po.Kv;
-using T_IdStruct = Id_Kv;
+using T_Val = System.UInt128;
+using T_IdStruct = Id_Word;
 using MassTransit;
 using System.Buffers.Binary;
 using Ngaq.Core.Util;
 
-public struct Id_Kv(T_Val v)
+public struct Id_Word(T_Val v)
 	:IEquatable<T_IdStruct>
 {
 	public T_Val Value{get;} = v;
-	public Id_Kv():this(0)
+	public Id_Word():this(0)
 	{
 		Value = IdUtil.NewUlid_UInt128();
 	}
