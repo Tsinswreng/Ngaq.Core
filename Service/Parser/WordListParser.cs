@@ -6,6 +6,10 @@ using System.Text;
 
 using System.Diagnostics;
 using Ngaq.Core.Service.Parser.Model;
+
+using I_Iter_u8 = Ngaq.Core.Stream.I_Iter<byte>;
+
+
 namespace Ngaq.Core.Service.Parser;
 
 //靜態多態
@@ -33,7 +37,7 @@ public class Pos : I_LineCol{
 	}
 }
 
-class Status{
+public class Status{
 	public state_t State {get; set;} = state_t.Start;
 	public I_LineCol Line_col {get; set;} = new Pos();
 	public u64 Pos {get;set;} = 0;
@@ -60,43 +64,42 @@ public class Tokens{
 }
 
 
-public class WordParser{
-	I_Iter_u8 _getNextByte;
-	public i64 byteSize{get;set;}//?
-	public WordParser(I_Iter_u8 getNextChar, i64 byteSize){
-		_getNextByte = getNextChar;
-		this.byteSize = byteSize;
+public class WordListParser{
+	I_Iter_u8 _GetNextByte;
+	public i64 ByteSize{get;set;}//?
+	public WordListParser(I_Iter_u8 getNextChar){
+		_GetNextByte = getNextChar;
 	}
-	Status _status {get; set;}= new Status();
+	public Status Status {get; set;}= new Status();
 
-	public I_LineCol lineCol{
+	public I_LineCol LineCol{
 		get{
-			return _status.Line_col;
+			return Status.Line_col;
 		}
 	}
 
-	public state_t state{
+	public state_t E_State{
 		get{
-			return _status.State;
+			return Status.State;
 		}
 		set{
-			_status.State = value;
+			Status.State = value;
 		}
 	}
 
 	//讀ʹ果ˇ存
-	public IList<W> buffer{
+	public IList<W> Buffer{
 		get{
-			return _status.Buffer;
+			return Status.Buffer;
 		}
 	}
 
-	public IList<W> preReadBuffer{get;set;} = new List<W>();
-	public i32 pos_preRead{get;set;} = 0;
+	public IList<W> PreReadBuffer{get;set;} = new List<W>();
+	public i32 Pos_PreRead{get;set;} = 0;
 
-	public Encoding encoding{get; set;} = Encoding.UTF8;
+	public Encoding Encoding{get; set;} = Encoding.UTF8;
 
-	public bool unifiedNewLine{get; set;} = true;
+	public bool UnifiedNewLine{get; set;} = true;
 
 	// [Obsolete]
 	// public I_DateBlock getCurDateBlock(){
@@ -117,11 +120,11 @@ public class WordParser{
 	// }
 
 	public bool HasNext(){
-		return _getNextByte.HasNext();
+		return _GetNextByte.HasNext();
 	}
 
 	protected W TryGetNextByte(){
-		var ans = _getNextByte.Next();
+		var ans = _GetNextByte.Next();
 		// word ans;
 		// if(pos_preRead < preReadBuffer.Count){
 		// 	ans = preReadBuffer[pos_preRead];
@@ -147,12 +150,12 @@ public class WordParser{
 		// }
 
 		//lineCol.col++;
-		_status.Pos++;
+		Status.Pos++;
 		// if( eq(ans , '\n') ){
 		// 	lineCol.line++;
 		// 	lineCol.col = 0;
 		// }
-		_status.CurChar = ans;
+		Status.CurChar = ans;
 
 
 		return ans;
@@ -205,10 +208,10 @@ public class WordParser{
 	/// 會清空buffer
 	/// </summary>
 	/// <returns></returns>
-	public I_StrSegment bufferToStrSegmentEtClr(){
-		var start = _status.Pos - (u64)_status.Buffer.Count;
-		var text = BufToStr(_status.Buffer);
-		_status.Buffer.Clear();
+	public I_StrSegment BufferToStrSegmentEtClr(){
+		var start = Status.Pos - (u64)Status.Buffer.Count;
+		var text = BufToStr(Status.Buffer);
+		Status.Buffer.Clear();
 		return new StrSegment{
 			Start = start
 			,Text = text
@@ -216,24 +219,24 @@ public class WordParser{
 	}
 
 
-	public nil parseMetadataBuffer(IList<W> buffer){
+	public nil ParseMetadataBuffer(IList<W> buffer){
 		var txt = BufToStr(buffer);
 		var obj = WordListTxtMetadata.Parse(txt);
 		if(obj == null){
 			Error("Invalid metadata");return 1;
 		}
-		_status.Metadata = obj;
+		Status.Metadata = obj;
 		if(obj.Delimiter == null || obj.Delimiter.Length == 0){
 			Error("Invalid delimiter");return 1;
 		}
-		_status.headOfWordDelimiter = (byte)obj.Delimiter[0]; //TODO
+		Status.headOfWordDelimiter = (byte)obj.Delimiter[0]; //TODO
 		return null!;
 	}
 
 	public IList<I_DateBlock> Parse(){
 		IList<I_DateBlock> ans = new List<I_DateBlock>();
 		for(var i = 0;;i++){
-			switch(_status.State){
+			switch(Status.State){
 				case state_t.Start:
 					Start(); // -> TopSpace
 				break;
@@ -256,14 +259,14 @@ public class WordParser{
 	}
 
 	nil Start(){
-		state = state_t.TopSpace;
+		E_State = state_t.TopSpace;
 		return null!;
 	}
 
 	nil TopSpace(){
 		for(;;){
 			if(!HasNext()){
-				state = state_t.End;
+				E_State = state_t.End;
 				return null!;
 			}
 			var c =  TryGetNextByte();
@@ -271,11 +274,11 @@ public class WordParser{
 			if(IsWhite(c)){
 				continue;
 			}else if( Eq(c , '<') ){
-				state = state_t.Metadata;
+				E_State = state_t.Metadata;
 				//_status.stack.Push(WordParseState.Metadata);
 				break;
 			}else if( Eq(c , '[') ){
-				state = state_t.DateBlock;
+				E_State = state_t.DateBlock;
 				//_status.stack.Push(WordParseState.DateBlock);
 				break;
 			}
@@ -285,7 +288,7 @@ public class WordParser{
 
 	public I_StrSegment ReadDate(){
 		var buf = new List<W>();
-		var start = _status.Pos;
+		var start = Status.Pos;
 		for(;;){
 			var c =  NextByte();
 			if( Eq(c , ']') ){
@@ -303,26 +306,26 @@ public class WordParser{
 	public I_DateBlock ReadDateBlock(){
 		var ans = new DateBlock();
 		for(;;){
-			switch(state){
+			switch(E_State){
 				case state_t.DateBlock: //入口
 					//_status.state = WordParseState.DateBlock_date;
 					ans.Date =  ReadDate();
-					state = state_t.DateBlock_TopSpace;
+					E_State = state_t.DateBlock_TopSpace;
 				break;
 				case state_t.DateBlock_TopSpace:
-					dateBlock_TopSpace(); // -> Prop, WordBlocks
+					DateBlock_TopSpace(); // -> Prop, WordBlocks
 				break;
 				case state_t.Prop:
-					var prop = readProp();
+					var prop = ReadProp();
 					ans.Props.Add(prop);
-					state = state_t.DateBlock_TopSpace;
+					E_State = state_t.DateBlock_TopSpace;
 				break;
 				case state_t.WordBlocks:
-					var wordBlocks = readWordBlocks(); // -> TopSpace
+					var wordBlocks = ReadWordBlocks(); // -> TopSpace
 					foreach(var w in wordBlocks){ans.Words.Add(w);}
 				break;
 				case state_t.DateBlockEnd:
-					state = state_t.TopSpace;
+					E_State = state_t.TopSpace;
 				break;
 				case state_t.TopSpace:
 					return ans;
@@ -333,7 +336,7 @@ public class WordParser{
 	}
 
 	public string BufToStr(IList<W> buf){
-		var encoding = this.encoding;
+		var encoding = this.Encoding;
 		//word 是int的別名、幫我實現這個方法。
 		if(buf.Count == 0){
 			return "";
@@ -360,7 +363,7 @@ public class WordParser{
 
 	public I_StrSegment ReadLine(){
 		var buf = new List<W>();
-		var start = _status.Pos;
+		var start = Status.Pos;
 		for(;;){
 			var c = NextByte();
 			if( Eq(c , '\n')){
@@ -392,27 +395,27 @@ public class WordParser{
 			if( Eq(c , '[') ){
 				var c2 =  NextByte();
 				if( Eq(c2, '[') ){
-					state = state_t.Prop;
-					return bufferToStrSegmentEtClr();
+					E_State = state_t.Prop;
+					return BufferToStrSegmentEtClr();
 				}else{
-					buffer.Add(c);
-					buffer.Add(c2);
+					Buffer.Add(c);
+					Buffer.Add(c2);
 				}
-			}else if( Eq(c , _status.headOfWordDelimiter) ){
-				state = state_t.HeadOfWordDelimiter;
-				_status.Stack.Push(state_t.RestOfWordBlock);
-				return bufferToStrSegmentEtClr();
+			}else if( Eq(c , Status.headOfWordDelimiter) ){
+				E_State = state_t.HeadOfWordDelimiter;
+				Status.Stack.Push(state_t.RestOfWordBlock);
+				return BufferToStrSegmentEtClr();
 			}else if( Eq(c , '}')){
 				var c2 =  NextByte();
 				if( Eq(c2 , '}') ){
-					state = state_t.DateBlockEnd; // -> WordBlock_TopSpace -> DateBlockEnd
-					return bufferToStrSegmentEtClr();
+					E_State = state_t.DateBlockEnd; // -> WordBlock_TopSpace -> DateBlockEnd
+					return BufferToStrSegmentEtClr();
 				}else{
-					buffer.Add(c);
-					buffer.Add(c2);
+					Buffer.Add(c);
+					Buffer.Add(c2);
 				}
 			}else{
-				buffer.Add(c);
+				Buffer.Add(c);
 			}
 		}
 
@@ -442,30 +445,30 @@ public class WordParser{
 	// }
 
 
-	public nil headOfWordDelimiter(){
-		var toReturn = _status.Stack.Pop();
-		return headOfWordDelimiter(toReturn);
+	public nil HeadOfWordDelimiter(){
+		var toReturn = Status.Stack.Pop();
+		return HeadOfWordDelimiter(toReturn);
 	}
 
-	public nil headOfWordDelimiter(state_t stateToReturn){
-		buffer.Add(_status.CurChar); // 加上 delimiter首字符
-		var delimiter = _status.Metadata?.Delimiter??throw Error("_status.metadata?.Delimiter is");
+	public nil HeadOfWordDelimiter(state_t stateToReturn){
+		Buffer.Add(Status.CurChar); // 加上 delimiter首字符
+		var delimiter = Status.Metadata?.Delimiter??throw Error("_status.metadata?.Delimiter is");
 		for(var i = 1;i < delimiter.Length;i++){
 			var c =  NextByte();
-			buffer.Add(c);
+			Buffer.Add(c);
 			if( !Eq(c , delimiter[i]) ){
 				//state = WordParseState.RestOfWordBlock; // not delimiter
-				state = stateToReturn; // 回復原狀態, WordBlock_TopSpace或RestOfWordBlock或FirstLine
+				E_State = stateToReturn; // 回復原狀態, WordBlock_TopSpace或RestOfWordBlock或FirstLine
 				return null!;
 			}
 		}
-		state = state_t.WordBlockEnd;
-		buffer.Clear();
+		E_State = state_t.WordBlockEnd;
+		Buffer.Clear();
 		return null!;
 	}
 
 	///read until next non-white character
-	public W skipWhite(){
+	public W SkipWhite(){
 		for(;;){
 			var c =  NextByte();
 			if(!IsWhite(c)){
@@ -476,8 +479,8 @@ public class WordParser{
 	}
 
 
-	public nil wordBlock_TopSpace(){
-		var start = _status.Pos;
+	public nil WordBlock_TopSpace(){
+		var start = Status.Pos;
 		for(;;){
 			var c =  NextChar(start);
 			//var c =  GetNextNullableChar();
@@ -485,50 +488,50 @@ public class WordParser{
 			if(IsWhite(c)){
 				continue;
 			}
-			if( Eq(c, _status.headOfWordDelimiter) ){
-				state = state_t.HeadOfWordDelimiter;
-				_status.Stack.Push(state_t.WordBlock_TopSpace);
+			if( Eq(c, Status.headOfWordDelimiter) ){
+				E_State = state_t.HeadOfWordDelimiter;
+				Status.Stack.Push(state_t.WordBlock_TopSpace);
 				return null!;
 			}else if( Eq(c, '}')){
 				var c2 =  NextByte();
 				if(Eq(c2, '}')){// }} end of date block
-					state = state_t.DateBlockEnd;
+					E_State = state_t.DateBlockEnd;
 					return null!;
 				}
 			}
 			else{
-				state = state_t.WordBlockFirstLine;
+				E_State = state_t.WordBlockFirstLine;
 				return null!;
 			}
 		}
 	}
 
-	public I_StrSegment parseWordBlockHead(){
-		buffer.Add(_status.CurChar);
+	public I_StrSegment ParseWordBlockHead(){
+		Buffer.Add(Status.CurChar);
 		for(;;){
 			var c =  NextByte();
 			if( Eq(c, '\n') ){
-				state = state_t.RestOfWordBlock;
-				return bufferToStrSegmentEtClr();
+				E_State = state_t.RestOfWordBlock;
+				return BufferToStrSegmentEtClr();
 			}
-			buffer.Add(c);
+			Buffer.Add(c);
 		}
 	}
 
-	public IList<I_WordBlock> readWordBlocks(){
+	public IList<I_WordBlock> ReadWordBlocks(){
 		var ans = new List<I_WordBlock>();
 		var ua = new WordBlock();
 		for(;;){
 			//G.log(_status.pos, _status.line_col);
-			switch(state){
+			switch(E_State){
 				case state_t.WordBlocks: // 入口
-					state = state_t.WordBlock_TopSpace;
+					E_State = state_t.WordBlock_TopSpace;
 				break;
 				case state_t.WordBlock_TopSpace:
-					wordBlock_TopSpace(); // -> DateBlockEnd, WordBlockFirstLine, headOfWordDelimiter
+					WordBlock_TopSpace(); // -> DateBlockEnd, WordBlockFirstLine, headOfWordDelimiter
 				break;
 				case state_t.WordBlockFirstLine:
-					var head =  parseWordBlockHead(); // -> RestOfWordBlock
+					var head =  ParseWordBlockHead(); // -> RestOfWordBlock
 					if(head == null || head.Text.Length == 0){
 						continue;
 					}
@@ -547,14 +550,14 @@ public class WordParser{
 
 				case state_t.Prop:
 					// WordBlockProp(); // -> RestOfWordBlock
-					var prop = readProp();
+					var prop = ReadProp();
 					ua.Props.Add(prop);
-					state = state_t.RestOfWordBlock;
+					E_State = state_t.RestOfWordBlock;
 				break;
 
 				case state_t.HeadOfWordDelimiter:
 					// state -> state = _status.stack.Pop(), WordBlockEnd
-					headOfWordDelimiter();
+					HeadOfWordDelimiter();
 				break;
 
 				case state_t.WordBlockEnd:
@@ -562,7 +565,7 @@ public class WordParser{
 						ans.Add(ua);
 						ua = new WordBlock();
 					}
-					state = state_t.WordBlock_TopSpace;
+					E_State = state_t.WordBlock_TopSpace;
 				break;
 
 				case state_t.DateBlockEnd: // 出口
@@ -634,7 +637,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 	// }
 
 	//讀完日期後 、[2024-10-19T15:51:19.877+08:00] 後面
-	public nil dateBlock_TopSpace(){
+	public nil DateBlock_TopSpace(){
 		for(;;){
 			var c = NextByte();
 			if(IsWhite(c)){
@@ -643,7 +646,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 			if( Eq(c , '[') ){
 				var c2 =  NextByte();
 				if(Eq(c2 , '[')){
-					_status.State = state_t.Prop;
+					Status.State = state_t.Prop;
 					break;
 				}else{
 					Error("Unexpected character");
@@ -652,7 +655,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 			}else if( Eq(c , '{') ){
 				var c2 = NextByte();
 				if(Eq(c2 , '{')){
-					_status.State = state_t.WordBlocks;
+					Status.State = state_t.WordBlocks;
 					break;
 				}else{
 					Error("Unexpected character");
@@ -664,9 +667,9 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 	}
 
 
-	public I_Prop readProp(){
-		var key = readPropKey();
-		var value = readPropValue();
+	public I_Prop ReadProp(){
+		var key = ReadPropKey();
+		var value = ReadPropValue();
 		var ans = new Prop{
 			Key = key
 			,Value = value
@@ -674,8 +677,8 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 		return ans;
 	}
 
-	public I_StrSegment readPropValue(){
-		var start = _status.Pos;
+	public I_StrSegment ReadPropValue(){
+		var start = Status.Pos;
 		var buf = new List<W>();
 		for(var i = 0;;i++){
 			var c = NextChar(start);
@@ -704,8 +707,8 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 /// 不改變狀態機、只往後讀字符
 /// </summary>
 /// <returns></returns>
-	public I_StrSegment readPropKey(){
-		var start = _status.Pos;
+	public I_StrSegment ReadPropKey(){
+		var start = Status.Pos;
 		var buf = new List<W>();
 		for(;;){
 			var c = NextByte();
@@ -731,14 +734,14 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 
 	public Exception Error(str msg){
 		var ex = new ParseErr(msg);
-		ex.Pos = _status.Pos;
-		ex.LineCol = _status.Line_col;
+		ex.Pos = Status.Pos;
+		ex.LineCol = Status.Line_col;
 		throw ex;
 		//return ex;
 	}
 
 	nil Metadata(){
-		_status.Buffer.Add(_status.CurChar); // <
+		Status.Buffer.Add(Status.CurChar); // <
 		var metadataStatus = 0; //0:<metadata>; 1:content; 2:</metadata>
 		var bracesStack = new List<W>(); //元數據內json之大括號
 		var metadataContent = new List<W>();
@@ -748,7 +751,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 					for(var j = 0; ;j++){
 						var c = NextByte();
 						//if( isNil(c) ){error("Unexpected EOF");return null!;}
-						buffer.Add(c);
+						Buffer.Add(c);
 						if( Eq(c , '>') ){
 							if(Chk_metadataStartEtClr()){ // joined buffer is <metadata>
 								metadataStatus = 1;
@@ -787,7 +790,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 						if(IsWhite(c)){
 							continue;
 						}else if( Eq(c, '<') ){
-							buffer.Add(c);
+							Buffer.Add(c);
 							break;
 						}else{
 							Error("Unexpected character");
@@ -798,14 +801,14 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 					for(;;){
 						var c = NextByte();
 						//if( isNil(c) ){error("Unexpected EOF");return null!;}
-						buffer.Add(c);
+						Buffer.Add(c);
 						if( Eq(c , '>') ){
-							if(IsMetadataEnd(buffer)){
-								buffer.Clear();
+							if(IsMetadataEnd(Buffer)){
+								Buffer.Clear();
 								//_status.metadataBuf = metadataContent;
-								parseMetadataBuffer(metadataContent);
+								ParseMetadataBuffer(metadataContent);
 								//_status.stack.Pop();
-								_status.State = state_t.TopSpace;
+								Status.State = state_t.TopSpace;
 								return null!;
 								//break;
 							}
@@ -834,7 +837,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 
 	public bool Chk_metadataStartEtClr(){
 		var ans = false;
-		var buf = buffer;
+		var buf = Buffer;
 		if(IsMetadataStart(buf)){
 			ans = true;
 		}

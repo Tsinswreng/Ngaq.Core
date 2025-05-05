@@ -16,6 +16,9 @@ public class Po_Word
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
 	public str? CreatedBy{get;set;}
+	/// <summary>
+	/// 當關聯ʹ他表 更新旹、亦當更新此字段
+	/// </summary>
 	public i64? UpdatedAt{get;set;}
 	public str? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}

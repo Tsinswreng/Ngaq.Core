@@ -8,10 +8,10 @@ public struct Answer<T>()
 	public ICollection<object?> Errors{get;set;} = new List<object?>();
 	public i64 Code{get;set;} = 0;
 	public str? CodeType{get;set;}
-	public static Answer<U> OkWith<U>(U data){
-		var ans = new Answer<U>{Data = data};
-		ans.Ok = true;
-		return ans;
-	}
+	// public static Answer<U> OkWith<U>(U data){
+	// 	var ans = new Answer<U>{Data = data};
+	// 	ans.Ok = true;
+	// 	return ans;
+	// }
 
 }
