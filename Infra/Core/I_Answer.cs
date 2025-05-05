@@ -1,4 +1,3 @@
-global using Ngaq.Core.Infra;
 namespace Ngaq.Core.Infra.Core;
 
 public interface I_Answer<T> {

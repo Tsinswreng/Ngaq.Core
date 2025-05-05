@@ -38,7 +38,7 @@ class Status{
 	public I_LineCol Line_col {get; set;} = new Pos();
 	public u64 Pos {get;set;} = 0;
 
-	public Stack<state_t> stack {get; set;} = new();
+	public Stack<state_t> Stack {get; set;} = new();
 
 	public W CurChar {get; set;} = default;
 
@@ -400,7 +400,7 @@ public class WordParser{
 				}
 			}else if( Eq(c , _status.headOfWordDelimiter) ){
 				state = state_t.HeadOfWordDelimiter;
-				_status.stack.Push(state_t.RestOfWordBlock);
+				_status.Stack.Push(state_t.RestOfWordBlock);
 				return bufferToStrSegmentEtClr();
 			}else if( Eq(c , '}')){
 				var c2 =  NextByte();
@@ -443,7 +443,7 @@ public class WordParser{
 
 
 	public nil headOfWordDelimiter(){
-		var toReturn = _status.stack.Pop();
+		var toReturn = _status.Stack.Pop();
 		return headOfWordDelimiter(toReturn);
 	}
 
@@ -487,7 +487,7 @@ public class WordParser{
 			}
 			if( Eq(c, _status.headOfWordDelimiter) ){
 				state = state_t.HeadOfWordDelimiter;
-				_status.stack.Push(state_t.WordBlock_TopSpace);
+				_status.Stack.Push(state_t.WordBlock_TopSpace);
 				return null!;
 			}else if( Eq(c, '}')){
 				var c2 =  NextByte();

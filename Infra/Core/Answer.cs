@@ -13,4 +13,5 @@ public struct Answer<T>()
 		ans.Ok = true;
 		return ans;
 	}
+
 }
