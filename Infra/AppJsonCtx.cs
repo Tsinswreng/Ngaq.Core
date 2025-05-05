@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
-using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.Core;
 
 [JsonSourceGenerationOptions(
     //PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,

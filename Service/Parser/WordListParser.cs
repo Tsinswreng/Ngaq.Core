@@ -230,7 +230,7 @@ public class WordParser{
 		return null!;
 	}
 
-	public IList<I_DateBlock> parse(){
+	public IList<I_DateBlock> Parse(){
 		IList<I_DateBlock> ans = new List<I_DateBlock>();
 		for(var i = 0;;i++){
 			switch(_status.State){
@@ -244,7 +244,7 @@ public class WordParser{
 					Metadata(); // -> TopSpace
 				break;
 				case state_t.DateBlock:
-					var ua = readDateBlock(); // -> TopSpace
+					var ua = ReadDateBlock(); // -> TopSpace
 					ans.Add(ua);
 				break;
 				case state_t.End:
@@ -300,7 +300,7 @@ public class WordParser{
 		}
 	}
 
-	public I_DateBlock readDateBlock(){
+	public I_DateBlock ReadDateBlock(){
 		var ans = new DateBlock();
 		for(;;){
 			switch(state){

@@ -1,4 +1,4 @@
-using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.Core;
 
 namespace Ngaq.Core.Service.Word;
 public interface I_Svc_AddWord{

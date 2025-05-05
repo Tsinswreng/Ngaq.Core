@@ -1,3 +1,5 @@
+using Ngaq.Core.Infra.Core;
+
 namespace Ngaq.Core.Infra;
 
 public interface I_Crud<T>{

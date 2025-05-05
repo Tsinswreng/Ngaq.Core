@@ -1,7 +1,13 @@
 namespace Ngaq.Core.Service.Parser.Model;
 public interface I_WordBlock{
+	/// <summary>
+	/// 詞頭 對應WordFormId
+	/// </summary>
 	public I_StrSegment Head{get;set;}
-	//body蜮不連續、可被prop打斷、故用IList洏不用單個I_StrSegment
+	/// <summary>
+	/// body蜮不連續、可被prop打斷、故用IList洏不用單個I_StrSegment
+	/// 對應Mean
+	/// </summary>
 	public IList<I_StrSegment> Body{get;set;}
 	public IList<I_Prop> Props{get;set;}
 }

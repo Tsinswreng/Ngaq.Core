@@ -297,15 +297,16 @@ for(UInt128 i = 0; i < 99999; i++){
 
 for(var i = 0; i < 1000; i++){
 	var id = IdUtil.NewUlid_UInt128();
-	var base64Lit = IdUtil.ToBase64LittleEnd(id);
-	var id2 = IdUtil.Base64LittleEndToUInt128(base64Lit);
-	System.Console.WriteLine(
+	var base64Lit = IdUtil.ToLow64Base(id);
+	var id2 = IdUtil.Low64BaseToUInt128(base64Lit);
+			Console.WriteLine(
 		id+"  "+base64Lit
 	);
 	if(id!= id2){
 		throw new Exception("IdUtil test failed");
 	}
 }
+
 
 #endif
 #endregion
