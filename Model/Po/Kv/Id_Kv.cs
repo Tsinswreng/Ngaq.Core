@@ -2,7 +2,6 @@ using T_Val = System.UInt128;
 
 namespace Ngaq.Core.Model.Po.Kv;
 using T_IdStruct = Id_Kv;
-using MassTransit;
 using System.Buffers.Binary;
 using Ngaq.Core.Util;
 

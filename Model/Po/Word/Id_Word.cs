@@ -2,7 +2,6 @@ namespace Ngaq.Core.Model.Po.Word;
 
 using T_Val = System.UInt128;
 using T_IdStruct = Id_Word;
-using MassTransit;
 using System.Buffers.Binary;
 using Ngaq.Core.Util;
 

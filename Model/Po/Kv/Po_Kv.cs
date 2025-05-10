@@ -1,3 +1,4 @@
+#define Impl
 namespace Ngaq.Core.Model.Po.Kv;
 
 public partial class Po_Kv

@@ -17,4 +17,18 @@ public static class Extn_I_Answer{
 		z.Ok = true;
 		return z;
 	}
+
+	public static IList<str> ErrsToStrs<T>(this I_Answer<T> z){
+		return z.Errors.Select(e =>{
+			return e?.ToString()??"";
+		}).ToList();
+	}
+
+	public static nil ThrowIfNotOk<T>(this I_Answer<T> z){
+		if(!z.Ok){
+			var err = str.Join("\n", z.ErrsToStrs());
+			throw new Exception(err);
+		}
+		return Nil;
+	}
 }
