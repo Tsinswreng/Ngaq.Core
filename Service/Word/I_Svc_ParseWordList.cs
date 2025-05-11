@@ -1,7 +1,7 @@
 using System.Text;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Stream;
-using Ngaq.Core.Util.Io;
+using Ngaq.Core.Tools.Io;
 
 namespace Ngaq.Core.Service.Word;
 
@@ -14,13 +14,13 @@ public interface I_Svc_ParseWordList{
 	// 	I_I
 	// );
 
-	Task<I_Answer<IList<Bo_Word>>> ParseWordsFromFilePathAsy(Path_Encode Path_Encode);
+	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromFilePathAsy(Path_Encode Path_Encode);
 
-	Task<I_Answer<IList<Bo_Word>>> ParseWordsFromUrlAsy(str Path);
+	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromUrlAsy(str Path);
 
-	Task<I_Answer<IList<Bo_Word>>> ParseWordsFromTextAsy(str Text);
+	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromTextAsy(str Text);
 
-	Task<I_Answer<IList<Bo_Word>>> ParseWordsByIterEtEncodingAsy(
+	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsByIterEtEncodingAsy(
 		I_Iter<u8> Iter
 		,Encoding Encoding
 	);

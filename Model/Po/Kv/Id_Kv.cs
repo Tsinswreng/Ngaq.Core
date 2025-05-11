@@ -3,7 +3,7 @@ using T_Val = System.UInt128;
 namespace Ngaq.Core.Model.Po.Kv;
 using T_IdStruct = Id_Kv;
 using System.Buffers.Binary;
-using Ngaq.Core.Util;
+using Ngaq.Core.Tools;
 
 public struct Id_Kv(T_Val v)
 	:IEquatable<T_IdStruct>
@@ -11,7 +11,7 @@ public struct Id_Kv(T_Val v)
 	public T_Val Value{get;} = v;
 	public Id_Kv():this(0)
 	{
-		Value = IdUtil.NewUlid_UInt128();
+		Value = IdTool.NewUlid_UInt128();
 	}
 
 	public bool Equals(T_IdStruct other) {

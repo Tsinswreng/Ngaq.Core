@@ -1,5 +1,5 @@
 using Ngaq.Core.Infra.Core;
-using Ngaq.Core.Util.Io;
+using Ngaq.Core.Tools.Io;
 
 namespace Ngaq.Core.Service.Word;
 public interface I_Svc_AddWord{

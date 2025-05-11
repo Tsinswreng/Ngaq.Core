@@ -1,6 +1,6 @@
 using System.Text;
 
-namespace Ngaq.Core.Util.Io;
+namespace Ngaq.Core.Tools.Io;
 
 public struct Path_Encode(){
 	public str Path{get;set;} = "";

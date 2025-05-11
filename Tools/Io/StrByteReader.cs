@@ -1,6 +1,6 @@
 using Ngaq.Core.Stream;
 
-namespace Ngaq.Core.Util.Io;
+namespace Ngaq.Core.Tools.Io;
 
 public class StrByteReader: I_Iter<u8>{
 	public str Str{get;set;}

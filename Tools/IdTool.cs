@@ -1,8 +1,8 @@
 //using MassTransit;
 using System.Buffers.Binary;
-namespace Ngaq.Core.Util;
+namespace Ngaq.Core.Tools;
 
-public static class IdUtil {
+public static class IdTool {
 
 	public static UInt128 NewUlid_UInt128() {
 		var bytes = Ulid.NewUlid().ToByteArray();

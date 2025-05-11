@@ -9,7 +9,7 @@ using System.Text;
 using Chunk = System.ArraySegment<byte>;
 using Ngaq.Core.Stream;
 
-namespace Ngaq.Core.Util.Io;
+namespace Ngaq.Core.Tools.Io;
 
 public class ByteReader: I_Iter<u8>, IDisposable{
 

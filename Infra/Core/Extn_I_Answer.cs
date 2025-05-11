@@ -24,11 +24,11 @@ public static class Extn_I_Answer{
 		}).ToList();
 	}
 
-	public static nil ThrowIfNotOk<T>(this I_Answer<T> z){
+	public static T DataOrThrow<T>(this I_Answer<T> z){
 		if(!z.Ok){
 			var err = str.Join("\n", z.ErrsToStrs());
 			throw new Exception(err);
 		}
-		return Nil;
+		return z.Data!;
 	}
 }
