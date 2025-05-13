@@ -1,4 +1,5 @@
 using Ngaq.Core.Infra.Core;
+using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Service.Parser.Model;
@@ -31,48 +32,43 @@ public class ParseResultMapper(){
 		return po_kv;
 	}
 
-	public I_Answer<IList<Bo_Word>> Map(
+	public IList<Bo_Word> Map(
 		WordListTxtMetadata Metadata
 		,IList<I_DateBlock> DateBlocks
 	){
-		var ans = new Answer<IList<Bo_Word>>();
-		do{
-			if(Metadata.Belong is null){
-				ans.Errors.Add("Metadata.Belong is null");
-				break;
-			}
-			var wordList = new List<Bo_Word>();
-			ans.Data = wordList;
-			foreach(var dateBlock in DateBlocks){
-				var ua = new Bo_Word();
-				ua.Po_Word.Lang = Metadata.Belong;
-				foreach(var wordBlock in dateBlock.Words){
-					foreach(var prop in wordBlock.Props){
-						var po_kv = PropToKv(prop);
-						ua.Props.Add(po_kv);
-					}
-					ua.Po_Word.WordFormId = wordBlock.Head.Text;
-
-					var bodyStrList = new List<str>();
-					foreach(var seg in wordBlock.Body){
-						bodyStrList.Add(seg.Text);
-					}
-					var bodyStr = string.Join("\n", bodyStrList);
-					var kv_meaning = new Po_Kv();
-					kv_meaning.SetStr(
-						Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
-						,bodyStr
-					);
-					ua.Props.Add(kv_meaning);
-				}
-
-				foreach (var prop in dateBlock.Props){
+		if(Metadata.Belong is null){
+			throw new Err_Base("Metadata.Belong is null");
+		}
+		var Ans = new List<Bo_Word>();
+		foreach(var dateBlock in DateBlocks){
+			var ua = new Bo_Word();
+			ua.Po_Word.Lang = Metadata.Belong;
+			foreach(var wordBlock in dateBlock.Words){
+				foreach(var prop in wordBlock.Props){
 					var po_kv = PropToKv(prop);
 					ua.Props.Add(po_kv);
 				}
-				wordList.Add(ua);
+				ua.Po_Word.WordFormId = wordBlock.Head.Text;
+
+				var bodyStrList = new List<str>();
+				foreach(var seg in wordBlock.Body){
+					bodyStrList.Add(seg.Text);
+				}
+				var bodyStr = string.Join("\n", bodyStrList);
+				var kv_meaning = new Po_Kv();
+				kv_meaning.SetStr(
+					Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
+					,bodyStr
+				);
+				ua.Props.Add(kv_meaning);
 			}
-		} while (false);
-		return ans;
+
+			foreach (var prop in dateBlock.Props){
+				var po_kv = PropToKv(prop);
+				ua.Props.Add(po_kv);
+			}
+			Ans.Add(ua);
+		}
+		return Ans;
 	}
 }

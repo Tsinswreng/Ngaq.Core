@@ -3,9 +3,9 @@ namespace Ngaq.Core.Model.Po.Kv;
 public interface I_Po_Kv{
 
 	#region I_Po_Kv
-	public i64 SubjectIdType { get; set; } //`= (i64)E_SubjectIdType.Int64;
-	public UInt128? SubjectId_UInt128{get;set;}
-	public str? SubjectId_Str{get;set;}
+	public i64 FKeyType { get; set; } //`= (i64)E_SubjectIdType.Int64;
+	public UInt128? FKey_UInt128{get;set;}
+	public str? FKey_Str{get;set;}
 
 	public i64 KType { get; set; } //`= (i64)E_KvType.Str;
 	public str? KStr { get; set; }

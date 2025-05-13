@@ -1,4 +1,6 @@
 #define Impl
+using Ngaq.Core.Model.Po.User;
+
 namespace Ngaq.Core.Model.Po.Kv;
 
 public partial class Po_Kv
@@ -14,14 +16,14 @@ public partial class Po_Kv
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
-	public str? CreatedBy{get;set;}
+	public Id_User? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
-	public str? LastUpdatedBy{get;set;}
+	public Id_User? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
-	public i64 SubjectIdType { get; set; } = (i64)E_SubjectIdType.Int64;
-	public str? SubjectId_Str{get;set;}
-	public UInt128? SubjectId_UInt128{get;set;}
+	public i64 FKeyType { get; set; } = (i64)E_SubjectIdType.Int64;
+	public str? FKey_Str{get;set;}
+	public UInt128? FKey_UInt128{get;set;}
 
 	public i64 KType { get; set; } = (i64)E_KvType.Str;
 	public str? KStr { get; set; }

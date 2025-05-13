@@ -8,4 +8,8 @@ public class Const_Tokens{
 	/// 用戶自定義鍵名則在用戶命名空間下 如"Tsinswreng:Annotation"
 	/// </summary>
 	public const str Sep_NamespaceEtName = ":";
+	public static str Concat(str? ns, str name){
+		ns = ns??"";
+		return ns + Sep_NamespaceEtName + name;
+	}
 }

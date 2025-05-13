@@ -5,6 +5,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 /// </summary>
 public class Const_PropKey{
 	public const str meaning = nameof(meaning);
+	//public const str learn = nameof(learn);
 	public const str annotation = nameof(annotation);
 	public const str tag = nameof(tag);
 	public const str source = nameof(source);

@@ -14,15 +14,25 @@ public interface I_Svc_ParseWordList{
 	// 	I_I
 	// );
 
-	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromFilePathAsy(Path_Encode Path_Encode);
+	Task<IEnumerable<Bo_Word>> ParseWordsFromFilePathAsy(
+		Path_Encode Path_Encode
+		,CancellationToken ct = default
+	);
 
-	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromUrlAsy(str Path);
+	Task<IEnumerable<Bo_Word>> ParseWordsFromUrlAsy(
+		str Path
+		,CancellationToken ct = default
+	);
 
-	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsFromTextAsy(str Text);
+	Task<IEnumerable<Bo_Word>> ParseWordsFromTextAsy(
+		str Text
+		,CancellationToken ct = default
+	);
 
-	Task<I_Answer<IEnumerable<Bo_Word>>> ParseWordsByIterEtEncodingAsy(
+	Task<IEnumerable<Bo_Word>> ParseWordsByIterEtEncodingAsy(
 		I_Iter<u8> Iter
 		,Encoding Encoding
+		,CancellationToken ct = default
 	);
 
 }
