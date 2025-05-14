@@ -10,11 +10,11 @@ global using u64 = System.UInt64;
 global using f32 = System.Single;
 global using f64 = System.Double;
 global using str = System.String;
-//global using nil = System.Object;
-global using nil = Nil_;
-internal class Nil_{
-	//public static nil Nil = null!;
-	public static nil Nil = null!;
+global using nil = System.Object;
+global using static Nil_;
+public class Nil_{
+	public const nil Nil = null!;
 }
-
+//使nil潙空object即可
+//蔿防跨項目不一致、勿自定義public class Nil_{ public static Nil_ Nil = null!; }
 //#pragma warning restore CS8981

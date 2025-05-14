@@ -11,6 +11,7 @@ public class Po_Word
 
 	public Id_Word Id {get;set;}
 
+	public Id_User Owner{get;set;}
 
 	#region PoBase
 	public i64 CreatedAt{get;set;}
