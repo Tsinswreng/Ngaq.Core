@@ -8,7 +8,7 @@ namespace Ngaq.Core.Model.Bo;
 
 public class Bo_Word: I_Id<Id_Word>{
 
-	public Po_Word Po_Word{get;set;}
+	public Po_Word Po_Word{get;set;} = new Po_Word();
 	public IList<Po_Kv> Props{get;set;} = new List<Po_Kv>();
 	public IList<Po_Learn> Learns{get;set;} = new List<Po_Learn>();
 

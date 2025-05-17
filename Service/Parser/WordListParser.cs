@@ -226,10 +226,10 @@ public class WordListParser{
 			Error("Invalid metadata");return Nil;
 		}
 		Status.Metadata = obj;
-		if(obj.Delimiter == null || obj.Delimiter.Length == 0){
+		if(obj.delimiter == null || obj.delimiter.Length == 0){
 			Error("Invalid delimiter");return Nil;
 		}
-		Status.headOfWordDelimiter = (byte)obj.Delimiter[0]; //TODO
+		Status.headOfWordDelimiter = (byte)obj.delimiter[0]; //TODO
 		return null!;
 	}
 
@@ -452,7 +452,7 @@ public class WordListParser{
 
 	public nil HeadOfWordDelimiter(state_t stateToReturn){
 		Buffer.Add(Status.CurChar); // 加上 delimiter首字符
-		var delimiter = Status.Metadata?.Delimiter??throw Error("_status.metadata?.Delimiter is");
+		var delimiter = Status.Metadata?.delimiter??throw Error("_status.metadata?.Delimiter is");
 		for(var i = 1;i < delimiter.Length;i++){
 			var c =  NextByte();
 			Buffer.Add(c);
@@ -541,6 +541,7 @@ public class WordListParser{
 				case state_t.RestOfWordBlock:
 					//state->, HeadOfWordDelimiter, Prop, DateBlockEnd
 					var bodySeg = WordBlockBody();
+					//System.Console.WriteLine(ua.Body == null);// true
 					ua.Body.Add(bodySeg);
 				break;
 

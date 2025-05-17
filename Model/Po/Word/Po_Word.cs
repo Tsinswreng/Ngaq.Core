@@ -8,6 +8,7 @@ public class Po_Word
 	,I_Id<Id_Word>
 	,I_Po_Word
 {
+	public static Po_Word Example{get;set;} = new Po_Word();
 
 	public Id_Word Id {get;set;}
 

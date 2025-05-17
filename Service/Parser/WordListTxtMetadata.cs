@@ -1,17 +1,22 @@
+using TeQuaero.Shared.Util;
+
 namespace Ngaq.Core.Service.Parser;
 public class WordListTxtMetadata{
 	/// <summary>
 	/// 語言
+	/// 字段保持全小寫
 	/// </summary>
-	public str? Belong{get;set;}
+	public str? belong{get;set;}
 	/// <summary>
 	/// 單詞分隔符
+	/// 字段保持全小寫
 	/// </summary>
-	public str? Delimiter{get;set;}
+	public str? delimiter{get;set;}
 
 	public static WordListTxtMetadata Parse(str txt){
-		var ans = System.Text.Json.JsonSerializer.Deserialize<WordListTxtMetadata>(txt);
-		if(ans?.Belong == null || ans?.Delimiter == null){
+		//var ans = System.Text.Json.JsonSerializer.Deserialize<WordListTxtMetadata>(txt);
+		var ans = JSON.parse<WordListTxtMetadata>(txt);
+		if(ans?.belong == null || ans?.delimiter == null){
 			throw new Exception("ans?.belong == null || ans?.delimiter == null");
 		}
 		return ans;

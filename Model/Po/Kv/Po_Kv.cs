@@ -9,6 +9,8 @@ public partial class Po_Kv
 	,I_Po_Kv
 {
 
+	public static Po_Kv Example{get;set;} = new Po_Kv();
+
 	public Id_Kv Id { get; set; }
 
 	#region PoBase

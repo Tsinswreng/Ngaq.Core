@@ -36,18 +36,22 @@ public class ParseResultMapper(){
 		WordListTxtMetadata Metadata
 		,IList<I_DateBlock> DateBlocks
 	){
-		if(Metadata.Belong is null){
+		if(Metadata.belong is null){
 			throw new Err_Base("Metadata.Belong is null");
 		}
 		var Ans = new List<Bo_Word>();
 		foreach(var dateBlock in DateBlocks){
 			var ua = new Bo_Word();
-			ua.Po_Word.Lang = Metadata.Belong;
+			ua.Po_Word.Lang = Metadata.belong;
 			foreach(var wordBlock in dateBlock.Words){
+				if(wordBlock.Head == null || str.IsNullOrEmpty(wordBlock.Head.Text)){
+					continue;
+				}
 				foreach(var prop in wordBlock.Props){
 					var po_kv = PropToKv(prop);
 					ua.Props.Add(po_kv);
 				}
+
 				ua.Po_Word.WordFormId = wordBlock.Head.Text;
 
 				var bodyStrList = new List<str>();
