@@ -10,7 +10,14 @@ public static class IdTool {
 		return ans;
 	}
 
-//TODO 能省開頭全零者否?
+
+	// public static nil AssignIdUInt128(ref UInt128? id){
+	// 	if(id == null || id == UInt128.Zero){
+	// 		id = NewUlid_UInt128();
+	// 	}
+	// 	return Nil;
+	// }
+
 	public static string ToBase64Url(UInt128 value) {
 		// // 拆分为高64位（upper）和低64位（lower）
 		// ulong upper = (ulong)(value >> 64);

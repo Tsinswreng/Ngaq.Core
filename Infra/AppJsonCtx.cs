@@ -9,6 +9,7 @@ using Ngaq.Core.Service.Parser;
 [JsonSerializable(typeof(Answer<object>))]
 [JsonSerializable(typeof(I_Answer<object>))]
 [JsonSerializable(typeof(WordListTxtMetadata))]
+[JsonSerializable(typeof(IDictionary<string, object>))]
 public partial class AppJsonCtx : JsonSerializerContext {
 
 }

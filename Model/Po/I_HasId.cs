@@ -9,7 +9,7 @@ namespace Ngaq.Core.Model.Po;
 // 	public T Id{set;}
 // }
 
-public interface I_Id<T>
+public interface I_HasId<T>
 	// :I_GetId<T>
 	// ,I_SetId<T>
 {

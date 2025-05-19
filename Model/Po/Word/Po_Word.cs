@@ -1,16 +1,26 @@
 #define Impl
+using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.User;
 
 namespace Ngaq.Core.Model.Po.Word;
 
+// public class TestParent{
+// 	public str ParentProperty{get;set;} = "1234";
+// 	public void Test(){
+// 		var z = new TestParent();
+// 		DictCtx.ToDict(z);
+// 	}
+// }
+
 public class Po_Word
 	:I_PoBase
-	,I_Id<Id_Word>
+	,I_HasId<Id_Word>
 	,I_Po_Word
 {
+	//public str SelfProperty{get;set;} = "5678";//t
 	public static Po_Word Example{get;set;} = new Po_Word();
 
-	public Id_Word Id {get;set;}
+	public Id_Word Id {get;set;} = new Id_Word(); //不顯式調用構造器則內ʹValue 得零
 
 	public Id_User Owner{get;set;}
 
