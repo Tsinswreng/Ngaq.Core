@@ -9,11 +9,11 @@ public interface I_PoBase{
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
 	//public str? CreatedBy{get;set;}
-	public Id_User? CreatedBy{get;set;}
+	public IdUser? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
 	//public str? LastUpdatedBy{get;set;}
 	//public UInt128? Owner{get;set;}
-	public Id_User? LastUpdatedBy{get;set;}//LastUpdatedBy
+	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
 	public i64 Status{get;set;}
 	#endregion
 }

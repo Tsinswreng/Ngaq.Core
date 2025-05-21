@@ -22,19 +22,19 @@ public class Po_Word
 
 	public Id_Word Id {get;set;} = new Id_Word(); //不顯式調用構造器則內ʹValue 得零
 
-	public Id_User Owner{get;set;}
+	public IdUser Owner{get;set;}
 
 	#region PoBase
 	public i64 CreatedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
-	public Id_User? CreatedBy{get;set;}
+	public IdUser? CreatedBy{get;set;}
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
 	public i64? UpdatedAt{get;set;}
-	public Id_User? LastUpdatedBy{get;set;}
+	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
 

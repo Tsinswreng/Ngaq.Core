@@ -18,9 +18,9 @@ public partial class Po_Kv
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
-	public Id_User? CreatedBy{get;set;}
+	public IdUser? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
-	public Id_User? LastUpdatedBy{get;set;}
+	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
 	public i64 FKeyType { get; set; } = (i64)E_SubjectIdType.Int64;

@@ -10,4 +10,18 @@ partial struct PLACEHOLDERID{
 		return Ngaq.Core.Tools.ToolId.ToLow64Base(Value);
 	}
 
+	public static bool operator ==(PLACEHOLDERID left, PLACEHOLDERID right)
+		=> left.Value == right.Value;
+
+	public static bool operator !=(PLACEHOLDERID left, PLACEHOLDERID right)
+		=> !(left == right);
+
+	// 重写 object.Equals
+	public override bool Equals(object? obj)
+		=> obj is PLACEHOLDERID other && Equals(other);
+
+	// 重写 GetHashCode
+	public override int GetHashCode()
+		=> Value.GetHashCode();
+
 }
