@@ -7,15 +7,15 @@ using Ngaq.Core.Tools.Algo;
 
 namespace Ngaq.Core.Model.Bo;
 
-public class Bo_Word: I_HasId<Id_Word>{
+public class Bo_Word: I_HasId<IdWord>{
 
 	public Po_Word Po_Word{get;set;} = new Po_Word();
 	public IList<Po_Kv> Props{get;set;} = new List<Po_Kv>();
 	public IList<Po_Learn> Learns{get;set;} = new List<Po_Learn>();
 
-	public Id_Word Id{
+	public IdWord Id{
 		get{return Po_Word.Id;}
-		set{Po_Word.Id = (Id_Word)value;}
+		set{Po_Word.Id = (IdWord)value;}
 	}
 
 	public Bo_Word AssignId(){

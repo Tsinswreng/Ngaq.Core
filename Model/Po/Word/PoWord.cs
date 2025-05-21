@@ -14,13 +14,13 @@ namespace Ngaq.Core.Model.Po.Word;
 
 public class Po_Word
 	:I_PoBase
-	,I_HasId<Id_Word>
+	,I_HasId<IdWord>
 	,I_Po_Word
 {
 	//public str SelfProperty{get;set;} = "5678";//t
 	public static Po_Word Example{get;set;} = new Po_Word();
 
-	public Id_Word Id {get;set;} = new Id_Word(); //不顯式調用構造器則內ʹValue 得零
+	public IdWord Id {get;set;} = new IdWord(); //不顯式調用構造器則內ʹValue 得零
 
 	public IdUser Owner{get;set;}
 

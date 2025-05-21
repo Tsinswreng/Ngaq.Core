@@ -5,13 +5,13 @@ namespace Ngaq.Core.Model.Po.Kv;
 
 public partial class Po_Kv
 	:I_PoBase
-	,I_HasId<Id_Kv>
+	,I_HasId<IdKv>
 	,I_Po_Kv
 {
 
 	public static Po_Kv Example{get;set;} = new Po_Kv();
 
-	public Id_Kv Id { get; set; } = new Id_Kv();
+	public IdKv Id { get; set; } = new IdKv();
 
 	#region PoBase
 	public i64 CreatedAt{get;set;}
