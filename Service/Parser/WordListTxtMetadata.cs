@@ -1,4 +1,4 @@
-using TeQuaero.Shared.Util;
+using Ngaq.Core.Tools;
 
 namespace Ngaq.Core.Service.Parser;
 public class WordListTxtMetadata{

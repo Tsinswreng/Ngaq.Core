@@ -2,7 +2,7 @@
 using System.Buffers.Binary;
 namespace Ngaq.Core.Tools;
 
-public static class IdTool {
+public static class ToolId {
 
 	public static UInt128 NewUlid_UInt128() {
 		var bytes = Ulid.NewUlid().ToByteArray();

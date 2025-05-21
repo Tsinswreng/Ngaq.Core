@@ -30,6 +30,19 @@
 		<Compile Include="../Tsinswreng.CsTypeAlias/TypeAlias.cs" />
 	</ItemGroup>
 
+<!-- Strong type id -->
+	<ItemGroup>
+		<!-- 添加自定义模板 -->
+		<AdditionalFiles Include="UInt128Template.typedid" />
+
+		<!-- 添加NuGet包 -->
+		<PackageReference
+			Include="StronglyTypedId"
+			Version="1.0.0-beta08"
+		/>
+		<!-- PrivateAssets="all"  -->
+		<!-- ExcludeAssets="runtime;compile" -->
+	</ItemGroup>
 
 
 

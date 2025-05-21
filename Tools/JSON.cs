@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra;
-namespace TeQuaero.Shared.Util;
+namespace Ngaq.Core.Tools;
 
 public static class JSON {
 
@@ -35,7 +35,7 @@ public static class JSON {
 		if(jsonTypeInfo == null){
 			return JsonSerializer.Deserialize<T>(json, Opt);
 		}
-		return JsonSerializer.Deserialize<T>(json, jsonTypeInfo);
+		return JsonSerializer.Deserialize(json, jsonTypeInfo);
 	}
 }
 

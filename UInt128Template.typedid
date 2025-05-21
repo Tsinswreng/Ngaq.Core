@@ -1,0 +1,13 @@
+partial struct PLACEHOLDERID{
+	public UInt128 Value { get; }
+
+	public PLACEHOLDERID(UInt128 value) => Value = value;
+
+	public static explicit operator UInt128(PLACEHOLDERID id) => id.Value;
+	public static explicit operator PLACEHOLDERID(UInt128 value) => new(value);
+
+	public override string ToString(){
+		return Ngaq.Core.Tools.ToolId.ToLow64Base(Value);
+	}
+
+}

@@ -11,7 +11,7 @@ public struct Id_Kv(T_Val v)
 	public T_Val Value{get;} = v;
 	public Id_Kv():this(0)
 	{
-		Value = IdTool.NewUlid_UInt128();
+		Value = ToolId.NewUlid_UInt128();
 	}
 
 	public bool Equals(T_IdStruct other) {
