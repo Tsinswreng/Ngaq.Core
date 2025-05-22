@@ -13,7 +13,7 @@ namespace Ngaq.Core.Model.Po.Word;
 // }
 
 public class Po_Word
-	:I_PoBase
+	:IPoBase
 	,I_HasId<IdWord>
 	,I_Po_Word
 {

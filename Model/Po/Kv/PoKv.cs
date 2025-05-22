@@ -4,7 +4,7 @@ using Ngaq.Core.Model.Po.User;
 namespace Ngaq.Core.Model.Po.Kv;
 
 public partial class Po_Kv
-	:I_PoBase
+	:IPoBase
 	,I_HasId<IdKv>
 	,I_Po_Kv
 {

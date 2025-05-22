@@ -1,8 +1,9 @@
-//#define Impl
+#define Impl
 using Ngaq.Core.Model.Po.User;
 
-namespace Ngaq.Core.Model.Po;
-public interface IPoBase{
+namespace Ngaq.Core.Model.Po.Role;
+
+public class PoRole: IPoBase{
 	#region IPoBase
 	public i64 CreatedAt{get;set;}
 	#if Impl
@@ -13,4 +14,5 @@ public interface IPoBase{
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
 	public i64 Status{get;set;}
 	#endregion IPoBase
+
 }
