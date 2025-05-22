@@ -1,5 +1,5 @@
-partial struct PLACEHOLDERID{
-	public UInt128 Value { get; }
+partial struct PLACEHOLDERID : Ngaq.Core.Infra.IF.IIdUInt128{
+	public UInt128 Value { get; set; }
 
 	public PLACEHOLDERID(UInt128 value) => Value = value;
 

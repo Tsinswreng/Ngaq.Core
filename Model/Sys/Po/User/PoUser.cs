@@ -1,6 +1,9 @@
+using Ngaq.Core.Model.Po.Role;
+
 namespace Ngaq.Core.Model.Po.User;
-public partial class Po_User
-	:IPoBase
+public partial class PoUser
+	:IHasId<IdUser>
+	,IPoBase
 {
 	public IdUser Id{get;set;}
 	#region IPoBase

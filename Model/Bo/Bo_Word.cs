@@ -7,7 +7,7 @@ using Ngaq.Core.Tools.Algo;
 
 namespace Ngaq.Core.Model.Bo;
 
-public class Bo_Word: I_HasId<IdWord>{
+public class Bo_Word: IHasId<IdWord>{
 
 	public Po_Word Po_Word{get;set;} = new Po_Word();
 	public IList<Po_Kv> Props{get;set;} = new List<Po_Kv>();

@@ -11,7 +11,7 @@ namespace Ngaq.Core.Model.Po.Learn;
 
 public partial class Po_Learn
 	:IPoBase
-	,I_HasId<IdLearn>
+	,IHasId<IdLearn>
 	,I_Po_Kv
 {
 

@@ -5,7 +5,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 
 public partial class Po_Kv
 	:IPoBase
-	,I_HasId<IdKv>
+	,IHasId<IdKv>
 	,I_Po_Kv
 {
 

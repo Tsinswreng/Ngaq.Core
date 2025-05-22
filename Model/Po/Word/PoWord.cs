@@ -14,7 +14,7 @@ namespace Ngaq.Core.Model.Po.Word;
 
 public class Po_Word
 	:IPoBase
-	,I_HasId<IdWord>
+	,IHasId<IdWord>
 	,I_Po_Word
 {
 	//public str SelfProperty{get;set;} = "5678";//t
