@@ -3,13 +3,13 @@ using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Model.Po.Kv;
 
-public partial class Po_Kv
+public partial class PoKv
 	:IPoBase
 	,IHasId<IdKv>
 	,I_Po_Kv
 {
 
-	public static Po_Kv Example{get;set;} = new Po_Kv();
+	public static PoKv Example{get;set;} = new PoKv();
 
 	public IdKv Id { get; set; } = new IdKv();
 

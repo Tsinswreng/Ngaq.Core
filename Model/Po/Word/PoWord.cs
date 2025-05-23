@@ -12,13 +12,13 @@ namespace Ngaq.Core.Model.Po.Word;
 // 	}
 // }
 
-public class Po_Word
+public class PoWord
 	:IPoBase
 	,IHasId<IdWord>
 	,I_Po_Word
 {
 	//public str SelfProperty{get;set;} = "5678";//t
-	public static Po_Word Example{get;set;} = new Po_Word();
+	public static PoWord Example{get;set;} = new PoWord();
 
 	public IdWord Id {get;set;} = new IdWord(); //不顯式調用構造器則內ʹValue 得零
 

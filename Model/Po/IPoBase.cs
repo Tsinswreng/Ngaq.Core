@@ -13,4 +13,11 @@ public interface IPoBase{
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
 	public i64 Status{get;set;}
 	#endregion IPoBase
+
+	public enum EStatus{
+		Normal = 0,
+		Deleted = 1,
+		Banned = 2,
+	}
+
 }

@@ -5,16 +5,16 @@ using Ngaq.Core.Tools.Io;
 
 namespace Ngaq.Core.Service.Word;
 
-public interface I_Svc_Word{
+public interface ISvcWord{
 
 	Task<nil> AddWordsFromFilePathAsy(
-		I_UserCtx UserCtx
+		IUserCtx UserCtx
 		,Path_Encode Path_Encode
 		,CancellationToken ct
 	);
 
 	Task<nil> AddWordsFromTextAsy(
-		I_UserCtx UserCtx
+		IUserCtx UserCtx
 		,string Text
 		,CancellationToken ct
 	);

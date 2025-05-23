@@ -7,18 +7,18 @@ using Ngaq.Core.Tools.Algo;
 
 namespace Ngaq.Core.Model.Bo;
 
-public class Bo_Word: IHasId<IdWord>{
+public class BoWord: IHasId<IdWord>{
 
-	public Po_Word Po_Word{get;set;} = new Po_Word();
-	public IList<Po_Kv> Props{get;set;} = new List<Po_Kv>();
-	public IList<Po_Learn> Learns{get;set;} = new List<Po_Learn>();
+	public PoWord Po_Word{get;set;} = new PoWord();
+	public IList<PoKv> Props{get;set;} = new List<PoKv>();
+	public IList<PoLearn> Learns{get;set;} = new List<PoLearn>();
 
 	public IdWord Id{
 		get{return Po_Word.Id;}
 		set{Po_Word.Id = (IdWord)value;}
 	}
 
-	public Bo_Word AssignId(){
+	public BoWord AssignId(){
 		var z = this;
 		// if(z.Po_Word.Id.Value == 0){
 		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
@@ -45,15 +45,15 @@ public class Bo_Word: IHasId<IdWord>{
 	 * @param w2 已有者
 	 * @returns 未加過之prop
 	 */
-	public static IList<Po_Kv> DiffProps(
-		IList<Po_Kv> PropsToAdd
-		,IList<Po_Kv> ExistingProps
+	public static IList<PoKv> DiffProps(
+		IList<PoKv> PropsToAdd
+		,IList<PoKv> ExistingProps
 	){
 		var diff = Algo.DiffListIntoMap(
-			(IList<Po_Kv>)PropsToAdd, (IList<Po_Kv>)ExistingProps
+			(IList<PoKv>)PropsToAdd, (IList<PoKv>)ExistingProps
 			, (e)=> e.UpdatedAt ?? e.CreatedAt
 		);
-		List<Po_Kv> ans = [];
+		List<PoKv> ans = [];
 		foreach(var kvp in diff){
 			ans.AddRange(kvp.Value);
 		}

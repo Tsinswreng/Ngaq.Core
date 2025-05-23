@@ -9,13 +9,13 @@ namespace Ngaq.Core.Model.Po.Learn;
 // }
 
 
-public partial class Po_Learn
+public partial class PoLearn
 	:IPoBase
 	,IHasId<IdLearn>
 	,I_Po_Kv
 {
 
-	public static Po_Learn Example{get;set;} = new Po_Learn();
+	public static PoLearn Example{get;set;} = new PoLearn();
 
 	public IdLearn Id { get; set; } = new IdLearn();
 

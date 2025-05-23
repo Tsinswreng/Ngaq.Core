@@ -7,9 +7,9 @@ using Tsinswreng.SrcGen.Dict;
 using Tsinswreng.SrcGen.Dict.Attributes;
 namespace Ngaq.Core.Infra;
 
-[DictType(typeof(Po_Kv))]
-[DictType(typeof(Po_Word))]
-[DictType(typeof(Po_Learn))]
+[DictType(typeof(PoKv))]
+[DictType(typeof(PoWord))]
+[DictType(typeof(PoLearn))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx {
 

@@ -6,7 +6,7 @@ public partial class PoUser
 	:IHasId<IdUser>
 	,IPoBase
 {
-	public IdUser Id{get;set;}
+	public IdUser Id{get;set;} = new();
 	#region IPoBase
 	public i64 CreatedAt{get;set;}
 	#if Impl

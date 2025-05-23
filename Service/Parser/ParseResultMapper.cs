@@ -26,22 +26,22 @@ public class ParseResultMapper(){
 		return Nil;
 	}
 
-	public Po_Kv PropToKv(I_Prop prop){
-		var po_kv = new Po_Kv();
+	public PoKv PropToKv(I_Prop prop){
+		var po_kv = new PoKv();
 		po_kv.SetStr(prop.Key.Text, prop.Value.Text);
 		return po_kv;
 	}
 
-	public IList<Bo_Word> Map(
+	public IList<BoWord> Map(
 		WordListTxtMetadata Metadata
 		,IList<I_DateBlock> DateBlocks
 	){
 		if(Metadata.belong is null){
-			throw new Err_Base("Metadata.Belong is null");
+			throw new ErrBase("Metadata.Belong is null");
 		}
-		var Ans = new List<Bo_Word>();
+		var Ans = new List<BoWord>();
 		foreach(var dateBlock in DateBlocks){
-			var ua = new Bo_Word();
+			var ua = new BoWord();
 			ua.Po_Word.Lang = Metadata.belong;
 			foreach(var wordBlock in dateBlock.Words){
 				if(wordBlock.Head == null || str.IsNullOrEmpty(wordBlock.Head.Text)){
@@ -59,7 +59,7 @@ public class ParseResultMapper(){
 					bodyStrList.Add(seg.Text);
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
-				var kv_meaning = new Po_Kv();
+				var kv_meaning = new PoKv();
 				kv_meaning.SetStr(
 					Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
 					,bodyStr

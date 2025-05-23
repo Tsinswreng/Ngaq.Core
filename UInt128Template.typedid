@@ -2,12 +2,19 @@ partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
 {
+	public PLACEHOLDERID():this(0){
+		Value = Ngaq.Core.Tools.ToolId.NewUlid_UInt128();
+	}
+
 	public UInt128 Value { get; set; }
 
 	public PLACEHOLDERID(UInt128 value) => Value = value;
 
-	public static explicit operator UInt128(PLACEHOLDERID id) => id.Value;
-	public static explicit operator PLACEHOLDERID(UInt128 value) => new(value);
+	// public static explicit operator UInt128(PLACEHOLDERID id) => id.Value;
+	// public static explicit operator PLACEHOLDERID(UInt128 value) => new(value);
+
+	public static implicit operator UInt128(PLACEHOLDERID id) => id.Value;
+	public static implicit operator PLACEHOLDERID(UInt128 value) => new(value);
 
 	public override string ToString(){
 		return Ngaq.Core.Tools.ToolId.ToLow64Base(Value);
