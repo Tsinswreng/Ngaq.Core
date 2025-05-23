@@ -3,6 +3,7 @@ using System.Reflection;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
+using Tsinswreng.SrcGen.Dict;
 using Tsinswreng.SrcGen.Dict.Attributes;
 namespace Ngaq.Core.Infra;
 
@@ -11,6 +12,15 @@ namespace Ngaq.Core.Infra;
 [DictType(typeof(Po_Learn))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx {
+
+	public class DictMapper:IDictMapper{
+		public IDictionary<str, object?> ToDictT<T>(T obj){
+			return DictCtx.ToDictT(obj);
+		}
+		public T AssignT<T> (T obj, IDictionary<str, object?> dict){
+			return DictCtx.AssignT(obj, dict);
+		}
+	}
 	// public static IDictionary<str, object> ToDictT<
 	// 	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
 	// 	T

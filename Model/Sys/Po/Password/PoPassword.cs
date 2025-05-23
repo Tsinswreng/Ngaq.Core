@@ -1,14 +1,19 @@
-#define Impl
+using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 
-namespace Ngaq.Core.Model.Po.Role;
+namespace Ngaq.Core.Model.Sys.Po.Password;
 
-public class PoRole
+
+public class PoPassword
 	:IPoBase
-	,IHasId<IdRole>
+	,IHasId<IdPassword>
 {
-	public IdRole Id { get; set; }
-	public str? Key {get;set;}
+	public IdPassword Id{get;set;}
+	public i64 Algo{get;set;}
+	public str Text{get;set;}="";
+	public str Salt{get;set;} ="";
+
+	public IdUser UserId{get;set;}
 	#region IPoBase
 	public i64 CreatedAt{get;set;}
 	#if Impl
@@ -19,5 +24,4 @@ public class PoRole
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
 	public i64 Status{get;set;}
 	#endregion IPoBase
-
 }

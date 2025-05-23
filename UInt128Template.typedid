@@ -1,4 +1,7 @@
-partial struct PLACEHOLDERID : Ngaq.Core.Infra.IF.IIdUInt128{
+partial struct PLACEHOLDERID
+	:Ngaq.Core.Infra.IF.IIdUInt128
+	,IEquatable<PLACEHOLDERID>
+{
 	public UInt128 Value { get; set; }
 
 	public PLACEHOLDERID(UInt128 value) => Value = value;
@@ -24,4 +27,7 @@ partial struct PLACEHOLDERID : Ngaq.Core.Infra.IF.IIdUInt128{
 	public override int GetHashCode()
 		=> Value.GetHashCode();
 
+	public bool Equals(PLACEHOLDERID other) {
+		return Value.Equals(other.Value);
+	}
 }

@@ -1,6 +1,7 @@
+using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
 
-namespace Ngaq.Core.Model.Po.User;
+namespace Ngaq.Core.Model.Sys.Po.User;
 public partial class PoUser
 	:IHasId<IdUser>
 	,IPoBase
@@ -17,10 +18,10 @@ public partial class PoUser
 	public i64 Status{get;set;}
 	#endregion IPoBase
 	public str UniqueName{get;set;} = "";
-	public str NickName{get;set;} = "";
+	public str? NickName{get;set;}
 	public str Email{get;set;} = "";
-	public str? PhoneNumber{get;set;} = "";
-	public str Avatar{get;set;} = "";
+	public str? PhoneNumber{get;set;}
+	public str? Avatar{get;set;}
 
 	public IdRole? RoleId{get;set;}
 	//public IEnumerable<Id_Password> PasswordIds{get;set;}=[]; //AI曰不要此

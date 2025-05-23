@@ -1,5 +1,5 @@
 #define Impl
-using Ngaq.Core.Model.Po.User;
+using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Model.Po.Kv;
 
