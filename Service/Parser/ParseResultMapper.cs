@@ -42,7 +42,7 @@ public class ParseResultMapper(){
 		var Ans = new List<BoWord>();
 		foreach(var dateBlock in DateBlocks){
 			var ua = new BoWord();
-			ua.Po_Word.Lang = Metadata.belong;
+			ua.PoWord.Lang = Metadata.belong;
 			foreach(var wordBlock in dateBlock.Words){
 				if(wordBlock.Head == null || str.IsNullOrEmpty(wordBlock.Head.Text)){
 					continue;
@@ -52,7 +52,7 @@ public class ParseResultMapper(){
 					ua.Props.Add(po_kv);
 				}
 
-				ua.Po_Word.WordFormId = wordBlock.Head.Text;
+				ua.PoWord.WordFormId = wordBlock.Head.Text;
 
 				var bodyStrList = new List<str>();
 				foreach(var seg in wordBlock.Body){

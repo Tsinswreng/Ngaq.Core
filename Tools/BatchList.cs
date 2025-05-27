@@ -6,55 +6,45 @@ namespace Ngaq.Core.Tools;
 /// <summary>
 /// 非線程安全
 /// </summary>
-/// <typeparam name="T_Item"></typeparam>
-/// <typeparam name="T_Ret"></typeparam>
-public class BatchListAsy<T_Item, T_Ret>
+/// <typeparam name="TItem"></typeparam>
+/// <typeparam name="TRet"></typeparam>
+public class BatchListAsy<TItem, TRet>
 	:IDisposable
 {
 	public BatchListAsy(Func<
-			IEnumerable<T_Item>
+			IEnumerable<TItem>
 			,CancellationToken
-			,Task<T_Ret>
+			,Task<TRet>
 		> FnAsy
 		,u64 BatchSize = 0xfff
 	){
 		this.FnAsy = FnAsy;
 		this.BatchSize = BatchSize;
 	}
-	public IList<T_Item> FullList{get;set;} = new List<T_Item>();
-	public IList<T_Item> UnHandledList{get;set;} = new List<T_Item>();
+	//public IList<TItem> FullList{get;set;} = new List<TItem>();
+	public IList<TItem> UnHandledList{get;set;} = new List<TItem>();
 	public u64 BatchSize{get;set;} = 0xfff;
 	public Func<
-		IEnumerable<T_Item>
+		IEnumerable<TItem>
 		,CancellationToken
-		,Task<T_Ret>
+		,Task<TRet>
 	> FnAsy{get;set;}
 
-	// public static async Task<nil> EndAll(
-	// 	CancellationToken ct
-	// 	,params BatchListAsy<T_Item, T_Ret>[] bls
-
-	// ){//TODO
-	// 	foreach(var bl in bls){
-	// 		await bl.EndAsy(ct);
-	// 	}
-	// 	return Nil;
-	// }
-
-	public async Task<T_Ret?> AddAsy(
-		T_Item item
+	public async Task<TRet?> AddAsy(
+		TItem item
 		,CancellationToken ct
 	){
 		UnHandledList.Add(item);
-		FullList.Add(item);
+		//FullList.Add(item);
 		if((u64)UnHandledList.Count >= BatchSize){
-			return await RunAsy(ct);
+			var Ans = await RunAsy(ct);
+			return Ans;
 		}
 		return default;
 	}
 
 	bool _IsEnd{get;set;} = false;
-	public async Task<T_Ret?> EndAsy(
+	public async Task<TRet?> EndAsy(
 		CancellationToken ct
 	){
 		if(_IsEnd){return default;}
@@ -70,12 +60,12 @@ public class BatchListAsy<T_Item, T_Ret>
 		return Nil;
 	}
 
-	protected async Task<T_Ret?> RunAsy(
+	protected async Task<TRet?> RunAsy(
 		CancellationToken ct
 	){
-		var ans = await FnAsy(UnHandledList, ct);
+		var Ans = await FnAsy(UnHandledList, ct);
 		Clear();
-		return ans;
+		return Ans;
 	}
 
 

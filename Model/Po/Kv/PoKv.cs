@@ -6,7 +6,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 public partial class PoKv
 	:IPoBase
 	,IHasId<IdKv>
-	,I_Po_Kv
+	,IPoKv
 {
 
 	public static PoKv Example{get;set;} = new PoKv();
@@ -24,8 +24,8 @@ public partial class PoKv
 	public i64 Status{get;set;}
 	#endregion
 	public i64 FKeyType { get; set; } = (i64)E_SubjectIdType.Int64;
-	public str? FKey_Str{get;set;}
-	public UInt128? FKey_UInt128{get;set;}
+	public str? FKeyStr{get;set;}
+	public UInt128? FKeyUInt128{get;set;}
 
 	public i64 KType { get; set; } = (i64)E_KvType.Str;
 	public str? KStr { get; set; }

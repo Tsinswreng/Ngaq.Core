@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Model.UserCtx;
 
-public interface I_UserCtxMgr{
+public interface IUserCtxMgr{
 	IUserCtx GetUserCtx();
 }
