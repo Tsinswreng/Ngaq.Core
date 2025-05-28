@@ -52,7 +52,7 @@ public class ParseResultMapper(){
 					ua.Props.Add(po_kv);
 				}
 
-				ua.PoWord.WordFormId = wordBlock.Head.Text;
+				ua.PoWord.Head = wordBlock.Head.Text;
 
 				var bodyStrList = new List<str>();
 				foreach(var seg in wordBlock.Body){

@@ -13,13 +13,13 @@ public class Const_PropKey{
 	public const str pronunciation = nameof(pronunciation);
 	public const str weight = nameof(weight);
 	public static Dictionary<str, nil> PropKeyMap = new Dictionary<str, nil>() {
-		{ meaning, Nil },
-		{ annotation, Nil },
-		{ tag, Nil },
-		{ source, Nil },
-		{ alias, Nil },
-		{ pronunciation, Nil },
-		{ weight, Nil }
+		{ meaning, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ annotation, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ tag, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ source, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ alias, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ pronunciation, Tsinswreng.CsTypeAlias.Nil_.nil },
+		{ weight, Tsinswreng.CsTypeAlias.Nil_.nil }
 	};
 
 }

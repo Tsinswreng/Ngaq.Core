@@ -88,10 +88,10 @@ public static class ExtnBoWord{
 			if(BoWord.PoWord.Lang != Lang){
 				throw new ErrArg("BoWord.PoWord.Lang != Lang");
 			}
-			if(Dict.TryGetValue(BoWord.PoWord.WordFormId, out var List)){
+			if(Dict.TryGetValue(BoWord.PoWord.Head, out var List)){
 				List.Add(BoWord);
 			}else{
-				Dict[BoWord.PoWord.WordFormId] = [BoWord];
+				Dict[BoWord.PoWord.Head] = [BoWord];
 			}
 			// if(!Dict.ContainsKey(BoWord.PoWord.WordFormId)){
 			// 	Dict[BoWord.PoWord.WordFormId] = [BoWord];

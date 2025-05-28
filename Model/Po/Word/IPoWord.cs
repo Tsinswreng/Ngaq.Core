@@ -1,12 +1,12 @@
 //#define Impl
-public interface I_Po_Word{
+public interface IPoWord{
 
 	#region I_Po_Word
 
 	/// <summary>
 	/// 詞形標識
 	/// </summary>
-	public str WordFormId{get;set;}
+	public str Head{get;set;}
 	#if Impl
 		="";
 	#endif

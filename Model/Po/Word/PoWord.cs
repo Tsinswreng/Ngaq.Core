@@ -15,7 +15,7 @@ namespace Ngaq.Core.Model.Po.Word;
 public class PoWord
 	:IPoBase
 	,IHasId<IdWord>
-	,I_Po_Word
+	,IPoWord
 {
 	//public str SelfProperty{get;set;} = "5678";//t
 	public static PoWord Example{get;set;} = new PoWord();
@@ -44,7 +44,7 @@ public class PoWord
 	/// <summary>
 	/// 詞形標識
 	/// </summary>
-	public str WordFormId{get;set;}
+	public str Head{get;set;}
 	#if Impl
 		="";
 	#endif

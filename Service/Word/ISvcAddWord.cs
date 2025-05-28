@@ -2,7 +2,7 @@ using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Tools.Io;
 
 namespace Ngaq.Core.Service.Word;
-public interface I_Svc_AddWord{
+public interface ISvcAddWord{
 
 	Task<I_Answer<nil>> AddWordsFromFilePathAsy(Path_Encode Path_Encode);
 
