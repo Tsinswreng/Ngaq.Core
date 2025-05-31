@@ -11,9 +11,11 @@ namespace Ngaq.Core.Infra;
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoLearn))]
 //[DictType(typeof(TestParent))]
-public partial class DictCtx {
+public partial class DictCtx{
 
-	public class DictMapper:IDictMapper{
+	public static IDictMapper DictMapper{get;} = new DictMapper_();
+
+	public class DictMapper_:IDictMapper{
 		public IDictionary<str, object?> ToDictT<T>(T obj){
 			return DictCtx.ToDictT(obj);
 		}

@@ -13,6 +13,9 @@ public class ConstTokens{
 	public str SepNamespaceEtName = ":";
 	public str Concat(str? ns, str name){
 		ns = ns??"";
+		if(ns == ""){
+			return name;
+		}
 		return ns + SepNamespaceEtName + name;
 	}
 

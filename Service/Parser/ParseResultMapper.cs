@@ -60,10 +60,13 @@ public class ParseResultMapper(){
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
 				var kv_meaning = new PoKv();
-				kv_meaning.SetStr(
-					Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
-					,bodyStr
+				kv_meaning.SetStrToken(
+					null, KeysProp.Inst.description, bodyStr
 				);
+				// kv_meaning.SetStr(
+				// 	Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
+				// 	,bodyStr
+				// );
 				ua.Props.Add(kv_meaning);
 			}
 
