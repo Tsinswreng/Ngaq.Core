@@ -7,13 +7,13 @@ namespace Ngaq.Core.Service.Word;
 
 public interface ISvcWord{
 
-	Task<nil> AddWordsFromFilePathAsy(
+	Task<nil> AddWordsFromFilePath(
 		IUserCtx UserCtx
 		,Path_Encode Path_Encode
 		,CancellationToken ct
 	);
 
-	Task<nil> AddWordsFromTextAsy(
+	Task<nil> AddWordsFromText(
 		IUserCtx UserCtx
 		,string Text
 		,CancellationToken ct

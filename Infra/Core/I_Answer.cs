@@ -6,7 +6,7 @@ namespace Ngaq.Core.Infra.Core;
 /// 至于預料外ʹ異常、則猶用throw+try-catch、不用此㕥包㞢
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public interface I_Answer<T> {
+public interface IAnswer<T> {
 	public T? Data { get; set; }
 	public bool Ok { get; set; }
 	/// <summary>

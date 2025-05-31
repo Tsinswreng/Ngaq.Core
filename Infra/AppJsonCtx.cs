@@ -7,7 +7,7 @@ using Ngaq.Core.Service.Parser;
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
 [JsonSerializable(typeof(Answer<object>))]
-[JsonSerializable(typeof(I_Answer<object>))]
+[JsonSerializable(typeof(IAnswer<object>))]
 [JsonSerializable(typeof(WordListTxtMetadata))]
 [JsonSerializable(typeof(IDictionary<string, object>))]
 public partial class AppJsonCtx : JsonSerializerContext {

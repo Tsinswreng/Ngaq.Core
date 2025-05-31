@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Core;
 
 public struct Answer<T>()
-	:I_Answer<T>
+	:IAnswer<T>
 {
 	public T? Data{get;set;}
 	bool _Ok = false;

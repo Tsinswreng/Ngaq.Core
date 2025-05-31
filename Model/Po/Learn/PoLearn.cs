@@ -33,7 +33,7 @@ public partial class PoLearn
 	public str? FKeyStr{get;set;}
 	public UInt128? FKeyUInt128{get;set;}
 
-	public i64 KType { get; set; } = (i64)E_KvType.Str;
+	public i64 KType { get; set; } = (i64)EKvType.Str;
 	public str? KStr { get; set; }
 	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱

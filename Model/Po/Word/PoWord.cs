@@ -12,9 +12,18 @@ namespace Ngaq.Core.Model.Po.Word;
 // 	}
 // }
 
+public interface IPoWord
+	:IPoBase
+	,IHasId<IdWord>
+	,IHeadLangWord
+{
+
+}
+
 public class PoWord
 	:IPoBase
 	,IHasId<IdWord>
+	,IHeadLangWord
 	,IPoWord
 {
 	//public str SelfProperty{get;set;} = "5678";//t
@@ -24,7 +33,7 @@ public class PoWord
 
 	public IdUser Owner{get;set;}
 
-	#region PoBase
+	#region IPoBase
 	public i64 CreatedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
@@ -36,7 +45,7 @@ public class PoWord
 	public i64? UpdatedAt{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
-	#endregion
+	#endregion IPoBase
 
 
 	#region I_Po_Word

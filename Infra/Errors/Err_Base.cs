@@ -6,4 +6,8 @@ public class ErrBase : Exception{
 	{
 
 	}
+
+	public ErrBase(){}
+
+	public i64 Code { get; set; }
 }

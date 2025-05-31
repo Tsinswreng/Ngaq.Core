@@ -1,7 +1,9 @@
 //#define Impl
-public interface IPoWord{
+using Ngaq.Core.Model.Sys.Po.User;
 
-	#region I_Po_Word
+public interface IHeadLangWord{
+
+	#region IHeadLangWord
 
 	/// <summary>
 	/// 詞形標識
@@ -17,5 +19,7 @@ public interface IPoWord{
 		="";
 	#endif
 
-	#endregion I_Po_Word
+	public IdUser Owner{get;set;}
+
+	#endregion IHeadLangWord
 }

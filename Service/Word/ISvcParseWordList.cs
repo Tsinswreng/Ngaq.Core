@@ -15,7 +15,7 @@ public interface ISvcParseWordList{
 	// 	I_I
 	// );
 
-	Task<IEnumerable<BoWord>> ParseWordsFromFilePathAsy(
+	Task<IEnumerable<BoWord>> ParseWordsFromFilePath(
 		Path_Encode Path_Encode
 		,CancellationToken ct = default
 	);
@@ -25,7 +25,7 @@ public interface ISvcParseWordList{
 		,CancellationToken ct = default
 	);
 
-	Task<IEnumerable<BoWord>> ParseWordsFromTextAsy(
+	Task<IEnumerable<BoWord>> ParseWordsFromText(
 		str Text
 		,CancellationToken ct = default
 	);

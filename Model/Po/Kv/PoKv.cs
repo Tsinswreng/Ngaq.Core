@@ -2,7 +2,7 @@
 using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Model.Po.Kv;
-
+//TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoKv
 	:IPoBase
 	,IHasId<IdKv>
@@ -27,7 +27,7 @@ public partial class PoKv
 	public str? FKeyStr{get;set;}
 	public UInt128? FKeyUInt128{get;set;}
 
-	public i64 KType { get; set; } = (i64)E_KvType.Str;
+	public i64 KType { get; set; } = (i64)EKvType.Str;
 	public str? KStr { get; set; }
 	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱

@@ -28,7 +28,9 @@
 
 	<ItemGroup>
 		<Compile Include="../Tsinswreng.CsTypeAlias/TypeAlias.cs" />
+		<ProjectReference Include="../Tsinswreng.CsCore/Tsinswreng.CsCore.csproj" />
 	</ItemGroup>
+
 
 <!-- Strong type id -->
 	<ItemGroup>

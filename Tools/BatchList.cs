@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace Ngaq.Core.Tools;
@@ -30,26 +31,41 @@ public class BatchListAsy<TItem, TRet>
 		,Task<TRet>
 	> FnAsy{get;set;}
 
-	public async Task<TRet?> AddAsy(
+	public async Task<TRet?> Add(
 		TItem item
 		,CancellationToken ct
 	){
 		UnHandledList.Add(item);
 		//FullList.Add(item);
 		if((u64)UnHandledList.Count >= BatchSize){
-			var Ans = await RunAsy(ct);
+			var Ans = await Run(ct);
 			return Ans;
 		}
 		return default;
 	}
 
+
+	public async IAsyncEnumerable<TRet?> AddRangeAsy(
+		IEnumerable<TItem> items
+		,[EnumeratorCancellation] CancellationToken Ct
+	){
+		//var Ans = new List<TRet>();
+		foreach(var item in items){
+			var Ret = await Add(item, Ct);
+			yield return Ret;
+			//Ans.Add(Ret.Value);
+		}
+		//return Ans;
+	}
+
+
 	bool _IsEnd{get;set;} = false;
-	public async Task<TRet?> EndAsy(
+	public async Task<TRet?> End(
 		CancellationToken ct
 	){
 		if(_IsEnd){return default;}
 		if((u64)UnHandledList.Count > 0){
-			return await RunAsy(ct);
+			return await Run(ct);
 		}
 		_IsEnd = true;
 		return default;
@@ -60,7 +76,7 @@ public class BatchListAsy<TItem, TRet>
 		return Nil;
 	}
 
-	protected async Task<TRet?> RunAsy(
+	protected async Task<TRet?> Run(
 		CancellationToken ct
 	){
 		var Ans = await FnAsy(UnHandledList, ct);
@@ -71,7 +87,7 @@ public class BatchListAsy<TItem, TRet>
 
 	public void Dispose(){
 		if(!_IsEnd){
-			EndAsy(default).Wait();
+			End(default).Wait();
 		}
 	}
 
