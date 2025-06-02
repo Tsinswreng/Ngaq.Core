@@ -62,8 +62,13 @@ public class PoWord
 	public str Lang{get;set;}
 	#if Impl
 		="";
-	#endif
+#endif
 
 	#endregion I_Po_Word
+
+	public override string ToString() {
+		var Dict = DictCtx.ToDict(this);
+		return ExtnIDict.Print(Dict);
+	}
 
 }

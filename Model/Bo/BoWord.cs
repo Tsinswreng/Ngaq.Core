@@ -13,6 +13,19 @@ namespace Ngaq.Core.Model.Bo;
 public class BoWord
 	:IPoWord
 {
+	// public static str Debug(BoWord boWord){
+	// 	if(boWord.Head == "interrogative"){
+	// 		System.Console.WriteLine(boWord);
+	// 		var means = boWord.Props.Select(p=>p).Where(w=>w.KStr=="description")
+	// 		.Select(p=>p.VStr)
+	// 		.ToList();
+	// 		var meanStr = str.Join("\n", means);
+	// 		System.Console.WriteLine(meanStr);//t
+	// 		return meanStr;
+	// 	}
+	// 	return "";
+	// }
+
 	public BoWord(){}
 	public BoWord(PoWord PoWord, IList<PoKv> Props, IList<PoLearn> Learns){
 		this.PoWord = PoWord;
@@ -167,12 +180,15 @@ public static class ExtnBoWord{
 	}
 
 
-	public static IDictionary<Lang_Head, IList<BoWord>> GroupByLangHead(
+	public static IDictionary<Head_Lang, IList<BoWord>> GroupByLangHead(
 		this IEnumerable<BoWord> BoWords
 	){
-		var Dict = new Dictionary<Lang_Head, IList<BoWord>>();
+		var Dict = new Dictionary<Head_Lang, IList<BoWord>>();
 		foreach(var BoWord in BoWords){
-			var lang_head = new Lang_Head{
+			// if(BoWord.Head == "interrogative"){//t
+			// 	BoWord.Debug(BoWord);
+			// }//-
+			var lang_head = new Head_Lang{
 				Lang = BoWord.PoWord.Lang
 				,Head = BoWord.PoWord.Head
 			};

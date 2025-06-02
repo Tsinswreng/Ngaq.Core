@@ -1,5 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
@@ -10,6 +11,7 @@ namespace Ngaq.Core.Infra;
 [DictType(typeof(PoKv))]
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoLearn))]
+//[DictType(typeof(BoWord))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx{
 
@@ -80,4 +82,16 @@ public partial class DictCtx{
 	// 	return obj;
 	// }
 
+}
+
+public static class ExtnIDict{
+	public static str Print<K,V>(
+		IDictionary<K,V> z
+	){
+		List<str> res = new List<str>();
+		foreach(var kvp in z){
+			res.Add(kvp.Key + ":" + kvp.Value + "\n");
+		}
+		return str.Join("", res);
+	}
 }

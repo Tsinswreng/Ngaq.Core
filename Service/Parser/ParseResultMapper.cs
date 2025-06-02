@@ -41,9 +41,9 @@ public class ParseResultMapper(){
 		}
 		var Ans = new List<BoWord>();
 		foreach(var dateBlock in DateBlocks){
-			var ua = new BoWord();
-			ua.PoWord.Lang = Metadata.belong;
 			foreach(var wordBlock in dateBlock.Words){
+				var ua = new BoWord();
+				ua.PoWord.Lang = Metadata.belong;
 				var trimedHead = wordBlock.Head?.Text?.Trim();
 				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){
 					continue;
@@ -64,19 +64,14 @@ public class ParseResultMapper(){
 				kv_meaning.SetStrToken(
 					null, KeysProp.Inst.description, bodyStr.Trim()
 				);
-				// kv_meaning.SetStr(
-				// 	Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning
-				// 	,bodyStr
-				// );
 				ua.Props.Add(kv_meaning);
-			}
-
-			foreach (var prop in dateBlock.Props){
-				var po_kv = PropToKv(prop);
-				ua.Props.Add(po_kv);
-			}
-			Ans.Add(ua);
-		}
+				foreach (var prop in dateBlock.Props){
+					var po_kv = PropToKv(prop);
+					ua.Props.Add(po_kv);
+				}
+				Ans.Add(ua);
+			}//~foreach(var wordBlock in dateBlock.Words)
+		}//~foreach(var dateBlock in DateBlocks)
 		return Ans;
 	}
 }
