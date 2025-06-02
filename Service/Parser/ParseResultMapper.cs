@@ -28,7 +28,7 @@ public class ParseResultMapper(){
 
 	public PoKv PropToKv(I_Prop prop){
 		var po_kv = new PoKv();
-		po_kv.SetStr(prop.Key.Text, prop.Value.Text);
+		po_kv.SetStr(prop.Key.Text.Trim(), prop.Value.Text.Trim());
 		return po_kv;
 	}
 
@@ -44,7 +44,8 @@ public class ParseResultMapper(){
 			var ua = new BoWord();
 			ua.PoWord.Lang = Metadata.belong;
 			foreach(var wordBlock in dateBlock.Words){
-				if(wordBlock.Head == null || str.IsNullOrEmpty(wordBlock.Head.Text)){
+				var trimedHead = wordBlock.Head?.Text?.Trim();
+				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){
 					continue;
 				}
 				foreach(var prop in wordBlock.Props){
@@ -52,16 +53,16 @@ public class ParseResultMapper(){
 					ua.Props.Add(po_kv);
 				}
 
-				ua.PoWord.Head = wordBlock.Head.Text;
+				ua.PoWord.Head = trimedHead;
 
 				var bodyStrList = new List<str>();
 				foreach(var seg in wordBlock.Body){
-					bodyStrList.Add(seg.Text);
+					bodyStrList.Add(seg.Text.Trim());
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
 				var kv_meaning = new PoKv();
 				kv_meaning.SetStrToken(
-					null, KeysProp.Inst.description, bodyStr
+					null, KeysProp.Inst.description, bodyStr.Trim()
 				);
 				// kv_meaning.SetStr(
 				// 	Const_Tokens.Sep_NamespaceEtName+Const_PropKey.meaning

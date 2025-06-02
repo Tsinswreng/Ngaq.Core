@@ -1,4 +1,6 @@
 using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.Page;
+using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Tools.Io;
@@ -17,6 +19,12 @@ public interface ISvcWord{
 		IUserCtx UserCtx
 		,string Text
 		,CancellationToken ct
+	);
+
+	public Task<IPageAsy<BoWord>> PageBoWord(
+		IUserCtx UserCtx
+		,IPageQuery PageQry
+		,CancellationToken Ct
 	);
 }
 

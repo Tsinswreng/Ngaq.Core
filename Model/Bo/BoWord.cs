@@ -13,6 +13,12 @@ namespace Ngaq.Core.Model.Bo;
 public class BoWord
 	:IPoWord
 {
+	public BoWord(){}
+	public BoWord(PoWord PoWord, IList<PoKv> Props, IList<PoLearn> Learns){
+		this.PoWord = PoWord;
+		this.Props = Props;
+		this.Learns = Learns;
+	}
 
 	public PoWord PoWord{get;set;} = new PoWord();
 	public IList<PoKv> Props{get;set;} = new List<PoKv>();

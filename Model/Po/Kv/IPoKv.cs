@@ -2,7 +2,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 
 public interface IPoKv{
 
-	#region I_Po_Kv
+	#region IPoKv
 	public i64 FKeyType { get; set; } //`= (i64)E_SubjectIdType.Int64;
 	public UInt128? FKeyUInt128{get;set;}
 	public str? FKeyStr{get;set;}
@@ -27,5 +27,5 @@ public interface IPoKv{
 	public i64 VI64 { get; set; }
 
 	public f64 VF64 { get; set; }
-	#endregion I_Po_Kv
+	#endregion IPoKv
 }
