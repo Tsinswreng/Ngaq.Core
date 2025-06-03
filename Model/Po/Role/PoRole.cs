@@ -5,7 +5,7 @@ namespace Ngaq.Core.Model.Po.Role;
 
 public class PoRole
 	:IPoBase
-	,IHasId<IdRole>
+	,I_Id<IdRole>
 {
 	public IdRole Id { get; set; }
 	public str? Key {get;set;}

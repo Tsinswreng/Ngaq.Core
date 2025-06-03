@@ -3,7 +3,7 @@ using Ngaq.Core.Model.Po.Role;
 
 namespace Ngaq.Core.Model.Sys.Po.User;
 public partial class PoUser
-	:IHasId<IdUser>
+	:I_Id<IdUser>
 	,IPoBase
 {
 	public IdUser Id{get;set;} = new();

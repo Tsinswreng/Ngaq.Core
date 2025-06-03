@@ -6,7 +6,7 @@ namespace Ngaq.Core.Model.Sys.Po.Password;
 
 public class PoPassword
 	:IPoBase
-	,IHasId<IdPassword>
+	,I_Id<IdPassword>
 {
 	public IdPassword Id{get;set;}
 	public i64 Algo{get;set;}

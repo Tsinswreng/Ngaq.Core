@@ -32,17 +32,17 @@ public class ParseResultMapper(){
 		return po_kv;
 	}
 
-	public IList<BoWord> Map(
+	public IList<JoinedWord> Map(
 		WordListTxtMetadata Metadata
 		,IList<I_DateBlock> DateBlocks
 	){
 		if(Metadata.belong is null){
 			throw new ErrBase("Metadata.Belong is null");
 		}
-		var Ans = new List<BoWord>();
+		var Ans = new List<JoinedWord>();
 		foreach(var dateBlock in DateBlocks){
 			foreach(var wordBlock in dateBlock.Words){
-				var ua = new BoWord();
+				var ua = new JoinedWord();
 				ua.PoWord.Lang = Metadata.belong;
 				var trimedHead = wordBlock.Head?.Text?.Trim();
 				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){

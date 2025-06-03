@@ -21,7 +21,7 @@ public interface ISvcWord{
 		,CancellationToken ct
 	);
 
-	public Task<IPageAsy<BoWord>> PageBoWord(
+	public Task<IPageAsy<JoinedWord>> PageBoWord(
 		IUserCtx UserCtx
 		,IPageQuery PageQry
 		,CancellationToken Ct

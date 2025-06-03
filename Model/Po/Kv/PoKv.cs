@@ -5,7 +5,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoKv
 	:IPoBase
-	,IHasId<IdKv>
+	,I_Id<IdKv>
 	,IPoKv
 {
 

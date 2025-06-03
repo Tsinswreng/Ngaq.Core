@@ -5,8 +5,8 @@ namespace Ngaq.Core.Model.Word.Dto;
 
 public class DtoUpdatedWord{
 	public DtoUpdatedWord(
-		BoWord WordInDb
-		,BoWord WordToAdd
+		JoinedWord WordInDb
+		,JoinedWord WordToAdd
 		,IList<PoKv> DiffedProps
 	){
 		this.WordInDb = WordInDb;
@@ -16,11 +16,11 @@ public class DtoUpdatedWord{
 	/// <summary>
 	/// 庫中既有之詞
 	/// </summary>
-	public BoWord WordInDb{get;set;}
+	public JoinedWord WordInDb{get;set;}
 	/// <summary>
 	/// 待添之詞
 	/// </summary>
-	public BoWord WordToAdd{get;set;}
+	public JoinedWord WordToAdd{get;set;}
 	/// <summary>
 	/// WordToAdd有洏WordInDb無之屬性
 	/// </summary>
@@ -32,7 +32,7 @@ public class DtoAddWords{
 	/// <summary>
 	/// 庫中未有之待添之諸新詞
 	/// </summary>
-	public IList<BoWord> NeoWords{get;set;} = new List<BoWord>();
+	public IList<JoinedWord> NeoWords{get;set;} = new List<JoinedWord>();
 	/// <summary>
 	/// 待更新之諸詞
 	/// </summary>

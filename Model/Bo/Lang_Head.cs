@@ -6,7 +6,7 @@ public struct Head_Lang()
 	public str Head = "";
 	public str Lang = "";
 
-	public override bool Equals(object obj){
+	public override bool Equals(object? obj){
 		return obj is Head_Lang other && Equals(other);
 	}
 

@@ -14,7 +14,7 @@ namespace Ngaq.Core.Model.Po.Word;
 
 public interface IPoWord
 	:IPoBase
-	,IHasId<IdWord>
+	,I_Id<IdWord>
 	,IHeadLangWord
 {
 
@@ -22,7 +22,7 @@ public interface IPoWord
 
 public class PoWord
 	:IPoBase
-	,IHasId<IdWord>
+	,I_Id<IdWord>
 	,IHeadLangWord
 	,IPoWord
 {
