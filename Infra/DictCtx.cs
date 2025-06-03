@@ -4,13 +4,16 @@ using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Service.Word.Learn_.Models;
 using Tsinswreng.SrcGen.Dict;
 using Tsinswreng.SrcGen.Dict.Attributes;
 namespace Ngaq.Core.Infra;
 
+[DictType(typeof(IPoKv))]
 [DictType(typeof(PoKv))]
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoLearn))]
+[DictType(typeof(Prop))]
 //[DictType(typeof(BoWord))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx{

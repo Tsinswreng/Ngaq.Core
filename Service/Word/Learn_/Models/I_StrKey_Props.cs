@@ -17,9 +17,10 @@ public static class ExtnI_StrKey_Props{
 	){
 		foreach(var PoKv in PoKvs){
 			if(PoKv.KType == (i64)EKvType.Str){
+				var Prop = PoKv.ToIProp();
 				z.AddInValues(
 					PoKv.KStr??""
-					,(IProp)PoKv
+					,Prop
 				);
 			}
 		}

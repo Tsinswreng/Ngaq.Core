@@ -7,6 +7,13 @@ public struct Learn(str V)
 {
 	public str Value{get;set;} = V;
 
+	public static implicit operator str(Learn e){
+		return e.Value;
+	}
+	public static implicit operator Learn(str s){
+		return new Learn(s);
+	}
+
 	public override bool Equals([NotNullWhen(true)] object? obj) {
 		return obj is Learn learn && Value.Equals(learn.Value);
 	}

@@ -5,7 +5,7 @@ using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Service.Word.Learn_.Models;
 
-public interface IWordToLearn
+public interface IWordForLearn
 	:IPoWord
 	,I_Id
 	,I_Weight
@@ -17,7 +17,7 @@ public interface IWordToLearn
 }
 
 public class WordForLearn
-	:IWordToLearn
+	:IWordForLearn
 {
 	protected PoWord PoWord{get;set;}
 	protected JoinedWord _JoinedWord{get;set;}
