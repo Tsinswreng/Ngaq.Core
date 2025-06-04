@@ -10,7 +10,7 @@ using Tsinswreng.CsCore.Tools;
 
 namespace Ngaq.Core.Model.Bo;
 
-public class JoinedWord
+public class JnWord
 	:IPoWord
 {
 	// public static str Debug(BoWord boWord){
@@ -26,8 +26,8 @@ public class JoinedWord
 	// 	return "";
 	// }
 
-	public JoinedWord(){}
-	public JoinedWord(PoWord PoWord, IList<PoKv> Props, IList<PoLearn> Learns){
+	public JnWord(){}
+	public JnWord(PoWord PoWord, IList<PoKv> Props, IList<PoLearn> Learns){
 		this.PoWord = PoWord;
 		this.Props = Props;
 		this.Learns = Learns;
@@ -93,7 +93,7 @@ public class JoinedWord
 /// 把諸資產之外鍵設潙主Word之id
 /// </summary>
 /// <returns></returns>
-	public JoinedWord AssignId(){
+	public JnWord AssignId(){
 		var z = this;
 		// if(z.Po_Word.Id.Value == 0){
 		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
@@ -152,14 +152,14 @@ public static class ExtnBoWord{
 	/// <param name="BoWords"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
-	public static IDictionary<str, IList<JoinedWord>> GroupByHeadOfSameLang(
-		this IEnumerable<JoinedWord> BoWords
+	public static IDictionary<str, IList<JnWord>> GroupByHeadOfSameLang(
+		this IEnumerable<JnWord> BoWords
 	){
 		// var Dict = BoWords.GroupBy(w=>w.PoWord.WordFormId)
 		// 	.ToDictionary(g=>g.Key, g=>(IList<BoWord>)[.. g])//  g=>g.ToList() -> [..g]
 		// ;
 		// return Dict;
-		var Dict = new Dictionary<str, IList<JoinedWord>>();
+		var Dict = new Dictionary<str, IList<JnWord>>();
 		str Lang = "";
 		var i = 0;
 		foreach(var BoWord in BoWords){
@@ -180,10 +180,10 @@ public static class ExtnBoWord{
 	}
 
 
-	public static IDictionary<Head_Lang, IList<JoinedWord>> GroupByLangHead(
-		this IEnumerable<JoinedWord> BoWords
+	public static IDictionary<Head_Lang, IList<JnWord>> GroupByLangHead(
+		this IEnumerable<JnWord> BoWords
 	){
-		var Dict = new Dictionary<Head_Lang, IList<JoinedWord>>();
+		var Dict = new Dictionary<Head_Lang, IList<JnWord>>();
 		foreach(var BoWord in BoWords){
 			// if(BoWord.Head == "interrogative"){//t
 			// 	BoWord.Debug(BoWord);
@@ -225,14 +225,14 @@ public static class ExtnBoWord{
 /// <param name="BoWords"></param>
 /// <returns></returns>
 /// <exception cref="ErrArg"></exception>
-	public static JoinedWord? MergeSameWords(
-		this IEnumerable<JoinedWord> BoWords
+	public static JnWord? MergeSameWords(
+		this IEnumerable<JnWord> BoWords
 	){
 		if(BoWords.Count() == 0){
 			return null;
 		}
 		var i = 0;
-		JoinedWord R = null!;
+		JnWord R = null!;
 		foreach(var BoWord in BoWords){
 			if(i == 0){
 				R = BoWord;

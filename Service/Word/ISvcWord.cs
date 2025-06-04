@@ -4,6 +4,7 @@ using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
+using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Service.Word.Learn_.Models;
 using Ngaq.Core.Tools.Io;
 
@@ -23,23 +24,21 @@ public interface ISvcWord{
 		,CancellationToken ct
 	);
 
-	public Task<IPageAsy<JoinedWord>> PageBoWord(
+	public Task<IPageAsy<JnWord>> PageBoWord(
 		IUserCtx UserCtx
 		,IPageQuery PageQry
 		,CancellationToken Ct
 	);
 
-	public Task<nil> AddPoLearns(
+	public Task<nil> AddWordId_PoLearnss(
 		IUserCtx UserCtx
-		,IdWord IdWord
-		,IEnumerable<PoLearn> PoLearns
+		,IEnumerable<WordId_PoLearns> WordId_PoLearnss
 		,CT Ct
 	);
 
-	public Task<nil> AddLearnRecords(
+	public Task<nil> AddWordId_LearnRecordss(
 		IUserCtx UserCtx
-		,IdWord IdWord
-		,IEnumerable<LearnRecord> LearnRecords
+		,IEnumerable<WordId_LearnRecords> WordId_LearnRecordss
 		,CT Ct
 	);
 }

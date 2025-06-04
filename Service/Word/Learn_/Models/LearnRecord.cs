@@ -4,9 +4,14 @@ using Ngaq.Core.Model.Po.Word;
 
 namespace Ngaq.Core.Service.Word.Learn_.Models;
 
-public struct LearnRecord:ILearnRecord{
+public struct LearnRecord
+	:ILearnRecord
+{
 	public Learn Value{get;set;}
-	public i64 Time{get;set;}
+	public i64 UnixMs{get;set;} = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+	public LearnRecord(Learn Value){
+		this.Value = Value;
+	}
 }
 
 
@@ -16,7 +21,7 @@ public static class ExtnLearnRecord{
 	){
 		var learn = new Learn(PoLearn.VStr??"");
 		var record = new LearnRecord(){
-			Time = PoLearn.CreatedAt
+			UnixMs = PoLearn.CreatedAt
 			,Value = learn
 		};
 		return record;

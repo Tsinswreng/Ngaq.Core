@@ -1,16 +1,19 @@
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Bo;
+using Ngaq.Core.Model.UserCtx;
+using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Service.Word.Learn_.Models;
+using Tsinswreng.CsCore.Tools;
 
 namespace Ngaq.Core.Service.Word;
 
-public class LearnStatus{
+public class OperationStatus{
 	public bool Load = false;
 	public bool Start = false;
 	public bool Save = true;
 }
 
-public class StateLearnedWords{
+public class MgrLearnedWords{
 	public IDictionary<Learn, IDictionary<IWordForLearn, nil>> Learn_WordSet{get;set;}
 	= new Dictionary<Learn, IDictionary<IWordForLearn, nil>>();
 
@@ -44,13 +47,21 @@ public class StateLearnedWords{
 		return Nil;
 	}
 
+	public IEnumerable<IWordForLearn> GetLearnedWords(){
+		foreach( var(Learn,WordSet) in Learn_WordSet){
+			foreach( var(Word, _) in WordSet ){
+				yield return Word;
+			}
+		}
+	}
+
 
 }
 
 public class StateLearnWords{
 	public IList<IWordForLearn> WordsToLearn { get; set; } = new List<IWordForLearn>();
-	public StateLearnedWords StateLearnedWords { get; set; } = new StateLearnedWords();
-	public LearnStatus LearnStatus {get;set;} = new ();
+	public MgrLearnedWords MgrLearnedWords { get; set; } = new MgrLearnedWords();
+	public OperationStatus OperationStatus {get;set;} = new ();
 
 }
 
@@ -61,12 +72,15 @@ public class LearnMgr{
 	public LearnMgr(){}
 
 	public LearnMgr(
-		ISvcWord? SvcWord
+		ISvcWord SvcWord
+		,IUserCtxMgr UserCtxMgr
 	){
 		this.SvcWord = SvcWord;
+		this.UserCtxMgr = UserCtxMgr;
 	}
 
-	public ISvcWord? SvcWord{get;set;}
+	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
+	public IUserCtxMgr UserCtxMgr{get;set;}
 
 	public class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
@@ -79,21 +93,24 @@ public class LearnMgr{
 		return Nil;
 	}
 	public class EErr_:EnumErr{
+		protected static EErr_? _Inst = null;
+		public static EErr_ Inst => _Inst??= new EErr_();
+
 		public IAppErr LoadFailed() => Mk(nameof(LoadFailed));
 		public IAppErr SaveFailed() => Mk(nameof(SaveFailed));
 	}
-	public EErr_ EErr{get;set;} = new();
+	public EErr_ EErr{get;set;} = EErr_.Inst;
 
 
 	public StateLearnWords State{get;set;} = new();
-	public nil Load(IEnumerable<JoinedWord> JWords){
+	public nil Load(IEnumerable<JnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var JWord in JWords){
 			var Word = new WordForLearn(JWord);
 			State.WordsToLearn.Add(Word);
 		}
-		State.LearnStatus.Load = true;
-		State.LearnStatus.Start = true;
+		State.OperationStatus.Load = true;
+		State.OperationStatus.Start = true;
 		return Nil;
 	}
 
@@ -102,16 +119,35 @@ public class LearnMgr{
 		IWordForLearn Word
 		,Learn Learn
 	){
-		if(!State.LearnStatus.Start){
+		if(!State.OperationStatus.Start){
 			return Nil;
 		}
-		State.StateLearnedWords.Set(Learn, Word);
+		State.MgrLearnedWords.Set(Learn, Word);
+		var LearnRecord = new LearnRecord(Learn);
+		Word.Time_UnsavedLearnRecords.Add(LearnRecord.UnixMs, LearnRecord);
+		State.OperationStatus.Save = false;
 		return Nil;
 	}
 
-	public async Task<nil> SaveAsy(){
+	public async Task<nil> SaveAsy(CT Ct){
 		try{
-			//TODO
+			if(!State.OperationStatus.Start){
+				return Nil;
+			}
+			var LearnedWord = State.MgrLearnedWords.GetLearnedWords();
+			var WordId_LearnRecordss = LearnedWord.Select(x=>{
+				var R = new WordId_LearnRecords();
+				R.WordId = x.Id;
+				R.LearnRecords = x.Time_UnsavedLearnRecords.Values;
+				return R;
+			});
+			await SvcWord.AddWordId_LearnRecordss(
+				UserCtxMgr.GetUserCtx()
+				,WordId_LearnRecordss
+				,Ct
+			);
+			State.MgrLearnedWords = new ();
+			State.OperationStatus.Save = true;
 		}
 		catch (System.Exception e){
 			var E = EErr.SaveFailed();

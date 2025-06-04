@@ -11,7 +11,7 @@ public class SampleWord{
 	public static SampleWord Inst => _Inst??= new SampleWord();
 
 	//public BoWord BoWord{get;set;} = new();
-	public IList<JoinedWord> Samples = new List<JoinedWord>();
+	public IList<JnWord> Samples = new List<JnWord>();
 
 
 
@@ -27,11 +27,11 @@ public class SampleWord{
 	}
 
 
-	JoinedWord 持て成す(){
+	JnWord 持て成す(){
 		var P = KeysProp.Inst;
 		var L = ConstLearn.Inst;
 		var T = ConstTokens.Inst;
-		var Ans = new JoinedWord();
+		var Ans = new JnWord();
 		Ans.PoWord = new();
 		{var o = Ans.PoWord;
 			o.Head = "持て成す";
@@ -126,11 +126,11 @@ public class SampleWord{
 
 
 
-	JoinedWord Hello(){
+	JnWord Hello(){
 		var P = KeysProp.Inst;
 		var L = ConstLearn.Inst;
 		var T = ConstTokens.Inst;
-		var Ans = new JoinedWord();
+		var Ans = new JnWord();
 		Ans.PoWord = new();
 		{var o = Ans.PoWord;
 			o.Head = "Hello";

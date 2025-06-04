@@ -5,5 +5,5 @@ public interface ILearnRecord{
 	/// 見ConstLearn
 	/// </summary>
 	public Learn Value{get;set;}
-	public i64 Time{get;set;}
+	public i64 UnixMs{get;set;}
 }

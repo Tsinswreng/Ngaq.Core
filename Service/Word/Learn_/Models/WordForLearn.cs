@@ -11,7 +11,8 @@ public interface IWordForLearn
 	,I_Weight
 	,I_Learn_Records
 	,I_StrKey_Props
-	,I_LearnRecords
+	,I_SavedLearnRecords
+	,I_Time_UnsavedLearnRecords
 {
 
 }
@@ -20,17 +21,17 @@ public class WordForLearn
 	:IWordForLearn
 {
 	protected PoWord PoWord{get;set;}
-	protected JoinedWord _JoinedWord{get;set;}
+	protected JnWord _JoinedWord{get;set;}
 	public WordForLearn(
-		JoinedWord JWord
+		JnWord JWord
 	){
 		this._JoinedWord = JWord;
 		this.PoWord = JWord.PoWord;
 		StrKey_Props.FromPoKvs(_JoinedWord.Props);
 		Learn_Records.FromPoLearns(_JoinedWord.Learns);
-		LearnRecords = _JoinedWord.Learns
+		SavedLearnRecords = _JoinedWord.Learns
 			.Select(x=>x.ToLearnRecord())
-			.OrderBy(x=>x.Time)
+			.OrderBy(x=>x.UnixMs)
 			.ToList()
 		;
 	}
@@ -49,11 +50,17 @@ public class WordForLearn
 	= new Dictionary<Learn, IList<ILearnRecord>>();
 	#endif
 
-	public IList<ILearnRecord> LearnRecords{get;set;}
+	public IList<ILearnRecord> SavedLearnRecords{get;set;}
 	#if Impl
 	= new List<ILearnRecord>();
 	#endif
 
+	public IDictionary<i64, LearnRecord> Time_UnsavedLearnRecords{get;set;}
+	#if Impl
+	= new Dictionary<i64, LearnRecord>();
+	#endif
+
+	//public i64 LastLearnedTime{get;set;}
 
 	public IdWord Id{
 		get{return PoWord.Id;}
@@ -105,7 +112,16 @@ public class WordForLearn
 	}
 	#endregion IPoBase
 
+}
 
 
-
+public static class ExtnIWordForLearn{
+	public static i64 LastLearnedTime_(
+		this IWordForLearn z
+	){
+		if(z.SavedLearnRecords.Count > 0){
+			return z.SavedLearnRecords[^1].UnixMs;
+		}
+		return 0;//should not happen
+	}
 }

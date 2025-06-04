@@ -15,22 +15,22 @@ public interface ISvcParseWordList{
 	// 	I_I
 	// );
 
-	Task<IEnumerable<JoinedWord>> ParseWordsFromFilePath(
+	Task<IEnumerable<JnWord>> ParseWordsFromFilePath(
 		Path_Encode Path_Encode
 		,CancellationToken ct = default
 	);
 
-	Task<IEnumerable<JoinedWord>> ParseWordsFromUrlAsy(
+	Task<IEnumerable<JnWord>> ParseWordsFromUrlAsy(
 		str Path
 		,CancellationToken ct = default
 	);
 
-	Task<IEnumerable<JoinedWord>> ParseWordsFromText(
+	Task<IEnumerable<JnWord>> ParseWordsFromText(
 		str Text
 		,CancellationToken ct = default
 	);
 
-	Task<IEnumerable<JoinedWord>> ParseWordsByIterEtEncodingAsy(
+	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncodingAsy(
 		I_Iter<u8> Iter
 		,Encoding Encoding
 		,CancellationToken ct = default
