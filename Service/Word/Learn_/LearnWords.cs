@@ -81,14 +81,14 @@ public class LearnMgr{
 	public class EErr:IEnumErr{
 		protected static EErr? _Inst = null;
 		public static EErr Inst => _Inst??= new EErr();
-		public static IAppErr Mk(i64 Code, str Msg){
+		public static IAppErr Mk(str Id){
 			return new ErrApp{
-				Code = Code, Message = Msg
+				Id = Id
 				,Namespace = nameof(LearnMgr)
 			};
 		}
-		public IAppErr LoadFailed() => Mk(1000, "Load failed");
-		public IAppErr SaveFailed() => Mk(2000, "Save failed");
+		public IAppErr LoadFailed() => Mk(nameof(LoadFailed));
+		public IAppErr SaveFailed() => Mk(nameof(SaveFailed));
 
 	}
 
