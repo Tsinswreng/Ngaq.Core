@@ -29,9 +29,9 @@ public partial class PoLearn
 	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
-	public i64 FKeyType { get; set; } = (i64)E_SubjectIdType.Int64;
+	public i64 FKeyType { get; set; } = (i64)EFKeyType.UInt128;
 	public str? FKeyStr{get;set;}
-	public UInt128? FKeyUInt128{get;set;}
+	public UInt128? FKeyUInt128{get;set;}//TODO 設置值旹順帶改FKeyType
 
 	public i64 KType { get; set; } = (i64)EKvType.Str;
 	public str? KStr { get; set; }

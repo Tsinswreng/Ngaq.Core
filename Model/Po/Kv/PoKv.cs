@@ -23,7 +23,7 @@ public partial class PoKv
 	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
-	public i64 FKeyType { get; set; } = (i64)E_SubjectIdType.Int64;
+	public i64 FKeyType { get; set; } = (i64)EFKeyType.Int64;
 	public str? FKeyStr{get;set;}
 	public UInt128? FKeyUInt128{get;set;}
 

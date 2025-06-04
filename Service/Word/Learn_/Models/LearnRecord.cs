@@ -1,4 +1,6 @@
+using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
+using Ngaq.Core.Model.Po.Word;
 
 namespace Ngaq.Core.Service.Word.Learn_.Models;
 
@@ -18,5 +20,17 @@ public static class ExtnLearnRecord{
 			,Value = learn
 		};
 		return record;
+	}
+
+	public static PoLearn ToPoLearn(
+		this LearnRecord z
+		,IdWord? WordId = null
+	){
+		var R = new PoLearn();
+		R.SetStrToken(null, KeysProp.Inst.learn, z.Value);
+		if(WordId!= null){
+			R.FKeyUInt128 = WordId.Value;
+		}
+		return R;
 	}
 }

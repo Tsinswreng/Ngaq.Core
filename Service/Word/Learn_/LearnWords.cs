@@ -78,19 +78,12 @@ public class LearnMgr{
 		OnErr?.Invoke(this, new EvtArgOnErr{Err=Err});
 		return Nil;
 	}
-	public class EErr:IEnumErr{
-		protected static EErr? _Inst = null;
-		public static EErr Inst => _Inst??= new EErr();
-		public static IAppErr Mk(str Id){
-			return new ErrApp{
-				Id = Id
-				,Namespace = nameof(LearnMgr)
-			};
-		}
+	public class EErr_:EnumErr{
 		public IAppErr LoadFailed() => Mk(nameof(LoadFailed));
 		public IAppErr SaveFailed() => Mk(nameof(SaveFailed));
-
 	}
+	public EErr_ EErr{get;set;} = new();
+
 
 	public StateLearnWords State{get;set;} = new();
 	public nil Load(IEnumerable<JoinedWord> JWords){
@@ -121,7 +114,7 @@ public class LearnMgr{
 			//TODO
 		}
 		catch (System.Exception e){
-			var E = EErr.Inst.SaveFailed();
+			var E = EErr.SaveFailed();
 			E.Errors.Add(e);
 			return Err(E);
 		}

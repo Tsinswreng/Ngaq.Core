@@ -3,7 +3,7 @@ namespace Ngaq.Core.Model.Po.Kv;
 /// <summary>
 /// 只關注數據類型、不關注生成方式
 /// </summary>
-public enum E_SubjectIdType{
+public enum EFKeyType{
 	Str = 1
 	,UInt8 = 2
 	,Int8 = 3
