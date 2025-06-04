@@ -21,7 +21,7 @@ public static class ExtnI_Learn_Records{
 		foreach(var PoLearn in PoLearns){
 			var record = PoLearn.ToLearnRecord();
 			z.AddInValues(
-				record.Value
+				record.Learn
 				,record
 			);
 		}

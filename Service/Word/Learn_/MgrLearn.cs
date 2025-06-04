@@ -36,7 +36,7 @@ public class MgrLearnedWords{
 		return Nil;
 	}
 
-	public nil Delete(
+	public nil DeleteWordFromLearnGroup(
 		Learn Learn
 		,IWordForLearn Word
 	){
@@ -67,11 +67,11 @@ public class StateLearnWords{
 
 
 
-public class LearnMgr{
+public class MgrLearn{
 
-	public LearnMgr(){}
+	public MgrLearn(){}
 
-	public LearnMgr(
+	public MgrLearn(
 		ISvcWord SvcWord
 		,IUserCtxMgr UserCtxMgr
 	){
@@ -81,6 +81,12 @@ public class LearnMgr{
 
 	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
 	public IUserCtxMgr UserCtxMgr{get;set;}
+
+	public enum ELearnOpRtn:i64{
+		Learn = 0
+		,Undo = 1
+		,Invalid = 2
+	}
 
 	public class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
@@ -114,19 +120,51 @@ public class LearnMgr{
 		return Nil;
 	}
 
-
-	public nil Learn(
+/// <summary>
+///
+/// </summary>
+/// <param name="Word"></param>
+/// <param name="Learn"></param>
+/// <returns>見ELearnOpRtn</returns>
+	i64 _Learn(
 		IWordForLearn Word
 		,Learn Learn
 	){
 		if(!State.OperationStatus.Start){
-			return Nil;
+			return (i64)ELearnOpRtn.Invalid;
 		}
 		State.MgrLearnedWords.Set(Learn, Word);
 		var LearnRecord = new LearnRecord(Learn);
-		Word.Time_UnsavedLearnRecords.Add(LearnRecord.UnixMs, LearnRecord);
 		State.OperationStatus.Save = false;
-		return Nil;
+		return Word.AddLearnRecordIfEmpty(LearnRecord);
+	}
+
+	i64 _Undo(
+		IWordForLearn Word
+	){
+		if(!State.OperationStatus.Start){
+			return (i64)ELearnOpRtn.Invalid;
+		}
+		var Last = Word.RmLastUnsavedLearnRecord();
+		if(Last != null){
+			State.MgrLearnedWords.DeleteWordFromLearnGroup(Last.Learn, Word);
+			return (i64)ELearnOpRtn.Undo;
+		}
+		return (i64)ELearnOpRtn.Invalid;
+	}
+
+
+	public i64 LearnOrUndo(
+		IWordForLearn Word
+		,Learn Learn
+	){
+		if(!State.OperationStatus.Start){
+			return (i64)ELearnOpRtn.Invalid;
+		}
+		if(_Learn(Word, Learn) != (i64)ELearnOpRtn.Learn){
+			return _Undo(Word);
+		}
+		return (i64)ELearnOpRtn.Learn;
 	}
 
 	public async Task<nil> SaveAsy(CT Ct){
@@ -138,7 +176,7 @@ public class LearnMgr{
 			var WordId_LearnRecordss = LearnedWord.Select(x=>{
 				var R = new WordId_LearnRecords();
 				R.WordId = x.Id;
-				R.LearnRecords = x.Time_UnsavedLearnRecords.Values;
+				R.LearnRecords = x.UnsavedLearnRecords;
 				return R;
 			});
 			await SvcWord.AddWordId_LearnRecordss(

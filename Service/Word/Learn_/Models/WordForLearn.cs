@@ -12,7 +12,7 @@ public interface IWordForLearn
 	,I_Learn_Records
 	,I_StrKey_Props
 	,I_SavedLearnRecords
-	,I_Time_UnsavedLearnRecords
+	,I_UnsavedLearnRecords
 {
 
 }
@@ -55,10 +55,15 @@ public class WordForLearn
 	= new List<ILearnRecord>();
 	#endif
 
-	public IDictionary<i64, LearnRecord> Time_UnsavedLearnRecords{get;set;}
+	// public IDictionary<i64, LearnRecord> Time_UnsavedLearnRecords{get;set;}
+	// #if Impl
+	// = new Dictionary<i64, LearnRecord>();
+	// #endif
+	public IList<ILearnRecord> UnsavedLearnRecords{get;set;}
 	#if Impl
-	= new Dictionary<i64, LearnRecord>();
+	= new List<ILearnRecord>();
 	#endif
+
 
 	//public i64 LastLearnedTime{get;set;}
 

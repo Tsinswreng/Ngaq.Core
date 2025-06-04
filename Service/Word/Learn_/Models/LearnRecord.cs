@@ -7,10 +7,10 @@ namespace Ngaq.Core.Service.Word.Learn_.Models;
 public struct LearnRecord
 	:ILearnRecord
 {
-	public Learn Value{get;set;}
+	public Learn Learn{get;set;}
 	public i64 UnixMs{get;set;} = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	public LearnRecord(Learn Value){
-		this.Value = Value;
+		this.Learn = Value;
 	}
 }
 
@@ -22,17 +22,17 @@ public static class ExtnLearnRecord{
 		var learn = new Learn(PoLearn.VStr??"");
 		var record = new LearnRecord(){
 			UnixMs = PoLearn.CreatedAt
-			,Value = learn
+			,Learn = learn
 		};
 		return record;
 	}
 
 	public static PoLearn ToPoLearn(
-		this LearnRecord z
+		this ILearnRecord z
 		,IdWord? WordId = null
 	){
 		var R = new PoLearn();
-		R.SetStrToken(null, KeysProp.Inst.learn, z.Value);
+		R.SetStrToken(null, KeysProp.Inst.learn, z.Learn);
 		if(WordId!= null){
 			R.FKeyUInt128 = WordId.Value;
 		}

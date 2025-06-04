@@ -11,5 +11,5 @@ public struct WordId_PoLearns{
 
 public struct WordId_LearnRecords{
 	public IdWord WordId;
-	public IEnumerable<LearnRecord> LearnRecords;
+	public IEnumerable<ILearnRecord> LearnRecords;
 }
