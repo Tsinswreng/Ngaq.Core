@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
 public interface I_SavedLearnRecords{
 	/// <summary>

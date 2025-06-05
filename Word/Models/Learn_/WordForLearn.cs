@@ -1,21 +1,13 @@
 #define Impl
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Tsinswreng.CsCore.Tools;
 
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface IWordForLearn
-	:IPoWord
-	,I_Id
-	,I_Weight
-	,I_Learn_Records
-	,I_StrKey_Props
-	,I_SavedLearnRecords
-	,I_UnsavedLearnRecords
-{
-
-}
 
 public class WordForLearn
 	:IWordForLearn
@@ -25,15 +17,20 @@ public class WordForLearn
 	public WordForLearn(
 		JnWord JWord
 	){
-		this._JoinedWord = JWord;
-		this.PoWord = JWord.PoWord;
+		_JoinedWord = JWord;
+		PoWord = JWord.PoWord;
 		StrKey_Props.FromPoKvs(_JoinedWord.Props);
-		Learn_Records.FromPoLearns(_JoinedWord.Learns);
+		Learn_Records.AddFromPoLearns(_JoinedWord.Learns);
 		SavedLearnRecords = _JoinedWord.Learns
 			.Select(x=>x.ToLearnRecord())
 			.OrderBy(x=>x.UnixMs)
 			.ToList()
 		;
+	}
+
+	public event PropertyChangedEventHandler? PropertyChanged;//受保護之委託 不能在類外調
+	public virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null){
+		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 	}
 
 
@@ -70,7 +67,7 @@ public class WordForLearn
 	public IdWord Id{
 		get{return PoWord.Id;}
 		set{
-			_JoinedWord.Id = (IdWord)value;
+			_JoinedWord.Id = value;
 		}
 	}
 
@@ -115,6 +112,8 @@ public class WordForLearn
 		get{return PoWord.Status;}
 		set{PoWord.Status = value;}
 	}
+
+
 	#endregion IPoBase
 
 }
@@ -128,5 +127,15 @@ public static class ExtnIWordForLearn{
 			return z.SavedLearnRecords[^1].UnixMs;
 		}
 		return 0;//should not happen
+	}
+
+	public static nil SaveUnsavedLearnRecordsEtClear(
+		this IWordForLearn z
+	){
+		z.SavedLearnRecords.AddRange(z.UnsavedLearnRecords);
+		z.Learn_Records.AddFromLearnRecords(z.UnsavedLearnRecords);//TODO 把學習記錄專封到一個類中。否則改于外易漏
+		z.UnsavedLearnRecords.Clear();
+		z.OnPropertyChanged("");//事件“INotifyPropertyChanged.PropertyChanged”只能出现在 += 或 -= 的左边CS0079
+		return Nil;
 	}
 }

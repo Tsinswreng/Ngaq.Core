@@ -1,7 +1,7 @@
 using Ngaq.Core.Model.Po.Learn;
 using Tsinswreng.CsCore.Tools.MultiDict;
 
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 public interface I_Learn_Records{
 	/// <summary>
 	/// 值 按日期排序
@@ -14,7 +14,22 @@ public interface I_Learn_Records{
 
 
 public static class ExtnI_Learn_Records{
-	public static IDictionary<Learn, IList<ILearnRecord>> FromPoLearns(
+
+	public static IDictionary<Learn, IList<ILearnRecord>> AddFromLearnRecords(
+		this IDictionary<Learn, IList<ILearnRecord>> z
+		,IEnumerable<ILearnRecord> LearnRecords
+	){
+		foreach(var LearnRecord in LearnRecords){
+			var record = LearnRecord;
+			z.AddInValues(
+				record.Learn
+				,record
+			);
+		}
+		return z;
+	}
+
+	public static IDictionary<Learn, IList<ILearnRecord>> AddFromPoLearns(
 		this IDictionary<Learn, IList<ILearnRecord>> z
 		,IEnumerable<PoLearn> PoLearns
 	){

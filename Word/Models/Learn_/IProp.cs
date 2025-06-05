@@ -1,7 +1,7 @@
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Kv;
 
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
 public interface IProp:IPoKv{
 

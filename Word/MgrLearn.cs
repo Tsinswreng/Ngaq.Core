@@ -2,10 +2,10 @@ using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
-using Ngaq.Core.Service.Word.Learn_.Models;
-using Tsinswreng.CsCore.Tools;
+using Ngaq.Core.Service.Word;
+using Ngaq.Core.Word.Models.Learn_;
 
-namespace Ngaq.Core.Service.Word;
+namespace Ngaq.Core.Word;
 
 public class OperationStatus{
 	public bool Load = false;
@@ -107,6 +107,18 @@ public class MgrLearn{
 	}
 	public EErr_ EErr{get;set;} = EErr_.Inst;
 
+	nil ResetLearnedState(){
+		State.MgrLearnedWords = new();
+		return Nil;
+	}
+
+	nil SaveUnsavedLearnRecordsForWords(){
+		foreach(var Word in State.MgrLearnedWords.GetLearnedWords()){
+			Word.SaveUnsavedLearnRecordsEtClear();
+		}
+		return Nil;
+	}
+
 
 	public StateLearnWords State{get;set;} = new();
 	public nil Load(IEnumerable<JnWord> JWords){
@@ -184,10 +196,11 @@ public class MgrLearn{
 				,WordId_LearnRecordss
 				,Ct
 			);
-			State.MgrLearnedWords = new ();
+			SaveUnsavedLearnRecordsForWords();
+			ResetLearnedState();
 			State.OperationStatus.Save = true;
 		}
-		catch (System.Exception e){
+		catch (Exception e){
 			var E = EErr.SaveFailed();
 			E.Errors.Add(e);
 			return Err(E);

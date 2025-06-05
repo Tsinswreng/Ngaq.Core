@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;

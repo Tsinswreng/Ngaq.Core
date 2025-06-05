@@ -2,7 +2,7 @@ using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
 
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
 public struct LearnRecord
 	:ILearnRecord
@@ -10,7 +10,7 @@ public struct LearnRecord
 	public Learn Learn{get;set;}
 	public i64 UnixMs{get;set;} = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	public LearnRecord(Learn Value){
-		this.Learn = Value;
+		Learn = Value;
 	}
 }
 

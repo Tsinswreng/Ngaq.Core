@@ -1,7 +1,7 @@
 using Ngaq.Core.Model.Po.Kv;
 using Tsinswreng.CsCore.Tools.MultiDict;
 
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
 public interface I_StrKey_Props{
 	public IDictionary<str, IList<IProp>> StrKey_Props{get;set;}

@@ -4,7 +4,7 @@ using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Service.Word.Learn_.Models;
+using Ngaq.Core.Word.Models.Learn_;
 using Tsinswreng.SrcGen.Dict;
 using Tsinswreng.SrcGen.Dict.Attributes;
 namespace Ngaq.Core.Infra;

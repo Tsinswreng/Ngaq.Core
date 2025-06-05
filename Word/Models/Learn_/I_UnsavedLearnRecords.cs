@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Service.Word.Learn_.Models;
+namespace Ngaq.Core.Word.Models.Learn_;
 
 public interface I_UnsavedLearnRecords{
 	public IList<ILearnRecord> UnsavedLearnRecords{get;set;}
@@ -34,16 +34,4 @@ public static class ExtnI_UnsavedLearnRecords{
 		z.UnsavedLearnRecords.RemoveAt(z.UnsavedLearnRecords.Count-1);
 		return Last;
 	}
-}
-
-
-[Obsolete]
-public interface I_Time_UnsavedLearnRecords{
-	/// <summary>
-	/// 當有序
-	/// </summary>
-	public IDictionary<i64, LearnRecord> Time_UnsavedLearnRecords{get;set;}
-	#if Impl
-	= new Dictionary<i64, LearnRecord>();
-	#endif
 }

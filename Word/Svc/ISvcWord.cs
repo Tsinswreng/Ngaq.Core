@@ -5,7 +5,6 @@ using Ngaq.Core.Model.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
-using Ngaq.Core.Service.Word.Learn_.Models;
 using Ngaq.Core.Tools.Io;
 
 namespace Ngaq.Core.Service.Word;

@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Service.Parser;
-using Ngaq.Core.Service.Word.Learn_.Models;
+using Ngaq.Core.Word.Models.Learn_;
 
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
