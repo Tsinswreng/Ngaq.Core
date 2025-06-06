@@ -3,9 +3,10 @@ namespace Ngaq.Core.Model.Po.Kv;
 public interface IPoKv{
 
 	#region IPoKv
-	public i64 FKeyType { get; set; } //`= (i64)E_SubjectIdType.Int64;
-	public UInt128? FKeyUInt128{get;set;}
-	public str? FKeyStr{get;set;}
+	//TODO 遷至他ʹ接口
+	// public i64 FKeyType { get; set; } //`= (i64)E_SubjectIdType.Int64;
+	// public UInt128? FKeyUInt128{get;set;}
+	// public str? FKeyStr{get;set;}
 
 	public i64 KType { get; set; }
 	public str? KStr { get; set; }

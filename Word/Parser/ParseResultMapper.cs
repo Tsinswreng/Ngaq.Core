@@ -41,16 +41,21 @@ public class ParseResultMapper(){
 		}
 		var Ans = new List<JnWord>();
 		foreach(var dateBlock in DateBlocks){
+			var dateStr = dateBlock.Date.Text.Trim();
+			var Date = DateTimeOffset.Parse(dateStr);
+			var UnixMs = Date.ToUnixTimeMilliseconds();
 			foreach(var wordBlock in dateBlock.Words){
 				var ua = new JnWord();
+				ua.CreatedAt = UnixMs;
 				ua.PoWord.Lang = Metadata.belong;
 				var trimedHead = wordBlock.Head?.Text?.Trim();
 				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){
 					continue;
 				}
-				foreach(var prop in wordBlock.Props){
-					var po_kv = PropToKv(prop);
-					ua.Props.Add(po_kv);
+				foreach(var prop in wordBlock.Props){//除description以外的屬性
+					var PoKv = PropToKv(prop);
+					PoKv.CreatedAt = UnixMs;
+					ua.Props.Add(PoKv);
 				}
 
 				ua.PoWord.Head = trimedHead;
@@ -60,13 +65,15 @@ public class ParseResultMapper(){
 					bodyStrList.Add(seg.Text.Trim());
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
-				var kv_meaning = new PoKv();
-				kv_meaning.SetStrToken(
+				var kv_descr = new PoKv();
+				kv_descr.CreatedAt = UnixMs;
+				kv_descr.SetStrToken(
 					null, KeysProp.Inst.description, bodyStr.Trim()
 				);
-				ua.Props.Add(kv_meaning);
+				ua.Props.Add(kv_descr);
 				foreach (var prop in dateBlock.Props){
 					var po_kv = PropToKv(prop);
+					po_kv.CreatedAt = UnixMs;
 					ua.Props.Add(po_kv);
 				}
 				Ans.Add(ua);

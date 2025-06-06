@@ -21,7 +21,7 @@ public class WordForLearn
 		PoWord = JWord.PoWord;
 		StrKey_Props.FromPoKvs(_JoinedWord.Props);
 		Learn_Records.AddFromPoLearns(_JoinedWord.Learns);
-		SavedLearnRecords = _JoinedWord.Learns
+		LearnRecords = _JoinedWord.Learns
 			.Select(x=>x.ToLearnRecord())
 			.OrderBy(x=>x.UnixMs)
 			.ToList()
@@ -34,8 +34,8 @@ public class WordForLearn
 	}
 
 
-	public f64 Weight{get;set;} = 0;
-	public i64? Index{get;set;}
+	public f64? Weight{get;set;}
+	public u64? Index{get;set;}
 
 	public IDictionary<str, IList<IProp>> StrKey_Props{get;set;}
 	#if Impl
@@ -47,7 +47,7 @@ public class WordForLearn
 	= new Dictionary<Learn, IList<ILearnRecord>>();
 	#endif
 
-	public IList<ILearnRecord> SavedLearnRecords{get;set;}
+	public IList<ILearnRecord> LearnRecords{get;set;}
 	#if Impl
 	= new List<ILearnRecord>();
 	#endif
@@ -57,6 +57,11 @@ public class WordForLearn
 	// = new Dictionary<i64, LearnRecord>();
 	// #endif
 	public IList<ILearnRecord> UnsavedLearnRecords{get;set;}
+	#if Impl
+	= new List<ILearnRecord>();
+	#endif
+
+	public IList<ILearnRecord> PrevTurnLearnRecords{get;set;}
 	#if Impl
 	= new List<ILearnRecord>();
 	#endif
@@ -88,10 +93,16 @@ public class WordForLearn
 
 
 	#region IPoBase
-	public i64 CreatedAt{
+	public i64 InsertedAt{
+		get{return PoWord.InsertedAt;}
+		set{PoWord.InsertedAt = value;}
+	}
+
+	public i64? CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
 	}
+
 
 	public IdUser? CreatedBy{
 		get{return PoWord.CreatedBy;}
@@ -115,6 +126,9 @@ public class WordForLearn
 
 
 	#endregion IPoBase
+	public object ShallowCloneSelf(){
+		return MemberwiseClone();
+	}
 
 }
 
@@ -123,18 +137,25 @@ public static class ExtnIWordForLearn{
 	public static i64 LastLearnedTime_(
 		this IWordForLearn z
 	){
-		if(z.SavedLearnRecords.Count > 0){
-			return z.SavedLearnRecords[^1].UnixMs;
+		if(z.LearnRecords.Count > 0){
+			return z.LearnRecords[^1].UnixMs;
 		}
 		return 0;//should not happen
 	}
 
-	public static nil SaveUnsavedLearnRecordsEtClear(
+	/// <summary>
+	/// 保存後 把新ʹ學習記錄 添入LearnRecords列表與Learn_Records字典
+	/// 把新學習記錄予上輪ʹ學習記錄、緟設新學習記錄
+	/// </summary>
+	/// <param name="z"></param>
+	/// <returns></returns>
+	public static nil HandleLearnRecordsOnSave(
 		this IWordForLearn z
 	){
-		z.SavedLearnRecords.AddRange(z.UnsavedLearnRecords);
+		z.LearnRecords.AddRange(z.UnsavedLearnRecords);
 		z.Learn_Records.AddFromLearnRecords(z.UnsavedLearnRecords);//TODO 把學習記錄專封到一個類中。否則改于外易漏
-		z.UnsavedLearnRecords.Clear();
+		z.PrevTurnLearnRecords = z.UnsavedLearnRecords;
+		z.UnsavedLearnRecords = new List<ILearnRecord>();
 		z.OnPropertyChanged("");//事件“INotifyPropertyChanged.PropertyChanged”只能出现在 += 或 -= 的左边CS0079
 		return Nil;
 	}

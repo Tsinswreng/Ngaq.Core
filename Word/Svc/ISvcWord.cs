@@ -1,7 +1,7 @@
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Page;
 using Ngaq.Core.Model.Bo;
-using Ngaq.Core.Model.Po.Learn;
+using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;

@@ -6,6 +6,16 @@ partial struct PLACEHOLDERID
 		Value = Ngaq.Core.Tools.ToolId.NewUlid_UInt128();
 	}
 
+	public static PLACEHOLDERID FromLow64Base(string Low64Base){
+		var Num = Ngaq.Core.Tools.ToolId.Low64BaseToUInt128(Low64Base);
+		return new PLACEHOLDERID(Num);
+	}
+
+	public static PLACEHOLDERID FromByteArr(byte[] bytes){
+		var Num = Ngaq.Core.Tools.ToolId.ByteArrToUInt128(bytes);
+		return new PLACEHOLDERID(Num);
+	}
+
 	public UInt128 Value { get; set; }
 
 	public PLACEHOLDERID(UInt128 value) => Value = value;

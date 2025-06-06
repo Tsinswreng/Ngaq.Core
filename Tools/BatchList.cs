@@ -44,7 +44,36 @@ public class BatchListAsy<TItem, TRet>
 		return default;
 	}
 
+/// <summary>
+///
+/// </summary>
+/// <param name="items"></param>
+/// <param name="OnRet">返匪0旹break</param>
+/// <param name="Ct"></param>
+/// <returns></returns>
+	public async Task<nil> AddMany(
+		IEnumerable<TItem> items
+		,Func<TRet?, i32>? OnRet
+		,CT Ct
+	){
+		foreach(var item in items){
+			var Ret = await Add(item, Ct);
+			var r = OnRet?.Invoke(Ret)??0;
+			if(r != 0){
+				break;
+			}
+		}
+		return Nil;
+	}
 
+/// <summary>
+/// 慎用。優先用AddMany
+/// 如await NeoLearns.AddRangeAsy(NeoPoLearns, Ct).ToListAsync(Ct);
+/// 當配ToListAsync(Ct)用、勿用.First() 否則只內部foreach只珩一次
+/// </summary>
+/// <param name="items"></param>
+/// <param name="Ct"></param>
+/// <returns></returns>
 	public async IAsyncEnumerable<TRet?> AddRangeAsy(
 		IEnumerable<TItem> items
 		,[EnumeratorCancellation] CancellationToken Ct

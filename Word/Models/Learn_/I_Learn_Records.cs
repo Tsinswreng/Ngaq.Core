@@ -1,4 +1,4 @@
-using Ngaq.Core.Model.Po.Learn;
+using Ngaq.Core.Model.Po.Learn_;
 using Tsinswreng.CsCore.Tools.MultiDict;
 
 namespace Ngaq.Core.Word.Models.Learn_;

@@ -1,4 +1,5 @@
 #define Impl
+using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Model.Po.Kv;
@@ -7,6 +8,7 @@ public partial class PoKv
 	:IPoBase
 	,I_Id<IdKv>
 	,IPoKv
+	,I_WordId
 {
 
 	public static PoKv Example{get;set;} = new PoKv();
@@ -14,18 +16,26 @@ public partial class PoKv
 	public IdKv Id { get; set; } = new IdKv();
 
 	#region PoBase
-	public i64 CreatedAt{get;set;}
+	public i64 InsertedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
+	public i64? CreatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
 	#endregion
-	public i64 FKeyType { get; set; } = (i64)EFKeyType.Int64;
-	public str? FKeyStr{get;set;}
-	public UInt128? FKeyUInt128{get;set;}
+	// [Obsolete("用WordId")]
+	// public i64 FKeyType { get; set; } = (i64)EFKeyType.UInt128;
+	// [Obsolete("用WordId")]
+	// public str? FKeyStr{get;set;}
+	// [Obsolete("用WordId")]
+	// public UInt128? FKeyUInt128{
+	// 	get{return WordId.Value;}
+	// 	set{throw new NotImplementedException();}
+	// }
+	public IdWord WordId{get;set;}
 
 	public i64 KType { get; set; } = (i64)EKvType.Str;
 	public str? KStr { get; set; }

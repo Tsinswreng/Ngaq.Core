@@ -1,8 +1,9 @@
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
-using Ngaq.Core.Model.Po.Learn;
+using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Word.Models.Learn_;
 
 namespace Ngaq.Core.Model.Samples.Word;
 
@@ -96,30 +97,22 @@ public class SampleWord{
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.add
-			);
+			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.add
-			);
+			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.fgt
-			);
+			o.LearnResult = ELearn.Inst.Fgt;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.rmb
-			);
+			o.LearnResult = ELearn.Inst.Rmb;
 		}
 		return Ans;
 	}
@@ -198,30 +191,22 @@ v. 說（或大聲說）“喂”；打招呼
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.add
-			);
+			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.add
-			);
+			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.fgt
-			);
+			o.LearnResult = ELearn.Inst.Fgt;
 		}
 		{
 			var o = new PoLearn();
 			Ans.Learns.Add(o);
-			o.SetStrToken(
-				null,P.learn,L.rmb
-			);
+			o.LearnResult = ELearn.Inst.Rmb;
 		}
 		return Ans;
 

@@ -10,10 +10,12 @@ public class PoRole
 	public IdRole Id { get; set; }
 	public str? Key {get;set;}
 	#region IPoBase
-	public i64 CreatedAt{get;set;}
+	public i64 InsertedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
+
+	public i64? CreatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy

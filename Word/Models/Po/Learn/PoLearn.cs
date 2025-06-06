@@ -1,8 +1,10 @@
 #define Impl
 using Ngaq.Core.Model.Po.Kv;
+using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Word.Models.Learn_;
 
-namespace Ngaq.Core.Model.Po.Learn;
+namespace Ngaq.Core.Model.Po.Learn_;
 
 // public class Po_Learn:Po_Kv{
 // 	public static new Po_Learn Example{get;set;} = new Po_Learn();
@@ -12,45 +14,31 @@ namespace Ngaq.Core.Model.Po.Learn;
 public partial class PoLearn
 	:IPoBase
 	,I_Id<IdLearn>
-	,IPoKv
+	,I_WordId
+	//,IPoKv
 {
 
 	public static PoLearn Example{get;set;} = new PoLearn();
 
 	public IdLearn Id { get; set; } = new IdLearn();
 
+	public IdWord WordId{get;set;}
+
+	public str LearnResult{get;set;}="";
+
+
 	#region PoBase
-	public i64 CreatedAt{get;set;}
+	public i64 InsertedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
+	public i64? CreatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}
 	public i64? UpdatedAt{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}
 	public i64 Status{get;set;}
-	#endregion
-	public i64 FKeyType { get; set; } = (i64)EFKeyType.UInt128;
-	public str? FKeyStr{get;set;}
-	public UInt128? FKeyUInt128{get;set;}//TODO 設置值旹順帶改FKeyType
+	#endregion PoBase
 
-	public i64 KType { get; set; } = (i64)EKvType.Str;
-	public str? KStr { get; set; }
-	/// <summary>
-	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
-	/// </summary>
-	public i64 KI64 { get; set; }
-	//public str KeyType {get; set;} = "";
 
-	public str? KDescr { get; set; }
 
-	public i64 VType { get; set; }
-
-	public str? VDescr { get; set; }
-
-	//[Column("str")]
-	public str? VStr { get; set; }
-	//[Column("int")]
-	public i64 VI64 { get; set; }
-
-	public f64 VF64 { get; set; }
 }

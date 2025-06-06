@@ -1,9 +1,15 @@
+using System.Collections;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Bo;
+using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Service.Word;
+
 using Ngaq.Core.Word.Models.Learn_;
+using Ngaq.Core.Word.Models.Weight;
+using Ngaq.Core.Word.Svc;
+using Tsinswreng.CsCore.Tools;
 
 namespace Ngaq.Core.Word;
 
@@ -69,18 +75,21 @@ public class StateLearnWords{
 
 public class MgrLearn{
 
-	public MgrLearn(){}
+	//public MgrLearn(){}
 
 	public MgrLearn(
 		ISvcWord SvcWord
 		,IUserCtxMgr UserCtxMgr
+		,IWeightCalctr WeightCalctr
 	){
-		this.SvcWord = SvcWord;
+		this.WeightCalctr = WeightCalctr;
 		this.UserCtxMgr = UserCtxMgr;
+		this.SvcWord = SvcWord;
 	}
 
 	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
 	public IUserCtxMgr UserCtxMgr{get;set;}
+	public IWeightCalctr WeightCalctr{get;set;}
 
 	public enum ELearnOpRtn:i64{
 		Learn = 0
@@ -112,15 +121,20 @@ public class MgrLearn{
 		return Nil;
 	}
 
-	nil SaveUnsavedLearnRecordsForWords(){
+	nil HandleLearnRecordsOnSave(){
 		foreach(var Word in State.MgrLearnedWords.GetLearnedWords()){
-			Word.SaveUnsavedLearnRecordsEtClear();
+			Word.HandleLearnRecordsOnSave();
 		}
 		return Nil;
 	}
 
 
 	public StateLearnWords State{get;set;} = new();
+	/// <summary>
+	/// 得諸詞
+	/// </summary>
+	/// <param name="JWords"></param>
+	/// <returns></returns>
 	public nil Load(IEnumerable<JnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var JWord in JWords){
@@ -128,9 +142,60 @@ public class MgrLearn{
 			State.WordsToLearn.Add(Word);
 		}
 		State.OperationStatus.Load = true;
+		//State.OperationStatus.Start = true;
+		return Nil;
+	}
+
+	public async Task<nil> CalcWeightAsy(CT Ct){
+		if(!State.OperationStatus.Load){
+			return Nil;
+		}
+		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn, Ct);
+
+		IDictionary<IdWord, IWordWeightResult> Id_Result;
+		if(WeightResult.Cfg.ResultType == EResultType.Enumerable){
+			var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
+			Id_Result = Result.ToDictionary(
+				x=>IdWord.FromLow64Base(x.StrId)
+				,x=>x
+			);
+		}else{
+			var Result = (IAsyncEnumerable<IWordWeightResult>)WeightResult.Results!;
+			Id_Result = await Result.ToDictionaryAsync(
+				x=>IdWord.FromLow64Base(x.StrId)
+				,x=>x
+				,Ct
+			);
+		}
+
+		foreach(var Word in State.WordsToLearn){
+			if(Id_Result.TryGetValue(Word.Id, out var Result)){
+				Word.Weight = Result.Weight;
+				Word.Index  = Result.Index;
+			}
+		}
+		if(WeightResult.Cfg.SortBy == ESortBy.Weight){
+			State.WordsToLearn.Sort((b,a)=>(a.Weight??0).CompareTo(b.Weight));
+		}else{
+			State.WordsToLearn.Sort((a,b)=>(a.Index??0).CompareTo(b.Index));
+		}
+		u64 i = 0;
+		foreach(var Word in State.WordsToLearn){
+			Word.Index = i++;
+		}
+		return Nil;
+	}
+
+	public async Task<nil> StartAsy(CT Ct){
+		if(!State.OperationStatus.Load){
+			return Nil;
+		}
+		await CalcWeightAsy(Ct);
 		State.OperationStatus.Start = true;
 		return Nil;
 	}
+
+
 
 /// <summary>
 ///
@@ -196,7 +261,7 @@ public class MgrLearn{
 				,WordId_LearnRecordss
 				,Ct
 			);
-			SaveUnsavedLearnRecordsForWords();
+			HandleLearnRecordsOnSave();
 			ResetLearnedState();
 			State.OperationStatus.Save = true;
 		}

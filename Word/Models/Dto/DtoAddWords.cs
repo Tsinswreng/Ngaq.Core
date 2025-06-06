@@ -22,7 +22,7 @@ public class DtoUpdatedWord{
 	/// </summary>
 	public JnWord WordToAdd{get;set;}
 	/// <summary>
-	/// WordToAdd有洏WordInDb無之屬性
+	/// WordToAdd有洏WordInDb無之屬性 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
 	public IList<PoKv> DiffedProps{get;set;} = new List<PoKv>();
 
@@ -30,7 +30,7 @@ public class DtoUpdatedWord{
 
 public class DtoAddWords{
 	/// <summary>
-	/// 庫中未有之待添之諸新詞
+	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
 	public IList<JnWord> NeoWords{get;set;} = new List<JnWord>();
 	/// <summary>

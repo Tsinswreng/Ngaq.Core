@@ -34,10 +34,11 @@ public class PoWord
 	public IdUser Owner{get;set;}
 
 	#region IPoBase
-	public i64 CreatedAt{get;set;}
+	public i64 InsertedAt{get;set;}
 	#if Impl
 		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	#endif
+	public i64? CreatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段

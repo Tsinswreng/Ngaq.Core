@@ -1,7 +1,7 @@
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
-using Ngaq.Core.Model.Po.Learn;
+using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Tools;
@@ -62,7 +62,12 @@ public class JnWord
 
 
 	#region IPoBase
-	public i64 CreatedAt{
+	public i64 InsertedAt{
+		get{return PoWord.InsertedAt;}
+		set{PoWord.InsertedAt = value;}
+	}
+
+	public i64? CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
 	}
@@ -102,19 +107,19 @@ public class JnWord
 			// if(prop.Id.Value == 0){
 			// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
 			// }
-			prop.FKeyUInt128 = z.PoWord.Id.Value;
+			prop.WordId = z.PoWord.Id;
 		}
 		foreach(var learn in z.Learns){
 			// if(learn.Id.Value == 0){
 			// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
 			// }
-			learn.FKeyUInt128 = z.PoWord.Id.Value;
+			learn.WordId = z.PoWord.Id.Value;
 		}
 		return z;
 	}
 
 	public PoLearn AddLearn(PoLearn Learn){
-		Learn.FKeyUInt128 = PoWord.Id.Value;
+		Learn.WordId = PoWord.Id.Value;
 		Learns.Add(Learn);
 		return Learn;
 	}
@@ -133,7 +138,7 @@ public class JnWord
 	){
 		var diff = Algo.DiffListIntoMap(
 			(IList<PoKv>)PropsToAdd, (IList<PoKv>)ExistingProps
-			, (e)=> e.UpdatedAt ?? e.CreatedAt
+			, (e)=> e.UpdatedAt ?? e.InsertedAt
 		);
 		List<PoKv> ans = [];
 		foreach(var kvp in diff){
@@ -240,8 +245,8 @@ public static class ExtnBoWord{
 				if(!R.IsSameUserWord(BoWord)){
 					throw new ErrArg("!R.IsSameUserWord(BoWord)");
 				}
-				if(R.CreatedAt > BoWord.CreatedAt){
-					R.CreatedAt = BoWord.CreatedAt;
+				if(R.InsertedAt > BoWord.InsertedAt){
+					R.InsertedAt = BoWord.InsertedAt;
 				}
 				if(R.UpdatedAt < BoWord.UpdatedAt){
 					R.UpdatedAt = BoWord.UpdatedAt;
