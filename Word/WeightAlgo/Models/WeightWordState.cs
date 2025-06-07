@@ -1,4 +1,4 @@
-namespace Ngaq.WeightAlgo.Models;
+namespace Ngaq.Core.Word.WeightAlgo.Models;
 
 public class WeightWordState{
 	/// <summary>

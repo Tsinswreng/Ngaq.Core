@@ -1,6 +1,6 @@
 using Ngaq.Core.Word.Models.Learn_;
 
-namespace Ngaq.WeightAlgo.Models;
+namespace Ngaq.Core.Word.WeightAlgo.Models;
 
 
 public interface IWeightWord

@@ -1,10 +1,8 @@
-using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Learn_;
-using Ngaq.Core.Word.Svc;
-using Ngaq.WeightAlgo.Models;
+using Ngaq.Core.Word.WeightAlgo.Models;
 using Tsinswreng.CsCore.Tools;
 
-namespace Ngaq.WeightAlgo;
+namespace Ngaq.Core.Word.WeightAlgo;
 
 public class CalculatorForOne{
 	public WeightCfg Cfg{get;set;} = new();
@@ -138,7 +136,7 @@ public class CalculatorForOne{
 				i64 Diff = _Now() - Cur.UnixMs;
 				if(Diff > (i64)ETimeInMs.Day*30){
 					var Days = Diff/(i64)ETimeInMs.Day;
-					WordState.Weight *= (Days * 0xfff);
+					WordState.Weight *= Days * 0xfff;
 					//TODO Log
 				}
 			}
@@ -244,7 +242,7 @@ public class CalculatorForOne{
 		f64 R = NowDiffFinalAddTime;
 		R = Cfg.FinalAddBonusDenominator / R;
 		var LearnedTimes = Word.LearnRecords.Count;
-		R = R / (LearnedTimes); //已學習次數越多 加成越少
+		R = R / LearnedTimes; //已學習次數越多 加成越少
 		if(R  < 1){
 			R = 1;
 		}

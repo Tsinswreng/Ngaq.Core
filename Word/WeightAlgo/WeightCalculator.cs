@@ -3,9 +3,9 @@ using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
-using Ngaq.WeightAlgo.Models;
+using Ngaq.Core.Word.WeightAlgo.Models;
 
-namespace Ngaq.WeightAlgo;
+namespace Ngaq.Core.Word.WeightAlgo;
 
 public class WeightCalculator : IWeightCalctr{
 
