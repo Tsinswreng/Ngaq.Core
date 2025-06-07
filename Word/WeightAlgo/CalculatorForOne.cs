@@ -93,12 +93,12 @@ public class CalculatorForOne{
 
 		//TOFIX 蠹:finalAddEventPos之前者亦有debuff
 		if(//若有debuff
-			WordState.Pos == WordState.PosFinalAdd
-			&& _GetFinalLearnRecord().Learn == ELearn.Inst.Add
+			WordState.Pos >= WordState.PosFinalAdd
+			&& _GetFinalLearnRecord().Learn == ELearn.Inst.Rmb
 		){
 			debuff = _CalcDebuff();
 			var weight = weight0 * debuff;
-			WordState.Weight = weight;
+			WordState.Weight /= weight;
 		}else{
 			WordState.Weight /= weight0;
 		}
