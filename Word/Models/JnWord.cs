@@ -233,12 +233,9 @@ public static class ExtnBoWord{
 	public static JnWord? MergeSameWords(
 		this IEnumerable<JnWord> BoWords
 	){
-		if(BoWords.Count() == 0){
-			return null;
-		}
-		var i = 0;
+
 		JnWord R = null!;
-		foreach(var BoWord in BoWords){
+		foreach(var (BoWord, i) in BoWords.IPairs()){
 			if(i == 0){
 				R = BoWord;
 			}else{
@@ -247,6 +244,9 @@ public static class ExtnBoWord{
 				}
 				if(R.InsertedAt > BoWord.InsertedAt){
 					R.InsertedAt = BoWord.InsertedAt;
+				}
+				if(R.CreatedAt > BoWord.CreatedAt){
+					R.CreatedAt = BoWord.CreatedAt;
 				}
 				if(R.UpdatedAt < BoWord.UpdatedAt){
 					R.UpdatedAt = BoWord.UpdatedAt;
