@@ -76,6 +76,7 @@ public class ParseResultMapper(){
 					po_kv.CreatedAt = UnixMs;
 					ua.Props.Add(po_kv);
 				}
+				ua.AssignId();
 				Ans.Add(ua);
 			}//~foreach(var wordBlock in dateBlock.Words)
 		}//~foreach(var dateBlock in DateBlocks)

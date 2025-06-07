@@ -15,7 +15,7 @@ arr2=[
 ]
 fn(arr1, arr2, (e)=>e.num) -> Map{3=>{text:'c', num:3}}
 */
-	public static Dictionary<Fld, IList<ArrEle>> DiffListIntoMap<ArrEle, Fld>(
+	public static Dictionary<Fld, IList<ArrEle>> DiffListIntoDict<ArrEle, Fld>(
 		IList<ArrEle> arr1
 		,IList<ArrEle> arr2
 		,Func<ArrEle, Fld> fn

@@ -136,9 +136,9 @@ public class JnWord
 		IList<PoKv> PropsToAdd
 		,IList<PoKv> ExistingProps
 	){
-		var diff = Algo.DiffListIntoMap(
+		var diff = Algo.DiffListIntoDict(
 			(IList<PoKv>)PropsToAdd, (IList<PoKv>)ExistingProps
-			, (e)=> e.UpdatedAt ?? e.InsertedAt
+			, (e)=> e.UpdatedAt ?? e.CreatedAt??throw new FatalLogicErr("CreatedAt should not be null")
 		);
 		List<PoKv> ans = [];
 		foreach(var kvp in diff){
