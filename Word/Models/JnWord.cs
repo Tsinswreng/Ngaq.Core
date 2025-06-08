@@ -1,9 +1,11 @@
+using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
 using Tsinswreng.CsCore.Tools;
@@ -62,32 +64,36 @@ public class JnWord
 
 
 	#region IPoBase
-	public i64 InsertedAt{
-		get{return PoWord.InsertedAt;}
-		set{PoWord.InsertedAt = value;}
+	public Tempus DbCreatedAt{
+		get{return PoWord.DbCreatedAt;}
+		set{PoWord.DbCreatedAt = value;}
 	}
 
-	public i64? CreatedAt{
+	public Tempus CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
 	}
 
-	public IdUser? CreatedBy{
-		get{return PoWord.CreatedBy;}
-		set{PoWord.CreatedBy = value;}
-	}
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
-	public i64? UpdatedAt{
+	public Tempus? UpdatedAt{
 		get{return PoWord.UpdatedAt;}
 		set{PoWord.UpdatedAt = value;}
+	}
+	public Tempus? DbUpdatedAt{
+		get{return PoWord.DbUpdatedAt;}
+		set{PoWord.DbUpdatedAt = value;}
+	}
+	public IdUser? CreatedBy{
+		get{return PoWord.CreatedBy;}
+		set{PoWord.CreatedBy = value;}
 	}
 	public IdUser? LastUpdatedBy{
 		get{return PoWord.LastUpdatedBy;}
 		set{PoWord.LastUpdatedBy = value;}
 	}
-	public i64 Status{
+	public PoStatus Status{
 		get{return PoWord.Status;}
 		set{PoWord.Status = value;}
 	}
@@ -138,7 +144,7 @@ public class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			(IList<PoKv>)PropsToAdd, (IList<PoKv>)ExistingProps
-			, (e)=> e.UpdatedAt ?? e.CreatedAt??throw new FatalLogicErr("CreatedAt should not be null")
+			, (e)=> e.UpdatedAt ?? e.CreatedAt
 		);
 		List<PoKv> ans = [];
 		foreach(var kvp in diff){
@@ -242,8 +248,8 @@ public static class ExtnBoWord{
 				if(!R.IsSameUserWord(BoWord)){
 					throw new ErrArg("!R.IsSameUserWord(BoWord)");
 				}
-				if(R.InsertedAt > BoWord.InsertedAt){
-					R.InsertedAt = BoWord.InsertedAt;
+				if(R.DbCreatedAt > BoWord.DbCreatedAt){
+					R.DbCreatedAt = BoWord.DbCreatedAt;
 				}
 				if(R.CreatedAt > BoWord.CreatedAt){
 					R.CreatedAt = BoWord.CreatedAt;

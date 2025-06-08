@@ -223,11 +223,11 @@ public class WordListParser{
 		var txt = BufToStr(buffer);
 		var obj = WordListTxtMetadata.Parse(txt);
 		if(obj == null){
-			Error("Invalid metadata");return Nil;
+			Error("Invalid metadata");return NIL;
 		}
 		Status.Metadata = obj;
 		if(obj.delimiter == null || obj.delimiter.Length == 0){
-			Error("Invalid delimiter");return Nil;
+			Error("Invalid delimiter");return NIL;
 		}
 		Status.headOfWordDelimiter = (byte)obj.delimiter[0]; //TODO
 		return null!;
@@ -651,7 +651,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 					break;
 				}else{
 					Error("Unexpected character");
-					return Nil;
+					return NIL;
 				}
 			}else if( Eq(c , '{') ){
 				var c2 = NextByte();
@@ -660,7 +660,7 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 					break;
 				}else{
 					Error("Unexpected character");
-					return Nil;
+					return NIL;
 				}
 			}
 		}

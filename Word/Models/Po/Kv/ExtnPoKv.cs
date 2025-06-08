@@ -6,6 +6,6 @@ public static class Extn_Po_Kv{
 		z.VType = (i64)EKvType.Str;
 		z.KStr = k;
 		z.VStr = v;
-		return Nil;
+		return NIL;
 	}
 }

@@ -1,6 +1,7 @@
 #define Impl
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Word;
 
@@ -21,7 +22,7 @@ public interface IPoWord
 }
 
 public class PoWord
-	:IPoBase
+	:PoBase
 	,I_Id<IdWord>
 	,IHeadLangWord
 	,IPoWord
@@ -32,22 +33,6 @@ public class PoWord
 	public IdWord Id {get;set;} = new IdWord(); //不顯式調用構造器則內ʹValue 得零
 
 	public IdUser Owner{get;set;}
-
-	#region IPoBase
-	public i64 InsertedAt{get;set;}
-	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	#endif
-	public i64? CreatedAt{get;set;}
-	public IdUser? CreatedBy{get;set;}
-	/// <summary>
-	/// 當關聯ʹ他表 更新旹、亦當更新此字段
-	/// </summary>
-	public i64? UpdatedAt{get;set;}
-	public IdUser? LastUpdatedBy{get;set;}
-	public i64 Status{get;set;}
-	#endregion IPoBase
-
 
 	#region I_Po_Word
 

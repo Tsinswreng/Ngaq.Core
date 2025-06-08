@@ -1,11 +1,12 @@
 #define Impl
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Kv;
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoKv
-	:IPoBase
+	:PoBase
 	,I_Id<IdKv>
 	,IPoKv
 	,I_WordId
@@ -15,17 +16,6 @@ public partial class PoKv
 
 	public IdKv Id { get; set; } = new IdKv();
 
-	#region PoBase
-	public i64 InsertedAt{get;set;}
-	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	#endif
-	public i64? CreatedAt{get;set;}
-	public IdUser? CreatedBy{get;set;}
-	public i64? UpdatedAt{get;set;}
-	public IdUser? LastUpdatedBy{get;set;}
-	public i64 Status{get;set;}
-	#endregion
 	// [Obsolete("用WordId")]
 	// public i64 FKeyType { get; set; } = (i64)EFKeyType.UInt128;
 	// [Obsolete("用WordId")]

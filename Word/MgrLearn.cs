@@ -38,8 +38,8 @@ public class MgrLearnedWords{
 		,IWordForLearn Word
 	){
 		var WordSet = GetWordSet(Learn);
-		WordSet[Word] = Nil;
-		return Nil;
+		WordSet[Word] = NIL;
+		return NIL;
 	}
 
 	public nil DeleteWordFromLearnGroup(
@@ -50,7 +50,7 @@ public class MgrLearnedWords{
 		if(WordSet.ContainsKey(Word)){
 			WordSet.Remove(Word);
 		}
-		return Nil;
+		return NIL;
 	}
 
 	public IEnumerable<IWordForLearn> GetLearnedWords(){
@@ -105,7 +105,7 @@ public class MgrLearn{
 	public nil Err(object? Err){
 		LastErr = Err;
 		OnErr?.Invoke(this, new EvtArgOnErr{Err=Err});
-		return Nil;
+		return NIL;
 	}
 	public class EErr_:EnumErr{
 		protected static EErr_? _Inst = null;
@@ -118,14 +118,14 @@ public class MgrLearn{
 
 	nil ResetLearnedState(){
 		State.MgrLearnedWords = new();
-		return Nil;
+		return NIL;
 	}
 
 	nil HandleLearnRecordsOnSave(){
 		foreach(var Word in State.MgrLearnedWords.GetLearnedWords()){
 			Word.HandleLearnRecordsOnSave();
 		}
-		return Nil;
+		return NIL;
 	}
 
 
@@ -143,12 +143,12 @@ public class MgrLearn{
 		}
 		State.OperationStatus.Load = true;
 		//State.OperationStatus.Start = true;
-		return Nil;
+		return NIL;
 	}
 
 	public async Task<nil> CalcWeightAsy(CT Ct){
 		if(!State.OperationStatus.Load){
-			return Nil;
+			return NIL;
 		}
 		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn, Ct);
 
@@ -183,16 +183,16 @@ public class MgrLearn{
 		foreach(var Word in State.WordsToLearn){
 			Word.Index = i++;
 		}
-		return Nil;
+		return NIL;
 	}
 
 	public async Task<nil> StartAsy(CT Ct){
 		if(!State.OperationStatus.Load){
-			return Nil;
+			return NIL;
 		}
 		await CalcWeightAsy(Ct);
 		State.OperationStatus.Start = true;
-		return Nil;
+		return NIL;
 	}
 
 
@@ -247,7 +247,7 @@ public class MgrLearn{
 	public async Task<nil> SaveAsy(CT Ct){
 		try{
 			if(!State.OperationStatus.Start){
-				return Nil;
+				return NIL;
 			}
 			var LearnedWord = State.MgrLearnedWords.GetLearnedWords();
 			var WordId_LearnRecordss = LearnedWord.Select(x=>{
@@ -270,6 +270,6 @@ public class MgrLearn{
 			E.Errors.Add(e);
 			return Err(E);
 		}
-		return Nil;
+		return NIL;
 	}
 }

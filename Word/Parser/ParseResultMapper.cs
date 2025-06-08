@@ -23,7 +23,7 @@ public class ParseResultMapper(){
 /// <returns></returns>
 	public nil CheckPropKey(str key){
 
-		return Nil;
+		return NIL;
 	}
 
 	public PoKv PropToKv(I_Prop prop){

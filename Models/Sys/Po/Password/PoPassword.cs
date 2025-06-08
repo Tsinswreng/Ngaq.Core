@@ -1,11 +1,12 @@
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Sys.Po.Password;
 
 
 public class PoPassword
-	:IPoBase
+	:PoBase
 	,I_Id<IdPassword>
 {
 	public IdPassword Id{get;set;}
@@ -17,17 +18,6 @@ public class PoPassword
 	public str Salt{get;set;} ="";
 
 	public IdUser UserId{get;set;}
-	#region IPoBase
-	public i64 InsertedAt{get;set;}
-	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	#endif
-	public i64? CreatedAt{get;set;}
-	public IdUser? CreatedBy{get;set;}
-	public i64? UpdatedAt{get;set;}
-	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
-	public i64 Status{get;set;}
-	#endregion IPoBase
 	public enum EAlgo{
 		Argon2id = 1,
 	}

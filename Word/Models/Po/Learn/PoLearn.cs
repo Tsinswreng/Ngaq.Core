@@ -2,6 +2,7 @@
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 using Ngaq.Core.Word.Models.Learn_;
 
 namespace Ngaq.Core.Model.Po.Learn_;
@@ -12,7 +13,7 @@ namespace Ngaq.Core.Model.Po.Learn_;
 
 
 public partial class PoLearn
-	:IPoBase
+	:PoBase
 	,I_Id<IdLearn>
 	,I_WordId
 	//,IPoKv
@@ -25,20 +26,4 @@ public partial class PoLearn
 	public IdWord WordId{get;set;}
 
 	public str LearnResult{get;set;}="";
-
-
-	#region PoBase
-	public i64 InsertedAt{get;set;}
-	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	#endif
-	public i64? CreatedAt{get;set;}
-	public IdUser? CreatedBy{get;set;}
-	public i64? UpdatedAt{get;set;}
-	public IdUser? LastUpdatedBy{get;set;}
-	public i64 Status{get;set;}
-	#endregion PoBase
-
-
-
 }

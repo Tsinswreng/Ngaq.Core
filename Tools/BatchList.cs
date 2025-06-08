@@ -63,7 +63,7 @@ public class BatchListAsy<TItem, TRet>
 				break;
 			}
 		}
-		return Nil;
+		return NIL;
 	}
 
 /// <summary>
@@ -102,7 +102,7 @@ public class BatchListAsy<TItem, TRet>
 
 	protected nil Clear(){
 		UnHandledList.Clear();
-		return Nil;
+		return NIL;
 	}
 
 	protected async Task<TRet?> Run(

@@ -1,9 +1,11 @@
 #define Impl
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 using Tsinswreng.CsCore.Tools;
 
 namespace Ngaq.Core.Word.Models.Learn_;
@@ -93,33 +95,37 @@ public class WordForLearn
 
 
 	#region IPoBase
-	public i64 InsertedAt{
-		get{return PoWord.InsertedAt;}
-		set{PoWord.InsertedAt = value;}
+	public Tempus DbCreatedAt{
+		get{return PoWord.DbCreatedAt;}
+		set{PoWord.DbCreatedAt = value;}
 	}
 
-	public i64? CreatedAt{
+	public Tempus CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
 	}
 
-
-	public IdUser? CreatedBy{
-		get{return PoWord.CreatedBy;}
-		set{PoWord.CreatedBy = value;}
+	public Tempus? DbUpdatedAt{
+		get{return PoWord.DbUpdatedAt;}
+		set{PoWord.DbUpdatedAt = value;}
 	}
+
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
-	public i64? UpdatedAt{
+	public Tempus? UpdatedAt{
 		get{return PoWord.UpdatedAt;}
 		set{PoWord.UpdatedAt = value;}
+	}
+	public IdUser? CreatedBy{
+		get{return PoWord.CreatedBy;}
+		set{PoWord.CreatedBy = value;}
 	}
 	public IdUser? LastUpdatedBy{
 		get{return PoWord.LastUpdatedBy;}
 		set{PoWord.LastUpdatedBy = value;}
 	}
-	public i64 Status{
+	public PoStatus Status{
 		get{return PoWord.Status;}
 		set{PoWord.Status = value;}
 	}
@@ -157,6 +163,6 @@ public static class ExtnIWordForLearn{
 		z.PrevTurnLearnRecords = z.UnsavedLearnRecords;
 		z.UnsavedLearnRecords = new List<ILearnRecord>();
 		z.OnPropertyChanged("");//事件“INotifyPropertyChanged.PropertyChanged”只能出现在 += 或 -= 的左边CS0079
-		return Nil;
+		return NIL;
 	}
 }

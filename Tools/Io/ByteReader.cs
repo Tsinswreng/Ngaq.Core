@@ -60,7 +60,7 @@ public class ByteReader: I_Iter<u8>, IDisposable{
 		IsReadingChunk = true;
 		CurChunk = await ReadNextChunk();
 		IsReadingChunk = false;
-		return Nil;
+		return NIL;
 	}
 
 

@@ -13,7 +13,7 @@ public class ErrMgr{
 		// 	throw new FatalLogicErr("Error already exists: "+key.ToString());
 		// }
 		//ErrSet.Set(key, Nil);
-		ErrSet[key] = Nil;
-		return Nil;
+		ErrSet[key] = NIL;
+		return NIL;
 	}
 }

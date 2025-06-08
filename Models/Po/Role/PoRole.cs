@@ -1,25 +1,14 @@
 #define Impl
 using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Role;
 
 public class PoRole
-	:IPoBase
+	:PoBase
 	,I_Id<IdRole>
 {
 	public IdRole Id { get; set; }
 	public str? Key {get;set;}
-	#region IPoBase
-	public i64 InsertedAt{get;set;}
-	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	#endif
-
-	public i64? CreatedAt{get;set;}
-	public IdUser? CreatedBy{get;set;}
-	public i64? UpdatedAt{get;set;}
-	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
-	public i64 Status{get;set;}
-	#endregion IPoBase
 
 }

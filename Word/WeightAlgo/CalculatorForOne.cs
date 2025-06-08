@@ -21,7 +21,7 @@ public class CalculatorForOne{
 		State = new();
 		State.Word = Word;
 		_PreCount();
-		return Nil;
+		return NIL;
 	}
 
 	public virtual str Log(str s){
@@ -30,7 +30,7 @@ public class CalculatorForOne{
 
 	nil _PreCount(){
 		_FindFinalAddPos();
-		return Nil;
+		return NIL;
 	}
 
 	nil _FindFinalAddPos(){
@@ -41,7 +41,7 @@ public class CalculatorForOne{
 				break;
 			}
 		}
-		return Nil;
+		return NIL;
 	}
 
 	public Task<nil> RunAsy(CT Ct){
@@ -65,7 +65,7 @@ public class CalculatorForOne{
 				_HandleFinal();
 			}
 		}
-		return Nil;
+		return NIL;
 	}
 
 	nil _Add(){
@@ -82,7 +82,7 @@ public class CalculatorForOne{
 		WordState.Weight *= weight;
 		//TODO log change of weight
 
-		return Nil;
+		return NIL;
 	}
 
 	nil _Rmb(){
@@ -103,7 +103,7 @@ public class CalculatorForOne{
 			WordState.Weight /= weight0;
 		}
 		//TODO log change
-		return Nil;
+		return NIL;
 	}
 
 	nil _Fgt(){
@@ -111,12 +111,13 @@ public class CalculatorForOne{
 		var Prev = _GetPrevLearnRecord();
 		f64 weight0 = _CalcTimeWeightForCur();
 		weight0 *= WordState.CurCntAdd; // curPos之後之cnt_add不算
+		weight0 /= 10;
 		if(Prev.Learn == ELearn.Inst.Add){
 			weight0 *= 4;
 		}
 		WordState.Weight *= weight0;
 		//TODO log change
-		return Nil;
+		return NIL;
 	}
 
 	nil _HandleFinal(){
@@ -148,7 +149,7 @@ public class CalculatorForOne{
 			WordState.Weight *= Bonus;
 			//TODO log
 		}
-		return Nil;
+		return NIL;
 	}
 
 
