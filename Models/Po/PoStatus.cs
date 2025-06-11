@@ -1,12 +1,17 @@
 namespace Ngaq.Core.Models.Po;
 
 using TStruct = PoStatus;
-using TPrimitive = i64;
+using TPrimitive = i32;
 using System.Diagnostics.CodeAnalysis;
 
 public struct PoStatus(TPrimitive V)
 	:IEquatable<PoStatus>
 {
+
+	public static PoStatus Normal = new PoStatus(0);
+	public static PoStatus Deleted = new PoStatus(1);
+	public static PoStatus Disabled = new PoStatus(2);
+
 	public TPrimitive Value{get;set;} = V;
 
 	public static implicit operator TPrimitive(TStruct e){
