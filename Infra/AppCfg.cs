@@ -6,4 +6,5 @@ public class AppCfg{
 	public static AppCfg Inst => _Inst??= new AppCfg();
 
 	public str SqlitePath{get;set;} = "./Ngaq.Sqlite";
+	public str? GalleryDir{get;set;}
 }

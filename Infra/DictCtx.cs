@@ -14,6 +14,7 @@ namespace Ngaq.Core.Infra;
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoLearn))]
 [DictType(typeof(Prop))]
+[DictType(typeof(AppCfg))]
 //[DictType(typeof(BoWord))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx{
