@@ -1,18 +1,19 @@
+
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
 {
 	public PLACEHOLDERID():this(0){
-		Value = Ngaq.Core.Tools.ToolId.NewUlid_UInt128();
+		Value = Tsinswreng.CsUlid.IdTool.NewUlidUInt128();
 	}
 
 	public static PLACEHOLDERID FromLow64Base(string Low64Base){
-		var Num = Ngaq.Core.Tools.ToolId.Low64BaseToUInt128(Low64Base);
+		var Num = Tsinswreng.CsUlid.IdTool.Low64BaseToUInt128(Low64Base);
 		return new PLACEHOLDERID(Num);
 	}
 
 	public static PLACEHOLDERID FromByteArr(byte[] bytes){
-		var Num = Ngaq.Core.Tools.ToolId.ByteArrToUInt128(bytes);
+		var Num = Tsinswreng.CsUlid.IdTool.ByteArrToUInt128(bytes);
 		return new PLACEHOLDERID(Num);
 	}
 
@@ -27,7 +28,7 @@ partial struct PLACEHOLDERID
 	public static implicit operator PLACEHOLDERID(UInt128 value) => new(value);
 
 	public override string ToString(){
-		return Ngaq.Core.Tools.ToolId.ToLow64Base(Value);
+		return Tsinswreng.CsUlid.IdTool.ToLow64Base(Value);
 	}
 
 	public static bool operator ==(PLACEHOLDERID left, PLACEHOLDERID right)
