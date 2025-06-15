@@ -29,15 +29,15 @@ public class JnWord
 	// }
 
 	public JnWord(){}
-	public JnWord(PoWord PoWord, IList<PoKv> Props, IList<PoLearn> Learns){
+	public JnWord(PoWord PoWord, IList<PoWordProp> Props, IList<PoWordLearn> Learns){
 		this.PoWord = PoWord;
 		this.Props = Props;
 		this.Learns = Learns;
 	}
 
 	public PoWord PoWord{get;set;} = new PoWord();
-	public IList<PoKv> Props{get;set;} = new List<PoKv>();
-	public IList<PoLearn> Learns{get;set;} = new List<PoLearn>();
+	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
+	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
 
 	public IdWord Id{
 		get{return PoWord.Id;}
@@ -124,7 +124,7 @@ public class JnWord
 		return z;
 	}
 
-	public PoLearn AddLearn(PoLearn Learn){
+	public PoWordLearn AddLearn(PoWordLearn Learn){
 		Learn.WordId = PoWord.Id.Value;
 		Learns.Add(Learn);
 		return Learn;
@@ -138,15 +138,15 @@ public class JnWord
 	 * @param w2 已有者
 	 * @returns 未加過之prop
 	 */
-	public static IList<PoKv> DiffProps(
-		IList<PoKv> PropsToAdd
-		,IList<PoKv> ExistingProps
+	public static IList<PoWordProp> DiffProps(
+		IList<PoWordProp> PropsToAdd
+		,IList<PoWordProp> ExistingProps
 	){
 		var diff = Algo.DiffListIntoDict(
-			(IList<PoKv>)PropsToAdd, (IList<PoKv>)ExistingProps
+			(IList<PoWordProp>)PropsToAdd, (IList<PoWordProp>)ExistingProps
 			, (e)=> e.UpdatedAt ?? e.CreatedAt
 		);
-		List<PoKv> ans = [];
+		List<PoWordProp> ans = [];
 		foreach(var kvp in diff){
 			ans.AddRange(kvp.Value);
 		}

@@ -12,14 +12,14 @@ namespace Ngaq.Core.Model.Po.Learn_;
 // }
 
 
-public partial class PoLearn
+public partial class PoWordLearn
 	:PoBase
 	,I_Id<IdLearn>
 	,I_WordId
 	//,IPoKv
 {
 
-	public static PoLearn Example{get;set;} = new PoLearn();
+	public static PoWordLearn Example{get;set;} = new PoWordLearn();
 
 	public IdLearn Id { get; set; } = new IdLearn();
 

@@ -13,7 +13,7 @@ public interface I_StrKey_Props{
 public static class ExtnI_StrKey_Props{
 	public static IDictionary<str, IList<IProp>> FromPoKvs(
 		this IDictionary<str, IList<IProp>> z
-		,IEnumerable<PoKv> PoKvs
+		,IEnumerable<PoWordProp> PoKvs
 	){
 		foreach(var PoKv in PoKvs){
 			if(PoKv.KType == (i64)EKvType.Str){

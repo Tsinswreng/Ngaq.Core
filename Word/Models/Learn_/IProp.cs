@@ -8,7 +8,7 @@ public interface IProp:IPoKv{
 }
 
 public class Prop
-	:PoKv
+	:PoWordProp
 	,IProp
 {
 
@@ -18,9 +18,9 @@ public static class ExtnIProp{
 	public static IProp ToIProp(
 		this IPoKv z
 	){
-		var SrcDict = DictCtx.ToDict(z);
+		var SrcDict = DictCtx.Inst.ToDictT(z);
 		var R = new Prop();
-		DictCtx.Assign(R, SrcDict);
+		DictCtx.Inst.AssignT(R, SrcDict);
 
 		return R;
 	}

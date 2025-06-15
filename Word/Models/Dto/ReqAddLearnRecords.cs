@@ -6,7 +6,7 @@ namespace Ngaq.Core.Model.Word.Req;
 
 public struct WordId_PoLearns{
 	public IdWord WordId;
-	public IEnumerable<PoLearn> PoLearns;
+	public IEnumerable<PoWordLearn> PoLearns;
 }
 
 public struct WordId_LearnRecords{

@@ -17,7 +17,7 @@ public struct LearnRecord
 
 public static class ExtnLearnRecord{
 	public static ILearnRecord ToLearnRecord(
-		this PoLearn PoLearn
+		this PoWordLearn PoLearn
 	){
 		var learn = PoLearn.LearnResult;
 		var record = new LearnRecord(){
@@ -27,11 +27,11 @@ public static class ExtnLearnRecord{
 		return record;
 	}
 
-	public static PoLearn ToPoLearn(
+	public static PoWordLearn ToPoLearn(
 		this ILearnRecord z
 		,IdWord? WordId = null
 	){
-		var R = new PoLearn();
+		var R = new PoWordLearn();
 		R.LearnResult = z.Learn;
 		R.CreatedAt = z.UnixMs;
 		if(WordId != null){

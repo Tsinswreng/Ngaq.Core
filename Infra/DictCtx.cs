@@ -1,34 +1,28 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
+using System.Xml.Serialization;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models.Learn_;
-using Tsinswreng.CsSrcGen.Dict;
-using Tsinswreng.CsSrcGen.Dict.Attributes;
+using Tsinswreng.CsSrcGen.DictMapper;
+using Tsinswreng.CsSrcGen.DictMapper.Attributes;
 namespace Ngaq.Core.Infra;
 
 [DictType(typeof(IPoKv))]
-[DictType(typeof(PoKv))]
+[DictType(typeof(PoWordProp))]
 [DictType(typeof(PoWord))]
-[DictType(typeof(PoLearn))]
+[DictType(typeof(PoWordLearn))]
 [DictType(typeof(Prop))]
 [DictType(typeof(AppCfg))]
 //[DictType(typeof(BoWord))]
 //[DictType(typeof(TestParent))]
 public partial class DictCtx{
+protected static DictCtx? _Inst = null;
+public static DictCtx Inst => _Inst??= new DictCtx();
 
-	public static IDictMapper DictMapper{get;} = new DictMapper_();
 
-	public class DictMapper_:IDictMapper{
-		public IDictionary<str, object?> ToDictT<T>(T obj){
-			return DictCtx.ToDictT(obj);
-		}
-		public T AssignT<T> (T obj, IDictionary<str, object?> dict){
-			return DictCtx.AssignT(obj, dict);
-		}
-	}
 	// public static IDictionary<str, object> ToDictT<
 	// 	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
 	// 	T

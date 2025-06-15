@@ -31,7 +31,7 @@ public static class ExtnI_Learn_Records{
 
 	public static IDictionary<Learn, IList<ILearnRecord>> AddFromPoLearns(
 		this IDictionary<Learn, IList<ILearnRecord>> z
-		,IEnumerable<PoLearn> PoLearns
+		,IEnumerable<PoWordLearn> PoLearns
 	){
 		foreach(var PoLearn in PoLearns){
 			var record = PoLearn.ToLearnRecord();

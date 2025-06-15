@@ -53,7 +53,7 @@ public class PoWord
 	#endregion I_Po_Word
 
 	public override string ToString() {
-		var Dict = DictCtx.ToDict(this);
+		var Dict = DictCtx.Inst.ToDictT(this);
 		return ExtnIDict.Print(Dict);
 	}
 

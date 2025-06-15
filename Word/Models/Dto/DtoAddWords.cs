@@ -7,7 +7,7 @@ public class DtoUpdatedWord{
 	public DtoUpdatedWord(
 		JnWord WordInDb
 		,JnWord WordToAdd
-		,IList<PoKv> DiffedProps
+		,IList<PoWordProp> DiffedProps
 	){
 		this.WordInDb = WordInDb;
 		this.WordToAdd = WordToAdd;
@@ -24,7 +24,7 @@ public class DtoUpdatedWord{
 	/// <summary>
 	/// WordToAdd有洏WordInDb無之屬性 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
-	public IList<PoKv> DiffedProps{get;set;} = new List<PoKv>();
+	public IList<PoWordProp> DiffedProps{get;set;} = new List<PoWordProp>();
 
 }
 

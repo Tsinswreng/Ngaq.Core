@@ -26,8 +26,8 @@ public class ParseResultMapper(){
 		return NIL;
 	}
 
-	public PoKv PropToKv(I_Prop prop){
-		var po_kv = new PoKv();
+	public PoWordProp PropToKv(I_Prop prop){
+		var po_kv = new PoWordProp();
 		po_kv.SetStr(prop.Key.Text.Trim(), prop.Value.Text.Trim());
 		return po_kv;
 	}
@@ -65,7 +65,7 @@ public class ParseResultMapper(){
 					bodyStrList.Add(seg.Text.Trim());
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
-				var kv_descr = new PoKv();
+				var kv_descr = new PoWordProp();
 				kv_descr.CreatedAt = UnixMs;
 				kv_descr.SetStrToken(
 					null, KeysProp.Inst.description, bodyStr.Trim()

@@ -42,7 +42,7 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.description,
@@ -57,7 +57,7 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.description,
@@ -72,7 +72,7 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.summary,"招待"
@@ -80,14 +80,14 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.source,"N2"
 			);
 		}
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.note,"這是筆記"
@@ -95,22 +95,22 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Fgt;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Rmb;
 		}
@@ -133,7 +133,7 @@ public class SampleWord{
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.description,
@@ -148,7 +148,7 @@ int.	你好；喂；您好；哈嘍
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.description,
@@ -166,7 +166,7 @@ v. 說（或大聲說）“喂”；打招呼
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.summary,"你好"
@@ -174,14 +174,14 @@ v. 說（或大聲說）“喂”；打招呼
 		}
 
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.source,"A Brief History of Homo Sapiens"
 			);
 		}
 		{
-			var o = new PoKv();
+			var o = new PoWordProp();
 			Ans.Props.Add(o);
 			o.SetStrToken(
 				null,P.note,"this is a note"
@@ -189,22 +189,22 @@ v. 說（或大聲說）“喂”；打招呼
 		}
 
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Add;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Fgt;
 		}
 		{
-			var o = new PoLearn();
+			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
 			o.LearnResult = ELearn.Inst.Rmb;
 		}

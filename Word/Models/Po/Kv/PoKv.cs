@@ -5,16 +5,16 @@ using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Kv;
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
-public partial class PoKv
+public partial class PoWordProp
 	:PoBase
-	,I_Id<IdKv>
+	,I_Id<IdWordProp>
 	,IPoKv
 	,I_WordId
 {
 
-	public static PoKv Example{get;set;} = new PoKv();
+	public static PoWordProp Example{get;set;} = new PoWordProp();
 
-	public IdKv Id { get; set; } = new IdKv();
+	public IdWordProp Id { get; set; } = new IdWordProp();
 
 	// [Obsolete("用WordId")]
 	// public i64 FKeyType { get; set; } = (i64)EFKeyType.UInt128;
