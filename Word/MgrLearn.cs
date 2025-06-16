@@ -96,7 +96,7 @@ public class MgrLearn{
 	public IUserCtxMgr UserCtxMgr{get;set;}
 	public IWeightCalctr WeightCalctr{get;set;}
 
-	public event EventHandler<LearnEventArgs>? EventLearn;
+	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
 
 
 	public enum ELearnOpRtn:i64{
@@ -221,7 +221,7 @@ public class MgrLearn{
 		State.MgrLearnedWords.Set(Learn, Word);
 		var LearnRecord = new LearnRecord(Learn);
 		State.OperationStatus.Save = false;
-		EventLearn?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Learn, IsUndo=false});
+		OnLearnOrUndo?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Learn, IsUndo=false});
 		return Word.AddLearnRecordIfEmpty(LearnRecord);
 	}
 
@@ -234,7 +234,7 @@ public class MgrLearn{
 		var Last = Word.RmLastUnsavedLearnRecord();
 		if(Last != null){
 			State.MgrLearnedWords.DeleteWordFromLearnGroup(Last.Learn, Word);
-			EventLearn?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Last.Learn, IsUndo=true});
+			OnLearnOrUndo?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Last.Learn, IsUndo=true});
 			return (i64)ELearnOpRtn.Undo;
 		}
 		return (i64)ELearnOpRtn.Invalid;

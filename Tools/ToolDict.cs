@@ -17,6 +17,9 @@ public class ToolDict {
 		IDictionary<K, V> Dict
 		,IList<K> KeyPath
 	){
+		// if(KeyPath.Count >0 && KeyPath[0] is str s && s == "GalleryDirs"){//debug
+		// 	System.Console.WriteLine();
+		// }
 		if (Dict == null || KeyPath == null || KeyPath.Count == 0){
 			return null;
 		}

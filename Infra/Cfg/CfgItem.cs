@@ -9,6 +9,14 @@ public class CfgItem<T>:ICfgItem<T>{
 
 public static class ExtnCfgItem{
 
+/// <summary>
+///
+/// </summary>
+/// <typeparam name="T"></typeparam>
+/// <param name="Item"></param>
+/// <param name="CfgAccessor"></param>
+/// <returns></returns>
+/// <exception cref="ArgumentException"></exception>
 	public static T? Get<T>(
 		this ICfgItem<T> Item
 		,ICfgAccessor? CfgAccessor = null
@@ -22,10 +30,11 @@ public static class ExtnCfgItem{
 			return null;
 		}
 		if(Got.Data is not T R){
-			throw new ArgumentException("Got.Data is not T");
+			throw new ArgumentException("Got.Data is not T: "+typeof(T));
 		}
 		return R;
 	}
+
 
 	// public static T? Get<T>(
 	// 	this ICfgItem Item
