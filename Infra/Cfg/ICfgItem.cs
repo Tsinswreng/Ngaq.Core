@@ -1,24 +1,10 @@
-using Tsinswreng.CsCore.Tools;
-
 namespace Ngaq.Core.Infra.Cfg;
 
-public interface ICfgValue: ITypedObj{
-
+public interface ICfgItem{
+	public IList<str> Path{get;set;}
+	public ICfgValue? DfltValue{get;set;}
 }
 
-public class CfgValue: ICfgValue{
-	public Type? Type{get;set;}
-	//用戶自定義
-	public long TypeCode{get;set;}
-	public object? Data{get;set;}
-	public static ICfgValue Mk<T>(T Data){
-		var R = new CfgValue();
-		R.Type = typeof(T);
-		R.Data = Data;
-		return R;
-	}
-}
+public interface ICfgItem<T>:ICfgItem{
 
-// public class ExtnITypedObj{
-// 	public static
-// }
+}
