@@ -6,7 +6,7 @@ public interface IImgGetter{
 public enum EType{
 	Stream = 1
 }
-	ITypedObj GetN(u64 n);
+	IEnumerable<ITypedObj> GetN(u64 n);
 }
 
 

@@ -15,6 +15,7 @@ public static class JSON {
 		Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出
 		,PropertyNamingPolicy = null  // 关闭命名策略
 		,TypeInfoResolver = AppJsonCtx.Default
+		,ReadCommentHandling = JsonCommentHandling.Skip
 	};
 
 	public static str stringify<T>(

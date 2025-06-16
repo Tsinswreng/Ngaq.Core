@@ -15,13 +15,14 @@ namespace Ngaq.Core.Infra;
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoWordLearn))]
 [DictType(typeof(Prop))]
-[DictType(typeof(AppCfg))]
+//[DictType(typeof(AppCfg))] //TargetType須惟一
+// [DictType(typeof(AppCfg), true)]
+// [DictType(typeof(AppCfg), Recursive = true)]
 //[DictType(typeof(BoWord))]
 //[DictType(typeof(TestParent))]
-public partial class DictCtx{
-protected static DictCtx? _Inst = null;
-public static DictCtx Inst => _Inst??= new DictCtx();
-
+public partial class CoreDictMapper{
+protected static CoreDictMapper? _Inst = null;
+public static CoreDictMapper Inst => _Inst??= new CoreDictMapper();
 
 	// public static IDictionary<str, object> ToDictT<
 	// 	[DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]

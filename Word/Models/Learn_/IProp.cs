@@ -18,9 +18,9 @@ public static class ExtnIProp{
 	public static IProp ToIProp(
 		this IPoKv z
 	){
-		var SrcDict = DictCtx.Inst.ToDictT(z);
+		var SrcDict = CoreDictMapper.Inst.ToDictShallowT(z);
 		var R = new Prop();
-		DictCtx.Inst.AssignT(R, SrcDict);
+		CoreDictMapper.Inst.AssignShallowT(R, SrcDict);
 
 		return R;
 	}
