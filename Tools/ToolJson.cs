@@ -6,7 +6,11 @@ using System.Text.Json;
 
 public static class ToolJson {
 	public static IDictionary<string, object?> JsonStrToDict(string json) {
-		using JsonDocument doc = JsonDocument.Parse(json);
+		using JsonDocument doc = JsonDocument.Parse(json,
+			new JsonDocumentOptions{
+				CommentHandling = JsonCommentHandling.Skip
+			}
+		);
 		JsonElement root = doc.RootElement;
 
 		if (root.ValueKind != JsonValueKind.Object){
