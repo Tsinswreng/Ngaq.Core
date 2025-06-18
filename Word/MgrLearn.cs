@@ -123,6 +123,7 @@ public class MgrLearn{
 		public IAppErr SaveFailed() => Mk(nameof(SaveFailed));
 	}
 	public EErr_ EErr{get;set;} = EErr_.Inst;
+	public StateLearnWords State{get;set;} = new();
 
 	nil ResetLearnedState(){
 		State.MgrLearnedWords = new();
@@ -137,9 +138,9 @@ public class MgrLearn{
 	}
 
 
-	public StateLearnWords State{get;set;} = new();
+
 	/// <summary>
-	/// 得諸詞
+	/// 取諸詞
 	/// </summary>
 	/// <param name="JWords"></param>
 	/// <returns></returns>
@@ -280,6 +281,11 @@ public class MgrLearn{
 			E.Errors.Add(e);
 			return Err(E);
 		}
+		return NIL;
+	}
+
+	public nil Reset(){
+		ResetLearnedState();
 		return NIL;
 	}
 }

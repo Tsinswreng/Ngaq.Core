@@ -27,6 +27,8 @@ public class AppCfgItems{
 	public ICfgItem<str> SqlitePath = Mk([nameof(SqlitePath)], "./Ngaq.sqlite");
 #endif
 
-	public ICfgItem<IList<object?>> GalleryDirs = Mk([nameof(GalleryDirs)], (IList<object?>)[]);
+	public ICfgItem Background = Mk([nameof(Background)], null);
+
+	public ICfgItem<IList<object?>> GalleryDirs = Mk([nameof(Background), nameof(GalleryDirs)], (IList<object?>)[]);
 
 }
