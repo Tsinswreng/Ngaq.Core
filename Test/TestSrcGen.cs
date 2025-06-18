@@ -1,9 +1,9 @@
 // using Ngaq.Core.Model.Po;
 // using Ngaq.Core.Model.Po.Kv;
 // using Ngaq.Core.Model.Po.Word;
-// using Tsinswreng.CsSrcGen.Dict;
-// using Tsinswreng.CsSrcGen.Dict.Attributes;
-// using Tsinswreng.CsSrcGen.Dict.CodeGenerator.Ctx;
+// using Tsinswreng.CsDictMapper.Dict;
+// using Tsinswreng.CsDictMapper.Dict.Attributes;
+// using Tsinswreng.CsDictMapper.Dict.CodeGenerator.Ctx;
 
 
 // namespace Ngaq.Core.Test;

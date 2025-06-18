@@ -6,8 +6,8 @@ using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models.Learn_;
-using Tsinswreng.CsSrcGen.DictMapper;
-using Tsinswreng.CsSrcGen.DictMapper.Attributes;
+using Tsinswreng.CsDictMapper.DictMapper;
+using Tsinswreng.CsDictMapper.DictMapper.Attributes;
 namespace Ngaq.Core.Infra;
 
 [DictType(typeof(IPoKv))]
