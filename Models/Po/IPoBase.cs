@@ -2,9 +2,10 @@
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
+using Tsinswreng.CsCore.IF;
 
 namespace Ngaq.Core.Model.Po;
-public interface IPoBase{
+public interface IPoBase: I_ShallowCloneSelf{
 	#region IPoBase
 	public Tempus DbCreatedAt{get;set;}
 	public Tempus? DbUpdatedAt{get;set;}

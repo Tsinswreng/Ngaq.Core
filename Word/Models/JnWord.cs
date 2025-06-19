@@ -1,13 +1,16 @@
+#define Impl
+using System.Runtime.InteropServices;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
-using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
+using Ngaq.Core.Word.Models.Dto;
+using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsCore.Tools;
 
 namespace Ngaq.Core.Model.Bo;
@@ -27,6 +30,13 @@ public class JnWord
 	// 	}
 	// 	return "";
 	// }
+
+	public object ShallowCloneSelf()
+#if Impl
+	{
+		return MemberwiseClone();
+	}
+#endif
 
 	public JnWord(){}
 	public JnWord(PoWord PoWord, IList<PoWordProp> Props, IList<PoWordLearn> Learns){
@@ -143,14 +153,25 @@ public class JnWord
 		,IList<PoWordProp> ExistingProps
 	){
 		var diff = Algo.DiffListIntoDict(
-			(IList<PoWordProp>)PropsToAdd, (IList<PoWordProp>)ExistingProps
+			PropsToAdd, ExistingProps
 			, (e)=> e.UpdatedAt ?? e.CreatedAt
 		);
 		List<PoWordProp> ans = [];
-		foreach(var kvp in diff){
-			ans.AddRange(kvp.Value);
+		foreach(var (Time,Props) in diff){
+			ans.AddRange(Props);
 		}
 		return ans;
+	}
+
+	public static IList<PoWordLearn> DiffLearns(
+		IList<PoWordLearn> LearnsOfNeo
+		,IList<PoWordLearn> ExistingLearns
+	){
+		var diff = Algo.DiffListIntoDict(
+			LearnsOfNeo, ExistingLearns
+			,(e)=> e.CreatedAt
+		);
+		return diff.SelectMany(Time_Learns=>Time_Learns.Value).ToList();
 	}
 
 }
@@ -267,4 +288,37 @@ public static class ExtnBoWord{
 		return R;
 	}
 
+	public static JnWord SortByCreatedAtAsc(
+		this JnWord z
+	){
+		z.Props.Sort((a,b)=>a.CreatedAt.Value.CompareTo(b.CreatedAt));
+		z.Learns.Sort((a,b)=>a.CreatedAt.Value.CompareTo(b.CreatedAt));
+		return z;
+	}
+
+	public static DtoWordDiff? Diff(
+		JnWord Other
+		,JnWord Existing
+	){
+		if(!IsSameUserWord(Other, Existing)){
+			throw new ErrArg("!IsSameUserWord(z, Other)");
+		}
+		if(
+			Other.CreatedAt == Existing.CreatedAt
+			&& Other.UpdatedAt == Existing.UpdatedAt
+			&& Other.Props.Count == Existing.Props.Count
+			&& Other.Learns.Count == Existing.Learns.Count
+		){
+			return null;
+		}
+
+		var DiffedProps = JnWord.DiffProps(Other.Props, Existing.Props);
+		var DiffedLearns = JnWord.DiffLearns(Other.Learns, Existing.Learns);
+		var R = new DtoWordDiff(){
+			PoWordLearns = DiffedLearns
+			,PoWordProps = DiffedProps
+		};
+		return R;
+	}
 }
+// JNI
