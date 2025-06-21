@@ -1,32 +1,31 @@
 using Ngaq.Core.Infra;
-using Ngaq.Core.Infra.Page;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
-
-namespace Ngaq.Core.Service.Word;
+namespace Ngaq.Core.Word.Svc;
+using Tsinswreng.CsPage;
 
 public interface ISvcWord{
 
 	Task<nil> AddWordsFromFilePath(
 		IUserCtx UserCtx
 		,Path_Encode Path_Encode
-		,CancellationToken ct
+		, CT ct
 	);
 
 	Task<nil> AddWordsFromText(
 		IUserCtx UserCtx
 		,string Text
-		,CancellationToken ct
+		, CT ct
 	);
 
 	public Task<IPageAsy<JnWord>> PageBoWord(
 		IUserCtx UserCtx
 		,IPageQuery PageQry
-		,CancellationToken Ct
+		, CT Ct
 	);
 
 	public Task<nil> AddWordId_PoLearnss(

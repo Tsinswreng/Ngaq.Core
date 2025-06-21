@@ -6,7 +6,9 @@ namespace Ngaq.Core.Word.Models.Learn_;
 public struct LearnRecord
 	:ILearnRecord
 {
+	[Impl]
 	public Learn Learn{get;set;}
+	[Impl]
 	public i64 UnixMs{get;set;} = DateTimeOffset.Now.ToUnixTimeMilliseconds();
 	public LearnRecord(Learn Value){
 		Learn = Value;

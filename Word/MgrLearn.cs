@@ -4,7 +4,6 @@ using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
-using Ngaq.Core.Service.Word;
 
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;

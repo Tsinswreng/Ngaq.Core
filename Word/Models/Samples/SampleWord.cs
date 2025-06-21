@@ -4,6 +4,7 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Word.Models.Learn_;
+using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Model.Samples.Word;
 

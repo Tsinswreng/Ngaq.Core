@@ -1,2 +1,2 @@
-namespace Ngaq.Core.Model.Bo.IFWord;
+namespace Ngaq.Core.Word.Models;
 

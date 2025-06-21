@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Infra;
 
-public interface IGetBaseUrl{
+public interface I_GetBaseUrl{
 	str GetBaseUrl();
 }
