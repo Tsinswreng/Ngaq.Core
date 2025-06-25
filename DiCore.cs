@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Ngaq.Core.Infra.Cfg;
+using Tsinswreng.CsCfg;
 namespace Ngaq.Core;
 
 public class DiCore{

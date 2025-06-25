@@ -1,3 +1,5 @@
+using Tsinswreng.CsCfg;
+
 namespace Ngaq.Core.Infra.Cfg;
 
 public class LocalCfg: JsonCfgAccessor, ICfgAccessor{
