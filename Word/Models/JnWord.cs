@@ -31,6 +31,7 @@ public class JnWord
 	// 	return "";
 	// }
 
+	[Impl]
 	public object ShallowCloneSelf()
 #if Impl
 	{
@@ -48,7 +49,7 @@ public class JnWord
 	public PoWord PoWord{get;set;} = new PoWord();
 	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
-
+	[Impl]
 	public IdWord Id{
 		get{return PoWord.Id;}
 		set{
@@ -57,28 +58,37 @@ public class JnWord
 		}
 	}
 
+	[Impl]
 	public IdUser Owner{
 		get{return PoWord.Owner;}
 		set{PoWord.Owner = value;}
 	}
-
+[Impl]
 	public str Lang{
 		get{return PoWord.Lang;}
 		set{PoWord.Lang = value;}
 	}
-
+[Impl]
 	public str Head{
 		get{return PoWord.Head;}
 		set{PoWord.Head = value;}
 	}
+	[Impl]
+	public Tempus BizTimeVer{
+		get{return PoWord.BizTimeVer;}
+		set{PoWord.BizTimeVer = value;}
+	}
+
 
 
 	#region IPoBase
+	[Impl]
 	public Tempus DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}
 		set{PoWord.DbCreatedAt = value;}
 	}
 
+[Impl]
 	public Tempus CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
@@ -87,22 +97,27 @@ public class JnWord
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
+	[Impl]
 	public Tempus? UpdatedAt{
 		get{return PoWord.UpdatedAt;}
 		set{PoWord.UpdatedAt = value;}
 	}
+	[Impl]
 	public Tempus? DbUpdatedAt{
 		get{return PoWord.DbUpdatedAt;}
 		set{PoWord.DbUpdatedAt = value;}
 	}
+	[Impl]
 	public IdUser? CreatedBy{
 		get{return PoWord.CreatedBy;}
 		set{PoWord.CreatedBy = value;}
 	}
+	[Impl]
 	public IdUser? LastUpdatedBy{
 		get{return PoWord.LastUpdatedBy;}
 		set{PoWord.LastUpdatedBy = value;}
 	}
+	[Impl]
 	public PoStatus Status{
 		get{return PoWord.Status;}
 		set{PoWord.Status = value;}

@@ -1,4 +1,5 @@
 namespace Ngaq.Core.Infra.Cfg;
+//TODO獨立作項目
 public class CfgItem<T>:ICfgItem<T>{
 	public CfgItem(){
 
@@ -21,7 +22,7 @@ public static class ExtnCfgItem{
 		this ICfgItem<T> Item
 		,ICfgAccessor? CfgAccessor = null
 	)where T: class{
-		CfgAccessor ??= AppCfg.Inst;
+		CfgAccessor ??= LocalCfg.Inst;
 		var Got = CfgAccessor.GetByPath(Item.Path);
 		if(Got == null){
 			return Item.DfltValue as T;
@@ -33,6 +34,21 @@ public static class ExtnCfgItem{
 			throw new ArgumentException("Got.Data is not T: "+typeof(T));
 		}
 		return R;
+	}
+
+	public static ICfgItem<object?> Mk(IList<str> Path, ICfgValue? DfltValue = null){
+		return new CfgItem<object?>{Path=Path, DfltValue=DfltValue};
+	}
+/// <summary>
+/// 如需列表則需定義潙IList<object> 不支持IList<str>等!
+/// </summary>
+/// <typeparam name="T2"></typeparam>
+/// <param name="Path"></param>
+/// <param name="DfltValue"></param>
+/// <returns></returns>
+	public static ICfgItem<T2> Mk<T2>(IList<str> Path, T2 DfltValue = default!){
+		var V = new CfgValue(){Type=typeof(T2), Data=DfltValue};
+		return new CfgItem<T2>{Path=Path, DfltValue=V};
 	}
 
 

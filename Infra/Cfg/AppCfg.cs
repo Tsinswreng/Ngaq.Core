@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Cfg;
 
-public class AppCfg: JsonCfgAccessor, ICfgAccessor{
-	protected static AppCfg? _Inst = null;
-	public static AppCfg Inst => _Inst??= new AppCfg();
+public class LocalCfg: JsonCfgAccessor, ICfgAccessor{
+	protected static LocalCfg? _Inst = null;
+	public static LocalCfg Inst => _Inst??= new LocalCfg();
 
 }

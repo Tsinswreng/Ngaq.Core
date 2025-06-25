@@ -2,9 +2,10 @@ using Ngaq.Core.Infra;
 
 namespace Ngaq.Core.Models.Po;
 
-public interface I_BizVerTime{
+public interface I_BizTimeVer{
 /// <summary>
 /// 業務版本時間戳 非樂觀鎖ʹ版本
 /// </summary>
-	public Tempus BizVerTime{get;set;}
+	//[Impl(typeof(I_BizTimeVer))]
+	public Tempus BizTimeVer{get;set;}
 }

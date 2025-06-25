@@ -17,6 +17,7 @@ public interface IPoWord
 	:IPoBase
 	,I_Id<IdWord>
 	,IHeadLangWord
+	,I_BizTimeVer
 {
 
 }
@@ -34,7 +35,7 @@ public class PoWord
 
 	public IdUser Owner{get;set;}
 
-	#region I_Po_Word
+	#region IPoWord
 
 	/// <summary>
 	/// 詞形標識
@@ -50,7 +51,10 @@ public class PoWord
 		="";
 #endif
 
-	#endregion I_Po_Word
+	#endregion IPoWord
+
+	[Impl(typeof(I_BizTimeVer))]
+	public Tempus BizTimeVer{get;set;}
 
 	public override string ToString() {
 		var Dict = CoreDictMapper.Inst.ToDictShallowT(this);
