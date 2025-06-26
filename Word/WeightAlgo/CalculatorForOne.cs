@@ -1,6 +1,6 @@
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.WeightAlgo.Models;
-using Tsinswreng.CsCore.Tools;
+using Tsinswreng.CsTools.Tools;
 
 namespace Ngaq.Core.Word.WeightAlgo;
 

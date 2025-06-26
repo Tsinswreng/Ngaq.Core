@@ -1,4 +1,4 @@
-using Tsinswreng.CsCore.Tools;
+using Tsinswreng.CsTools.Tools;
 
 namespace Ngaq.Core.FrontendIF;
 

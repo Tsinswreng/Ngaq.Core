@@ -1,7 +1,7 @@
 using System.ComponentModel;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
-using Tsinswreng.CsCore.IF;
+using Tsinswreng.CsTools.IF;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 

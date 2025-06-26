@@ -11,7 +11,7 @@ using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models.Dto;
 using Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsCore.Tools;
+using Tsinswreng.CsTools.Tools;
 
 namespace Ngaq.Core.Model.Bo;
 
@@ -277,7 +277,7 @@ public static class ExtnBoWord{
 	){
 
 		JnWord R = null!;
-		foreach(var (BoWord, i) in BoWords.IPairs()){
+		foreach(var (BoWord, i) in BoWords.VIPair()){
 			if(i == 0){
 				R = BoWord;
 			}else{

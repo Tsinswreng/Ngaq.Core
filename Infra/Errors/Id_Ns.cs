@@ -1,35 +1,58 @@
 namespace Ngaq.Core.Infra.Errors;
 
+public interface ITypedStatus{
+	/// <summary>
+	/// 狀態標識 作錯誤碼等
+	/// </summary>
+	public object Status { get;set; }
+	/// <summary>
+	/// 類型/命名空間。(Status, Type)當唯一
+	/// </summary>
+	public str? StatusType { get;set; }
+}
 
-public struct Id_Ns()
-	:IEquatable<Id_Ns>
+// public record Status_Ns(
+// 	///number or string
+// 	object Status
+// 	,string? Ns
+// ):IStatus_Ns;
+
+public struct TypedStatus()
+	:IEquatable<TypedStatus>
+	,ITypedStatus
 {
-	public str Id = "";
-	public str Ns = "";
+	public object Status{get;set;} = "";
+	public str? StatusType{get;set;} = "";
 
 	public override bool Equals(object? obj){
-		return obj is Id_Ns other && Equals(other);
+		return obj is TypedStatus other && Equals(other);
 	}
 
-	public bool Equals(Id_Ns other){
-		return string.Equals(Id, other.Id) && string.Equals(Ns, other.Ns);
+	public bool Equals(TypedStatus other){
+		return string.Equals(Status, other.Status) && string.Equals(StatusType, other.StatusType);
 	}
 
 	public override int GetHashCode() {
 		unchecked{
 			int hash = 17;
-			hash = hash * 23 + (Id != null ? Id.GetHashCode() : 0);
-			hash = hash * 23 + (Ns != null ? Ns.GetHashCode() : 0);
+			hash = hash * 23 + (Status != null ? Status.GetHashCode() : 0);
+			hash = hash * 23 + (StatusType != null ? StatusType.GetHashCode() : 0);
 			return hash;
 		}
 	}
 
 	public override string ToString() {
-		if(Ns != ""){
-			return $"{Ns}:{Id}";
+		if(StatusType != ""){
+			return $"{StatusType}:{Status}";
 		}
-		return Id;
+		return Status+"";
+	}
+	public static bool operator ==(TypedStatus left, TypedStatus right) {
+		return left.Equals(right);
 	}
 
+	public static bool operator !=(TypedStatus left, TypedStatus right) {
+		return !(left == right);
+	}
 }
 

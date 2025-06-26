@@ -1,5 +1,5 @@
 using Ngaq.Core.Model.Po.Kv;
-using Tsinswreng.CsCore.Tools.MultiDict;
+using Tsinswreng.CsTools.Tools.MultiDict;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 

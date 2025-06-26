@@ -7,8 +7,8 @@ using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
-using Tsinswreng.CsCore.IF;
-using Tsinswreng.CsCore.Tools;
+using Tsinswreng.CsTools.IF;
+using Tsinswreng.CsTools.Tools;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 

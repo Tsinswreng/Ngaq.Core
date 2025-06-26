@@ -1,5 +1,5 @@
 #define Impl
-using Tsinswreng.CsCore;
+using Tsinswreng.CsTools;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Learn_;

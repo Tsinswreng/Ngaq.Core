@@ -8,7 +8,7 @@ using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
-using Tsinswreng.CsCore.Tools;
+using Tsinswreng.CsTools.Tools;
 
 namespace Ngaq.Core.Word;
 

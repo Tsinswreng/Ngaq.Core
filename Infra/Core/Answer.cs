@@ -7,14 +7,10 @@ public struct Answer<T>()
 	bool _Ok = false;
 	public bool Ok{
 		get{return _Ok;}
-		set{
-			if(Errors.Count == 0){
-				_Ok = value;
-			}
-		}
+		set{_Ok = value;}
 	}
-	public ICollection<object?> Errors{get;set;} = new List<object?>();
-	public i64 Code{get;set;} = 0;
-	public str? CodeType{get;set;}
+	public ICollection<object?>? Errors{get;set;} = new List<object?>();
+	public object Status{get;set;} = 0;
+	public str? StatusType{get;set;}
 
 }

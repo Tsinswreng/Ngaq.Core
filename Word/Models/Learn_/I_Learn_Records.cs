@@ -1,5 +1,5 @@
 using Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsCore.Tools.MultiDict;
+using Tsinswreng.CsTools.Tools.MultiDict;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 public interface I_Learn_Records{
