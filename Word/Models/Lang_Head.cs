@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Model.Bo;
+namespace Ngaq.Core.Word.Models;
 
 public struct Head_Lang()
 	:IEquatable<Head_Lang>

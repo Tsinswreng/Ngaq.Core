@@ -1,8 +1,8 @@
 using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Service.Parser.Model;
+using Ngaq.Core.Word.Models;
 
 namespace Ngaq.Core.Service.Parser;
 

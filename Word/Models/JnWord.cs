@@ -2,18 +2,16 @@
 using System.Runtime.InteropServices;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
-using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models.Dto;
 using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsTools.Tools;
 
-namespace Ngaq.Core.Model.Bo;
+namespace Ngaq.Core.Word.Models;
 
 public class JnWord
 	:IPoWord
@@ -53,7 +51,7 @@ public class JnWord
 	public IdWord Id{
 		get{return PoWord.Id;}
 		set{
-			PoWord.Id = (IdWord)value;
+			PoWord.Id = value;
 			AssignId();
 		}
 	}
@@ -315,7 +313,7 @@ public static class ExtnBoWord{
 		JnWord Other
 		,JnWord Existing
 	){
-		if(!IsSameUserWord(Other, Existing)){
+		if(!Other.IsSameUserWord(Existing)){
 			throw new ErrArg("!IsSameUserWord(z, Other)");
 		}
 		if(

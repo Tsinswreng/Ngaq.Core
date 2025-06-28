@@ -2,7 +2,6 @@
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
-using Tsinswreng.CsTools.IF;
 
 namespace Ngaq.Core.Model.Po;
 public interface IPoBase: I_ShallowCloneSelf{

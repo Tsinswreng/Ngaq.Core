@@ -1,2 +1,3 @@
 global using Ngaq.Core.Infra.Core;
-global using Tsinswreng.CsTools;
+global using Tsinswreng.CsCore;
+global using Impl = Tsinswreng.CsCore.Impl;

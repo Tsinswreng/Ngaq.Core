@@ -21,5 +21,6 @@ public class LocalCfgItems{
 	public ICfgItem Background = Mk([nameof(Background)], null);
 
 	public ICfgItem<IList<object?>> GalleryDirs = Mk([nameof(Background), nameof(GalleryDirs)], (IList<object?>)[]);
+	public ICfgItem<str> ServerBaseUrl = Mk([nameof(ServerBaseUrl)], "");
 
 }

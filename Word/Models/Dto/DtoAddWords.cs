@@ -1,5 +1,5 @@
-using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
+using Ngaq.Core.Word.Models;
 
 namespace Ngaq.Core.Model.Word.Dto;
 

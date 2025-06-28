@@ -1,11 +1,12 @@
 using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.UserCtx;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
 namespace Ngaq.Core.Word.Svc;
+
+using Ngaq.Core.Word.Models;
 using Tsinswreng.CsPage;
 
 public interface ISvcWord{
