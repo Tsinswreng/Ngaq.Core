@@ -7,6 +7,9 @@ using System.Diagnostics.CodeAnalysis;
 public struct PoStatus(TPrimitive V)
 	:IEquatable<PoStatus>
 {
+	public static PoStatus Parse(TPrimitive v){
+		return new PoStatus(v);
+	}
 
 	public static PoStatus Normal = new PoStatus(0);
 	public static PoStatus Deleted = new PoStatus(1);

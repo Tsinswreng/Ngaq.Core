@@ -1,10 +1,9 @@
-namespace Ngaq.Core.Model.Sys.Req;
-
+namespace Ngaq.Core.Models.Sys.Req{
 public class ReqLogin{
 	public str? UniqueName{get;set;}
 	public str? Email{get;set;}
 	public str? Password{get;set;}
-	public i64 UserIdentityMode{get;set;} = (i64)EUserIdentityMode.UniqueName;
+	public i32 UserIdentityMode{get;set;} = (i32)EUserIdentityMode.UniqueName;
 	public bool KeepLogin{get;set;} = false;
 
 	public enum EUserIdentityMode{
@@ -12,3 +11,8 @@ public class ReqLogin{
 		Email = 2
 	}
 }
+
+}//~Ns
+
+
+

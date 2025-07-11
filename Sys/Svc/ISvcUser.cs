@@ -1,4 +1,6 @@
 using Ngaq.Core.Model.Sys.Req;
+using Ngaq.Core.Models.Sys.Req;
+using Ngaq.Core.Models.Sys.Resp;
 
 namespace Ngaq.Core.Sys.Svc;
 
@@ -7,5 +9,8 @@ public interface ISvcUser{
 		ReqAddUser ReqAddUser
 		,CT Ct
 	);
+
+	public Task<RespLogin> Login(ReqLogin ReqLogin, CT Ct);
+
 }
 

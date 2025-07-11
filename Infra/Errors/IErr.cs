@@ -3,3 +3,16 @@ namespace Ngaq.Core.Infra.Errors;
 /// 標記ˡ接口
 /// </summary>
 public interface IErr{}
+
+
+// public static class ExtnIErr{
+// 	public static IList<str> ToStrs(this object Err){
+// 		if(Err is str StrErr){
+// 			return new List<str>(){StrErr};
+// 		}
+// 		if(Err is Exception){
+// 			return new List<str>(){Err?.ToString()??""};
+// 		}
+
+// 	}
+// }
