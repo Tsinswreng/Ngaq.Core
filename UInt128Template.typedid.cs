@@ -8,12 +8,12 @@ partial struct PLACEHOLDERID
 	}
 
 	public static PLACEHOLDERID FromLow64Base(string Low64Base){
-		var Num = Tsinswreng.CsUlid.IdTool.Low64BaseToUInt128(Low64Base);
+		var Num = Tsinswreng.CsTools.ToolUInt128.Low64BaseToUInt128(Low64Base);
 		return new PLACEHOLDERID(Num);
 	}
 
 	public static PLACEHOLDERID FromByteArr(byte[] bytes){
-		var Num = Tsinswreng.CsUlid.IdTool.ByteArrToUInt128(bytes);
+		var Num = Tsinswreng.CsTools.ToolUInt128.ByteArrToUInt128(bytes);
 		return new PLACEHOLDERID(Num);
 	}
 
@@ -28,7 +28,7 @@ partial struct PLACEHOLDERID
 	public static implicit operator PLACEHOLDERID(UInt128 value) => new(value);
 
 	public override string ToString(){
-		return Tsinswreng.CsUlid.IdTool.ToLow64Base(Value);
+		return Tsinswreng.CsTools.ToolUInt128.ToLow64Base(Value);
 	}
 
 	public static bool operator ==(PLACEHOLDERID left, PLACEHOLDERID right)
