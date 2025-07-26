@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface I_UnsavedLearnRecords{
+public  partial interface I_UnsavedLearnRecords{
 	public IList<ILearnRecord> UnsavedLearnRecords{get;set;}
 	#if Impl
 	= new List<ILearnRecord>();

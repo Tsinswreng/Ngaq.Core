@@ -2,7 +2,7 @@ namespace Ngaq.Core.Infra.Errors;
 /// <summary>
 /// 標記ˡ接口
 /// </summary>
-public interface IErr{}
+public  partial interface IErr{}
 
 
 // public static class ExtnIErr{

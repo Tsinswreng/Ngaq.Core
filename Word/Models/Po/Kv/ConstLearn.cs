@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Model.Po.Kv;
 
-public class ConstLearn{
+public  partial class ConstLearn{
 	protected static ConstLearn? _Inst = null;
 	public static ConstLearn Inst => _Inst??= new ConstLearn();
 

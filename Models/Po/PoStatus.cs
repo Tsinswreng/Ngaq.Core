@@ -4,7 +4,7 @@ using TStruct = PoStatus;
 using TPrimitive = i32;
 using System.Diagnostics.CodeAnalysis;
 
-public struct PoStatus(TPrimitive V)
+public  partial struct PoStatus(TPrimitive V)
 	:IEquatable<PoStatus>
 {
 	public static PoStatus Parse(TPrimitive v){

@@ -1,9 +1,9 @@
 using Ngaq.Core.Model.Po.Kv;
-using Tsinswreng.CsTools.Tools.MultiDict;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface I_StrKey_Props{
+public  partial interface I_StrKey_Props{
 	public IDictionary<str, IList<IProp>> StrKey_Props{get;set;}
 	#if Impl
 	= new Dictionary<str, IList<IProp>>();

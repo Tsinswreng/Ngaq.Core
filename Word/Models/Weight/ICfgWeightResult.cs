@@ -10,7 +10,7 @@ public enum EResultType:i64{
 	,AsyncEnumerable =2
 }
 
-public interface ICfgWeightResult{
+public  partial interface ICfgWeightResult{
 
 	public ESortBy SortBy{get;set;}
 	#if Impl

@@ -4,7 +4,7 @@ namespace Ngaq.Core.Word.Models.Learn_;
 /// 上輪學習記錄
 /// 供權重算法用 如 無上輪學習記錄者視潙未學 則不緟算權重
 /// </summary>
-public interface I_PrevTurnLearnRecords{
+public  partial interface I_PrevTurnLearnRecords{
 	/// <summary>
 	/// 上輪學習記錄
 	/// 供權重算法用 如 無上輪學習記錄者視潙未學 則不緟算權重

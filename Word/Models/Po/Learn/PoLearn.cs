@@ -8,7 +8,7 @@ using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Word.Models.Po.Learn;
 
-// public class Po_Learn:Po_Kv{
+// public  partial class Po_Learn:Po_Kv{
 // 	public static new Po_Learn Example{get;set;} = new Po_Learn();
 // }
 

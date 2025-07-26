@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Errors;
 
-public class ErrBase
+public  partial class ErrBase
 	:Exception
 	,IErr
 	,IAppErr

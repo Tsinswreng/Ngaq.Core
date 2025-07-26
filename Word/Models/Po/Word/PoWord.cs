@@ -5,7 +5,7 @@ using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Word;
 
-// public class TestParent{
+// public  partial class TestParent{
 // 	public str ParentProperty{get;set;} = "1234";
 // 	public void Test(){
 // 		var z = new TestParent();
@@ -13,7 +13,7 @@ namespace Ngaq.Core.Model.Po.Word;
 // 	}
 // }
 
-public interface IPoWord
+public  partial interface IPoWord
 	:IPoBase
 	,I_Id<IdWord>
 	,IHeadLangWord
@@ -22,7 +22,7 @@ public interface IPoWord
 
 }
 
-public class PoWord
+public  partial class PoWord
 	:PoBase
 	,I_Id<IdWord>
 	,IHeadLangWord

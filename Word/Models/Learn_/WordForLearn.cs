@@ -7,13 +7,12 @@ using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Tsinswreng.CsTools;
-using Tsinswreng.CsTools.Tools;
 
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
 
-public class WordForLearn
+public  partial class WordForLearn
 	:IWordForLearn
 {
 	protected PoWord PoWord{get;set;}

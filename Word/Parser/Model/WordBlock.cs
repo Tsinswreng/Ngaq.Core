@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Service.Parser.Model;
-public interface I_WordBlock{
+public  partial interface I_WordBlock{
 	/// <summary>
 	/// 詞頭 對應WordFormId
 	/// </summary>
@@ -12,7 +12,7 @@ public interface I_WordBlock{
 	public IList<I_Prop> Props{get;set;}
 }
 
-public struct WordBlock : I_WordBlock{
+public  partial struct WordBlock : I_WordBlock{
 	//每個結構必帶無參構造器、縱不手動顯式定義。
 	//但若不手動顯式定義無參構造器、則字段芝直接被賦值㕥初始化者 則不被初始化
 	//[Obsolete("don't call no-param constructor")]

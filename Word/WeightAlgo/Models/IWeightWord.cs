@@ -3,7 +3,7 @@ using Ngaq.Core.Word.Models.Learn_;
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 
 
-public interface IWeightWord
+public  partial interface IWeightWord
 	:I_Id
 	,I_Weight
 	,I_StrKey_Props

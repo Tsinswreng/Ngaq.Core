@@ -1,7 +1,7 @@
 // using Tsinswreng.CsPage;
 // namespace Ngaq.Core.Infra.Page;
 
-// public interface IPageInfo{
+// public  partial interface IPageInfo{
 // 	/// <summary>
 // 	/// from 0
 // 	/// </summary>
@@ -10,22 +10,22 @@
 // }
 
 
-// public interface I_HasTotalCount{
+// public  partial interface I_HasTotalCount{
 // 	public bool HasTotalCount{get;set;}
 // }
 
-// public interface I_TotalCount{
+// public  partial interface I_TotalCount{
 // 	public u64 TotalCount{get;set;}
 // }
 
-// public interface IPageQuery
+// public  partial interface IPageQuery
 // 	:IPageInfo
 // 	,I_HasTotalCount
 // {
 
 // }
 
-// public interface IPageAsy<T>
+// public  partial interface IPageAsy<T>
 // 	:I_TotalCount
 // 	,IPageInfo
 // 	,I_HasTotalCount
@@ -35,7 +35,7 @@
 
 
 
-// public class PageQuery
+// public  partial class PageQuery
 // 	:IPageQuery
 // {
 // 	/// <summary>
@@ -53,7 +53,7 @@
 // 	}
 // }
 
-// public class PageAsy<T>
+// public  partial class PageAsy<T>
 // 	:I_TotalCount
 // 	,IPageQuery
 // 	,IPageAsy<T>

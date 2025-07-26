@@ -1,7 +1,7 @@
 #define Impl
 namespace Ngaq.Core.Word.Models.Weight;
 
-public class CfgWeightResult: ICfgWeightResult{
+public  partial class CfgWeightResult: ICfgWeightResult{
 	//ICfgWeight.ESortBy ICfgWeight.SortBy{get;set;}
 	public ESortBy SortBy{get;set;}
 	#if Impl

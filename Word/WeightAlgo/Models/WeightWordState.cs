@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 
-public class WeightWordState{
+public  partial class WeightWordState{
 	/// <summary>
 	/// 當前ʹ時 㕥計權重
 	/// </summary>

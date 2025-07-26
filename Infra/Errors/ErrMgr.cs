@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Errors;
 
 
-public class ErrMgr{
+public  partial class ErrMgr{
 	protected static ErrMgr? _Inst = null;
 	public static ErrMgr Inst => _Inst??= new ErrMgr();
 

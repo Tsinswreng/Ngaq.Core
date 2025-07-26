@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface ILearnRecord{
+public  partial interface ILearnRecord{
 	/// <summary>
 	/// 見ConstLearn
 	/// </summary>

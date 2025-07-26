@@ -1,8 +1,8 @@
-using Tsinswreng.CsTools.Tools;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.FrontendIF;
 
-public interface IImgGetter{
+public  partial interface IImgGetter{
 public enum EType{
 	Stream = 1
 }

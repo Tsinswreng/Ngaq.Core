@@ -5,7 +5,7 @@ using Ngaq.Core.Models.Po;
 namespace Ngaq.Core.Model.Sys.Po.Password;
 
 
-public class PoPassword
+public  partial class PoPassword
 	:PoBase
 	,I_Id<IdPassword>
 {

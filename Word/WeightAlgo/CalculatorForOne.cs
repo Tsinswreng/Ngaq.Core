@@ -1,12 +1,12 @@
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.WeightAlgo.Models;
-using Tsinswreng.CsTools.Tools;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.WeightAlgo;
 
-public class CalculatorForOne{
+public  partial class CalculatorForOne{
 	public WeightCfg Cfg{get;set;} = new();
-	public class State_{
+	public  partial class State_{
 		public IWeightWord Word{get;set;} = null!;
 		public WeightWordState WordState{get;set;} = new();
 	}

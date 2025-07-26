@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Model.Po.Kv;
 
 
-public struct EItemProp(str V){
+public  partial struct EItemProp(str V){
 	public str Value{get;set;} = V;
 	public static implicit operator str(EItemProp e){
 		return e.Value;
@@ -18,7 +18,7 @@ public struct EItemProp(str V){
 /// <summary>
 /// 內置單詞屬性鍵
 /// </summary>
-public class KeysProp{
+public  partial class KeysProp{
 	protected static KeysProp? _Inst = null;
 	public static KeysProp Inst => _Inst??= new KeysProp();
 
@@ -41,7 +41,7 @@ public class KeysProp{
 /// 內置單詞屬性鍵
 /// </summary>
 // [Obsolete("用帶實例的")]
-// public class Const_PropKey{
+// public  partial class Const_PropKey{
 // 	public const str meaning = nameof(meaning);
 // 	//public const str learn = nameof(learn);
 // 	public const str annotation = nameof(annotation);

@@ -8,7 +8,7 @@ using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Model.Samples.Word;
 
-public class SampleWord{
+public  partial class SampleWord{
 	protected static SampleWord? _Inst = null;
 	public static SampleWord Inst => _Inst??= new SampleWord();
 

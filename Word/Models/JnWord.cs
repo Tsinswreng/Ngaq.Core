@@ -9,26 +9,13 @@ using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models.Dto;
 using Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsTools.Tools;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.Models;
 
-public class JnWord
+public  partial class JnWord
 	:IPoWord
 {
-	// public static str Debug(BoWord boWord){
-	// 	if(boWord.Head == "interrogative"){
-	// 		System.Console.WriteLine(boWord);
-	// 		var means = boWord.Props.Select(p=>p).Where(w=>w.KStr=="description")
-	// 		.Select(p=>p.VStr)
-	// 		.ToList();
-	// 		var meanStr = str.Join("\n", means);
-	// 		System.Console.WriteLine(meanStr);//t
-	// 		return meanStr;
-	// 	}
-	// 	return "";
-	// }
-
 	[Impl]
 	public object ShallowCloneSelf()
 #if Impl
@@ -189,7 +176,7 @@ public class JnWord
 
 }
 
-public static class ExtnBoWord{
+public static class ExtnJnWord{
 	/// <summary>
 	/// 按詞頭對諸Bo詞分組
 	/// 若入ʹ諸詞 非皆屬同一語 則拋錯
@@ -226,10 +213,10 @@ public static class ExtnBoWord{
 
 
 	public static IDictionary<Head_Lang, IList<JnWord>> GroupByLangHead(
-		this IEnumerable<JnWord> BoWords
+		this IEnumerable<JnWord> JnWords
 	){
 		var Dict = new Dictionary<Head_Lang, IList<JnWord>>();
-		foreach(var BoWord in BoWords){
+		foreach(var BoWord in JnWords){
 			// if(BoWord.Head == "interrogative"){//t
 			// 	BoWord.Debug(BoWord);
 			// }//-
@@ -275,7 +262,7 @@ public static class ExtnBoWord{
 	){
 
 		JnWord R = null!;
-		foreach(var (BoWord, i) in BoWords.VIPair()){
+		foreach(var (i, BoWord) in BoWords.Index()){
 			if(i == 0){
 				R = BoWord;
 			}else{
@@ -308,6 +295,7 @@ public static class ExtnBoWord{
 		z.Learns.Sort((a,b)=>a.CreatedAt.Value.CompareTo(b.CreatedAt));
 		return z;
 	}
+
 
 	public static DtoWordDiff? Diff(
 		JnWord Other

@@ -4,7 +4,7 @@ using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Role;
 
-public class PoRole
+public  partial class PoRole
 	:PoBase
 	,I_Id<IdRole>
 {

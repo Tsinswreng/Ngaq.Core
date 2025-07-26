@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Stream;
-public class EnumeratorAsIter<T> : I_Iter<T> {
+public  partial class EnumeratorAsIter<T> : I_Iter<T> {
 	private readonly IEnumerator<T> _enumerator;
 	private bool _hasNext;
 

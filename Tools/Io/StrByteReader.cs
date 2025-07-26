@@ -2,7 +2,7 @@ using Ngaq.Core.Stream;
 
 namespace Ngaq.Core.Tools.Io;
 
-public class StrByteReader: I_Iter<u8>{
+public  partial class StrByteReader: I_Iter<u8>{
 	public str Str{get;set;}
 	public u8[] Bytes{get;set;}
 	public u64 Pos{get;set;}=0;
@@ -26,7 +26,7 @@ public class StrByteReader: I_Iter<u8>{
 
 // namespace Ngaq.Core.Util.Io;
 
-// public class StrByteReader
+// public  partial class StrByteReader
 // 	:I_Iter<u8>
 // 	,IEnumerable<u8>
 // 	,IEnumerator<u8>

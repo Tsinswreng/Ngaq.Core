@@ -16,7 +16,7 @@ namespace Ngaq.Core.Service.Parser;
 using W = byte;
 using state_t = WordParseState;
 
-public class ParseErr : Exception{
+public  partial class ParseErr : Exception{
 	public ParseErr(str msg):base(msg){
 
 	}
@@ -25,7 +25,7 @@ public class ParseErr : Exception{
 	public u64? Pos{get;set;}
 }
 
-public class Pos : I_LineCol{
+public  partial class Pos : I_LineCol{
 	public Pos(){
 
 	}
@@ -37,7 +37,7 @@ public class Pos : I_LineCol{
 	}
 }
 
-public class Status{
+public  partial class Status{
 	public state_t State {get; set;} = state_t.Start;
 	public I_LineCol Line_col {get; set;} = new Pos();
 	public u64 Pos {get;set;} = 0;
@@ -58,13 +58,13 @@ public class Status{
 
 }
 
-public class Tokens{
+public  partial class Tokens{
 	public const str s_metadataTag = "<metadata>";
 	public const str e_metadataTag = "</metadata>";
 }
 
 
-public class WordListParser{
+public  partial class WordListParser{
 	I_Iter_u8 _GetNextByte;
 	public i64 ByteSize{get;set;}//?
 	public WordListParser(I_Iter_u8 getNextChar){

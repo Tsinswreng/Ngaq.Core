@@ -9,12 +9,12 @@
 // namespace Ngaq.Core.Test;
 
 
-// public class ClassA{
+// public  partial class ClassA{
 // 	public string String{get;set;} = "String";
 // 	public int Int{get;set;} = 1;
 // 	public bool Bool{get;set;} = true;
 // }
-// public class ClassB{
+// public  partial class ClassB{
 
 // }
 
@@ -27,7 +27,7 @@
 // }
 
 
-// public class Test{
+// public  partial class Test{
 
 // 	public static void NoGeneric(){
 // 		var kv = new Po_Kv();

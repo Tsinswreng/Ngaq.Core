@@ -2,7 +2,7 @@ using YamlDotNet.Serialization;
 
 namespace Ngaq.Core.Tools;
 
-public class Yaml {
+public  partial class Yaml {
 	public static IDictionary<str, object> YamlToDict(
 		str yaml
 	) {

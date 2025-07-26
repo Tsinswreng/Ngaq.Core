@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Errors;
 
-public interface ITypedStatus{
+public  partial interface ITypedStatus{
 	/// <summary>
 	/// 狀態標識 作錯誤碼等
 	/// </summary>

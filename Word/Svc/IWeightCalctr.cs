@@ -8,7 +8,7 @@ namespace Ngaq.Core.Word.Svc;
 
 
 
-public interface IWeightCalctr{
+public  partial interface IWeightCalctr{
 	// public Task<IEnumerable<WordStrId_Weight>> CalcAsy(
 	// 	IEnumerable<IWordForLearn> Words
 	// 	,CT Ct

@@ -2,7 +2,7 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public struct Learn(str V)
+public  partial struct Learn(str V)
 	:IEquatable<Learn>
 {
 	public str Value{get;set;} = V;

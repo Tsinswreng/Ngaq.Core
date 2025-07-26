@@ -4,7 +4,7 @@ using Ngaq.Core.Model.Po.Word;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface IWordForLearn
+public  partial interface IWordForLearn
 	:I_Id
 	,IPoBase
 	,IHeadLangWord

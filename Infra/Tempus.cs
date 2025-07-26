@@ -3,7 +3,7 @@ using TStruct = Tempus;
 using TPrimitive = i64;
 using System.Diagnostics.CodeAnalysis;
 
-public struct Tempus(TPrimitive V)
+public  partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
 {
 	public TPrimitive Value{get;set;} = V;

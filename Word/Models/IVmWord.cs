@@ -4,7 +4,7 @@ using Ngaq.Core.Model.Po.Word;
 
 namespace Ngaq.Core.Model.Bo.IFWord;
 
-public interface IVmWord
+public  partial interface IVmWord
 	:I_Id<str>
 	,IHeadLangWord
 {

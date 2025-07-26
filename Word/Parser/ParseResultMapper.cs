@@ -9,7 +9,7 @@ namespace Ngaq.Core.Service.Parser;
 /// <summary>
 /// 單詞表文本解析結果轉Bo_Word
 /// </summary>
-public class ParseResultMapper(){
+public  partial class ParseResultMapper(){
 	protected static ParseResultMapper? _Inst = null;
 	public static ParseResultMapper Inst => _Inst??= new ParseResultMapper();
 

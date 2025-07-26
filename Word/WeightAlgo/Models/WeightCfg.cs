@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 
-public class WeightCfg{
+public  partial class WeightCfg{
 	// public IDictionary<u64, f64> AddCnt_Bonus = new Dictionary<u64, f64>(){
 	// 	[0] = 0x1
 	// 	,[1] = 0xff

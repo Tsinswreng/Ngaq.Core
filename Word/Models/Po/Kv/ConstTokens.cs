@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Model.Po.Kv;
 
-public class ConstTokens{
+public  partial class ConstTokens{
 	protected static ConstTokens? _Inst = null;
 	public static ConstTokens Inst => _Inst??= new ConstTokens();
 
@@ -46,7 +46,7 @@ public static class ExtnIPoKv{
 }
 
 
-// public class Const_Tokens{
+// public  partial class Const_Tokens{
 // 	/// <summary>
 // 	/// 命名空間與名 之分隔符
 // 	/// 適用于Const_PropKey及Const_Learn等

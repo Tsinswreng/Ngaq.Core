@@ -7,17 +7,17 @@ using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
-using Tsinswreng.CsTools.Tools;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word;
 
-public class OperationStatus{
+public  partial class OperationStatus{
 	public bool Load = false;
 	public bool Start = false;
 	public bool Save = true;
 }
 
-public class MgrLearnedWords{
+public  partial class MgrLearnedWords{
 	public IDictionary<Learn, IDictionary<IWordForLearn, nil>> Learn_WordSet{get;set;}
 	= new Dictionary<Learn, IDictionary<IWordForLearn, nil>>();
 
@@ -62,7 +62,7 @@ public class MgrLearnedWords{
 
 }
 
-public class StateLearnWords{
+public  partial class StateLearnWords{
 	public IList<IWordForLearn> WordsToLearn { get; set; } = new List<IWordForLearn>();
 	public MgrLearnedWords MgrLearnedWords { get; set; } = new MgrLearnedWords();
 	public OperationStatus OperationStatus {get;set;} = new ();
@@ -70,13 +70,13 @@ public class StateLearnWords{
 }
 
 
-public class LearnEventArgs :EventArgs{
+public  partial class LearnEventArgs :EventArgs{
 	public IWordForLearn? Word{get;set;}
 	public Learn Learn{get;set;}
 	public bool IsUndo{get;set;} = false;
 }
 
-public class MgrLearn{
+public  partial class MgrLearn{
 
 	//public MgrLearn(){}
 
@@ -103,7 +103,7 @@ public class MgrLearn{
 		,Invalid = 2
 	}
 
-	public class EvtArgOnErr:EventArgs{
+	public  partial class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
 	}
 	public event EventHandler<EvtArgOnErr>? OnErr;
@@ -113,7 +113,7 @@ public class MgrLearn{
 		OnErr?.Invoke(this, new EvtArgOnErr{Err=Err});
 		return NIL;
 	}
-	public class EErr_:EnumErr{
+	public  partial class EErr_:EnumErr{
 		protected static EErr_? _Inst = null;
 		public static EErr_ Inst => _Inst??= new EErr_();
 

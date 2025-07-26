@@ -1,8 +1,8 @@
 using Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsTools.Tools.MultiDict;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.Models.Learn_;
-public interface I_Learn_Records{
+public  partial interface I_Learn_Records{
 	/// <summary>
 	/// 值 按日期排序
 	/// </summary>

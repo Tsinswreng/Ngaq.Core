@@ -3,7 +3,7 @@ using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public struct LearnRecord
+public  partial struct LearnRecord
 	:ILearnRecord
 {
 	[Impl]

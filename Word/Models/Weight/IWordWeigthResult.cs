@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.Models.Weight;
 
-public interface IWordWeightResult{
+public  partial interface IWordWeightResult{
 	/// <summary>
 	/// 不用UInt128 方便序列化
 	/// </summary>

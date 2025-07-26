@@ -1,29 +1,29 @@
 ﻿// namespace Ngaq.Core.Word.WeightAlgo;
 
-// public interface IA{
+// public  partial interface IA{
 // 	str? A{get;set;}
 // }
 
-// public interface IB{
+// public  partial interface IB{
 // 	str? B{get;set;}
 // }
 
-// public interface IC{
+// public  partial interface IC{
 // 	str? C{get;set;}
 // }
 
-// public interface IS:IA,IB{
+// public  partial interface IS:IA,IB{
 
 // }
 
-// public interface IL:IA,IB,IC{}
+// public  partial interface IL:IA,IB,IC{}
 
-// public class S:IA,IB{
+// public  partial class S:IA,IB{
 // 	public str? A{get;set;} = "S-A";
 // 	public str? B{get;set;} = "S-B";
 // }
 
-// public class L:IA,IB,IC{
+// public  partial class L:IA,IB,IC{
 // 	public str? A{get;set;} = "L-A";
 // 	public str? B{get;set;} = "L-B";
 // 	public str? C{get;set;} = "L-C";
@@ -31,7 +31,7 @@
 
 
 
-// public class MainWeightAlgo{
+// public  partial class MainWeightAlgo{
 // 	public static i32 Main(string[] args){
 // 		Console.WriteLine(null is double?);//->False
 // double? d = null;

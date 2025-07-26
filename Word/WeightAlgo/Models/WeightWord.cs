@@ -6,7 +6,7 @@ using Ngaq.Core.Word.Models.Learn_;
 
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 
-public class WeightWord
+public  partial class WeightWord
 	: IWeightWord
 {
 

@@ -3,7 +3,7 @@ using Ngaq.Core.Word.Models;
 
 namespace Ngaq.Core.Model.Word.Dto;
 
-public class DtoUpdatedWord{
+public  partial class DtoUpdatedWord{
 	public DtoUpdatedWord(
 		JnWord WordInDb
 		,JnWord WordToAdd
@@ -28,7 +28,7 @@ public class DtoUpdatedWord{
 
 }
 
-public class DtoAddWords{
+public  partial class DtoAddWords{
 	/// <summary>
 	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>

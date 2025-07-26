@@ -3,7 +3,7 @@ using System.Collections;
 namespace Ngaq.Core.Model;
 
 
-public struct Existing_Duplication<T>{
+public  partial struct Existing_Duplication<T>{
 
 	public Existing_Duplication(
 		T Existing
@@ -22,7 +22,7 @@ public struct Existing_Duplication<T>{
 	public T Duplication { get; set; }
 }
 
-public struct DuplicationGroup<T>{
+public  partial struct DuplicationGroup<T>{
 	public IList<Existing_Duplication<T>> Existing_Duplications{get;set;}
 	// /// <summary>
 	// /// 原已存在(當是得從數據源)

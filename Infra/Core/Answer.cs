@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Core;
 
-public struct Answer<T>()
+public  partial struct Answer<T>()
 	:IAnswer<T>
 {
 	public T? Data{get;set;}

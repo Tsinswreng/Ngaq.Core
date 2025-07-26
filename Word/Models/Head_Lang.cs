@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.Models;
 
-public struct Head_Lang()
+public  partial struct Head_Lang()
 	:IEquatable<Head_Lang>
 {
 	public str Head = "";

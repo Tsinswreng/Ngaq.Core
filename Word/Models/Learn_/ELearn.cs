@@ -2,7 +2,7 @@ using Ngaq.Core.Model.Po.Kv;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public class ELearn{
+public  partial class ELearn{
 	protected static ELearn? _Inst = null;
 	public static ELearn Inst => _Inst??= new ELearn();
 

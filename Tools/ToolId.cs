@@ -4,14 +4,14 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Tools;
 
-public class ToolId{
+public  partial class ToolId{
 	public static UInt128 NewUlidUInt128(){
 		var bytes = Ulid.NewUlid().ToByteArray();
 		return ToolUInt128.ByteArrToUInt128(bytes);
 	}
 }
 
-// public class StronglyTypedIdJsonConverter<TStronglyTyped, TValue> : JsonConverter<TStronglyTyped>
+// public  partial class StronglyTypedIdJsonConverter<TStronglyTyped, TValue> : JsonConverter<TStronglyTyped>
 // 	where TStronglyTyped : I_Value<> new()
 // {
 // 	public override void Write(

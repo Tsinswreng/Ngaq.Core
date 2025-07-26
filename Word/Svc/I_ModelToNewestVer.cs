@@ -2,7 +2,7 @@ using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Word.Svc;
 
-public interface I_ModelToNewestVer<TModel>
+public  partial interface I_ModelToNewestVer<TModel>
 	where TModel: I_BizTimeVer
 {
 	public TModel OldVerDictToNewestVerModel(

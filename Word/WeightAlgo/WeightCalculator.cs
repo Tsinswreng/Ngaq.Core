@@ -7,7 +7,7 @@ using Ngaq.Core.Word.WeightAlgo.Models;
 
 namespace Ngaq.Core.Word.WeightAlgo;
 
-public class WeightCalculator : IWeightCalctr{
+public  partial class WeightCalculator : IWeightCalctr{
 
 	public async Task<IWeightResult> CalcAsy(
 		IEnumerable<IWordForLearn> Words

@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Model.Po;
 
-public interface I_ValueId{
+public  partial interface I_ValueId{
 
 }

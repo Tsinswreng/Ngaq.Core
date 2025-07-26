@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public interface I_LearnRecords{
+public  partial interface I_LearnRecords{
 	/// <summary>
 	/// 已保存之學習記錄
 	/// 當有序

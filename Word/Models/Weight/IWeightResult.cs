@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Word.Models.Weight;
 
 
-public interface IWeightResult{
+public  partial interface IWeightResult{
 	public ICfgWeightResult Cfg{get;set;}
 	#if Impl
 		 = new CfgWeight();

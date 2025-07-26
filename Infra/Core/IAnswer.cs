@@ -8,7 +8,7 @@ namespace Ngaq.Core.Infra.Core;
 /// 至于預料外ʹ異常、則猶用throw+try-catch、不用此㕥包㞢
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public interface IAnswer<T>
+public  partial interface IAnswer<T>
 	:ITypedStatus
 {
 	public T? Data { get; set; }

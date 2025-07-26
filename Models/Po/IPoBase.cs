@@ -4,7 +4,7 @@ using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po;
-public interface IPoBase: I_ShallowCloneSelf{
+public  partial interface IPoBase: I_ShallowCloneSelf{
 	#region IPoBase
 	public Tempus DbCreatedAt{get;set;}
 	public Tempus? DbUpdatedAt{get;set;}

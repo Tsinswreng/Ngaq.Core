@@ -4,7 +4,7 @@ using Ngaq.Core.Models.Sys.Resp;
 
 namespace Ngaq.Core.Sys.Svc;
 
-public interface ISvcUser{
+public  partial interface ISvcUser{
 	public Task<nil> AddUser(
 		ReqAddUser ReqAddUser
 		,CT Ct

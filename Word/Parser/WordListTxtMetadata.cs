@@ -1,7 +1,7 @@
 using Ngaq.Core.Tools;
 
 namespace Ngaq.Core.Service.Parser;
-public class WordListTxtMetadata{
+public  partial class WordListTxtMetadata{
 	/// <summary>
 	/// 語言
 	/// 字段保持全小寫

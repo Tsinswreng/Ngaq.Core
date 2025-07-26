@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Infra.Errors;
 
-public interface IEnumErr{
+public  partial interface IEnumErr{
 
 }

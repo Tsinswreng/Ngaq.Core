@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Model.Po.Kv;
 
-public interface IPoKv{
+public  partial interface IPoKv{
 
 	#region IPoKv
 	//TODO 遷至他ʹ接口

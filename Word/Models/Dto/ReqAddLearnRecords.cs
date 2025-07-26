@@ -4,12 +4,12 @@ using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Model.Word.Req;
 
-public struct WordId_PoLearns{
+public  partial struct WordId_PoLearns{
 	public IdWord WordId;
 	public IEnumerable<PoWordLearn> PoLearns;
 }
 
-public struct WordId_LearnRecords{
+public  partial struct WordId_LearnRecords{
 	public IdWord WordId;
 	public IEnumerable<ILearnRecord> LearnRecords;
 }

@@ -3,7 +3,7 @@ using Ngaq.Core.Model;
 
 namespace Ngaq.Core.Infra;
 
-// public interface I_Crud<T>{
+// public  partial interface I_Crud<T>{
 // 	Task<IAnswer<nil>> AddManyAsy(IEnumerable<T> EntityList);
 // 	Task<IAnswer<T?>> SeekByIdAsy<T_Id>(T_Id Id);
 // 	//Task<I_Answer<nil>> UpdateManyAsy(IEnumerable<T> EntityList);

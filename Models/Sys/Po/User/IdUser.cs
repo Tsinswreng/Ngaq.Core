@@ -20,7 +20,7 @@ public partial struct IdUser {
 // using System.Buffers.Binary;
 // using Ngaq.Core.Tools;
 
-// public struct Id_User(T_Val v)
+// public  partial struct Id_User(T_Val v)
 // 	:IEquatable<T_IdStruct>
 // {
 // 	public T_Val Value{get;} = v;
