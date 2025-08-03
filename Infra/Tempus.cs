@@ -11,6 +11,9 @@ public  partial struct Tempus(TPrimitive V)
 	public Tempus():this(DateTimeOffset.Now.ToUnixTimeMilliseconds()){
 
 	}
+	public static Tempus Now(){
+		return new Tempus();
+	}
 
 	public static implicit operator TPrimitive(TStruct e){
 		return e.Value;

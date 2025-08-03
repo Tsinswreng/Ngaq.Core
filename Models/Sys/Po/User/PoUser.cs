@@ -1,8 +1,9 @@
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
+using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
-namespace Ngaq.Core.Model.Sys.Po.User;
+namespace Ngaq.Core.Models.Sys.Po.User;
 public partial class PoUser
 	:PoBase
 	,I_Id<IdUser>

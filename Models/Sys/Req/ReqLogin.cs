@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Models.Sys.Req{
-public  partial class ReqLogin{
+public partial class ReqLogin{
 	public str? UniqueName{get;set;}
 	public str? Email{get;set;}
 	public str? Password{get;set;}

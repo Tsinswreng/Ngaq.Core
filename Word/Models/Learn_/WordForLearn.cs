@@ -99,7 +99,7 @@ public  partial class WordForLearn
 		set{PoWord.Lang = value;}
 	}
 
-[Impl(typeof(IPoWord))]
+	[Impl(typeof(IPoWord))]
 	public str Head{
 		get{return PoWord.Head;}
 		set{PoWord.Head = value;}
@@ -107,19 +107,19 @@ public  partial class WordForLearn
 
 
 	#region IPoBase
-[Impl(typeof(IPoBase))]
+	[Impl(typeof(IPoBase))]
 	public Tempus DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}
 		set{PoWord.DbCreatedAt = value;}
 	}
 
-[Impl(typeof(IPoBase))]
+	[Impl(typeof(IPoBase))]
 	public Tempus CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
 	}
 
-[Impl(typeof(IPoBase))]
+	[Impl(typeof(IPoBase))]
 	public Tempus? DbUpdatedAt{
 		get{return PoWord.DbUpdatedAt;}
 		set{PoWord.DbUpdatedAt = value;}

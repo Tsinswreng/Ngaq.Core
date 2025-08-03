@@ -18,6 +18,7 @@ public  partial class PoBase:IPoBase{
 		= new();
 	#endif
 	public virtual Tempus DbCreatedAt{get;set;}
+	=new();
 	public virtual Tempus? UpdatedAt{get;set;}
 	public virtual Tempus? DbUpdatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}

@@ -48,12 +48,12 @@ public  partial class JnWord
 		get{return PoWord.Owner;}
 		set{PoWord.Owner = value;}
 	}
-[Impl]
+	[Impl]
 	public str Lang{
 		get{return PoWord.Lang;}
 		set{PoWord.Lang = value;}
 	}
-[Impl]
+	[Impl]
 	public str Head{
 		get{return PoWord.Head;}
 		set{PoWord.Head = value;}
@@ -73,7 +73,7 @@ public  partial class JnWord
 		set{PoWord.DbCreatedAt = value;}
 	}
 
-[Impl]
+	[Impl]
 	public Tempus CreatedAt{
 		get{return PoWord.CreatedAt;}
 		set{PoWord.CreatedAt = value;}
@@ -110,10 +110,10 @@ public  partial class JnWord
 	#endregion IPoBase
 
 
-/// <summary>
-/// 把諸資產之外鍵設潙主Word之id
-/// </summary>
-/// <returns></returns>
+	/// <summary>
+	/// 把諸資產之外鍵設潙主Word之id
+	/// </summary>
+	/// <returns></returns>
 	public JnWord AssignId(){
 		var z = this;
 		// if(z.Po_Word.Id.Value == 0){
@@ -169,7 +169,7 @@ public  partial class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			LearnsOfNeo, ExistingLearns
-			,(e)=> e.CreatedAt
+			,(e)=> e.Time_()
 		);
 		return diff.SelectMany(Time_Learns=>Time_Learns.Value).ToList();
 	}
@@ -178,14 +178,14 @@ public  partial class JnWord
 
 public static class ExtnJnWord{
 	/// <summary>
-	/// 按詞頭對諸Bo詞分組
+	/// 按詞頭對諸Jn詞分組
 	/// 若入ʹ諸詞 非皆屬同一語 則拋錯
 	/// </summary>
-	/// <param name="BoWords"></param>
+	/// <param name="JnWords"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
 	public static IDictionary<str, IList<JnWord>> GroupByHeadOfSameLang(
-		this IEnumerable<JnWord> BoWords
+		this IEnumerable<JnWord> JnWords
 	){
 		// var Dict = BoWords.GroupBy(w=>w.PoWord.WordFormId)
 		// 	.ToDictionary(g=>g.Key, g=>(IList<BoWord>)[.. g])//  g=>g.ToList() -> [..g]
@@ -194,17 +194,17 @@ public static class ExtnJnWord{
 		var Dict = new Dictionary<str, IList<JnWord>>();
 		str Lang = "";
 		var i = 0;
-		foreach(var BoWord in BoWords){
+		foreach(var JWord in JnWords){
 			if(i == 0){
-				Lang = BoWord.PoWord.Lang;
+				Lang = JWord.PoWord.Lang;
 			}
-			if(BoWord.PoWord.Lang != Lang){
-				throw new ErrArg("BoWord.PoWord.Lang != Lang");
+			if(JWord.PoWord.Lang != Lang){
+				throw new ErrArg("JWord.PoWord.Lang != Lang");
 			}
-			if(Dict.TryGetValue(BoWord.PoWord.Head, out var List)){
-				List.Add(BoWord);
+			if(Dict.TryGetValue(JWord.PoWord.Head, out var List)){
+				List.Add(JWord);
 			}else{
-				Dict[BoWord.PoWord.Head] = [BoWord];
+				Dict[JWord.PoWord.Head] = [JWord];
 			}
 			i++;
 		}
@@ -216,18 +216,15 @@ public static class ExtnJnWord{
 		this IEnumerable<JnWord> JnWords
 	){
 		var Dict = new Dictionary<Head_Lang, IList<JnWord>>();
-		foreach(var BoWord in JnWords){
-			// if(BoWord.Head == "interrogative"){//t
-			// 	BoWord.Debug(BoWord);
-			// }//-
+		foreach(var JWord in JnWords){
 			var lang_head = new Head_Lang{
-				Lang = BoWord.PoWord.Lang
-				,Head = BoWord.PoWord.Head
+				Lang = JWord.PoWord.Lang
+				,Head = JWord.PoWord.Head
 			};
 			if(Dict.TryGetValue(lang_head, out var List)){
-				List.Add(BoWord);
+				List.Add(JWord);
 			}else{
-				Dict[lang_head] = [BoWord];
+				Dict[lang_head] = [JWord];
 			}
 		}
 		return Dict;
@@ -249,40 +246,58 @@ public static class ExtnJnWord{
 		return true;
 	}
 
-
-/// <summary>
-/// CreatedAt取更早者
-/// UpdatedAt取最晚者
-/// </summary>
-/// <param name="BoWords"></param>
-/// <returns></returns>
-/// <exception cref="ErrArg"></exception>
-	public static JnWord? MergeSameWords(
-		this IEnumerable<JnWord> BoWords
+	public static JnWord DiffMerge(
+		this JnWord z
+		,JnWord Other
+		,ref JnWord? R
 	){
+		if(!z.IsSameUserWord(Other)){
+			throw new ErrArg("!z.IsSameUserWord(Other)");
+		}
+		var DiffedProps = JnWord.DiffProps(Other.Props, z.Props);
+		var DiffedLearns = JnWord.DiffLearns(Other.Learns, z.Learns);
+		R??=new JnWord();
+		R.PoWord = z.PoWord;
+		R.Props = DiffedProps;
+		R.Learns = DiffedLearns;
+		return R;
+	}
 
+
+	/// <summary>
+	/// 無去褈ˌᵈ併ᵣ諸詞ˇ
+	/// 用于併ᵣ文本詞表ᙆʹ待加ʹ諸詞
+	/// CreatedAt取更早者
+	/// UpdatedAt取最晚者
+	/// </summary>
+	/// <param name="JnWords"></param>
+	/// <returns></returns>
+	/// <exception cref="ErrArg"></exception>
+	public static JnWord? NoDiffMergeSameWords(
+		this IEnumerable<JnWord> JnWords
+	){
 		JnWord R = null!;
-		foreach(var (i, BoWord) in BoWords.Index()){
+		foreach(var (i, JWord) in JnWords.Index()){
 			if(i == 0){
-				R = BoWord;
+				R = JWord;
 			}else{
-				if(!R.IsSameUserWord(BoWord)){
+				if(!R.IsSameUserWord(JWord)){
 					throw new ErrArg("!R.IsSameUserWord(BoWord)");
 				}
-				if(R.DbCreatedAt > BoWord.DbCreatedAt){
-					R.DbCreatedAt = BoWord.DbCreatedAt;
+				if(R.DbCreatedAt > JWord.DbCreatedAt){
+					R.DbCreatedAt = JWord.DbCreatedAt;
 				}
-				if(R.CreatedAt > BoWord.CreatedAt){
-					R.CreatedAt = BoWord.CreatedAt;
+				if(R.CreatedAt > JWord.CreatedAt){
+					R.CreatedAt = JWord.CreatedAt;
 				}
-				if(R.UpdatedAt < BoWord.UpdatedAt){
-					R.UpdatedAt = BoWord.UpdatedAt;
+				if(R.UpdatedAt < JWord.UpdatedAt){
+					R.UpdatedAt = JWord.UpdatedAt;
 				}
-				if(R.LastUpdatedBy == null && BoWord.LastUpdatedBy != null){
-					R.LastUpdatedBy = BoWord.LastUpdatedBy;
+				if(R.LastUpdatedBy == null && JWord.LastUpdatedBy != null){
+					R.LastUpdatedBy = JWord.LastUpdatedBy;
 				}
-				R.Props.AddRange(BoWord.Props);
-				R.Learns.AddRange(BoWord.Learns);
+				R.Props.AddRange(JWord.Props);
+				R.Learns.AddRange(JWord.Learns);
 			}
 		}//~foreach
 		return R;

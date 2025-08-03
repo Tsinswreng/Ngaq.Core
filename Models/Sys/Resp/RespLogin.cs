@@ -1,4 +1,4 @@
-using Ngaq.Core.Model.Sys.Po.User;
+using Ngaq.Core.Models.Sys.Po.User;
 
 namespace Ngaq.Core.Models.Sys.Resp;
 

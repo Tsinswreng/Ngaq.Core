@@ -2,10 +2,16 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public  partial struct Learn(str V)
+public partial struct Learn
 	:IEquatable<Learn>
 {
-	public str Value{get;set;} = V;
+	public Learn(str V){
+		if(V == null){
+			throw new ArgumentException("Learn can't be null");
+		}
+		this.Value = V;
+	}
+	public str Value{get;set;}
 
 	public static implicit operator str(Learn e){
 		return e.Value;

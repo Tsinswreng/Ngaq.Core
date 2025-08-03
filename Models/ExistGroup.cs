@@ -1,9 +1,7 @@
-using System.Collections;
+//慮 移至CsTools
+namespace Ngaq.Core.Models;
 
-namespace Ngaq.Core.Model;
-
-
-public  partial struct Existing_Duplication<T>{
+public partial struct Existing_Duplication<T>{
 
 	public Existing_Duplication(
 		T Existing
@@ -22,7 +20,7 @@ public  partial struct Existing_Duplication<T>{
 	public T Duplication { get; set; }
 }
 
-public  partial struct DuplicationGroup<T>{
+public partial struct DuplicationGroup<T>{
 	public IList<Existing_Duplication<T>> Existing_Duplications{get;set;}
 	// /// <summary>
 	// /// 原已存在(當是得從數據源)

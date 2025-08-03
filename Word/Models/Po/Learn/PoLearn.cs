@@ -31,5 +31,15 @@ public partial class PoWordLearn
 
 	public str LearnResult{get;set;}="";
 
+}
 
+public static partial class ExtnPoWordLearn{
+	public static Tempus Time_(
+		this PoWordLearn z
+	){
+		if(z.UpdatedAt == null){
+			return z.CreatedAt;
+		}
+		return z.UpdatedAt.Value;
+	}
 }
