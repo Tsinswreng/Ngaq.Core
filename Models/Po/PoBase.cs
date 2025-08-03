@@ -5,7 +5,7 @@ using Ngaq.Core.Model.Sys.Po.User;
 
 namespace Ngaq.Core.Models.Po;
 
-public  partial class PoBase:IPoBase{
+public partial class PoBase:IPoBase{
 	public object ShallowCloneSelf()
 #if Impl
 	{

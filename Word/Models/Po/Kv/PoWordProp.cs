@@ -1,6 +1,5 @@
 #define Impl
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po.Kv;

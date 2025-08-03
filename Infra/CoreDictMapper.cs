@@ -4,11 +4,13 @@ using System.Xml.Serialization;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Sys.Models;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsDictMapper;
 namespace Ngaq.Core.Infra;
 
+[DictType(typeof(PoCfg))]
 [DictType(typeof(IPoKv))]
 [DictType(typeof(PoWordProp))]
 [DictType(typeof(PoWord))]
