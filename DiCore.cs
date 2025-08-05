@@ -7,7 +7,7 @@ using Tsinswreng.CsCfg;
 namespace Ngaq.Core;
 public static class DiCore{
 	public static IServiceCollection SetUpCore(this IServiceCollection z){
-		z.AddSingleton<ICfgAccessor>(LocalCfg.Inst);
+		z.AddSingleton<ICfgAccessor>(AppCfg.Inst);
 		z.AddTransient<MgrLearn, MgrLearn>();
 		z.AddScoped<IWeightCalctr, SvcWeight>();
 		return z;

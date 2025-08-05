@@ -5,7 +5,7 @@ namespace Ngaq.Core.Infra.Cfg;
 using Tsinswreng.CsCfg;
 using static ExtnCfgItem;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
-public class LocalCfgItems{
+public class AppCfgItems{
 
 #if DEBUG
 	public static ICfgItem<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.dev.sqlite");

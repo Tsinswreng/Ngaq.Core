@@ -4,7 +4,8 @@ using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Model.Po;
-public  partial interface IPoBase: I_ShallowCloneSelf{
+public partial interface IPoBase: I_ShallowCloneSelf{
+
 	#region IPoBase
 	/// <summary>
 	/// 留與觸發器或攔截器、改實體保存旹自動改ᵣ「改ˡ時」ˇ

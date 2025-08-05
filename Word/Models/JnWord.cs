@@ -58,11 +58,17 @@ public  partial class JnWord
 		get{return PoWord.Head;}
 		set{PoWord.Head = value;}
 	}
-	[Impl]
-	public Tempus BizTimeVer{
-		get{return PoWord.BizTimeVer;}
-		set{PoWord.BizTimeVer = value;}
+
+	[Impl(typeof(IPoWord))]
+	public Tempus StoredAt{
+		get{return PoWord.StoredAt;}
+		set{PoWord.StoredAt = value;}
 	}
+
+
+	[Impl(typeof(I_BizTimeVer))]//TODO
+	public Tempus BizTimeVer{get;set;}
+
 
 
 
