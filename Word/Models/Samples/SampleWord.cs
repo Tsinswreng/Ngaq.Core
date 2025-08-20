@@ -1,3 +1,4 @@
+#if false
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
@@ -6,9 +7,9 @@ using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Learn;
 
-namespace Ngaq.Core.Model.Samples.Word;
+namespace Ngaq.Core.Word.Models.Samples;
 
-public  partial class SampleWord{
+public partial class SampleWord{
 	protected static SampleWord? _Inst = null;
 	public static SampleWord Inst => _Inst??= new SampleWord();
 
@@ -31,7 +32,7 @@ public  partial class SampleWord{
 
 	JnWord 持て成す(){
 		var P = KeysProp.Inst;
-		var L = ConstLearn.Inst;
+		var L = OldConstLearn.Inst;
 		var T = ConstTokens.Inst;
 		var Ans = new JnWord();
 		Ans.PoWord = new();
@@ -98,22 +99,22 @@ public  partial class SampleWord{
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Add;
+			o.LearnResult = OldELearn.Inst.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Add;
+			o.LearnResult = OldELearn.Inst.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Fgt;
+			o.LearnResult = OldELearn.Inst.Fgt;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Rmb;
+			o.LearnResult = OldELearn.Inst.Rmb;
 		}
 		return Ans;
 	}
@@ -122,7 +123,7 @@ public  partial class SampleWord{
 
 	JnWord Hello(){
 		var P = KeysProp.Inst;
-		var L = ConstLearn.Inst;
+		var L = OldConstLearn.Inst;
 		var T = ConstTokens.Inst;
 		var Ans = new JnWord();
 		Ans.PoWord = new();
@@ -192,22 +193,22 @@ v. 說（或大聲說）“喂”；打招呼
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Add;
+			o.LearnResult = OldELearn.Inst.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Add;
+			o.LearnResult = OldELearn.Inst.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Fgt;
+			o.LearnResult = OldELearn.Inst.Fgt;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = ELearn.Inst.Rmb;
+			o.LearnResult = OldELearn.Inst.Rmb;
 		}
 		return Ans;
 
@@ -215,3 +216,5 @@ v. 說（或大聲說）“喂”；打招呼
 	}
 
 }
+
+#endif

@@ -6,7 +6,7 @@ public  partial interface I_Learn_Records{
 	/// <summary>
 	/// 值 按日期排序
 	/// </summary>
-	public IDictionary<Learn, IList<ILearnRecord>> Learn_Records{get;set;}
+	public IDictionary<ELearn, IList<ILearnRecord>> Learn_Records{get;set;}
 	#if Impl
 	= new Dictionary<Learn, IList<ILearnRecord>>();
 	#endif
@@ -15,8 +15,8 @@ public  partial interface I_Learn_Records{
 
 public static class ExtnI_Learn_Records{
 
-	public static IDictionary<Learn, IList<ILearnRecord>> AddFromLearnRecords(
-		this IDictionary<Learn, IList<ILearnRecord>> z
+	public static IDictionary<ELearn, IList<ILearnRecord>> AddFromLearnRecords(
+		this IDictionary<ELearn, IList<ILearnRecord>> z
 		,IEnumerable<ILearnRecord> LearnRecords
 	){
 		foreach(var LearnRecord in LearnRecords){
@@ -29,8 +29,8 @@ public static class ExtnI_Learn_Records{
 		return z;
 	}
 
-	public static IDictionary<Learn, IList<ILearnRecord>> AddFromPoLearns(
-		this IDictionary<Learn, IList<ILearnRecord>> z
+	public static IDictionary<ELearn, IList<ILearnRecord>> AddFromPoLearns(
+		this IDictionary<ELearn, IList<ILearnRecord>> z
 		,IEnumerable<PoWordLearn> PoLearns
 	){
 		foreach(var PoLearn in PoLearns){

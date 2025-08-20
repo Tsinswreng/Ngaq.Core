@@ -18,10 +18,10 @@ public  partial class OperationStatus{
 }
 
 public  partial class MgrLearnedWords{
-	public IDictionary<Learn, IDictionary<IWordForLearn, nil>> Learn_WordSet{get;set;}
-	= new Dictionary<Learn, IDictionary<IWordForLearn, nil>>();
+	public IDictionary<ELearn, IDictionary<IWordForLearn, nil>> Learn_WordSet{get;set;}
+	= new Dictionary<ELearn, IDictionary<IWordForLearn, nil>>();
 
-	protected IDictionary<IWordForLearn, nil> GetWordSet(Learn Learn){
+	protected IDictionary<IWordForLearn, nil> GetWordSet(ELearn Learn){
 		if(Learn_WordSet.TryGetValue(Learn, out var WordSet)){
 			return WordSet;
 		}else{
@@ -32,7 +32,7 @@ public  partial class MgrLearnedWords{
 	}
 
 	public nil Set(
-		Learn Learn
+		ELearn Learn
 		,IWordForLearn Word
 	){
 		var WordSet = GetWordSet(Learn);
@@ -41,7 +41,7 @@ public  partial class MgrLearnedWords{
 	}
 
 	public nil DeleteWordFromLearnGroup(
-		Learn Learn
+		ELearn Learn
 		,IWordForLearn Word
 	){
 		var WordSet = GetWordSet(Learn);
@@ -72,7 +72,7 @@ public  partial class StateLearnWords{
 
 public  partial class LearnEventArgs :EventArgs{
 	public IWordForLearn? Word{get;set;}
-	public Learn Learn{get;set;}
+	public ELearn Learn{get;set;}
 	public bool IsUndo{get;set;} = false;
 }
 
@@ -160,7 +160,7 @@ public  partial class MgrLearn{
 		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn, Ct);
 
 		IDictionary<IdWord, IWordWeightResult> Id_Result;
-		if(WeightResult.Cfg.ResultType == EResultType.Enumerable){
+		if(WeightResult.Cfg.ResultType == EResultType.Enumerable_IWordWeightResult){
 			var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
 			Id_Result = Result.ToDictionary(
 				x=>IdWord.FromLow64Base(x.StrId)
@@ -212,7 +212,7 @@ public  partial class MgrLearn{
 /// <returns>見ELearnOpRtn</returns>
 	i64 _Learn(
 		IWordForLearn Word
-		,Learn Learn
+		,ELearn Learn
 	){
 		if(!State.OperationStatus.Start){
 			return (i64)ELearnOpRtn.Invalid;
@@ -242,7 +242,7 @@ public  partial class MgrLearn{
 
 	public i64 LearnOrUndo(
 		IWordForLearn Word
-		,Learn Learn
+		,ELearn Learn
 	){
 		if(!State.OperationStatus.Start){
 			return (i64)ELearnOpRtn.Invalid;

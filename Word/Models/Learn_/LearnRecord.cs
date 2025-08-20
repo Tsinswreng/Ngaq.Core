@@ -3,14 +3,14 @@ using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public  partial struct LearnRecord
+public partial struct LearnRecord
 	:ILearnRecord
 {
 	[Impl]
-	public Learn Learn{get;set;}
+	public ELearn Learn{get;set;}
 	[Impl]
 	public i64 UnixMs{get;set;} = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-	public LearnRecord(Learn Value){
+	public LearnRecord(ELearn Value){
 		Learn = Value;
 	}
 }

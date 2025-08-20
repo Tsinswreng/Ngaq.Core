@@ -6,11 +6,12 @@ public enum ESortBy:i64{
 }
 
 public enum EResultType:i64{
-	Enumerable = 1
-	,AsyncEnumerable =2
+	Enumerable_IWordWeightResult = 1
+	,AsyncEnumerable_IWordWeightResult =2
 }
 
-public  partial interface ICfgWeightResult{
+
+public partial interface ICfgWeightResult{
 
 	public ESortBy SortBy{get;set;}
 	#if Impl

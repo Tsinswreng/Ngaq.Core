@@ -1,10 +1,13 @@
+using Tsinswreng.CsTools;
+
 namespace Ngaq.Core.Word.Models.Weight;
 
 
-public  partial interface IWeightResult{
+public partial interface IWeightResult:ITypedObj{
 	public ICfgWeightResult Cfg{get;set;}
 	#if Impl
 		 = new CfgWeight();
 	#endif
-	public object? Results{get;set;}
+	//IWordWeightResult
+	public obj? Results{get;set;}
 }

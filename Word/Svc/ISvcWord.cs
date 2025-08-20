@@ -25,7 +25,7 @@ public  partial interface ISvcWord{
 
 	public Task<IPageAsy<JnWord>> PageJnWord(
 		IUserCtx UserCtx
-		,IPageQuery PageQry
+		,IPageQry PageQry
 		, CT Ct
 	);
 

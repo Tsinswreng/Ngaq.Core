@@ -3,10 +3,6 @@ namespace Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Model.Consts;
 using StronglyTypedIds;
 
-// [StronglyTypedId(Template.Long)]
-// public partial struct TestI64{}
-
-
 [StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]
 public partial struct IdUser {
 

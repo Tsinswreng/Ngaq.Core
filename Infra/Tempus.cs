@@ -3,7 +3,8 @@ using TStruct = Tempus;
 using TPrimitive = i64;
 using System.Diagnostics.CodeAnalysis;
 
-public  partial struct Tempus(TPrimitive V)
+//TODO 用 共ʹ庫
+public partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
 {
 	public TPrimitive Value{get;set;} = V;
@@ -11,6 +12,16 @@ public  partial struct Tempus(TPrimitive V)
 	public Tempus():this(DateTimeOffset.Now.ToUnixTimeMilliseconds()){
 
 	}
+
+	public static Tempus FromUnixMs(i64 Ms ){
+		return new Tempus(Ms);
+	}
+
+	public static Tempus FromDateTime(DateTime dt){
+		long ms = new DateTimeOffset(dt).ToUnixTimeMilliseconds();
+		return FromUnixMs(ms);
+	}
+
 	public static Tempus Now(){
 		return new Tempus();
 	}

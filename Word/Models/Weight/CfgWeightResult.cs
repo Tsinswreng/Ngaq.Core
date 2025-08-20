@@ -9,7 +9,7 @@ public  partial class CfgWeightResult: ICfgWeightResult{
 	#endif
 	public EResultType ResultType{get;set;}
 	#if Impl
-		= EResultType.Enumerable;
+		= EResultType.Enumerable_IWordWeightResult;
 	#endif
 
 }

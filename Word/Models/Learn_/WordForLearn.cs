@@ -48,9 +48,9 @@ public  partial class WordForLearn
 	#endif
 
 	[Impl(typeof(I_Learn_Records))]
-	public IDictionary<Learn, IList<ILearnRecord>> Learn_Records{get;set;}
+	public IDictionary<ELearn, IList<ILearnRecord>> Learn_Records{get;set;}
 	#if Impl
-	= new Dictionary<Learn, IList<ILearnRecord>>();
+	= new Dictionary<ELearn, IList<ILearnRecord>>();
 	#endif
 
 	[Impl(typeof(I_LearnRecords))]

@@ -36,7 +36,7 @@ public  partial class CalculatorForOne{
 	nil _FindFinalAddPos(){
 		for(var i = Word.LearnRecords.Count-1; i>=0; i--){
 			var LearnRecord = Word.LearnRecords[i];
-			if(LearnRecord.Learn == ELearn.Inst.Add){
+			if(LearnRecord.Learn == ELearn.Add){
 				WordState.PosFinalAdd = (u64)i;
 				break;
 			}
@@ -53,12 +53,11 @@ public  partial class CalculatorForOne{
 		//Word.SavedLearnRecords //TODO 確保此潙以時升序
 		for(var i = 0; i < Word.LearnRecords.Count; i++, State.WordState.Pos++){
 			var LearnRecord = Word.LearnRecords[i];
-			var E = ELearn.Inst;
-			if(LearnRecord.Learn == E.Add){
+			if(LearnRecord.Learn == ELearn.Add){
 				_Add();
-			}else if(LearnRecord.Learn == E.Rmb){
+			}else if(LearnRecord.Learn == ELearn.Rmb){
 				_Rmb();
-			}else if(LearnRecord.Learn == E.Fgt){
+			}else if(LearnRecord.Learn == ELearn.Fgt){
 				_Fgt();
 			}
 			if(i == Word.LearnRecords.Count-1){
@@ -94,7 +93,7 @@ public  partial class CalculatorForOne{
 		//TOFIX 蠹:finalAddEventPos之前者亦有debuff
 		if(//若有debuff
 			WordState.Pos >= WordState.PosFinalAdd
-			&& _GetFinalLearnRecord().Learn == ELearn.Inst.Rmb
+			&& _GetFinalLearnRecord().Learn == ELearn.Rmb
 		){
 			debuff = _CalcDebuff();
 			var weight = weight0 * debuff;
@@ -112,7 +111,7 @@ public  partial class CalculatorForOne{
 		f64 weight0 = _CalcTimeWeightForCur();
 		weight0 *= WordState.CurCntAdd; // curPos之後之cnt_add不算
 		weight0 /= 10;
-		if(Prev.Learn == ELearn.Inst.Add){
+		if(Prev.Learn == ELearn.Add){
 			weight0 *= 4;
 		}
 		WordState.Weight *= weight0;
@@ -122,8 +121,7 @@ public  partial class CalculatorForOne{
 
 	nil _HandleFinal(){
 		var Cur = _GetCurLearnRecord();
-		var L = ELearn.Inst;
-		if(Cur.Learn == L.Add){
+		if(Cur.Learn == ELearn.Add){
 			var Bonus = _CalcBonusWhenFinalIsAdd();
 			if(Bonus < 1.1){
 				Bonus = 1.1;
@@ -132,7 +130,7 @@ public  partial class CalculatorForOne{
 			//TODO Log
 		}//~
 		//加ʹ次ˋ大於三之詞 若逾幾日未學習 則增權重
-		else if(Cur.Learn == L.Rmb){ //重要單詞
+		else if(Cur.Learn == ELearn.Rmb){ //重要單詞
 			if(WordState.CurCntAdd >= 3){
 				i64 Diff = _Now() - Cur.UnixMs;
 				if(Diff > (i64)ETimeInMs.Day*30){
@@ -142,7 +140,7 @@ public  partial class CalculatorForOne{
 				}
 			}
 		}
-		else if( Cur.Learn == L.Fgt){
+		else if( Cur.Learn == ELearn.Fgt){
 			var Bonus = _CalcBonusWhenFinalIsAdd(); //借用
 			if(Bonus < 1.1){Bonus = 1.1;}
 			Bonus *= (WordState.CurCntAdd+1)*2;
