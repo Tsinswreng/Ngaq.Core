@@ -11,7 +11,9 @@ using Ngaq.Core.Word.Models.Learn_;
 
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull)]
+	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+	,Converters =
+)]
 [JsonSerializable(typeof(Answer<object>))]
 [JsonSerializable(typeof(IAnswer<object>))]
 [JsonSerializable(typeof(WordListTxtMetadata))]
@@ -24,3 +26,4 @@ using Ngaq.Core.Word.Models.Learn_;
 public partial class AppJsonCtx : JsonSerializerContext {
 
 }
+

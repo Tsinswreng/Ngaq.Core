@@ -13,7 +13,7 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.Models;
 
-public  partial class JnWord
+public partial class JnWord
 	:IPoWord
 {
 	[Impl]

@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Model.Po.Kv;
 
 
-public  partial struct EItemProp(str V){
+public partial struct EItemProp(str V){
 	public str Value{get;set;} = V;
 	public static implicit operator str(EItemProp e){
 		return e.Value;
@@ -18,20 +18,24 @@ public  partial struct EItemProp(str V){
 /// <summary>
 /// 內置單詞屬性鍵
 /// </summary>
-public  partial class KeysProp{
+public partial class KeysProp{
 	protected static KeysProp? _Inst = null;
 	public static KeysProp Inst => _Inst??= new KeysProp();
 
 	public EItemProp summary = nameof(summary);
 	public EItemProp description = nameof(description);
 	//public StrEnum learn = nameof(learn);
-	public EItemProp note = nameof(note);
+	public EItemProp note = nameof(note); // 對應舊版之annotation
 	public EItemProp tag = nameof(tag);
 	public EItemProp source = nameof(source);
 	public EItemProp alias = nameof(alias);
 	public EItemProp pronunciation = nameof(pronunciation);
 	public EItemProp weight = nameof(weight);
 	public EItemProp learn = nameof(learn);
+	public EItemProp usage = nameof(usage);
+	public EItemProp example = nameof(example);
+	public EItemProp relation = nameof(relation);
+	public EItemProp Ref = "ref";
 
 }
 
