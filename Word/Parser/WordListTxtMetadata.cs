@@ -1,7 +1,8 @@
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Tools;
 
-namespace Ngaq.Core.Service.Parser;
-public  partial class WordListTxtMetadata{
+namespace Ngaq.Core.Word.Parser;
+public partial class WordListTxtMetadata: IAppSerializable{
 	/// <summary>
 	/// 語言
 	/// 字段保持全小寫

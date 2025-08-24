@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
@@ -14,7 +15,7 @@ using Tsinswreng.CsTools;
 namespace Ngaq.Core.Word.Models;
 
 public partial class JnWord
-	:IPoWord
+	:IPoWord, IAppSerializable
 {
 	[Impl]
 	public object ShallowCloneSelf()

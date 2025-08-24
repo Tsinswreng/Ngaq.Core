@@ -8,6 +8,7 @@ using System.Diagnostics;
 using Ngaq.Core.Service.Parser.Model;
 
 using I_Iter_u8 = Ngaq.Core.Stream.I_Iter<byte>;
+using Ngaq.Core.Word.Parser;
 
 
 namespace Ngaq.Core.Service.Parser;

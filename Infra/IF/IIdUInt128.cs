@@ -1,5 +1,10 @@
 namespace Ngaq.Core.Infra.IF;
 
-public  partial interface IIdUInt128:I_Value<UInt128>{
-	//public UInt128 Value{get;set;}
+public partial interface IStrongId<T>: I_Value<T>{
+
 }
+
+public partial interface IIdUInt128:IStrongId<UInt128>{
+
+}
+

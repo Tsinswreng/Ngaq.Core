@@ -3,6 +3,7 @@ using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Service.Parser.Model;
 using Ngaq.Core.Word.Models;
+using Ngaq.Core.Word.Parser;
 
 namespace Ngaq.Core.Service.Parser;
 

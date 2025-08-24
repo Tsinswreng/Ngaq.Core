@@ -1,6 +1,6 @@
 using System.ComponentModel;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 

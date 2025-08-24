@@ -16,6 +16,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Include="obj/Generated/Tsinswreng.CsIfaceGen.SrcGen/Tsinswreng.CsIfaceGen.SrcGen.Generator/*.cs"/>
+	</ItemGroup>
+
+	<ItemGroup>
 		<!-- <PackageReference Include="NewId" Version="4.0.1" /> -->
 		<!-- <PackageReference Include="MassTransit.Abstractions" Version="8.4.0" /> -->
 		<PackageReference Include="System.Linq.Async" Version="6.0.1" />
@@ -33,6 +37,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="../Tsinswreng.CsIfaceGen/proj/Tsinswreng.CsIfaceGen/Tsinswreng.CsIfaceGen.csproj" />
+			<!-- <ProjectReference Include="../Tsinswreng.CsIfaceGen/proj/Tsinswreng.CsIfaceGen.SrcGen/Tsinswreng.CsIfaceGen.SrcGen.csproj"
+				OutputItemType="Analyzer" ReferenceOutputAssembly="false"
+			/> -->
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Include="../Tsinswreng.CsTypeAlias/TypeAlias.cs" />
 		<ProjectReference Include="../Tsinswreng.CsCore/proj/Tsinswreng.CsCore/Tsinswreng.CsCore.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsTools/proj/Tsinswreng.CsTools/Tsinswreng.CsTools.csproj" />
@@ -46,13 +57,11 @@
 	<ItemGroup>
 		<!-- 添加自定义模板 -->
 		<AdditionalFiles Include="UInt128Template.typedid" />
-
 		<!-- 添加NuGet包 -->
 		<PackageReference Include="StronglyTypedId" Version="1.0.0-beta08" />
 		<!-- PrivateAssets="all"  -->
 		<!-- ExcludeAssets="runtime;compile" -->
 	</ItemGroup>
-
 
 
 

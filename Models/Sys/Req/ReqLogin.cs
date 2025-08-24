@@ -1,5 +1,7 @@
+using Ngaq.Core.Infra.IF;
+
 namespace Ngaq.Core.Models.Sys.Req{
-public partial class ReqLogin{
+public partial class ReqLogin: IAppSerializable{
 	public str? UniqueName{get;set;}
 	public str? Email{get;set;}
 	public str? Password{get;set;}

@@ -1,10 +1,15 @@
 //#define Impl
-using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Sys.Po.User;
-using Ngaq.Core.Models.Po;
+namespace Ngaq.Core.Models.Po;
 
-namespace Ngaq.Core.Model.Po;
-public partial interface IPoBase: I_ShallowCloneSelf{
+using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.IF;
+using Ngaq.Core.Model.Sys.Po.User;
+
+
+public partial interface IPoBase
+	:I_ShallowCloneSelf
+	,IAppSerializable
+{
 
 	#region IPoBase
 	/// <summary>

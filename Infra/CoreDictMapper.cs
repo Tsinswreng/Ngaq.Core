@@ -1,26 +1,59 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Xml.Serialization;
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Sys.Models;
+using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsDictMapper;
+using Tsinswreng.CsIfaceGen;
 namespace Ngaq.Core.Infra;
 
+public class CfgIfaceGen{
+	public const str OutDir = nameof(Tsinswreng)+"."+nameof(Tsinswreng.CsIfaceGen)+"/";
+}
+
+
+[IfaceGen(
+	ParentType = typeof(IAppSerializable)
+	,Name = nameof(CoreDictMapper)
+	,PhFullType = "TYPE"
+	,PhIdentifierSafeFullType = "ID"
+	,OutDir = CfgIfaceGen.OutDir+nameof(CoreDictMapper)
+	,Template =
+"""
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(TYPE))]
+	public partial class CoreDictMapper{
+		//public static string ID = "TYPE";
+	}
+}
+
+"""
+)]
+public interface IIfaceGenCfg_CoreDictMapper{
+
+}
+
+#if false
 [DictType(typeof(PoCfg))]
 [DictType(typeof(IPoKv))]
 [DictType(typeof(PoWordProp))]
 [DictType(typeof(PoWord))]
 [DictType(typeof(PoWordLearn))]
 [DictType(typeof(Prop))]
+[DictType(typeof(JnWord))]
+#endif
+
 //[DictType(typeof(AppCfg))] //TargetType須惟一
-// [DictType(typeof(AppCfg), true)]
-// [DictType(typeof(AppCfg), Recursive = true)]
-//[DictType(typeof(BoWord))]
-//[DictType(typeof(TestParent))]
+
+
 public partial class CoreDictMapper{
 protected static CoreDictMapper? _Inst = null;
 public static CoreDictMapper Inst => _Inst??= new CoreDictMapper();

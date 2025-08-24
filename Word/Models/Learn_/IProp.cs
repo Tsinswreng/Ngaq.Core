@@ -3,11 +3,11 @@ using Ngaq.Core.Model.Po.Kv;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 
-public  partial interface IProp:IPoKv{
+public partial interface IProp:IPoKv{
 
 }
 
-public  partial class Prop
+public partial class Prop
 	:PoWordProp
 	,IProp
 {

@@ -1,6 +1,8 @@
+using Ngaq.Core.Infra.IF;
+
 namespace Ngaq.Core.Model.Po.Kv;
 
-public partial interface IPoKv{
+public partial interface IPoKv:IAppSerializable{
 	#region IPoKv
 	public i64 KType { get; set; }
 	public str? KStr { get; set; }
