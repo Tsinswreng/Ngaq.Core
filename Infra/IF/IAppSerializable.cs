@@ -3,23 +3,35 @@ using System.Collections;
 namespace Ngaq.Core.Infra.IF;
 
 public interface IAppSerializable{
-
-	public obj? Serialize(){
-		return this;
-	}
-	public obj? Deserialize(obj? Src, obj Tar){
-		return Src;
-	}
+	// public obj? Serialize(){
+	// 	return this;
+	// }
+	// public obj? Deserialize(obj? Src, obj Tar){
+	// 	return Src;
+	// }
 }
 
 // public static class ExtnSerializable{
 // //type TSerialize = null|number|string|bool|IDict<str, TSerialize>|IList<TSerialize>
 
-// 	public static obj? Serialize(obj? Src){
+// 	static bool IsIListOfT(Type t){
+// 		return t.GetInterfaces().Any(i =>
+// 			i.IsGenericType &&
+// 			i.GetGenericTypeDefinition() == typeof(IList<>)
+// 		);
+// 	}
+
+// 	public static obj? Serialize(
+// 		Type Type
+// 		,obj? Src
+// 	){
 // 		if(Src == null){
 // 			return null;
 // 		}
-// 		if(Src is IList){
+
+// 		if(Src ){
+
+// 		}else if(IsIListOfT(Type)){
 
 // 		}
 // 	}

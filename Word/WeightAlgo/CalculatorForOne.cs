@@ -4,9 +4,9 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.WeightAlgo;
 
-public  partial class CalculatorForOne{
+public partial class CalculatorForOne{
 	public WeightCfg Cfg{get;set;} = new();
-	public  partial class State_{
+	public partial class State_{
 		public IWeightWord Word{get;set;} = null!;
 		public WeightWordState WordState{get;set;} = new();
 	}
@@ -24,7 +24,7 @@ public  partial class CalculatorForOne{
 		return NIL;
 	}
 
-	public virtual str Log(str s){
+	public str Log(str s){
 		return s;
 	}
 

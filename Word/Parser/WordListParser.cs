@@ -102,63 +102,14 @@ public  partial class WordListParser{
 
 	public bool UnifiedNewLine{get; set;} = true;
 
-	// [Obsolete]
-	// public I_DateBlock getCurDateBlock(){
-	// 	if(_status.dateBlocks.Count == 0){
-	// 		error("No date block");
-	// 		return null!;
-	// 	}
-	// 	return _status.dateBlocks[_status.dateBlocks.Count - 1];
-	// }
-
-	// public I_WordBlock getCurWordBlock(){
-	// 	var curDateBlock = getCurDateBlock();
-	// 	if(curDateBlock.words.Count == 0){
-	// 		error("No word block"); return null!;
-	// 	}
-	// 	var curWordBlock = curDateBlock.words[curDateBlock.words.Count - 1];
-	// 	return curWordBlock;
-	// }
-
 	public bool HasNext(){
 		return _GetNextByte.HasNext();
 	}
 
 	protected W TryGetNextByte(){
 		var ans = _GetNextByte.Next();
-		// word ans;
-		// if(pos_preRead < preReadBuffer.Count){
-		// 	ans = preReadBuffer[pos_preRead];
-		// 	pos_preRead++;
-		// }else{
-		// 	ans =  _getNextChar.GetNextChar();
-		// }
-
-		// if(isNil(ans)){
-		// 	return ans;
-		// }
-
-		// if(unifiedNewLine){
-		// 	if( eq(ans, '\r') ){
-		// 		var p =  PreRead();
-		// 		if( eq(p, '\n') ){
-		// 			ans = '\n';
-		// 			preReadBuffer.Clear();
-		// 			pos_preRead = 0;
-		// 			_status.pos++;
-		// 		}
-		// 	}
-		// }
-
-		//lineCol.col++;
 		Status.Pos++;
-		// if( eq(ans , '\n') ){
-		// 	lineCol.line++;
-		// 	lineCol.col = 0;
-		// }
 		Status.CurChar = ans;
-
-
 		return ans;
 	}
 
@@ -342,25 +293,8 @@ public  partial class WordListParser{
 		if(buf.Count == 0){
 			return "";
 		}
-		//var bytes = new byte[buf.Count];
-		// for (int i = 0; i < buf.Count; i++){
-		// 	// 检查是否超出 byte 的范围 (0-255)
-		// 	// if (buf[i] < 0 || buf[i] > 255){
-		// 	// 	throw new std.ArgumentOutOfRangeException(nameof(buf), $"Word value {buf[i]} is out of range for byte.");
-		// 	// }
-		// 	bytes[i] = (byte)buf[i];
-		// }
-		//var bytes = buf.ToArray();
 		return encoding.GetString(buf.ToArray());
 	}
-
-	// public str bufToStr(IList<word> buf){
-	// 	var encoding = this.encoding;
-	// 	//IList<byte> nonNullBuf = (IList<byte>)buf;
-	// 	var nonNull
-	// 	var arr = nonNullBuf.ToArray();
-	// 	return encoding.GetString(arr);
-	// }
 
 	public I_StrSegment ReadLine(){
 		var buf = new List<W>();
@@ -379,13 +313,6 @@ public  partial class WordListParser{
 		}
 	}
 
-	// public nil chkUnexpectedEOF(str? c){
-	// 	if( isNil(c) ){
-	// 		error("Unexpected EOF");
-	// 		return 1;
-	// 	}
-	// 	return null!;
-	// }
 
 	// 不含prop之wordBlockBody
 	/// @return body之I_StrSegment、非完整。
@@ -422,29 +349,6 @@ public  partial class WordListParser{
 
 
 	}
-
-
-/// <summary>
-/// -> Prop, RestOfWordBlock
-/// </summary>
-/// <returns></returns>
-	// public nil FirstLeftSquareBracketInWordBlockProp(){
-	// 	buffer.Add(_status.curChar); // 加上 第一個 "["
-	// 	for(;;){
-	// 		var c =  GetNextChar();
-	// 		if( eq(c , '[') ){
-	// 			state=WPS.Prop;
-	// 			buffer.Clear();
-	// 			break;
-	// 		}else{
-	// 			buffer.Add(c);
-	// 			state=WPS.RestOfWordBlock;
-	// 			break;
-	// 		}
-	// 	}
-	// 	return null!;
-	// }
-
 
 	public nil HeadOfWordDelimiter(){
 		var toReturn = Status.Stack.Pop();
@@ -577,66 +481,6 @@ public  partial class WordListParser{
 		}
 
 	}
-
-
-/*
-TODO 空wordBlock、及head中有不完整ʹ分隔符者
- */
-	// public I_WordBlock? ReadOneWordBlock(){
-	// 	I_StrSegment? head = null;
-	// 	var bodySegs = new List<I_StrSegment>();
-	// 	var props = new List<I_Prop>();
-	// 	for(;;){
-	// 		G.log(state.ToString());
-	// 		switch (state){
-	// 			case WPS.WordBlocks: // 入口
-	// 				// var firstLine =  ReadLine(); //TODO
-	// 				// head = firstLine;
-	// 				// state = WordParseState.RestOfWordBlock;
-	// 				state = WPS.WordBlock_TopSpace;
-	// 			break;
-	// 			case WPS.WordBlock_TopSpace:
-	// 				 WordBlock_TopSpace(); // -> HeadOfWordDelimiter, FirstLine
-	// 			break;
-	// 			case WPS.WordBlockFirstLine:
-	// 				head =  ParseWordBlockHead(); // -> RestOfWordBlock
-	// 				if(head == null || head.text.Length == 0){
-	// 					return null;//TODO 判斷純空白
-	// 				}
-	// 			break;
-	// 			case WPS.RestOfWordBlock:
-	// 				var bodySeg =  WordBlockBody();
-	// 				bodySegs.Add(bodySeg);
-	// 				//state->WordParseState.FirstLeftSquareBracketInWordBlockProp;
-	// 			break;
-	// 			case WPS.FirstLeftSquareBracketInWordBlockProp:
-	// 				 FirstLeftSquareBracketInWordBlockProp(); // -> Prop, RestOfWordBlock
-	// 			break;
-	// 			case WPS.Prop:
-	// 				// WordBlockProp(); // -> RestOfWordBlock
-	// 				var prop =  ReadProp();
-	// 				props.Add(prop);
-	// 				state = WPS.RestOfWordBlock;
-	// 			break;
-	// 			case WPS.HeadOfWordDelimiter:
-	// 				// state -> WordBlockEnd, RestOfWordBlock
-	// 				 HeadOfWordDelimiter();
-	// 			break;
-	// 			case WPS.WordBlockEnd:
-	// 				state = WPS.WordBlock_TopSpace;
-	// 				if(head == null){
-	// 					return null;
-	// 				}
-	// 				var ans = new WordBlock{
-	// 					head = head
-	// 					,body = bodySegs
-	// 					,props = props
-	// 				};
-	// 				return ans;
-	// 			//break;
-	// 		}
-	// 	}
-	// }
 
 	//讀完日期後 、[2024-10-19T15:51:19.877+08:00] 後面
 	public nil DateBlock_TopSpace(){
@@ -905,20 +749,5 @@ TODO 空wordBlock、及head中有不完整ʹ分隔符者
 		}
 		return ans;
 	}
-
-
 }
-
-
-/*
-var txtLength = 1000000;
-for(var i = 0; i < txtLength, i++){
-	string c =  GetNextChar(); //c是只有一個碼點的字符串。從文件讀取。
-	handle(c);
-}
-handle方法中會判斷c並把c加入到List<string>中。
-以上代碼會有明顯的GC壓力或性能問題嗎?
- */
-
-
 

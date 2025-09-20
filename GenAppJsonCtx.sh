@@ -19,6 +19,6 @@ public partial class AppJsonCtx{}
 EOF
 rm AppJsonCtx/*
 
+rm CoreDictMapper.g.cs
 cat CoreDictMapper/* >>  CoreDictMapper.g.cs
 rm CoreDictMapper/*
-

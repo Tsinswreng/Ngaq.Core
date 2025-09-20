@@ -1,4 +1,5 @@
-
+#if false
+//不能寫using語句 否則源生成 謬
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
@@ -49,3 +50,5 @@ partial struct PLACEHOLDERID
 		return Value.Equals(other.Value);
 	}
 }
+
+#endif

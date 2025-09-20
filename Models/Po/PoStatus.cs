@@ -4,8 +4,16 @@ using TStruct = PoStatus;
 using TPrimitive = i32;
 using System.Diagnostics.CodeAnalysis;
 
-public  partial struct PoStatus(TPrimitive V)
+// public  enum PoStatus{
+// 	Normal = 0,
+// 	Deleted = 1,
+// 	Disabled = 2
+// }
+
+#if true
+public partial struct PoStatus(TPrimitive V)
 	:IEquatable<PoStatus>
+	,I_Value<TPrimitive>
 {
 	public static PoStatus Parse(TPrimitive v){
 		return new PoStatus(v);
@@ -54,3 +62,5 @@ public  partial struct PoStatus(TPrimitive V)
 
 }
 
+
+#endif

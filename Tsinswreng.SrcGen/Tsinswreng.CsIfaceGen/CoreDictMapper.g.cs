@@ -1,6 +1,70 @@
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Sys.Models.IdCfg))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Sys_Models_IdCfg = "global::Ngaq.Core.Sys.Models.IdCfg";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Learn_.IdLearn))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Learn___IdLearn = "global::Ngaq.Core.Model.Po.Learn_.IdLearn";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Sys_Po_Password_IdPassword = "global::Ngaq.Core.Model.Sys.Po.Password.IdPassword";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Role.IdRole))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Role_IdRole = "global::Ngaq.Core.Model.Po.Role.IdRole";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.User.IdUser))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Sys_Po_User_IdUser = "global::Ngaq.Core.Model.Sys.Po.User.IdUser";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Word.IdWord))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Word_IdWord = "global::Ngaq.Core.Model.Po.Word.IdWord";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Kv.IdWordProp))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Kv_IdWordProp = "global::Ngaq.Core.Model.Po.Kv.IdWordProp";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Infra.IF.IIdUInt128))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Infra_IF_IIdUInt128 = "global::Ngaq.Core.Infra.IF.IIdUInt128";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Po_IPoBase = "global::Ngaq.Core.Models.Po.IPoBase";

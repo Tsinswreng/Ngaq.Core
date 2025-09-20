@@ -1,6 +1,22 @@
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 
+[JsonSerializable(typeof(global::Ngaq.Core.Sys.Models.IdCfg))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Learn_.IdLearn))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Role.IdRole))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.User.IdUser))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Word.IdWord))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Kv.IdWordProp))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.IF.IIdUInt128))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Kv.IPoKv))]

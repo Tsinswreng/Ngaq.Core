@@ -4,7 +4,10 @@ public partial interface IStrongId<T>: I_Value<T>{
 
 }
 
-public partial interface IIdUInt128:IStrongId<UInt128>{
+public partial interface IIdUInt128
+	:IStrongId<UInt128>
+	,IAppSerializable
+{
 
 }
 
