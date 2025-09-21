@@ -34,4 +34,13 @@ public class DictJson{
 		string json = JsonSerializer.Serialize(data, Opt);
 		return json;
 	}
+
+	// 反序列化：JSON 字符串 -> IDictionary<string,object?>
+	public static IDictionary<str, obj?> FromJson(str json){
+		// 先用 JsonNode 解析，再反序列化到目标类型，全程不走反射
+		var node = JsonNode.Parse(json)!;
+		return node.Deserialize(DictJsonCtx.Default.IDictionaryStringObject)!;
+	}
+
+
 }

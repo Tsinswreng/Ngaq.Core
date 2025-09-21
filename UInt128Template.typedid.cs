@@ -1,9 +1,25 @@
-#if false
+#if false//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
+	,I_ToDeSerialized
+	,I_ToSerialized
 {
+	object? I_ToDeSerialized.ToDeSerialized(object? Obj) {
+		if(Obj is str s){
+			return FromLow64Base(s);
+		}
+		return null;
+	}
+
+	object? I_ToSerialized.ToSerialized(object? Obj) {
+		if(Obj is PLACEHOLDERID){
+			return Obj.ToString();
+		}
+		return Obj;
+	}
+
 	public PLACEHOLDERID():this(0){
 		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
 	}

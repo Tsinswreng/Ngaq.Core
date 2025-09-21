@@ -6,11 +6,21 @@ using System.Diagnostics.CodeAnalysis;
 public partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
 	,I_Value<TPrimitive>
+	,I_ToSerialized
 {
 	public TPrimitive Value{get;set;} = V;
 
 	public Tempus():this(DateTimeOffset.Now.ToUnixTimeMilliseconds()){
 
+	}
+	obj? I_ToSerialized.ToSerialized(obj? Obj) {
+		if(Obj is i64 I64){
+			return new Tempus(I64);
+		}
+		if(Obj is DateTime Dt){
+			return FromDateTime(Dt);
+		}
+		return null;
 	}
 
 	public static Tempus FromUnixMs(i64 Ms ){
