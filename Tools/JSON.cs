@@ -16,6 +16,7 @@ public static class JSON {
 		,PropertyNamingPolicy = null  // 关闭命名策略
 		,TypeInfoResolver = AppJsonCtx.Default
 		,ReadCommentHandling = JsonCommentHandling.Skip
+		,Converters = { new CustomJsonConvtrFctry() }
 	};
 
 	public static str stringify<T>(

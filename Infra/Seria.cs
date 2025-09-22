@@ -75,7 +75,7 @@ public class Seria{
 			}
 		}
 		#endregion Custom
-		{ //TODO 處理列表反序列化
+		{ //TODO 處理列表反序列化 需依賴額外ʹ源生成器、現有ʹDictMapper不夠。
 			// var TOfList = ListDictOfT.GetTOfIList(TarType);
 			// if(
 			// 	SrcObj is IList srcList
