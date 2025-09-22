@@ -10,7 +10,7 @@ partial struct PLACEHOLDERID
 		if(Obj is str s){
 			return FromLow64Base(s);
 		}
-		return null;
+		return Obj;
 	}
 
 	object? I_ToSerialized.ToSerialized(object? Obj) {

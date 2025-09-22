@@ -1,6 +1,6 @@
 #define Impl
 namespace Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsTools;
+
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Learn_;

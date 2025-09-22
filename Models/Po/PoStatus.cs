@@ -25,8 +25,13 @@ public partial struct PoStatus(TPrimitive V)
 	}
 
 	object? I_ToDeSerialized.ToDeSerialized(object? Obj) {
-		if(Obj is TPrimitive p){
-			return new TStruct(p);
+		// if(Obj is TPrimitive p){
+		// 	return new TStruct(p);
+		// }
+		if(Obj is i32 || Obj is i64 || Obj is u32 || Obj is u64){
+			return new TStruct(
+				Convert.ToInt32(Obj)
+			);
 		}
 		return Obj;
 	}

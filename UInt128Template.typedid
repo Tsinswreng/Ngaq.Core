@@ -1,4 +1,3 @@
-//不能寫using語句 否則源生成 謬
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
@@ -9,7 +8,7 @@ partial struct PLACEHOLDERID
 		if(Obj is str s){
 			return FromLow64Base(s);
 		}
-		return null;
+		return Obj;
 	}
 
 	object? I_ToSerialized.ToSerialized(object? Obj) {

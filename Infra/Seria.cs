@@ -1,9 +1,7 @@
-using System.Collections;
-using Ngaq.Core.Infra.IF;
-using Tsinswreng.CsDictMapper;
-using Tsinswreng.CsTools;
-
 namespace Ngaq.Core.Infra;
+
+using System.Collections;
+using Tsinswreng.CsDictMapper;
 
 public class Seria{
 	public IDictMapperShallow DictMapper{get;set;}
@@ -26,21 +24,6 @@ public class Seria{
 		if(Obj is I_ToSerialized s){
 			return s.ToSerialized(Obj);
 		}
-		// {
-		// 	if(Obj is IIdUInt128 v){
-		// 		return v.ToString();
-		// 	}
-		// }
-		// {
-		// 	if(Obj is UInt128 v){
-		// 		return ToolUInt128.ToLow64Base(v);
-		// 	}
-		// }
-		// {
-		// 	if(Obj is I_ValueObj v){ //TODO 勿硬編碼、設自定義類型序列化器
-		// 		return v.ValueObj;
-		// 	}
-		// }
 		#endregion Custom
 
 
@@ -65,7 +48,12 @@ public class Seria{
 	}
 
 	//public obj AssignShallow(Type Type, obj? Obj, IDictionary<str, obj?> Dict);
-	public obj? Deserialize(obj? SrcObj, Type TarType, ref obj TarObj){
+	public obj? Deserialize(
+		obj? SrcObj
+		,Type TarType
+		,ref obj TarObj
+		,IDictionary<str, obj?>? Prop = null
+	){
 		if(SrcObj == null){
 			TarObj = null!;
 			return null;
@@ -87,19 +75,29 @@ public class Seria{
 			}
 		}
 		#endregion Custom
-		{
-			if(
-				SrcObj is IEnumerable srcList
-				&& TarObj is IEnumerable tarList
-			){
-				var R = new List<obj>();
-				ZipTwo(srcList, tarList, (s, t)=>{
-					R.Add(Deserialize(s, t.GetType(), ref t)!);
-					return 0;
-				});
-				TarObj = R;
-				return TarObj;
-			}
+		{ //TODO 處理列表反序列化
+			// var TOfList = ListDictOfT.GetTOfIList(TarType);
+			// if(
+			// 	SrcObj is IList srcList
+			// 	&& TarObj is IList TarCol
+			// 	&& TOfList is not null
+			// ){
+			// 	foreach(var ele in srcList){
+
+			// 	}
+			// }
+			// if(
+			// 	SrcObj is IEnumerable srcList
+			// 	&& TarObj is IEnumerable tarList
+			// ){
+			// 	var R = new List<obj>();
+			// 	ZipTwo(srcList, tarList, (s, t)=>{
+			// 		R.Add(Deserialize(s, t.GetType(), ref t, Prop)!);
+			// 		return 0;
+			// 	});
+			// 	TarObj = R;
+			// 	return TarObj;
+			// }
 		}
 		{
 			if(
@@ -109,26 +107,28 @@ public class Seria{
 				var Key_Type = DictMapper.GetTypeDictShallow(TarType);
 				var TarDict = DictMapper.ToDictShallow(TarType, TarObj);
 				foreach(DictionaryEntry kv in srcDict){
-					var k = kv.Key;var v = kv.Value;
-					if(k is not str){continue;}
-					var kStr = (str)k;
-					if(TarDict.TryGetValue(kStr, out var TarV)){
-						var TarPropType = Key_Type[kStr];
-						TarDict[kStr] = Deserialize(v, TarPropType, ref TarV);
+					obj? k=null,v=null;str kStr="";
+					try{
+						k = kv.Key;v = kv.Value;
+						if(k is not str){continue;}
+						kStr = (str)k;
+						if(TarDict.TryGetValue(kStr, out var TarV)){
+							var TarPropType = Key_Type[kStr];
+							TarDict[kStr] = Deserialize(v, TarPropType, ref TarV!, Prop);
+						}
+					}
+					catch (System.Exception e){
+						throw new System.Exception($"Deserialize key:{kStr} value:{v} failed.", e);
 					}
 				}
+
 				TarObj = DictMapper.AssignShallow(TarType, TarObj, TarDict);
 				return TarObj;
 			}
 		}
-		//throw new NotImplementedException();
-		System.Console.WriteLine("Unknow type:");
-		System.Console.WriteLine("SrcObj: "+SrcObj);
-		System.Console.WriteLine("SrcObj.GetType(): "+SrcObj.GetType());
-		System.Console.WriteLine("TarObj: "+TarObj);
-		System.Console.WriteLine("TarObj.GetType(): "+TarObj.GetType());
-		System.Console.WriteLine("TarType: "+TarType);
-		return TarObj;//TODO
+
+		throw new Exception("Unknow type.");
+		//return TarObj;
 	}
 
 	/// <summary>
