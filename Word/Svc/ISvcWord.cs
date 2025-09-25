@@ -9,24 +9,30 @@ using Ngaq.Core.Models.UserCtx;
 using Ngaq.Core.Word.Models;
 using Tsinswreng.CsPage;
 
-public  partial interface ISvcWord{
-
+public partial interface ISvcWord{
+//TODO 加詞後 宜予回饋 如 新ʹ加ʹ詞ʹ數 及 老詞新加之數
 	Task<nil> AddWordsFromFilePath(
 		IUserCtx UserCtx
 		,Path_Encode Path_Encode
-		, CT ct
+		,CT Ct
 	);
 
 	Task<nil> AddWordsFromText(
 		IUserCtx UserCtx
 		,string Text
-		, CT ct
+		,CT Ct
+	);
+
+	Task<nil> AddJnWords(
+		IUserCtx UserCtx
+		,IEnumerable<JnWord> JnWords
+		,CT Ct
 	);
 
 	public Task<IPageAsy<JnWord>> PageJnWord(
 		IUserCtx UserCtx
 		,IPageQry PageQry
-		, CT Ct
+		,CT Ct
 	);
 
 	public Task<nil> AddWordId_PoLearnss(

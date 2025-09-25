@@ -237,6 +237,12 @@ public static class ExtnJnWord{
 		return Dict;
 	}
 
+	/// <summary>
+	/// 只比詞頭 語言 與擁者
+	/// </summary>
+	/// <param name="W1"></param>
+	/// <param name="W2"></param>
+	/// <returns></returns>
 	public static bool IsSameUserWord(
 		this IPoWord W1
 		,IPoWord W2
@@ -253,7 +259,25 @@ public static class ExtnJnWord{
 		return true;
 	}
 
-	public static JnWord DiffMerge(
+
+	public static JnWord? ToDiffMerge(
+		this JnWord z
+		,JnWord Other
+	){
+		JnWord? R=null;
+		z.ToDiffMerge(Other, ref R);
+		return R;
+	}
+
+	/// <summary>
+	/// Other 合入 z 返R
+	/// </summary>
+	/// <param name="z"></param>
+	/// <param name="Other"></param>
+	/// <param name="R"></param>
+	/// <returns></returns>
+	/// <exception cref="ErrArg"></exception>
+	public static JnWord? ToDiffMerge(
 		this JnWord z
 		,JnWord Other
 		,ref JnWord? R
@@ -261,12 +285,46 @@ public static class ExtnJnWord{
 		if(!z.IsSameUserWord(Other)){
 			throw new ErrArg("!z.IsSameUserWord(Other)");
 		}
+		if(z.IsSynced(Other)){
+			return null;
+		}
 		var DiffedProps = JnWord.DiffProps(Other.Props, z.Props);
 		var DiffedLearns = JnWord.DiffLearns(Other.Learns, z.Learns);
 		R??=new JnWord();
 		R.PoWord = z.PoWord;
 		R.Props = DiffedProps;
 		R.Learns = DiffedLearns;
+		R.UpdTime(Other);
+		return R;
+	}
+
+/// <summary>
+/// CreatedAt取更早者
+/// UpdatedAt取最晚者
+/// </summary>
+/// <param name="R"></param>
+/// <param name="Other"></param>
+/// <returns></returns>
+/// <exception cref="ErrArg"></exception>
+	public static JnWord UpdTime(
+		this JnWord R
+		,JnWord Other
+	){
+		if(!R.IsSameUserWord(Other)){
+			throw new ErrArg("!R.IsSameUserWord(BoWord)");
+		}
+		if(R.DbCreatedAt > Other.DbCreatedAt){
+			R.DbCreatedAt = Other.DbCreatedAt;
+		}
+		if(R.CreatedAt > Other.CreatedAt){
+			R.CreatedAt = Other.CreatedAt;
+		}
+		if(R.UpdatedAt < Other.UpdatedAt){
+			R.UpdatedAt = Other.UpdatedAt;
+		}
+		if(R.LastUpdatedBy == null && Other.LastUpdatedBy != null){
+			R.LastUpdatedBy = Other.LastUpdatedBy;
+		}
 		return R;
 	}
 
@@ -274,11 +332,8 @@ public static class ExtnJnWord{
 	/// <summary>
 	/// 無去褈ˌᵈ併ᵣ諸詞ˇ
 	/// 用于併ᵣ文本詞表ᙆʹ待加ʹ諸詞
-	/// CreatedAt取更早者
-	/// UpdatedAt取最晚者
+	/// JnWords 須潙同一詞 否則拋錯
 	/// </summary>
-	/// <param name="JnWords"></param>
-	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
 	public static JnWord? NoDiffMergeSameWords(
 		this IEnumerable<JnWord> JnWords
@@ -289,20 +344,9 @@ public static class ExtnJnWord{
 				R = JWord;
 			}else{
 				if(!R.IsSameUserWord(JWord)){
-					throw new ErrArg("!R.IsSameUserWord(BoWord)");
+					throw new ErrArg("!IsSameUserWord(R, JWord)");
 				}
-				if(R.DbCreatedAt > JWord.DbCreatedAt){
-					R.DbCreatedAt = JWord.DbCreatedAt;
-				}
-				if(R.CreatedAt > JWord.CreatedAt){
-					R.CreatedAt = JWord.CreatedAt;
-				}
-				if(R.UpdatedAt < JWord.UpdatedAt){
-					R.UpdatedAt = JWord.UpdatedAt;
-				}
-				if(R.LastUpdatedBy == null && JWord.LastUpdatedBy != null){
-					R.LastUpdatedBy = JWord.LastUpdatedBy;
-				}
+				R.UpdTime(JWord);
 				R.Props.AddRange(JWord.Props);
 				R.Learns.AddRange(JWord.Learns);
 			}
@@ -318,30 +362,48 @@ public static class ExtnJnWord{
 		return z;
 	}
 
-
-	public static DtoWordDiff? Diff(
-		JnWord Other
+	public static bool IsSynced(
+		this JnWord Other
 		,JnWord Existing
 	){
-		if(!Other.IsSameUserWord(Existing)){
+		if(!IsSameUserWord(Other, Existing)){
 			throw new ErrArg("!IsSameUserWord(z, Other)");
 		}
-		if(
+		if(//視潙同一詞 返null
 			Other.CreatedAt == Existing.CreatedAt
 			&& Other.UpdatedAt == Existing.UpdatedAt
 			&& Other.Props.Count == Existing.Props.Count
 			&& Other.Learns.Count == Existing.Learns.Count
 		){
-			return null;
+			return true;
 		}
-
-		var DiffedProps = JnWord.DiffProps(Other.Props, Existing.Props);
-		var DiffedLearns = JnWord.DiffLearns(Other.Learns, Existing.Learns);
-		var R = new DtoWordDiff(){
-			PoWordLearns = DiffedLearns
-			,PoWordProps = DiffedProps
-		};
-		return R;
+		return false;
 	}
+
+
+	// public static DtoWordDiff? Diff(
+	// 	this JnWord Other
+	// 	,JnWord Existing
+	// ){
+	// 	if(!Other.IsSameUserWord(Existing)){
+	// 		throw new ErrArg("!IsSameUserWord(z, Other)");
+	// 	}
+	// 	if(//視潙同一詞 返null
+	// 		Other.CreatedAt == Existing.CreatedAt
+	// 		&& Other.UpdatedAt == Existing.UpdatedAt
+	// 		&& Other.Props.Count == Existing.Props.Count
+	// 		&& Other.Learns.Count == Existing.Learns.Count
+	// 	){
+	// 		return null;
+	// 	}
+
+	// 	var DiffedProps = JnWord.DiffProps(Other.Props, Existing.Props);
+	// 	var DiffedLearns = JnWord.DiffLearns(Other.Learns, Existing.Learns);
+	// 	var R = new DtoWordDiff(){
+	// 		PoWordLearns = DiffedLearns
+	// 		,PoWordProps = DiffedProps
+	// 	};
+	// 	return R;
+	// }
 }
-// JNI
+
