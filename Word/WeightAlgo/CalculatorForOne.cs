@@ -50,10 +50,15 @@ public partial class CalculatorForOne{
 
 	public nil Run(){
 		var Word = State.Word;
+		if(Word.Id.ToString() == "1cP2pLAUnF0EbxrM4Bds4"){
+			System.Console.WriteLine();//t
+		}
 		//Word.SavedLearnRecords //TODO 確保此潙以時升序
+		var CntLearn = 0;//temp debug
 		for(var i = 0; i < Word.LearnRecords.Count; i++, State.WordState.Pos++){
 			var LearnRecord = Word.LearnRecords[i];
 			if(LearnRecord.Learn == ELearn.Add){
+				CntLearn++;
 				_Add();
 			}else if(LearnRecord.Learn == ELearn.Rmb){
 				_Rmb();
@@ -192,7 +197,8 @@ public partial class CalculatorForOne{
 	f64 _CalcTimeWeight(i64 TimeDiffMs){
 		f64 R = TimeDiffMs;
 		R /= 1000; //sec
-		R = Math.Pow(R, 1/4);
+		//R = Math.Pow(R, 1/4); //整數除法 1/4 得0
+		R = Math.Pow(R, 1.0/4);
 		if(R <= 1){
 			R = 1.01;
 		}

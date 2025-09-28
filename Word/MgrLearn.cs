@@ -135,8 +135,6 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-
-
 	/// <summary>
 	/// 取諸詞
 	/// </summary>
@@ -145,12 +143,10 @@ public partial class MgrLearn{
 	public nil Load(IEnumerable<JnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var (i,JWord) in JWords.Index()){
-			System.Console.WriteLine("MgrLearn: "+i+": "+JWord.Head);//t
 			var Word = new WordForLearn(JWord);
 			State.WordsToLearn.Add(Word);
 		}
 		State.OperationStatus.Load = true;
-		//State.OperationStatus.Start = true;
 		return NIL;
 	}
 
