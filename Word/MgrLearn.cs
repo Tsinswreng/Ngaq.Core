@@ -11,13 +11,13 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word;
 
-public  partial class OperationStatus{
+public partial class OperationStatus{
 	public bool Load = false;
 	public bool Start = false;
 	public bool Save = true;
 }
 
-public  partial class MgrLearnedWords{
+public partial class MgrLearnedWords{
 	public IDictionary<ELearn, IDictionary<IWordForLearn, nil>> Learn_WordSet{get;set;}
 	= new Dictionary<ELearn, IDictionary<IWordForLearn, nil>>();
 
@@ -62,7 +62,7 @@ public  partial class MgrLearnedWords{
 
 }
 
-public  partial class StateLearnWords{
+public partial class StateLearnWords{
 	public IList<IWordForLearn> WordsToLearn { get; set; } = new List<IWordForLearn>();
 	public MgrLearnedWords MgrLearnedWords { get; set; } = new MgrLearnedWords();
 	public OperationStatus OperationStatus {get;set;} = new ();
@@ -70,13 +70,13 @@ public  partial class StateLearnWords{
 }
 
 
-public  partial class LearnEventArgs :EventArgs{
+public partial class LearnEventArgs :EventArgs{
 	public IWordForLearn? Word{get;set;}
 	public ELearn Learn{get;set;}
 	public bool IsUndo{get;set;} = false;
 }
 
-public  partial class MgrLearn{
+public partial class MgrLearn{
 
 	//public MgrLearn(){}
 
@@ -103,7 +103,7 @@ public  partial class MgrLearn{
 		,Invalid = 2
 	}
 
-	public  partial class EvtArgOnErr:EventArgs{
+	public partial class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
 	}
 	public event EventHandler<EvtArgOnErr>? OnErr;
@@ -113,7 +113,7 @@ public  partial class MgrLearn{
 		OnErr?.Invoke(this, new EvtArgOnErr{Err=Err});
 		return NIL;
 	}
-	public  partial class EErr_:EnumErr{
+	public partial class EErr_:EnumErr{
 		protected static EErr_? _Inst = null;
 		public static EErr_ Inst => _Inst??= new EErr_();
 
@@ -144,7 +144,8 @@ public  partial class MgrLearn{
 	/// <returns></returns>
 	public nil Load(IEnumerable<JnWord> JWords){
 		State.WordsToLearn.Clear();
-		foreach(var JWord in JWords){
+		foreach(var (i,JWord) in JWords.Index()){
+			System.Console.WriteLine("MgrLearn: "+i+": "+JWord.Head);//t
 			var Word = new WordForLearn(JWord);
 			State.WordsToLearn.Add(Word);
 		}

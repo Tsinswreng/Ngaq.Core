@@ -48,7 +48,7 @@ public  partial class ParseResultMapper(){
 			foreach(var wordBlock in dateBlock.Words){
 				var ua = new JnWord();
 				ua.CreatedAt = UnixMs;
-				ua.PoWord.Lang = Metadata.belong;
+				ua.Word.Lang = Metadata.belong;
 				var trimedHead = wordBlock.Head?.Text?.Trim();
 				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){
 					continue;
@@ -59,7 +59,7 @@ public  partial class ParseResultMapper(){
 					ua.Props.Add(PoKv);
 				}
 
-				ua.PoWord.Head = trimedHead;
+				ua.Word.Head = trimedHead;
 
 				var bodyStrList = new List<str>();
 				foreach(var seg in wordBlock.Body){

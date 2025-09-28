@@ -31,7 +31,7 @@ public  partial interface ISvcParseWordList{
 	);
 
 	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncodingAsy(
-		I_Iter<u8> Iter
+		IIter<u8> Iter
 		,Encoding Encoding
 		,CancellationToken ct = default
 	);

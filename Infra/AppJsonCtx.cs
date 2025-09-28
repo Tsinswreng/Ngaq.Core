@@ -22,6 +22,7 @@ interface INull{
 """
 
 [JsonSerializable(typeof(TYPE))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<TYPE>))]
 
 """
 

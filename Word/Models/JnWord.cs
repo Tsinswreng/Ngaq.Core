@@ -27,43 +27,43 @@ public partial class JnWord
 
 	public JnWord(){}
 	public JnWord(PoWord PoWord, IList<PoWordProp> Props, IList<PoWordLearn> Learns){
-		this.PoWord = PoWord;
+		this.Word = PoWord;
 		this.Props = Props;
 		this.Learns = Learns;
 	}
 
-	public PoWord PoWord{get;set;} = new PoWord();
+	public PoWord Word{get;set;} = new PoWord();
 	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
 	[Impl]
 	public IdWord Id{
-		get{return PoWord.Id;}
+		get{return Word.Id;}
 		set{
-			PoWord.Id = value;
+			Word.Id = value;
 			AssignId();
 		}
 	}
 
 	[Impl]
 	public IdUser Owner{
-		get{return PoWord.Owner;}
-		set{PoWord.Owner = value;}
+		get{return Word.Owner;}
+		set{Word.Owner = value;}
 	}
 	[Impl]
 	public str Lang{
-		get{return PoWord.Lang;}
-		set{PoWord.Lang = value;}
+		get{return Word.Lang;}
+		set{Word.Lang = value;}
 	}
 	[Impl]
 	public str Head{
-		get{return PoWord.Head;}
-		set{PoWord.Head = value;}
+		get{return Word.Head;}
+		set{Word.Head = value;}
 	}
 
 	[Impl(typeof(IPoWord))]
 	public Tempus StoredAt{
-		get{return PoWord.StoredAt;}
-		set{PoWord.StoredAt = value;}
+		get{return Word.StoredAt;}
+		set{Word.StoredAt = value;}
 	}
 
 
@@ -76,14 +76,14 @@ public partial class JnWord
 	#region IPoBase
 	[Impl]
 	public Tempus DbCreatedAt{
-		get{return PoWord.DbCreatedAt;}
-		set{PoWord.DbCreatedAt = value;}
+		get{return Word.DbCreatedAt;}
+		set{Word.DbCreatedAt = value;}
 	}
 
 	[Impl]
 	public Tempus CreatedAt{
-		get{return PoWord.CreatedAt;}
-		set{PoWord.CreatedAt = value;}
+		get{return Word.CreatedAt;}
+		set{Word.CreatedAt = value;}
 	}
 
 	/// <summary>
@@ -91,28 +91,28 @@ public partial class JnWord
 	/// </summary>
 	[Impl]
 	public Tempus? UpdatedAt{
-		get{return PoWord.UpdatedAt;}
-		set{PoWord.UpdatedAt = value;}
+		get{return Word.UpdatedAt;}
+		set{Word.UpdatedAt = value;}
 	}
 	[Impl]
 	public Tempus? DbUpdatedAt{
-		get{return PoWord.DbUpdatedAt;}
-		set{PoWord.DbUpdatedAt = value;}
+		get{return Word.DbUpdatedAt;}
+		set{Word.DbUpdatedAt = value;}
 	}
 	[Impl]
 	public IdUser? CreatedBy{
-		get{return PoWord.CreatedBy;}
-		set{PoWord.CreatedBy = value;}
+		get{return Word.CreatedBy;}
+		set{Word.CreatedBy = value;}
 	}
 	[Impl]
 	public IdUser? LastUpdatedBy{
-		get{return PoWord.LastUpdatedBy;}
-		set{PoWord.LastUpdatedBy = value;}
+		get{return Word.LastUpdatedBy;}
+		set{Word.LastUpdatedBy = value;}
 	}
 	[Impl]
 	public PoStatus Status{
-		get{return PoWord.Status;}
-		set{PoWord.Status = value;}
+		get{return Word.Status;}
+		set{Word.Status = value;}
 	}
 	#endregion IPoBase
 
@@ -130,19 +130,19 @@ public partial class JnWord
 			// if(prop.Id.Value == 0){
 			// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
 			// }
-			prop.WordId = z.PoWord.Id;
+			prop.WordId = z.Word.Id;
 		}
 		foreach(var learn in z.Learns){
 			// if(learn.Id.Value == 0){
 			// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
 			// }
-			learn.WordId = z.PoWord.Id.Value;
+			learn.WordId = z.Word.Id.Value;
 		}
 		return z;
 	}
 
 	public PoWordLearn AddLearn(PoWordLearn Learn){
-		Learn.WordId = PoWord.Id.Value;
+		Learn.WordId = Word.Id.Value;
 		Learns.Add(Learn);
 		return Learn;
 	}
@@ -203,15 +203,15 @@ public static class ExtnJnWord{
 		var i = 0;
 		foreach(var JWord in JnWords){
 			if(i == 0){
-				Lang = JWord.PoWord.Lang;
+				Lang = JWord.Word.Lang;
 			}
-			if(JWord.PoWord.Lang != Lang){
+			if(JWord.Word.Lang != Lang){
 				throw new ErrArg("JWord.PoWord.Lang != Lang");
 			}
-			if(Dict.TryGetValue(JWord.PoWord.Head, out var List)){
+			if(Dict.TryGetValue(JWord.Word.Head, out var List)){
 				List.Add(JWord);
 			}else{
-				Dict[JWord.PoWord.Head] = [JWord];
+				Dict[JWord.Word.Head] = [JWord];
 			}
 			i++;
 		}
@@ -225,8 +225,8 @@ public static class ExtnJnWord{
 		var Dict = new Dictionary<Head_Lang, IList<JnWord>>();
 		foreach(var JWord in JnWords){
 			var lang_head = new Head_Lang{
-				Lang = JWord.PoWord.Lang
-				,Head = JWord.PoWord.Head
+				Lang = JWord.Word.Lang
+				,Head = JWord.Word.Head
 			};
 			if(Dict.TryGetValue(lang_head, out var List)){
 				List.Add(JWord);
@@ -288,10 +288,10 @@ public static class ExtnJnWord{
 		if(z.IsSynced(Other)){
 			return null;
 		}
-		var DiffedProps = JnWord.DiffProps(Other.Props, z.Props);
-		var DiffedLearns = JnWord.DiffLearns(Other.Learns, z.Learns);
+		var DiffedProps = JnWord.DiffProps(z.Props, Other.Props);
+		var DiffedLearns = JnWord.DiffLearns(z.Learns, Other.Learns);
 		R??=new JnWord();
-		R.PoWord = z.PoWord;
+		R.Word = z.Word;
 		R.Props = DiffedProps;
 		R.Learns = DiffedLearns;
 		R.UpdTime(Other);

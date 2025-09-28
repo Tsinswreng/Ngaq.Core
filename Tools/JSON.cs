@@ -1,15 +1,11 @@
-using System;
-using System.IO;
-using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra;
 namespace Ngaq.Core.Tools;
 
-public static class JSON {
 
+public static class JSON {
 	static JsonSerializerOptions Opt = new JsonSerializerOptions{
 		//WriteIndented = true
 		Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出

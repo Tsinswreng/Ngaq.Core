@@ -6,6 +6,7 @@ using Ngaq.Core.Tools.Io;
 namespace Ngaq.Core.Word.Svc;
 
 using Ngaq.Core.Models.UserCtx;
+using Ngaq.Core.Stream;
 using Ngaq.Core.Word.Models;
 using Tsinswreng.CsPage;
 
@@ -29,7 +30,7 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
-	public Task<IPageAsy<JnWord>> PageJnWord(
+	public Task<IPage<JnWord>> PageJnWord(
 		IUserCtx UserCtx
 		,IPageQry PageQry
 		,CT Ct
@@ -46,5 +47,12 @@ public partial interface ISvcWord{
 		,IEnumerable<WordId_LearnRecords> WordId_LearnRecordss
 		,CT Ct
 	);
+
+	public Task<nil> AddWordsByJsonLineIter(
+		IUserCtx User
+		,IAsyncEnumerable<str> JsonLineIter
+		,CT Ct
+	);
 }
+
 

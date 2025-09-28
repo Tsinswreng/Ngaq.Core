@@ -20,7 +20,7 @@ public  partial class WordForLearn
 		JnWord JWord
 	){
 		_JoinedWord = JWord;
-		PoWord = JWord.PoWord;
+		PoWord = JWord.Word;
 		StrKey_Props.FromPoKvs(_JoinedWord.Props);
 		Learn_Records.AddFromPoLearns(_JoinedWord.Learns);
 		LearnRecords = _JoinedWord.Learns

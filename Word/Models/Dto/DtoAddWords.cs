@@ -5,17 +5,6 @@ using Ngaq.Core.Word.Models.Dto;
 namespace Ngaq.Core.Model.Word.Dto;
 
 public partial class DtoUpdWord{
-	[Obsolete]
-	public DtoUpdWord(
-		JnWord WordInDb
-		,JnWord WordToAdd
-		,IList<PoWordProp> DiffedProps
-	){
-		this.WordInDb = WordInDb;
-		this.WordToAdd = WordToAdd;
-		this.DiffedProps = DiffedProps;
-	}
-
 	public DtoUpdWord(
 		JnWord WordInDb
 		,JnWord WordToAdd
@@ -36,8 +25,6 @@ public partial class DtoUpdWord{
 	/// <summary>
 	/// WordToAdd有洏WordInDb無之屬性 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
-	[Obsolete("用DiffedWord")]
-	public IList<PoWordProp> DiffedProps{get;set;} = new List<PoWordProp>();
 
 	/// <summary>
 	/// WordToAdd 與 WordInDb 之差集

@@ -35,7 +35,6 @@ public partial class PoWord
 	,IHeadLangWord
 	,IPoWord
 {
-	//public str SelfProperty{get;set;} = "5678";//t
 	public static PoWord Example{get;set;} = new PoWord();
 
 /// <summary>
@@ -66,6 +65,11 @@ public partial class PoWord
 
 	#endregion IPoWord
 
+	/// <summary>
+	/// 最早入庫之時間
+	/// CreatedAt潙 始誌于文本詞表之時
+	/// 用于詞庫同步旹 比對㕥篩改˪ʹ詞
+	/// </summary>
 	public Tempus StoredAt{get;set;} = Tempus.Now();
 
 	public override string ToString() {

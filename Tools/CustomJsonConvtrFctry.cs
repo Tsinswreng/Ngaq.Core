@@ -48,8 +48,7 @@ public sealed class CustomJsonConvtrFctry : JsonConverterFactory {
 					raw = Convert.ToDouble(deci);
 				}
 			}
-			// var t = objJsonEle.GetType();//t
-			// System.Console.WriteLine(t);//t JsonElement
+
 			// 调用接口方法把裸值还原成 T
 			object? boxed = Sample.ToDeSerialized(raw);
 			return (T)boxed!;

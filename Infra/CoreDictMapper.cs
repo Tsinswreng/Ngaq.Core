@@ -65,10 +65,10 @@ public static CoreDictMapper Inst => _Inst??= new CoreDictMapper();
 	// 	var dict = new Dictionary<string, object>();
 	// 	Type type = typeof(T);
 
-	// 	System.Console.WriteLine("type: "+type.Name);//t
+
 	// 	// 添加公共实例属性
 	// 	foreach (var prop in type.GetProperties()) {// BindingFlags.Public | BindingFlags.Instance| BindingFlags.DeclaredOnly
-	// 		System.Console.WriteLine("prop: "+prop.Name);//t
+	
 	// 		dict[prop.Name] = prop.GetValue(obj);
 	// 	}
 

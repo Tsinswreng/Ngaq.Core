@@ -11,7 +11,7 @@ using Ngaq.Core.Stream;
 
 namespace Ngaq.Core.Tools.Io;
 
-public  partial class ByteReader: I_Iter<u8>, IDisposable{
+public  partial class ByteReader: IIter<u8>, IDisposable{
 
 	public str Path{get; set;}
 
