@@ -3,6 +3,7 @@ namespace Ngaq.Core.Models.Po;
 
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
+using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 
 
@@ -35,14 +36,21 @@ public partial interface IPoBase
 	public Tempus? UpdatedAt{get;set;}
 	public IdUser? CreatedBy{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
-	public PoStatus Status{get;set;}
+
+	/// <summary>
+	/// 若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值
+	/// </summary>
+	public IdDel? DelId{get;set;}
+
+	// [Obsolete]
+	// public PoStatus Status{get;set;}
 	#endregion IPoBase
 
-[Obsolete]
-	public enum EStatus{
-		Normal = 0,
-		Deleted = 1,
-		Banned = 2,
-	}
+	// [Obsolete]
+	// public enum EStatus{
+	// 	Normal = 0,
+	// 	Deleted = 1,
+	// 	Banned = 2,
+	// }
 
 }

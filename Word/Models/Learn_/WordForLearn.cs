@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Tsinswreng.CsTools;
@@ -92,7 +93,7 @@ public  partial class WordForLearn
 		set{PoWord.Owner = value;}
 	}
 
-[Impl(typeof(IPoWord))]
+	[Impl(typeof(IPoWord))]
 	public str Lang{
 		get{return PoWord.Lang;}
 		set{PoWord.Lang = value;}
@@ -106,6 +107,8 @@ public  partial class WordForLearn
 
 
 	#region IPoBase
+	[Impl(typeof(IPoBase))]
+	public IdDel? DelId{get;set;}
 	[Impl(typeof(IPoBase))]
 	public Tempus DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}
@@ -142,11 +145,11 @@ public  partial class WordForLearn
 		get{return PoWord.LastUpdatedBy;}
 		set{PoWord.LastUpdatedBy = value;}
 	}
-[Impl(typeof(IPoBase))]
-	public PoStatus Status{
-		get{return PoWord.Status;}
-		set{PoWord.Status = value;}
-	}
+	// [Impl(typeof(IPoBase))]
+	// public PoStatus Status{
+	// 	get{return PoWord.Status;}
+	// 	set{PoWord.Status = value;}
+	// }
 
 
 	#endregion IPoBase

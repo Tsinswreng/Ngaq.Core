@@ -50,9 +50,6 @@ public partial class CalculatorForOne{
 
 	public nil Run(){
 		var Word = State.Word;
-		if(Word.Id.ToString() == "1cP2pLAUnF0EbxrM4Bds4"){
-			System.Console.WriteLine();//t
-		}
 		//Word.SavedLearnRecords //TODO 確保此潙以時升序
 		var CntLearn = 0;//temp debug
 		for(var i = 0; i < Word.LearnRecords.Count; i++, State.WordState.Pos++){

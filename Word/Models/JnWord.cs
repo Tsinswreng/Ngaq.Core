@@ -5,6 +5,7 @@ using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
@@ -74,6 +75,10 @@ public partial class JnWord
 
 
 	#region IPoBase
+
+	[Impl]
+	public IdDel? DelId{get;set;}
+
 	[Impl]
 	public Tempus DbCreatedAt{
 		get{return Word.DbCreatedAt;}
@@ -109,11 +114,11 @@ public partial class JnWord
 		get{return Word.LastUpdatedBy;}
 		set{Word.LastUpdatedBy = value;}
 	}
-	[Impl]
-	public PoStatus Status{
-		get{return Word.Status;}
-		set{Word.Status = value;}
-	}
+	// [Impl]
+	// public PoStatus Status{
+	// 	get{return Word.Status;}
+	// 	set{Word.Status = value;}
+	// }
 	#endregion IPoBase
 
 
