@@ -8,6 +8,7 @@ namespace Ngaq.Core.Word.Svc;
 using Ngaq.Core.Models.UserCtx;
 using Ngaq.Core.Stream;
 using Ngaq.Core.Word.Models;
+using Ngaq.Core.Word.Models.Dto;
 using Tsinswreng.CsPage;
 
 public partial interface ISvcWord{
@@ -53,6 +54,21 @@ public partial interface ISvcWord{
 		,IAsyncEnumerable<str> JsonLineIter
 		,CT Ct
 	);
+
+	public Task<IPage<JnWord>> SearchWord(
+		IUserCtx User
+		,IPageQry PageQry
+		,ReqSearchWord Req
+		,CT Ct
+	);
+
+	public Task<nil> SoftDelJnWordsByIds(
+		IUserCtx User
+		,IEnumerable<IdWord> Ids
+		,CT Ct
+	);
+
+
 }
 
 

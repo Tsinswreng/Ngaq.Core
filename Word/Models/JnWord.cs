@@ -265,12 +265,12 @@ public static class ExtnJnWord{
 	}
 
 
-	public static JnWord? ToDiffMerge(
+	public static JnWord? Diff(
 		this JnWord z
 		,JnWord Other
 	){
 		JnWord? R=null;
-		z.ToDiffMerge(Other, ref R);
+		z.Diff(Other, ref R);
 		return R;
 	}
 
@@ -282,7 +282,7 @@ public static class ExtnJnWord{
 	/// <param name="R"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
-	public static JnWord? ToDiffMerge(
+	public static JnWord? Diff(
 		this JnWord z
 		,JnWord Other
 		,ref JnWord? R

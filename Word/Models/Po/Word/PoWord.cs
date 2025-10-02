@@ -77,4 +77,19 @@ public partial class PoWord
 		return ExtnIDict.Print(Dict);
 	}
 
+
+	public class N{
+		public str Id = nameof(PoWord.Id);
+		public str Head = nameof(PoWord.Head);
+		public str Lang = nameof(PoWord.Lang);
+		public str Owner = nameof(PoWord.Owner);
+		public str StoredAt = nameof(PoWord.StoredAt);
+		public str CreatedAt = nameof(PoWord.DbCreatedAt);
+		public str UpdatedAt = nameof(PoWord.DbUpdatedAt);
+		public str CreatedBy = nameof(PoWord.CreatedBy);
+		public str LastUpdatedBy = nameof(PoWord.LastUpdatedBy);
+		public str DelId = nameof(PoWord.DelId);
+	}
+
+
 }
