@@ -12,6 +12,7 @@ using Ngaq.Core.Stream;
 using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Dto;
 using Tsinswreng.CsPage;
+using Tsinswreng.CsTools;
 
 public partial interface ISvcWord{
 //TODO 加詞後 宜予回饋 如 新ʹ加ʹ詞ʹ數 及 老詞新加之數
@@ -57,12 +58,6 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
-	public Task<IPage<JnWord>> SearchWord(
-		IUserCtx User
-		,IPageQry PageQry
-		,ReqSearchWord Req
-		,CT Ct
-	);
 
 	public Task<nil> SoftDelJnWordsByIds(
 		IUserCtx User
@@ -77,6 +72,20 @@ public partial interface ISvcWord{
 		IUserCtx User
 		,IPageQry PageQry
 		,Tempus Tempus
+		,CT Ct
+	);
+
+	public Task<IPage<JnWord>> SearchWord(
+		IUserCtx User
+		,IPageQry PageQry
+		,ReqSearchWord Req
+		,CT Ct
+	);
+
+	public Task<IPage<ITypedObj>> PageSearch(
+		IUserCtx User
+		,IPageQry PageQry
+		,ReqSearchWord Req
 		,CT Ct
 	);
 

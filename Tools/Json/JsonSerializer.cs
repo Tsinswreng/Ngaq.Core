@@ -10,4 +10,9 @@ public class JsonSerializer:IJsonSerializer{
 	public T Parse<T>(str json){
 		return JSON.parse<T>(json);
 	}
+
+	[Impl]
+	public obj? Parse(str json, Type Type){
+		throw new NotImplementedException();
+	}
 }

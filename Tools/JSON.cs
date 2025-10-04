@@ -35,6 +35,7 @@ public static class JSON {
 		}
 		return JsonSerializer.Deserialize(json, jsonTypeInfo);
 	}
+
 }
 
 

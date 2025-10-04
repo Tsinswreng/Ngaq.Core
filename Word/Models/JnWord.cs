@@ -182,6 +182,7 @@ public partial class JnWord
 	 * @param w2 已有者
 	 * @returns 未加過之prop
 	 */
+	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
 	public static IList<PoWordProp> DiffPropsByTime(
 		IList<PoWordProp> PropsToAdd
 		,IList<PoWordProp> ExistingProps
@@ -197,6 +198,9 @@ public partial class JnWord
 		return ans;
 	}
 
+	/// <summary>
+	/// //有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
+	/// </summary>
 	public static IList<PoWordLearn> DiffLearnsByTime(
 		IList<PoWordLearn> LearnsOfNeo
 		,IList<PoWordLearn> ExistingLearns
@@ -286,7 +290,7 @@ public static class ExtnJnWord{
 		return true;
 	}
 
-
+	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
 	public static JnWord? DiffByTime(
 		this JnWord z
 		,JnWord Other
@@ -297,6 +301,7 @@ public static class ExtnJnWord{
 	}
 
 	/// <summary>
+	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
 	/// Other 合入 z 返R
 	/// 無需合併旹返null
 	/// 非同ʹ詞旹拋錯
@@ -314,9 +319,9 @@ public static class ExtnJnWord{
 		if(!z.IsSameUserWord(Other)){
 			throw new ErrArg("!z.IsSameUserWord(Other)");
 		}
-		// if(z.IsSynced(Other)){
-		// 	return null;
-		// }
+		if(z.IsSynced(Other)){
+			return null;
+		}
 		var DiffedProps = JnWord.DiffPropsByTime(z.Props, Other.Props);
 		var DiffedLearns = JnWord.DiffLearnsByTime(z.Learns, Other.Learns);
 		R??=new JnWord();

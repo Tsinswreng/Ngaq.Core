@@ -1,6 +1,6 @@
-using System.Collections;
+namespace Ngaq.Core.Tools.Json;
 
-namespace Ngaq.Core.Tools;
+using System.Collections;
 
 public interface IKvNode{
 	public obj? ValueObj{get;set;}
@@ -11,7 +11,7 @@ public interface IKvNode{
 
 public struct KvNode:IKvNode{
 	public KvNode(obj? Value){
-		this.ValueObj = Value;
+		ValueObj = Value;
 	}
 	[Impl]
 	public obj? ValueObj{get;set;}
