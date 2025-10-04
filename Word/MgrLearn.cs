@@ -280,7 +280,8 @@ public partial class MgrLearn{
 	}
 
 	public nil Reset(){
-		ResetLearnedState();
+		//ResetLearnedState();
+		State = new();
 		return NIL;
 	}
 }

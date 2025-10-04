@@ -1,9 +1,11 @@
+namespace Ngaq.Core.Word.Svc;
+
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
-namespace Ngaq.Core.Word.Svc;
+
 
 using Ngaq.Core.Models.UserCtx;
 using Ngaq.Core.Stream;
@@ -69,6 +71,14 @@ public partial interface ISvcWord{
 	);
 
 	public Task<nil> UpdJnWord(IUserCtx User, JnWord JnWord, CT Ct);
+
+//test
+	public Task<IPage<JnWord>> PageChangedWordsWithDelWordsAfterTime(
+		IUserCtx User
+		,IPageQry PageQry
+		,Tempus Tempus
+		,CT Ct
+	);
 
 }
 

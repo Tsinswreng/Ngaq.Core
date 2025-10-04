@@ -182,7 +182,7 @@ public partial class JnWord
 	 * @param w2 已有者
 	 * @returns 未加過之prop
 	 */
-	public static IList<PoWordProp> DiffProps(
+	public static IList<PoWordProp> DiffPropsByTime(
 		IList<PoWordProp> PropsToAdd
 		,IList<PoWordProp> ExistingProps
 	){
@@ -197,7 +197,7 @@ public partial class JnWord
 		return ans;
 	}
 
-	public static IList<PoWordLearn> DiffLearns(
+	public static IList<PoWordLearn> DiffLearnsByTime(
 		IList<PoWordLearn> LearnsOfNeo
 		,IList<PoWordLearn> ExistingLearns
 	){
@@ -287,12 +287,12 @@ public static class ExtnJnWord{
 	}
 
 
-	public static JnWord? Diff(
+	public static JnWord? DiffByTime(
 		this JnWord z
 		,JnWord Other
 	){
 		JnWord? R=null;
-		z.Diff(Other, ref R);
+		z.DiffByTime(Other, ref R);
 		return R;
 	}
 
@@ -306,7 +306,7 @@ public static class ExtnJnWord{
 	/// <param name="R"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
-	public static JnWord? Diff(
+	public static JnWord? DiffByTime(
 		this JnWord z
 		,JnWord Other
 		,ref JnWord? R
@@ -314,16 +314,16 @@ public static class ExtnJnWord{
 		if(!z.IsSameUserWord(Other)){
 			throw new ErrArg("!z.IsSameUserWord(Other)");
 		}
-		if(z.IsSynced(Other)){
-			return null;
-		}
-		var DiffedProps = JnWord.DiffProps(z.Props, Other.Props);
-		var DiffedLearns = JnWord.DiffLearns(z.Learns, Other.Learns);
+		// if(z.IsSynced(Other)){
+		// 	return null;
+		// }
+		var DiffedProps = JnWord.DiffPropsByTime(z.Props, Other.Props);
+		var DiffedLearns = JnWord.DiffLearnsByTime(z.Learns, Other.Learns);
 		R??=new JnWord();
 		R.Word = z.Word;
 		R.Props = DiffedProps;
 		R.Learns = DiffedLearns;
-		R.UpdTime(Other);
+		R.UpdTimeOfSelfContrastToOther(Other);
 		return R;
 	}
 
@@ -335,7 +335,7 @@ public static class ExtnJnWord{
 /// <param name="Other"></param>
 /// <returns></returns>
 /// <exception cref="ErrArg"></exception>
-	public static JnWord UpdTime(
+	public static JnWord UpdTimeOfSelfContrastToOther(
 		this JnWord R
 		,JnWord Other
 	){
@@ -375,7 +375,7 @@ public static class ExtnJnWord{
 				if(!R.IsSameUserWord(JWord)){
 					throw new ErrArg("!IsSameUserWord(R, JWord)");
 				}
-				R.UpdTime(JWord);
+				R.UpdTimeOfSelfContrastToOther(JWord);
 				R.Props.AddRange(JWord.Props);
 				R.Learns.AddRange(JWord.Learns);
 			}
