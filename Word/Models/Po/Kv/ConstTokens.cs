@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Model.Po.Kv;
+namespace Ngaq.Core.Word.Models.Po.Kv;
 
 public  partial class ConstTokens{
 	protected static ConstTokens? _Inst = null;

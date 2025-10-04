@@ -1,24 +1,43 @@
 #define Impl
+namespace Ngaq.Core.Word.Models;
 using System.Runtime.InteropServices;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models.Dto;
+using Ngaq.Core.Word.Models.Po.Kv;
 using Ngaq.Core.Word.Models.Po.Learn;
+using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsTools;
 
-namespace Ngaq.Core.Word.Models;
+/// 嚴格對應數據庫ʹ實體ʹ聚合
+/// 專用于json序列化
+/// 不含字段如
+/// 	[Impl]
+///	public IdWord Id{
+///		get{return Word.Id;}
+///		set{
+///			Word.Id = value;
+///			AssignId();
+///		}
+///	}
+public interface ISimpleJnWord: IAppSerializable{
+	public PoWord Word{get;set;}
+	public IList<PoWordProp> Props{get;set;}
+	public IList<PoWordLearn> Learns{get;set;}
+}
+
+
 
 public partial class JnWord
-	:IPoWord, IAppSerializable
+	:ISimpleJnWord, IPoWord, IAppSerializable
 {
-	[Impl]
+	[Impl(typeof(IPoWord))]
 	public object ShallowCloneSelf()
 #if Impl
 	{
@@ -33,15 +52,18 @@ public partial class JnWord
 		this.Learns = Learns;
 	}
 
+	[Impl(typeof(ISimpleJnWord))]
 	public PoWord Word{get;set;} = new PoWord();
+	[Impl(typeof(ISimpleJnWord))]
 	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
+	[Impl(typeof(ISimpleJnWord))]
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
 	[Impl]
 	public IdWord Id{
 		get{return Word.Id;}
 		set{
 			Word.Id = value;
-			AssignId();
+			EnsureForeignId();
 		}
 	}
 
@@ -126,7 +148,7 @@ public partial class JnWord
 	/// 把諸資產之外鍵設潙主Word之id
 	/// </summary>
 	/// <returns></returns>
-	public JnWord AssignId(){
+	public JnWord EnsureForeignId(){
 		var z = this;
 		// if(z.Po_Word.Id.Value == 0){
 		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
@@ -276,6 +298,8 @@ public static class ExtnJnWord{
 
 	/// <summary>
 	/// Other 合入 z 返R
+	/// 無需合併旹返null
+	/// 非同ʹ詞旹拋錯
 	/// </summary>
 	/// <param name="z"></param>
 	/// <param name="Other"></param>

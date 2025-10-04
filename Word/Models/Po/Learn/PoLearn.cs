@@ -7,6 +7,7 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Word.Models.Learn_;
+using Ngaq.Core.Word.Models.Po.Word;
 
 
 
@@ -20,14 +21,14 @@ using Ngaq.Core.Word.Models.Learn_;
 public partial class PoWordLearn
 	:PoBase
 	,IPoBase
-	,I_Id<IdLearn>
+	,I_Id<IdWordLearn>
 	,I_WordId
 	//,IPoKv
 {
 
 	public static PoWordLearn Example{get;set;} = new PoWordLearn();
 
-	public IdLearn Id { get; set; } = new IdLearn();
+	public IdWordLearn Id { get; set; } = new IdWordLearn();
 
 	public IdWord WordId{get;set;}
 

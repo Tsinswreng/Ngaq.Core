@@ -1,5 +1,4 @@
-namespace Ngaq.Core.Model.Po.Kv;
-
+namespace Ngaq.Core.Word.Models.Po.Kv;
 public static class Extn_Po_Kv{
 	public static nil SetStr(this IPoKv z, str k, str v){
 		z.KType = (i64)EKvType.Str;

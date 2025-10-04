@@ -1,10 +1,10 @@
-using System.ComponentModel;
-using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Models.Po;
-
 namespace Ngaq.Core.Word.Models.Learn_;
+using System.ComponentModel;
+using Ngaq.Core.Models.Po;
+using Ngaq.Core.Word.Models.Po.Word;
 
-public  partial interface IWordForLearn
+
+public partial interface IWordForLearn
 	:I_Id
 	,IPoBase
 	,IHeadLangWord

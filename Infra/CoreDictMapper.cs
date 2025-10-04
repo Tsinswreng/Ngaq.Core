@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 using System.Xml.Serialization;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Sys.Models;
@@ -68,7 +67,7 @@ public static CoreDictMapper Inst => _Inst??= new CoreDictMapper();
 
 	// 	// 添加公共实例属性
 	// 	foreach (var prop in type.GetProperties()) {// BindingFlags.Public | BindingFlags.Instance| BindingFlags.DeclaredOnly
-	
+
 	// 		dict[prop.Name] = prop.GetValue(obj);
 	// 	}
 

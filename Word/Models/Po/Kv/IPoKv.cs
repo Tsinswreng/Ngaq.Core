@@ -1,6 +1,7 @@
+namespace Ngaq.Core.Word.Models.Po.Kv;
 using Ngaq.Core.Infra.IF;
 
-namespace Ngaq.Core.Model.Po.Kv;
+
 
 public partial interface IPoKv:IAppSerializable{
 	#region IPoKv

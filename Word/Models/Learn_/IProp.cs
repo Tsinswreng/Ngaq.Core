@@ -1,5 +1,5 @@
 using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Po.Kv;
+using Ngaq.Core.Word.Models.Po.Kv;
 
 namespace Ngaq.Core.Word.Models.Learn_;
 

@@ -1,8 +1,8 @@
 using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Service.Parser.Model;
 using Ngaq.Core.Word.Models;
+using Ngaq.Core.Word.Models.Po.Kv;
 using Ngaq.Core.Word.Parser;
 
 namespace Ngaq.Core.Service.Parser;
@@ -77,7 +77,7 @@ public  partial class ParseResultMapper(){
 					po_kv.CreatedAt = UnixMs;
 					ua.Props.Add(po_kv);
 				}
-				ua.AssignId();
+				ua.EnsureForeignId();
 				Ans.Add(ua);
 			}//~foreach(var wordBlock in dateBlock.Words)
 		}//~foreach(var dateBlock in DateBlocks)

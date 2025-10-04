@@ -1,8 +1,6 @@
-using System.Collections.ObjectModel;
+namespace Ngaq.Core.Word.Models;
 using Ngaq.Core.Model.Po;
-using Ngaq.Core.Model.Po.Word;
-
-namespace Ngaq.Core.Model.Bo.IFWord;
+using Ngaq.Core.Word.Models.Po.Word;
 
 public  partial interface IVmWord
 	:I_Id<str>
@@ -13,8 +11,6 @@ public  partial interface IVmWord
 	// #if Impl
 	// = new();
 	// #endif
-
-
 
 
 }

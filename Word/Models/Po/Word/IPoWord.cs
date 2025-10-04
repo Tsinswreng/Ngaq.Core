@@ -1,7 +1,8 @@
 //#define Impl
+namespace Ngaq.Core.Word.Models.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 
-public  partial interface IHeadLangWord{
+public partial interface IHeadLangWord{
 
 	#region IHeadLangWord
 

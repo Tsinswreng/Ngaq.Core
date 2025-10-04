@@ -68,6 +68,7 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
+	public Task<nil> UpdJnWord(IUserCtx User, JnWord JnWord, CT Ct);
 
 }
 

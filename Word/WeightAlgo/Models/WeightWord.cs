@@ -1,10 +1,10 @@
 #define Impl
+namespace Ngaq.Core.Word.WeightAlgo.Models;
 using System.Runtime.CompilerServices;
-using Ngaq.Core.Model.Bo;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models.Learn_;
 
-namespace Ngaq.Core.Word.WeightAlgo.Models;
+
 
 public  partial class WeightWord
 	: IWeightWord

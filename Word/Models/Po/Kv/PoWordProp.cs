@@ -1,8 +1,12 @@
 #define Impl
+namespace Ngaq.Core.Word.Models.Po.Kv;
+using Ngaq.Core.Model.Po;
+using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
+using Ngaq.Core.Word.Models.Po.Word;
 
-namespace Ngaq.Core.Model.Po.Kv;
+
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoWordProp
 	:PoBase

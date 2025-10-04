@@ -1,17 +1,10 @@
 #define Impl
+namespace Ngaq.Core.Word.Models.Po.Word;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Model.Po;
+using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
-
-namespace Ngaq.Core.Model.Po.Word;
-
-// public  partial class TestParent{
-// 	public str ParentProperty{get;set;} = "1234";
-// 	public void Test(){
-// 		var z = new TestParent();
-// 		DictCtx.ToDict(z);
-// 	}
-// }
 
 public partial interface IPoWord
 	:IPoBase
@@ -84,8 +77,8 @@ public partial class PoWord
 		public str Lang = nameof(PoWord.Lang);
 		public str Owner = nameof(PoWord.Owner);
 		public str StoredAt = nameof(PoWord.StoredAt);
-		public str CreatedAt = nameof(PoWord.DbCreatedAt);
-		public str UpdatedAt = nameof(PoWord.DbUpdatedAt);
+		public str CreatedAt = nameof(DbCreatedAt);
+		public str UpdatedAt = nameof(DbUpdatedAt);
 		public str CreatedBy = nameof(PoWord.CreatedBy);
 		public str LastUpdatedBy = nameof(PoWord.LastUpdatedBy);
 		public str DelId = nameof(PoWord.DelId);

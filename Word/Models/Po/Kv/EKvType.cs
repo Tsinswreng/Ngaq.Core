@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Model.Po.Kv;
+namespace Ngaq.Core.Word.Models.Po.Kv;
 
 public enum EKvType{
 	Str=1

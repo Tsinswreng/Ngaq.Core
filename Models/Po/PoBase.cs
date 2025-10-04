@@ -31,3 +31,10 @@ public partial class PoBase:IPoBase{
 	#endregion IPoBase
 
 }
+
+
+public static class ExtnPoBase{
+	public static bool IsDeleted(this IPoBase z){
+		return z.DelId is not null;
+	}
+}

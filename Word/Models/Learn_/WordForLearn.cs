@@ -6,6 +6,7 @@ using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
+using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsTools;
 
 

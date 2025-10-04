@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Model.Po.Kv;
+namespace Ngaq.Core.Word.Models.Po.Kv;
 
 public partial class ConstLearn{
 	public const str add = nameof(add);

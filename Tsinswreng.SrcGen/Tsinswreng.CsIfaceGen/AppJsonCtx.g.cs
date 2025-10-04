@@ -4,8 +4,11 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Sys.Models.IdCfg))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Sys.Models.IdCfg>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Learn_.IdLearn))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Learn_.IdLearn>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.IdDel))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.IdDel>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Learn_.IdWordLearn))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Learn_.IdWordLearn>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>))]
@@ -28,14 +31,17 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Po.IPoBase>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Kv.IPoKv))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Kv.IPoKv>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Kv.IPoKv))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Kv.IPoKv>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Word.IPoWord))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Word.IPoWord>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Word.IPoWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Word.IPoWord>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.IProp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.IProp>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.ISimpleJnWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.ISimpleJnWord>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.IWordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.IWordForLearn>))]
@@ -58,14 +64,14 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.User.PoUser>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Word.PoWord))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Word.PoWord>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Word.PoWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Word.PoWord>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Kv.PoWordProp))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Kv.PoWordProp>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Kv.PoWordProp))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Kv.PoWordProp>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.Prop))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.Prop>))]
