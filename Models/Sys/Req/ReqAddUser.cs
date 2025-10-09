@@ -1,6 +1,6 @@
 using Ngaq.Core.Infra.IF;
 
-namespace Ngaq.Core.Model.Sys.Req;
+namespace Ngaq.Core.Models.Sys.Req;
 
 public partial class ReqAddUser: IAppSerializable{
 	public str? UniqueName{get;set;} = "";

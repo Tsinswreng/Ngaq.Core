@@ -1,4 +1,3 @@
-using Ngaq.Core.Model.Sys.Req;
 using Ngaq.Core.Models.Sys.Req;
 using Ngaq.Core.Models.Sys.Resp;
 

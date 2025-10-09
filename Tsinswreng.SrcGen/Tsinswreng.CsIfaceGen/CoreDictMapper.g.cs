@@ -152,8 +152,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Model.Po.Role.PoRole))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Models.Po.Role.PoRole))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Po_Role_PoRole = "global::Ngaq.Core.Model.Po.Role.PoRole";
 	}
@@ -200,8 +200,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Model.Sys.Req.ReqAddUser))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Models.Sys.Req.ReqAddUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Req_ReqAddUser = "global::Ngaq.Core.Model.Sys.Req.ReqAddUser";
 	}

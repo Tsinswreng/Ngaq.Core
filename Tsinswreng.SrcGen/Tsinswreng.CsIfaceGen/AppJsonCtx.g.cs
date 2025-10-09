@@ -58,8 +58,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.PoPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.PoPassword>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Role.PoRole))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Role.PoRole>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Po.Role.PoRole))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Po.Role.PoRole>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.User.PoUser>))]
@@ -76,8 +76,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.Prop))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.Prop>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Req.ReqAddUser))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Req.ReqAddUser>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Req.ReqAddUser))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Req.ReqAddUser>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Req.ReqLogin>))]
