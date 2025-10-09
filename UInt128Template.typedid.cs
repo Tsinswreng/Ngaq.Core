@@ -1,7 +1,10 @@
-#if false//改完後勿忘複製入UInt128Template.typedid
+#if true//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
-using Tsinswreng.CsTools;
-
+static class Extn{
+	public static u8[] ToByteArr(this UInt128 z){
+		return global::Tsinswreng.CsTools.ToolUInt128.ToByteArr(z);
+	}
+}
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
@@ -9,17 +12,17 @@ partial struct PLACEHOLDERID
 	,I_ToSerialized
 {
 
-	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], PLACEHOLDERID> MapPLACEHOLDERID(){
+	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], PLACEHOLDERID> MkTypeMapFn(){
 		return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[], PLACEHOLDERID>.Mk(
-			(id)=>id.Value.ToByteArr()
-			,(val)=>PLACEHOLDERID.FromByteArr(val)
+			(raw)=>PLACEHOLDERID.FromByteArr(raw)
+			,(upper)=>upper.Value.ToByteArr()
 		);
 	}
 
-	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[]?, PLACEHOLDERID?> MapPLACEHOLDERIDN(){
+	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[]?, PLACEHOLDERID?> MkTypeMapFnNullable(){
 		return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[]?, PLACEHOLDERID?>.Mk(
-			(id)=>id?.Value.ToByteArr()
-			,(val)=>val==null?null:PLACEHOLDERID.FromByteArr(val)
+			(raw)=>raw==null?null:PLACEHOLDERID.FromByteArr(raw)
+			,(upper)=>upper?.Value.ToByteArr()
 		);
 	}
 

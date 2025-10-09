@@ -11,12 +11,19 @@ public partial class PoRole
 	:PoBase
 	,I_Id<IdRole>
 {
+
+	public enum ERoleStatus{
+		Normal = 0
+	}
+
 	public IdRole Id { get; set; }
 	/// <summary>
 	/// 全局唯一標識 如ADMIN
 	/// </summary>
-	public str Key {get;set;} = "";
+	public str Code {get;set;} = "";
 
 	public str Name{get;set;} = "";
+
+	public ERoleStatus Status{get;set;} = ERoleStatus.Normal;
 
 }
