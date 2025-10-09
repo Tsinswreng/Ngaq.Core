@@ -58,8 +58,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.PoPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.PoPassword>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Models.Po.Role.PoRole))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Po.Role.PoRole>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Role.PoRole))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Role.PoRole>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.User.PoUser>))]

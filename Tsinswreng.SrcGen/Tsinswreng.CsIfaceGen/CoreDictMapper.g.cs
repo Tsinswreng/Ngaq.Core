@@ -153,7 +153,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 	using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Po.Role.PoRole))]
+	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.Role.PoRole))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Po_Role_PoRole = "global::Ngaq.Core.Model.Po.Role.PoRole";
 	}

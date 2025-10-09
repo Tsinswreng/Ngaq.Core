@@ -1,11 +1,28 @@
 #if false//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
+using Tsinswreng.CsTools;
+
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
 	,I_ToDeSerialized
 	,I_ToSerialized
 {
+
+	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], PLACEHOLDERID> MapPLACEHOLDERID(){
+		return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[], PLACEHOLDERID>.Mk(
+			(id)=>id.Value.ToByteArr()
+			,(val)=>PLACEHOLDERID.FromByteArr(val)
+		);
+	}
+
+	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[]?, PLACEHOLDERID?> MapPLACEHOLDERIDN(){
+		return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[]?, PLACEHOLDERID?>.Mk(
+			(id)=>id?.Value.ToByteArr()
+			,(val)=>val==null?null:PLACEHOLDERID.FromByteArr(val)
+		);
+	}
+
 	object? I_ToDeSerialized.ToDeSerialized(object? Obj) {
 		if(Obj is str s){
 			return FromLow64Base(s);
