@@ -1,5 +1,5 @@
 //慮 移至CsTools
-namespace Ngaq.Core.Models;
+namespace Ngaq.Core.Domains.Base.Models;
 
 public partial struct Existing_Duplication<T>{
 
