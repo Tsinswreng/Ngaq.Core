@@ -1,9 +1,7 @@
-using Tsinswreng.CsCfg;
-
 namespace Ngaq.Core.Infra.Cfg;
 
 using Tsinswreng.CsCfg;
-using static ExtnCfgItem;
+using static Tsinswreng.CsCfg.ExtnCfgItem;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
 public class AppCfgItems{
 

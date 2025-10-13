@@ -1,10 +1,54 @@
-using Tsinswreng.CsTools;
-
 namespace Ngaq.Core.Infra;
 
-public  partial class ConstApiUrl{
-	protected static ConstApiUrl? _Inst = null;
-	public static ConstApiUrl Inst => _Inst??= new ConstApiUrl();
+using Tsinswreng.CsCfg;
+using Tsinswreng.CsTools;
+using static Url;
+public record struct Url(str V){
+	public str Value => V;
+	public static implicit operator str(Url e){
+		return e.Value;
+	}
+	public static implicit operator Url(str s){
+		return new Url(s);
+	}
+	public override string ToString() {
+		return Value;
+	}
+	public static Url Mk(
+		Url? Parent
+		,IList<str> Path
+		//,str DfltValue = default!
+	){
+		Parent??= "";
+		return ToolPath.SlashTrimEtJoin([Parent, ..Path]);
+	}
+}
+
+public partial class ConstUrl{
+
+	public static str V1 = Mk(null, ["V1"]);
+		public static str Sys = Mk(V1, ["Sys"]);
+			public static str User = Mk(Sys, ["User"]);
+			//~User
+		//~Sys
+	//~V1
+
+	public partial class UrlUser{
+		//public static str _Root = "";
+		public static str _Root = ConstUrl.User;
+		public static str Login = Mk(_Root, ["Login"]);
+		public static str Logout = Mk(_Root, ["Logout"]);
+		public static str AddUser = Mk(_Root, ["AddUser"]);
+	}
+
+}
+
+
+
+[Obsolete]
+public partial class ConstApiUrlOld{
+	protected static ConstApiUrlOld? _Inst = null;
+	public static ConstApiUrlOld Inst => _Inst??= new ConstApiUrlOld();
 
 	str ApiVi => "/Api-V1";
 	str Sys => "/Sys";

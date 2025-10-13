@@ -1,4 +1,4 @@
-#if true//改完後勿忘複製入UInt128Template.typedid
+#if false//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
 static class Extn{
 	public static u8[] ToByteArr(this UInt128 z){

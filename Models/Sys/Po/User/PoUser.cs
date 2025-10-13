@@ -17,5 +17,14 @@ public partial class PoUser
 	//public IdRole RoleId{get;set;}
 	//public IEnumerable<Id_Password> PasswordIds{get;set;}=[]; //AI曰不要此
 	//public ICollection<Model_Password> Passwords{get;set;}=[]; //取消導航屬性 只在關聯實體類中留外鍵 降侵入性
+	public class N{
+		public str Id = nameof(PoUser.Id);
+		public str UniqueName = nameof(PoUser.UniqueName);
+		public str NickName = nameof(PoUser.NickName);
+		public str Email = nameof(PoUser.Email);
+		public str PhoneNumber = nameof(PoUser.PhoneNumber);
+		public str Avatar = nameof(PoUser.Avatar);
+	}
+
 }
 

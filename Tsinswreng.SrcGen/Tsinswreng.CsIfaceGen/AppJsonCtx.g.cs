@@ -7,20 +7,29 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.IdDel))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.IdDel>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Learn_.IdWordLearn))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Learn_.IdWordLearn>))]
-
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Role.IdRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Role.IdRole>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.User.IdUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.User.IdUser>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Word.IdWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Word.IdWord>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Learn_.IdWordLearn))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Learn_.IdWordLearn>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Kv.IdWordProp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Kv.IdWordProp>))]
@@ -55,11 +64,17 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Sys.Models.PoCfg))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Sys.Models.PoCfg>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.PoPassword))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.PoPassword>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Password.PoPassword))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Password.PoPassword>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Role.PoRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Role.PoRole>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.User.PoUser>))]
