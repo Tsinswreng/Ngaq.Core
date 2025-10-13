@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Infra;
+namespace Ngaq.Core.Infra.Url;
 
 using Tsinswreng.CsCfg;
 using Tsinswreng.CsTools;
@@ -35,7 +35,7 @@ public partial class ConstUrl{
 
 	public partial class UrlUser{
 		//public static Url _Root = "";
-		public static Url _Root = ConstUrl.User;
+		public static Url _Root = User;
 		public static Url Login = Mk(_Root, ["Login"]);
 		public static Url Logout = Mk(_Root, ["Logout"]);
 		public static Url AddUser = Mk(_Root, ["AddUser"]);
@@ -43,24 +43,3 @@ public partial class ConstUrl{
 
 }
 
-
-
-[Obsolete]
-public partial class ConstApiUrlOld{
-	protected static ConstApiUrlOld? _Inst = null;
-	public static ConstApiUrlOld Inst => _Inst??= new ConstApiUrlOld();
-
-	str ApiVi => "/Api-V1";
-	str Sys => "/Sys";
-	//public str ApiV1SysUser => "/Api-V1/Sys/User";
-	public str ApiV1SysUser => ToolPath.SlashTrimEtJoin([ApiVi, Sys, "User"]);
-}
-
-public  partial class ApiUrl_User{
-	protected static ApiUrl_User? _Inst = null;
-	public static ApiUrl_User Inst => _Inst??= new ApiUrl_User();
-
-	public str Login => "/Login";
-	public str Logout => "/Logout";
-	public str AddUser => "/AddUser";
-}

@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Errors;
 
-public  partial class ErrApp
+public partial class ErrApp
 	:IAppErr
 {
 	public str? Id{get;set;}

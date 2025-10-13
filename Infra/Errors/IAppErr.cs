@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Errors;
 
-public  partial interface IAppErr
+public partial interface IAppErr
 	:IErr
 	,I_Namespace
 	,IId_Msg

@@ -256,8 +256,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Sys.Req.ReqAddUser))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Req.ReqAddUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Req_ReqAddUser = "global::Ngaq.Core.Models.Sys.Req.ReqAddUser";
 	}

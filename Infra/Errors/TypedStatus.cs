@@ -6,7 +6,7 @@ namespace Ngaq.Core.Infra.Errors;
 // 	,string? Ns
 // ):IStatus_Ns;
 
-public  partial struct TypedStatus()
+public partial struct TypedStatus()
 	:IEquatable<TypedStatus>
 	,ITypedStatus
 {

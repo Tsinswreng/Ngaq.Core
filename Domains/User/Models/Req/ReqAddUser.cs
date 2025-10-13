@@ -1,8 +1,8 @@
-using Ngaq.Core.Infra.IF;
+namespace Ngaq.Core.Domains.User.Models.Req;
 
-namespace Ngaq.Core.Models.Sys.Req;
+using Ngaq.Core.Domains.Base.Models.Req;
 
-public partial class ReqAddUser: IAppSerializable{
+public partial class ReqAddUser: IReq{
 	public str? UniqueName{get;set;} = "";
 	public str Email{get;set;} = "";
 	public str Password{get;set;} = "";
