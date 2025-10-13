@@ -1,6 +1,4 @@
-using Ngaq.Core.Model.UserCtx;
-
-namespace Ngaq.Core.Models.UserCtx;
+namespace Ngaq.Core.Domains.User.UserCtx;
 
 public partial class UserCtxMgr : IUserCtxMgr {
 	public IUserCtx UserCtx = new UserCtx();

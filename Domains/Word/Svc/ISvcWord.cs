@@ -5,14 +5,12 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
-
-
-using Ngaq.Core.Models.UserCtx;
 using Ngaq.Core.Stream;
 using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Dto;
 using Tsinswreng.CsPage;
 using Tsinswreng.CsTools;
+using Ngaq.Core.Domains.User.UserCtx;
 
 public partial interface ISvcWord{
 //TODO 加詞後 宜予回饋 如 新ʹ加ʹ詞ʹ數 及 老詞新加之數

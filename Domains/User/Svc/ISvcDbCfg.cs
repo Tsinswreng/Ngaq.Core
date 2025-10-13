@@ -1,4 +1,4 @@
-using Ngaq.Core.Models.UserCtx;
+using Ngaq.Core.Domains.User.UserCtx;
 using Ngaq.Core.Sys.Models;
 
 namespace Ngaq.Core.Sys.Svc;

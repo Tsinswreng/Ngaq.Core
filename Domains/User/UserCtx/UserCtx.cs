@@ -1,6 +1,6 @@
-using Ngaq.Core.Model.Sys.Po.User;
+namespace Ngaq.Core.Domains.User.UserCtx;
 
-namespace Ngaq.Core.Models.UserCtx;
+using Ngaq.Core.Model.Sys.Po.User;
 
 public partial class UserCtx: IUserCtx{
 	public IdUser UserId{get;set;}
