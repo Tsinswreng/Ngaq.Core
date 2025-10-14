@@ -1,8 +1,8 @@
 namespace Ngaq.Core.Models.Sys.Po.Password;
 
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.Password;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 

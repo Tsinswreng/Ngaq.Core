@@ -1,6 +1,6 @@
 using Ngaq.Core.Domains.User.Models.Req;
+using Ngaq.Core.Domains.User.Models.Resp;
 using Ngaq.Core.Models.Sys.Req;
-using Ngaq.Core.Models.Sys.Resp;
 
 namespace Ngaq.Core.Sys.Svc;
 

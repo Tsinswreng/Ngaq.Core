@@ -13,8 +13,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Role.IdRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Role.IdRole>))]
@@ -22,8 +22,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.User.IdUser))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.User.IdUser>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.User.Models.Po.User.IdUser))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.User.Models.Po.User.IdUser>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole>))]
@@ -52,6 +52,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.IProp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.IProp>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.Base.Models.Req.IReq))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.Base.Models.Req.IReq>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.ISimpleJnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.ISimpleJnWord>))]
 
@@ -73,8 +76,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.RefreshToken.PoRefreshToken))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.RefreshToken.PoRefreshToken>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Role.PoRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Role.PoRole>))]
@@ -103,8 +106,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Req.ReqLogin>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Resp.RespLogin))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Resp.RespLogin>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.User.Models.Resp.RespLogin))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.User.Models.Resp.RespLogin>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Learn_.WordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Learn_.WordForLearn>))]

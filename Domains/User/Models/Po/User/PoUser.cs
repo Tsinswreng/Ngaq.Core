@@ -1,6 +1,6 @@
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Models.Sys.Po.User;

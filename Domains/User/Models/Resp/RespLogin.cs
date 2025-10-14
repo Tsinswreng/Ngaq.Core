@@ -1,10 +1,13 @@
-using Ngaq.Core.Infra.IF;
+namespace Ngaq.Core.Domains.User.Models.Resp;
+
+using Ngaq.Core.Domains.Base.Models.Resp;
 using Ngaq.Core.Models.Sys.Po.User;
 
-namespace Ngaq.Core.Models.Sys.Resp;
 
-public  partial class RespLogin: IAppSerializable{
+
+public partial class RespLogin: IResp{
 	public str? AccessToken{get;set;} = "";
+	public str RefreshToken{get;set;} = "";
 	public str UserIdStr{get;set;} = "";
 	public PoUser? PoUser{get;set;}
 }

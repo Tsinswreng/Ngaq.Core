@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Errors;
 public partial class EnumErr{
 	public static IAppErr Mk(str Id, str? Ns = null){
-		var R = new ErrApp{
+		var R = new AppErr{
 			Id = Id
 			,Namespace = Ns
 		};

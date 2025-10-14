@@ -1,10 +1,10 @@
 //#define Impl
 namespace Ngaq.Core.Models.Po;
 
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Sys.Po;
-using Ngaq.Core.Model.Sys.Po.User;
 
 
 public partial interface IPoBase

@@ -33,7 +33,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_RefreshToken_IdRefreshToken = "global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken";
 	}
@@ -56,8 +56,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.User.IdUser))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Po.User.IdUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_User_IdUser = "global::Ngaq.Core.Model.Sys.Po.User.IdUser";
 	}
@@ -137,6 +137,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Base.Models.Req.IReq))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Domains_Base_Models_Req_IReq = "global::Ngaq.Core.Domains.Base.Models.Req.IReq";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Word.Models.ISimpleJnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_ISimpleJnWord = "global::Ngaq.Core.Word.Models.ISimpleJnWord";
@@ -192,8 +200,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.RefreshToken.PoRefreshToken))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Po_RefreshToken_PoRefreshToken = "global::Ngaq.Core.Models.Sys.Po.RefreshToken.PoRefreshToken";
 	}
@@ -256,10 +264,10 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-	using Tsinswreng.CsDictMapper;
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Req.ReqAddUser))]
 	public partial class CoreDictMapper{
-		//public static string Ngaq_Core_Models_Sys_Req_ReqAddUser = "global::Ngaq.Core.Models.Sys.Req.ReqAddUser";
+		//public static string Ngaq_Core_Domains_User_Models_Req_ReqAddUser = "global::Ngaq.Core.Domains.User.Models.Req.ReqAddUser";
 	}
 }
 
@@ -272,8 +280,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Sys.Resp.RespLogin))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Resp.RespLogin))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Resp_RespLogin = "global::Ngaq.Core.Models.Sys.Resp.RespLogin";
 	}

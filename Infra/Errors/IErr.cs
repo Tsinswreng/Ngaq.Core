@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Errors;
 /// <summary>
-/// 標記ˡ接口
+/// 異常 標記ˡ接口
 /// </summary>
 public partial interface IErr{}
 

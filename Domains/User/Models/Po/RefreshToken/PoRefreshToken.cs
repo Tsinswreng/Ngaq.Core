@@ -1,30 +1,45 @@
-namespace Ngaq.Core.Models.Sys.Po.RefreshToken;
+namespace Ngaq.Core.Domains.User.Models.Po.RefreshToken;
 
+using Ngaq.Core.Domains.User.Models.Bo.Device;
+using Ngaq.Core.Domains.User.Models.Bo.Jwt;
+using Ngaq.Core.Domains.User.Models.Po.Device;
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
-public class PoRefreshToken
+public class PoSession
 	:PoBase
-	,I_Id<IdRefreshToken>
+	,I_Id<IdSession>
 {
-	public enum EType{
+	public enum ETokenValueType{
 		Sha256,
 	}
 
-	public IdRefreshToken Id{get;set;}
+	public override Tempus CreatedAt { get => base.CreatedAt; set => base.CreatedAt = value; }
+	public IdSession Id{get;set;}
+	public Jti Jti{get;set;}
 	public IdUser UserId{get;set;}
-	public EType Type{get;set;}
-	public u8[]? Data{get;set;}
+	public ETokenValueType TokenValueType{get;set;}
+	public u8[]? TokenValue{get;set;}
+	/// <summary>
+	/// 客戶端生成後持久化ᵈ存
+	/// </summary>
+	public IdDevice DeviceId{get;set;}
+	public EDeviceType DeviceType{get;set;} = EDeviceType.Unknown;
 	public Tempus ExpireAt{get;set;}
 	public Tempus? RevokeAt{get;set;}
 	public str? RevokeReason{get;set;}
 	public str? IpAddr{get;set;}
 	public Tempus? LastUsedAt{get;set;}
-
+	/// <summary>
+	/// 保留備用。萬一以後要給第三方限制介面範圍，可直接沿用 OAuth2 scope 思維。
+	/// </summary>
+	public str? Scope{get;set;}
+	public str? UserAgent{get;set;}
 }
+
 /*
 Id (PK, bigint)
 UserId (FK → Users.Id)

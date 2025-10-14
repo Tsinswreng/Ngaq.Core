@@ -1,5 +1,8 @@
 namespace Ngaq.Core.Infra.Errors;
 
+/// <summary>
+/// 應用基異常接口
+/// </summary>
 public partial interface IAppErr
 	:IErr
 	,I_Namespace

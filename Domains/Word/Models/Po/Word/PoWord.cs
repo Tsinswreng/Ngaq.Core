@@ -1,9 +1,10 @@
 #define Impl
 namespace Ngaq.Core.Word.Models.Po.Word;
+
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 
 public partial interface IPoWord

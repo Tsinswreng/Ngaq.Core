@@ -1,12 +1,12 @@
 #define Impl
 namespace Ngaq.Core.Word.Models;
 using System.Runtime.InteropServices;
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po;
-using Ngaq.Core.Model.Sys.Po.User;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models.Dto;

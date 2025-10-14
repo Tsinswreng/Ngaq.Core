@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Model.Sys.Po.User;
+namespace Ngaq.Core.Domains.User.Models.Po.User;
 
 using Ngaq.Core.Model.Consts;
 using StronglyTypedIds;
