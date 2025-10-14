@@ -9,6 +9,9 @@ using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
 using Ngaq.Core.Models.Po;
 
+/// <summary>
+/// 刷新令牌
+/// </summary>
 public class PoSession
 	:PoBase
 	,I_Id<IdSession>
