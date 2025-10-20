@@ -1,3 +1,4 @@
+using Ngaq.Core.Domains.Word.Models;
 using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Word.Models.Dto;

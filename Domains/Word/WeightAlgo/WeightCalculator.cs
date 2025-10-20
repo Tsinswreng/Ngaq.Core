@@ -2,14 +2,13 @@ namespace Ngaq.Core.Word.WeightAlgo;
 
 using System.Runtime.CompilerServices;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Ngaq.Core.Word.WeightAlgo.Models;
 
 using System.Threading.Channels;
 using System.Threading.Tasks.Dataflow;
-
+using Ngaq.Core.Domains.Word.Models.Learn_;
 
 public partial class WeightCalculator : IWeightCalctr {
 	public async Task<IWeightResult> CalcAsy(

@@ -1,12 +1,17 @@
+using Ngaq.Core.Domains.User.Models.Bo.Device;
+using Ngaq.Core.Domains.User.Models.Po.Device;
 using Ngaq.Core.Infra.IF;
 
-namespace Ngaq.Core.Models.Sys.Req{
+namespace Ngaq.Core.Domains.User.Models.Req {
 public partial class ReqLogin: IAppSerializable{
 	public str? UniqueName{get;set;}
 	public str? Email{get;set;}
 	public str? Password{get;set;}
 	public EUserIdentityMode UserIdentityMode{get;set;} = EUserIdentityMode.UniqueName;
 	public bool KeepLogin{get;set;} = false;
+	public IdDevice? DeviceId{get;set;}
+	public EDeviceType DeviceType{get;set;}
+	public str? IpAddr{get;set;}
 
 	public enum EUserIdentityMode{
 		UniqueName = 1,

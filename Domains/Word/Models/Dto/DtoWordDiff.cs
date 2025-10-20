@@ -1,4 +1,4 @@
-using Ngaq.Core.Word.Models.Po.Kv;
+using Ngaq.Core.Domains.Word.Models.Po.Kv;
 using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Word.Models.Dto;

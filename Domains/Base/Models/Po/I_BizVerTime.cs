@@ -1,6 +1,8 @@
+namespace Ngaq.Core.Domains.Base.Models.Po;
+
 using Ngaq.Core.Infra;
 
-namespace Ngaq.Core.Models.Po;
+
 
 public partial interface I_BizTimeVer{
 /// <summary>

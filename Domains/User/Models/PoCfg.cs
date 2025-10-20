@@ -1,29 +1,27 @@
+namespace Ngaq.Core.Domains.User.Models;
+
 using Ngaq.Core.Domains.User.Models.Po.User;
+using Ngaq.Core.Domains.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Models.Po;
-using Ngaq.Core.Word.Models.Po.Kv;
+using Ngaq.Core.Sys.Models;
 
-namespace Ngaq.Core.Sys.Models;
 
-public class PoCfg
+public class PoKv
 	:PoBase
-	,I_Id<IdCfg>
+	,I_Id<IdKv>
 	,IPoKv
-	,I_BizTimeVer
 {
 
-	[Impl(typeof(I_Id<IdCfg>))]
-	public IdCfg Id{get;set;}
+	[Impl(typeof(I_Id<IdKv>))]
+	public IdKv Id{get;set;}
 
-	public IdUser Owner{get;set;}
+	public IdUser? Owner{get;set;}
 
-
-	[Impl(typeof(I_BizTimeVer))]
-	public Tempus BizTimeVer{get;set;}
 	#region IPoKv
 	[Impl(typeof(IPoKv))]
-	public i64 KType { get; set; }
+	public EKvType KType { get; set; }
 	[Impl(typeof(IPoKv))]
 	public str? KStr { get; set; }
 	/// <summary>
@@ -31,12 +29,10 @@ public class PoCfg
 	/// </summary>
 	[Impl(typeof(IPoKv))]
 	public i64 KI64 { get; set; }
+
 	[Impl(typeof(IPoKv))]
-	public str? KDescr { get; set; }
-	[Impl(typeof(IPoKv))]
-	public i64 VType { get; set; }
-	[Impl(typeof(IPoKv))]
-	public str? VDescr { get; set; }
+	public EKvType VType { get; set; }
+
 	[Impl(typeof(IPoKv))]
 	public str? VStr { get; set; }
 	[Impl(typeof(IPoKv))]

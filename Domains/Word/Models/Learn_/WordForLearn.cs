@@ -1,7 +1,10 @@
 #define Impl
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
+
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Ngaq.Core.Domains.User.Models.Po.User;
+using Ngaq.Core.Domains.Word.Models;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po;
@@ -10,10 +13,10 @@ using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsTools;
 
 
-namespace Ngaq.Core.Word.Models.Learn_;
 
 
-public  partial class WordForLearn
+
+public partial class WordForLearn
 	:IWordForLearn
 {
 	protected PoWord PoWord{get;set;}

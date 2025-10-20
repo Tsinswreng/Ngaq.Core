@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Runtime.CompilerServices;
+using Ngaq.Core.Domains.Word.Models.Learn_;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Weight;
 
 namespace Ngaq.Core.Word.Svc;

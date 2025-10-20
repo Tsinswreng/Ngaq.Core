@@ -1,8 +1,8 @@
-using Ngaq.Core.Models.Po;
+using Ngaq.Core.Domains.Base.Models.Po;
 
 namespace Ngaq.Core.Word.Svc;
 
-public  partial interface I_ModelToNewestVer<TModel>
+public partial interface I_ModelToNewestVer<TModel>
 	where TModel: I_BizTimeVer
 {
 	public TModel OldVerDictToNewestVerModel(

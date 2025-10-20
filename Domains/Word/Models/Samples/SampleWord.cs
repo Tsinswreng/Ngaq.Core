@@ -3,7 +3,6 @@ using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Learn;
 
 namespace Ngaq.Core.Word.Models.Samples;
@@ -14,8 +13,6 @@ public partial class SampleWord{
 
 	//public BoWord BoWord{get;set;} = new();
 	public IList<JnWord> Samples = new List<JnWord>();
-
-
 
 	public SampleWord(){
 		{

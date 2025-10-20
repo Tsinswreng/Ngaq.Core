@@ -1,20 +1,39 @@
-namespace Ngaq.Core.Word.Models.Po.Kv;
+namespace Ngaq.Core.Domains.Word.Models.Po.Kv;
 using Ngaq.Core.Infra.IF;
 
+//分更好
+enum TestKvType2{
+	Str_Str=1
+	,Str_I64=2
+	,Str_F64=3
+	,I64_Str=4
+	,I64_I64=5
+	,I64_F64=6
+	,F64_Str=7
+	,F64_I64=8
+	,F64_F64=9
+}
 
+public enum EKvType{
+	Str = 1
+	,I64 = 2
+	,F64 = 3
+
+}
 
 public partial interface IPoKv:IAppSerializable{
+
 	#region IPoKv
-	public i64 KType { get; set; }
+	public EKvType KType { get; set; }
 	public str? KStr { get; set; }
 	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
 	/// </summary>
 	public i64 KI64 { get; set; }
-	public str? KDescr { get; set; }
-	public i64 VType { get; set; }
 
-	public str? VDescr { get; set; }
+
+
+	public EKvType VType { get; set; }
 	public str? VStr { get; set; }
 	public i64 VI64 { get; set; }
 	public f64 VF64 { get; set; }

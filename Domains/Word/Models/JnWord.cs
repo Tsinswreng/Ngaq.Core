@@ -1,16 +1,14 @@
 #define Impl
-namespace Ngaq.Core.Word.Models;
-using System.Runtime.InteropServices;
+namespace Ngaq.Core.Domains.Word.Models;
 using Ngaq.Core.Domains.User.Models.Po.User;
+using Ngaq.Core.Domains.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Sys.Po;
-using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
-using Ngaq.Core.Word.Models.Dto;
-using Ngaq.Core.Word.Models.Po.Kv;
+using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Po.Learn;
 using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsTools;
@@ -47,7 +45,7 @@ public partial class JnWord
 
 	public JnWord(){}
 	public JnWord(PoWord PoWord, IList<PoWordProp> Props, IList<PoWordLearn> Learns){
-		this.Word = PoWord;
+		Word = PoWord;
 		this.Props = Props;
 		this.Learns = Learns;
 	}
@@ -88,13 +86,6 @@ public partial class JnWord
 		get{return Word.StoredAt;}
 		set{Word.StoredAt = value;}
 	}
-
-
-	[Impl(typeof(I_BizTimeVer))]//TODO
-	public Tempus BizTimeVer{get;set;}
-
-
-
 
 	#region IPoBase
 
@@ -400,7 +391,7 @@ public static class ExtnJnWord{
 		this JnWord Other
 		,JnWord Existing
 	){
-		if(!IsSameUserWord(Other, Existing)){
+		if(!Other.IsSameUserWord(Existing)){
 			throw new ErrArg("!IsSameUserWord(z, Other)");
 		}
 		if(//視潙同一詞 返null

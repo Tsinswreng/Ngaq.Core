@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Word.Models.Learn_;
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
 
 public  partial interface ILearnRecord{
 	/// <summary>

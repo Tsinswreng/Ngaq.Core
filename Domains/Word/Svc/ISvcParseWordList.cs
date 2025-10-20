@@ -1,8 +1,8 @@
 using System.Text;
+using Ngaq.Core.Domains.Word.Models;
 using Ngaq.Core.Model;
 using Ngaq.Core.Stream;
 using Ngaq.Core.Tools.Io;
-using Ngaq.Core.Word.Models;
 
 namespace Ngaq.Core.Service.Word;
 

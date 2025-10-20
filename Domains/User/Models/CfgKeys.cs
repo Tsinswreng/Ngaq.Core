@@ -1,10 +1,10 @@
-namespace Ngaq.Core.Sys.Models;
+namespace Ngaq.Core.Domains.User.Models;
 
 public partial class DbCfgKeys{
 	/// <summary>
 	/// 此詞庫ʹid
 	/// </summary>
-	public const str NodeId = nameof(NodeId);//str
+	public const str DeviceId = nameof(DeviceId);//64進制 Ulid
 	/// <summary>
 	/// 時芝本地ʹ新進度ˇ傳至遠端
 	/// </summary>

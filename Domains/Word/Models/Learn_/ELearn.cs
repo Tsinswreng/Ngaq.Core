@@ -1,6 +1,8 @@
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
+
 using Ngaq.Core.Model.Po.Kv;
 
-namespace Ngaq.Core.Word.Models.Learn_;
+
 
 public enum ELearn{
 	Add = 1

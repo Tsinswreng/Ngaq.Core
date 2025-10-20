@@ -6,7 +6,6 @@ using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Sys.Models;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsDictMapper;
 using Tsinswreng.CsIfaceGen;

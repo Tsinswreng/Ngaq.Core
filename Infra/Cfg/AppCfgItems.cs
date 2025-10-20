@@ -1,9 +1,11 @@
 namespace Ngaq.Core.Infra.Cfg;
 
 using Tsinswreng.CsCfg;
-using static Tsinswreng.CsCfg.ExtnCfgItem;
+using static Tsinswreng.CsCfg.CfgItem<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
-public class AppCfgItems{
+
+public class ItemAppCfg{
+	public static ICfgItem<str> Lang = Mk(null, [nameof(Lang)], "default");
 
 #if DEBUG
 	public static ICfgItem<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.dev.sqlite");

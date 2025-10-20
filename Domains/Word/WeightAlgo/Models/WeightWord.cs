@@ -1,8 +1,8 @@
 #define Impl
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 using System.Runtime.CompilerServices;
+using Ngaq.Core.Domains.Word.Models.Learn_;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Word.Models.Learn_;
 
 
 

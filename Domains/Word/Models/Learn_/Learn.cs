@@ -1,6 +1,7 @@
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Ngaq.Core.Word.Models.Learn_;
+
 
 #if false
 public partial struct Learn

@@ -1,4 +1,4 @@
-using Ngaq.Core.Word.Models.Learn_;
+using Ngaq.Core.Domains.Word.Models.Learn_;
 
 namespace Ngaq.Core.Word.WeightAlgo.Models;
 

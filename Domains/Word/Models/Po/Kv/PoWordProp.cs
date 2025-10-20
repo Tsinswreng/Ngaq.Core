@@ -1,5 +1,6 @@
 #define Impl
-namespace Ngaq.Core.Word.Models.Po.Kv;
+namespace Ngaq.Core.Domains.Word.Models.Po.Kv;
+
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Word;
@@ -14,14 +15,11 @@ public partial class PoWordProp
 	,IPoKv
 	,I_WordId
 {
-
-	public static PoWordProp Example{get;set;} = new PoWordProp();
-
 	public IdWordProp Id { get; set; } = new IdWordProp();
 
 	public IdWord WordId{get;set;}
 
-	public i64 KType { get; set; } = (i64)EKvType.Str;
+	public EKvType KType { get; set; } = EKvType.Str;
 	public str? KStr { get; set; }
 	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
@@ -29,11 +27,8 @@ public partial class PoWordProp
 	public i64 KI64 { get; set; }
 	//public str KeyType {get; set;} = "";
 
-	public str? KDescr { get; set; }
 
-	public i64 VType { get; set; }
-
-	public str? VDescr { get; set; }
+	public EKvType VType { get; set; }
 
 	public str? VStr { get; set; }
 

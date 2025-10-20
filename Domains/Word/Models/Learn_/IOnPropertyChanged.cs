@@ -1,7 +1,8 @@
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Ngaq.Core.Word.Models.Learn_;
+
 
 public  partial interface I_OnPropertyChanged: INotifyPropertyChanged{
 	void OnPropertyChanged(str? PropName);

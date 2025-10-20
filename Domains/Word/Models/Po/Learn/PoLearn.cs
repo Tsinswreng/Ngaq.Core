@@ -1,12 +1,12 @@
 #define Impl
 namespace Ngaq.Core.Word.Models.Po.Learn;
 
+using Ngaq.Core.Domains.Word.Models.Learn_;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
-using Ngaq.Core.Word.Models.Learn_;
 using Ngaq.Core.Word.Models.Po.Word;
 
 

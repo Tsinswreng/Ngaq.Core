@@ -1,7 +1,7 @@
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Sys.Models.IdCfg))]
+	[DictType(typeof(global::Ngaq.Core.Sys.Models.IdKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Sys_Models_IdCfg = "global::Ngaq.Core.Sys.Models.IdCfg";
 	}
@@ -112,8 +112,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Po.Kv.IPoKv))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Kv.IPoKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Po_Kv_IPoKv = "global::Ngaq.Core.Word.Models.Po.Kv.IPoKv";
 	}
@@ -128,8 +128,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Learn_.IProp))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Learn_.IProp))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Learn___IProp = "global::Ngaq.Core.Word.Models.Learn_.IProp";
 	}
@@ -144,16 +144,16 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.ISimpleJnWord))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.ISimpleJnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_ISimpleJnWord = "global::Ngaq.Core.Word.Models.ISimpleJnWord";
 	}
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Learn_.IWordForLearn))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Learn_.IWordForLearn))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Learn___IWordForLearn = "global::Ngaq.Core.Word.Models.Learn_.IWordForLearn";
 	}
@@ -161,7 +161,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.JnWord))]
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.JnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_JnWord = "global::Ngaq.Core.Word.Models.JnWord";
 	}
@@ -176,8 +176,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Sys.Models.PoCfg))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.PoKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Sys_Models_PoCfg = "global::Ngaq.Core.Sys.Models.PoCfg";
 	}
@@ -248,8 +248,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Po.Kv.PoWordProp))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Kv.PoWordProp))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Po_Kv_PoWordProp = "global::Ngaq.Core.Word.Models.Po.Kv.PoWordProp";
 	}
@@ -257,7 +257,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Learn_.Prop))]
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Learn_.Prop))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Learn___Prop = "global::Ngaq.Core.Word.Models.Learn_.Prop";
 	}
@@ -272,8 +272,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Sys.Req.ReqLogin))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Req.ReqLogin))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Req_ReqLogin = "global::Ngaq.Core.Models.Sys.Req.ReqLogin";
 	}
@@ -288,8 +288,8 @@ namespace Ngaq.Core.Infra{
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Learn_.WordForLearn))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Learn_.WordForLearn))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Learn___WordForLearn = "global::Ngaq.Core.Word.Models.Learn_.WordForLearn";
 	}

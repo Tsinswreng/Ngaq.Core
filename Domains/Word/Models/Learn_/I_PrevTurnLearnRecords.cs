@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Word.Models.Learn_;
+namespace Ngaq.Core.Domains.Word.Models.Learn_;
 
 /// <summary>
 /// 上輪學習記錄
