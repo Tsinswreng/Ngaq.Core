@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Domains.User.Models;
 
-public partial class DbCfgKeys{
+public partial class KeysClientKv{
 	/// <summary>
 	/// 此詞庫ʹid
 	/// </summary>
