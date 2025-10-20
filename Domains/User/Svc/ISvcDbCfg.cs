@@ -1,14 +1,22 @@
+namespace Ngaq.Core.Domains.User.Svc;
+
 using Ngaq.Core.Domains.User.Models;
+using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Domains.User.UserCtx;
 
-namespace Ngaq.Core.Sys.Svc;
-public partial interface ISvcDbCfg{
-	//[Impl(typeof(ISvcDbCfg))]
-	public Task<PoKv?> GetOneByKStr(IUserCtx UserCtx, str Key, CT Ct);
 
-	//[Impl(typeof(ISvcDbCfg))]
+public partial interface ISvcKv{
+
+	public Task<PoKv?> GetByOwnerEtKey(IdUser? Owner, obj Key, CT Ct);
+	public Task<nil> AddOrUpdByOwnerEtKey(IdUser? Owner, obj Key, PoKv Po, CT Ct);
+
+
+	[Obsolete]
+	public Task<PoKv?> GetByKStr(IUserCtx UserCtx, str Key, CT Ct);
+
+	[Obsolete]
 	public Task<nil> SetVStrByKStr(IUserCtx UserCtx, str Key, str Value, CT Ct);
-	//[Impl(typeof(ISvcDbCfg))]
+	[Obsolete]
 	public Task<nil> SetVI64ByKStr(IUserCtx UserCtx, str Key, i64 Value, CT Ct);
 
 }

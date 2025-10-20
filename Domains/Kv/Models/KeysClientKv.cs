@@ -1,16 +1,12 @@
-namespace Ngaq.Core.Domains.User.Models;
+namespace Ngaq.Core.Domains.Kv.Models;
+
+using Tsinswreng.CsCfg;
+using static Tsinswreng.CsCfg.CfgItem<obj?>;
+
 
 public partial class KeysClientKv{
-	/// <summary>
-	/// 此詞庫ʹid
-	/// </summary>
-	public const str DeviceId = nameof(DeviceId);//64進制 Ulid
-	/// <summary>
-	/// 時芝本地ʹ新進度ˇ傳至遠端
-	/// </summary>
-	public const str LastUploadTime = nameof(LastUploadTime);//i64
-	/// <summary>
-	/// 時芝遠端ʹ新進度ˇ傳至本地
-	/// </summary>
-	public const str LastDownloadTime = nameof(LastDownloadTime);//i64
+	public static ICfgItem<str> ClientIdStr = Mk(null, [nameof(ClientIdStr)], "");
+	public static ICfgItem<str> AccessToken = Mk(null, [nameof(AccessToken)], "");
+	public static ICfgItem<str> RefreshToken = Mk(null, [nameof(RefreshToken)], "");
+
 }
