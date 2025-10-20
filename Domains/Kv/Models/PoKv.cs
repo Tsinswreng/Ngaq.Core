@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Domains.User.Models;
+namespace Ngaq.Core.Domains.Kv.Models;
 
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Domains.Word.Models.Po.Kv;
@@ -15,7 +15,7 @@ public class PoKv
 {
 
 	[Impl(typeof(I_Id<IdKv>))]
-	public IdKv Id{get;set;}
+	public IdKv Id{get;set;} = new();
 
 	public IdUser? Owner{get;set;}
 

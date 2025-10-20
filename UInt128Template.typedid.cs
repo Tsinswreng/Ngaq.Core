@@ -1,11 +1,12 @@
 #if false//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
+//叵續ˣ定義無參構造器、蓋源生成器生成旹默認已給構造器。
 static class Extn{
 	public static u8[] ToByteArr(this UInt128 z){
 		return global::Tsinswreng.CsTools.ToolUInt128.ToByteArr(z);
 	}
 }
-partial struct PLACEHOLDERID
+partial struct PLACEHOLDERID()
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
 	,I_ToDeSerialized

@@ -28,9 +28,10 @@ public class PoSession
 	public u8[]? TokenValue{get;set;}
 	/// <summary>
 	/// 客戶端生成後持久化ᵈ存
+	/// 如 同一用戶可能同時在 手機與電腦登入/登出
 	/// </summary>
-	public IdDevice DeviceId{get;set;}
-	public EDeviceType DeviceType{get;set;} = EDeviceType.Unknown;
+	public IdClient ClientId{get;set;}
+	public EClientType ClientType{get;set;} = EClientType.Unknown;
 	public Tempus ExpireAt{get;set;}
 	public Tempus? RevokeAt{get;set;}
 	public str? RevokeReason{get;set;}

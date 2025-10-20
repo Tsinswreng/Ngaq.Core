@@ -9,8 +9,8 @@ public partial class ReqLogin: IAppSerializable{
 	public str? Password{get;set;}
 	public EUserIdentityMode UserIdentityMode{get;set;} = EUserIdentityMode.UniqueName;
 	public bool KeepLogin{get;set;} = false;
-	public IdDevice? DeviceId{get;set;}
-	public EDeviceType DeviceType{get;set;}
+	public IdClient? DeviceId{get;set;}
+	public EClientType DeviceType{get;set;}
 	public str? IpAddr{get;set;}
 
 	public enum EUserIdentityMode{

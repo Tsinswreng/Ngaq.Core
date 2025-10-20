@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Domains.User.Models.Bo.Device;
 
-public enum EDeviceType{
+public enum EClientType{
 	Unknown = 0,
 	Android,
 	Ios,
