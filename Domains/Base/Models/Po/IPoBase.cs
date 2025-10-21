@@ -20,7 +20,7 @@ public partial interface IPoBase
 	/// <summary>
 	/// 留與觸發器或攔截器、增實體旹自動改ᵣ「添ˡ時」ˇ
 	/// </summary>
-	public Tempus? DbUpdatedAt{get;set;}
+	public Tempus DbUpdatedAt{get;set;}
 	/// <summary>
 	/// <舊>若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值</舊>
 	/// </summary>

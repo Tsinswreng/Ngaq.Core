@@ -62,7 +62,7 @@ public static partial class ExtnPoWordLearn{
 	public static Tempus Time_(
 		this PoWordLearn z
 	){
-		if(z.BizUpdatedAt == null){
+		if(z.BizUpdatedAt.IsNullOrZero()){
 			return z.BizCreatedAt;
 		}
 		return z.BizUpdatedAt.Value;

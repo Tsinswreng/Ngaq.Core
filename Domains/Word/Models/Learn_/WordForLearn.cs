@@ -126,7 +126,7 @@ public partial class WordForLearn
 	}
 
 	[Impl(typeof(IPoBase))]
-	public Tempus? DbUpdatedAt{
+	public Tempus DbUpdatedAt{
 		get{return PoWord.DbUpdatedAt;}
 		set{PoWord.DbUpdatedAt = value;}
 	}

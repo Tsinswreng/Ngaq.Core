@@ -115,7 +115,7 @@ public partial class JnWord
 		set{Word.BizUpdatedAt = value;}
 	}
 	[Impl]
-	public Tempus? DbUpdatedAt{
+	public Tempus DbUpdatedAt{
 		get{return Word.DbUpdatedAt;}
 		set{Word.DbUpdatedAt = value;}
 	}

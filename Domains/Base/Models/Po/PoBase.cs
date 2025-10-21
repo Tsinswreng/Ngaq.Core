@@ -15,7 +15,7 @@ public partial class PoBase:IPoBase{
 	#region IPoBase
 	public virtual Tempus DbCreatedAt{get;set;}
 	=new();
-	public virtual Tempus? DbUpdatedAt{get;set;}
+	public virtual Tempus DbUpdatedAt{get;set;}
 
 	public IdDel DelAt{get;set;}
 
