@@ -1,5 +1,5 @@
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Model.Po;
-using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Models.Sys.Po.Permission;
 

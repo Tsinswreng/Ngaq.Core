@@ -1,8 +1,9 @@
 #define Impl
 namespace Ngaq.Core.Models.Sys.Po.Role;
+
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
-using Ngaq.Core.Models.Po;
 
 
 

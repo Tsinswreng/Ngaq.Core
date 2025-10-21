@@ -1,7 +1,7 @@
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
-using Ngaq.Core.Models.Po;
 
 namespace Ngaq.Core.Models.Sys.Po.User;
 public partial class PoUser

@@ -3,13 +3,13 @@ namespace Ngaq.Core.Domains.Word.Models.Learn_;
 
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Ngaq.Core.Domains.User.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Domains.Word.Models;
+using Ngaq.Core.Domains.Word.Models.Po.Word;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Model.Sys.Po;
 using Ngaq.Core.Models.Po;
-using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsTools;
 
 

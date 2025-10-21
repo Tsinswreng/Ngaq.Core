@@ -1,12 +1,11 @@
 namespace Ngaq.Core.Domains.Kv.Models;
 
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Domains.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
-using Ngaq.Core.Models.Po;
 using Ngaq.Core.Sys.Models;
-
 
 public class PoKv
 	:PoBase

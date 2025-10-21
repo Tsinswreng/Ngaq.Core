@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Domains.User.Models.Po.RefreshToken;
 
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Bo.Device;
 using Ngaq.Core.Domains.User.Models.Bo.Jwt;
 using Ngaq.Core.Domains.User.Models.Po.Device;
@@ -7,7 +8,6 @@ using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
-using Ngaq.Core.Models.Po;
 
 /// <summary>
 /// 刷新令牌

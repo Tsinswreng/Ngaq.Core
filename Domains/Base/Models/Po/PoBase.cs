@@ -1,9 +1,10 @@
 #define Impl
+namespace Ngaq.Core.Domains.Base.Models.Po;
+using Ngaq.Core.Domains.User.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Sys.Po;
+using Ngaq.Core.Models.Po;
 
-namespace Ngaq.Core.Models.Po;
 
 public partial class PoBase:IPoBase{
 	public object ShallowCloneSelf()
@@ -19,12 +20,12 @@ public partial class PoBase:IPoBase{
 	#endif
 	public virtual Tempus DbCreatedAt{get;set;}
 	=new();
-	public virtual Tempus? UpdatedAt{get;set;}
-	public virtual Tempus? DbUpdatedAt{get;set;}
+	public virtual Tempus? UpdatedAt{get;set;} = default(Tempus);
+	public virtual Tempus? DbUpdatedAt{get;set;}= default(Tempus);
 	public IdUser? CreatedBy{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
 
-	public IdDel? DelId{get;set;}
+	public IdDel DelAt{get;set;}
 
 	// [Obsolete]
 	// public PoStatus Status{get;set;}
@@ -35,6 +36,6 @@ public partial class PoBase:IPoBase{
 
 public static class ExtnPoBase{
 	public static bool IsDeleted(this IPoBase z){
-		return z.DelId is not null;
+		return z.DelAt != 0;
 	}
 }

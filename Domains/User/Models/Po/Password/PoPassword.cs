@@ -1,9 +1,9 @@
 namespace Ngaq.Core.Models.Sys.Po.Password;
 
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.Password;
-using Ngaq.Core.Models.Po;
 
 
 public partial class PoPassword

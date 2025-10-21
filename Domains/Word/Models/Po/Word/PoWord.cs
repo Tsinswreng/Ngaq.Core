@@ -1,11 +1,13 @@
 #define Impl
-namespace Ngaq.Core.Word.Models.Po.Word;
+namespace Ngaq.Core.Domains.Word.Models.Po.Word;
 
+using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
+using Ngaq.Core.Word.Models.Po.Word;
 
 public partial interface IPoWord
 	:IPoBase
@@ -82,7 +84,7 @@ public partial class PoWord
 		public str UpdatedAt = nameof(DbUpdatedAt);
 		public str CreatedBy = nameof(PoWord.CreatedBy);
 		public str LastUpdatedBy = nameof(PoWord.LastUpdatedBy);
-		public str DelId = nameof(PoWord.DelId);
+		public str DelId = nameof(PoWord.DelAt);
 	}
 
 

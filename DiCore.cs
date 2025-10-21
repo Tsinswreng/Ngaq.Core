@@ -1,4 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
+using Ngaq.Core.Domains.User.UserCtx;
 using Ngaq.Core.Infra.Cfg;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word;

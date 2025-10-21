@@ -1,10 +1,10 @@
 //#define Impl
 namespace Ngaq.Core.Models.Po;
 
+using Ngaq.Core.Domains.User.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Sys.Po;
 
 
 public partial interface IPoBase
@@ -40,7 +40,7 @@ public partial interface IPoBase
 	/// <summary>
 	/// 若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值
 	/// </summary>
-	public IdDel? DelId{get;set;}
+	public IdDel DelAt{get;set;}
 
 	// [Obsolete]
 	// public PoStatus Status{get;set;}
