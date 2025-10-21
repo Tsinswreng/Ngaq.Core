@@ -9,6 +9,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Po.Learn;
@@ -34,7 +35,7 @@ public interface ISimpleJnWord: IAppSerializable{
 
 
 public partial class JnWord
-	:ISimpleJnWord, IPoWord, IAppSerializable
+	:ISimpleJnWord, IPoWord, IAppSerializable, IBizCreateUpdateTime
 {
 	[Impl(typeof(IPoWord))]
 	public object ShallowCloneSelf()
@@ -109,7 +110,7 @@ public partial class JnWord
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
 	[Impl]
-	public Tempus? UpdatedAt{
+	public Tempus UpdatedAt{
 		get{return Word.UpdatedAt;}
 		set{Word.UpdatedAt = value;}
 	}
@@ -118,16 +119,7 @@ public partial class JnWord
 		get{return Word.DbUpdatedAt;}
 		set{Word.DbUpdatedAt = value;}
 	}
-	[Impl]
-	public IdUser? CreatedBy{
-		get{return Word.CreatedBy;}
-		set{Word.CreatedBy = value;}
-	}
-	[Impl]
-	public IdUser? LastUpdatedBy{
-		get{return Word.LastUpdatedBy;}
-		set{Word.LastUpdatedBy = value;}
-	}
+
 	// [Impl]
 	// public PoStatus Status{
 	// 	get{return Word.Status;}
@@ -181,7 +173,7 @@ public partial class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			PropsToAdd, ExistingProps
-			, (e)=> e.UpdatedAt ?? e.CreatedAt
+			, (e)=> e.UpdatedAt.IsNullOrZero() ? e.CreatedAt: e.UpdatedAt
 		);
 		List<PoWordProp> ans = [];
 		foreach(var (Time,Props) in diff){
@@ -348,9 +340,9 @@ public static class ExtnJnWord{
 		if(R.UpdatedAt < Other.UpdatedAt){
 			R.UpdatedAt = Other.UpdatedAt;
 		}
-		if(R.LastUpdatedBy == null && Other.LastUpdatedBy != null){
-			R.LastUpdatedBy = Other.LastUpdatedBy;
-		}
+		// if(R.LastUpdatedBy == null && Other.LastUpdatedBy != null){
+		// 	R.LastUpdatedBy = Other.LastUpdatedBy;
+		// }
 		return R;
 	}
 

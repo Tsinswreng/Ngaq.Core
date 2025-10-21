@@ -8,6 +8,7 @@ using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
+using Ngaq.Core.Models.Po;
 
 /// <summary>
 /// 刷新令牌
@@ -15,12 +16,13 @@ using Ngaq.Core.Model.Sys.Po.RefreshToken;
 public class PoSession
 	:PoBase
 	,I_Id<IdSession>
+	,IBizCreateUpdateTime
 {
 	public enum ETokenValueType{
 		Sha256,
 	}
 
-	public override Tempus CreatedAt { get => base.CreatedAt; set => base.CreatedAt = value; }
+
 	public IdSession Id{get;set;}
 	public Jti Jti{get;set;}
 	public IdUser UserId{get;set;}
@@ -42,6 +44,25 @@ public class PoSession
 	/// </summary>
 	public str? Scope{get;set;}
 	public str? UserAgent{get;set;}
+	#region IBizCreateUpdateTime
+	/// <summary>
+	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時
+	/// 潙null旹示與InsertedBy同。亦可早於InsertedAt。
+	/// </summary>
+	public Tempus CreatedAt{get;set;}
+	#if Impl
+		= new();
+	#endif
+	/// <summary>
+	/// 理則ₐ實體ˇ改ʹ時
+	/// 如ʃ有ʹ子實體ˋ變˪、則亦宜改主實體或聚合根ʹUpdatedAt
+	/// </summary>
+	public Tempus UpdatedAt{get;set;}
+	#if Impl
+		= Tempus.Zero;
+	#endif
+
+	#endregion IBizCreateUpdateTime
 }
 
 /*

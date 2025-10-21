@@ -5,5 +5,5 @@ using StronglyTypedIds;
 
 [StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]
 public partial struct IdUser {
-
+	public static IdUser Zero = default;
 }

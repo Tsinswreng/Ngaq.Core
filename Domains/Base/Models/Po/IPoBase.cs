@@ -22,35 +22,38 @@ public partial interface IPoBase
 	/// </summary>
 	public Tempus? DbUpdatedAt{get;set;}
 	/// <summary>
+	/// <舊>若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值</舊>
+	/// </summary>
+	public IdDel DelAt{get;set;}
+
+	#endregion IPoBase
+
+}
+
+public interface IBizCreateUpdateTime{
+	#region IBizCreateUpdateTime
+	/// <summary>
 	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時
 	/// 潙null旹示與InsertedBy同。亦可早於InsertedAt。
 	/// </summary>
 	public Tempus CreatedAt{get;set;}
 	#if Impl
-		= DateTimeOffset.Now.ToUnixTimeMilliseconds();
+		= new();
 	#endif
 	/// <summary>
 	/// 理則ₐ實體ˇ改ʹ時
 	/// 如ʃ有ʹ子實體ˋ變˪、則亦宜改主實體或聚合根ʹUpdatedAt
 	/// </summary>
-	public Tempus? UpdatedAt{get;set;}
+	public Tempus UpdatedAt{get;set;}
+	#if Impl
+		= Tempus.Zero;
+	#endif
+
+	#endregion IBizCreateUpdateTime
+
+}
+
+interface I_{
 	public IdUser? CreatedBy{get;set;}
 	public IdUser? LastUpdatedBy{get;set;}//LastUpdatedBy
-
-	/// <summary>
-	/// 若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值
-	/// </summary>
-	public IdDel DelAt{get;set;}
-
-	// [Obsolete]
-	// public PoStatus Status{get;set;}
-	#endregion IPoBase
-
-	// [Obsolete]
-	// public enum EStatus{
-	// 	Normal = 0,
-	// 	Deleted = 1,
-	// 	Banned = 2,
-	// }
-
 }

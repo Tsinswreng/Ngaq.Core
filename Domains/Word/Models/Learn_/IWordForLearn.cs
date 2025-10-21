@@ -19,6 +19,7 @@ public partial interface IWordForLearn
 	,INotifyPropertyChanged
 	,I_OnPropertyChanged //在類外觸發事件
 	,I_ShallowCloneSelf
+	,IBizCreateUpdateTime
 {
 
 }

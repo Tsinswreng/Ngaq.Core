@@ -94,8 +94,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.User.PoUser>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.User.Models.Po.User.PoUser))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.User.Models.Po.User.PoUser>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Word.PoWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.Word.Models.Po.Word.PoWord>))]

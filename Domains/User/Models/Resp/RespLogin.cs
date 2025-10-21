@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Domains.User.Models.Resp;
 
 using Ngaq.Core.Domains.Base.Models.Resp;
-using Ngaq.Core.Models.Sys.Po.User;
+using Ngaq.Core.Domains.User.Models.Po.User;
 
 
 

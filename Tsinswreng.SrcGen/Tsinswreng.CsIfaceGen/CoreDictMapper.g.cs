@@ -248,8 +248,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.User.PoUser))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.User.Models.Po.User.PoUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Po_User_PoUser = "global::Ngaq.Core.Models.Sys.Po.User.PoUser";
 	}

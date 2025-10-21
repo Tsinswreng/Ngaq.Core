@@ -134,21 +134,12 @@ public partial class WordForLearn
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
-[Impl(typeof(IPoBase))]
-	public Tempus? UpdatedAt{
+	[Impl]
+	public Tempus UpdatedAt{
 		get{return PoWord.UpdatedAt;}
 		set{PoWord.UpdatedAt = value;}
 	}
-[Impl(typeof(IPoBase))]
-	public IdUser? CreatedBy{
-		get{return PoWord.CreatedBy;}
-		set{PoWord.CreatedBy = value;}
-	}
-[Impl(typeof(IPoBase))]
-	public IdUser? LastUpdatedBy{
-		get{return PoWord.LastUpdatedBy;}
-		set{PoWord.LastUpdatedBy = value;}
-	}
+
 	// [Impl(typeof(IPoBase))]
 	// public PoStatus Status{
 	// 	get{return PoWord.Status;}
