@@ -47,7 +47,7 @@ public  partial class ParseResultMapper(){
 			var UnixMs = Date.ToUnixTimeMilliseconds();
 			foreach(var wordBlock in dateBlock.Words){
 				var ua = new JnWord();
-				ua.CreatedAt = UnixMs;
+				ua.BizCreatedAt = UnixMs;
 				ua.Word.Lang = Metadata.belong;
 				var trimedHead = wordBlock.Head?.Text?.Trim();
 				if(trimedHead == null || str.IsNullOrEmpty(trimedHead)){
@@ -55,7 +55,7 @@ public  partial class ParseResultMapper(){
 				}
 				foreach(var prop in wordBlock.Props){//除description以外的屬性
 					var PoKv = PropToKv(prop);
-					PoKv.CreatedAt = UnixMs;
+					PoKv.BizCreatedAt = UnixMs;
 					ua.Props.Add(PoKv);
 				}
 
@@ -67,14 +67,14 @@ public  partial class ParseResultMapper(){
 				}
 				var bodyStr = string.Join("\n", bodyStrList);
 				var kv_descr = new PoWordProp();
-				kv_descr.CreatedAt = UnixMs;
+				kv_descr.BizCreatedAt = UnixMs;
 				kv_descr.SetStrToken(
 					null, KeysProp.Inst.description, bodyStr.Trim()
 				);
 				ua.Props.Add(kv_descr);
 				foreach (var prop in dateBlock.Props){
 					var po_kv = PropToKv(prop);
-					po_kv.CreatedAt = UnixMs;
+					po_kv.BizCreatedAt = UnixMs;
 					ua.Props.Add(po_kv);
 				}
 				ua.EnsureForeignId();

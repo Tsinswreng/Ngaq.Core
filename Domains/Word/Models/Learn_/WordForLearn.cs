@@ -120,9 +120,9 @@ public partial class WordForLearn
 	}
 
 	[Impl(typeof(IPoBase))]
-	public Tempus CreatedAt{
-		get{return PoWord.CreatedAt;}
-		set{PoWord.CreatedAt = value;}
+	public Tempus BizCreatedAt{
+		get{return PoWord.BizCreatedAt;}
+		set{PoWord.BizCreatedAt = value;}
 	}
 
 	[Impl(typeof(IPoBase))]
@@ -135,9 +135,9 @@ public partial class WordForLearn
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
 	[Impl]
-	public Tempus UpdatedAt{
-		get{return PoWord.UpdatedAt;}
-		set{PoWord.UpdatedAt = value;}
+	public Tempus BizUpdatedAt{
+		get{return PoWord.BizUpdatedAt;}
+		set{PoWord.BizUpdatedAt = value;}
 	}
 
 	// [Impl(typeof(IPoBase))]

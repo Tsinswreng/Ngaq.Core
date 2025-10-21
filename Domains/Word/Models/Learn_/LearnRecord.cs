@@ -24,7 +24,7 @@ public static class ExtnLearnRecord{
 	){
 		var learn = PoLearn.LearnResult;
 		var record = new LearnRecord(){
-			UnixMs = PoLearn?.CreatedAt??throw new NullReferenceException()
+			UnixMs = PoLearn?.BizCreatedAt??throw new NullReferenceException()
 			,Learn = learn
 		};
 		return record;
@@ -36,7 +36,7 @@ public static class ExtnLearnRecord{
 	){
 		var R = new PoWordLearn();
 		R.LearnResult = z.Learn;
-		R.CreatedAt = z.UnixMs;
+		R.BizCreatedAt = z.UnixMs;
 		if(WordId != null){
 			R.WordId = WordId.Value;
 		}

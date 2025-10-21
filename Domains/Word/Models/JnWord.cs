@@ -101,18 +101,18 @@ public partial class JnWord
 	}
 
 	[Impl]
-	public Tempus CreatedAt{
-		get{return Word.CreatedAt;}
-		set{Word.CreatedAt = value;}
+	public Tempus BizCreatedAt{
+		get{return Word.BizCreatedAt;}
+		set{Word.BizCreatedAt = value;}
 	}
 
 	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	/// </summary>
 	[Impl]
-	public Tempus UpdatedAt{
-		get{return Word.UpdatedAt;}
-		set{Word.UpdatedAt = value;}
+	public Tempus BizUpdatedAt{
+		get{return Word.BizUpdatedAt;}
+		set{Word.BizUpdatedAt = value;}
 	}
 	[Impl]
 	public Tempus? DbUpdatedAt{
@@ -173,7 +173,7 @@ public partial class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			PropsToAdd, ExistingProps
-			, (e)=> e.UpdatedAt.IsNullOrZero() ? e.CreatedAt: e.UpdatedAt
+			, (e)=> e.BizUpdatedAt.IsNullOrZero() ? e.BizCreatedAt: e.BizUpdatedAt
 		);
 		List<PoWordProp> ans = [];
 		foreach(var (Time,Props) in diff){
@@ -334,11 +334,11 @@ public static class ExtnJnWord{
 		if(R.DbCreatedAt > Other.DbCreatedAt){
 			R.DbCreatedAt = Other.DbCreatedAt;
 		}
-		if(R.CreatedAt > Other.CreatedAt){
-			R.CreatedAt = Other.CreatedAt;
+		if(R.BizCreatedAt > Other.BizCreatedAt){
+			R.BizCreatedAt = Other.BizCreatedAt;
 		}
-		if(R.UpdatedAt < Other.UpdatedAt){
-			R.UpdatedAt = Other.UpdatedAt;
+		if(R.BizUpdatedAt < Other.BizUpdatedAt){
+			R.BizUpdatedAt = Other.BizUpdatedAt;
 		}
 		// if(R.LastUpdatedBy == null && Other.LastUpdatedBy != null){
 		// 	R.LastUpdatedBy = Other.LastUpdatedBy;
@@ -375,8 +375,8 @@ public static class ExtnJnWord{
 	public static JnWord SortByCreatedAtAsc(
 		this JnWord z
 	){
-		z.Props.Sort((a,b)=>a.CreatedAt.Value.CompareTo(b.CreatedAt));
-		z.Learns.Sort((a,b)=>a.CreatedAt.Value.CompareTo(b.CreatedAt));
+		z.Props.Sort((a,b)=>a.BizCreatedAt.Value.CompareTo(b.BizCreatedAt));
+		z.Learns.Sort((a,b)=>a.BizCreatedAt.Value.CompareTo(b.BizCreatedAt));
 		return z;
 	}
 
@@ -388,8 +388,8 @@ public static class ExtnJnWord{
 			throw new ErrArg("!IsSameUserWord(z, Other)");
 		}
 		if(//視潙同一詞 返null
-			Other.CreatedAt == Existing.CreatedAt
-			&& Other.UpdatedAt == Existing.UpdatedAt
+			Other.BizCreatedAt == Existing.BizCreatedAt
+			&& Other.BizUpdatedAt == Existing.BizUpdatedAt
 			&& Other.Props.Count == Existing.Props.Count
 			&& Other.Learns.Count == Existing.Learns.Count
 		){

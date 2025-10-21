@@ -49,7 +49,7 @@ public class PoSession
 	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時
 	/// 潙null旹示與InsertedBy同。亦可早於InsertedAt。
 	/// </summary>
-	public Tempus CreatedAt{get;set;}
+	public Tempus BizCreatedAt{get;set;}
 	#if Impl
 		= new();
 	#endif
@@ -57,7 +57,7 @@ public class PoSession
 	/// 理則ₐ實體ˇ改ʹ時
 	/// 如ʃ有ʹ子實體ˋ變˪、則亦宜改主實體或聚合根ʹUpdatedAt
 	/// </summary>
-	public Tempus UpdatedAt{get;set;}
+	public Tempus BizUpdatedAt{get;set;}
 	#if Impl
 		= Tempus.Zero;
 	#endif
