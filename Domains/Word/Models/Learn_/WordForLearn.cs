@@ -112,7 +112,7 @@ public partial class WordForLearn
 
 	#region IPoBase
 	[Impl(typeof(IPoBase))]
-	public IdDel? DelId{get;set;}
+	public IdDel DelAt{get;set;}
 	[Impl(typeof(IPoBase))]
 	public Tempus DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}

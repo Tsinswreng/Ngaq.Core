@@ -16,7 +16,7 @@ public class PoKv
 	[Impl(typeof(I_Id<IdKv>))]
 	public IdKv Id{get;set;} = new();
 
-	public IdUser? Owner{get;set;}
+	public IdUser Owner{get;set;} = default(IdUser);
 
 	#region IPoKv
 	[Impl(typeof(IPoKv))]

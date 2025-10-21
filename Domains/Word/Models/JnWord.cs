@@ -91,7 +91,7 @@ public partial class JnWord
 	#region IPoBase
 
 	[Impl]
-	public IdDel? DelId{get;set;}
+	public IdDel DelAt{get;set;}
 
 	[Impl]
 	public Tempus DbCreatedAt{
