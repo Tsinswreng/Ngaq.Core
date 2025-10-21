@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Domains.Word.Models.Learn_;
 
+using Ngaq.Core.Domains.Word.Models.Po.Learn;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Word.Models.Po.Learn;
 
 
 

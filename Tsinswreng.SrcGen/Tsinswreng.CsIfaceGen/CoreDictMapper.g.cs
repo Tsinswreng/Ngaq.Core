@@ -264,8 +264,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Learn.PoWordLearn))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Models_Po_Learn_PoWordLearn = "global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn";
 	}

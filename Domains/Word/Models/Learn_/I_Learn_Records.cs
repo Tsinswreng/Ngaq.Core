@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Domains.Word.Models.Learn_;
-using Ngaq.Core.Word.Models.Po.Learn;
+
+using Ngaq.Core.Domains.Word.Models.Po.Learn;
 using Tsinswreng.CsTools;
 
 

@@ -1,13 +1,4 @@
-using System.Diagnostics.CodeAnalysis;
-using System.Reflection;
-using System.Xml.Serialization;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Po.Kv;
-using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Sys.Models;
-using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Po.Learn;
-using Tsinswreng.CsDictMapper;
 using Tsinswreng.CsIfaceGen;
 namespace Ngaq.Core.Infra;
 

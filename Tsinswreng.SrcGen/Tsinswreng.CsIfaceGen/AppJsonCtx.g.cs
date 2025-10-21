@@ -100,8 +100,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Word.PoWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.Word.Models.Po.Word.PoWord>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Po.Learn.PoWordLearn>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Learn.PoWordLearn))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.Word.Models.Po.Learn.PoWordLearn>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Domains.Word.Models.Po.Kv.PoWordProp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Domains.Word.Models.Po.Kv.PoWordProp>))]

@@ -1,5 +1,5 @@
 #define Impl
-namespace Ngaq.Core.Word.Models.Po.Learn;
+namespace Ngaq.Core.Domains.Word.Models.Po.Learn;
 
 using Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.Word.Models.Learn_;
@@ -9,7 +9,7 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
 using Ngaq.Core.Word.Models.Po.Word;
-
+using Ngaq.Core.Tools;
 
 
 // public  partial class Po_Learn:Po_Kv{
@@ -62,7 +62,7 @@ public static partial class ExtnPoWordLearn{
 	public static Tempus Time_(
 		this PoWordLearn z
 	){
-		if(z.BizUpdatedAt.IsNullOrZero()){
+		if(z.BizUpdatedAt.IsNullOrDefault()){
 			return z.BizCreatedAt;
 		}
 		return z.BizUpdatedAt.Value;

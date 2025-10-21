@@ -4,15 +4,16 @@ namespace Ngaq.Core.Domains.Word.Models;
 using Ngaq.Core.Domains.User.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po.User;
 using Ngaq.Core.Domains.Word.Models.Po.Kv;
+using Ngaq.Core.Domains.Word.Models.Po.Learn;
 using Ngaq.Core.Domains.Word.Models.Po.Word;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Models.Po;
+using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Po.Learn;
 using Tsinswreng.CsTools;
 
 /// 嚴格對應數據庫ʹ實體ʹ聚合
@@ -173,7 +174,7 @@ public partial class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			PropsToAdd, ExistingProps
-			, (e)=> e.BizUpdatedAt.IsNullOrZero() ? e.BizCreatedAt: e.BizUpdatedAt
+			, (e)=> e.BizUpdatedAt.IsNullOrDefault() ? e.BizCreatedAt: e.BizUpdatedAt
 		);
 		List<PoWordProp> ans = [];
 		foreach(var (Time,Props) in diff){

@@ -82,12 +82,3 @@ public partial struct Tempus(TPrimitive V)
 	}
 
 }
-
-public static class ExtnTempus{
-	public static bool IsNullOrZero(this Tempus? z){
-		return z == null || z.Value == 0;
-	}
-	public static bool IsNullOrZero(this Tempus z){
-		return z.Value == 0;
-	}
-}

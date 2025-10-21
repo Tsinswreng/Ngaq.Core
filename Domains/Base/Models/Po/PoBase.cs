@@ -3,7 +3,7 @@ namespace Ngaq.Core.Domains.Base.Models.Po;
 using Ngaq.Core.Domains.User.Models.Po;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Models.Po;
-
+using Ngaq.Core.Tools;
 
 public partial class PoBase:IPoBase{
 	public object ShallowCloneSelf()
@@ -26,6 +26,6 @@ public partial class PoBase:IPoBase{
 
 public static class ExtnPoBase{
 	public static bool IsDeleted(this IPoBase z){
-		return z.DelAt != 0;
+		return !z.DelAt.IsNullOrDefault();
 	}
 }

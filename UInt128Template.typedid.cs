@@ -5,12 +5,6 @@ static class Extn{
 	public static u8[] ToByteArr(this UInt128 z){
 		return global::Tsinswreng.CsTools.ToolUInt128.ToByteArr(z);
 	}
-	public static bool IsNullOrZero(this PLACEHOLDERID z){
-		return z.Value == 0;
-	}
-	public static bool IsNullOrZero(this PLACEHOLDERID? z){
-		return z == null || z.Value.Value == 0;
-	}
 }
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
