@@ -31,11 +31,10 @@ public partial interface IPoKv:IAppSerializable{
 	/// </summary>
 	public i64 KI64 { get; set; }
 
-
-
 	public EKvType VType { get; set; }
 	public str? VStr { get; set; }
 	public i64 VI64 { get; set; }
 	public f64 VF64 { get; set; }
+	public u8[]? VBinary {get;set;}
 	#endregion IPoKv
 }

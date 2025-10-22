@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Sys.Svc;
+namespace Ngaq.Core.Domains.User.Svc;
 
 public interface ISvcToken{
 	public str GenAccessToken(

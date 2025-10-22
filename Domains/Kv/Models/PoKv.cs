@@ -38,5 +38,6 @@ public class PoKv
 	public i64 VI64 { get; set; }
 	[Impl(typeof(IPoKv))]
 	public f64 VF64 { get; set; }
+	public u8[]? VBinary {get;set;}
 	#endregion IPoKv
 }

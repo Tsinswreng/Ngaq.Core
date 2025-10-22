@@ -38,6 +38,7 @@ public partial class PoWordProp
 	public i64 VI64 { get; set; }
 
 	public f64 VF64 { get; set; }
+	public u8[]? VBinary {get;set;}
 	#region IBizCreateUpdateTime
 	/// <summary>
 	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時

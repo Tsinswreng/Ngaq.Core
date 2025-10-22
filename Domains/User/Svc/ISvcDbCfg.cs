@@ -1,9 +1,7 @@
 namespace Ngaq.Core.Domains.User.Svc;
 
 using Ngaq.Core.Domains.Kv.Models;
-using Ngaq.Core.Domains.User.Models;
 using Ngaq.Core.Domains.User.Models.Po.User;
-using Ngaq.Core.Domains.User.UserCtx;
 
 
 public partial interface ISvcKv{

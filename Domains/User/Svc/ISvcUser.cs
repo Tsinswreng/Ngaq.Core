@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Sys.Svc;
+namespace Ngaq.Core.Domains.User.Svc;
 
 using Ngaq.Core.Domains.User.Models.Req;
 using Ngaq.Core.Domains.User.Models.Resp;
