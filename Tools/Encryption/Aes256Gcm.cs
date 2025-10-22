@@ -3,7 +3,10 @@ namespace Ngaq.Core.Tools.Encryption;
 using System;
 using System.Security.Cryptography;
 
-public sealed class Aes256Gcm : IEncryption {
+public class Aes256Gcm : IEncipherer {
+	protected static Aes256Gcm? _Inst = null;
+	public static Aes256Gcm Inst => _Inst??= new Aes256Gcm();
+
 	private const int NonceSize = 12; // 96-bit
 	private const int TagSize = 16; // 128-bit
 	private const int KeySize = 32; // 256-bit

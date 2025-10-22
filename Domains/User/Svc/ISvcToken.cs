@@ -8,4 +8,6 @@ public interface ISvcToken{
 	public str GenRefreshToken(
 		str UserIdStr
 	);
+
+
 }

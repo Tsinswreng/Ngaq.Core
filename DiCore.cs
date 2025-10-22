@@ -13,6 +13,7 @@ public static class DiCore{
 		z.AddTransient<MgrLearn, MgrLearn>();
 		z.AddScoped<IWeightCalctr, SvcWeight>();
 		z.AddTransient<IJsonSerializer, JsonSerializer>();
+
 		return z;
 	}
 }
