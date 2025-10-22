@@ -12,11 +12,10 @@ using Ngaq.Core.Word.Models.Po.Word;
 
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoWordProp
-	:PoBase
+	:PoBaseBizTime
 	,I_Id<IdWordProp>
 	,IPoKv
 	,I_WordId
-	,IBizCreateUpdateTime
 {
 	public IdWordProp Id { get; set; } = new IdWordProp();
 
@@ -39,24 +38,4 @@ public partial class PoWordProp
 
 	public f64 VF64 { get; set; }
 	public u8[]? VBinary {get;set;}
-	#region IBizCreateUpdateTime
-	/// <summary>
-	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時
-	/// 潙null旹示與InsertedBy同。亦可早於InsertedAt。
-	/// </summary>
-	public Tempus BizCreatedAt{get;set;}
-	#if Impl
-		= new();
-	#endif
-	/// <summary>
-	/// 理則ₐ實體ˇ改ʹ時
-	/// 如ʃ有ʹ子實體ˋ變˪、則亦宜改主實體或聚合根ʹUpdatedAt
-	/// </summary>
-	public Tempus BizUpdatedAt{get;set;}
-	#if Impl
-		= Tempus.Zero;
-	#endif
-
-	#endregion IBizCreateUpdateTime
-
 }
