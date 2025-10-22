@@ -10,6 +10,13 @@ public static class ExtnPoKv{
 		return z;
 	}
 
+	public static str? GetVStr(this IPoKv z){
+		if(z.VType == EKvType.Str){
+			return z.VStr;
+		}
+		throw new InvalidOperationException("VType is not Str.");
+	}
+
 	public static obj GetKey(this IPoKv z){
 		obj Key = null!;
 		if(z.KType == EKvType.Str){
