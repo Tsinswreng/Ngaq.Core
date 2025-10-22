@@ -8,6 +8,7 @@ using static Ngaq.Core.Infra.Url.Url;
 public partial class KeysClientKv{
 	public static Url ClientId = Mk(null, [nameof(ClientId)]);
 	public static Url CurLocalUserId = Mk(null, [nameof(CurLocalUserId)]);
+	public static Url CurLoginUserId = Mk(null, [nameof(CurLoginUserId)]);
 	public static Url AccessToken = Mk(null, [nameof(AccessToken)]);
 	public static Url RefreshToken = Mk(null, [nameof(RefreshToken)]);
 }

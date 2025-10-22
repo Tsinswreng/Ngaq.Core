@@ -8,8 +8,9 @@ using Ngaq.Core.Domains.User.UserCtx;
 
 public partial interface ISvcKv{
 
-	public Task<PoKv?> GetByOwnerEtKey(IdUser Owner, obj Key, CT Ct);
-	public Task<nil> AddOrUpd(PoKv Po, CT Ct);
+	public Task<PoKv?> GetByOwnerEtKeyAsy(IdUser Owner, obj Key, CT Ct);
+	public Task<nil> SetAsy(PoKv Po, CT Ct);
+	public Task<nil> SetManyAsy(IEnumerable<PoKv> Pos, CT Ct);
 
 
 	// [Obsolete]

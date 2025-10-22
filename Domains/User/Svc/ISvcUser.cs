@@ -1,8 +1,10 @@
+namespace Ngaq.Core.Sys.Svc;
+
 using Ngaq.Core.Domains.User.Models.Req;
 using Ngaq.Core.Domains.User.Models.Resp;
 using Ngaq.Core.Models.Sys.Req;
 
-namespace Ngaq.Core.Sys.Svc;
+
 
 public partial interface ISvcUser{
 	public Task<nil> AddUser(
