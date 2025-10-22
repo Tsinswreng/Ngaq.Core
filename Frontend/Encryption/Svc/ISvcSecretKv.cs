@@ -1,6 +1,6 @@
-namespace Ngaq.Core.Domains.Encryption.Svc;
+namespace Ngaq.Core.Shared.Encryption.Svc;
 
-using Ngaq.Core.Domains.User.Svc;
+using Ngaq.Core.Shared.Kv.Svc;
 
 public interface ISvcSecretKv: ISvcKv{
 
