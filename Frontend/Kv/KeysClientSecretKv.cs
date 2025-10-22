@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Domains.Kv.Models;
+namespace Ngaq.Core.Frontend.Kv;
 
 using Ngaq.Core.Infra.Url;
 using static Ngaq.Core.Infra.Url.Url;
