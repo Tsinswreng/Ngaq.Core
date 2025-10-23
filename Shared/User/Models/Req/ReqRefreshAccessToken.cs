@@ -5,7 +5,7 @@ using Ngaq.Core.Shared.User.Models.Po.User;
 
 
 
-public class ReqRefreshAccessToken:IReq{
+public class ReqRefreshTheToken:BaseReq{
 	public str? DevicesId{get;set;}
 	public IdUser UserId{get;set;}
 	public str RefreshToken{get;set;} = "";

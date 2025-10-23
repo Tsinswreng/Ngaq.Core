@@ -80,5 +80,14 @@ public partial struct Tempus(TPrimitive V)
 	public override int GetHashCode() {
 		return Value.GetHashCode();
 	}
+}
 
+public class InMillisecond{
+	public const i64 Second = 1000;
+	public const i64 Minute = 60 * Second;
+	public const i64 Hour = 60 * Minute;
+	public const i64 Day = 24 * Hour;
+	public const i64 Week = 7 * Day;
+	public const i64 Month = 30 * Day;
+	public const i64 Year = 365 * Day;
 }

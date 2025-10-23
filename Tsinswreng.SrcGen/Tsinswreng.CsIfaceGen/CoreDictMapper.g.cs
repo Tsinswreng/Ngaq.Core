@@ -57,7 +57,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession))]
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_RefreshToken_IdSession = "global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession";
 	}
@@ -241,7 +241,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoSession))]
+	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Domains_User_Models_Po_RefreshToken_PoSession = "global::Ngaq.Core.Domains.User.Models.Po.RefreshToken.PoSession";
 	}
@@ -305,7 +305,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshAccessToken))]
+	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Domains_User_Models_Req_ReqRefreshAccessToken = "global::Ngaq.Core.Domains.User.Models.Req.ReqRefreshAccessToken";
 	}

@@ -9,21 +9,22 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
 using Ngaq.Core.Models.Po;
+using System.Security.Cryptography;
+using System.Text;
 
 /// <summary>
 /// 刷新令牌
 /// </summary>
-public class PoSession
-	:PoBase
-	,I_Id<IdSession>
-	,IBizCreateUpdateTime
+public class PoRefreshToken
+	:PoBaseBizTime
+	,I_Id<IdRefreshToken>
 {
 	public enum ETokenValueType{
 		Sha256,
 	}
 
 
-	public IdSession Id{get;set;}
+	public IdRefreshToken Id{get;set;}
 	public Jti Jti{get;set;}
 	public IdUser UserId{get;set;}
 	public ETokenValueType TokenValueType{get;set;}
@@ -44,36 +45,15 @@ public class PoSession
 	/// </summary>
 	public str? Scope{get;set;}
 	public str? UserAgent{get;set;}
-	#region IBizCreateUpdateTime
-	/// <summary>
-	/// 理則ₐ實體ˇ增ʹ時、如于單詞、則始記于文本單詞表中之時 即其CreatedAt、非 存入數據庫之時
-	/// 潙null旹示與InsertedBy同。亦可早於InsertedAt。
-	/// </summary>
-	public Tempus BizCreatedAt{get;set;}
-	#if Impl
-		= new();
-	#endif
-	/// <summary>
-	/// 理則ₐ實體ˇ改ʹ時
-	/// 如ʃ有ʹ子實體ˋ變˪、則亦宜改主實體或聚合根ʹUpdatedAt
-	/// </summary>
-	public Tempus BizUpdatedAt{get;set;}
-	#if Impl
-		= Tempus.Zero;
-	#endif
-
-	#endregion IBizCreateUpdateTime
 }
 
-/*
-Id (PK, bigint)
-UserId (FK → Users.Id)
-TokenHash (char(88) or varchar(200)) ※把 Refresh-Token 先 SHA256 再存，防 DBA 直接抄走
-ExpiresUtc (datetime)
-CreatedUtc (datetime)
-RevokedUtc (datetime, nullable)
-RevokeReason (varchar(50), nullable) ※例：Logout、PasswordChanged、AdminKick
-DeviceInfo (varchar(200), nullable) ※可選，用來區分手機/瀏覽器
-IpAddress (varchar(45), nullable) ※可選，記錄發放 IP
-LastUsedUtc (datetime, nullable) ※可選，用來清掃長期未用的髒資料
- */
+public static class ExtnPoRefreshToken{
+	public static TSelf SetTokenValueSha256<TSelf>(
+		this TSelf z
+		,str TokenStr
+	)where TSelf:PoRefreshToken {
+		z.TokenValueType = PoRefreshToken.ETokenValueType.Sha256;
+		z.TokenValue = SHA256.HashData(Encoding.UTF8.GetBytes(TokenStr));
+		return z;
+	}
+}

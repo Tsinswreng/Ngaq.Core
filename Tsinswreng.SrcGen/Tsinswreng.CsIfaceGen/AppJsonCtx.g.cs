@@ -22,8 +22,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdSession>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.IdUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.IdUser>))]
@@ -91,8 +91,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoSession))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoSession>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.PoUser>))]
@@ -115,8 +115,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqLogin>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshAccessToken))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshAccessToken>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespLogin>))]
