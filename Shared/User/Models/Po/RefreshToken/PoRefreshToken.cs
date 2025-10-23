@@ -27,7 +27,7 @@ public class PoRefreshToken
 		Jti
 	}
 
-	public IdRefreshToken Id{get;set;}
+	public IdRefreshToken Id{get;set;} = new ();
 	public IdUser UserId{get;set;}
 	public ETokenValueType TokenValueType{get;set;}
 	public u8[]? TokenValue{get;set;}
