@@ -1,4 +1,5 @@
-using System.Collections;
+namespace Ngaq.Core.Shared.Word;
+
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Learn_;
@@ -9,7 +10,7 @@ using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
 
-namespace Ngaq.Core.Word;
+
 
 public partial class OperationStatus{
 	public bool Load = false;
@@ -82,16 +83,16 @@ public partial class MgrLearn{
 
 	public MgrLearn(
 		ISvcWord SvcWord
-		,IUserCtxMgr UserCtxMgr
 		,IWeightCalctr WeightCalctr
+		,IUserCtx UserCtx
 	){
 		this.WeightCalctr = WeightCalctr;
-		this.UserCtxMgr = UserCtxMgr;
 		this.SvcWord = SvcWord;
+		this.UserCtx = UserCtx;
 	}
 
 	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
-	public IUserCtxMgr UserCtxMgr{get;set;}
+	IUserCtx UserCtx;
 	public IWeightCalctr WeightCalctr{get;set;}
 
 	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
@@ -263,7 +264,7 @@ public partial class MgrLearn{
 				return R;
 			});
 			await SvcWord.AddWordId_LearnRecordss(
-				UserCtxMgr.GetUserCtx()
+				UserCtx
 				,WordId_LearnRecordss
 				,Ct
 			);

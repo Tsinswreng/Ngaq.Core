@@ -11,6 +11,7 @@ using Ngaq.Core.Model.Sys.Po.RefreshToken;
 using Ngaq.Core.Models.Po;
 using System.Security.Cryptography;
 using System.Text;
+using Tsinswreng.CsFactoryMkr;
 
 /// <summary>
 /// 刷新令牌
@@ -19,6 +20,8 @@ public class PoRefreshToken
 	:PoBaseBizTime
 	,I_Id<IdRefreshToken>
 {
+
+
 	public enum ETokenValueType{
 		TokenSha256,
 		Jti

@@ -2,15 +2,14 @@ namespace Ngaq.Core.Frontend.User;
 
 using Ngaq.Core.Shared.User.UserCtx;
 
-public class FrontendUserCtxMgr:IUserCtxMgr, IUserCtxMgr<IFrontendUserCtx>{
+
+public class FrontendUserCtxMgr:
+	IFrontendUserCtxMgr
+{
 	protected static FrontendUserCtxMgr? _Inst = null;
 	public static FrontendUserCtxMgr Inst => _Inst??= new FrontendUserCtxMgr();
 	public IFrontendUserCtx UserCtx{get;set;} = new FrontendUserCtx();
-	public IUserCtx GetUserCtx(){
-		return UserCtx;
-	}
-
-	public IFrontendUserCtx GetUserCtxT(){
+	public IFrontendUserCtx GetUserCtx(){
 		return UserCtx;
 	}
 }

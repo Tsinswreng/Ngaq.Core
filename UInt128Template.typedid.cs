@@ -12,7 +12,7 @@ partial struct PLACEHOLDERID
 	,I_ToDeSerialized
 	,I_ToSerialized
 {
-	public static readonly PLACEHOLDERID Zero = new();
+	public static readonly PLACEHOLDERID Zero = default;
 	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], PLACEHOLDERID> MkTypeMapFn(){
 		return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[], PLACEHOLDERID>.Mk(
 			(raw)=>PLACEHOLDERID.FromByteArr(raw)

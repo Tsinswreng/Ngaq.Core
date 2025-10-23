@@ -9,6 +9,8 @@ public partial class UserCtx
 
 	}
 	public IdUser UserId{get;set;} = IdUser.Zero;
+	public IDictionary<str, obj?>? Kv{get;set;}
+
 }
 
 

@@ -35,6 +35,11 @@
 		<ProjectReference Include="../Tsinswreng.CsDictMapper/proj/Tsinswreng.CsDictMapper.SrcGen/Tsinswreng.CsDictMapper.SrcGen.csproj"
 			OutputItemType="Analyzer" ReferenceOutputAssembly="false"
 		/>
+
+		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/Tsinswreng.CsFactoryMkr.csproj" />
+		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr.SrcGen/Tsinswreng.CsFactoryMkr.SrcGen.csproj"
+			OutputItemType="Analyzer" ReferenceOutputAssembly="false"
+		/>
 	</ItemGroup>
 
 	<ItemGroup>
