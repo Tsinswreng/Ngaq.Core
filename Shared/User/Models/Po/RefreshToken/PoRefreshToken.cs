@@ -20,12 +20,11 @@ public class PoRefreshToken
 	,I_Id<IdRefreshToken>
 {
 	public enum ETokenValueType{
-		Sha256,
+		TokenSha256,
+		Jti
 	}
 
-
 	public IdRefreshToken Id{get;set;}
-	public Jti Jti{get;set;}
 	public IdUser UserId{get;set;}
 	public ETokenValueType TokenValueType{get;set;}
 	public u8[]? TokenValue{get;set;}
@@ -52,7 +51,7 @@ public static class ExtnPoRefreshToken{
 		this TSelf z
 		,str TokenStr
 	)where TSelf:PoRefreshToken {
-		z.TokenValueType = PoRefreshToken.ETokenValueType.Sha256;
+		z.TokenValueType = PoRefreshToken.ETokenValueType.TokenSha256;
 		z.TokenValue = SHA256.HashData(Encoding.UTF8.GetBytes(TokenStr));
 		return z;
 	}

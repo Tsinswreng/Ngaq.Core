@@ -5,4 +5,5 @@ using Ngaq.Core.Shared.User.Models.Po.User;
 
 public partial interface IUserCtx{
 	public IdUser UserId{get;set;}
+	public IDictionary<str, obj?> Kv{get;set;}
 }

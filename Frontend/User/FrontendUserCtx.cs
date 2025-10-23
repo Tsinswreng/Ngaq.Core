@@ -1,6 +1,20 @@
-namespace Ngaq.Core.Shared.User.UserCtx;
+namespace Ngaq.Core.Frontend.User;
 
-public class FrontendUserCtx : UserCtx{
+using Ngaq.Core.Shared.User.UserCtx;
+
+public class FrontendUserCtx : UserCtx, IFrontendUserCtx{
 	public str? AccessToken{get;set;}
 	public str? RefreshToken{get;set;}
+}
+
+public static class ExtnUserCtxMgr{
+	public static IFrontendUserCtx GetFrontendUserCtx(
+		this IUserCtxMgr z
+	){
+		var userCtx = z.GetUserCtx();
+		if(userCtx is IFrontendUserCtx f){
+			return f;
+		}
+		throw new NotImplementedException();
+	}
 }
