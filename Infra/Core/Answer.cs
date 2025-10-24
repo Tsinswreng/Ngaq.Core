@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Core;
 
-public  partial struct Answer<T>()
+public partial struct Answer<T>()
 	:IAnswer<T>
 {
 	public T? Data{get;set;}
@@ -9,8 +9,8 @@ public  partial struct Answer<T>()
 		get{return _Ok;}
 		set{_Ok = value;}
 	}
-	public ICollection<object?>? Errors{get;set;} = new List<object?>();
-	public object Status{get;set;} = 0;
+	public ICollection<obj?>? Errors{get;set;} = new List<obj?>();
+	public obj Status{get;set;} = 0;
 	public str? StatusType{get;set;}
 
 }

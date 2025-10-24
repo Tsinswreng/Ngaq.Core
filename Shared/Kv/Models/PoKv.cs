@@ -6,8 +6,10 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Sys.Models;
+using Tsinswreng.CsFactoryMkr;
 
-public class PoKv
+[MkFactory(For=typeof(PoKv))]
+public partial class PoKv
 	:PoBase
 	,I_Id<IdKv>
 	,IPoKv
@@ -16,7 +18,7 @@ public class PoKv
 	[Impl(typeof(I_Id<IdKv>))]
 	public IdKv Id{get;set;} = new();
 
-	public IdUser Owner{get;set;} = default(IdUser);
+	public IdUser Owner{get;set;} = IdUser.Zero;
 
 	#region IPoKv
 	[Impl(typeof(IPoKv))]

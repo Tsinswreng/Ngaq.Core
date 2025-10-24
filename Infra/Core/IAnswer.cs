@@ -1,6 +1,7 @@
+namespace Ngaq.Core.Infra.Core;
 using Ngaq.Core.Infra.Errors;
 
-namespace Ngaq.Core.Infra.Core;
+
 
 /// <summary>
 /// 返值包裝
@@ -8,7 +9,7 @@ namespace Ngaq.Core.Infra.Core;
 /// 至于預料外ʹ異常、則猶用throw+try-catch、不用此㕥包㞢
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public  partial interface IAnswer<T>
+public partial interface IAnswer<T>
 	:ITypedStatus
 {
 	public T? Data { get; set; }

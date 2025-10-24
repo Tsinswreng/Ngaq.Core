@@ -29,7 +29,7 @@ public  partial class ParseResultMapper(){
 
 	public PoWordProp PropToKv(I_Prop prop){
 		var po_kv = new PoWordProp();
-		po_kv.SetStr(prop.Key.Text.Trim(), prop.Value.Text.Trim());
+		po_kv.SetStrStr(prop.Key.Text.Trim(), prop.Value.Text.Trim());
 		return po_kv;
 	}
 

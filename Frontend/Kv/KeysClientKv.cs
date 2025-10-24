@@ -1,12 +1,17 @@
+using Ngaq.Core.Tools;
+
 namespace Ngaq.Core.Frontend.Kv;
 
-using Ngaq.Core.Infra.Url;
-using static Ngaq.Core.Infra.Url.Url;
-
+using static Ngaq.Core.Tools.SlashSepKey;
+using K = SlashSepKey;
 
 public partial class KeysClientKv{
-	public static Url ClientId = Mk(null, [nameof(ClientId)]);
-	public static Url CurLocalUserId = Mk(null, [nameof(CurLocalUserId)]);
-	public static Url CurLoginUserId = Mk(null, [nameof(CurLoginUserId)]);
-	public static Url RefreshTokenCipher = Mk(null, [nameof(RefreshTokenCipher)]);
+	public static K ClientId = Mk(null, [nameof(ClientId)]);
+	public static K CurLocalUserId = Mk(null, [nameof(CurLocalUserId)]);
+	public static K CurLoginUserId = Mk(null, [nameof(CurLoginUserId)]);
+	/// <summary>
+	/// 未必潙明文
+	/// </summary>
+	public static K RefreshToken = Mk(null, [nameof(RefreshToken)]);
+	public static K RefreshTokenExpireAt = Mk(null, [nameof(RefreshTokenExpireAt)]);//i64
 }

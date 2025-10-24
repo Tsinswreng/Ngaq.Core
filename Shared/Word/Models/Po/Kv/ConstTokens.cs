@@ -30,7 +30,7 @@ public static class ExtnIPoKv{
 	){
 		var T = ConstTokens.Inst;
 		var key = T.Concat(ns, name);
-		z.SetStr(key, value);
+		z.SetStrStr(key, value);
 		return z;
 	}
 

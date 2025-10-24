@@ -1,12 +1,22 @@
 namespace Ngaq.Core.Shared.Word.Models.Po.Kv;
 public static class ExtnPoKv{
-	public static TSelf SetStr<TSelf>(this TSelf z, str K, str V)
+	public static TSelf SetStrStr<TSelf>(this TSelf z, str K, str V)
 		where TSelf : class, IPoKv
 	{
 		z.KType = EKvType.Str;
 		z.VType = EKvType.Str;
 		z.KStr = K;
 		z.VStr = V;
+		return z;
+	}
+
+	public static TSelf SetStrI64<TSelf>(this TSelf z, str K, i64 V)
+		where TSelf : class, IPoKv
+	{
+		z.KType = EKvType.Str;
+		z.VType = EKvType.I64;
+		z.KStr = K;
+		z.VI64 = V;
 		return z;
 	}
 
