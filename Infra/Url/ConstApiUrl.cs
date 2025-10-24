@@ -1,8 +1,9 @@
 namespace Ngaq.Core.Infra.Url;
 
+using Ngaq.Core.Tools;
 using Tsinswreng.CsCfg;
 using Tsinswreng.CsTools;
-using static Url;
+using static Ngaq.Core.Tools.Url;
 
 // public interface I_staticMk{
 // 	public abstract static str Mk();
