@@ -8,8 +8,7 @@ static class Extn{
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
-	,I_ToDeSerialized
-	,I_ToSerialized
+	,IDictSerializable
 {
 	public static readonly PLACEHOLDERID Zero = default;
 	public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], PLACEHOLDERID> MkTypeMapFn(){

@@ -6,8 +6,7 @@ using System.Diagnostics.CodeAnalysis;
 public partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
 	,I_Value<TPrimitive>
-	,I_ToSerialized
-	,I_ToDeSerialized
+	,IDictSerializable
 {
 	public static TStruct Zero = new(0);
 	public TPrimitive Value{get;set;} = V;

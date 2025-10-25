@@ -8,21 +8,49 @@ mkdir -p Tsinswreng.SrcGen
 
 # 把分散之json序列化註解 集到一個文件中
 cd Tsinswreng.SrcGen/Tsinswreng.CsIfaceGen/
-OutFile=AppJsonCtx.g.cs
 
-cat > $OutFile <<'EOF'
+##
+IAppSerializable=IAppSerializable.g.cs
+
+cat > $IAppSerializable <<'EOF'
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 EOF
 
-cat AppJsonCtx/* >> $OutFile
+cat IAppSerializable/* >> $IAppSerializable
 
-cat >> $OutFile <<'EOF'
+cat >> $IAppSerializable <<'EOF'
 public partial class AppJsonCtx{}
 EOF
 
-rm AppJsonCtx/*
+rm IAppSerializable/*
+##~
+
+##IDictSerializable
+IDictSerializable=IDictSerializable.g.cs
+
+cat > $IDictSerializable <<'EOF'
+namespace Ngaq.Core.Infra;
+using System.Text.Json.Serialization;
+[JsonSourceGenerationOptions(
+	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
+	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+	,Converters = [
+EOF
+
+cat IDictSerializable/* >> $IDictSerializable
+
+cat >> $IDictSerializable <<'EOF'
+	]
+)]
+public partial class AppJsonCtx{}
+EOF
+
+rm IDictSerializable/*
+##~IDictSerializable
+
 
 rm CoreDictMapper.g.cs
 cat CoreDictMapper/* >>  CoreDictMapper.g.cs
 rm CoreDictMapper/*
+
