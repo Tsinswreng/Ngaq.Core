@@ -50,6 +50,29 @@ rm IDictSerializable/*
 ##~IDictSerializable
 
 
+
+##IDictSerializableList
+IDictSerializableList=IDictSerializableList.g.cs
+
+cat > $IDictSerializableList <<'EOF'
+namespace Ngaq.Core.Infra;
+using System.Text.Json.Serialization;
+public partial class AppJsonCtx : JsonSerializerContext {
+	public static IList<JsonConverter> JsonConverters = [
+EOF
+
+cat IDictSerializableList/* >> $IDictSerializableList
+
+cat >> $IDictSerializableList <<'EOF'
+	];
+}
+EOF
+
+rm IDictSerializableList/*
+##~IDictSerializableList
+
+
+
 rm CoreDictMapper.g.cs
 cat CoreDictMapper/* >>  CoreDictMapper.g.cs
 rm CoreDictMapper/*

@@ -54,9 +54,31 @@ public interface IIfaceGenCfg_JsonCustomConverter{
 
 }
 
-class ConvIdUser : JsonConvtr<IdUser>{
+/// <summary>
+/// ASP.net 內置Json序列化器專用。
+/// 縱既配opt =>opt.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonCtx.Default);
+/// 猶需手上 opt.SerializerOptions.Converters.Add(new MyConverter()......)
+/// 佢不認AppJsonCtx中 用註解配˪ʹ Converters
+/// </summary>
+[IfaceGen(
+	ParentType = typeof(IDictSerializable)
+	//ParentType = typeof(INull)
+	,Name = nameof(IDictSerializable)+"List"
+	,OutDir = CfgIfaceGen.OutDir+nameof(IDictSerializable)+"List"
+	,PhFullType = "TYPE"
+	,PhIdentifierSafeFullType = "ID"
+	,Template =
+"""
+new global::Ngaq.Core.Tools.JsonConvtr<TYPE>(),
+
+"""
+
+)]
+public interface IIfaceGenCfg_JsonCustomConverterList{
 
 }
+
+
 
 // [JsonSourceGenerationOptions(
 // 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
@@ -70,5 +92,7 @@ class ConvIdUser : JsonConvtr<IdUser>{
 // 	]
 // )]
 public partial class AppJsonCtx : JsonSerializerContext {
-
+	// public static IList<JsonConverter> JsonConverters = [
+	// 	new global::Ngaq.Core.Tools.JsonConvtr<IdKv>(),
+	// ];
 }
