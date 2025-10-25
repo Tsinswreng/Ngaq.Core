@@ -9,14 +9,18 @@ mkdir -p Tsinswreng.SrcGen
 # 把分散之json序列化註解 集到一個文件中
 cd Tsinswreng.SrcGen/Tsinswreng.CsIfaceGen/
 OutFile=AppJsonCtx.g.cs
+
 cat > $OutFile <<'EOF'
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 EOF
+
 cat AppJsonCtx/* >> $OutFile
+
 cat >> $OutFile <<'EOF'
 public partial class AppJsonCtx{}
 EOF
+
 rm AppJsonCtx/*
 
 rm CoreDictMapper.g.cs
