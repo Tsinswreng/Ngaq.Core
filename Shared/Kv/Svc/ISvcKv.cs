@@ -4,6 +4,9 @@ using Ngaq.Core.Shared.Kv.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
 
 
+/// <summary>
+/// TODO  增接口㕥刪; 供ᵣ裸ʹFn接口 便于 在外部組合事務
+/// </summary>
 public partial interface ISvcKv{
 
 	public Task<PoKv?> GetByOwnerEtKeyAsy(IdUser Owner, obj Key, CT Ct);

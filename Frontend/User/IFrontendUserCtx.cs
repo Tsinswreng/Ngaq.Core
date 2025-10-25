@@ -10,5 +10,5 @@ public interface IFrontendUserCtx: IUserCtx{
 	public str? AccessToken{get;set;}
 	public str? RefreshToken{get;set;}
 	public IdUser LocalUserId{get;set;}
-	public IdUser RemoteUserId{get;set;}
+	public IdUser LoginUserId{get;set;}
 }
