@@ -1,8 +1,4 @@
 namespace Ngaq.Core.Frontend.User;
-
-using Ngaq.Core.Shared.User.UserCtx;
-
-
 public class FrontendUserCtxMgr:
 	IFrontendUserCtxMgr
 {
@@ -12,5 +8,14 @@ public class FrontendUserCtxMgr:
 	public IFrontendUserCtx GetUserCtx(){
 		return UserCtx;
 	}
+
+	public nil SetUserCtx(IFrontendUserCtx UserCtx){
+		this.UserCtx = UserCtx;
+		OnUserCtxChanged?.Invoke(this, new EvtArgUserCtxChanged{
+			UserCtx = UserCtx
+		});
+		return NIL;
+	}
+	public event EventHandler<EvtArgUserCtxChanged>? OnUserCtxChanged;
 }
 
