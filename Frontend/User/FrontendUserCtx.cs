@@ -1,13 +1,18 @@
 namespace Ngaq.Core.Frontend.User;
 
+using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.UserCtx;
 
-public class FrontendUserCtx : UserCtx, IFrontendUserCtx{
+public class FrontendUserCtx : IFrontendUserCtx{
+	[Obsolete("use LocalUserId or LoginUserId")]
+	public IdUser UserId{get;set;}
+	public IDictionary<str, obj?>? Kv{get;set;}
 	public str? AccessToken{get;set;}
 	public str? RefreshToken{get;set;}
 	public IdUser LocalUserId{get;set;}
 	public IdUser LoginUserId{get;set;}
+	public IdClient ClientId{get;set;}
 }
 
 public static class ExtnUserCtxMgr{

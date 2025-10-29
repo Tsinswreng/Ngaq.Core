@@ -141,7 +141,7 @@ public partial class MgrLearn{
 	/// </summary>
 	/// <param name="JWords"></param>
 	/// <returns></returns>
-	public nil Load(IEnumerable<JnWord> JWords){
+	public nil Load(IEnumerable<IJnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var (i,JWord) in JWords.Index()){
 			var Word = new WordForLearn(JWord);

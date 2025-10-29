@@ -1,8 +1,6 @@
 namespace Ngaq.Core.Tools;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using Ngaq.Core.Infra;
-using Ngaq.Core.Shared.User.Models.Po.User;
 
 // 非泛型抽象基类，避免反射 MakeGenericType
 // internal abstract class AotSafeInterfaceConverter : JsonConverterFactory {

@@ -16,27 +16,11 @@ using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models;
 using Tsinswreng.CsTools;
 
-/// 嚴格對應數據庫ʹ實體ʹ聚合
-/// 專用于json序列化
-/// 不含字段如
-/// 	[Impl]
-///	public IdWord Id{
-///		get{return Word.Id;}
-///		set{
-///			Word.Id = value;
-///			AssignId();
-///		}
-///	}
-public interface ISimpleJnWord: IAppSerializable{
-	public PoWord Word{get;set;}
-	public IList<PoWordProp> Props{get;set;}
-	public IList<PoWordLearn> Learns{get;set;}
-}
 
 
 
 public partial class JnWord
-	:ISimpleJnWord, IPoWord, IAppSerializable, IBizCreateUpdateTime
+	:IJnWord, IPoWord, IAppSerializable, IBizCreateUpdateTime
 {
 	[Impl(typeof(IPoWord))]
 	public object ShallowCloneSelf()
@@ -53,18 +37,18 @@ public partial class JnWord
 		this.Learns = Learns;
 	}
 
-	[Impl(typeof(ISimpleJnWord))]
+	[Impl(typeof(IJnWord))]
 	public PoWord Word{get;set;} = new PoWord();
-	[Impl(typeof(ISimpleJnWord))]
+	[Impl(typeof(IJnWord))]
 	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
-	[Impl(typeof(ISimpleJnWord))]
+	[Impl(typeof(IJnWord))]
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
 	[Impl]
 	public IdWord Id{
 		get{return Word.Id;}
 		set{
 			Word.Id = value;
-			EnsureForeignId();
+			this.EnsureForeignId();
 		}
 	}
 
@@ -129,30 +113,6 @@ public partial class JnWord
 	#endregion IPoBase
 
 
-	/// <summary>
-	/// 把諸資產之外鍵設潙主Word之id
-	/// </summary>
-	/// <returns></returns>
-	public JnWord EnsureForeignId(){
-		var z = this;
-		// if(z.Po_Word.Id.Value == 0){
-		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
-		// }
-		foreach(var prop in z.Props){
-			// if(prop.Id.Value == 0){
-			// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-			// }
-			prop.WordId = z.Word.Id;
-		}
-		foreach(var learn in z.Learns){
-			// if(learn.Id.Value == 0){
-			// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-			// }
-			learn.WordId = z.Word.Id.Value;
-		}
-		return z;
-	}
-
 	public PoWordLearn AddLearn(PoWordLearn Learn){
 		Learn.WordId = Word.Id.Value;
 		Learns.Add(Learn);
@@ -199,7 +159,17 @@ public partial class JnWord
 
 }
 
+
 public static class ExtnJnWord{
+	public static JnWord AsOrToJnWord(this IJnWord z){
+		if(z is JnWord j){
+			return j;
+		}
+		return new JnWord(z.Word, z.Props, z.Learns);
+	}
+	public static IJnWord AsSimpleJnWord(this JnWord z){
+		return (IJnWord)z;
+	}
 	/// <summary>
 	/// 按詞頭對諸Jn詞分組
 	/// 若入ʹ諸詞 非皆屬同一語 則拋錯
@@ -207,14 +177,14 @@ public static class ExtnJnWord{
 	/// <param name="JnWords"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
-	public static IDictionary<str, IList<JnWord>> GroupByHeadOfSameLang(
-		this IEnumerable<JnWord> JnWords
+	public static IDictionary<str, IList<IJnWord>> GroupByHeadOfSameLang(
+		this IEnumerable<IJnWord> JnWords
 	){
 		// var Dict = BoWords.GroupBy(w=>w.PoWord.WordFormId)
 		// 	.ToDictionary(g=>g.Key, g=>(IList<BoWord>)[.. g])//  g=>g.ToList() -> [..g]
 		// ;
 		// return Dict;
-		var Dict = new Dictionary<str, IList<JnWord>>();
+		var Dict = new Dictionary<str, IList<IJnWord>>();
 		str Lang = "";
 		var i = 0;
 		foreach(var JWord in JnWords){
@@ -235,10 +205,10 @@ public static class ExtnJnWord{
 	}
 
 
-	public static IDictionary<Head_Lang, IList<JnWord>> GroupByLangHead(
-		this IEnumerable<JnWord> JnWords
+	public static IDictionary<Head_Lang, IList<IJnWord>> GroupByLangHead(
+		this IEnumerable<IJnWord> JnWords
 	){
-		var Dict = new Dictionary<Head_Lang, IList<JnWord>>();
+		var Dict = new Dictionary<Head_Lang, IList<IJnWord>>();
 		foreach(var JWord in JnWords){
 			var lang_head = new Head_Lang{
 				Lang = JWord.Word.Lang
@@ -276,11 +246,11 @@ public static class ExtnJnWord{
 	}
 
 	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
-	public static JnWord? DiffByTime(
-		this JnWord z
-		,JnWord Other
+	public static IJnWord? DiffByTime(
+		this IJnWord z
+		,IJnWord Other
 	){
-		JnWord? R=null;
+		IJnWord? R=null;
 		z.DiffByTime(Other, ref R);
 		return R;
 	}
@@ -296,12 +266,14 @@ public static class ExtnJnWord{
 	/// <param name="R"></param>
 	/// <returns></returns>
 	/// <exception cref="ErrArg"></exception>
-	public static JnWord? DiffByTime(
-		this JnWord z
-		,JnWord Other
-		,ref JnWord? R
+	public static IJnWord? DiffByTime(
+		this IJnWord z
+		,IJnWord Other
+		,ref IJnWord? R
 	){
-		if(!z.IsSameUserWord(Other)){
+		var z_ = z.AsOrToJnWord();
+		var Other_ = Other.AsOrToJnWord();
+		if(!z_.IsSameUserWord(Other_)){
 			throw new ErrArg("!z.IsSameUserWord(Other)");
 		}
 		if(z.IsSynced(Other)){
@@ -321,30 +293,32 @@ public static class ExtnJnWord{
 /// CreatedAt取更早者
 /// UpdatedAt取最晚者
 /// </summary>
-/// <param name="R"></param>
-/// <param name="Other"></param>
+/// <param name="z"></param>
+/// <param name="Other_"></param>
 /// <returns></returns>
 /// <exception cref="ErrArg"></exception>
-	public static JnWord UpdTimeOfSelfContrastToOther(
-		this JnWord R
-		,JnWord Other
+	public static IJnWord UpdTimeOfSelfContrastToOther(
+		this IJnWord z
+		,IJnWord Other
 	){
-		if(!R.IsSameUserWord(Other)){
+		var jnWord = z.AsOrToJnWord();
+		var other_ = Other.AsOrToJnWord();
+		if(!jnWord.IsSameUserWord(other_)){
 			throw new ErrArg("!R.IsSameUserWord(BoWord)");
 		}
-		if(R.DbCreatedAt > Other.DbCreatedAt){
-			R.DbCreatedAt = Other.DbCreatedAt;
+		if(jnWord.DbCreatedAt > other_.DbCreatedAt){
+			jnWord.DbCreatedAt = other_.DbCreatedAt;
 		}
-		if(R.BizCreatedAt > Other.BizCreatedAt){
-			R.BizCreatedAt = Other.BizCreatedAt;
+		if(jnWord.BizCreatedAt > other_.BizCreatedAt){
+			jnWord.BizCreatedAt = other_.BizCreatedAt;
 		}
-		if(R.BizUpdatedAt < Other.BizUpdatedAt){
-			R.BizUpdatedAt = Other.BizUpdatedAt;
+		if(jnWord.BizUpdatedAt < other_.BizUpdatedAt){
+			jnWord.BizUpdatedAt = other_.BizUpdatedAt;
 		}
 		// if(R.LastUpdatedBy == null && Other.LastUpdatedBy != null){
 		// 	R.LastUpdatedBy = Other.LastUpdatedBy;
 		// }
-		return R;
+		return jnWord;
 	}
 
 
@@ -354,27 +328,28 @@ public static class ExtnJnWord{
 	/// JnWords 須潙同一詞 否則拋錯
 	/// </summary>
 	/// <exception cref="ErrArg"></exception>
-	public static JnWord? NoDiffMergeSameWords(
-		this IEnumerable<JnWord> JnWords
+	public static IJnWord? NoDiffMergeSameWords(
+		this IEnumerable<IJnWord> JnWords
 	){
 		JnWord R = null!;
-		foreach(var (i, JWord) in JnWords.Index()){
+		foreach(var (i, SimpleJWord) in JnWords.Index()){
+			var jWord = SimpleJWord.AsOrToJnWord();
 			if(i == 0){
-				R = JWord;
+				R = jWord.AsOrToJnWord();
 			}else{
-				if(!R.IsSameUserWord(JWord)){
+				if(!R.IsSameUserWord(jWord)){
 					throw new ErrArg("!IsSameUserWord(R, JWord)");
 				}
-				R.UpdTimeOfSelfContrastToOther(JWord);
-				R.Props.AddRange(JWord.Props);
-				R.Learns.AddRange(JWord.Learns);
+				R.UpdTimeOfSelfContrastToOther(jWord);
+				R.Props.AddRange(jWord.Props);
+				R.Learns.AddRange(jWord.Learns);
 			}
 		}//~foreach
 		return R;
 	}
 
-	public static JnWord SortByCreatedAtAsc(
-		this JnWord z
+	public static IJnWord SortByCreatedAtAsc(
+		this IJnWord z
 	){
 		z.Props.Sort((a,b)=>a.BizCreatedAt.Value.CompareTo(b.BizCreatedAt));
 		z.Learns.Sort((a,b)=>a.BizCreatedAt.Value.CompareTo(b.BizCreatedAt));
@@ -382,21 +357,48 @@ public static class ExtnJnWord{
 	}
 
 	public static bool IsSynced(
-		this JnWord Other
-		,JnWord Existing
+		this IJnWord Other
+		,IJnWord Existing
 	){
-		if(!Other.IsSameUserWord(Existing)){
+		var Other_ = Other.AsOrToJnWord();
+		var Existing_ = Existing.AsOrToJnWord();
+		if(!Other_.IsSameUserWord(Existing_)){
 			throw new ErrArg("!IsSameUserWord(z, Other)");
 		}
 		if(//視潙同一詞 返null
-			Other.BizCreatedAt == Existing.BizCreatedAt
-			&& Other.BizUpdatedAt == Existing.BizUpdatedAt
-			&& Other.Props.Count == Existing.Props.Count
-			&& Other.Learns.Count == Existing.Learns.Count
+			Other_.BizCreatedAt == Existing_.BizCreatedAt
+			&& Other_.BizUpdatedAt == Existing_.BizUpdatedAt
+			&& Other_.Props.Count == Existing_.Props.Count
+			&& Other_.Learns.Count == Existing_.Learns.Count
 		){
 			return true;
 		}
 		return false;
+	}
+
+	/// <summary>
+	/// 把諸資產之外鍵設潙主Word之id
+	/// </summary>
+	/// <returns></returns>
+	public static TSelf EnsureForeignId<TSelf>(this TSelf z)
+		where TSelf : IJnWord
+	{
+		// if(z.Po_Word.Id.Value == 0){
+		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
+		// }
+		foreach(var prop in z.Props){
+			// if(prop.Id.Value == 0){
+			// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
+			// }
+			prop.WordId = z.Word.Id;
+		}
+		foreach(var learn in z.Learns){
+			// if(learn.Id.Value == 0){
+			// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
+			// }
+			learn.WordId = z.Word.Id.Value;
+		}
+		return z;
 	}
 
 

@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Frontend.User;
 
+using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.UserCtx;
 
@@ -11,4 +12,5 @@ public interface IFrontendUserCtx: IUserCtx{
 	public str? RefreshToken{get;set;}
 	public IdUser LocalUserId{get;set;}
 	public IdUser LoginUserId{get;set;}
+	public IdClient ClientId{get;set;}
 }

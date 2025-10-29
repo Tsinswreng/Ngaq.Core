@@ -64,8 +64,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.IResp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Resp.IResp>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.ISimpleJnWord))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.ISimpleJnWord>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.IJnWord>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn>))]

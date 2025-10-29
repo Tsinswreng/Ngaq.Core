@@ -26,13 +26,13 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
-	Task<nil> AddJnWords(
+	Task<nil> AddEtMergeWords(
 		IUserCtx UserCtx
-		,IEnumerable<JnWord> JnWords
+		,IEnumerable<IJnWord> JnWords
 		,CT Ct
 	);
 
-	public Task<IPage<JnWord>> PageJnWord(
+	public Task<IPage<IJnWord>> PageJnWord(
 		IUserCtx UserCtx
 		,IPageQry PageQry
 		,CT Ct
@@ -63,17 +63,17 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
-	public Task<nil> UpdJnWord(IUserCtx User, JnWord JnWord, CT Ct);
+	public Task<nil> UpdJnWord(IUserCtx User, IJnWord JnWord, CT Ct);
 
 //test
-	public Task<IPage<JnWord>> PageChangedWordsWithDelWordsAfterTime(
+	public Task<IPage<IJnWord>> PageChangedWordsWithDelWordsAfterTime(
 		IUserCtx User
 		,IPageQry PageQry
 		,Tempus Tempus
 		,CT Ct
 	);
 
-	public Task<IPage<JnWord>> SearchWord(
+	public Task<IPage<IJnWord>> SearchWord(
 		IUserCtx User
 		,IPageQry PageQry
 		,ReqSearchWord Req

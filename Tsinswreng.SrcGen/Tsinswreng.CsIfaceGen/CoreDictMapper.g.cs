@@ -169,7 +169,7 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.ISimpleJnWord))]
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_ISimpleJnWord = "global::Ngaq.Core.Shared.Word.Models.ISimpleJnWord";
 	}

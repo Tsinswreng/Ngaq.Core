@@ -2,6 +2,7 @@ namespace Ngaq.Core.Infra;
 using TStruct = Tempus;
 using TPrimitive = i64;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 public partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
@@ -32,17 +33,24 @@ public partial struct Tempus(TPrimitive V)
 		return Obj;
 	}
 
-	public static Tempus FromUnixMs(i64 Ms ){
-		return new Tempus(Ms);
+	public static TStruct FromUnixMs(i64 Ms ){
+		return new (Ms);
 	}
 
-	public static Tempus FromDateTime(DateTime dt){
+	public static TStruct FromDateTime(DateTime dt){
 		long ms = new DateTimeOffset(dt).ToUnixTimeMilliseconds();
 		return FromUnixMs(ms);
 	}
 
-	public static Tempus Now(){
-		return new Tempus();
+	public static TStruct Now(){
+		return new TStruct();
+	}
+
+	public static TStruct FromIso(str Iso){
+		return DateTimeOffset.ParseExact(
+			Iso
+			,"yyyy-MM-ddTHH:mm:ss.fffzzz", CultureInfo.InvariantCulture
+		).ToUnixTimeMilliseconds();
 	}
 
 	public static implicit operator TPrimitive(TStruct e){
@@ -79,6 +87,8 @@ public partial struct Tempus(TPrimitive V)
 	public override int GetHashCode() {
 		return Value.GetHashCode();
 	}
+
+
 }
 
 public class InMillisecond{
@@ -89,4 +99,11 @@ public class InMillisecond{
 	public const i64 Week = 7 * Day;
 	public const i64 Month = 30 * Day;
 	public const i64 Year = 365 * Day;
+}
+
+public static class ExtnTempus{
+	public static str ToIso(this Tempus z){
+		return DateTimeOffset.FromUnixTimeMilliseconds(z.Value)
+		.ToString("yyyy-MM-ddTHH:mm:ss.fffzzz", CultureInfo.InvariantCulture);
+	}
 }
