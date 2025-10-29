@@ -17,6 +17,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_DtoCompressedWords = "global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Po_Device_IdClient = "global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient";
@@ -121,6 +129,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_IJnWord = "global::Ngaq.Core.Shared.Word.Models.IJnWord";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Po_IPoBase = "global::Ngaq.Core.Models.Po.IPoBase";
@@ -164,14 +180,6 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.IResp))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Base_Models_Resp_IResp = "global::Ngaq.Core.Shared.Base.Models.Resp.IResp";
-	}
-}
-
-namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
-	public partial class CoreDictMapper{
-		//public static string Ngaq_Core_Shared_Word_Models_ISimpleJnWord = "global::Ngaq.Core.Shared.Word.Models.ISimpleJnWord";
 	}
 }
 
@@ -305,6 +313,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqAddCompressedWords))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqAddCompressedWords = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqAddCompressedWords";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Req_ReqAddUser = "global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser";
@@ -337,9 +353,9 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshAccessToken))]
+	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 	public partial class CoreDictMapper{
-		//public static string Ngaq_Core_Shared_User_Models_Resp_RespRefreshAccessToken = "global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshAccessToken";
+		//public static string Ngaq_Core_Shared_User_Models_Resp_RespRefreshBothToken = "global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken";
 	}
 }
 

@@ -7,6 +7,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.BaseResp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Resp.BaseResp>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>))]
 
@@ -46,6 +49,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Infra.IF.IIdUInt128))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Infra.IF.IIdUInt128>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.IJnWord>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Po.IPoBase>))]
 
@@ -63,9 +69,6 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.IResp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Resp.IResp>))]
-
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.IJnWord>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn>))]
@@ -115,6 +118,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.Prop))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.Prop>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqAddCompressedWords))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqAddCompressedWords>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser>))]
 
@@ -127,8 +133,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespLogin>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshAccessToken))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshAccessToken>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn>))]

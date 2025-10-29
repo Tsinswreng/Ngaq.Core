@@ -1,10 +1,12 @@
+namespace Ngaq.Core.Shared.Word.Svc;
+
 using System.Text;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Model;
 using Ngaq.Core.Stream;
 using Ngaq.Core.Tools.Io;
 
-namespace Ngaq.Core.Service.Word;
+
 
 /// <summary>
 /// 從 路經/字串/字節生產者 解析單詞表文本、得Bo_Word列表。
@@ -17,23 +19,23 @@ public partial interface ISvcParseWordList{
 
 	Task<IEnumerable<JnWord>> ParseWordsFromFilePath(
 		Path_Encode Path_Encode
-		,CancellationToken ct = default
+		, CT ct = default
 	);
 
 	Task<IEnumerable<JnWord>> ParseWordsFromUrlAsy(
 		str Path
-		,CancellationToken ct = default
+		, CT ct = default
 	);
 
 	Task<IEnumerable<JnWord>> ParseWordsFromText(
 		str Text
-		,CancellationToken ct = default
+		, CT ct = default
 	);
 
 	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncodingAsy(
 		IIter<u8> Iter
 		,Encoding Encoding
-		,CancellationToken ct = default
+		, CT ct = default
 	);
 
 }

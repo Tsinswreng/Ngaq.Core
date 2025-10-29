@@ -13,9 +13,6 @@ using Ngaq.Core.Models.Po;
 using Tsinswreng.CsTools;
 
 
-
-
-
 public partial class WordForLearn
 	:IWordForLearn
 {

@@ -11,6 +11,7 @@ using Tsinswreng.CsPage;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.Word.Models.Dto;
 
 public partial interface ISvcWord{
 //TODO 加詞後 宜予回饋 如 新ʹ加ʹ詞ʹ數 及 老詞新加之數
@@ -32,7 +33,7 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
-	public Task<IPage<IJnWord>> PageJnWord(
+	public Task<IPage<IJnWord>> PageWord(
 		IUserCtx UserCtx
 		,IPageQry PageQry
 		,CT Ct
@@ -86,6 +87,10 @@ public partial interface ISvcWord{
 		,ReqSearchWord Req
 		,CT Ct
 	);
+
+	public Task<DtoCompressedWords> ZipAllWordsJson(IUserCtx User, CT Ct);
+
+	public Task<nil> AddCompressedWord(IUserCtx User, ReqAddCompressedWords Dto, CT Ct);
 
 }
 
