@@ -10,12 +10,12 @@ using Ngaq.Core.Infra.Errors;
 /// </summary>
 /// <typeparam name="T"></typeparam>
 public partial interface IAnswer<T>
-	:ITypedStatus
+
 {
 	public T? Data { get; set; }
 	public bool Ok { get; set; }
 	/// <summary>
 	/// 可潙string, Exception等
 	/// </summary>
-	public ICollection<object?>? Errors { get; set; }
+	public ICollection<obj?>? Errors { get; set; }
 }

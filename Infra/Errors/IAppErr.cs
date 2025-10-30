@@ -5,12 +5,10 @@ namespace Ngaq.Core.Infra.Errors;
 /// </summary>
 public partial interface IAppErr
 	:IErr
-	,I_Namespace
-	,IId_Msg
 	,IErrors//內ʹ錯
 {
-
-	public IList<obj?> Args { get; set; } = new List<obj?>();
+	public str? Id{get;set;}
+	public IList<obj?> Args { get; set; }
 }
 
 
@@ -20,8 +18,6 @@ public static class ExtnIAppErr{
 	){
 		var R = new ErrBase();
 		R.Id = z.Id;
-		R.Namespace = z.Namespace;
-		R.Msg = z.Msg;
 		R.Errors = z.Errors;
 		return R;
 	}

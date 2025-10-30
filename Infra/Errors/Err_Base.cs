@@ -15,7 +15,6 @@ public partial class ErrBase
 	}
 	public ErrBase(){}
 	public str? Id { get; set; }
-	public str? Namespace{get;set;} = "";
 	public str? Msg { get; set; }
 	public IList<obj?> Errors { get; set; } = new List<obj?>();
 	public IList<obj?> Args { get; set; } = new List<obj?>();

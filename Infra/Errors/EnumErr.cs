@@ -1,4 +1,5 @@
 namespace Ngaq.Core.Infra.Errors;
+[Obsolete]
 public partial class EnumErr{
 	public static IAppErr Mk(str Id, str? Ns = null){
 		var R = new AppErr{
