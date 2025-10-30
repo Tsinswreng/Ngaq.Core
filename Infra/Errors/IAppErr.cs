@@ -10,7 +10,7 @@ public partial interface IAppErr
 	,IErrors//內ʹ錯
 {
 
-
+	public IList<obj?> Args { get; set; } = new List<obj?>();
 }
 
 

@@ -1,6 +1,13 @@
 namespace Ngaq.Core.Infra.Core;
 
 public static class ExtnIAnswer{
+	public static IAnswer<T> AddErr<T>(this IAnswer<T> z, str s){
+		return z.AddErrStr(s);
+	}
+
+	public static IAnswer<T> AddErr<T>(this IAnswer<T> z, Exception e){
+		return z.AddErrException(e);
+	}
 	public static IAnswer<T> AddErrStr<T>(this IAnswer<T> z, str s){
 		z.Ok = false;
 		z.Errors??= new List<object?>();

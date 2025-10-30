@@ -1,5 +1,8 @@
 namespace Ngaq.Core.Infra.Errors;
 
+using Tsinswreng.CsCfg;
+
+
 public partial class ErrBase
 	:Exception
 	,IErr
@@ -14,5 +17,14 @@ public partial class ErrBase
 	public str? Id { get; set; }
 	public str? Namespace{get;set;} = "";
 	public str? Msg { get; set; }
-	public IList<object?> Errors { get; set; } = new List<object?>();
+	public IList<obj?> Errors { get; set; } = new List<obj?>();
+	public IList<obj?> Args { get; set; } = new List<obj?>();
+
+	public static ErrBase Mk(IErrKeySeg Key, params obj?[] Args){
+		var R = new ErrBase();
+		R.Id = Key.GetFullPath();
+		R.Args = Args;
+		return R;
+	}
+
 }
