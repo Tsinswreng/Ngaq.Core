@@ -19,7 +19,7 @@ public partial class ErrBase
 	public IList<obj?> Errors { get; set; } = new List<obj?>();
 	public IList<obj?> Args { get; set; } = new List<obj?>();
 
-	public static ErrBase Mk(IErrKeySeg Key, params obj?[] Args){
+	public static ErrBase Mk(IErrItem Key, params obj?[] Args){
 		var R = new ErrBase();
 		R.Id = Key.GetFullPath();
 		R.Args = Args;
