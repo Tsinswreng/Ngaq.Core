@@ -5,7 +5,7 @@ namespace Ngaq.Core.Infra.Errors;
 /// </summary>
 public partial interface IAppErr
 	:IErr
-	,IErrors//內ʹ錯
+	,I_Errors//內ʹ錯
 {
 	public str? Id{get;set;}
 	public IList<obj?> Args { get; set; }
