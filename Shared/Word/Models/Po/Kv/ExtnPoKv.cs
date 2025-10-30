@@ -27,6 +27,13 @@ public static class ExtnPoKv{
 		throw new InvalidOperationException("VType is not Str.");
 	}
 
+	public static i64 GetVI64(this IPoKv z){
+		if(z.VType == EKvType.I64){
+			return z.VI64;
+		}
+		throw new InvalidOperationException("VType is not i64.");
+	}
+
 	public static obj GetKey(this IPoKv z){
 		obj Key = null!;
 		if(z.KType == EKvType.Str){

@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Frontend.User;
 
+using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.UserCtx;
@@ -9,7 +10,9 @@ using Ngaq.Core.Shared.User.UserCtx;
 /// </summary>
 public interface IFrontendUserCtx: IUserCtx{
 	public str? AccessToken{get;set;}
+	public Tempus AccessTokenExpireAt{get;set;}
 	public str? RefreshToken{get;set;}
+	public Tempus RefreshTokenExpireAt{get;set;}
 	public IdUser LocalUserId{get;set;}
 	public IdUser LoginUserId{get;set;}
 	public IdClient ClientId{get;set;}
