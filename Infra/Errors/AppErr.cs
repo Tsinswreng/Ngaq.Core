@@ -22,7 +22,7 @@ public partial class AppErr
 	public ISet<str> Tags{get{
 		return Type?.Tags ?? new HashSet<str>();
 	}set{}}
-	public IList<obj?> Args { get; set; } = new List<obj?>();
+	public IList<obj?>? Args { get; set; } = new List<obj?>();
 
 	public static AppErr Mk(IErrItem Key, params obj?[] Args){
 		var R = new AppErr();

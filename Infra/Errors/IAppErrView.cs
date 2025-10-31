@@ -7,5 +7,12 @@ using Ngaq.Core.Infra.IF;
 /// </summary>
 public interface IAppErrView:IErr,I_Tags{
 	public str? Key{get;set;}
-	public IList<obj?> Args { get; set; }
+	public IList<obj?>? Args { get; set; }
+}
+
+
+public class AppErrView:IAppErrView, IAppSerializable{
+	public str? Key{get;set;}
+	public IList<obj?>? Args { get; set; }
+	public ISet<str> Tags { get; set; } = new HashSet<str>();
 }

@@ -1,6 +1,9 @@
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.AppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Infra.Errors.AppErrView>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Req.BaseReq))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Req.BaseReq>))]
 
@@ -135,6 +138,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.WebAns))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Infra.WebAns>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn>))]

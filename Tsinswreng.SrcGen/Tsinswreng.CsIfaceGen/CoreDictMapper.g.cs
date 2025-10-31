@@ -1,6 +1,14 @@
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Infra.Errors.AppErrView))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Infra_Errors_AppErrView = "global::Ngaq.Core.Infra.Errors.AppErrView";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Base.Models.Req.BaseReq))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Base_Models_Req_BaseReq = "global::Ngaq.Core.Shared.Base.Models.Req.BaseReq";
@@ -356,6 +364,14 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Resp_RespRefreshBothToken = "global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Infra.WebAns))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Infra_WebAns = "global::Ngaq.Core.Infra.WebAns";
 	}
 }
 
