@@ -1,9 +1,9 @@
+namespace Ngaq.Core.Infra;
+
 using System.Text.Json;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Tools;
 
-namespace Ngaq.Core.Infra;
 
 /// <summary>
 /// 除IWebAns<obj>外 他者勿用、緣不支持AOT下json序列化
@@ -49,9 +49,6 @@ public class WebAns:WebAns<obj>, IAppSerializable{
 		R.Errors = errors?.Select(x=>(IAppErrView)x).ToList();
 		return R;
 	}
-
-
-
 }
 
 public static class ExtnWebAns{

@@ -32,8 +32,10 @@ public class ErrItem:CfgItem<nil>, IErrItem {
 	}
 }
 
-public static class ExtnErrKeySeg{
+public static class ExtnErrItem{
 	public static AppErr ToErr(this IErrItem z, params obj?[] Args){
 		return AppErr.Mk(z, Args);
 	}
 }
+
+
