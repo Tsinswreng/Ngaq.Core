@@ -20,6 +20,9 @@ EOF
 cat IAppSerializable/* >> $IAppSerializable
 
 cat >> $IAppSerializable <<'EOF'
+//額外類型
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
 public partial class AppJsonCtx{}
 EOF
 
@@ -34,8 +37,8 @@ namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-	,Converters = [
+	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+	Converters = [
 EOF
 
 cat IDictSerializable/* >> $IDictSerializable

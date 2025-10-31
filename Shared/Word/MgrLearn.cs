@@ -118,8 +118,8 @@ public partial class MgrLearn{
 		protected static EErr_? _Inst = null;
 		public static EErr_ Inst => _Inst??= new EErr_();
 
-		public IAppErr LoadFailed() => Mk(nameof(LoadFailed));
-		public IAppErr SaveFailed() => Mk(nameof(SaveFailed));
+		public OldAppErr LoadFailed() => Mk(nameof(LoadFailed));
+		public OldAppErr SaveFailed() => Mk(nameof(SaveFailed));
 	}
 	public EErr_ EErr{get;set;} = EErr_.Inst;
 	public StateLearnWords State{get;set;} = new();

@@ -141,4 +141,7 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Parser.WordListTxtMetadata))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Parser.WordListTxtMetadata>))]
+//額外類型
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
 public partial class AppJsonCtx{}

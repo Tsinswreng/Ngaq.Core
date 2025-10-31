@@ -2,8 +2,8 @@ namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
-	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-	,Converters = [
+	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+	Converters = [
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.IdDel>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Sys.Models.IdKv>),

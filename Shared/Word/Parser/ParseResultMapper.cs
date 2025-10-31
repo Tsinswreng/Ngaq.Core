@@ -38,7 +38,7 @@ public  partial class ParseResultMapper(){
 		,IList<I_DateBlock> DateBlocks
 	){
 		if(Metadata.belong is null){
-			throw new ErrBase("Metadata.Belong is null");
+			throw new AppErr("Metadata.Belong is null");
 		}
 		var Ans = new List<JnWord>();
 		foreach(var dateBlock in DateBlocks){

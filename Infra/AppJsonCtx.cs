@@ -1,6 +1,8 @@
 namespace Ngaq.Core.Infra;
 
+using System.Collections.Concurrent;
 using System.Text.Json.Serialization;
+using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.User.Models.Po;
@@ -79,20 +81,25 @@ public interface IIfaceGenCfg_JsonCustomConverterList{
 }
 
 
-
+//此註解已加在 IDictSerializableListʃ生成ʹ代碼中、勿複手動添
 // [JsonSourceGenerationOptions(
 // 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 // 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
-// 	,Converters = [
-// 		typeof(global::Ngaq.Core.Tools.JsonConvtr<IdKv>)
-// 		,typeof(JsonConvtr<IdUser>)
-// 		,typeof(JsonConvtr<IdDel>)
-// 		,typeof(JsonConvtr<Tempus>)
-// 		,
-// 	]
+// 	// ,Converters = [
+// 	// 	,typeof(JsonConvtr<Tempus>)
+// 	// ]
+
 // )]
 public partial class AppJsonCtx : JsonSerializerContext {
 	// public static IList<JsonConverter> JsonConverters = [
 	// 	new global::Ngaq.Core.Tools.JsonConvtr<IdKv>(),
 	// ];
 }
+
+#if false
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
+file class Test{
+
+}
+#endif

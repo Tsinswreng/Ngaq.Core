@@ -1,8 +1,8 @@
 namespace Ngaq.Core.Infra.Errors;
 using Tsinswreng.CsCfg;
 
-public interface IErrItem:ICfgItem{
-	public ISet<str> Tags{get;set;}
+public interface IErrItem:ICfgItem, I_Tags{
+
 }
 
 public class ErrItem:CfgItem<nil>, IErrItem {
@@ -17,21 +17,23 @@ public class ErrItem:CfgItem<nil>, IErrItem {
 		return R;
 	}
 
-	public static IErrItem MkC(IErrItem? Parent, IList<str> Path, IList<str>? Tags = null){
+	public static IErrItem MkB(IErrItem? Parent, IList<str> Path, IList<str>? Tags = null){
 		var R = Mk(Parent, Path, Tags);
-		R.Tags.Add(TagsErr.BadReq);
+		R.Tags.Add(ErrTags.BizErr);
+		R.Tags.Add(ErrTags.Public);
 		return R;
 	}
 
 	public static IErrItem MkS(IErrItem? Parent, IList<str> Path, IList<str>? Tags = null){
 		var R = Mk(Parent, Path, Tags);
-		R.Tags.Add(TagsErr.SrvErr);
+		R.Tags.Add(ErrTags.SysErr);
+		//R.Tags.Add(ErrTags.Private);
 		return R;
 	}
 }
 
 public static class ExtnErrKeySeg{
-	public static ErrBase ToErr(this IErrItem z, params obj?[] Args){
-		return ErrBase.Mk(z, Args);
+	public static AppErr ToErr(this IErrItem z, params obj?[] Args){
+		return AppErr.Mk(z, Args);
 	}
 }
