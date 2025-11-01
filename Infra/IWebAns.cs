@@ -54,5 +54,11 @@ public class WebAns:WebAns<obj>, IAppSerializable{
 public static class ExtnWebAns{
 	// public static str ToJson<T>(this IWebAns<T> z){
 	// }
+	public static T? DataOrThrow<T>(this IWebAns<T> z){
+		if(z.Errors is not null && z.Errors.Count > 0){
+			throw AppErr.FromViews(z.Errors).ToAppErr();
+		}
+		return z.Data;
+	}
 
 }

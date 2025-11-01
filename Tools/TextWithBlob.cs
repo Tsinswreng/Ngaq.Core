@@ -13,7 +13,7 @@ public interface ITextWithBlob{
 	public ReadOnlyMemory<byte> Blob { get;set;}
 }
 
-public struct TextWithBlob: ITextWithBlob{
+public class TextWithBlob: ITextWithBlob{
 	public u64 HeaderBytesLen{get;set;}
 	public string Text { get;set;}
 	public ReadOnlyMemory<byte> Blob { get;set;}
@@ -22,6 +22,10 @@ public struct TextWithBlob: ITextWithBlob{
 		this.Text = Text;
 		this.Blob = Blob;
 	}
+
+
+
+
 }
 
 public static class ToolTextWithBlob {

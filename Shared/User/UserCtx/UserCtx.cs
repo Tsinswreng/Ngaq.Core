@@ -1,6 +1,8 @@
 namespace Ngaq.Core.Shared.User.UserCtx;
 
+using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.User.Models.Po.User;
+using Ngaq.Core.Tools;
 
 public partial class UserCtx
 	: IUserCtx
@@ -8,7 +10,15 @@ public partial class UserCtx
 	public UserCtx(){
 
 	}
-	public IdUser UserId{get;set;} = IdUser.Zero;
+	public IdUser _UserId = IdUser.Zero;
+	public IdUser UserId{get{
+		if(_UserId.IsNullOrDefault()){
+			throw ItemsErr.User.AuthenticationFailed.ToErr();
+		}
+		return _UserId;
+	}set{
+		_UserId = value;
+	}}
 	public IDictionary<str, obj?>? Kv{get;set;}
 
 }

@@ -1,3 +1,5 @@
+using Ngaq.Core.Infra.Errors;
+
 namespace Ngaq.Core.Infra.Core;
 
 public static class ExtnIAnswer{
@@ -36,9 +38,9 @@ public static class ExtnIAnswer{
 
 	public static T DataOrThrow<T>(this IAnswer<T> z){
 		if(!z.Ok){
-			var err = str.Join("\n", z.ErrsToStrs());
-			throw new Exception(err);
+			throw z.ToAppErr();
 		}
 		return z.Data!;
 	}
+
 }

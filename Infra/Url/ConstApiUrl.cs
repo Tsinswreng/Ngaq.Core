@@ -50,8 +50,8 @@ public partial class ConstUrl{
 	}
 
 	public partial class UrlUser{
-		public static Url _Root = User;
-		public static Url TokenRefresh = Mk(_Root, ["Token", "Refresh"]);
+		public static Url _R = OpenUser;
+		public static Url TokenRefresh = Mk(_R, ["Token", "Refresh"]);
 	}
 
 

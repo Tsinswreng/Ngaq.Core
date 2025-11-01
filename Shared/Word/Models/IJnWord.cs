@@ -27,6 +27,7 @@ public interface IJnWord: IAppSerializable{
 	public IList<PoWordLearn> Learns{get;set;}
 }
 
+
 public static class ExtnPropIJnWord{
 	public static IdWord Id_(this IJnWord z){
 		return z.Word.Id;

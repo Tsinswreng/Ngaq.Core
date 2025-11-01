@@ -34,10 +34,13 @@ IDictSerializable=IDictSerializable.g.cs
 
 cat > $IDictSerializable <<'EOF'
 namespace Ngaq.Core.Infra;
+using System.Text.Encodings.Web;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+	ReadCommentHandling = JsonCommentHandling.Skip,
 	Converters = [
 EOF
 

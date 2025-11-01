@@ -201,6 +201,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_IWordsPackInfo = "global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.JnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_JnWord = "global::Ngaq.Core.Shared.Word.Models.JnWord";
@@ -388,5 +396,13 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Word.Parser.WordListTxtMetadata))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Word_Parser_WordListTxtMetadata = "global::Ngaq.Core.Word.Parser.WordListTxtMetadata";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_WordsPackInfo = "global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo";
 	}
 }

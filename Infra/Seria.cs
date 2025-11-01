@@ -76,6 +76,12 @@ public class Seria{
 		}
 		#endregion Custom
 		{ //TODO 處理列表反序列化 需依賴額外ʹ源生成器、現有ʹDictMapper不夠。
+		#if false // 僞代碼
+		// var srcList = SrcObj as IList;
+		// foreach(var srcEle in srcList){
+		// 	var tarEle = Deserialize(srcEle, TarType, ref TarObj, Prop)!;
+		// }
+		#endif
 			// var TOfList = ListDictOfT.GetTOfIList(TarType);
 			// if(
 			// 	SrcObj is IList srcList

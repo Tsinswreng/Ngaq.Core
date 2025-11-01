@@ -7,6 +7,9 @@ namespace Ngaq.Core.Tools;
 
 
 public static class JSON {
+	/// <summary>
+	/// 縱Opt中指定了TypeInfoResolver亦不效、肰直ᵈ傳TypeInfo又不可兼傳Opt。故需把選項加于appJsonCtxʹ註解
+	/// </summary>
 	static JsonSerializerOptions Opt = new JsonSerializerOptions{
 		//WriteIndented = true
 		Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出
@@ -45,31 +48,32 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 	// }
 
 
-public static string stringify<T>(T o, JsonTypeInfo<T>? jsonTypeInfo = null)
-{
-	if (jsonTypeInfo != null)
-		return JsonSerializer.Serialize(o, jsonTypeInfo);
+	public static string stringify<T>(T o){
+		//return JsonSerializer.Serialize(o, Opt);
+		// if (jsonTypeInfo != null){
+		// 	return JsonSerializer.Serialize(o, jsonTypeInfo);
+		// }
 
-	// ✅ 使用 AppJsonCtx 提供的 type info
-	var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
-	if (typeInfo == null)
-		throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
+		// ✅ 使用 AppJsonCtx 提供的 type info
+		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
+		if (typeInfo == null){
+			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
+		}
 
-	return JsonSerializer.Serialize(o, typeInfo);
-}
+		return JsonSerializer.Serialize(o, typeInfo);
+	}
 
-public static T? parse<T>(string json, JsonTypeInfo<T>? jsonTypeInfo = null)
-{
-	if (jsonTypeInfo != null)
-		return JsonSerializer.Deserialize(json, jsonTypeInfo);
+	public static T? parse<T>(string json){
+		// if (jsonTypeInfo != null)
+		// 	return JsonSerializer.Deserialize(json, jsonTypeInfo);
 
-	// ✅ 使用 AppJsonCtx 提供的 type info
-	var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
-	if (typeInfo == null)
-		throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
-
-	return JsonSerializer.Deserialize(json, typeInfo);
-}
+		// ✅ 使用 AppJsonCtx 提供的 type info
+		var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
+		if (typeInfo == null){
+			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
+		}
+		return JsonSerializer.Deserialize(json, typeInfo);
+	}
 }
 
 

@@ -16,5 +16,6 @@ public static class ItemsErr{
 		public static K PasswordNotMatch = MkB(_R, [nameof(PasswordNotMatch)]);
 		public static K InvalidToken = MkB(_R, [nameof(InvalidToken)]);
 		public static K TokenExpired = MkB(_R, [nameof(TokenExpired)]);
+		public static K AuthenticationFailed = MkB(_R, [nameof(AuthenticationFailed)]);
 	}
 }

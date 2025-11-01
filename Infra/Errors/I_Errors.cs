@@ -1,6 +1,9 @@
 namespace Ngaq.Core.Infra.Errors;
 
 public partial interface I_Errors{
+	/// <summary>
+	/// 可潙string, Exception等i
+	/// </summary>
 	public IList<obj?> Errors{get;set;}
 }
 
@@ -25,5 +28,9 @@ public static class ExtnI_Errors{
 			}
 		}
 		return R;
+	}
+
+	public static AppErr ToAppErr(this I_Errors z){
+		return AppErr.FromViews(z.ToErrViews());
 	}
 }

@@ -90,7 +90,7 @@ public partial interface ISvcWord{
 
 	public Task<DtoCompressedWords> ZipAllWordsJson(IUserCtx User, CT Ct);
 
-	public Task<nil> AddCompressedWord(IUserCtx User, ReqAddCompressedWords Dto, CT Ct);
+	public Task<nil> AddCompressedWord(IUserCtx User, DtoCompressedWords Dto, CT Ct);
 
 }
 

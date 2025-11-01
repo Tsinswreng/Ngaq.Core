@@ -9,7 +9,7 @@ public partial struct Answer<T>()
 		get{return _Ok;}
 		set{_Ok = value;}
 	}
-	public ICollection<obj?>? Errors{get;set;} = new List<obj?>();
+	public IList<obj?>? Errors{get;set;} = new List<obj?>();
 	public obj Status{get;set;} = 0;
 	public str? StatusType{get;set;}
 

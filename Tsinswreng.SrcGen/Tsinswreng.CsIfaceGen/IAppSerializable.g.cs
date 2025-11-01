@@ -76,6 +76,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.IWordForLearn>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.JnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.JnWord>))]
 
@@ -147,6 +150,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Parser.WordListTxtMetadata))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Parser.WordListTxtMetadata>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo>))]
 //額外類型
 [JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
 [JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
