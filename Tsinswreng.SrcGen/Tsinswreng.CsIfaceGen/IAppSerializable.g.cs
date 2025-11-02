@@ -133,6 +133,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqLogin>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken>))]
 

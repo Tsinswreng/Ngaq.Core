@@ -97,8 +97,7 @@ public partial class MgrLearn{
 
 	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
 
-
-	public enum ELearnOpRtn:i64{
+	public enum ELearnOpRtn{
 		Learn = 0
 		,Undo = 1
 		,Invalid = 2
@@ -107,6 +106,7 @@ public partial class MgrLearn{
 	public partial class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
 	}
+
 	public event EventHandler<EvtArgOnErr>? OnErr;
 	public object? LastErr{get;set;}
 	public nil Err(object? Err){
@@ -114,14 +114,7 @@ public partial class MgrLearn{
 		OnErr?.Invoke(this, new EvtArgOnErr{Err=Err});
 		return NIL;
 	}
-	public partial class EErr_:EnumErr{
-		protected static EErr_? _Inst = null;
-		public static EErr_ Inst => _Inst??= new EErr_();
 
-		public OldAppErr LoadFailed() => Mk(nameof(LoadFailed));
-		public OldAppErr SaveFailed() => Mk(nameof(SaveFailed));
-	}
-	public EErr_ EErr{get;set;} = EErr_.Inst;
 	public StateLearnWords State{get;set;} = new();
 
 	nil ResetLearnedState(){
@@ -273,9 +266,9 @@ public partial class MgrLearn{
 			State.OperationStatus.Save = true;
 		}
 		catch (Exception e){
-			var E = EErr.SaveFailed();
-			E.Errors.Add(e);
-			return Err(E);
+			var E = ItemsErr.Word.SaveWordListFailed.ToErr();
+			E.AddErr(e);
+			Err(E);
 		}
 		return NIL;
 	}

@@ -353,6 +353,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqPackWords = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Req_ReqRefreshTheToken = "global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken";

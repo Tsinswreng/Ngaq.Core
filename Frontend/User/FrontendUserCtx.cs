@@ -7,7 +7,7 @@ using Ngaq.Core.Shared.User.UserCtx;
 
 public class FrontendUserCtx : IFrontendUserCtx{
 	[Obsolete("use LocalUserId or LoginUserId")]
-	public IdUser UserId{get;set;}
+	public IdUser UserId{get=>LocalUserId; set=>LocalUserId= value;}
 	public IDictionary<str, obj?>? Kv{get;set;}
 	public str? AccessToken{get;set;}
 	public Tempus AccessTokenExpireAt{get;set;}

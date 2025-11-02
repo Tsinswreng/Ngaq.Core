@@ -9,7 +9,7 @@ public partial interface I_Errors{
 
 public static class ExtnI_Errors{
 	public static TSelf AddErr<TSelf>(
-		this TSelf z, IAppErr Err
+		this TSelf z, obj Err
 	)where TSelf : class, I_Errors
 	{
 		z.Errors ??= new List<object?>();
