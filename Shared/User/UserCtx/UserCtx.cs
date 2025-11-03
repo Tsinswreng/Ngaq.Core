@@ -19,7 +19,7 @@ public partial class UserCtx
 	}set{
 		_UserId = value;
 	}}
-	public IDictionary<str, obj?>? Kv{get;set;}
+	public IDictionary<str, obj?>? Props{get;set;}
 
 }
 

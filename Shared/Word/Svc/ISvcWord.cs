@@ -91,11 +91,11 @@ public partial interface ISvcWord{
 
 	public Task<DtoCompressedWords> ZipAllWordsJson(IUserCtx User, ReqPackWords ReqPackWords, CT Ct);
 
-	public Task<nil> AddCompressedWord(IUserCtx User, DtoCompressedWords Dto, CT Ct);
+	public Task<nil> SyncCompressedWord(IUserCtx User, DtoCompressedWords Dto, CT Ct);
 
 	public Task<TextWithBlob> PackAllWordsToTextWithBlobNoStream(IUserCtx User, ReqPackWords Req, CT Ct);
 
-	public Task<nil> AddFromTextWithBlob(IUserCtx User, TextWithBlob TextWithBlob, CT Ct);
+	public Task<nil> SyncFromTextWithBlob(IUserCtx User, TextWithBlob TextWithBlob, CT Ct);
 
 }
 

@@ -114,6 +114,7 @@ public static class ExtnJnWord{
 	}
 
 	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
+	[Obsolete]
 	public static IJnWord? DiffByTime(
 		this IJnWord z
 		,IJnWord Other
@@ -129,6 +130,7 @@ public static class ExtnJnWord{
 	/// 無需合併旹返null
 	/// 非同ʹ詞旹拋錯
 	/// </summary>
+	[Obsolete]
 	public static IJnWord? DiffByTime(
 		this IJnWord z
 		,IJnWord Other
@@ -308,7 +310,7 @@ public static class ExtnJnWord{
 	/// <summary>
 	/// 同步。添ʃ缺、改ʃ異。
 	/// </summary>
-	/// <param name="z">舊詞 只讀。若需寫入z則使R=z
+	/// <param name="z">舊詞(函數中不會通過z指針㕥改己)若需寫入z則使R=z
 	/// </param><param name="Neoer">新詞。只讀
 	/// </param><param name="R">同步ʹ果ˇ寫入焉
 	/// </param><returns>
@@ -316,18 +318,21 @@ public static class ExtnJnWord{
 	public static ESyncResult Sync(
 		this IJnWord z//函數中只讀  作同步依據
 		,IJnWord Neoer
-		,ref IJnWord? R//函數中作果ˇ寫入ʹ處
+		//,ref IJnWord? R//函數中作果ˇ寫入ʹ處
+		,ref IJnWord? RNeoPart //只有 列表 Props,Learns
+		,ref IJnWord? RChangedPart //Word,Props,Learns都可能有
 	){
 		CheckSameUserWord(z,Neoer);
-		R??=z;
+		RNeoPart??=z;
+		RChangedPart??=z;
 		var z_ = z.AsOrToJnWord();
 		var Neoer_ = Neoer.AsOrToJnWord();
 		if(z.IsSynced(Neoer)){
 			return ESyncResult.NoNeedToSync;
 		}
-		PoWord? NeoPoWord = R.Word;
+		PoWord? NeoPoWord = RChangedPart.Word;
 		z.Word.SyncPo(Neoer.Word, ref NeoPoWord);
-		R.Word = NeoPoWord!;
+		RChangedPart.Word = NeoPoWord!;
 
 		var UnAddedProps = Neoer.Props.DiffById<PoWordProp, IdWordProp>(z.Props);
 		var UnAddedLearns = Neoer.Learns.DiffById<PoWordLearn, IdWordLearn>(z.Learns);
@@ -362,12 +367,12 @@ public static class ExtnJnWord{
 			syncedWordLearns.Add(oldLearn!);
 		}
 
-		R.Word = NeoPoWord!;
-		R.Props = syncedWordProps;
-		R.Learns = syncedWordLearns;
+		RChangedPart.Word = NeoPoWord!;
+		RChangedPart.Props = syncedWordProps;
+		RChangedPart.Learns = syncedWordLearns;
 
-		R.Props.AddRange(UnAddedProps);
-		R.Learns.AddRange(UnAddedLearns);
+		RNeoPart.Props.AddRange(UnAddedProps);
+		RNeoPart.Learns.AddRange(UnAddedLearns);
 		return ESyncResult.Ok;
 	}
 
@@ -387,31 +392,6 @@ public static class ExtnJnWord{
 		return ans;
 	}
 
-
-	// public static DtoWordDiff? Diff(
-	// 	this JnWord Other
-	// 	,JnWord Existing
-	// ){
-	// 	if(!Other.IsSameUserWord(Existing)){
-	// 		throw new ErrArg("!IsSameUserWord(z, Other)");
-	// 	}
-	// 	if(//視潙同一詞 返null
-	// 		Other.CreatedAt == Existing.CreatedAt
-	// 		&& Other.UpdatedAt == Existing.UpdatedAt
-	// 		&& Other.Props.Count == Existing.Props.Count
-	// 		&& Other.Learns.Count == Existing.Learns.Count
-	// 	){
-	// 		return null;
-	// 	}
-
-	// 	var DiffedProps = JnWord.DiffProps(Other.Props, Existing.Props);
-	// 	var DiffedLearns = JnWord.DiffLearns(Other.Learns, Existing.Learns);
-	// 	var R = new DtoWordDiff(){
-	// 		PoWordLearns = DiffedLearns
-	// 		,PoWordProps = DiffedProps
-	// 	};
-	// 	return R;
-	// }
 }
 
 

@@ -12,6 +12,53 @@ public partial class DtoUpdWord{
 		,IJnWord DiffedWord
 	){
 		this.WordInDb = WordInDb;
+		this.NeoPart = WordToAdd;
+		this.ChangedPart = DiffedWord;
+	}
+	/// <summary>
+	/// 庫中既有之詞
+	/// </summary>
+	public IJnWord WordInDb{get;set;}
+	/// <summary>
+	/// 待添之詞(NeoPart)
+	/// </summary>
+	public IJnWord NeoPart{get;set;}
+	/// <summary>
+	/// WordToAdd有洏WordInDb無之屬性 按description數量決定'add'ˉLeanrnRecord之數
+	/// </summary>
+
+	/// <summary>
+	/// WordToAdd 與 WordInDb 之差集 (ChangedPart)
+	/// </summary>
+	//public DtoWordDiff DtoWordDiff{get;set;}
+	public IJnWord ChangedPart{get;set;}
+
+}
+
+public partial class DtoAddWords{
+	/// <summary>
+	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
+	/// </summary>
+	public IList<IJnWord> NeoWords{get;set;} = new List<IJnWord>();
+	/// <summary>
+	/// 待更新之諸詞
+	/// </summary>
+	public IList<DtoUpdWord> UpdatedWords{get;set;} = new List<DtoUpdWord>();
+}
+
+
+
+
+
+#region Old
+
+public partial class DtoUpdWordOld{
+	public DtoUpdWordOld(
+		IJnWord WordInDb
+		,IJnWord WordToAdd
+		,IJnWord DiffedWord
+	){
+		this.WordInDb = WordInDb;
 		this.WordToAdd = WordToAdd;
 		this.DiffedWord = DiffedWord;
 	}
@@ -35,7 +82,7 @@ public partial class DtoUpdWord{
 
 }
 
-public partial class DtoAddWords{
+public partial class DtoAddWordsOld{
 	/// <summary>
 	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
@@ -43,6 +90,7 @@ public partial class DtoAddWords{
 	/// <summary>
 	/// 待更新之諸詞
 	/// </summary>
-	public IList<DtoUpdWord> UpdatedWords{get;set;} = new List<DtoUpdWord>();
+	public IList<DtoUpdWordOld> UpdatedWords{get;set;} = new List<DtoUpdWordOld>();
 }
 
+#endregion
