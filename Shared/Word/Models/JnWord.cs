@@ -121,13 +121,14 @@ public partial class JnWord
 
 
 	/**
-	 * 以ut潙準取差集
+	 * 以時間(修改時間優先)潙準 取差集
 	 * w1有洏w2無 者
 	 * @param w1 待加者
 	 * @param w2 已有者
 	 * @returns 未加過之prop
 	 */
 	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
+	[Obsolete]
 	public static IList<PoWordProp> DiffPropsByTime(
 		IList<PoWordProp> PropsToAdd
 		,IList<PoWordProp> ExistingProps
@@ -146,6 +147,7 @@ public partial class JnWord
 	/// <summary>
 	/// //有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
 	/// </summary>
+	[Obsolete]
 	public static IList<PoWordLearn> DiffLearnsByTime(
 		IList<PoWordLearn> LearnsOfNeo
 		,IList<PoWordLearn> ExistingLearns
@@ -156,6 +158,12 @@ public partial class JnWord
 		);
 		return diff.SelectMany(Time_Learns=>Time_Learns.Value).ToList();
 	}
+
+
+
+
+
+
 
 }
 
