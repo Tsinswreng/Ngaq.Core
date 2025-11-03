@@ -23,6 +23,8 @@ public static class ItemsErr{
 		public static K _R = Mk(null, [nameof(Word)]);
 		public static K LoadWordListFailed = MkB(_R, [nameof(LoadWordListFailed)]);
 		public static K SaveWordListFailed = MkB(_R, [nameof(SaveWordListFailed)]);
-		
+		public static K __NotBelongToLang__ = MkB(_R, [nameof(__NotBelongToLang__)]);
+		public static K __And__IsNotSameUserWord = MkB(_R, [nameof(__And__IsNotSameUserWord)]);
+
 	}
 }

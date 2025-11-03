@@ -5,6 +5,7 @@ public interface IErrItem:ICfgItem, I_Tags{
 
 }
 
+
 public class ErrItem:CfgItem<nil>, IErrItem {
 	public ISet<str> Tags{get;set;} = new HashSet<str>();
 	public static IErrItem Mk(IErrItem? Parent, IList<str> Path, IList<str>? Tags = null){

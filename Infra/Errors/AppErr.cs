@@ -24,6 +24,7 @@ public partial class AppErr
 		return Type?.Tags ?? new HashSet<str>();
 	}set{throw new NotImplementedException();}}
 	public IList<obj?>? Args { get; set; } = new List<obj?>();
+	public IList<obj?>? DebugArgs { get; set; } = new List<obj?>();
 
 	public static AppErr Mk(IErrItem Key, params obj?[] Args){
 		var R = new AppErr();

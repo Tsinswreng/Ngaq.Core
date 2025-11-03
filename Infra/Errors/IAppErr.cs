@@ -9,6 +9,10 @@ public partial interface IAppErr
 	,I_Errors//內ʹ錯
 {
 	public IErrItem? Type{get;set;}
+	/// <summary>
+	/// 㕥置 未ToString之原始對象、用于除錯
+	/// </summary>
+	public IList<obj?>? DebugArgs{get;set;}
 }
 
 

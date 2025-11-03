@@ -170,13 +170,12 @@ public static class ExtnJnWord{
 	public static IJnWord AsSimpleJnWord(this JnWord z){
 		return (IJnWord)z;
 	}
+
 	/// <summary>
-	/// 按詞頭對諸Jn詞分組
+	/// 按詞頭對諸詞分組
 	/// 若入ʹ諸詞 非皆屬同一語 則拋錯
+	/// 返ʹ值: 詞頭->諸詞芝厥語語詞頭皆同者
 	/// </summary>
-	/// <param name="JnWords"></param>
-	/// <returns></returns>
-	/// <exception cref="ErrArg"></exception>
 	public static IDictionary<str, IList<IJnWord>> GroupByHeadOfSameLang(
 		this IEnumerable<IJnWord> JnWords
 	){
@@ -192,7 +191,9 @@ public static class ExtnJnWord{
 				Lang = JWord.Word.Lang;
 			}
 			if(JWord.Word.Lang != Lang){
-				throw new ErrArg("JWord.PoWord.Lang != Lang");
+				throw ItemsErr.Word.__NotBelongToLang__
+				.ToErr(JWord.Id_(), Lang)
+				.AddDebugArgs(JWord);
 			}
 			if(Dict.TryGetValue(JWord.Word.Head, out var List)){
 				List.Add(JWord);
@@ -205,6 +206,10 @@ public static class ExtnJnWord{
 	}
 
 
+	/// <summary>
+	/// 按(詞頭,語言)對諸詞分組
+	/// 返ʹ值: (詞頭,語言)->諸詞芝厥語語詞頭皆同者
+	/// </summary>
 	public static IDictionary<Head_Lang, IList<IJnWord>> GroupByLangHead(
 		this IEnumerable<IJnWord> JnWords
 	){
@@ -261,11 +266,6 @@ public static class ExtnJnWord{
 	/// 無需合併旹返null
 	/// 非同ʹ詞旹拋錯
 	/// </summary>
-	/// <param name="z"></param>
-	/// <param name="Other"></param>
-	/// <param name="R"></param>
-	/// <returns></returns>
-	/// <exception cref="ErrArg"></exception>
 	public static IJnWord? DiffByTime(
 		this IJnWord z
 		,IJnWord Other
@@ -274,7 +274,9 @@ public static class ExtnJnWord{
 		var z_ = z.AsOrToJnWord();
 		var Other_ = Other.AsOrToJnWord();
 		if(!z_.IsSameUserWord(Other_)){
-			throw new ErrArg("!z.IsSameUserWord(Other)");
+			throw ItemsErr.Word.__And__IsNotSameUserWord
+			.ToErr(z.Id_(), Other.Id_())
+			.AddDebugArgs(z,Other);
 		}
 		if(z.IsSynced(Other)){
 			return null;
@@ -427,4 +429,5 @@ public static class ExtnJnWord{
 	// 	return R;
 	// }
 }
+
 
