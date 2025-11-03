@@ -12,8 +12,19 @@ using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Model.Po.Learn_;
+using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Shared.Word.Models.Dto;
 
 public static class ExtnJnWord{
+
+	public static TSelf SetIdEtEnsureFKey<TSelf>(
+		this TSelf z,IdWord Id
+	)where TSelf : IJnWord
+	{
+		z.Word.Id = Id;
+		z.EnsureForeignId();
+		return z;
+	}
 	public static JnWord AsOrToJnWord(this IJnWord z){
 		if(z is JnWord j){
 			return j;
@@ -278,7 +289,6 @@ public static class ExtnJnWord{
 	}
 
 
-
 /// <summary>
 /// 同步ˢ。若Other更新則使Other合入。
 /// 合入後ʹ果ˇ寫入ref R。如ref R潙null則R=z
@@ -292,12 +302,13 @@ public static class ExtnJnWord{
 		this T z
 		,T Other
 		,ref T? R
-	)where T : IBizCreateUpdateTime
+	)where T : class, IBizCreateUpdateTime
 	{
-		R??=z;
+
 		if(z.BizUpdatedAt >= Other.BizUpdatedAt){
 			return ESyncResult.NoNeedToSync;
 		}
+		R??=z;
 		var selfDict = CoreDictMapper.Inst.ToDictShallowT(z);
 		var otherDict = CoreDictMapper.Inst.ToDictShallowT(Other);
 		foreach(var (otherK, otherV) in otherDict){
@@ -309,30 +320,38 @@ public static class ExtnJnWord{
 
 	/// <summary>
 	/// 同步。添ʃ缺、改ʃ異。
+	/// 注意 于外ʸ 慎ᵈ 直ᵈ㕥 ref R 當 一般ₐJnWord用。
 	/// </summary>
 	/// <param name="z">舊詞(函數中不會通過z指針㕥改己)若需寫入z則使R=z
 	/// </param><param name="Neoer">新詞。只讀
 	/// </param><param name="R">同步ʹ果ˇ寫入焉
 	/// </param><returns>
 	/// </returns>
-	public static ESyncResult Sync(
+	public static DtoSyncTwoWords Sync(
 		this IJnWord z//函數中只讀  作同步依據
 		,IJnWord Neoer
 		//,ref IJnWord? R//函數中作果ˇ寫入ʹ處
 		,ref IJnWord? RNeoPart //只有 列表 Props,Learns
 		,ref IJnWord? RChangedPart //Word,Props,Learns都可能有
 	){
+		var R = new DtoSyncTwoWords();
 		CheckSameUserWord(z,Neoer);
-		RNeoPart??=z;
-		RChangedPart??=z;
 		var z_ = z.AsOrToJnWord();
 		var Neoer_ = Neoer.AsOrToJnWord();
 		if(z.IsSynced(Neoer)){
-			return ESyncResult.NoNeedToSync;
+			// RNeoPart = null;
+			// RChangedPart = null;
+			return R;
 		}
+
+		RNeoPart??=z;
+		RChangedPart??=z;
 		PoWord? NeoPoWord = RChangedPart.Word;
-		z.Word.SyncPo(Neoer.Word, ref NeoPoWord);
-		RChangedPart.Word = NeoPoWord!;
+		if(z.Word.SyncPo(Neoer.Word, ref NeoPoWord) == ESyncResult.Ok){
+			RChangedPart.Word = NeoPoWord!;
+			R.ChangedPoWord = NeoPoWord;
+		}
+
 
 		var UnAddedProps = Neoer.Props.DiffById<PoWordProp, IdWordProp>(z.Props);
 		var UnAddedLearns = Neoer.Learns.DiffById<PoWordLearn, IdWordLearn>(z.Learns);
@@ -343,37 +362,45 @@ public static class ExtnJnWord{
 		var OldId_Learn = z.Learns.Select(x=>x).ToDictionary(x=>x.Id, x=>x);
 		var NeoId_Learn = Neoer.Learns.Select(x=>x).ToDictionary(x=>x.Id, x=>x);
 
-		IList<PoWordProp> syncedWordProps = [];
+		IList<PoWordProp> changedWordProps = [];
 		foreach(var (oldId, _oldProp) in OldId_Prop){
 			//var neoProp = NeoId_Prop[oldId];
 			if(!NeoId_Prop.TryGetValue(oldId, out var neoProp)){
-				syncedWordProps.Add(_oldProp);
 				continue;
 			}
 			var oldProp = _oldProp;
-			oldProp.SyncPo(neoProp, ref oldProp);
-			syncedWordProps.Add(oldProp!);
+			if(oldProp.SyncPo(neoProp, ref oldProp) != ESyncResult.Ok){
+				continue;
+			}
+			changedWordProps.Add(oldProp!);
 		}
 
-		IList<PoWordLearn> syncedWordLearns = [];
+		IList<PoWordLearn> changedWordLearns = [];
 		foreach(var (oldId, _oldLearn) in OldId_Learn){
 			//var neoLearn = NeoId_Learn[oldId];
 			if(!NeoId_Learn.TryGetValue(oldId, out var neoLearn)){
-				syncedWordLearns.Add(_oldLearn);
 				continue;
 			}
 			var oldLearn = _oldLearn;
-			oldLearn.SyncPo(neoLearn, ref oldLearn);
-			syncedWordLearns.Add(oldLearn!);
+			if(oldLearn.SyncPo(neoLearn, ref oldLearn) != ESyncResult.Ok){
+				continue;
+			}
+			changedWordLearns.Add(oldLearn!);
 		}
 
-		RChangedPart.Word = NeoPoWord!;
-		RChangedPart.Props = syncedWordProps;
-		RChangedPart.Learns = syncedWordLearns;
+		RChangedPart.Props = changedWordProps;
+		RChangedPart.Learns = changedWordLearns;
 
 		RNeoPart.Props.AddRange(UnAddedProps);
 		RNeoPart.Learns.AddRange(UnAddedLearns);
-		return ESyncResult.Ok;
+
+		R.NeoProps = UnAddedProps;
+		R.ChangedProps = changedWordProps;
+
+		R.NeoLearns = UnAddedLearns;
+		R.ChangedLearns = changedWordLearns;
+
+		return R;
 	}
 
 	public static IList<TItem> DiffById<TItem, TId>(

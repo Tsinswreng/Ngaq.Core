@@ -8,12 +8,12 @@ using Ngaq.Core.Word.Models.Dto;
 public partial class DtoUpdWord{
 	public DtoUpdWord(
 		IJnWord WordInDb
-		,IJnWord WordToAdd
-		,IJnWord DiffedWord
+		,IJnWord NeoPart
+		,IJnWord ChangedPart
 	){
 		this.WordInDb = WordInDb;
-		this.NeoPart = WordToAdd;
-		this.ChangedPart = DiffedWord;
+		this.NeoPart = NeoPart;
+		this.ChangedPart = ChangedPart;
 	}
 	/// <summary>
 	/// 庫中既有之詞
@@ -22,7 +22,7 @@ public partial class DtoUpdWord{
 	/// <summary>
 	/// 待添之詞(NeoPart)
 	/// </summary>
-	public IJnWord NeoPart{get;set;}
+	public IJnWord? NeoPart{get;set;}
 	/// <summary>
 	/// WordToAdd有洏WordInDb無之屬性 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
@@ -31,11 +31,11 @@ public partial class DtoUpdWord{
 	/// WordToAdd 與 WordInDb 之差集 (ChangedPart)
 	/// </summary>
 	//public DtoWordDiff DtoWordDiff{get;set;}
-	public IJnWord ChangedPart{get;set;}
+	public IJnWord? ChangedPart{get;set;}
 
 }
 
-public partial class DtoAddWords{
+public partial class DtoSyncWords{
 	/// <summary>
 	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
