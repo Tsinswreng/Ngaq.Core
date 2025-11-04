@@ -1,4 +1,6 @@
 namespace Ngaq.Core.Shared.Word.Models.Dto;
+
+using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Tools;
 
@@ -19,10 +21,12 @@ public enum EWordsPack{
 
 public interface IWordsPackInfo:IAppSerializable{
 	public EWordsPack Type{get;set;}
+	public Tempus CreatedAt{get;set;}
 }
 
 public class WordsPackInfo:IWordsPackInfo,IAppSerializable{
 	public EWordsPack Type{get;set;}
+	public Tempus CreatedAt{get;set;} = Tempus.Now();
 }
 
 public static class ExtnWordsPackInfo{
