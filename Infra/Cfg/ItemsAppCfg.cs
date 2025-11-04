@@ -4,7 +4,7 @@ using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgItem<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
 
-public class ItemAppCfg{
+public class ItemsAppCfg{
 	public static ICfgItem<str> Lang = Mk(null, [nameof(Lang)], "default");
 
 #if DEBUG
@@ -22,5 +22,11 @@ public class ItemAppCfg{
 
 	public static ICfgItem User = Mk(null, [nameof(User)], null);
 		public static ICfgItem<str> CurrentUserId = Mk(User, [nameof(CurrentUserId)], "0");
+
+	public class Word{
+		public static ICfgItem _R = Mk(null, [nameof(Word)]);
+		public static ICfgItem<str> WordsPackExportPath = Mk(_R, [nameof(WordsPackExportPath)], "");
+		public static ICfgItem<str> WordsPackImportPath = Mk(_R, [nameof(WordsPackImportPath)], "");
+	}
 
 }

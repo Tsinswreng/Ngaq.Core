@@ -20,7 +20,10 @@ using Tsinswreng.CsTools;
 
 
 public partial class JnWord
-	:IJnWord, IPoWord, IAppSerializable, IBizCreateUpdateTime
+	:IJnWord
+	,IPoWord
+	,IAppSerializable
+	,IBizCreateUpdateTime
 {
 	[Impl(typeof(IPoWord))]
 	public object ShallowCloneSelf()
@@ -104,6 +107,8 @@ public partial class JnWord
 		get{return Word.DbUpdatedAt;}
 		set{Word.DbUpdatedAt = value;}
 	}
+
+
 
 	// [Impl]
 	// public PoStatus Status{

@@ -25,6 +25,6 @@ public static class ItemsErr{
 		public static K SaveWordListFailed = MkB(_R, [nameof(SaveWordListFailed)]);
 		public static K __NotBelongToLang__ = MkB(_R, [nameof(__NotBelongToLang__)]);
 		public static K __And__IsNotSameUserWord = MkB(_R, [nameof(__And__IsNotSameUserWord)]);
-
+		public static K BackgroundImageServiceFailedToInit = MkB(_R, [nameof(BackgroundImageServiceFailedToInit)]);
 	}
 }

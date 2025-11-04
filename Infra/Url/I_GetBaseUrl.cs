@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Infra.Url;
 
-public partial interface I_GetBaseUrl{
+public partial interface I_GetBaseUrl {
 	/// <summary>
 	///
 	/// </summary>
