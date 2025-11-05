@@ -4,15 +4,16 @@ using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgItem<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
 
-public class ItemsAppCfg{
+public class ItemsClientCfg{
 	public static ICfgItem<str> Lang = Mk(null, [nameof(Lang)], "default");
 
-#if DEBUG
+#if DEBUG&&false
 	public static ICfgItem<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.dev.sqlite");
 #else
+
 	public static ICfgItem<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.sqlite");
 #endif
-	public static ICfgItem<str> GuiConfigPath = Mk(null, [nameof(GuiConfigPath)], "Ngaq.Gui.jsonc");
+	public static ICfgItem<str> RwCfgPath = Mk(null, [nameof(RwCfgPath)], "Ngaq.Rw.jsonc");
 
 	public static ICfgItem Background = Mk(null, [nameof(Background)], null);
 		public static ICfgItem<IList<object?>> GalleryDirs = Mk(Background, [nameof(GalleryDirs)], (IList<object?>)[]);
