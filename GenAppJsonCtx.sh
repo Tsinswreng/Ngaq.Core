@@ -41,6 +41,7 @@ using System.Text.Json.Serialization;
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 	ReadCommentHandling = JsonCommentHandling.Skip,
+	UseStringEnumConverter = true,
 	Converters = [
 EOF
 

@@ -24,6 +24,7 @@ public partial class JnWord
 	,IPoWord
 	,IAppSerializable
 	,IBizCreateUpdateTime
+	,I_ClassVer
 {
 	[Impl(typeof(IPoWord))]
 	public object ShallowCloneSelf()
@@ -32,7 +33,8 @@ public partial class JnWord
 		return MemberwiseClone();
 	}
 #endif
-
+	[Impl]
+	public static Version ClassVer{get;set;} = new Version(1,0);
 	public JnWord(){}
 	public JnWord(PoWord PoWord, IList<PoWordProp> Props, IList<PoWordLearn> Learns){
 		Word = PoWord;

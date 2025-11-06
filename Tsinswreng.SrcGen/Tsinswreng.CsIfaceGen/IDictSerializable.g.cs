@@ -6,6 +6,7 @@ using System.Text.Json.Serialization;
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 	ReadCommentHandling = JsonCommentHandling.Skip,
+	UseStringEnumConverter = true,
 	Converters = [
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.IdDel>),

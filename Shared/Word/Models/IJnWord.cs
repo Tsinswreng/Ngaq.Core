@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Shared.Word.Models;
 
+using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
@@ -21,7 +22,11 @@ using Tsinswreng.CsTools;
 ///			AssignId();
 ///		}
 ///	}
-public interface IJnWord: IAppSerializable{
+public interface IJnWord
+	:IAppSerializable
+//	,I_ClassVersion //使接口叶靜態抽象則json序列化生成器報錯
+{
+	public static readonly Version Ver = new Version(1,0);
 	public PoWord Word{get;set;}
 	public IList<PoWordProp> Props{get;set;}
 	public IList<PoWordLearn> Learns{get;set;}

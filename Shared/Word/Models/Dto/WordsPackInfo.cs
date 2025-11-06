@@ -4,32 +4,23 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Tools;
 
-public enum EWordsPack{
-/// <summary>
-/// 按行分隔之獨立JnWord Json、非Json數組
-/// {}
-/// {}
-/// {}
-///
-/// </summary>
-	LineSepJnWordJsonGZip,
-	/// <summary>
-	/// Json數組
-	/// </summary>
-	JnWordArrJsonGZip
-}
 
-public interface IWordsPackInfo:IAppSerializable{
-	public EWordsPack Type{get;set;}
-	public Tempus CreatedAt{get;set;}
-}
 
-public class WordsPackInfo:IWordsPackInfo,IAppSerializable{
+public class WordsPackInfo
+	:IWordsPackInfo
+	,IAppSerializable
+{
+	[EnumOf(typeof(EWordsPack))]
+
 	public EWordsPack Type{get;set;}
 	public Tempus CreatedAt{get;set;} = Tempus.Now();
+	public Version? Ver{get;set;} = IWordsPackInfo.ClassVer;
+	public Version? VerJnWord{get;set;} = JnWord.ClassVer;
+	public Version? VerApp{get;set;} = AppVer.Inst.Ver;
 }
 
 public static class ExtnWordsPackInfo{
+
 	public static DtoCompressedWords ToDtoCompressedWords(
 		this WordsPackInfo z
 		,u8[] Bytes

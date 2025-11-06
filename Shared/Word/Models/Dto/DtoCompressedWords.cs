@@ -1,3 +1,4 @@
+#define Impl
 namespace Ngaq.Core.Shared.Word.Models.Dto;
 
 using Ngaq.Core.Infra;
@@ -9,8 +10,17 @@ public class DtoCompressedWords
 	,IAppSerializable
 {
 	public u8[]? Data{get;set;}
-	public EWordsPack Type{get;set;}
 	public Tempus CreatedAt{get;set;} = Tempus.Now();
+	public EWordsPack Type{get;set;} = EWordsPack.None;
+	public Version? VerJnWord{get;set;} = JnWord.ClassVer;
+	public Version? Ver{get;set;}
+	#if Impl
+	= IWordsPackInfo.ClassVer;
+	#endif
+	public Version? VerApp{get; set;}
+	#if Impl
+	= AppVer.Inst.Ver;
+	#endif
 }
 
 public static class ExtnDtoCompressedWords{

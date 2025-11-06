@@ -1,8 +1,8 @@
 namespace Ngaq.Core.Infra;
 
-public class AppVersion{
-	protected static AppVersion? _Inst = null;
-	public static AppVersion Inst => _Inst??= new AppVersion();
+public class AppVer{
+	protected static AppVer? _Inst = null;
+	public static AppVer Inst => _Inst??= new AppVer();
 	//2025-11-04T21:16:20.830+08:00_W45-2
-	public Version Version { get; set; } = new (1, 0, 0, 0);
+	public Version Ver { get; set; } = new (1, 0, 0, 0);
 }

@@ -9,8 +9,7 @@ using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
-
-
+using Ngaq.Core.Frontend.User;
 
 public partial class OperationStatus{
 	public bool Load = false;
@@ -77,23 +76,28 @@ public partial class LearnEventArgs :EventArgs{
 	public bool IsUndo{get;set;} = false;
 }
 
+/// <summary>
+/// 只會在前端運行
+/// </summary>
 public partial class MgrLearn{
 
 	//public MgrLearn(){}
 
+
+	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
+	//IUserCtx UserCtx;
+	IFrontendUserCtxMgr UserCtxMgr;
+	public IWeightCalctr WeightCalctr{get;set;}
+
 	public MgrLearn(
 		ISvcWord SvcWord
 		,IWeightCalctr WeightCalctr
-		,IUserCtx UserCtx
+		,IFrontendUserCtxMgr UserCtxMgr
 	){
 		this.WeightCalctr = WeightCalctr;
 		this.SvcWord = SvcWord;
-		this.UserCtx = UserCtx;
+		this.UserCtxMgr = UserCtxMgr;
 	}
-
-	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
-	IUserCtx UserCtx;
-	public IWeightCalctr WeightCalctr{get;set;}
 
 	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
 
@@ -246,6 +250,7 @@ public partial class MgrLearn{
 
 	public async Task<nil> SaveAsy(CT Ct){
 		try{
+			var UserCtx = UserCtxMgr.GetUserCtx();
 			if(!State.OperationStatus.Start){
 				return NIL;
 			}
