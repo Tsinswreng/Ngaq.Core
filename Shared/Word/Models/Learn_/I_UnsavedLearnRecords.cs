@@ -14,7 +14,7 @@ public static class ExtnI_UnsavedLearnRecords{
 	/// <param name="z"></param>
 	/// <param name="LearnRecord"></param>
 	/// <returns></returns>
-	public static i64 AddLearnRecordIfEmpty(
+	public static i32 AddLearnRecordIfEmpty(
 		this I_UnsavedLearnRecords z
 		,LearnRecord LearnRecord
 	){
@@ -33,5 +33,14 @@ public static class ExtnI_UnsavedLearnRecords{
 		var Last = z.UnsavedLearnRecords[^1];
 		z.UnsavedLearnRecords.RemoveAt(z.UnsavedLearnRecords.Count-1);
 		return Last;
+	}
+
+	public static ILearnRecord? GetLastUnsavedLearnRecord(
+		this I_UnsavedLearnRecords z
+	){
+		if(z.UnsavedLearnRecords.Count == 0){
+			return null;
+		}
+		return z.UnsavedLearnRecords[^1];
 	}
 }

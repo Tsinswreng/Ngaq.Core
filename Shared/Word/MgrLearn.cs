@@ -11,6 +11,12 @@ using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Frontend.User;
 
+public enum ELearnOpRtn{
+		Learn = 0
+		,Undo = 1
+		,Invalid = 2
+	}
+
 public partial class OperationStatus{
 	public bool Load = false;
 	public bool Start = false;
@@ -101,11 +107,7 @@ public partial class MgrLearn{
 
 	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
 
-	public enum ELearnOpRtn{
-		Learn = 0
-		,Undo = 1
-		,Invalid = 2
-	}
+
 
 	public partial class EvtArgOnErr:EventArgs{
 		public object? Err{get;set;}
@@ -205,47 +207,51 @@ public partial class MgrLearn{
 /// <param name="Word"></param>
 /// <param name="Learn"></param>
 /// <returns>見ELearnOpRtn</returns>
-	i64 _Learn(
+	ELearnOpRtn _Learn(
 		IWordForLearn Word
 		,ELearn Learn
 	){
 		if(!State.OperationStatus.Start){
-			return (i64)ELearnOpRtn.Invalid;
+			return ELearnOpRtn.Invalid;
 		}
-		State.MgrLearnedWords.Set(Learn, Word);
 		var LearnRecord = new LearnRecord(Learn);
+		var R = Word.AddLearnRecordIfEmpty(LearnRecord);
 		State.OperationStatus.Save = false;
-		OnLearnOrUndo?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Learn, IsUndo=false});
-		return Word.AddLearnRecordIfEmpty(LearnRecord);
+		if(R == 0){
+			State.MgrLearnedWords.Set(Learn, Word);
+			OnLearnOrUndo?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Learn, IsUndo=false});
+			return ELearnOpRtn.Learn;
+		}
+		return ELearnOpRtn.Undo;
 	}
 
-	i64 _Undo(
+	ELearnOpRtn _Undo(
 		IWordForLearn Word
 	){
 		if(!State.OperationStatus.Start){
-			return (i64)ELearnOpRtn.Invalid;
+			return ELearnOpRtn.Invalid;
 		}
 		var Last = Word.RmLastUnsavedLearnRecord();
 		if(Last != null){
 			State.MgrLearnedWords.DeleteWordFromLearnGroup(Last.Learn, Word);
 			OnLearnOrUndo?.Invoke(this, new LearnEventArgs{Word=Word, Learn=Last.Learn, IsUndo=true});
-			return (i64)ELearnOpRtn.Undo;
+			return ELearnOpRtn.Undo;
 		}
-		return (i64)ELearnOpRtn.Invalid;
+		return ELearnOpRtn.Invalid;
 	}
 
 
-	public i64 LearnOrUndo(
+	public ELearnOpRtn LearnOrUndo(
 		IWordForLearn Word
 		,ELearn Learn
 	){
 		if(!State.OperationStatus.Start){
-			return (i64)ELearnOpRtn.Invalid;
+			return ELearnOpRtn.Invalid;
 		}
-		if(_Learn(Word, Learn) != (i64)ELearnOpRtn.Learn){
+		if(_Learn(Word, Learn) != ELearnOpRtn.Learn){
 			return _Undo(Word);
 		}
-		return (i64)ELearnOpRtn.Learn;
+		return ELearnOpRtn.Learn;
 	}
 
 	public async Task<nil> SaveAsy(CT Ct){
