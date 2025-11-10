@@ -10,6 +10,9 @@ using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Frontend.User;
+using MoonSharp.Interpreter;
+using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 public enum ELearnOpRtn{
 		Learn = 0
@@ -94,15 +97,17 @@ public partial class MgrLearn{
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
 	public IWeightCalctr WeightCalctr{get;set;}
-
+	ILogger? Logger;
 	public MgrLearn(
 		ISvcWord SvcWord
 		,IWeightCalctr WeightCalctr
 		,IFrontendUserCtxMgr UserCtxMgr
+		,ILogger? Logger
 	){
 		this.WeightCalctr = WeightCalctr;
 		this.SvcWord = SvcWord;
 		this.UserCtxMgr = UserCtxMgr;
+		this.Logger = Logger;
 	}
 
 	public event EventHandler<LearnEventArgs>? OnLearnOrUndo;
@@ -135,11 +140,33 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
+	public async Task<nil> LoadEtCalcWeightAsy(
+		IAsyncEnumerable<IJnWord> JnWords
+		,CT Ct
+	){
+		var z = this;
+		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
+		var sw = Stopwatch.StartNew();
+		var WeightResult = await WeightCalctr.CalcAsy(WordsForLearn, Ct);
+		sw.Stop();
+		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
+
+
+		State.WordsToLearn.Clear();
+		await foreach(var Word in WordsForLearn){
+			State.WordsToLearn.Add(Word);
+		}
+		State.OperationStatus.Load = true;
+		await HandleWeightResult(WeightResult, Ct);
+		return NIL;
+	}
+
 	/// <summary>
 	/// 取諸詞
 	/// </summary>
 	/// <param name="JWords"></param>
 	/// <returns></returns>
+	[Obsolete("用LoadEtCalcWeightAsy更快")]
 	public nil Load(IEnumerable<IJnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var (i,JWord) in JWords.Index()){
@@ -155,7 +182,12 @@ public partial class MgrLearn{
 			return NIL;
 		}
 		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn, Ct);
+		await HandleWeightResult(WeightResult, Ct);
 
+		return NIL;
+	}
+
+	protected async Task<nil> HandleWeightResult(IWeightResult WeightResult, CT Ct){
 		IDictionary<IdWord, IWordWeightResult> Id_Result;
 		if(WeightResult.Cfg.ResultType == EResultType.Enumerable_IWordWeightResult){
 			var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
@@ -190,11 +222,19 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-	public async Task<nil> StartAsy(CT Ct){
+	public async Task<nil> CalcWeightEtStartAsy(CT Ct){
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
 		await CalcWeightAsy(Ct);
+		await StartAsy(Ct);
+		return NIL;
+	}
+
+	public async Task<nil> StartAsy(CT Ct){
+		if(!State.OperationStatus.Load){
+			return NIL;
+		}
 		State.OperationStatus.Start = true;
 		return NIL;
 	}
@@ -288,5 +328,9 @@ public partial class MgrLearn{
 		//ResetLearnedState();
 		State = new();
 		return NIL;
+	}
+
+	void Filter(){
+		var sc = new Script();
 	}
 }

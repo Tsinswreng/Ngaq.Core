@@ -11,9 +11,10 @@ using System.Threading.Tasks.Dataflow;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 
 public partial class WeightCalculator : IWeightCalctr {
+
 	public async Task<IWeightResult> CalcAsy(
-		IEnumerable<IWordForLearn> Words,
-		CT Ct
+		IAsyncEnumerable<IWordForLearn> Words
+		,CT Ct
 	){
 		var cfg = new CfgWeightResult {
 			ResultType = EResultType.AsyncEnumerable_IWordWeightResult,
@@ -50,22 +51,30 @@ public partial class WeightCalculator : IWeightCalctr {
 						StrId = word.Id.ToString(),
 						Weight = calc.WordState.Weight
 					};
-
 					await channel.Writer.WriteAsync(result, innerCt);
 				});
-			} finally {
+			}catch(Exception){
+				throw;
+			}finally {
 				channel.Writer.Complete();
 			}
 		}, Ct);
 
 		return new WeightResult {
 			Cfg = cfg,
-			Results = ReadResultsAsync(channel.Reader, Ct),
+			Results = ReadResultsAsyE(channel.Reader, Ct),
 			Type = typeof(IAsyncEnumerable<IWordWeightResult>)
 		};
 	}
 
-	private static async IAsyncEnumerable<IWordWeightResult> ReadResultsAsync(
+	public async Task<IWeightResult> CalcAsy(
+		IEnumerable<IWordForLearn> Words,
+		CT Ct
+	){
+		return await CalcAsy(Words.ToAsyncEnumerable(), Ct);
+	}
+
+	private static async IAsyncEnumerable<IWordWeightResult> ReadResultsAsyE(
 		ChannelReader<IWordWeightResult> reader,
 		[EnumeratorCancellation] CT Ct
 	){

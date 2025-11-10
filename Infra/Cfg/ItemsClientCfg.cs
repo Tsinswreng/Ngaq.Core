@@ -28,6 +28,8 @@ public class ItemsClientCfg{
 		public static ICfgItem _R = Mk(null, [nameof(Word)]);
 		public static ICfgItem<str> WordsPackExportPath = Mk(_R, [nameof(WordsPackExportPath)], "");
 		public static ICfgItem<str> WordsPackImportPath = Mk(_R, [nameof(WordsPackImportPath)], "");
+		public static ICfgItem<u64> MaxDisplayedWordCount = Mk(_R, [nameof(MaxDisplayedWordCount)], 50ul);
 	}
 
 }
+
