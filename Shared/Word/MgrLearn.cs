@@ -197,11 +197,18 @@ public partial class MgrLearn{
 			);
 		}else{
 			var Result = (IAsyncEnumerable<IWordWeightResult>)WeightResult.Results!;
-			Id_Result = await Result.ToDictionaryAsync(
-				x=>IdWord.FromLow64Base(x.StrId)
-				,x=>x
-				,Ct
-			);
+			// Id_Result = await Result.ToDictionaryAsync(
+			// 	x=>IdWord.FromLow64Base(x.StrId)
+			// 	,x=>x
+			// 	,Ct
+			// );
+			var dict = new Dictionary<IdWord, IWordWeightResult>();
+			await foreach (var item in Result.WithCancellation(Ct)){
+				var key = IdWord.FromLow64Base(item.StrId);
+				// 如果有重复 key 需求，自己决定是覆盖还是抛异常
+				dict[key] = item;          // 或 dict.TryAdd(key, item);
+			}
+			Id_Result = dict;
 		}
 
 		foreach(var Word in State.WordsToLearn){
