@@ -65,16 +65,9 @@ public partial struct PoStatus(TPrimitive V)
 	}
 
 	public static bool operator !=(TStruct left, TStruct right) {
-		return left.Equals(right);
+		return !left.Equals(right);
 	}
 
-	public static bool operator >(TStruct left, TStruct right) {
-		return left.Value > right.Value;
-	}
-
-	public static bool operator <(TStruct left, TStruct right) {
-		return left.Value > right.Value;
-	}
 
 	public override int GetHashCode() {
 		return Value.GetHashCode();

@@ -70,15 +70,7 @@ public partial struct IdDel(TPrimitive V)
 	}
 
 	public static bool operator !=(TStruct left, TStruct right) {
-		return left.Equals(right);
-	}
-
-	public static bool operator >(TStruct left, TStruct right) {
-		return left.Value > right.Value;
-	}
-
-	public static bool operator <(TStruct left, TStruct right) {
-		return left.Value > right.Value;
+		return !left.Equals(right);
 	}
 
 	public override int GetHashCode() {

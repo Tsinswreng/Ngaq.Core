@@ -73,7 +73,7 @@ public partial struct Tempus(TPrimitive V)
 	}
 
 	public static bool operator !=(TStruct left, TStruct right) {
-		return left.Equals(right);
+		return !left.Equals(right);
 	}
 
 	public static bool operator >(TStruct left, TStruct right) {
@@ -81,7 +81,7 @@ public partial struct Tempus(TPrimitive V)
 	}
 
 	public static bool operator <(TStruct left, TStruct right) {
-		return left.Value > right.Value;
+		return left.Value < right.Value;
 	}
 
 	public override int GetHashCode() {
