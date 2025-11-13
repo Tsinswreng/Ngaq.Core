@@ -1,4 +1,4 @@
-#if false//改完後勿忘複製入UInt128Template.typedid
+#if true//改完後勿忘複製入UInt128Template.typedid
 //不能寫using語句 否則源生成 謬
 //叵續ˣ定義無參構造器、蓋源生成器生成旹默認已給構造器。
 static class Extn{
@@ -85,6 +85,38 @@ partial struct PLACEHOLDERID
 	public bool Equals(PLACEHOLDERID other) {
 		return Value.Equals(other.Value);
 	}
+
+
+	// 在FromLow64Base方法后添加以下代码
+	/// <summary>
+	/// 将Low64Base编码的字符串解析为PLACEHOLDERID
+	/// </summary>
+	/// <param name="s">Low64Base编码的字符串</param>
+	/// <returns>解析得到的PLACEHOLDERID</returns>
+	/// <exception cref="ArgumentException">当输入字符串无效时抛出</exception>
+	public static PLACEHOLDERID Parse(string S){
+		return FromLow64Base(S);
+	}
+
+	/// <summary>
+	/// 尝试将Low64Base编码的字符串解析为PLACEHOLDERID
+	/// </summary>
+	/// <param name="S">Low64Base编码的字符串</param>
+	/// <param name="R">解析成功时返回的PLACEHOLDERID，失败时为默认值</param>
+	/// <returns>解析成功返回true，失败返回false</returns>
+	public static bool TryParse(string? S, out PLACEHOLDERID R){
+		if(S is null){
+			R = default!;
+			return false;
+		}
+		if(Tsinswreng.CsTools.ToolUInt128.TryLow64BaseToUInt128(S, out var Num)){
+			R = new PLACEHOLDERID(Num);
+			return true;
+		}
+		R = default!;
+		return false;
+	}
+
 }
 
 #endif
