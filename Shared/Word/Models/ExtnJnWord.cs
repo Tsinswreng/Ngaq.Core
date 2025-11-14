@@ -15,15 +15,43 @@ using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Dto;
 
 public static class ExtnJnWord{
-
-	public static TSelf SetIdEtEnsureFKey<TSelf>(
-		this TSelf z,IdWord Id
-	)where TSelf : IJnWord
+	extension<TSelf>(TSelf z)
+		where TSelf:IJnWord
 	{
-		z.Word.Id = Id;
-		z.EnsureForeignId();
-		return z;
+
+		/// <summary>
+		/// 把諸資產之外鍵設潙主Word之id
+		/// </summary>
+		/// <returns></returns>
+		public TSelf EnsureForeignId(){
+			// if(z.Po_Word.Id.Value == 0){
+			// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
+			// }
+			foreach(var prop in z.Props){
+				// if(prop.Id.Value == 0){
+				// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
+				// }
+				prop.WordId = z.Word.Id;
+			}
+			foreach(var learn in z.Learns){
+				// if(learn.Id.Value == 0){
+				// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
+				// }
+				learn.WordId = z.Word.Id.Value;
+			}
+			return z;
+		}
+
+
+		public TSelf SetIdEtEnsureFKey(IdWord Id){
+			z.Word.Id = Id;
+			z.EnsureForeignId();
+			return z;
+		}
+
+
 	}
+
 	public static JnWord AsOrToJnWord(this IJnWord z){
 		if(z is JnWord j){
 			return j;
@@ -262,30 +290,6 @@ public static class ExtnJnWord{
 		return false;
 	}
 
-	/// <summary>
-	/// 把諸資產之外鍵設潙主Word之id
-	/// </summary>
-	/// <returns></returns>
-	public static TSelf EnsureForeignId<TSelf>(this TSelf z)
-		where TSelf : IJnWord
-	{
-		// if(z.Po_Word.Id.Value == 0){
-		// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
-		// }
-		foreach(var prop in z.Props){
-			// if(prop.Id.Value == 0){
-			// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-			// }
-			prop.WordId = z.Word.Id;
-		}
-		foreach(var learn in z.Learns){
-			// if(learn.Id.Value == 0){
-			// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-			// }
-			learn.WordId = z.Word.Id.Value;
-		}
-		return z;
-	}
 
 
 /// <summary>
