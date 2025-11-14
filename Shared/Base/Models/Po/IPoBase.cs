@@ -1,5 +1,5 @@
 //#define Impl
-namespace Ngaq.Core.Models.Po;
+namespace Ngaq.Core.Shared.Base.Models.Po;
 
 using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;

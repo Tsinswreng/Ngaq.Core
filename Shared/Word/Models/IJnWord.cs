@@ -37,4 +37,37 @@ public static class ExtnPropIJnWord{
 	public static IdWord Id_(this IJnWord z){
 		return z.Word.Id;
 	}
+
+	public static IJnWord DeepClone(
+		this IJnWord z
+	){
+		var word = (PoWord)z.Word.ShallowCloneSelf();
+		var props = z.Props.Select(x=>(PoWordProp)x.ShallowCloneSelf()).ToList();
+		var learns = z.Learns.Select(x=>(PoWordLearn)x.ShallowCloneSelf()).ToList();
+		var R = new JnWord(
+			word, props, learns
+		);
+		return R;
+	}
+
+	public static IJnWord ResetAllIds(
+		this IJnWord z
+	){
+		z.Word.Id = new();
+		foreach(var prop in z.Props){
+			prop.Id = new ();
+		}
+		foreach(var learn in z.Learns){
+			learn.Id = new();
+		}
+		return z;
+	}
+
+	public static IJnWord DeepCloneEtResetIds(
+		this IJnWord z
+	){
+		var R = z.DeepClone();
+		R.ResetAllIds();
+		return R;
+	}
 }

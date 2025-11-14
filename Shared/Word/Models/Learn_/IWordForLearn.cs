@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Shared.Word.Models.Learn_;
 
 using System.ComponentModel;
-using Ngaq.Core.Models.Po;
+using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Word.Models.Po.Word;
 
 

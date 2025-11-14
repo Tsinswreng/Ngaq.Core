@@ -2,7 +2,6 @@
 namespace Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Infra;
-using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools;
 
 public partial class PoBase:IPoBase{

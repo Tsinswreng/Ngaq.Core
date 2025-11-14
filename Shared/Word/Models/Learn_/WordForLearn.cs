@@ -9,9 +9,8 @@ using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Models.Po;
 using Tsinswreng.CsTools;
-
+using Ngaq.Core.Shared.Base.Models.Po;
 
 public partial class WordForLearn
 	:IWordForLearn

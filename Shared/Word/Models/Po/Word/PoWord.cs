@@ -6,7 +6,6 @@ using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
-using Ngaq.Core.Models.Po;
 using Ngaq.Core.Word.Models.Po.Word;
 
 public partial interface IPoWord

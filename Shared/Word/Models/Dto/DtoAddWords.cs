@@ -5,8 +5,29 @@ using Ngaq.Core.Word.Models.Dto;
 
 
 
-public partial class DtoUpdWord{
-	public DtoUpdWord(
+public partial class DtoSyncWords{
+	/// <summary>
+	/// 庫中未有之待添之諸新詞 若從文本詞表則按description數量決定'add'ˉLeanrnRecord之數
+	/// </summary>
+	public IList<IJnWord> NeoWords{get;set;} = new List<IJnWord>();
+	/// <summary>
+	/// 待更新之諸詞
+	/// </summary>
+	public IList<DtoUdpWord> UpdatedWords{get;set;} = new List<DtoUdpWord>();
+}
+
+public class DtoUdpWord{
+	public IJnWord? WordInDb{get;set;}
+	public DtoSyncTwoWords DtoSyncTwoWords{get;set;} = new();
+}
+
+
+#region Old
+
+
+[Obsolete]
+public partial class DtoUpdWordOld2{
+	public DtoUpdWordOld2(
 		IJnWord WordInDb
 		,IJnWord NeoPart
 		,IJnWord ChangedPart
@@ -35,7 +56,8 @@ public partial class DtoUpdWord{
 
 }
 
-public partial class DtoSyncWords{
+[Obsolete]
+public partial class DtoSyncWordsOld2{
 	/// <summary>
 	/// 庫中未有之待添之諸新詞 按description數量決定'add'ˉLeanrnRecord之數
 	/// </summary>
@@ -43,14 +65,12 @@ public partial class DtoSyncWords{
 	/// <summary>
 	/// 待更新之諸詞
 	/// </summary>
-	public IList<DtoUpdWord> UpdatedWords{get;set;} = new List<DtoUpdWord>();
+	public IList<DtoUpdWordOld2> UpdatedWords{get;set;} = new List<DtoUpdWordOld2>();
 }
 
 
 
 
-
-#region Old
 
 public partial class DtoUpdWordOld{
 	public DtoUpdWordOld(

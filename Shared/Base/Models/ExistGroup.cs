@@ -1,4 +1,3 @@
-//慮 移至CsTools
 namespace Ngaq.Core.Shared.Base.Models;
 
 public partial struct Existing_Duplication<T>{
@@ -11,6 +10,9 @@ public partial struct Existing_Duplication<T>{
 		this.Duplication = Duplication;
 	}
 	/// <summary>
+	///
+	///
+	/// 
 	/// 既存于數據源中者
 	/// </summary>
 	public T Existing { get; set; }

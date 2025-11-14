@@ -6,7 +6,6 @@ using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
-using Ngaq.Core.Models.Po;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
@@ -394,11 +393,11 @@ public static class ExtnJnWord{
 		RNeoPart.Props.AddRange(UnAddedProps);
 		RNeoPart.Learns.AddRange(UnAddedLearns);
 
-		R.NeoProps = UnAddedProps;
-		R.ChangedProps = changedWordProps;
+		R.NeoOrChangedProps.NeoPart = UnAddedProps;
+		R.NeoOrChangedProps.ChangedPart = changedWordProps;
 
-		R.NeoLearns = UnAddedLearns;
-		R.ChangedLearns = changedWordLearns;
+		R.NeoOrChangedLearns.NeoPart = UnAddedLearns;
+		R.NeoOrChangedLearns.ChangedPart = changedWordLearns;
 
 		return R;
 	}

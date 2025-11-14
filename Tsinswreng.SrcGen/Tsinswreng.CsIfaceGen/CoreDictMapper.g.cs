@@ -144,8 +144,8 @@ using Tsinswreng.CsDictMapper;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsDictMapper;
-	[DictType(typeof(global::Ngaq.Core.Models.Po.IPoBase))]
+	using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Base.Models.Po.IPoBase))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Po_IPoBase = "global::Ngaq.Core.Models.Po.IPoBase";
 	}
