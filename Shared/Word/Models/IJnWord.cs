@@ -37,6 +37,7 @@ public static class ExtnPropIJnWord{
 	// extension<T>(IEnumerable<T> target){
 	// 	public bool IsEmpty() => !target.Any();
 	// }
+
 	extension(IJnWord z){
 		public IdWord Id => z.Word.Id;
 		public IJnWord DeepClone(){

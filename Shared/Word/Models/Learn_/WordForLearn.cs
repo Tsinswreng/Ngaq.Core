@@ -83,7 +83,7 @@ public partial class WordForLearn
 
 	[Impl(typeof(I_Id))]
 	public IdWord Id{
-		get{return PoWord.Id;}
+		get=>PoWord.Id;
 		set{
 			_JnWord.Id = value;
 		}
@@ -91,26 +91,32 @@ public partial class WordForLearn
 
 	[Impl(typeof(IPoWord))]
 	public IdUser Owner{
-		get{return PoWord.Owner;}
+		get=>PoWord.Owner;
 		set{PoWord.Owner = value;}
 	}
 
 	[Impl(typeof(IPoWord))]
 	public str Lang{
-		get{return PoWord.Lang;}
+		get=>PoWord.Lang;
 		set{PoWord.Lang = value;}
 	}
 
 	[Impl(typeof(IPoWord))]
 	public str Head{
-		get{return PoWord.Head;}
+		get=>PoWord.Head;
 		set{PoWord.Head = value;}
 	}
 
 
 	#region IPoBase
 	[Impl(typeof(IPoBase))]
-	public IdDel DelAt{get;set;}
+	public IdDel DelAt{
+		get=>PoWord.DelAt;
+		set{
+			PoWord.DelAt = value;
+		}
+	}
+
 	[Impl(typeof(IPoBase))]
 	public Tempus DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}

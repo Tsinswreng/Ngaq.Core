@@ -18,7 +18,6 @@ public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)
 		where TSelf:IJnWord
 	{
-
 		/// <summary>
 		/// 把諸資產之外鍵設潙主Word之id
 		/// </summary>

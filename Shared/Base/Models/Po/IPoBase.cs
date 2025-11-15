@@ -10,6 +10,7 @@ using Ngaq.Core.Infra.IF;
 public partial interface IPoBase
 	:I_ShallowCloneSelf
 	,IAppSerializable
+	,I_DelAt
 {
 
 	#region IPoBase
@@ -24,7 +25,8 @@ public partial interface IPoBase
 	/// <summary>
 	/// <舊>若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值</舊>
 	/// </summary>
-	public IdDel DelAt{get;set;}
+	// [Impl(typeof(I_DelAt))]
+	// public IdDel DelAt{get;set;}
 
 	#endregion IPoBase
 
