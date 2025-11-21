@@ -8,6 +8,7 @@ public partial struct Tempus(TPrimitive V)
 	:IEquatable<Tempus>
 	,I_Value<TPrimitive>
 	,IDictSerializable
+	,IComparable
 {
 	public static TStruct Zero = new(0);
 	public TPrimitive Value{get;set;} = V;
@@ -88,7 +89,12 @@ public partial struct Tempus(TPrimitive V)
 		return Value.GetHashCode();
 	}
 
-
+	public int CompareTo(object obj) {
+		if(obj is Tempus t){
+			return Value.CompareTo(t.Value);
+		}
+		return Value.CompareTo(obj);
+	}
 }
 
 public class InMillisecond{

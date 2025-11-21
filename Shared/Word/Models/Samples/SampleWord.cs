@@ -1,11 +1,15 @@
-#if false
+namespace Ngaq.Core.Word.Models.Samples;
+
+using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.Word.Models.Learn_;
+using Ngaq.Core.Shared.Word.Models.Po.Kv;
+using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Word.Models;
-using Ngaq.Core.Word.Models.Po.Learn;
 
-namespace Ngaq.Core.Word.Models.Samples;
 
 public partial class SampleWord{
 	protected static SampleWord? _Inst = null;
@@ -28,20 +32,21 @@ public partial class SampleWord{
 
 	JnWord 持て成す(){
 		var P = KeysProp.Inst;
-		var L = OldConstLearn.Inst;
-		var T = ConstTokens.Inst;
+		// var L = OldConstLearn.Inst;
+		// var T = ConstTokens.Inst;
 		var Ans = new JnWord();
-		Ans.PoWord = new();
-		{var o = Ans.PoWord;
+		Ans.Word = new();
+		{var o = Ans.Word;
 			o.Head = "持て成す";
 			o.Lang = "Japanese";
-			o.Owner = new IdUser();
-			o.UpdatedAt = 1748422873848;
+			o.Owner = new();
+			o.BizUpdatedAt = 1748422873848;
 		}
 
 		{
 			var o = new PoWordProp();
 			Ans.Props.Add(o);
+			o.BizUpdatedAt = Tempus.FromIso("2024-11-21T21:50:14.648+08:00");
 			o.SetStrToken(
 				null,P.description,
 """
@@ -57,6 +62,7 @@ public partial class SampleWord{
 		{
 			var o = new PoWordProp();
 			Ans.Props.Add(o);
+			o.BizUpdatedAt = Tempus.FromIso("2025-06-21T21:50:14.648+08:00");
 			o.SetStrToken(
 				null,P.description,
 """
@@ -95,22 +101,22 @@ public partial class SampleWord{
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Add;
+			o.LearnResult = ELearn.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Add;
+			o.LearnResult = ELearn.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Fgt;
+			o.LearnResult = ELearn.Fgt;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Rmb;
+			o.LearnResult = ELearn.Rmb;
 		}
 		return Ans;
 	}
@@ -122,12 +128,12 @@ public partial class SampleWord{
 		var L = OldConstLearn.Inst;
 		var T = ConstTokens.Inst;
 		var Ans = new JnWord();
-		Ans.PoWord = new();
-		{var o = Ans.PoWord;
+		Ans.Word = new();
+		{var o = Ans.Word;
 			o.Head = "Hello";
 			o.Lang = "English";
-			o.Owner = new IdUser();
-			o.UpdatedAt = 1748422873848;
+			o.Owner = new();
+			o.BizUpdatedAt = 1748422873848;
 		}
 
 		{
@@ -189,22 +195,22 @@ v. 說（或大聲說）“喂”；打招呼
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Add;
+			o.LearnResult = ELearn.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Add;
+			o.LearnResult = ELearn.Add;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Fgt;
+			o.LearnResult = ELearn.Fgt;
 		}
 		{
 			var o = new PoWordLearn();
 			Ans.Learns.Add(o);
-			o.LearnResult = OldELearn.Inst.Rmb;
+			o.LearnResult = ELearn.Rmb;
 		}
 		return Ans;
 
@@ -213,4 +219,3 @@ v. 說（或大聲說）“喂”；打招呼
 
 }
 
-#endif

@@ -17,6 +17,7 @@ public partial struct EItemProp(str V){
 
 /// <summary>
 /// 內置單詞屬性鍵
+/// 勿用Enum語法 緣字符串內容受限于標識符ʹ名
 /// </summary>
 public partial class KeysProp{
 	protected static KeysProp? _Inst = null;

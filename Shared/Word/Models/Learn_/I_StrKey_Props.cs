@@ -17,7 +17,8 @@ public static class ExtnI_StrKey_Props{
 		this IDictionary<str, IList<IProp>> z
 		,IEnumerable<PoWordProp> PoKvs
 	){
-		foreach(var PoKv in PoKvs){
+		var sortedKvs = PoKvs.OrderByDescending(x=>x.BizUpdatedAt).ToList();
+		foreach(var PoKv in sortedKvs){
 			if(PoKv.KType == EKvType.Str){
 				var Prop = PoKv.ToIProp();
 				z.AddInValues(
