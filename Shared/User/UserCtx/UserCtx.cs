@@ -3,6 +3,7 @@ namespace Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Tools;
+using Tsinswreng.CsErr;
 
 public partial class UserCtx
 	: IUserCtx

@@ -1,6 +1,5 @@
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
-using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Service.Parser.Model;
 using Ngaq.Core.Word.Parser;
@@ -38,7 +37,7 @@ public  partial class ParseResultMapper(){
 		,IList<I_DateBlock> DateBlocks
 	){
 		if(Metadata.belong is null){
-			throw new AppErr("Metadata.Belong is null");
+			throw new Exception("Metadata.Belong is null");//TODO i18n
 		}
 		var Ans = new List<JnWord>();
 		foreach(var dateBlock in DateBlocks){

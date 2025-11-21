@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Errors;
 
-using K = IErrItem;
-using static ErrItem;
+using K = Tsinswreng.CsErr.IErrItem;
+using static Tsinswreng.CsErr.ErrItem;
 
 
 public static class ItemsErr{

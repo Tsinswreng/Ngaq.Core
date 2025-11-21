@@ -118,8 +118,12 @@ public partial class AppJsonCtx : JsonSerializerContext {
 
 
 #if false
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.IAppErrView>))]
+
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.AppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.AppErrView>))]
 file class Test{
 
 }

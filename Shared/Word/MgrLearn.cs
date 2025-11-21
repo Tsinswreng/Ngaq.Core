@@ -13,6 +13,7 @@ using Ngaq.Core.Frontend.User;
 using MoonSharp.Interpreter;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
+using Tsinswreng.CsErr;
 
 public enum ELearnOpRtn{
 		Learn = 0

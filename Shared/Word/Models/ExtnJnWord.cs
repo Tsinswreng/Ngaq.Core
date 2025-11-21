@@ -13,6 +13,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Dto;
+using Tsinswreng.CsErr;
 
 public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)

@@ -1,9 +1,6 @@
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.AppErrView))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Infra.Errors.AppErrView>))]
-
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Req.BaseReq))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Req.BaseReq>))]
 
@@ -145,9 +142,6 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.WebAns))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Infra.WebAns>))]
-
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn>))]
 
@@ -157,6 +151,10 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo>))]
 //額外類型
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.IAppErrView>))]
+
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.AppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.AppErrView>))]
 public partial class AppJsonCtx{}

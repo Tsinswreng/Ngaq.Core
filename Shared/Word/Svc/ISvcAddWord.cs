@@ -1,5 +1,5 @@
-using Ngaq.Core.Infra.Core;
 using Ngaq.Core.Tools.Io;
+using Tsinswreng.CsErr;
 
 namespace Ngaq.Core.Service.Word;
 public  partial interface ISvcAddWord{

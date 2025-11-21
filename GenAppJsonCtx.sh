@@ -7,6 +7,7 @@ mkdir -p Tsinswreng.SrcGen
 # > Ngaq.Core/Tsinswreng.SrcGen/AppJsonCtx.g.cs
 
 # 把分散之json序列化註解 集到一個文件中
+mkdir -p Tsinswreng.SrcGen/Tsinswreng.CsIfaceGen/
 cd Tsinswreng.SrcGen/Tsinswreng.CsIfaceGen/
 
 ##
@@ -21,8 +22,12 @@ cat IAppSerializable/* >> $IAppSerializable
 
 cat >> $IAppSerializable <<'EOF'
 //額外類型
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.IWebAns<obj>))]
-[JsonSerializable(typeof(global::Ngaq.Core.Infra.Errors.IAppErrView))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.IAppErrView>))]
+
+[JsonSerializable(typeof(global::Tsinswreng.CsErr.AppErrView))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.AppErrView>))]
 public partial class AppJsonCtx{}
 EOF
 

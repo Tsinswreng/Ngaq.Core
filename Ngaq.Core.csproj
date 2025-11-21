@@ -7,6 +7,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PublishAot>true</PublishAot>
+		<NoWarn>CS8669</NoWarn>
 		<!-- <CompilerGeneratedFilesOutputPath>$(BaseIntermediateOutputPath)\Generated</CompilerGeneratedFilesOutputPath> -->
 	</PropertyGroup>
 
@@ -52,9 +53,9 @@
 		<Compile Include="../Tsinswreng.CsTypeAlias/TypeAlias.cs" />
 		<ProjectReference Include="../Tsinswreng.CsCore/proj/Tsinswreng.CsCore/Tsinswreng.CsCore.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsTools/proj/Tsinswreng.CsTools/Tsinswreng.CsTools.csproj" />
-		<!-- <ProjectReference Include="../Tsinswreng.CsUlid/proj/Tsinswreng.CsUlid/Tsinswreng.CsUlid.csproj" /> -->
 		<ProjectReference Include="../Tsinswreng.CsPage/proj/Tsinswreng.CsPage/Tsinswreng.CsPage.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj" />
+		<ProjectReference Include="../Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj" />
 	</ItemGroup>
 
 
