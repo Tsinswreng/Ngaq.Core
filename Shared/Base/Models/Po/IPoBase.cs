@@ -5,7 +5,7 @@ using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
-
+using Ngaq.Core.Tools;
 
 public partial interface IPoBase
 	:I_ShallowCloneSelf
@@ -53,6 +53,19 @@ public interface IBizCreateUpdateTime{
 
 	#endregion IBizCreateUpdateTime
 
+}
+
+public static class ExtnBizTime{
+	extension(IBizCreateUpdateTime z){
+		public Tempus LatestBizTime{
+			get{
+				if(z.BizUpdatedAt.IsNullOrDefault()){
+					return z.BizCreatedAt;
+				}
+				return z.BizUpdatedAt;
+			}
+		}
+	}
 }
 
 interface I_{
