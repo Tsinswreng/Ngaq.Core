@@ -38,10 +38,10 @@ public class PoRefreshToken
 	public IdClient ClientId{get;set;}
 	public EClientType ClientType{get;set;} = EClientType.Unknown;
 	public Tempus ExpireAt{get;set;}
-	public Tempus? RevokeAt{get;set;}
+	public Tempus RevokeAt{get;set;}
 	public str? RevokeReason{get;set;}
 	public str? IpAddr{get;set;}
-	public Tempus? LastUsedAt{get;set;}
+	public Tempus LastUsedAt{get;set;}
 	/// <summary>
 	/// 保留備用。萬一以後要給第三方限制介面範圍，可直接沿用 OAuth2 scope 思維。
 	/// </summary>

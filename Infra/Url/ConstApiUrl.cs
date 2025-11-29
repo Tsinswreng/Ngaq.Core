@@ -31,10 +31,9 @@ using static Ngaq.Core.Tools.Url;
 
 public partial class ConstUrl{
 	public static Url OpenV1 = Mk(null, ["Open", "V1"]);
-	public static Url OpenUser = Mk(OpenV1, ["Sys", "User"]);
 	//~Open
 		public static Url ApiV1 = Mk(null, ["Api", "V1"]);
-			public static Url User = Mk(ApiV1, ["Sys", "User"]);
+			public static Url _ApiUser = Mk(ApiV1, ["Sys", "User"]);
 			//~Sys
 			public static Url Word = Mk(ApiV1, [nameof(Word)]);
 			//~Word
@@ -42,16 +41,17 @@ public partial class ConstUrl{
 	//~Api
 
 	//勿作深層內部類。䀬ʹ子ʹApi枚舉內部類只置于ConstUrlʹ直ʹ子層
-	public partial class UrlOpenUser{
+	public partial class OpenUser{
 		//public static Url _Root = "";
-		public static Url _Root = OpenUser;
-		public static Url Login = Mk(_Root, [nameof(Login)]);
-		public static Url AddUser = Mk(_Root, [nameof(AddUser)]);
+		public static Url _R = Mk(OpenV1, ["Sys", "User"]);
+		public static Url Login = Mk(_R, [nameof(Login)]);
+		public static Url AddUser = Mk(_R, [nameof(AddUser)]);
+		public static Url TokenRefresh = Mk(_R, ["Token", "Refresh"]);
 	}
 
-	public partial class UrlUser{
-		public static Url _R = OpenUser;
-		public static Url TokenRefresh = Mk(_R, ["Token", "Refresh"]);
+	public partial class ApiUser{
+		public static Url _R = _ApiUser;
+		public static Url Logout = Mk(_R, [nameof(Logout)]);
 	}
 
 

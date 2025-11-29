@@ -15,8 +15,15 @@ public class ItemsClientCfg{
 #endif
 	public static ICfgItem<str> RwCfgPath = Mk(null, [nameof(RwCfgPath)], "Ngaq.Rw.jsonc");
 
-	public static ICfgItem Background = Mk(null, [nameof(Background)], null);
-		public static ICfgItem<IList<object?>> GalleryDirs = Mk(Background, [nameof(GalleryDirs)], (IList<object?>)[]);
+	public class Background{
+		public static ICfgItem _R = Mk(null, [nameof(Background)]);
+		//[EnumOf("")]
+		public static ICfgItem<str> Mode = Mk(_R, [nameof(Mode)], "");
+		public static ICfgItem<IList<object?>> GalleryDirs = Mk(_R, [nameof(GalleryDirs)], (IList<object?>)[]);
+	}
+
+	// public static ICfgItem Background = Mk(null, [nameof(Background)], null);
+	// 	public static ICfgItem<IList<object?>> GalleryDirs = Mk(Background, [nameof(GalleryDirs)], (IList<object?>)[]);
 	public static ICfgItem<str> ServerBaseUrl = Mk(null, [nameof(ServerBaseUrl)], "");
 	public static ICfgItem Ui = Mk(null, [nameof(Ui)], null);
 		public static ICfgItem<f64> BaseFontSize = Mk(Ui, [nameof(BaseFontSize)], 16.0);

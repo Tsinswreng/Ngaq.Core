@@ -4,6 +4,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.UserCtx;
+using Ngaq.Core.Tools;
 
 public class FrontendUserCtx : IFrontendUserCtx{
 	[Obsolete("use LocalUserId or LoginUserId")]
@@ -13,7 +14,15 @@ public class FrontendUserCtx : IFrontendUserCtx{
 	public Tempus AccessTokenExpireAt{get;set;}
 	public str? RefreshToken{get;set;}
 	public Tempus RefreshTokenExpireAt{get;set;}
-	public IdUser LocalUserId{get;set;}
+	public IdUser LocalUserId{
+		get;
+		set{
+			if(value.IsNullOrDefault()){
+				throw new ArgumentNullException("LocalUserId cannot be empty or zero");
+			}
+			field = value;
+		}
+	}
 	public IdUser LoginUserId{get;set;}
 	public IdClient ClientId{get;set;}
 
