@@ -3,7 +3,7 @@ namespace Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Model.Po.Kv;
 
 
-//[Obsolete("需持久化者 則宜用字符串常量枚舉")]
+
 public enum ELearn{
 	Add = 1
 	,Rmb = 2

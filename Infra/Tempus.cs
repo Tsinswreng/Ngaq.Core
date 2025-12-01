@@ -112,4 +112,25 @@ public static class ExtnTempus{
 		return DateTimeOffset.FromUnixTimeMilliseconds(z.Value)
 		.ToString("yyyy-MM-ddTHH:mm:ss.fffzzz", CultureInfo.InvariantCulture);
 	}
+
+	extension(Tempus z){
+		public static bool TryFromIso(str Iso, out TStruct R){
+			R = default;
+			if (string.IsNullOrWhiteSpace(Iso)) return false;
+			const string fmt = "yyyy-MM-ddTHH:mm:ss.fffzzz";   // 含毫秒與時區
+			if (
+				DateTimeOffset.TryParseExact(
+					Iso, fmt,
+					CultureInfo.InvariantCulture,
+					DateTimeStyles.None,
+					out var dto
+				)
+			){
+				R = dto.ToUnixTimeMilliseconds();
+				return true;
+			}
+			return false;
+		}
+	}
+
 }

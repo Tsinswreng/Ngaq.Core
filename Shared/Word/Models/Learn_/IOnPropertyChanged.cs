@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 
 
-public  partial interface I_OnPropertyChanged: INotifyPropertyChanged{
+public partial interface I_OnPropertyChanged: INotifyPropertyChanged{
 	void OnPropertyChanged(str? PropName);
 	// public virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null){
 	// 	PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

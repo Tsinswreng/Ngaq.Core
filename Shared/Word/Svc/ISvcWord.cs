@@ -96,6 +96,11 @@ public partial interface ISvcWord{
 
 	public Task<nil> SyncFromTextWithBlob(IUserCtx User, TextWithBlob TextWithBlob, CT Ct);
 
+	public Task<RespScltWordsOfLearnResultByTimeInterval> ScltAddedWordsByTimeInterval(
+		ReqScltWordsOfLearnResultByTimeInterval Req
+		,CT Ct
+	);
+
 }
 
 
