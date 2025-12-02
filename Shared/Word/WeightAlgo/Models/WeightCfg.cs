@@ -8,9 +8,9 @@ public  partial class WeightCfg{
 	// 	,[3] = 0xffff
 	// };
 	public IList<f64> AddCnt_Bonus = new List<f64>(){
-		0x1,0xff,0xffff,0xfffff //對應 舊版ʹaddWeight
+		0xff,0xfff,0xffff,0xfffff //對應 舊版ʹaddWeight
 	};
-	public f64 DfltAddBonus = 0xffffff;
+	public f64 DfltAddBonus = 0xffffffff;
 	/// <summary>
 	/// ʃᶤ削弱 ʹ分母
 	/// </summary>

@@ -71,9 +71,9 @@ public partial class CalculatorForOne{
 
 	nil _Add(){
 		WordState.CurCntAdd++;
-		var LearnRecord = Word.LearnRecords[(i32)WordState.Pos];
+		var LearnRecord = Word.LearnRecords[WordState.Pos.AsI32()];
 		WordState.CurCntValidRmb = 0;
-		var weight0 = Cfg.AddCnt_Bonus.AtOrDefault((i32)WordState.CurCntAdd-1, Cfg.DfltAddBonus);
+		var weight0 = Cfg.AddCnt_Bonus.AtOrDefault(WordState.CurCntAdd.AsI32()-1, Cfg.DfltAddBonus);
 		var weight = weight0;
 		f64? FinalAddBonus = null;
 		if(WordState.Pos == WordState.PosFinalAdd){
@@ -243,9 +243,10 @@ public partial class CalculatorForOne{
 		var NowDiffFinalAddTime = _NowDiffFinalAddTime();
 		f64 R = NowDiffFinalAddTime;
 		R = Cfg.FinalAddBonusDenominator / R;
-		var LearnedTimes = Word.LearnRecords.Count;
-		R = R / LearnedTimes; //已學習次數越多 加成越少
-		if(R  < 1){
+		//var LearnedTimes = Word.LearnRecords.Count;
+		var Rmb = State.WordState.CurCntRmb+1;//使其不潙0
+		R = R / Rmb; //記得ʹ次數越多 加成越少
+		if(R < 1){
 			R = 1;
 		}
 		return R;
@@ -257,8 +258,9 @@ public partial class CalculatorForOne{
 /// </summary>
 /// <returns></returns>
 	f64 _CalcBonusWhenFinalIsAdd(){
-		var Diff = _Now() - _GetCurLearnRecord().UnixMs;
-		f64 R = (i64)ETimeInMs.Day*3600 / Diff;
+		var DiffMs = _Now() - _GetCurLearnRecord().UnixMs;
+		var DiffS = DiffMs/1000;
+		f64 R = (i64)ETimeInMs.Day*360000 / DiffS; //TODO 置斯常數于參數配置?
 		if(R < 1){
 			R = 1;
 		}
