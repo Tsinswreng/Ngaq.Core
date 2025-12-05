@@ -44,8 +44,9 @@ public partial class CalculatorForOne{
 		return NIL;
 	}
 
-	public Task<nil> RunAsy(CT Ct){
-		return Task.Run(Run, Ct);
+	public async Task<nil> RunAsy(CT Ct){
+		//return Task.Run(Run, Ct);
+		return Run();
 	}
 
 	public nil Run(){
@@ -209,16 +210,18 @@ public partial class CalculatorForOne{
 
 /// <summary>
 /// 含FinalAddBonus
+/// 返值越大 debuff越有效
 /// </summary>
 /// <returns></returns>
 	f64 _CalcDebuff(){
 		f64 R = 1;
 		var Diff = _Now() - _GetCurLearnRecord().UnixMs;
 		var DebuffNumerator = Cfg.DebuffNumerator;
+		//12 小時內學過的詞，降權效果會被極大放大，讓它更不容易再次出現。
 		if((u64)Diff < ETimeInMs.Hour * 12){
-			DebuffNumerator *= 0xffff;
+			DebuffNumerator *= 0xffffffff;
 		}
-		R = DebuffNumerator/(Diff * ((i64)ETimeInMs.Min*100)); // 冀 岡憶得之詞 于100分鐘內不復出
+		R = DebuffNumerator/(Diff - ((i64)ETimeInMs.Min*100)); // 冀 岡憶得之詞 于100分鐘內不復出 ??
 		R = Math.Abs(R);
 		if(R < 1){
 			R = 1;
