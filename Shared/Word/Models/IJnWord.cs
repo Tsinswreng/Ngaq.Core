@@ -4,6 +4,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
@@ -40,6 +41,24 @@ public static class ExtnPropIJnWord{
 
 	extension(IJnWord z){
 		public IdWord Id => z.Word.Id;
+
+
+		public IdUser Owner{
+			get{return z.Word.Owner;}
+			set{z.Word.Owner = value;}
+		}
+
+		public str Lang{
+			get{return z.Word.Lang;}
+			set{z.Word.Lang = value;}
+		}
+
+		public str Head{
+			get{return z.Word.Head;}
+			set{z.Word.Head = value;}
+		}
+
+
 		public IJnWord DeepClone(){
 			var word = (PoWord)z.Word.ShallowCloneSelf();
 			var props = z.Props.Select(x=>(PoWordProp)x.ShallowCloneSelf()).ToList();

@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Infra.Cfg;
 
+using System.Collections;
 using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgItem<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
@@ -36,6 +37,8 @@ public class ItemsClientCfg{
 		public static ICfgItem<str> WordsPackExportPath = Mk(_R, [nameof(WordsPackExportPath)], "");
 		public static ICfgItem<str> WordsPackImportPath = Mk(_R, [nameof(WordsPackImportPath)], "");
 		public static ICfgItem<u64> MaxDisplayedWordCount = Mk(_R, [nameof(MaxDisplayedWordCount)], 50ul);
+		public static ICfgItem<IList<obj?>?> FilterLanguage = Mk(_R, [nameof(FilterLanguage)], (IList<obj?>)null);
+		public static ICfgItem<bool> EnableRandomBackground = Mk(_R, [nameof(EnableRandomBackground)], false);
 	}
 
 }

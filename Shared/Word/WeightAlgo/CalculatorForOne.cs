@@ -100,8 +100,10 @@ public partial class CalculatorForOne{
 		){
 			debuff = _CalcDebuff();
 			var weight = weight0 * debuff;
+			No0(ref weight);
 			WordState.Weight /= weight;
 		}else{
+			No0(ref weight0);
 			WordState.Weight /= weight0;
 		}
 		//TODO log change
@@ -234,9 +236,6 @@ public partial class CalculatorForOne{
 	}
 
 
-
-
-
 /// <summary>
 /// 末次 加事件越近、加成越大。
 /// 非 唯末事件潙加旹纔起效
@@ -245,6 +244,7 @@ public partial class CalculatorForOne{
 	f64 _CalcFinalAddBonus(){
 		var NowDiffFinalAddTime = _NowDiffFinalAddTime();
 		f64 R = NowDiffFinalAddTime;
+		No0(ref R);
 		R = Cfg.FinalAddBonusDenominator / R;
 		//var LearnedTimes = Word.LearnRecords.Count;
 		var Rmb = State.WordState.CurCntRmb+1;//使其不潙0
@@ -263,7 +263,8 @@ public partial class CalculatorForOne{
 	f64 _CalcBonusWhenFinalIsAdd(){
 		var DiffMs = _Now() - _GetCurLearnRecord().UnixMs;
 		var DiffS = DiffMs/1000;
-		f64 R = (i64)ETimeInMs.Day*360000 / DiffS; //TODO 置斯常數于參數配置?
+		No0(ref DiffS);
+		f64 R = (i64)ETimeInMs.Day*360000 / DiffS;
 		if(R < 1){
 			R = 1;
 		}
@@ -277,6 +278,18 @@ public partial class CalculatorForOne{
 			throw new Exception("final Add time is earlier than now");
 		}
 		return R;
+	}
+
+	static void No0(ref f64 z){
+		if(z == 0){
+			z = 1;
+		}
+	}
+
+	static void No0(ref i64 z){
+		if(z == 0){
+			z = 1;
+		}
 	}
 
 
