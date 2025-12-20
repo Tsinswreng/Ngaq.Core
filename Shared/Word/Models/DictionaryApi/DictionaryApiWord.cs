@@ -3,7 +3,6 @@ namespace Ngaq.Core.Shared.Word.Models.DictionaryApi;
 using Ngaq.Core.Infra.IF;
 
 
-
 public class License:IAppSerializable{
 	public str name{get;set;}
 	public str url{get;set;}

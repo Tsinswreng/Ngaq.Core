@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Tools.Json;
 
 using System.Collections;
-
+//TODO 作公共庫
 public interface IKvNode{
 	public obj? ValueObj{get;set;}
 	public IKvNode? this[int index] { get; set; }
