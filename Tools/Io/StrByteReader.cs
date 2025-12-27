@@ -1,8 +1,8 @@
-using Ngaq.Core.Stream;
+using Ngaq.Core.Iter;
 
 namespace Ngaq.Core.Tools.Io;
 
-public  partial class StrByteReader: IIter<u8>{
+public  partial class StrByteReader: IIterable<u8>{
 	public str Str{get;set;}
 	public u8[] Bytes{get;set;}
 	public u64 Pos{get;set;}=0;

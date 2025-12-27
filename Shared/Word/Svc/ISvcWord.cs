@@ -5,7 +5,7 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
-using Ngaq.Core.Stream;
+using Ngaq.Core.Iter;
 using Tsinswreng.CsPage;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.User.UserCtx;

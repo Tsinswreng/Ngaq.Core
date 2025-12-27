@@ -17,6 +17,22 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Definition))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_Definition = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Definition";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_DictionaryApiWord = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_Dto_DtoCompressedWords = "global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords";
@@ -81,6 +97,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_StudyPlan_IdStudyPlan = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.IdUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Po_User_IdUser = "global::Ngaq.Core.Shared.User.Models.Po.User.IdUser";
@@ -92,6 +116,22 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Po_UserRole_IdUserRole = "global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightArg_IdWeightArg = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightCalculator_IdWeightCalculator = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator";
 	}
 }
 
@@ -217,6 +257,30 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_License = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_Meaning = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_Phonetic = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Base.Models.Po.PoBase))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Base_Models_Po_PoBase = "global::Ngaq.Core.Shared.Base.Models.Po.PoBase";
@@ -281,9 +345,33 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.PoStudyPlan))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_StudyPlan_PoStudyPlan = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.PoStudyPlan";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.PoUser))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Po_User_PoUser = "global::Ngaq.Core.Shared.User.Models.Po.User.PoUser";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightArg_PoWeightArg = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightCalculator_PoWeightCalculator = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator";
 	}
 }
 
@@ -345,6 +433,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqLookup = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqPackWords = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords";
@@ -361,6 +457,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqScltWordsOfLearnResultByTimeInterval = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespLogin))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Resp_RespLogin = "global::Ngaq.Core.Shared.User.Models.Resp.RespLogin";
@@ -369,9 +473,25 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.RespLookup))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_RespLookup = "global::Ngaq.Core.Shared.Word.Models.Dto.RespLookup";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Resp_RespRefreshBothToken = "global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.RespScltWordsOfLearnResultByTimeInterval))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Dto_RespScltWordsOfLearnResultByTimeInterval = "global::Ngaq.Core.Shared.Word.Models.Dto.RespScltWordsOfLearnResultByTimeInterval";
 	}
 }
 

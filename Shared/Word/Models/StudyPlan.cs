@@ -1,3 +1,4 @@
+//只是草稿
 namespace Ngaq.Core.Shared.Word.Models;
 
 using Ngaq.Core.Tools.Json;
@@ -82,6 +83,7 @@ public class CfgWeight{
 		TimeFilter:{//暫不支持
 
 		},
+		//可能還有更多其他字段
 	},
 }
 #endif

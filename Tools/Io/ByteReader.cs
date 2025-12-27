@@ -7,11 +7,11 @@ c# 異步流式讀文件、每次讀一部分。
 using W = byte;
 using System.Text;
 using Chunk = System.ArraySegment<byte>;
-using Ngaq.Core.Stream;
+using Ngaq.Core.Iter;
 
 namespace Ngaq.Core.Tools.Io;
 
-public  partial class ByteReader: IIter<u8>, IDisposable{
+public  partial class ByteReader: IIterable<u8>, IDisposable{
 
 	public str Path{get; set;}
 

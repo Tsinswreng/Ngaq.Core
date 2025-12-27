@@ -1,9 +1,9 @@
-namespace Ngaq.Core.Stream;
-public partial class EnumeratorAsIter<T> : IIter<T> {
+namespace Ngaq.Core.Iter;
+public partial class EnumeratorAsItbl<T> : IIterable<T> {
 	private readonly IEnumerator<T> _enumerator;
 	private bool _hasNext;
 
-	public EnumeratorAsIter(IEnumerator<T> enumerator) {
+	public EnumeratorAsItbl(IEnumerator<T> enumerator) {
 		_enumerator = enumerator ?? throw new ArgumentNullException();
 		_hasNext = enumerator.MoveNext(); // 预加载第一个元素
 	}

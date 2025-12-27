@@ -7,6 +7,12 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.BaseResp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Resp.BaseResp>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Definition))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Definition>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.DtoCompressedWords>))]
 
@@ -31,11 +37,20 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.IdUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.IdUser>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Po.Word.IdWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Po.Word.IdWord>))]
@@ -82,6 +97,15 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Bo.Jwt.Jti))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Bo.Jwt.Jti>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Po.PoBase))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Po.PoBase>))]
 
@@ -106,8 +130,17 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.RolePermission.PoRolePermission>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.PoStudyPlan))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.PoStudyPlan>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.PoUser>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.PoWeightCalculator>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.Word.PoWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.Word.PoWord>))]
@@ -130,17 +163,29 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqLogin>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqPackWords>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqRefreshTheToken>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespLogin>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.RespLookup))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.RespLookup>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespRefreshBothToken>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.RespScltWordsOfLearnResultByTimeInterval))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.RespScltWordsOfLearnResultByTimeInterval>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.WordForLearn>))]

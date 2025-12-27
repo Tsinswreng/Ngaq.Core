@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Word.WeightAlgo;
+namespace Ngaq.Core.Shared.Word.WeightAlgo;
 
 using System.Runtime.CompilerServices;
 using Ngaq.Core.Word.Models;
@@ -9,11 +9,14 @@ using Ngaq.Core.Word.WeightAlgo.Models;
 using System.Threading.Channels;
 using System.Threading.Tasks.Dataflow;
 using Ngaq.Core.Shared.Word.Models.Learn_;
+using Ngaq.Core.Tools.Json;
 
 public partial class WeightCalculator : IWeightCalctr {
 
+	[Impl]
 	public async Task<IWeightResult> CalcAsy(
 		IAsyncEnumerable<IWordForLearn> Words
+		,IKvNode? CalcArg
 		,CT Ct
 	){
 		var cfg = new CfgWeightResult {
@@ -44,6 +47,9 @@ public partial class WeightCalculator : IWeightCalctr {
 					}
 					// 每個詞獨立 new CalculatorForOne，保證執行緒安全
 					var calc = new CalculatorForOne();
+					if(CalcArg is not null){
+						calc.Cfg.InitFromKv(CalcArg);
+					}
 					calc.Init(WeightWord.FromWordForLearn(word));
 					await calc.RunAsy(innerCt);
 
@@ -67,12 +73,12 @@ public partial class WeightCalculator : IWeightCalctr {
 		};
 	}
 
-	public async Task<IWeightResult> CalcAsy(
-		IEnumerable<IWordForLearn> Words,
-		CT Ct
-	){
-		return await CalcAsy(Words.ToAsyncEnumerable(), Ct);
-	}
+	// public async Task<IWeightResult> CalcAsy(
+	// 	IEnumerable<IWordForLearn> Words,
+	// 	CT Ct
+	// ){
+	// 	return await CalcAsy(Words.ToAsyncEnumerable(), Ct);
+	// }
 
 	private static async IAsyncEnumerable<IWordWeightResult> ReadResultsAsyE(
 		ChannelReader<IWordWeightResult> reader,

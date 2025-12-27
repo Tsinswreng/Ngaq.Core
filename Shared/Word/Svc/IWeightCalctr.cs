@@ -3,6 +3,7 @@ namespace Ngaq.Core.Word.Svc;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Ngaq.Core.Shared.Word.Models.Learn_;
+using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.Models;
 using Ngaq.Core.Word.Models.Weight;
 
@@ -16,13 +17,16 @@ public partial interface IWeightCalctr{
 	// 	,CT Ct
 	// );
 
-	public Task<IWeightResult> CalcAsy(
-		IEnumerable<IWordForLearn> Word
-		,CT Ct
-	);
+	// [Obsolete]
+	// public Task<IWeightResult> CalcAsy(
+	// 	IEnumerable<IWordForLearn> Word
+	// 	,IKvNode? CalcArg
+	// 	,CT Ct
+	// );
 
 	public Task<IWeightResult> CalcAsy(
 		IAsyncEnumerable<IWordForLearn> Word
+		,IKvNode? CalcArg
 		,CT Ct
 	);
 

@@ -1,10 +1,23 @@
 namespace Ngaq.Core.Tools.Json;
 
 using System.Collections;
-//TODO 作公共庫
+//TODO 作公共庫 //TODO 把Dict相關操作 獨立作CsDictTools
 public interface IKvNode{
+	/// <summary>
+	/// IDictionary | IList
+	/// </summary>
 	public obj? ValueObj{get;set;}
+	/// <summary>
+	/// get 取不到旹返null
+	/// </summary>
+	/// <param name="index"></param>
+	/// <returns></returns>
 	public IKvNode? this[int index] { get; set; }
+	/// <summary>
+	/// get 取不到旹返null
+	/// </summary>
+	/// <param name="prop"></param>
+	/// <returns></returns>
 	public IKvNode? this[str prop] { get; set; }
 }
 

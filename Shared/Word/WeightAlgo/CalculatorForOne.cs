@@ -1,8 +1,11 @@
+namespace Ngaq.Core.Shared.Word.WeightAlgo;
+
 using Ngaq.Core.Shared.Word.Models.Learn_;
+using Ngaq.Core.Shared.Word.WeightAlgo.Models;
 using Ngaq.Core.Word.WeightAlgo.Models;
 using Tsinswreng.CsTools;
 
-namespace Ngaq.Core.Word.WeightAlgo;
+
 
 public partial class CalculatorForOne{
 	public WeightCfg Cfg{get;set;} = new();

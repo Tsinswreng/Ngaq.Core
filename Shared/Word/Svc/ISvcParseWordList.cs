@@ -3,7 +3,7 @@ namespace Ngaq.Core.Shared.Word.Svc;
 using System.Text;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Model;
-using Ngaq.Core.Stream;
+using Ngaq.Core.Iter;
 using Ngaq.Core.Tools.Io;
 
 
@@ -33,7 +33,7 @@ public partial interface ISvcParseWordList{
 	);
 
 	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncodingAsy(
-		IIter<u8> Iter
+		IIterable<u8> Iter
 		,Encoding Encoding
 		, CT ct = default
 	);
