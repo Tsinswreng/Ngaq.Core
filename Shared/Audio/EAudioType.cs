@@ -1,5 +1,7 @@
 namespace Ngaq.Core.Shared.Audio;
 public enum EAudioType{
-	Unknown
+	Unknown,
+	Mp3,
+	Wav,
 }
 

@@ -10,8 +10,6 @@ using Ngaq.Core.Shared.Word.WeightAlgo;
 namespace Ngaq.Core;
 public static class DiCore{
 	public static IServiceCollection SetupCore(this IServiceCollection z){
-		string? a;
-		str b = null;
 		z.AddSingleton<ICfgAccessor>(AppCfg.Inst);
 		z.AddTransient<MgrLearn, MgrLearn>();
 		z.AddScoped<IWeightCalctr, SvcWeight>();

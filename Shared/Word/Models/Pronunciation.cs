@@ -1,21 +1,50 @@
-using Ngaq.Core.Shared.Audio;
-
 namespace Ngaq.Core.Shared.Word.Models;
-
-
-public class Audio{
-	public EAudioType Type{get;set;}
-	public Stream? Data{get;set;}
-
-}
+using Ngaq.Core.Shared.Audio;
+using Tsinswreng.CsErr;
 
 public class Pronunciation{
+	[See(nameof(ELang))]
 	public str Lang{get;set;} = "";
 	//如 Ipa, 假名 等
+	[See(nameof(EPronunciationTextType))]
 	public str TextType{get;set;} = "";
 	public str Text{get;set;} = "";
 	public str? AudioUrl{get;set;}
 	public Audio? Audio{get;set;}
+	public class Sample{
+		public static IList<Pronunciation> Samples = [];
+		static Sample(){
+	#if DEBUG
+			{
+				var o = new Pronunciation();
+				Samples.Add(o);
+				o.Text = "həˈləʊ";
+				o.AudioUrl = "https://api.dictionaryapi.dev/media/pronunciations/en/hello-uk.mp3";
+			}
+	#endif
+		}
+	}
+}
+
+
+
+public static class ExtnPronunciation{
+	extension(Pronunciation z){
+		public async Task<IAnswer<nil>> AssignAudioFromUrl(CT Ct){
+			var R = new Answer<nil>();
+			if(str.IsNullOrEmpty(z.AudioUrl)){
+				return R.AddErr("AudioUrl is null or empty.");
+			}
+			try{
+				var OnlineAudio = new OnlineAudio();
+				z.Audio = await OnlineAudio.GetAsy(z.AudioUrl);
+			}
+			catch (System.Exception e){
+				return R.AddErr(e);
+			}
+			return R.OkWith(NIL);
+		}
+	}
 }
 
 public enum ELang{
