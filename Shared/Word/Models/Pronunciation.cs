@@ -37,7 +37,7 @@ public static class ExtnPronunciation{
 			}
 			try{
 				var OnlineAudio = new OnlineAudio();
-				z.Audio = await OnlineAudio.GetAsy(z.AudioUrl);
+				z.Audio = await OnlineAudio.Get(z.AudioUrl, Ct);
 			}
 			catch (System.Exception e){
 				return R.AddErr(e);

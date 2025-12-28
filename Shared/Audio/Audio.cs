@@ -1,10 +1,13 @@
 namespace Ngaq.Core.Shared.Audio;
 public class Audio{
-	public Audio(Stream Data, EAudioType Type){
-		this.Data = Data;
+	public Audio(Func<CT, Task<Stream>> Data, EAudioType Type){
+		this.MkrData = Data;
 		this.Type = Type;
 	}
 	public EAudioType Type{get;set;}
-	public Stream Data{get;set;}
+	/// <summary>
+	/// 若其流潙 不可褈讀、則每次璫返新ʹ流物件
+	/// </summary>
+	public Func<CT, Task<Stream>> MkrData{get;set;}
 
 }
