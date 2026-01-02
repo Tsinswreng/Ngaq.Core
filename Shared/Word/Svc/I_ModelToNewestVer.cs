@@ -1,6 +1,6 @@
 using Ngaq.Core.Shared.Base.Models.Po;
 
-namespace Ngaq.Core.Word.Svc;
+namespace Ngaq.Core.Shared.Word.Svc;
 
 public partial interface I_ModelToNewestVer<TModel>
 	where TModel: I_BizTimeVer

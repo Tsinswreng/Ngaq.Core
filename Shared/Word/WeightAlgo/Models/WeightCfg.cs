@@ -1,6 +1,7 @@
 using System.Collections;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.WeightAlgo.Models;
+using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Shared.Word.WeightAlgo.Models;
 

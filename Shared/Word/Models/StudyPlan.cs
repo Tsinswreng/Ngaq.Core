@@ -3,7 +3,7 @@ namespace Ngaq.Core.Shared.Word.Models;
 
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.Svc;
-
+using Tsinswreng.CsTools;
 
 public struct IdStudyPlan{
 

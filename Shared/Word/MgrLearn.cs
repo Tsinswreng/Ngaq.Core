@@ -16,10 +16,10 @@ using Microsoft.Extensions.Logging;
 using Tsinswreng.CsErr;
 
 public enum ELearnOpRtn{
-		Learn = 0
-		,Undo = 1
-		,Invalid = 2
-	}
+	Learn = 0
+	,Undo = 1
+	,Invalid = 2
+}
 
 public partial class OperationStatus{
 	public bool Load = false;
