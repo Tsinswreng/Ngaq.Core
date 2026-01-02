@@ -98,6 +98,7 @@ public partial class MgrLearn{
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
 	public IWeightCalctr WeightCalctr{get;set;}
+	public IKvNode? WeightArg {get;set;}   // ← 新加
 	ILogger? Logger;
 	public MgrLearn(
 		ISvcWord SvcWord
@@ -148,7 +149,7 @@ public partial class MgrLearn{
 		var z = this;
 		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
 		var sw = Stopwatch.StartNew();
-		var WeightResult = await WeightCalctr.CalcAsy(WordsForLearn, null, Ct);//TODO 傳 權重參數
+		var WeightResult = await WeightCalctr.CalcAsy(WordsForLearn, WeightArg, Ct);
 		sw.Stop();
 		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
 
@@ -182,7 +183,7 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn.ToAsyncEnumerable(), null, Ct);//TODO 傳權重參數
+		var WeightResult = await WeightCalctr.CalcAsy(State.WordsToLearn.ToAsyncEnumerable(), WeightArg, Ct);//TODO 傳權重參數
 		await HandleWeightResult(WeightResult, Ct);
 
 		return NIL;

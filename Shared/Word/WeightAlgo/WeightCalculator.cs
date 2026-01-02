@@ -49,6 +49,7 @@ public partial class WeightCalculator : IWeightCalctr {
 					// 每個詞獨立 new CalculatorForOne，保證執行緒安全
 					var calc = new CalculatorForOne();
 					if(CalcArg is not null){
+						calc.Cfg = new();
 						calc.Cfg.InitFromKv(CalcArg);
 					}
 					calc.Init(WeightWord.FromWordForLearn(word));

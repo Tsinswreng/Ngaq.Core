@@ -78,12 +78,31 @@ public class CfgWeight{
 		],
 		LangFilter: {
 			Include: ["English"],
-			Exclude: ["English"],
+			Exclude: ["Japanese"],
 		},
 		TimeFilter:{//暫不支持
 
 		},
 		//可能還有更多其他字段
 	},
+}
+
+{
+  "CoreFilter": {
+    "Lang": { "In": ["English"], "Exclude": ["Japanese"] },
+    "Owner": { "In": ["UserA"] }
+  },
+  "PropFilter": [
+    {
+      "Key": ":tag",
+      "Mode": "All", // All: 必須包含所有標籤; Any: 包含其中之一; None: 排除
+      "Values": ["grammar", "oxford"]
+    },
+    {
+      "Key": ":source",
+      "Mode": "Any",
+      "Values": ["News", "Book"]
+    }
+  ]
 }
 #endif
