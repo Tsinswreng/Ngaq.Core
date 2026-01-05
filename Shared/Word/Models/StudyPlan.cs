@@ -61,48 +61,98 @@ public class CfgWeight{
 	WeightCalctr: {
 		Type: "Cli",
 		Content: "./NgaqWeight.exe",
-		Arg: {//若潙Cli則把Arg序列化作json後 當命令行參數傳入。若潙腳本則作Dict傳入
+		Arg: {
 			AddCnt_Bonus: [0xff,0xfff,0xffff,0xfffff],
 			DebuffNumerator: 36
 		}
 	},
 	PreFilter: {
-		FieldFilter: [
-			{
-				Field: "tag",
-				Filter: {
-					Include: ["grammar"],
-					Exclude: [],
-				}
-			},
-		],
-		LangFilter: {
-			Include: ["English"],
-			Exclude: ["Japanese"],
-		},
-		TimeFilter:{//暫不支持
 
-		},
-		//可能還有更多其他字段
 	},
 }
 
 {
-  "CoreFilter": {
-    "Lang": { "In": ["English"], "Exclude": ["Japanese"] },
-    "Owner": { "In": ["UserA"] }
-  },
-  "PropFilter": [
-    {
-      "Key": ":tag",
-      "Mode": "All", // All: 必須包含所有標籤; Any: 包含其中之一; None: 排除
-      "Values": ["grammar", "oxford"]
-    },
-    {
-      "Key": ":source",
-      "Mode": "Any",
-      "Values": ["News", "Book"]
-    }
-  ]
+	"CoreFilter": {
+		{
+			"Fields": ["Lang"],
+			"Filters": [
+				{
+					"ValueType": "String",
+					"Operation": "IncludeAll",
+					"Values": ["English"]
+				},
+				{
+					"ValueType": "String",
+					"Operation": "ExcludeAll",
+					"Values": ["Japanese"]
+				},
+			]
+		}
+		{
+			"Fields": ["CreatedAt"],
+			"Filters": [
+				{
+					"ValueType": "Number",
+					"Operation": "Gt",
+					"Values": [1707600693739]
+				}
+			]
+		}
+	},
+	"PropFilter": [
+		{
+			"Fields": ["tag"],
+			"Filters": [
+				{
+					"ValueType": "String",
+					"Operation": "IncludeAll",
+					"Values": ["grammar"]
+				}
+			]
+		},
+		{
+			"Fields": ["source"],
+			"Filters": [
+				{
+					"ValueType": "String",
+					"Operation": "IncludeAll",
+					"Values": ["News", "Book"]
+				}
+			]
+		}
+	]
 }
 #endif
+
+
+public enum EFilterOperationMode{
+	Null=0,
+	IncludeAny,
+	IncludeAll,
+	ExcludeAll,
+	/// >
+	Gt,
+	/// >=
+	Ge,
+	/// <
+	Lt,
+	/// <=
+	Le,
+	/// =
+	Eq,
+	/// !=
+	Ne,
+}
+
+public enum EValueType{
+	Null=0,
+	String,
+	Number,
+	//TimeUnixMs,
+}
+
+public class FilterItem{
+	public EFilterOperationMode Operation{get;set;}
+	public EValueType ValueType{get;set;}
+	public IList<str> Values{get;set;} = [];
+}
