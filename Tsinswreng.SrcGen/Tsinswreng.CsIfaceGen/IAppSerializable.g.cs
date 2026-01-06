@@ -28,6 +28,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>))]
 
@@ -120,6 +123,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken>))]

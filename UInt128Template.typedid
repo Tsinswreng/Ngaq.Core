@@ -1,3 +1,5 @@
+//不能寫using語句 否則源生成 謬
+//叵續ˣ定義無參構造器、蓋源生成器生成旹默認已給構造器。
 static class Extn{
 	public static u8[] ToByteArr(this UInt128 z){
 		return global::Tsinswreng.CsTools.ToolUInt128.ToByteArr(z);
@@ -38,7 +40,7 @@ partial struct PLACEHOLDERID
 	}
 
 	public PLACEHOLDERID():this(0){
-		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
+		Value = Ngaq.Core.Tools.ToolId.NewGuidV7UInt128();
 	}
 
 	public static PLACEHOLDERID FromLow64Base(string Low64Base){
@@ -102,14 +104,17 @@ partial struct PLACEHOLDERID
 	/// <param name="R">解析成功时返回的PLACEHOLDERID，失败时为默认值</param>
 	/// <returns>解析成功返回true，失败返回false</returns>
 	public static bool TryParse(string? S, out PLACEHOLDERID R){
-		try{
-			R = FromLow64Base(S);
-			return true;
-		}
-		catch (Exception){
-			R = default;
+		if(S is null){
+			R = default!;
 			return false;
 		}
+		if(Tsinswreng.CsTools.ToolUInt128.TryLow64BaseToUInt128(S, out var Num)){
+			R = new PLACEHOLDERID(Num);
+			return true;
+		}
+		R = default!;
+		return false;
 	}
 
 }
+

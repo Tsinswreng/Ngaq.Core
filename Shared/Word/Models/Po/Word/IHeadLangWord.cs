@@ -1,9 +1,12 @@
 //#define Impl
 namespace Ngaq.Core.Word.Models.Po.Word;
 
+using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 
-public partial interface IHeadLangWord{
+public partial interface IHeadLangWord
+	:I_Owner
+{
 
 	#region IHeadLangWord
 
@@ -21,7 +24,6 @@ public partial interface IHeadLangWord{
 		="";
 	#endif
 
-	public IdUser Owner{get;set;}
 
 	#endregion IHeadLangWord
 }

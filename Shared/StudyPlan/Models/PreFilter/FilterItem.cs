@@ -6,4 +6,3 @@ public class FilterItem{
 	public EValueType ValueType{get;set;}
 	public IList<obj?> Values{get;set;} = [];
 }
-

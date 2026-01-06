@@ -13,6 +13,7 @@ typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.P
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Sys.Models.IdKv>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>),
+typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Po.Role.IdRole>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>),

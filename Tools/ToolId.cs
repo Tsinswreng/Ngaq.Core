@@ -4,10 +4,12 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Tools;
 
-public  partial class ToolId{
-	public static UInt128 NewUlidUInt128(){
-		var bytes = Ulid.NewUlid().ToByteArray();
-		return ToolUInt128.ByteArrToUInt128(bytes);
+public partial class ToolId{
+	unsafe public static UInt128 NewGuidV7UInt128(){
+		// var bytes = Ulid.NewUlid().ToByteArray();
+		// return ToolUInt128.ByteArrToUInt128(bytes);
+		var guid = Guid.CreateVersion7();
+		return *(UInt128*)&guid;
 	}
 }
 

@@ -14,8 +14,8 @@ public enum EFilterOperationMode{
 	Lt,
 	/// <=
 	Le,
-	/// =
+	/// =     Eq Null -> `IS NULL`
 	Eq,
-	/// !=
+	/// !=    Ne Null -> `IS NOT NULL`
 	Ne,
 }

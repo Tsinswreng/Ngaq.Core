@@ -73,6 +73,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_PreFilter_IdPreFilter = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_RefreshToken_IdRefreshToken = "global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken";
@@ -316,6 +324,14 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Models_Sys_Po_Permission_PoPermission = "global::Ngaq.Core.Models.Sys.Po.Permission.PoPermission";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_PreFilter_PoPreFilter = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter";
 	}
 }
 

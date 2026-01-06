@@ -41,7 +41,7 @@ partial struct PLACEHOLDERID
 	}
 
 	public PLACEHOLDERID():this(0){
-		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
+		Value = Ngaq.Core.Tools.ToolId.NewGuidV7UInt128();
 	}
 
 	public static PLACEHOLDERID FromLow64Base(string Low64Base){
