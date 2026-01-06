@@ -13,6 +13,7 @@ public partial interface IPoWord
 	,I_Id<IdWord>
 	,IHeadLangWord
 	,IBizCreateUpdateTime
+	,I_Owner
 {
 	/// <summary>
 	/// 最早ʹ入庫ʹ時 作增量同步ʹʃ依

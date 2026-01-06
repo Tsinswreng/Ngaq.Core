@@ -2,7 +2,8 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 
 
 public enum EWeightCalculatorType{
+	Unknown,
 	Cli,
-	Dll,//不支持
+	Dll,//暫不支持
 	Js,
 }
