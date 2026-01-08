@@ -17,7 +17,7 @@ public partial class WeightCalculator : IWeightCalctr {
 	[Impl]
 	public async Task<IWeightResult> CalcAsy(
 		IAsyncEnumerable<IWordForLearn> Words
-		,IKvNode? CalcArg
+		,IJsonNode? CalcArg
 		,CT Ct
 	){
 		var cfg = new CfgWeightResult {

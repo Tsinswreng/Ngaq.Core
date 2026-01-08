@@ -27,7 +27,7 @@ public partial interface IWeightCalctr{
 
 	public Task<IWeightResult> CalcAsy(
 		IAsyncEnumerable<IWordForLearn> Word
-		,IKvNode? CalcArg
+		,IJsonNode? CalcArg
 		,CT Ct
 	);
 

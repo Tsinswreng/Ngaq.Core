@@ -23,7 +23,7 @@ public partial class WeightCfg{
 	public f64 Base = 20;
 	public f64 FinalAddBonusDenominator = ETimeInMs.Day*3000;
 
-	public void InitFromKv(IKvNode Kv){
+	public void InitFromKv(IJsonNode Kv){
 		var z = this;
 		var AddCnt_Bonus = Kv[nameof(z.AddCnt_Bonus)];
 		if(AddCnt_Bonus is IList L){

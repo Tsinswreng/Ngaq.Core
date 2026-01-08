@@ -49,7 +49,7 @@ public enum EWeightCalctrType{
 public class CfgWeight{
 	public IWeightCalctr WeightCalctr{get;set;}
 	public EWeightCalctrType Type{get;set;}
-	public IKvNode Arg{get;set;}
+	public IJsonNode Arg{get;set;}
 }
 
 

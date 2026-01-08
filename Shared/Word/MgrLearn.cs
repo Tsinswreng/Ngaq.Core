@@ -98,7 +98,7 @@ public partial class MgrLearn{
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
 	public IWeightCalctr WeightCalctr{get;set;}
-	public IKvNode? WeightArg {get;set;}   // ← 新加
+	public IJsonNode? WeightArg {get;set;}   // ← 新加
 	ILogger? Logger;
 	public MgrLearn(
 		ISvcWord SvcWord
