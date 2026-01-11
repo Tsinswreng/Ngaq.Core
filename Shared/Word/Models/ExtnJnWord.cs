@@ -14,11 +14,31 @@ using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsErr;
+using Tsinswreng.CsDictMapper;
 
 public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)
 		where TSelf:IJnWord
 	{
+
+		public IDictionary<str, obj?> ToDict(
+			IDictMapperShallow DictMapper
+		){
+			var R = new Dictionary<str, obj?>();
+			R[nameof(IJnWord.Word)] = DictMapper.ToDictShallowT(z.Word);
+			var props = new List<IDictionary<str, obj?>>();
+			R[nameof(IJnWord.Props)] = props;
+			foreach(var prop in z.Props){
+				props.Add(DictMapper.ToDictShallowT(prop));
+			}
+			var learns = new List<IDictionary<str, obj?>>();
+			R[nameof(IJnWord.Learns)] = learns;
+			foreach(var learn in z.Learns){
+				learns.Add(DictMapper.ToDictShallowT(learn));
+			}
+			return R;
+		}
+
 		/// <summary>
 		/// 把諸資產之外鍵設潙主Word之id
 		/// </summary>

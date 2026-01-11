@@ -21,5 +21,5 @@ public partial interface IWordForLearn
 	,I_ShallowCloneSelf
 	,IBizCreateUpdateTime
 {
-
+	public IJnWord JnWord{get;set;}
 }

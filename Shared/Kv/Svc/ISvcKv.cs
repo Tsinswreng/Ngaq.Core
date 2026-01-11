@@ -2,24 +2,33 @@ namespace Ngaq.Core.Shared.Kv.Svc;
 
 using Ngaq.Core.Shared.Kv.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
+using Tsinswreng.CsSqlHelper;
 
 
 /// <summary>
-/// TODO  增接口㕥刪; 供ᵣ裸ʹFn接口 便于 在外部組合事務
+/// TODO  增接口㕥刪(軟/硬);
 /// </summary>
 public partial interface ISvcKv{
 
-	public Task<PoKv?> GetByOwnerEtKeyAsy(IdUser Owner, obj Key, CT Ct);
-	public Task<nil> SetAsy(PoKv Po, CT Ct);
-	public Task<nil> SetManyAsy(IEnumerable<PoKv> Pos, CT Ct);
+	public Task<Func<
+		IdUser
+		,obj
+		,CT, Task<PoKv?>
+	>> FnGetByOwnerEtKey(IDbFnCtx Ctx, CT Ct);
+	public Task<PoKv?> GetByOwnerEtKey(IdUser Owner, obj Key, CT Ct);
 
 
-	// [Obsolete]
-	// public Task<PoKv?> GetByKStr(IUserCtx UserCtx, str Key, CT Ct);
+	public Task<Func<
+		PoKv
+		,CT, Task<nil>
+	>> FnSet(IDbFnCtx Ctx, CT Ct);
 
-	// [Obsolete]
-	// public Task<nil> SetVStrByKStr(IUserCtx UserCtx, str Key, str Value, CT Ct);
-	// [Obsolete]
-	// public Task<nil> SetVI64ByKStr(IUserCtx UserCtx, str Key, i64 Value, CT Ct);
+	public Task<nil> Set(PoKv Po, CT Ct);
+
+	public Task<Func<
+		IEnumerable<PoKv>
+		,CT, Task<nil>
+	>> FnSetMany(IDbFnCtx Ctx, CT Ct);
+	public Task<nil> SetMany(IEnumerable<PoKv> Pos, CT Ct);
 
 }

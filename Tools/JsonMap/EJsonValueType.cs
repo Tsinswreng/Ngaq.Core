@@ -5,7 +5,7 @@ namespace Ngaq.Core.Tools.JsonMap;
 
 複雜ₐ嵌套對象ˇ不支持。
 
-需改複雜ₐ嵌套對象旹 宜新建{nameof(UiJsonMapItem)}ⁿ用{nameof(UiJsonMapItem.Path)}
+需改複雜ₐ嵌套對象旹 宜新建{nameof(UiJsonMapItem)}ⁿ用{nameof(UiJsonMapItem.PathStr)}
 精準定位至其簡單ₐ字段
 ")]
 public enum EJsonValueType{

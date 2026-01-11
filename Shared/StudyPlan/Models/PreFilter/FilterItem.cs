@@ -6,3 +6,4 @@ public class FilterItem{
 	public EValueType ValueType{get;set;}
 	public IList<obj?> Values{get;set;} = [];
 }
+//TODO 璫支持 且 或 非

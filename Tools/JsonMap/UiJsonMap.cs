@@ -2,12 +2,13 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Tools.JsonMap;
 
-public class UiJsonMap{
-	public UiJsonMap(){}
+public class IUiJsonMap{
+	public IUiJsonMap(){}
 	public Version Version{get;set;} = new Version(1,0,0);//2026_0103_105821
-	public IJsonNode Raw{get;set;} = null!;
+	public IJsonNode Raw{get;set;} = new JsonNode();
 	public IJsonNode? Schema{get;set;} = null;
-	public IDictionary<str, UiJsonMapItem>? PathToUiMap{get;set;} = null;
+	public IDictionary<str, IUiJsonMapItem>? PathToUiMap{get;set;} = null;
+	//public IList<IUiJsonMapItem>? Items{get;set;} = null;
 	public str? I18nLang{get;set;} = null;// = "zh-CN";
 /// <summary>
 /*
@@ -25,6 +26,10 @@ public class UiJsonMap{
  */
 /// </summary>
 	public IJsonNode? I18n{get;set;}
+}
+
+public class UiJsonMap:IUiJsonMap{
+
 }
 
 

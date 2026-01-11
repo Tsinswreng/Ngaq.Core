@@ -22,24 +22,24 @@ public partial class PoKv
 
 	#region IPoKv
 	[Impl(typeof(IPoKv))]
-	public EKvType KType { get; set; }
+	public EKvType KType { get; set; } = EKvType.Str;
 	[Impl(typeof(IPoKv))]
-	public str? KStr { get; set; }
+	public str? KStr { get; set; } = null;
 	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
 	/// </summary>
 	[Impl(typeof(IPoKv))]
-	public i64 KI64 { get; set; }
+	public i64 KI64 { get; set; } = 0;
 
 	[Impl(typeof(IPoKv))]
-	public EKvType VType { get; set; }
+	public EKvType VType { get; set; } = EKvType.Str;
 
 	[Impl(typeof(IPoKv))]
-	public str? VStr { get; set; }
+	public str? VStr { get; set; } = null;
 	[Impl(typeof(IPoKv))]
-	public i64 VI64 { get; set; }
+	public i64 VI64 { get; set; } = 0;
 	[Impl(typeof(IPoKv))]
-	public f64 VF64 { get; set; }
-	public u8[]? VBinary {get;set;}
+	public f64 VF64 { get; set; } = 0.0;
+	public u8[]? VBinary {get;set;} = null;
 	#endregion IPoKv
 }

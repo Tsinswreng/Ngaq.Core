@@ -14,4 +14,5 @@ public partial class KeysClientKv{
 	/// </summary>
 	public static K RefreshToken = Mk(null, [nameof(RefreshToken)]);
 	public static K RefreshTokenExpireAt = Mk(null, [nameof(RefreshTokenExpireAt)]);//i64
+	public static K CurStudyPlanId = Mk(null, [nameof(CurStudyPlanId)]);
 }

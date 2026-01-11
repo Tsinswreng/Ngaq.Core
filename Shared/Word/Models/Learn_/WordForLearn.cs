@@ -17,12 +17,12 @@ public partial class WordForLearn
 {
 	protected PoWord PoWord{get;set;}
 	protected IJnWord _SimpleJnWord{get;set;}
-	protected JnWord _JnWord{get;set;}
+	public IJnWord JnWord{get;set;}
 	public WordForLearn(
 		IJnWord JWord
 	){
 		_SimpleJnWord = JWord;
-		_JnWord = JWord.AsOrToJnWord();
+		JnWord = JWord.AsOrToJnWord();
 		PoWord = JWord.Word;
 		StrKey_Props.FromPoKvs(_SimpleJnWord.Props);
 		Learn_Records.AddFromPoLearns(_SimpleJnWord.Learns);
@@ -85,7 +85,7 @@ public partial class WordForLearn
 	public IdWord Id{
 		get=>PoWord.Id;
 		set{
-			_JnWord.Id = value;
+			JnWord.SetIdEtEnsureFKey(value);
 		}
 	}
 
