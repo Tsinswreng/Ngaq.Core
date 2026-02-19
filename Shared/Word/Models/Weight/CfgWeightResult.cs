@@ -1,7 +1,9 @@
 #define Impl
+using Ngaq.Core.Shared.Word.Models.Weight;
+
 namespace Ngaq.Core.Word.Models.Weight;
 
-public  partial class CfgWeightResult: ICfgWeightResult{
+public partial class OptWeightResult: IOptWeightResult{
 	//ICfgWeight.ESortBy ICfgWeight.SortBy{get;set;}
 	public ESortBy SortBy{get;set;}
 	#if Impl
@@ -9,7 +11,7 @@ public  partial class CfgWeightResult: ICfgWeightResult{
 	#endif
 	public EResultType ResultType{get;set;}
 	#if Impl
-		= EResultType.Enumerable_IWordWeightResult;
+		= EResultType.ItblIWordWeightResult;
 	#endif
 
 }

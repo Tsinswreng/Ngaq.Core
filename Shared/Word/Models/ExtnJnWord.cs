@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Shared.Word.Models;
+
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Word.Models;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
@@ -15,6 +15,7 @@ using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsDictMapper;
+using Ngaq.Core.Shared.Word.Models;
 
 public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)

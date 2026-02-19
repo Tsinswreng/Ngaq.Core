@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Word.Models.Weight;
+namespace Ngaq.Core.Shared.Word.Models.Weight;
 
 public enum ESortBy:i64{
 	Weight = 1
@@ -6,12 +6,12 @@ public enum ESortBy:i64{
 }
 
 public enum EResultType:i64{
-	Enumerable_IWordWeightResult = 1
-	,AsyncEnumerable_IWordWeightResult =2
+	ItblIWordWeightResult = 1
+	,AsyEIWordWeightResult =2
 }
 
 
-public partial interface ICfgWeightResult{
+public partial interface IOptWeightResult{
 
 	public ESortBy SortBy{get;set;}
 	#if Impl
@@ -21,8 +21,4 @@ public partial interface ICfgWeightResult{
 	#if Impl
 		= EResultType.Enumerable;
 	#endif
-	// public bool UseAsyncEnumerable{get;set;}
-	// #if Impl
-	// 	= false;
-	// #endif
 }

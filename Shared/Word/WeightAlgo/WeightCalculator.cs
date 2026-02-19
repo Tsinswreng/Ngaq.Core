@@ -11,6 +11,7 @@ using System.Threading.Tasks.Dataflow;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Tools.Json;
 using Tsinswreng.CsTools;
+using Ngaq.Core.Shared.Word.Models.Weight;
 
 public partial class WeightCalculator : IWeightCalctr {
 
@@ -20,8 +21,8 @@ public partial class WeightCalculator : IWeightCalctr {
 		,IJsonNode? CalcArg
 		,CT Ct
 	){
-		var cfg = new CfgWeightResult {
-			ResultType = EResultType.AsyncEnumerable_IWordWeightResult,
+		var cfg = new OptWeightResult {
+			ResultType = EResultType.AsyEIWordWeightResult,
 			SortBy = ESortBy.Weight
 		};
 
@@ -69,9 +70,8 @@ public partial class WeightCalculator : IWeightCalctr {
 		}, Ct);
 
 		return new WeightResult {
-			Cfg = cfg,
+			Opt = cfg,
 			Results = ReadResultsAsyE(channel.Reader, Ct),
-			Type = typeof(IAsyncEnumerable<IWordWeightResult>)
 		};
 	}
 

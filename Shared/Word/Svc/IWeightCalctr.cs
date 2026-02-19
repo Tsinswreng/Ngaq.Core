@@ -10,8 +10,6 @@ using Tsinswreng.CsTools;
 
 
 
-
-//TODO 允受參數
 public partial interface IWeightCalctr{
 	// public Task<IEnumerable<WordStrId_Weight>> CalcAsy(
 	// 	IEnumerable<IWordForLearn> Words

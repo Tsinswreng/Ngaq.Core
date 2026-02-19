@@ -4,7 +4,7 @@ using Tsinswreng.CsTools;
 namespace Ngaq.Core.Tools;
 
 public partial class ToolId{
-	unsafe public static UInt128 NewUlidUInt128(){
+	public static UInt128 NewUlidUInt128(){
 		var bytes = Ulid.NewUlid().ToByteArray();
 		return ToolUInt128.ByteArrToUInt128(bytes);
 

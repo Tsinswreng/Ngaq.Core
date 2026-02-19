@@ -1,5 +1,5 @@
 namespace Ngaq.Core.Infra.Errors;
-public static class ErrTags{
+public static class AppErrTags{
 	/// <summary>
 	/// 業務異常  如參數不合法
 	/// </summary>
