@@ -41,5 +41,11 @@ public class ItemsClientCfg{
 		public static ICfgItem<bool> EnableRandomBackground = Mk(_R, [nameof(EnableRandomBackground)], false);
 	}
 
+	public class LlmDictionary{
+		public static ICfgItem _R = Mk(null, [nameof(LlmDictionary)]);
+		public static ICfgItem<str> ApiUrl = Mk(_R, [nameof(ApiUrl)], "");
+		public static ICfgItem<str> ApiKey = Mk(_R, [nameof(ApiKey)], "");
+		public static ICfgItem<str> Model = Mk(_R, [nameof(Model)], "");
+	}
 }
 

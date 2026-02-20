@@ -2,13 +2,19 @@ namespace Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Audio;
 using Tsinswreng.CsErr;
 
-public class Pronunciation{
-	[See(nameof(ELang))]
-	public str Lang{get;set;} = "";
+[Doc(@$"""
+#Example
+""")]
+public class TextedPronunciation{
 	//如 Ipa, 假名 等
 	[See(nameof(EPronunciationTextType))]
 	public str TextType{get;set;} = "";
 	public str Text{get;set;} = "";
+}
+
+public class Pronunciation:TextedPronunciation{
+	[See(nameof(ELang))]
+	public str Lang{get;set;} = "";
 	public str? AudioUrl{get;set;}
 	public Audio? Audio{get;set;}
 	public class Sample{
