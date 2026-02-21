@@ -1,3 +1,5 @@
+using Ngaq.Core.Shared.Word.Models;
+
 file class DirDoc{
 	str Doc =
 $$"""
@@ -10,8 +12,8 @@ $$"""
 这套代码是一个面向单词学习场景的领域层核心实现，主要分为以下6大核心模块：
 
 #### 1. 核心数据模型层
-- **单词聚合根（JnWord）**：作为单词的核心聚合根，整合了`PoWord`（单词基础信息）、`PoWordProp`（单词属性，如释义、备注）、`PoWordLearn`（学习记录），实现了深克隆、ID重置、按时间/ID对比差异、同步等核心能力。
-- **学习用单词（WordForLearn）**：对`JnWord`的封装，适配学习场景，包含权重（Weight）、索引（Index）、已保存/未保存学习记录、上轮学习记录等字段，支持属性变更通知（INotifyPropertyChanged）。
+- **单词聚合根（{{nameof(JnWord)}}）**：作为单词的核心聚合根，整合了`PoWord`（单词基础信息）、`PoWordProp`（单词属性，如释义、备注）、`PoWordLearn`（学习记录），实现了深克隆、ID重置、按时间/ID对比差异、同步等核心能力。
+- **学习用单词（WordForLearn）**：对`{{nameof(JnWord)}}`的封装，适配学习场景，包含权重（Weight）、索引（Index）、已保存/未保存学习记录、上轮学习记录等字段，支持属性变更通知（INotifyPropertyChanged）。
 - **学习记录（LearnRecord/ILearnRecord）**：定义学习行为（Add/Rmb/Fgt：添加/记住/忘记）和时间戳，支持与数据库实体（PoWordLearn）的互相转换。
 
 #### 2. 权重计算模块
@@ -30,7 +32,7 @@ $$"""
   - 日期块（[日期]）：按日期分组单词；
   - 属性块（[[键|值]]）：单词/日期块的附加属性；
   - 单词块（{单词内容}）：单词的核心内容（词头、释义）。
-- **ParseResultMapper**：将解析结果映射为`JnWord`对象，适配数据模型层。
+- **ParseResultMapper**：将解析结果映射为`{{nameof(JnWord)}}`对象，适配数据模型层。
 
 #### 4. 学习状态管理模块
 - **MgrLearn**：学习流程的核心管理器，负责：
@@ -51,7 +53,7 @@ $$"""
 
 ### 核心代码特点
 1. **领域驱动设计（DDD）**：
-   - 聚合根（JnWord）封装了单词的核心行为（深克隆、差异对比、同步）；
+   - 聚合根（{{nameof(JnWord)}}）封装了单词的核心行为（深克隆、差异对比、同步）；
    - 领域服务（MgrLearn）封装学习流程的核心业务逻辑；
    - 接口隔离：如IWeightCalctr隔离权重计算的不同实现（本地C#/JS脚本）。
 
