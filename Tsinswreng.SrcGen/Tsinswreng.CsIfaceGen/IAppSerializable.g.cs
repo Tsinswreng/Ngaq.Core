@@ -166,6 +166,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqAddUser>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqLogin>))]
 
@@ -180,6 +183,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.RespLlmDict))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.RespLlmDict>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Resp.RespLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Resp.RespLogin>))]

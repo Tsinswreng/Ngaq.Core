@@ -4,10 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Shared.Base.Models.Req;
 
 
 /// 词典查询请求，支持多模式查询
-public class ReqLlmDict {
+public class ReqLlmDict:IReq{
 	/// 唯一请求ID，用于追踪/缓存（UUID-v4字符串）
 	public string Id { get; set; } = "";
 	public Tempus UnixMs { get; set; }

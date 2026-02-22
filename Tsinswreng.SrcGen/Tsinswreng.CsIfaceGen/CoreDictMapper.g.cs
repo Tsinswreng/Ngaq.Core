@@ -441,6 +441,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_ReqLlmDict = "global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_User_Models_Req_ReqLogin = "global::Ngaq.Core.Shared.User.Models.Req.ReqLogin";
@@ -476,6 +484,14 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqScltWordsOfLearnResultByTimeInterval = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqScltWordsOfLearnResultByTimeInterval";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.RespLlmDict))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_RespLlmDict = "global::Ngaq.Core.Shared.Dictionary.Models.RespLlmDict";
 	}
 }
 
