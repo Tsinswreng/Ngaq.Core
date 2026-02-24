@@ -7,9 +7,41 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Req;
 
 
+
+public class EvtArgOnNewSeg:EventArgs{
+	public str? NewSeg{get;set;}
+}
+
+public class EvtArgOnDone:EventArgs{
+	
+}
+
+
+
+/// 词典查询请求接口
+public interface IReqLlmDict:IReq{
+	/// 唯一请求ID，用于追踪/缓存
+	string Id { get; set; }
+	Tempus UnixMs { get; set; }
+
+	/// 核心查询内容
+	Query Query { get; set; }
+
+	/// 语言配置
+	OptLang OptLang { get; set; }
+
+	/// 用户偏好配置
+	Preferences? Preferences { get; set; }
+}
+
+public interface IReqLlmDictEvt{
+	public event EventHandler<EvtArgOnNewSeg> OnNewSeg;
+	public event EventHandler<EvtArgOnDone> OnDone;
+}
+
 /// 词典查询请求，支持多模式查询
-public class ReqLlmDict:IReq{
-	/// 唯一请求ID，用于追踪/缓存（UUID-v4字符串）
+public class ReqLlmDict:IReqLlmDict{
+	/// 唯一请求ID，用于追踪/缓存
 	public string Id { get; set; } = "";
 	public Tempus UnixMs { get; set; }
 
