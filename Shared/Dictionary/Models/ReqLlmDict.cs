@@ -8,11 +8,11 @@ using Ngaq.Core.Shared.Base.Models.Req;
 
 
 
-public class EvtArgOnNewSeg:EventArgs{
+public class DtoOnNewSeg{
 	public str? NewSeg{get;set;}
 }
 
-public class EvtArgOnDone:EventArgs{
+public class DtoOnDone{
 	
 }
 
@@ -35,8 +35,13 @@ public interface IReqLlmDict:IReq{
 }
 
 public interface IReqLlmDictEvt{
-	public event EventHandler<EvtArgOnNewSeg> OnNewSeg;
-	public event EventHandler<EvtArgOnDone> OnDone;
+	/// 當收到新的文本片段時觸發
+	/// 返ʹ值: 返0
+	public Func<DtoOnNewSeg, CT, i32> OnNewSeg{get;set;}
+	/// llm響應終旹觸發
+	/// 返ʹ值: 返0
+	public event Func<DtoOnDone, CT, i32> OnDone;
+
 }
 
 /// 词典查询请求，支持多模式查询
@@ -56,6 +61,19 @@ public class ReqLlmDict:IReqLlmDict{
 
 	/// 扩展元数据（用于AI个性化）暫不需
 	//public UserContext UserContext { get; set; } = new UserContext();
+}
+
+public class ReqLlmDictEvt:ReqLlmDict, IReqLlmDictEvt{
+	/// <summary>
+	/// 当收到新的文本片段时触发
+	/// </summary>
+	public event EventHandler<DtoOnNewSeg>? OnNewSeg;
+
+	/// <summary>
+	/// 当流式响应完成时触发
+	/// </summary>
+	public event EventHandler<DtoOnDone>? OnDone;
+
 }
 
 /// 核心查询内容
