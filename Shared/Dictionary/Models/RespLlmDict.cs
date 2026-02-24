@@ -10,7 +10,7 @@ public interface IRespLlmDict{
 }
 
 
-public class RespLlmDict:IRespLlmDict{
+public class RespLlmDict:IRespLlmDict, IResp{
 	public str Head{get;set;} = "";
 	public IList<TextedPronunciation> Pronunciations{get;set;} = [];
 	public IList<str> Descrs{get;set;} = [];

@@ -225,6 +225,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.IReqLlmDict))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_IReqLlmDict = "global::Ngaq.Core.Shared.Dictionary.Models.IReqLlmDict";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Base.Models.Resp.IResp))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Base_Models_Resp_IResp = "global::Ngaq.Core.Shared.Base.Models.Resp.IResp";
@@ -444,6 +452,14 @@ using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Dictionary_Models_ReqLlmDict = "global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDict";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDictEvt))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_ReqLlmDictEvt = "global::Ngaq.Core.Shared.Dictionary.Models.ReqLlmDictEvt";
 	}
 }
 
