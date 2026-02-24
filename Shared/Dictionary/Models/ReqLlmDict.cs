@@ -37,10 +37,10 @@ public interface IReqLlmDict:IReq{
 public interface IReqLlmDictEvt{
 	/// 當收到新的文本片段時觸發
 	/// 返ʹ值: 返0
-	public Func<DtoOnNewSeg, CT, i32> OnNewSeg{get;set;}
+	public Func<DtoOnNewSeg, CT, i32>? OnNewSeg{get;set;}
 	/// llm響應終旹觸發
 	/// 返ʹ值: 返0
-	public event Func<DtoOnDone, CT, i32> OnDone;
+	public Func<DtoOnDone, CT, i32>? OnDone{get;set;}
 
 }
 
@@ -65,14 +65,16 @@ public class ReqLlmDict:IReqLlmDict{
 
 public class ReqLlmDictEvt:ReqLlmDict, IReqLlmDictEvt{
 	/// <summary>
-	/// 当收到新的文本片段时触发
+	/// 當收到新的文本片段時觸發
+	/// 返ʹ值: 返0
 	/// </summary>
-	public event EventHandler<DtoOnNewSeg>? OnNewSeg;
+	public Func<DtoOnNewSeg, CT, i32>? OnNewSeg{get;set;}
 
 	/// <summary>
-	/// 当流式响应完成时触发
+	/// llm響應終旹觸發
+	/// 返ʹ值: 返0
 	/// </summary>
-	public event EventHandler<DtoOnDone>? OnDone;
+	public Func<DtoOnDone, CT, i32>? OnDone{get;set;}
 
 }
 
