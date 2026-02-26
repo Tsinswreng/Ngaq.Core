@@ -1,13 +1,13 @@
 namespace Ngaq.Core.Frontend.Hotkey;
 
-/// <summary>
+public delegate Task<IRespHotKey> FnOnHotKey(
+	IReqHotKey? Req, CT Ct
+);
+
 /// 全局快捷键监听器接口
 /// 支持跨平台注册和监听快捷键
-/// </summary>
 public interface IHotkeyListener{
-	/// <summary>
 	/// 注册全局快捷键
-	/// </summary>
 	/// <param name="HotkeyId">快捷键唯一标识符</param>
 	/// <param name="Modifiers">修饰键 (Ctrl, Shift, Alt, Win 的组合)</param>
 	/// <param name="Key">主键</param>
@@ -17,25 +17,19 @@ public interface IHotkeyListener{
 		str HotkeyId
 		, EHotkeyModifiers Modifiers
 		, EHotkeyKey Key
-		, Func<IReqHotKey?, CT, Task<IRespHotKey?>> OnHotkey
-		);
+		, FnOnHotKey OnHotkey
+	);
 
-	/// <summary>
 	/// 注销快捷键
-	/// </summary>
 	/// <param name="HotkeyId">快捷键唯一标识符</param>
 	/// <returns>注销成功返回true</returns>
 	public bool Unregister(str HotkeyId);
 
-	/// <summary>
 	/// 清理所有已注册的快捷键
-	/// </summary>
 	public void Cleanup();
 }
 
-/// <summary>
 /// 快捷键修饰符枚举
-/// </summary>
 [Flags]
 public enum EHotkeyModifiers{
 	None = 0,
@@ -45,9 +39,7 @@ public enum EHotkeyModifiers{
 	Win = 8
 }
 
-/// <summary>
 /// 快捷键枚举
-/// </summary>
 public enum EHotkeyKey{
 	// 字母键
 	A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z,
