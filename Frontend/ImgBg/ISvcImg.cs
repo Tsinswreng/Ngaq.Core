@@ -6,7 +6,7 @@ public enum EImgDataType{
 	Unknown = 0,
 	Stream = 1
 }
-聚焦焦
+
 public class DtoImg{
 	public str Path{get;set;}
 	public EImgDataType ImgDataType{get;set;}
