@@ -8,20 +8,20 @@ public interface IHotkeyMgr{
 	/// <summary>
 	/// 初始化快捷键系统
 	/// </summary>
-	public Task Init(CT Ct);
+	public void Init();
 
 	/// <summary>
 	/// 注册一个快捷键
 	/// </summary>
-	public Task<bool> Register(str HotkeyId, EHotkeyModifiers Modifiers, EHotkeyKey Key, Func<CT, Task> OnHotkey, CT Ct);
+	public bool Register(str HotkeyId, EHotkeyModifiers Modifiers, EHotkeyKey Key, Func<Task> OnHotkey);
 
 	/// <summary>
 	/// 注销一个快捷键
 	/// </summary>
-	public Task<bool> Unregister(str HotkeyId, CT Ct);
+	public bool Unregister(str HotkeyId);
 
 	/// <summary>
 	/// 关闭快捷键系统并清理资源
 	/// </summary>
-	public Task Shutdown(CT Ct);
+	public void Shutdown();
 }

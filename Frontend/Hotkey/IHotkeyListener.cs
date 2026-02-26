@@ -11,29 +11,26 @@ public interface IHotkeyListener{
 	/// <param name="HotkeyId">快捷键唯一标识符</param>
 	/// <param name="Modifiers">修饰键 (Ctrl, Shift, Alt, Win 的组合)</param>
 	/// <param name="Key">主键</param>
-	/// <param name="OnHotkey">快捷键被触发时的回调</param>
-	/// <param name="Ct">取消令牌</param>
+	/// <param name="OnHotkey">快捷键被触发时的异步回调，返回可选对象</param>
 	/// <returns>注册成功返回true</returns>
-	public Task<bool> Register(
+	public bool Register(
 		str HotkeyId
 		, EHotkeyModifiers Modifiers
 		, EHotkeyKey Key
-		, Func<CT, Task> OnHotkey
-		, CT Ct
-	);
+		, Func<IReqHotKey?, CT, Task<IRespHotKey?>> OnHotkey
+		);
 
 	/// <summary>
 	/// 注销快捷键
 	/// </summary>
 	/// <param name="HotkeyId">快捷键唯一标识符</param>
-	/// <param name="Ct">取消令牌</param>
 	/// <returns>注销成功返回true</returns>
-	public Task<bool> Unregister(str HotkeyId, CT Ct);
+	public bool Unregister(str HotkeyId);
 
 	/// <summary>
 	/// 清理所有已注册的快捷键
 	/// </summary>
-	public Task Cleanup(CT Ct);
+	public void Cleanup();
 }
 
 /// <summary>
