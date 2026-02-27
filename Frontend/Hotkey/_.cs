@@ -1,3 +1,4 @@
+using Ngaq.Core.Frontend.Hotkey;
 file class DirDoc{
 	str Doc =
 $$"""
@@ -30,7 +31,7 @@ $$"""
 
 ### 平台注册接口
 
-为了避免平台判断代码散落在公共组件，新添加了 `I_RegisterGlobalHotKeys` 接口。
+为了避免平台判断代码散落在公共组件，新添加了 `{{nameof(I_RegisterGlobalHotKeys)}}` 接口。
 此接口位于 `Ngaq.Ui.Infra.Hotkey`，由各平台专用程序集提供实现，负责在
 对应平台启动时统一注册所有需要的全局快捷键。例如 Windows 实现为
 `WinGlobalHotkeyRegistrar`，Android 提供空实现。
@@ -86,4 +87,5 @@ Android：`z.AddSingleton<IHotkeyListener, AndroidHotkeyListener>();`
 
 ]
 """;
+
 }

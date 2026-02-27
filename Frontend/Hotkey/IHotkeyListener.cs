@@ -1,8 +1,6 @@
 namespace Ngaq.Core.Frontend.Hotkey;
 
-public delegate Task<IRespHotKey?> FnOnHotKey(
-	IReqHotKey? Req, CT Ct
-);
+
 
 /// 全局快捷键监听器接口
 /// 支持跨平台注册和监听快捷键
