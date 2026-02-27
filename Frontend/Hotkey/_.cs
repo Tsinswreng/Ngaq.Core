@@ -39,15 +39,20 @@ public interface I_RegisterGlobalHotKeys{
 1. 获取监听器并调用 `Register`，示例：
 ```csharp
 var HotkeyListener = App.GetSvc<IHotkeyListener>();
-await HotkeyListener.Register(
-    HotkeyId: "my_hotkey",
-    Modifiers: EHotkeyModifiers.Ctrl | EHotkeyModifiers.Shift,
-    Key: EHotkeyKey.T,
-    OnHotkey: async (Ct) => { /* ... */ },
-    Ct: default
-);
+var hk = new HotKey{
+    Id = "my_hotkey",
+    Modifiers = EHotkeyModifiers.Ctrl | EHotkeyModifiers.Shift,
+    Key = EHotkeyKey.T,
+    OnHotkey = async (Req, Ct) => {
+        // ...
+        return null;
+    }
+};
+var ans = HotkeyListener.Register(hk);
+if(!ans.Ok){
+    Console.WriteLine("register failed: " + string.Join(";", ans.Errors ?? Array.Empty<string>()));
+}
 ```
-
 2. 注销：`await HotkeyListener.Unregister("my_hotkey", default);`
 3. 清理所有：`await HotkeyListener.Cleanup(default);`
 
