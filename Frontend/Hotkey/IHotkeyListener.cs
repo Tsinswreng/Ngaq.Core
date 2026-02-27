@@ -2,21 +2,13 @@ namespace Ngaq.Core.Frontend.Hotkey;
 
 
 
-/// 全局快捷键监听器接口
-/// 支持跨平台注册和监听快捷键
+/// 全局快捷键管理接口
+/// 提供跨平台注册、注销及回调功能
 public interface IHotkeyListener{
 	/// 注册全局快捷键
-	/// <param name="HotkeyId">快捷键唯一标识符</param>
-	/// <param name="Modifiers">修饰键 (Ctrl, Shift, Alt, Win 的组合)</param>
-	/// <param name="Key">主键</param>
-	/// <param name="OnHotkey">快捷键被触发时的异步回调，返回可选对象</param>
+	/// <param name="HotKey">快捷键对象（包含标识、修饰符、主键和回调）</param>
 	/// <returns>注册成功返回true</returns>
-	public bool Register(
-		str HotkeyId
-		, EHotkeyModifiers Modifiers
-		, EHotkeyKey Key
-		, FnOnHotKey OnHotkey
-	);
+	public bool Register(IHotKey HotKey);
 
 	/// 注销快捷键
 	/// <param name="HotkeyId">快捷键唯一标识符</param>
