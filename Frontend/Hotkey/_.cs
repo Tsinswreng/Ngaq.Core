@@ -17,14 +17,6 @@ $$"""
 - `EHotkeyModifiers`：修饰符枚举（Ctrl/Shift/Alt/Win）。
 - `EHotkeyKey`：键枚举（字母、数字、功能键、特殊键等）。
 
-### 平台实现
-
-#### Windows (Ngaq.Windows)
-- `WinHotkeyListener` 使用 Win32 `RegisterHotKey`。
-
-#### Android (Ngaq.Android)
-- `AndroidHotkeyListener` 预留实现。
-
 ### 服务实现 (Ngaq.Ui)
 - `IHotkeyListener` 本身通过 DI 注入各平台实现，已足够使用。
 

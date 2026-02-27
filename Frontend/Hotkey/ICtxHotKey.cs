@@ -20,7 +20,7 @@ public delegate Task<IRespHotKey?> FnOnHotKey(
 	IReqHotKey? Req, CT Ct
 );
 
-/// 快捷键定义接口
+/// 快捷键模型定义接口
 public interface IHotKey{
 	/// 快捷键唯一标识
 	str Id { get; set; }
