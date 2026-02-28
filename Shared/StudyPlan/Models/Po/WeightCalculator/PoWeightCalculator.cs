@@ -15,9 +15,7 @@ public class PoWeightCalculator
 	public IdUser Owner{get;set;} = IdUser.Zero;
 	public str? UniqueName{get;set;} = null;
 	public EWeightCalculatorType Type{get;set;} = EWeightCalculatorType.Unknown;
-	/// <summary>
 	/// u8[]便于非文本二進制
-	/// </summary>
 	public u8[]? Data{get;set;} = null;
 	public str Descr{get;set;} = "";
 }

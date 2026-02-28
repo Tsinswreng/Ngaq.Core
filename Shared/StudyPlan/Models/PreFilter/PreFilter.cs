@@ -1,5 +1,12 @@
+using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
+
 namespace Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 
+[Doc(@$"業務模型
+與{nameof(PoPreFilter)}之區別:
+Po 是 數據庫實體、其成員 要考慮 與數據庫列 的對應;
+此爲 業務模型、 不考慮如何儲存、 只考慮在代碼內存中的抽象
+")]
 public class PreFilter{
 	public Version Version { get; set; } = new Version(1, 0, 0, 0);
 	public IList<FieldsFilter> CoreFilter { get; set; } = [];
@@ -12,7 +19,7 @@ public class PreFilter{
 	"CoreFilter": [
 		{
 			"Fields": ["Lang"],//對每個元素都應用 同ʹ Filters。減ᵈ褈ʹ代碼
-			"Filters": [
+			"Filters": [ // 多個filter間是 「且」 關係
 				{
 					"ValueType": "String",
 					"Operation": "IncludeAll",

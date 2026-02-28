@@ -3,6 +3,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
+using Ngaq.Core.Shared.Word;
 
 namespace Ngaq.Core.Shared.StudyPlan;
 
@@ -39,6 +40,9 @@ $$"""
 			靈活調節背單詞的策略。]
 		#H[單詞預篩選器][
 			#P[根據語言/標籤/來源等信息靜態篩選過濾出目標單詞]
+			工作原理: 靜態翻譯成sql 查詢條件、在加載單詞旹篩選
+			默認未設置篩選器旹 查詢用戶全量單詞 傳入 {{nameof(MgrLearn.LoadEtCalcWeight)}} 再算權重
+			
 		]
 		#H[單詞權重算法][
 			#P[根據單詞的添加次數、
