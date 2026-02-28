@@ -1,3 +1,4 @@
+namespace Ngaq.Core.Shared.Dictionary;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Cfg;
 using Ngaq.Core.Shared.Dictionary.Models;

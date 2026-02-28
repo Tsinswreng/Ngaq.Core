@@ -8,6 +8,10 @@ using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
 
+[Doc(@$"
+同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
+(如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ(Head,Lang)、則雖同ʹ詞、猶將被予異ʹId)
+")]
 public partial interface IPoWord
 	:IPoBase
 	,I_Id<IdWord>
@@ -15,14 +19,12 @@ public partial interface IPoWord
 	,IBizCreateUpdateTime
 	,I_Owner
 {
-	/// <summary>
 	/// 最早ʹ入庫ʹ時 作增量同步ʹʃ依
 	/// 如某詞ʹCreatedAt早于LastUploadToRemoteTime
 	/// 辨: CreatedAt: 詞ˋ始被錄于文本單詞表之時
 	/// DbCreatedAt: 實體插入數據庫旹
 	/// StoredAt: 詞ˋ始被錄入數據庫旹
 	/// 備份同步旹、于同一詞、同步後本地與遠端之StoredAt當一致、DbCreatedAt可不一致
-	/// </summary>
 	public Tempus StoredAt{get;set;}
 }
 
@@ -33,22 +35,17 @@ public partial class PoWord
 	,IPoWord
 {
 	public static PoWord Example{get;set;} = new PoWord();
-
-/// <summary>
 /// 僅用于臨時標識、詞ʹidˋ恐變
 /// 欲做持久ʹ標識、宜用(Owner, Head, Lang)
 /// 備份同步㕥合併同ʹ詞旹、當按詞頭洏非id㕥判兩詞是否潙同一詞、緣縱潙同ʹ詞、本地ʹ庫ʸ與遠端ᐪʹid恐不一
 /// //TODO 一致ˢid、以CreatedAt最早者潙準
-/// </summary>
 	public IdWord Id {get;set;} = new IdWord(); //不顯式調用構造器則內ʹValue 得零
 
 	public IdUser Owner{get;set;}
 
 	#region IPoWord
 
-	/// <summary>
 	/// 詞形標識
-	/// </summary>
 	public str Head{get;set;}
 	#if Impl
 		="";
@@ -62,11 +59,9 @@ public partial class PoWord
 
 	#endregion IPoWord
 
-	/// <summary>
 	/// 最早入庫之時間
 	/// CreatedAt潙 始誌于文本詞表之時
 	/// 用于詞庫同步旹 比對㕥篩改˪ʹ詞
-	/// </summary>
 	public Tempus StoredAt{get;set;} = Tempus.Now();
 
 	public override string ToString() {

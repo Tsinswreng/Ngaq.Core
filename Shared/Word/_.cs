@@ -9,8 +9,6 @@ $$"""
 #Descr[
 单词学习系统代码（Ngaq.Core/Shared/Word模块），包含单词模型定义、学习记录管理、权重计算、文本解析、服务接口等
 
-这套代码是一个面向单词学习场景的领域层核心实现，主要分为以下6大核心模块：
-
 #### 1. 核心数据模型层
 - **单词聚合根（{{nameof(JnWord)}}）**：作为单词的核心聚合根，整合了`PoWord`（单词基础信息）、`PoWordProp`（单词属性，如释义、备注）、`PoWordLearn`（学习记录），实现了深克隆、ID重置、按时间/ID对比差异、同步等核心能力。
 - **学习用单词（WordForLearn）**：对`{{nameof(JnWord)}}`的封装，适配学习场景，包含权重（Weight）、索引（Index）、已保存/未保存学习记录、上轮学习记录等字段，支持属性变更通知（INotifyPropertyChanged）。
@@ -51,20 +49,8 @@ $$"""
 - 定义请求/响应模型：如`ReqPackWords`（单词打包请求）、`RespScltWordsOfLearnResultByTimeInterval`（按时间区间查询学习记录响应）、`DtoCompressedWords`（压缩单词传输对象）等。
 - 定义枚举：如`ELearn`（学习类型）、`ESortBy`（排序方式）、`EResultType`（权重结果类型）等。
 
-### 核心代码特点
-1. **领域驱动设计（DDD）**：
-   - 聚合根（{{nameof(JnWord)}}）封装了单词的核心行为（深克隆、差异对比、同步）；
-   - 领域服务（MgrLearn）封装学习流程的核心业务逻辑；
-   - 接口隔离：如IWeightCalctr隔离权重计算的不同实现（本地C#/JS脚本）。
-
-2. **异步编程**：
-   - 大量使用`async/await`、`IAsyncEnumerable`实现异步流处理；
-   - 并行计算（Parallel.ForEachAsync）+ 通道（Channel）实现高效的权重计算。
-
-3. **扩展性**：
-   - 权重计算支持JS脚本扩展（JsWeightCalctr）；
-   - 解析器支持自定义格式扩展；
-   - 服务接口抽象，便于不同实现（如本地/远程服务）。
+同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
+(如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ(Head,Lang)、則雖同ʹ詞、猶將被予異ʹId)
 
 ]
 """;
