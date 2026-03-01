@@ -178,6 +178,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Req.ReqLogin))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Req.ReqLogin>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Req.ReqLogout))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Req.ReqLogout>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup>))]
 

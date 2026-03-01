@@ -473,6 +473,14 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Models.Sys.Req.ReqLogout))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Models_Sys_Req_ReqLogout = "global::Ngaq.Core.Models.Sys.Req.ReqLogout";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_Dto_ReqLookup = "global::Ngaq.Core.Shared.Word.Models.Dto.ReqLookup";
