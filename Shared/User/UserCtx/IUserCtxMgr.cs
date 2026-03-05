@@ -1,8 +1,9 @@
+using Ngaq.Core.Frontend.User;
+
 namespace Ngaq.Core.Shared.User.UserCtx;
 
-/// <summary>
 /// 似乎唯前端用及
-/// </summary>
+[Obsolete(@$"use {nameof(IFrontendUserCtxMgr)}")]
 public partial interface IUserCtxMgr{
 	IUserCtx GetUserCtx();
 }
