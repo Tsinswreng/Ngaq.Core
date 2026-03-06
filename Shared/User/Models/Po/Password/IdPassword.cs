@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Model.Sys.Po.Password;
 
-using Ngaq.Core.Model.Consts;
+using Ngaq.Core.Shared.Base.Models.Consts;
 using StronglyTypedIds;
 
 

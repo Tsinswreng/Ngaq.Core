@@ -1,6 +1,7 @@
 namespace Ngaq.Core.Shared.Word.Models.Learn_;
-using Ngaq.Core.Model.Po;
-using Ngaq.Core.Model.Po.Word;
+
+using Ngaq.Core.Shared.Base.Models.Po;
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 public partial interface I_Id:I_Id<IdWord>{
 

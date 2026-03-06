@@ -2,7 +2,6 @@ namespace Ngaq.Core.Models.Sys.Po.Password;
 
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Sys.Po.Password;
 
 

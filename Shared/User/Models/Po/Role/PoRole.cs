@@ -2,7 +2,6 @@
 namespace Ngaq.Core.Models.Sys.Po.Role;
 
 using Ngaq.Core.Shared.Base.Models.Po;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Role;
 
 

@@ -1,5 +1,5 @@
 //#define Impl
-namespace Ngaq.Core.Word.Models.Po.Word;
+namespace Ngaq.Core.Shared.Word.Models.Po.Word;
 
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;

@@ -3,7 +3,6 @@ namespace Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;

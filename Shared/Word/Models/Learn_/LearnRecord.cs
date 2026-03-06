@@ -1,9 +1,7 @@
 namespace Ngaq.Core.Shared.Word.Models.Learn_;
 
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
-using Ngaq.Core.Model.Po.Word;
-
-
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 public partial struct LearnRecord
 	:ILearnRecord

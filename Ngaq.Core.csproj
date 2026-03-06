@@ -12,7 +12,6 @@
 
 	<PropertyGroup>
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
-		<!-- <EmitCompilerGeneratedFiles>false</EmitCompilerGeneratedFiles> -->
 		<CompilerGeneratedFilesOutputPath>obj/Generated</CompilerGeneratedFilesOutputPath>
 		<!-- <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath> -->
 	</PropertyGroup>

@@ -1,4 +1,3 @@
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.User.Models.Po.User;

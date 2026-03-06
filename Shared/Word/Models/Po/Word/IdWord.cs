@@ -1,6 +1,6 @@
-namespace Ngaq.Core.Model.Po.Word;
+namespace Ngaq.Core.Shared.Word.Models.Po.Word;
 
-using Ngaq.Core.Model.Consts;
+using Ngaq.Core.Shared.Base.Models.Consts;
 using StronglyTypedIds;
 [StronglyTypedId(ConstStrongTypeIdTemplate.UInt128)]
 public partial struct IdWord{}

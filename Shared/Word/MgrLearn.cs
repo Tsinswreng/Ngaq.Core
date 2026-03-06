@@ -4,7 +4,6 @@ using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
@@ -15,6 +14,8 @@ using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Tsinswreng.CsErr;
 using Ngaq.Core.Shared.Word.Models.Weight;
+using Ngaq.Core.Infra.IF;
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 public enum ELearnOpRtn{
 	Learn = 0

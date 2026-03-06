@@ -1,6 +1,6 @@
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
-using Ngaq.Core.Model.Po.Word;
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 namespace Ngaq.Core.Model.Word.Req;
 

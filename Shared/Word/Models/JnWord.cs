@@ -9,7 +9,6 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Infra.IF;
-using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models;
@@ -93,9 +92,7 @@ public partial class JnWord
 		set{Word.BizCreatedAt = value;}
 	}
 
-	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
-	/// </summary>
 	[Impl]
 	public Tempus BizUpdatedAt{
 		get{return Word.BizUpdatedAt;}
@@ -148,9 +145,7 @@ public partial class JnWord
 		return ans;
 	}
 
-	/// <summary>
 	/// //有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
-	/// </summary>
 	[Obsolete]
 	public static IList<PoWordLearn> DiffLearnsByTime(
 		IList<PoWordLearn> LearnsOfNeo

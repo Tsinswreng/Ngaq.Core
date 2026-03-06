@@ -2,7 +2,7 @@ namespace Ngaq.Core.Shared.Word.Models.Learn_;
 
 using System.ComponentModel;
 using Ngaq.Core.Shared.Base.Models.Po;
-using Ngaq.Core.Word.Models.Po.Word;
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 
 public partial interface IWordForLearn

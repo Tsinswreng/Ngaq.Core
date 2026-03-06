@@ -1,4 +1,4 @@
-using Ngaq.Core.Model.Consts;
+using Ngaq.Core.Shared.Base.Models.Consts;
 using StronglyTypedIds;
 
 namespace Ngaq.Core.Sys.Models;

@@ -1,5 +1,6 @@
 namespace Ngaq.Core.Shared.Word.Models;
 
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Infra.Errors;
 using Tsinswreng.CsTools;
@@ -7,11 +8,9 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Tools.Algo;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Model.Po.Learn_;
-using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsDictMapper;
@@ -40,10 +39,7 @@ public static class ExtnJnWord{
 			return R;
 		}
 
-		/// <summary>
 		/// 把諸資產之外鍵設潙主Word之id
-		/// </summary>
-		/// <returns></returns>
 		public TSelf EnsureForeignId(){
 			// if(z.Po_Word.Id.Value == 0){
 			// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
@@ -83,11 +79,9 @@ public static class ExtnJnWord{
 		return (IJnWord)z;
 	}
 
-	/// <summary>
 	/// 按詞頭對諸詞分組
 	/// 若入ʹ諸詞 非皆屬同一語 則拋錯
 	/// 返ʹ值: 詞頭->諸詞芝厥語語詞頭皆同者
-	/// </summary>
 	public static IDictionary<str, IList<IJnWord>> GroupByHeadOfSameLang(
 		this IEnumerable<IJnWord> JnWords
 	){
@@ -118,10 +112,8 @@ public static class ExtnJnWord{
 	}
 
 
-	/// <summary>
 	/// 按(詞頭,語言)對諸詞分組
 	/// 返ʹ值: (詞頭,語言)->諸詞芝厥語語詞頭皆同者
-	/// </summary>
 	public static IDictionary<Head_Lang, IList<IJnWord>> GroupByLangHead(
 		this IEnumerable<IJnWord> JnWords
 	){
@@ -140,12 +132,7 @@ public static class ExtnJnWord{
 		return Dict;
 	}
 
-	/// <summary>
 	/// 只比詞頭 語言 與擁者
-	/// </summary>
-	/// <param name="W1"></param>
-	/// <param name="W2"></param>
-	/// <returns></returns>
 	public static bool IsSameUserWord(
 		this IPoWord W1
 		,IPoWord W2
@@ -183,12 +170,10 @@ public static class ExtnJnWord{
 		return R;
 	}
 
-	/// <summary>
 	//有蠹 2個Prop芝CreatedAtˋ同者 diff 一個Prop旹 diff不出 只適用于新增單詞
 	/// Other 合入 z 返R
 	/// 無需合併旹返null
 	/// 非同ʹ詞旹拋錯
-	/// </summary>
 	[Obsolete]
 	public static IJnWord? DiffByTime(
 		this IJnWord z
@@ -220,14 +205,8 @@ public static class ExtnJnWord{
 		.AddDebugArgs(z,Other);
 	}
 
-/// <summary>
 /// CreatedAt取更早者
 /// UpdatedAt取最晚者
-/// </summary>
-/// <param name="z"></param>
-/// <param name="Other_"></param>
-/// <returns></returns>
-/// <exception cref="ErrArg"></exception>
 	public static IJnWord UpdTimeOfSelfContrastToOther(
 		this IJnWord z
 		,IJnWord Other
@@ -252,12 +231,10 @@ public static class ExtnJnWord{
 	}
 
 
-	/// <summary>
 	/// 無去褈ˌᵈ併ᵣ諸詞ˇ
 	/// 用于併ᵣ文本詞表ᙆʹ待加ʹ諸詞
 	/// JnWords 須潙同一詞 否則拋錯
-	/// </summary>
-	/// <exception cref="ErrArg"></exception>
+
 	public static IJnWord? NoDiffMergeSameWords(
 		this IEnumerable<IJnWord> JnWords
 	){
@@ -285,14 +262,9 @@ public static class ExtnJnWord{
 	}
 
 
-	/// <summary>
 	/// 簡ᵈ判斷是否同步。
 	/// 緣要求有改動旹須改聚合根(即JnWord.Word)ʹBizUpdatedAt、
 	/// 故正常ʹ態下 BizUpdatedAt 與 BizCreatedAt 一致 即已同步
-	/// </summary>
-	/// <param name="Other"></param>
-	/// <param name="Existing"></param>
-	/// <returns></returns>
 	public static bool IsSynced(
 		this IJnWord Other
 		,IJnWord Existing
@@ -313,15 +285,11 @@ public static class ExtnJnWord{
 
 
 
-/// <summary>
 /// 同步ˢ。若Other更新則使Other合入。
 /// 合入後ʹ果ˇ寫入ref R。如ref R潙null則R=z
-/// </summary>
-/// <typeparam name="T">
 /// </typeparam><param name="z"> 舊實體。只讀 若需寫入z則使R=z
 /// </param><param name="Other">新實體。只讀
 /// </param><param name="R"> 果ˇ寫入焉
-/// </param><returns></returns>
 	public static ESyncResult SyncPo<T>(
 		this T z
 		,T Other
@@ -342,15 +310,11 @@ public static class ExtnJnWord{
 		return ESyncResult.Ok;
 	}
 
-	/// <summary>
 	/// 同步。添ʃ缺、改ʃ異。
 	/// 注意 于外ʸ 慎ᵈ 直ᵈ㕥 ref R 當 一般ₐJnWord用。
-	/// </summary>
 	/// <param name="z">舊詞(函數中不會通過z指針㕥改己)若需寫入z則使R=z
 	/// </param><param name="Neoer">新詞。只讀
 	/// </param><param name="R">同步ʹ果ˇ寫入焉
-	/// </param><returns>
-	/// </returns>
 	public static DtoSyncTwoWords Sync(
 		this IJnWord z//函數中只讀  作同步依據
 		,IJnWord Neoer

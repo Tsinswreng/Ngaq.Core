@@ -4,11 +4,10 @@ namespace Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Po;
 using Ngaq.Core.Model.Po.Learn_;
-using Ngaq.Core.Model.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
 using Ngaq.Core.Tools;
+using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 
 // public  partial class Po_Learn:Po_Kv{

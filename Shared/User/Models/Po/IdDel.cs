@@ -1,7 +1,6 @@
 namespace Ngaq.Core.Shared.User.Models.Po;
 
 using Ngaq.Core.Infra;
-using Ngaq.Core.Model.Consts;
 using StronglyTypedIds;
 
 
@@ -57,20 +56,9 @@ public partial struct IdDel(TPrimitive V)
 		return new TStruct(s);
 	}
 
-	public override bool Equals([NotNullWhen(true)] object? obj) {
-		return obj is TStruct learn && Value.Equals(learn.Value);
-	}
 
 	public bool Equals(TStruct other) {
 		return Value.Equals(other.Value);
-	}
-
-	public static bool operator ==(TStruct left, TStruct right) {
-		return left.Equals(right);
-	}
-
-	public static bool operator !=(TStruct left, TStruct right) {
-		return !left.Equals(right);
 	}
 
 	public override int GetHashCode() {
