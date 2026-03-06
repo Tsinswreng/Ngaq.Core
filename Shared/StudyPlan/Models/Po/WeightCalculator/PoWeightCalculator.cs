@@ -1,3 +1,4 @@
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 

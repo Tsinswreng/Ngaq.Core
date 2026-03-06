@@ -6,6 +6,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Sys.Models;
 using Tsinswreng.CsFactoryMkr;
+using Ngaq.Core.Infra.IF;
 
 [MkFactory(For=typeof(PoKv))]
 public partial class PoKv
