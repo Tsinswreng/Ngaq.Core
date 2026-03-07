@@ -15,11 +15,71 @@ using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsDictMapper;
 using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.User.Models.Po.User;
+using Ngaq.Core.Shared.User.Models.Po;
 
 public static class ExtnJnWord{
+
 	extension<TSelf>(TSelf z)
 		where TSelf:IJnWord
 	{
+		
+
+		[Impl]
+		public IdWord Id{
+			get{return z.Word.Id;}
+			set{
+				z.Word.Id = value;
+				z.EnsureForeignId();
+			}
+		}
+		
+		[Impl]
+		public IdUser Owner{
+			get{return z.Word.Owner;}
+			set{z.Word.Owner = value;}
+		}
+		[Impl]
+		public str Lang{
+			get{return z.Word.Lang;}
+			set{z.Word.Lang = value;}
+		}
+		[Impl]
+		public str Head{
+			get{return z.Word.Head;}
+			set{z.Word.Head = value;}
+		}
+
+		[Impl(typeof(IPoWord))]
+		public Tempus StoredAt{
+			get{return z.Word.StoredAt;}
+			set{z.Word.StoredAt = value;}
+		}
+
+		[Impl]
+		public Tempus DbCreatedAt{
+			get{return z.Word.DbCreatedAt;}
+			set{z.Word.DbCreatedAt = value;}
+		}
+
+		[Impl]
+		public Tempus BizCreatedAt{
+			get{return z.Word.BizCreatedAt;}
+			set{z.Word.BizCreatedAt = value;}
+		}
+
+		/// 當關聯ʹ他表 更新旹、亦當更新此字段
+		[Impl]
+		public Tempus BizUpdatedAt{
+			get{return z.Word.BizUpdatedAt;}
+			set{z.Word.BizUpdatedAt = value;}
+		}
+		[Impl]
+		public Tempus DbUpdatedAt{
+			get{return z.Word.DbUpdatedAt;}
+			set{z.Word.DbUpdatedAt = value;}
+		}
+
 
 		public IDictionary<str, obj?> ToDict(
 			IDictMapperShallow DictMapper

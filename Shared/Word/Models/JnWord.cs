@@ -17,9 +17,9 @@ using Ngaq.Core.Shared.Base.Models.Po;
 
 public partial class JnWord
 	:IJnWord
-	,IPoWord
+	//,IPoWord
 	,IAppSerializable
-	,IBizCreateUpdateTime
+	//,IBizCreateUpdateTime
 	,I_ClassVer
 {
 	[Impl(typeof(IPoWord))]
@@ -44,74 +44,8 @@ public partial class JnWord
 	public IList<PoWordProp> Props{get;set;} = new List<PoWordProp>();
 	[Impl(typeof(IJnWord))]
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
-	[Impl]
-	public IdWord Id{
-		get{return Word.Id;}
-		set{
-			Word.Id = value;
-			this.EnsureForeignId();
-		}
-	}
 
-	[Impl]
-	public IdUser Owner{
-		get{return Word.Owner;}
-		set{Word.Owner = value;}
-	}
-	[Impl]
-	public str Lang{
-		get{return Word.Lang;}
-		set{Word.Lang = value;}
-	}
-	[Impl]
-	public str Head{
-		get{return Word.Head;}
-		set{Word.Head = value;}
-	}
-
-	[Impl(typeof(IPoWord))]
-	public Tempus StoredAt{
-		get{return Word.StoredAt;}
-		set{Word.StoredAt = value;}
-	}
-
-	#region IPoBase
-
-	[Impl]
-	public IdDel DelAt{get;set;}
-
-	[Impl]
-	public Tempus DbCreatedAt{
-		get{return Word.DbCreatedAt;}
-		set{Word.DbCreatedAt = value;}
-	}
-
-	[Impl]
-	public Tempus BizCreatedAt{
-		get{return Word.BizCreatedAt;}
-		set{Word.BizCreatedAt = value;}
-	}
-
-	/// 當關聯ʹ他表 更新旹、亦當更新此字段
-	[Impl]
-	public Tempus BizUpdatedAt{
-		get{return Word.BizUpdatedAt;}
-		set{Word.BizUpdatedAt = value;}
-	}
-	[Impl]
-	public Tempus DbUpdatedAt{
-		get{return Word.DbUpdatedAt;}
-		set{Word.DbUpdatedAt = value;}
-	}
-
-
-
-	// [Impl]
-	// public PoStatus Status{
-	// 	get{return Word.Status;}
-	// 	set{Word.Status = value;}
-	// }
-	#endregion IPoBase
+	
 
 
 	public PoWordLearn AddLearn(PoWordLearn Learn){
