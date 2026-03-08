@@ -20,30 +20,16 @@ using Ngaq.Core.Shared.User.Models.Po;
 
 
 
-public static class ExtnPropIJnWord{
-	// extension<T>(IEnumerable<T> target){
-	// 	public bool IsEmpty() => !target.Any();
-	// }
+public static class ExtnJnWord{
+	[Obsolete("用擴展屬性")]
+	public static IdWord Id_(this IJnWord z){
+		return z.Word.Id;
+	}
 
-	extension(IJnWord z){
-		public IdWord Id => z.Word.Id;
-
-
-		public IdUser Owner{
-			get{return z.Word.Owner;}
-			set{z.Word.Owner = value;}
-		}
-
-		public str Lang{
-			get{return z.Word.Lang;}
-			set{z.Word.Lang = value;}
-		}
-
-		public str Head{
-			get{return z.Word.Head;}
-			set{z.Word.Head = value;}
-		}
-
+	extension<TSelf>(TSelf z)
+		where TSelf:IJnWord
+	{
+	
 
 		public IJnWord DeepClone(){
 			var word = (PoWord)z.Word.ShallowCloneSelf();
@@ -70,19 +56,7 @@ public static class ExtnPropIJnWord{
 			R.ResetAllIds();
 			return R;
 		}
-	}
-	
-	public static IdWord Id_(this IJnWord z){
-		return z.Word.Id;
-	}
-}
 
-
-public static class ExtnJnWord{
-
-	extension<TSelf>(TSelf z)
-		where TSelf:IJnWord
-	{
 
 		[Impl]
 		public IdWord Id{
