@@ -7,7 +7,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 
 public class PoWeightCalculator
 	:PoBase
-	,I_Id<IdWeightCalculator>
+	,I_IdOld<IdWeightCalculator>
 	,I_Owner
 {
 	public IdWeightCalculator Id{get;set;} = new();

@@ -11,11 +11,11 @@ using Ngaq.Core.Infra.IF;
 [MkFactory(For=typeof(PoKv))]
 public partial class PoKv
 	:PoBase
-	,I_Id<IdKv>
+	,I_IdOld<IdKv>
 	,IPoKv
 {
 
-	[Impl(typeof(I_Id<IdKv>))]
+	[Impl(typeof(I_IdOld<IdKv>))]
 	public IdKv Id{get;set;} = new();
 
 	public IdUser Owner{get;set;} = IdUser.Zero;

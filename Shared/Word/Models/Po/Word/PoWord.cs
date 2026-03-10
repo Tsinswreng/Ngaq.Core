@@ -4,6 +4,7 @@ namespace Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Infra;
+using Tsinswreng.CsSqlHelper;
 
 [Doc(@$"
 同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id

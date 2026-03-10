@@ -7,7 +7,7 @@ using Ngaq.Core.Models.Sys.Po.Permission;
 
 public class PoRolePermission
 	:PoBase
-	,I_Id<IdRolePermission>
+	,I_IdOld<IdRolePermission>
 {
 	public IdRolePermission Id{get;set;}
 	public IdRole RoleId{get;set;}

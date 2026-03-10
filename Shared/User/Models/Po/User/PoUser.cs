@@ -6,7 +6,7 @@ using Ngaq.Core.Infra;
 
 public partial class PoUser
 	:PoBaseBizTime
-	,I_Id<IdUser>
+	,I_IdOld<IdUser>
 {
 	public IdUser Id{get;set;} = new();
 	public str UniqueName{get;set;} = "";

@@ -5,7 +5,7 @@ namespace Ngaq.Core.Models.Sys.Po.Permission;
 
 public class PoPermission
 	:PoBase
-	,I_Id<IdPermission>
+	,I_IdOld<IdPermission>
 {
 	public IdPermission Id{get;set;}
 	public str Code{get;set;} = "";

@@ -12,7 +12,7 @@ using Tsinswreng.CsTools;
 
 
 /// 嚴格對應數據庫ʹ實體ʹ聚合
-/// 專用于json序列化
+/// 適用于序列化等
 /// 不含字段如
 /// 	[Impl]
 ///	public IdWord Id{

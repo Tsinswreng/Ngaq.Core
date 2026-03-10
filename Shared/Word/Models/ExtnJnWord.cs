@@ -58,7 +58,6 @@ public static class ExtnJnWord{
 		}
 
 
-		[Impl]
 		public IdWord Id{
 			get{return z.Word.Id;}
 			set{
@@ -67,17 +66,14 @@ public static class ExtnJnWord{
 			}
 		}
 		
-		[Impl]
 		public IdUser Owner{
 			get{return z.Word.Owner;}
 			set{z.Word.Owner = value;}
 		}
-		[Impl]
 		public str Lang{
 			get{return z.Word.Lang;}
 			set{z.Word.Lang = value;}
 		}
-		[Impl]
 		public str Head{
 			get{return z.Word.Head;}
 			set{z.Word.Head = value;}
@@ -89,25 +85,21 @@ public static class ExtnJnWord{
 			set{z.Word.StoredAt = value;}
 		}
 
-		[Impl]
 		public Tempus DbCreatedAt{
 			get{return z.Word.DbCreatedAt;}
 			set{z.Word.DbCreatedAt = value;}
 		}
 
-		[Impl]
 		public Tempus BizCreatedAt{
 			get{return z.Word.BizCreatedAt;}
 			set{z.Word.BizCreatedAt = value;}
 		}
 
 		/// 當關聯ʹ他表 更新旹、亦當更新此字段
-		[Impl]
 		public Tempus BizUpdatedAt{
 			get{return z.Word.BizUpdatedAt;}
 			set{z.Word.BizUpdatedAt = value;}
 		}
-		[Impl]
 		public Tempus DbUpdatedAt{
 			get{return z.Word.DbUpdatedAt;}
 			set{z.Word.DbUpdatedAt = value;}
@@ -486,7 +478,7 @@ public static class ExtnJnWord{
 
 	public static IList<TItem> DiffById<TItem, TId>(
 		this IList<TItem> ListA, IList<TItem> ListB
-	)where TItem: I_Id<TId>
+	)where TItem: I_IdOld<TId>
 	where TId: notnull
 	{
 		var diff = Algo.DiffListIntoDict(

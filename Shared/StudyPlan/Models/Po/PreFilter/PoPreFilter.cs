@@ -7,7 +7,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 
 public class PoPreFilter
 	:PoBaseBizTime
-	,I_Id<IdPreFilter>
+	,I_IdOld<IdPreFilter>
 {
 	public IdPreFilter Id{get;set;} = new();
 	public str? UniqueName{get;set;} = null;

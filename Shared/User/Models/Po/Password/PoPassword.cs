@@ -7,7 +7,7 @@ using Ngaq.Core.Model.Sys.Po.Password;
 
 public partial class PoPassword
 	:PoBase
-	,I_Id<IdPassword>
+	,I_IdOld<IdPassword>
 {
 	public IdPassword Id{get;set;}
 	public IdUser UserId{get;set;}
