@@ -12,18 +12,10 @@ public partial interface IPoBase
 	,IAppSerializable
 	,I_DelAt
 {
-
-	#region IPoBase
 	/// 留與觸發器或攔截器、改實體保存旹自動改ᵣ「改ˡ時」ˇ
 	public Tempus DbCreatedAt{get;set;}
 	/// 留與觸發器或攔截器、增實體旹自動改ᵣ「添ˡ時」ˇ
 	public Tempus DbUpdatedAt{get;set;}
-	/// <舊>若用影子表 則 主表ʸ此字段璫必潙null、影子表㕥存既刪之條目、斯字段方有值</舊>
-	// [Impl(typeof(I_DelAt))]
-	// public IdDel DelAt{get;set;}
-
-	#endregion IPoBase
-
 }
 
 public interface IBizCreateUpdateTime{

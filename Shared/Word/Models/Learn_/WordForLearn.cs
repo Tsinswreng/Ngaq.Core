@@ -80,7 +80,7 @@ public partial class WordForLearn
 
 	//public i64 LastLearnedTime{get;set;}
 
-	[Impl(typeof(I_Id))]
+	[Impl(typeof(I_IdWord))]
 	public IdWord Id{
 		get=>PoWord.Id;
 		set{

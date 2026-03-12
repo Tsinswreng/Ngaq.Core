@@ -41,6 +41,134 @@ using Tsinswreng.CsDictMapper;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_User_Models_Po_Device_IdClient = "global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Sys.Models.IdKv))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Sys_Models_IdKv = "global::Ngaq.Core.Sys.Models.IdKv";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Sys_Po_Password_IdPassword = "global::Ngaq.Core.Model.Sys.Po.Password.IdPassword";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Models_Sys_Po_Permission_IdPermission = "global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_PreFilter_IdPreFilter = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Sys_Po_RefreshToken_IdRefreshToken = "global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Role.IdRole))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Role_IdRole = "global::Ngaq.Core.Model.Po.Role.IdRole";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Sys_Po_RolePermission_IdRolePermission = "global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_StudyPlan_IdStudyPlan = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan.IdStudyPlan";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.IdUser))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_User_Models_Po_User_IdUser = "global::Ngaq.Core.Shared.User.Models.Po.User.IdUser";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Models_Sys_Po_UserRole_IdUserRole = "global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightArg_IdWeightArg = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.IdWeightArg";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_WeightCalculator_IdWeightCalculator = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator.IdWeightCalculator";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Shared.Word.Models.Po.Word.IdWord))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Po_Word_IdWord = "global::Ngaq.Core.Shared.Word.Models.Po.Word.IdWord";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Learn_.IdWordLearn))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Learn___IdWordLearn = "global::Ngaq.Core.Model.Po.Learn_.IdWordLearn";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
+	[DictType(typeof(global::Ngaq.Core.Model.Po.Kv.IdWordProp))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Model_Po_Kv_IdWordProp = "global::Ngaq.Core.Model.Po.Kv.IdWordProp";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.CsDictMapper;
 	[DictType(typeof(global::Ngaq.Core.Infra.IF.IIdUInt128))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Infra_IF_IIdUInt128 = "global::Ngaq.Core.Infra.IF.IIdUInt128";

@@ -6,7 +6,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 
 public partial interface IWordForLearn
-	:I_Id
+	:I_IdWord
 	,IPoBase
 	,IHeadLangWord
 	,I_Index

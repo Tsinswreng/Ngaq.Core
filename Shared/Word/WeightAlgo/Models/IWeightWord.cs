@@ -4,7 +4,7 @@ namespace Ngaq.Core.Word.WeightAlgo.Models;
 
 
 public  partial interface IWeightWord
-	:I_Id
+	:I_IdWord
 	,I_Weight
 	,I_StrKey_Props
 	,I_LearnRecords

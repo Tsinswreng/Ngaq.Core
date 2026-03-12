@@ -2,7 +2,7 @@ namespace Ngaq.Core.Shared.Kv.Svc;
 
 using Ngaq.Core.Shared.Kv.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Tsinswreng.CsSqlHelper;
+using Tsinswreng.CsSql;
 
 
 /// <summary>

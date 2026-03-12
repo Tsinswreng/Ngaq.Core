@@ -28,8 +28,8 @@ public static class ExtnIIIdUInt128{
 			var Num = Tsinswreng.CsTools.ToolUInt128.ByteArrToUInt128(bytes);
 			return new T(){Value = Num};
 		}
-		public static Tsinswreng.CsSqlHelper.IUpperTypeMapFnT<u8[], T> MkTypeMapFn(){
-			return Tsinswreng.CsSqlHelper.UpperTypeMapFnT<u8[], T>.Mk(
+		public static Tsinswreng.CsSql.IUpperTypeMapFnT<u8[], T> MkTypeMapFn(){
+			return Tsinswreng.CsSql.UpperTypeMapFnT<u8[], T>.Mk(
 				//(raw)=>T.FromByteArr(raw)
 				(raw)=>FromByteArr<T>(raw)
 				,(upper)=>upper.Value.ToByteArr()
