@@ -9,7 +9,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 
 public class PoStudyPlan
 	:PoBaseBizTime
-	,I_IdOld<IdStudyPlan>
+	,AppI_Id<IdStudyPlan>
 	,I_Owner
 {
 	public IdStudyPlan Id{get;set;} = new();

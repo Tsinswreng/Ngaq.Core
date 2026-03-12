@@ -478,7 +478,7 @@ public static class ExtnJnWord{
 
 	public static IList<TItem> DiffById<TItem, TId>(
 		this IList<TItem> ListA, IList<TItem> ListB
-	)where TItem: I_IdOld<TId>
+	)where TItem: AppI_Id<TId>
 	where TId: notnull
 	{
 		var diff = Algo.DiffListIntoDict(

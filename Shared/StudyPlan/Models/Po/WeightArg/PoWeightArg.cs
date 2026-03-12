@@ -7,7 +7,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 
 public class PoWeightArg
 	:PoBaseBizTime
-	,I_IdOld<IdWeightArg>
+	,AppI_Id<IdWeightArg>
 	,I_Owner
 {
 	public IdWeightArg Id{get;set;} = new();

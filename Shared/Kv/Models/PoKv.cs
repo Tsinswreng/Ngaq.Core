@@ -11,11 +11,11 @@ using Ngaq.Core.Infra.IF;
 [MkFactory(For=typeof(PoKv))]
 public partial class PoKv
 	:PoBase
-	,I_IdOld<IdKv>
+	,AppI_Id<IdKv>
 	,IPoKv
 {
 
-	[Impl(typeof(I_IdOld<IdKv>))]
+	[Impl(typeof(AppI_Id<IdKv>))]
 	public IdKv Id{get;set;} = new();
 
 	public IdUser Owner{get;set;} = IdUser.Zero;
@@ -25,9 +25,7 @@ public partial class PoKv
 	public EKvType KType { get; set; } = EKvType.Str;
 	[Impl(typeof(IPoKv))]
 	public str? KStr { get; set; } = null;
-	/// <summary>
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
-	/// </summary>
 	[Impl(typeof(IPoKv))]
 	public i64 KI64 { get; set; } = 0;
 

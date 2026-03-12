@@ -20,7 +20,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 public partial class PoWordLearn
 	:PoBaseBizTime
 	,IPoBase
-	,I_IdOld<IdWordLearn>
+	,AppI_Id<IdWordLearn>
 	,I_WordId
 {
 

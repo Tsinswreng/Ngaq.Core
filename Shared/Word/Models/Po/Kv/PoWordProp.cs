@@ -12,7 +12,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 //TODO 分組㕥辨一詞多義? group, groupId, groupCnt
 public partial class PoWordProp
 	:PoBaseBizTime
-	,I_IdOld<IdWordProp>
+	,AppI_Id<IdWordProp>
 	,IPoKv
 	,I_WordId
 {

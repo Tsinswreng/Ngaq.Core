@@ -17,7 +17,7 @@ using Tsinswreng.CsFactoryMkr;
 /// </summary>
 public class PoRefreshToken
 	:PoBaseBizTime
-	,I_IdOld<IdRefreshToken>
+	,AppI_Id<IdRefreshToken>
 {
 
 

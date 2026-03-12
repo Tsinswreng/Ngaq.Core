@@ -4,7 +4,7 @@ using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 public  partial interface IVmWord
-	:I_IdOld<str>
+	:AppI_Id<str>
 	,IHeadLangWord
 {
 

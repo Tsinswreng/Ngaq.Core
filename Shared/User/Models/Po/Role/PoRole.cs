@@ -8,7 +8,7 @@ using Ngaq.Core.Model.Po.Role;
 
 public partial class PoRole
 	:PoBase
-	,I_IdOld<IdRole>
+	,AppI_Id<IdRole>
 {
 
 	public enum ERoleStatus{
