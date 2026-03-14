@@ -8,8 +8,6 @@ using YamlDotNet.Core.Events;
 public class ToolYaml{
 	/// 將YAML字符串解析爲字典。此實現兼容AOT，使用YamlDotNet的低級Parser API。
 	/// 支持YAML錨點(&)和別名(*)。
-	/// 有bug
-
 	public static IDictionary<string, object?> YamlStrToDict(string YamlStr){
 		var parser = new Parser(new StringReader(YamlStr));
 		var anchors = new Dictionary<AnchorName, object?>();
@@ -32,7 +30,6 @@ public class ToolYaml{
 
 	
 	/// 從當前parser位置解析值（不移動parser）
-	
 	private static object? ParseValueFromCurrent(Parser parser, Dictionary<AnchorName, object?> anchors){
 		var current = parser.Current;
 
@@ -58,7 +55,6 @@ public class ToolYaml{
 
 	
 	/// 移動parser並解析下一個值
-	
 	private static object? ParseValue(Parser parser, Dictionary<AnchorName, object?> anchors){
 		if(!parser.MoveNext()){
 			return null;

@@ -20,10 +20,6 @@ public class TextWithBlob: ITextWithBlob{
 		this.Text = Text;
 		this.Blob = Blob;
 	}
-
-
-
-
 }
 
 public static class ToolTextWithBlob {

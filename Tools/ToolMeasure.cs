@@ -14,12 +14,6 @@ public static class ExtnTiming {
 
 	
 	/// 不能直接給lamda字面量用擴展方法
-	
-	/// <typeparam name="TRet"></typeparam>
-	/// <param name="Fn"></param>
-	/// <param name="Logger"></param>
-	/// <param name="name"></param>
-	/// <returns></returns>
 	public static async Task<TRet> TimeAsy<TRet>(
 		this Func<Task<TRet>> Fn
 		,ILogger Logger
@@ -53,37 +47,3 @@ public static class ExtnTiming {
 	// }
 
 }
-
-// public interface IStopWatch{
-// 	public void Start();
-// 	public void Stop();
-// 	public void Restart();
-// 	public i64 ElapsedMilliseconds{get;set;}
-// }
-
-
-// public class TswGStopWatch : IStopWatch{
-// 	Stopwatch Sw = new();
-// 	public void Start(){
-// 		Sw.Start();
-// 	}
-// 	public void Stop(){
-// 		Sw.Stop();
-// 	}
-// 	public void Restart(){
-// 		Sw.Restart();
-// 	}
-// 	public i64 ElapsedMilliseconds{get{
-// 		return Sw.ElapsedMilliseconds;
-// 	}
-// 	set{
-
-// 	}}
-// }
-
-// public class EmptyStopWatch : IStopWatch{
-// 	public void Start(){}
-// 	public void Stop(){}
-// 	public void Restart(){}
-// 	public i64 ElapsedMilliseconds{get;set;}
-// }
