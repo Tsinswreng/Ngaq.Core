@@ -5,9 +5,9 @@ using Ngaq.Core.Shared.User.Models.Po.User;
 namespace Ngaq.Core.Tools;
 
 // 统一的 JsonConverterFactory
-/// <summary>
+
 /// 對于類型芝叶 I_ToSerialized 及 I_ToDeSerialized 者 做自定義序列化
-/// </summary>
+
 [Obsolete("此路不通、須手動蔿每ʹ特ʹ類型 作轉換器")]
 public sealed class CustomJsonConvtrFctry : JsonConverterFactory {
 	public override bool CanConvert(Type typeToConvert) {

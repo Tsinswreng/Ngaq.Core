@@ -12,9 +12,9 @@ public static class ExtnTiming {
 		return R;
 	}
 
-	/// <summary>
+	
 	/// 不能直接給lamda字面量用擴展方法
-	/// </summary>
+	
 	/// <typeparam name="TRet"></typeparam>
 	/// <param name="Fn"></param>
 	/// <param name="Logger"></param>

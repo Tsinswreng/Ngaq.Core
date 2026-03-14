@@ -16,9 +16,9 @@ public partial class PoRole
 	}
 
 	public IdRole Id { get; set; }
-	/// <summary>
+	
 	/// 全局唯一標識 如ADMIN
-	/// </summary>
+	
 	public str Code {get;set;} = "";
 
 	public str Name{get;set;} = "";

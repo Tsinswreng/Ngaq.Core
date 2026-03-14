@@ -156,9 +156,9 @@ public  partial class WordListParser{
 	}
 
 
-	/// <summary>
+	
 	/// 會清空buffer
-	/// </summary>
+	
 	/// <returns></returns>
 	public I_StrSegment BufferToStrSegmentEtClr(){
 		var start = Status.Pos - (u64)Status.Buffer.Count;
@@ -549,9 +549,9 @@ public  partial class WordListParser{
 		}
 	}
 
-/// <summary>
+
 /// 不改變狀態機、只往後讀字符
-/// </summary>
+
 /// <returns></returns>
 	public I_StrSegment ReadPropKey(){
 		var start = Status.Pos;

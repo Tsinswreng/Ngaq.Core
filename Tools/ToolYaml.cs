@@ -30,9 +30,9 @@ public class ToolYaml{
 		return new Dictionary<string, object?>();
 	}
 
-	/// <summary>
+	
 	/// 從當前parser位置解析值（不移動parser）
-	/// </summary>
+	
 	private static object? ParseValueFromCurrent(Parser parser, Dictionary<AnchorName, object?> anchors){
 		var current = parser.Current;
 
@@ -56,9 +56,9 @@ public class ToolYaml{
 		}
 	}
 
-	/// <summary>
+	
 	/// 移動parser並解析下一個值
-	/// </summary>
+	
 	private static object? ParseValue(Parser parser, Dictionary<AnchorName, object?> anchors){
 		if(!parser.MoveNext()){
 			return null;

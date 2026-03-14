@@ -3,9 +3,9 @@ using Num = i64;
 public partial class ToolRandom {
 	private static readonly Random rnd = new Random();
 
-	/// <summary>
+	
 	/// 生成随机整数数组，可以指定是否允许重复
-	/// </summary>
+	
 	/// <param name="min">范围最小值（包含）</param>
 	/// <param name="max">范围最大值（包含）</param>
 	/// <param name="howMany">生成数量</param>
@@ -67,9 +67,9 @@ using Num = u64;
 public partial class ToolRandom {
 	//private static readonly Random rnd = new Random();
 
-	/// <summary>
+	
 	/// 生成随机整数数组，可以指定是否允许重复
-	/// </summary>
+	
 	/// <param name="min">范围最小值（包含）</param>
 	/// <param name="max">范围最大值（包含）</param>
 	/// <param name="howMany">生成数量</param>

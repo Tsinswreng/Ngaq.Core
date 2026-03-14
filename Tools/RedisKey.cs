@@ -2,9 +2,9 @@ namespace Ngaq.Core.Tools;
 using Tsinswreng.CsTools;
 using TStruct = RedisKey;
 
-/// <summary>
+
 /// 專用于 R.MapPost 等
-/// </summary>
+
 /// <param name="V"></param>
 public record struct RedisKey(str V){
 	public str Value => V;

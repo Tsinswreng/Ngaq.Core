@@ -13,9 +13,9 @@ public partial class PoPassword
 	public IdUser UserId{get;set;}
 	public EAlgo Algo{get;set;} = EAlgo.Argon2id;
 	public str Text{get;set;}="";
-	/// <summary>
+	
 	/// 蜮直ᵈ被含于Text中 如用Argon2id旹 此旹不用管 鹽
-	/// </summary>
+	
 	//public str? Salt{get;set;} =""; 使Text含Salt。具體格式決于Algo
 	public enum EAlgo{
 		Argon2id = 1,

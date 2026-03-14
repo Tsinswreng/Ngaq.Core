@@ -4,9 +4,7 @@ using System;
 using System.Buffers;
 using System.Text;
 
-/// <summary>
 /// 格式：| UInt64頭(大端, 定義文本部分ʹ長度) | UTF-8 文本 | 二进制负载 |
-/// </summary>
 public interface ITextWithBlob{
 	public u64 HeaderBytesLen{get;set;}
 	public string Text { get;set;}
@@ -32,16 +30,14 @@ public static class ToolTextWithBlob {
 	private const i32 HeaderLen = 8;
 
 	#region --- 打包 ---
-	/// <summary>
 	/// 将 text + binary 打包成 BlobWithText 实例（还未序列化）。
-	/// </summary>
+
 	public static TextWithBlob Pack(string Text, ReadOnlyMemory<byte> Blob){
 		return new TextWithBlob(Text, Blob);
 	}
 
-	/// <summary>
 	/// 序列化成字节数组，可直接写入 NetworkStream。
-	/// </summary>
+
 	public static byte[] ToByteArr<TSelf>(
 		this TSelf z
 	)where TSelf:ITextWithBlob{
@@ -59,9 +55,8 @@ public static class ToolTextWithBlob {
 		return arr;
 	}
 
-	/// <summary>
 	/// 序列化到 IBufferWriter，适合与 System.IO.Pipelines 搭配。
-	/// </summary>
+
 	public static TSelf WriteTo<TSelf>(
 		this TSelf z
 		,IBufferWriter<byte> Writer
@@ -88,9 +83,8 @@ public static class ToolTextWithBlob {
 	#endregion
 
 	#region --- 解包 ---
-	/// <summary>
 	/// 从完整的数据块解析，成功返回实例，否则抛 ArgumentException。
-	/// </summary>
+
 	public static TextWithBlob Parse(ReadOnlyMemory<byte> Data) {
 		if (Data.Length < HeaderLen){
 			throw new ArgumentException("数据长度不足 8 字节头部");
@@ -109,10 +103,9 @@ public static class ToolTextWithBlob {
 		return new TextWithBlob(text, binary);
 	}
 
-	/// <summary>
 	/// 尝试从缓冲区头部解析一个包，如果长度不足返回 null，且不消耗缓冲区。
 	/// 适合先收几个字节再判断的场景。
-	/// </summary>
+
 	public static TextWithBlob? TryParse(ref ReadOnlySequence<byte> Buffer) {
 		if (Buffer.Length < HeaderLen){
 			return null;

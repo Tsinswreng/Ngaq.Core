@@ -213,11 +213,8 @@ public partial class CalculatorForOne{
 		return _CalcTimeWeight(TimeDiffMs);
 	}
 
-/// <summary>
 /// 含FinalAddBonus
 /// 返值越大 debuff越有效
-/// </summary>
-/// <returns></returns>
 	f64 _CalcDebuff(){
 		f64 R = 1;
 		var Diff = _Now() - _GetCurLearnRecord().UnixMs;
@@ -239,11 +236,8 @@ public partial class CalculatorForOne{
 	}
 
 
-/// <summary>
 /// 末次 加事件越近、加成越大。
 /// 非 唯末事件潙加旹纔起效
-/// </summary>
-/// <returns></returns>
 	f64 _CalcFinalAddBonus(){
 		var NowDiffFinalAddTime = _NowDiffFinalAddTime();
 		f64 R = NowDiffFinalAddTime;
@@ -258,11 +252,8 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
-/// <summary>
 /// 末ʹ事件潙加旹 算加成
 /// 其日期距今ʹ期 越短 則加成越大、即他ʹ況ˋ同旹、ʃ被加ʹ期更近 之詞ˋ更優先
-/// </summary>
-/// <returns></returns>
 	f64 _CalcBonusWhenFinalIsAdd(){
 		var DiffMs = _Now() - _GetCurLearnRecord().UnixMs;
 		var DiffS = DiffMs/1000;

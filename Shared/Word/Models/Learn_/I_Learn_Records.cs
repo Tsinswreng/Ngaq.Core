@@ -5,9 +5,9 @@ using Tsinswreng.CsTools;
 
 
 public partial interface I_Learn_Records{
-	/// <summary>
+	
 	/// 值 按日期排序
-	/// </summary>
+	
 	public IDictionary<ELearn, IList<ILearnRecord>> Learn_Records{get;set;}
 	#if Impl
 	= new Dictionary<Learn, IList<ILearnRecord>>();

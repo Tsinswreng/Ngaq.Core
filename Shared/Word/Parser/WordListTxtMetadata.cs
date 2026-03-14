@@ -3,15 +3,15 @@ using Ngaq.Core.Tools;
 
 namespace Ngaq.Core.Word.Parser;
 public partial class WordListTxtMetadata: IAppSerializable{
-	/// <summary>
+	
 	/// 語言
 	/// 字段保持全小寫
-	/// </summary>
+	
 	public str? belong{get;set;}
-	/// <summary>
+	
 	/// 單詞分隔符
 	/// 字段保持全小寫
-	/// </summary>
+	
 	public str? delimiter{get;set;}
 
 	public static WordListTxtMetadata Parse(str txt){

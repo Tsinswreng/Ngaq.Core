@@ -8,9 +8,9 @@ using Ngaq.Core.Tools.Io;
 
 
 
-/// <summary>
+
 /// 從 路經/字串/字節生產者 解析單詞表文本、得Bo_Word列表。
-/// </summary>
+
 public partial interface ISvcParseWordList{
 
 	// Task<I_Answer<IList<Bo_Word>>> ParseWordsByIterEtEncoding(

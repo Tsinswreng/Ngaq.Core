@@ -15,10 +15,10 @@ public class PoWeightArg
 	public str? UniqueName{get;set;} = null;
 
 	public EWeightArgType Type{get;set;} = EWeightArgType.Json;
-	/// <summary>
+	
 	/// u8[]便于非文本二進制
 	/// 權重算法參數與權重算法相關、故無需如PoPreFilter之存其結構ʹ版本號
-	/// </summary>
+	
 	public u8[]? Data{get;set;} = null;
 
 	[See(nameof(PoWeightCalculator.UniqueName))]

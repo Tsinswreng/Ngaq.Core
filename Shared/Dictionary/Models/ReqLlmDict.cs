@@ -64,16 +64,16 @@ public class ReqLlmDict:IReqLlmDict{
 }
 
 public class ReqLlmDictEvt:ReqLlmDict, IReqLlmDictEvt{
-	/// <summary>
+	
 	/// 當收到新的文本片段時觸發
 	/// 返ʹ值: 返0
-	/// </summary>
+	
 	public Func<DtoOnNewSeg, CT, i32>? OnNewSeg{get;set;}
 
-	/// <summary>
+	
 	/// llm響應終旹觸發
 	/// 返ʹ值: 返0
-	/// </summary>
+	
 	public Func<DtoOnDone, CT, i32>? OnDone{get;set;}
 
 }

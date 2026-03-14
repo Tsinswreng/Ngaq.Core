@@ -8,9 +8,9 @@ public partial interface I_UnsavedLearnRecords{
 }
 
 public static class ExtnI_UnsavedLearnRecords{
-	/// <summary>
+	
 	/// 適用于 每輪學習中只有一個新ʹ學習記錄
-	/// </summary>
+	
 	/// <param name="z"></param>
 	/// <param name="LearnRecord"></param>
 	/// <returns></returns>

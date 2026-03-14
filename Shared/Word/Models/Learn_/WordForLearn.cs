@@ -134,9 +134,7 @@ public partial class WordForLearn
 		set{PoWord.DbUpdatedAt = value;}
 	}
 
-	/// <summary>
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
-	/// </summary>
 	[Impl]
 	public Tempus BizUpdatedAt{
 		get{return PoWord.BizUpdatedAt;}
@@ -169,10 +167,8 @@ public static class ExtnIWordForLearn{
 		return 0;//should not happen
 	}
 
-	/// <summary>
 	/// 保存後 把新ʹ學習記錄 添入LearnRecords列表與Learn_Records字典
 	/// 把新學習記錄予上輪ʹ學習記錄、緟設新學習記錄
-	/// </summary>
 	/// <param name="z"></param>
 	/// <returns></returns>
 	public static nil HandleLearnRecordsOnSave(

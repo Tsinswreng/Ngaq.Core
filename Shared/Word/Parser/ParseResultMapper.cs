@@ -6,19 +6,19 @@ using Ngaq.Core.Word.Parser;
 
 namespace Ngaq.Core.Service.Parser;
 
-/// <summary>
+
 /// 單詞表文本解析結果轉Bo_Word
-/// </summary>
+
 public  partial class ParseResultMapper(){
 	protected static ParseResultMapper? _Inst = null;
 	public static ParseResultMapper Inst => _Inst??= new ParseResultMapper();
 
 
-/// <summary>
+
 /// TODO
 /// 若key無命名空間 則須潙內置鍵 即Const_PropKey中ʃ有
 /// 若有命名空間則檢格式 取末個「:」作分隔 如Tsinswreng:MyCustomPropKey。不合此格式則錯
-/// </summary>
+
 /// <param name="key"></param>
 /// <returns></returns>
 	public nil CheckPropKey(str key){

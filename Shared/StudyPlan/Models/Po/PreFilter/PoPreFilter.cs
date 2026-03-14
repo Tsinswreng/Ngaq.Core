@@ -1,15 +1,19 @@
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
+using Ngaq.Core.Shared.User.Models.Po.User;
 
 namespace Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 
 public class PoPreFilter
 	:PoBaseBizTime
 	,AppI_Id<IdPreFilter>
+	,I_Owner
 {
 	public IdPreFilter Id{get;set;} = new();
+	public IdUser Owner{get;set;} = IdUser.Zero;
 	public str? UniqueName{get;set;} = null;
 	public str Descr{get;set;} = "";
 	public EPreFilterType Type{get;set;}

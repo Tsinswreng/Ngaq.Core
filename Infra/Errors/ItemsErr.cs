@@ -34,30 +34,18 @@ public static class ItemsErr{
 		public static K BackgroundImageServiceFailedToInit = MkB(_R, [nameof(BackgroundImageServiceFailedToInit)]);
 	}
 
-	/// <summary>
 	/// 字典服務相關異常
-	/// </summary>
 	public class Dictionary{
 		public static K _R = Mk(null, [nameof(Dictionary)]);
-		/// <summary>
 		/// LLM 字典 API 未配置（URL 或 Key 缺失）
-		/// </summary>
 		public static K LlmApiNotConfigured = MkB(_R, [nameof(LlmApiNotConfigured)]);
-		/// <summary>
 		/// LLM API 返回空響應
-		/// </summary>
 		public static K LlmApiEmptyResponse = MkB(_R, [nameof(LlmApiEmptyResponse)]);
-		/// <summary>
 		/// LLM API 響應結構無效
-		/// </summary>
 		public static K LlmApiInvalidResponseStructure = MkB(_R, [nameof(LlmApiInvalidResponseStructure)]);
-		/// <summary>
 		/// LLM API 返回空內容
-		/// </summary>
 		public static K LlmApiEmptyContent = MkB(_R, [nameof(LlmApiEmptyContent)]);
-		/// <summary>
 		/// 解析 LLM 響應失敗
-		/// </summary>
 		public static K LlmResponseParseFailed = MkB(_R, [nameof(LlmResponseParseFailed)]);
 	}
 }

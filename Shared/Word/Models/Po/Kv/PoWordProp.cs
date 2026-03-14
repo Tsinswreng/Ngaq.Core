@@ -22,9 +22,9 @@ public partial class PoWordProp
 
 	public EKvType KType { get; set; } = EKvType.Str;
 	public str? KStr { get; set; }
-	/// <summary>
+	
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
-	/// </summary>
+	
 	public i64 KI64 { get; set; }
 	//public str KeyType {get; set;} = "";
 

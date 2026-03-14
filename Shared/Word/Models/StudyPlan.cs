@@ -15,16 +15,16 @@
 // }
 
 // public class FieldWithFilter<T>{
-// 	/// <summary>
+// 	
 // 	/// WordProp中ʹKStr
-// 	/// </summary>
+// 	
 // 	public str Field{get;set;}
 // 	public FilterInExClude<T> Filter{get;set;}
 // }
 
-// /// <summary>
+// 
 // /// 宜作用于 從數據庫取詞旹、即拼條件于sql中。故不適 用腳本過濾表達式㕥叶㞢
-// /// </summary>
+// 
 // public class PreFilter{
 // 	public IList<FieldWithFilter<str>> FieldFilter{get;set;}
 // }

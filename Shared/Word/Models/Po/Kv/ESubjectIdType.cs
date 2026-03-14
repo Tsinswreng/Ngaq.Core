@@ -1,8 +1,8 @@
 namespace Ngaq.Core.Word.Models.Po.Kv;
 
-/// <summary>
+
 /// 只關注數據類型、不關注生成方式
-/// </summary>
+
 public enum EFKeyType{
 	Str = 1
 	,UInt8 = 2

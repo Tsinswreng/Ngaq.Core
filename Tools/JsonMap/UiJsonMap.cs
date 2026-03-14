@@ -10,7 +10,7 @@ public class IUiJsonMap{
 	public IDictionary<str, IUiJsonMapItem>? PathToUiMap{get;set;} = null;
 	//public IList<IUiJsonMapItem>? Items{get;set;} = null;
 	public str? I18nLang{get;set;} = null;// = "zh-CN";
-/// <summary>
+
 /*
 		"en":{
 			"DfltAddBonus":{
@@ -24,7 +24,7 @@ public class IUiJsonMap{
 			}
 		}
  */
-/// </summary>
+
 	public IJsonNode? I18n{get;set;}
 }
 

@@ -7,9 +7,9 @@ namespace Ngaq.Core.Tools;
 
 
 public static class JSON {
-	/// <summary>
+	
 	/// 縱Opt中指定了TypeInfoResolver亦不效、肰直ᵈ傳TypeInfo又不可兼傳Opt。故需把選項加于appJsonCtxʹ註解
-	/// </summary>
+	
 	static JsonSerializerOptions Opt = new JsonSerializerOptions{
 		//WriteIndented = true
 		Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出

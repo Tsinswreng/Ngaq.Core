@@ -16,9 +16,9 @@ public partial class WeightCfg{
 		0xff,0xfff,0xffff,0xfffff //對應 舊版ʹaddWeight
 	};
 	public f64 DfltAddBonus = 0xffffffff;
-	/// <summary>
+	
 	/// ʃᶤ削弱 ʹ分母
-	/// </summary>
+	
 	public f64 DebuffNumerator = 36*ETimeInMs.Day;
 	public f64 Base = 20;
 	public f64 FinalAddBonusDenominator = ETimeInMs.Day*3000;

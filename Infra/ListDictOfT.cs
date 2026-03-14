@@ -7,10 +7,10 @@ public static class ListDictOfT {
 	// 缓存 open type，避免每次都解析
 	private static readonly Type? IListOpenType = typeof(IList<>);
 
-	/// <summary>
+	
 	/// 若 <paramref name="t"/> 是 IList&lt;T&gt; 或其子类型，则返回具体的 T；
 	/// 否则返回 null。兼容 AOT。
-	/// </summary>
+	
 	public static Type? GetTOfIList(Type t) {
 		if (t is null) return null;
 
@@ -35,10 +35,10 @@ public static class ListDictOfT {
 	// 缓存 open type，避免每次都解析
 	private static readonly Type? IDictOpenType = typeof(IDictionary<,>);
 
-	/// <summary>
+	
 	/// 若 <paramref name="t"/> 是 IDictionary&lt;K,V&gt; 或其子类型，则返回 (K,V)；
 	/// 否则返回 null。兼容 AOT。
-	/// </summary>
+	
 	public static (Type key, Type value)? GetKvOfIDict(Type t) {
 		if (t is null) return null;
 

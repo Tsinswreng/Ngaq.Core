@@ -14,9 +14,9 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 // 	public static new Po_Learn Example{get;set;} = new Po_Learn();
 // }
 
-/// <summary>
+
 /// 不當改其CreatedAt與UpdatedAt。唯可刪實體
-/// </summary>
+
 public partial class PoWordLearn
 	:PoBaseBizTime
 	,IPoBase

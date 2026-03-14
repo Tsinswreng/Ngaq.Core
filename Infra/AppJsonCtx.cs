@@ -57,12 +57,12 @@ public interface IIfaceGenCfg_JsonCustomConverter{
 
 }
 
-/// <summary>
+
 /// ASP.net 內置Json序列化器專用。
 /// 縱既配opt =>opt.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonCtx.Default);
 /// 猶需手上 opt.SerializerOptions.Converters.Add(new MyConverter()......)
 /// 佢不認AppJsonCtx中 用註解配˪ʹ Converters
-/// </summary>
+
 [IfaceGen(
 	ParentType = typeof(IDictSerializable)
 	//ParentType = typeof(INull)

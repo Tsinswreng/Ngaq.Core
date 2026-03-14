@@ -2,9 +2,9 @@ namespace Ngaq.Core.Tools;
 using Tsinswreng.CsTools;
 using TStruct = Url;
 
-/// <summary>
+
 /// 專用于 R.MapPost 等
-/// </summary>
+
 /// <param name="V"></param>
 public record struct Url(str V){
 	public str Value => V;

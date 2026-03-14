@@ -15,10 +15,10 @@ public partial struct EItemProp(str V){
 }
 
 
-/// <summary>
+
 /// 內置單詞屬性鍵
 /// 勿用Enum語法 緣字符串內容受限于標識符ʹ名
-/// </summary>
+
 public partial class KeysProp{
 	protected static KeysProp? _Inst = null;
 	public static KeysProp Inst => _Inst??= new KeysProp();
@@ -42,9 +42,9 @@ public partial class KeysProp{
 
 
 
-/// <summary>
+
 /// 內置單詞屬性鍵
-/// </summary>
+
 // [Obsolete("用帶實例的")]
 // public  partial class Const_PropKey{
 // 	public const str meaning = nameof(meaning);

@@ -2,9 +2,9 @@ namespace Ngaq.Core.Tools;
 using Tsinswreng.CsTools;
 using TStruct = SlashSepKey;
 
-/// <summary>
+
 ///開頭不帶斜槓
-/// </summary>
+
 /// <param name="V"></param>
 public record struct SlashSepKey(str V){
 	public str Value => V;

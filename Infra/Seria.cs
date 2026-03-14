@@ -137,9 +137,9 @@ public class Seria{
 		//return TarObj;
 	}
 
-	/// <summary>
+	
 	/// 同時遍歷兩個IEnumerable<T>
-	/// </summary>
+	
 	/// <typeparam name="T1"></typeparam>
 	/// <typeparam name="T2"></typeparam>
 	/// <param name="first"></param>

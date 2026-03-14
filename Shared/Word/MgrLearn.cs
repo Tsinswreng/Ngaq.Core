@@ -4,7 +4,6 @@ using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Infra.Errors;
-using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
@@ -17,6 +16,7 @@ using Ngaq.Core.Shared.Word.Models.Weight;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Shared.Word.Svc;
+using Ngaq.Core.Shared.Word.Models.Dto;
 
 public enum ELearnOpRtn{
 	Learn = 0
@@ -89,9 +89,7 @@ public partial class LearnEventArgs :EventArgs{
 	public bool IsUndo{get;set;} = false;
 }
 
-/// <summary>
 /// 只會在前端運行
-/// </summary>
 public partial class MgrLearn{
 
 	//public MgrLearn(){}
@@ -166,9 +164,9 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-	/// <summary>
+
 	/// 取諸詞
-	/// </summary>
+
 	/// <param name="JWords"></param>
 	/// <returns></returns>
 	[Obsolete("用LoadEtCalcWeightAsy更快")]
@@ -248,9 +246,7 @@ public partial class MgrLearn{
 
 
 
-/// <summary>
 ///
-/// </summary>
 /// <param name="Word"></param>
 /// <param name="Learn"></param>
 /// <returns>見ELearnOpRtn</returns>
