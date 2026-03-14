@@ -16,6 +16,7 @@ using Tsinswreng.CsErr;
 using Ngaq.Core.Shared.Word.Models.Weight;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
+using Ngaq.Core.Shared.Word.Svc;
 
 public enum ELearnOpRtn{
 	Learn = 0

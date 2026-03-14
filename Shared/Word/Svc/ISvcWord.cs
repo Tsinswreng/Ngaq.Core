@@ -1,8 +1,7 @@
-namespace Ngaq.Core.Word.Svc;
+namespace Ngaq.Core.Shared.Word.Svc;
 
 using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Learn_;
-using Ngaq.Core.Model.Word.Req;
 using Ngaq.Core.Tools.Io;
 using Ngaq.Core.Iter;
 using Tsinswreng.CsPage;
@@ -13,21 +12,33 @@ using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 
+file class DirDoc{
+	str Doc =
+$$"""
+#Sum[
+
+]
+#Descr[
+
+]
+""";
+}
+
 public partial interface ISvcWord{
 //TODO 加詞後 宜予回饋 如 新ʹ加ʹ詞ʹ數 及 老詞新加之數
-	Task<nil> AddWordsFromFilePath(
+	public Task<nil> AddWordsFromFilePath(
 		IUserCtx UserCtx
 		,Path_Encode Path_Encode
 		,CT Ct
 	);
 
-	Task<nil> AddWordsFromText(
+	public Task<nil> AddWordsFromText(
 		IUserCtx UserCtx
 		,string Text
 		,CT Ct
 	);
 
-	Task<nil> AddEtMergeWords(
+	public Task<nil> AddEtMergeWords(
 		IUserCtx UserCtx
 		,IEnumerable<IJnWord> JnWords
 		,CT Ct
@@ -45,19 +56,29 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
+	[Doc(@$"爲單詞插入新的學習記錄、並更新{nameof(PoWord.BizUpdatedAt)}")]
 	public Task<nil> AddWordId_LearnRecordss(
 		IUserCtx UserCtx
 		,IEnumerable<WordId_LearnRecords> WordId_LearnRecordss
 		,CT Ct
 	);
 
+	[Doc($$"""
+	從多個獨立的 {{nameof(JnWord)}} json字符串 添加單詞 ???
+	#Params(
+		[],
+		[每個元素都是一個獨立的 {{nameof(JnWord)}} json字符串],
+		[],
+	)
+	""")]
 	public Task<nil> AddWordsByJsonLineIter(
 		IUserCtx User
 		,IAsyncEnumerable<str> JsonLineIter
 		,CT Ct
 	);
 
-
+	
+	[Doc(@$"軟刪、只設聚合根之{nameof(PoWord.DelAt)}、不改他ʹ資產")]
 	public Task<nil> SoftDelJnWordsByIds(
 		IUserCtx User
 		,IEnumerable<IdWord> Ids
@@ -81,6 +102,7 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
+	[Obsolete]
 	public Task<IPage<ITypedObj>> PageSearch(
 		IUserCtx User
 		,IPageQry PageQry
