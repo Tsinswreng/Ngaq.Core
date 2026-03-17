@@ -8,8 +8,11 @@ Po 是 數據庫實體、其成員 要考慮 與數據庫列 的對應;
 此爲 業務模型、 不考慮如何儲存、 只考慮在代碼內存中的抽象
 ")]
 public class PreFilter{
+	[Doc($@"篩選配置結構版本")]
 	public Version Version { get; set; } = new Version(1, 0, 0, 0);
+	[Doc($@"核心字段篩選條件組")]
 	public IList<FieldsFilter> CoreFilter { get; set; } = [];
+	[Doc($@"擴展屬性篩選條件組")]
 	public IList<FieldsFilter> PropFilter {get;set;} = [];
 }
 
