@@ -7,8 +7,8 @@ using Ngaq.Core.Infra;
 using Tsinswreng.CsSql;
 
 [Doc(@$"
-同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
-(如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ(Head,Lang)、則雖同ʹ詞、猶將被予異ʹId)
+同Owner下 ({nameof(Head)}, {nameof(Lang)}) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
+(如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ({nameof(Head)}, {nameof(Lang)})、則雖同ʹ詞、猶將被予異ʹId)
 ")]
 public partial interface IPoWord
 	:IPoBase
@@ -44,6 +44,10 @@ public partial class PoWord
 	#region IPoWord
 
 	/// 詞形標識
+	[Doc(@$"
+	字段爲用戶自填、未必對應「語言」、實則爲詞庫隔離之標識
+	今ʹ理則ˋ 同{nameof(Owner)} 同{nameof(Lang)}時 {nameof(Head)}必唯一
+	")]
 	public str Head{get;set;}
 	#if Impl
 		="";
@@ -67,15 +71,23 @@ public partial class PoWord
 		return ExtnIDict.Print(Dict);
 	}
 
-
+	[Obsolete]
 	public class N{
+		[Obsolete]
 		public str Id = nameof(PoWord.Id);
+		[Obsolete]
 		public str Head = nameof(PoWord.Head);
+		[Obsolete]
 		public str Lang = nameof(PoWord.Lang);
+		[Obsolete]
 		public str Owner = nameof(PoWord.Owner);
+		[Obsolete]
 		public str StoredAt = nameof(PoWord.StoredAt);
+		[Obsolete]
 		public str CreatedAt = nameof(DbCreatedAt);
+		[Obsolete]
 		public str UpdatedAt = nameof(DbUpdatedAt);
+		[Obsolete]
 		public str DelAt = nameof(PoWord.DelAt);
 	}
 
