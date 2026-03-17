@@ -16,7 +16,7 @@ public class PoWeightCalculator
 	[Doc($@"擁有者")]
 	public IdUser Owner{get;set;} = IdUser.Zero;
 	[Doc($@"用戶側唯一名")]
-	public str? UniqueName{get;set;} = null;
+	public str? UniqName{get;set;} = null;
 	[Doc($@"算法實現類型")]
 	public EWeightCalculatorType Type{get;set;} = EWeightCalculatorType.Unknown;
 	[Doc($@"算法載荷，可為腳本或二進制.

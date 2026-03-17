@@ -18,7 +18,7 @@ public class PoStudyPlan
 	[Doc($@"擁有者")]
 	public IdUser Owner{get;set;} = IdUser.Zero;
 	[Doc($@"用戶側唯一名")]
-	public str? UniqueName{get;set;} = null;
+	public str? UniqName{get;set;} = null;
 	[Doc($@"描述")]
 	public str Descr{get;set;} = "";
 	[Doc($@"關聯的前置篩選器ID")]

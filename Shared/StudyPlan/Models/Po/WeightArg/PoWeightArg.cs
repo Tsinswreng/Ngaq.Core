@@ -16,7 +16,7 @@ public class PoWeightArg
 	[Doc($@"擁有者")]
 	public IdUser Owner{get;set;} = IdUser.Zero;
 	[Doc($@"用戶側唯一名")]
-	public str? UniqueName{get;set;} = null;
+	public str? UniqName{get;set;} = null;
 
 	[Doc($@"參數數據格式")]
 	public EWeightArgType Type{get;set;} = EWeightArgType.Json;
@@ -27,8 +27,7 @@ public class PoWeightArg
 	
 	public u8[]? Data{get;set;} = null;
 
-	[Doc($@"關聯算法名稱，參見 {nameof(PoWeightCalculator.UniqueName)}")]
-	[See(nameof(PoWeightCalculator.UniqueName))]
+	[Doc($@"關聯算法名稱，參見 {nameof(PoWeightCalculator.UniqName)}")]
 	public str WeightCalculatorName{get;set;} = "";
 
 	[Doc($@"描述")]
