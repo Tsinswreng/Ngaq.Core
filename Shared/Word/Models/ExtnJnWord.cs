@@ -13,7 +13,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsErr;
-using Tsinswreng.CsDictMapper;
+using Tsinswreng.CsStrAcc;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.Models.Po;
@@ -107,19 +107,33 @@ public static class ExtnJnWord{
 
 
 		public IDictionary<str, obj?> ToDict(
-			IDictMapperShallow DictMapper
+			IPropAccessorMgr PropAccessorMgr
 		){
+			IDictionary<str, obj?> ToShallow(Type Type, obj Obj){
+				if(!PropAccessorMgr.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
+					throw new Exception($"No {nameof(IPropAccessor)} registered for type: {Type}");
+				}
+				var R2 = new Dictionary<str, obj?>();
+				foreach(var Key in Accessor.GetGetterNames(Obj)){
+					if(!Accessor.TryGet(Obj, Key, out var V)){
+						continue;
+					}
+					R2[Key] = V;
+				}
+				return R2;
+			}
+
 			var R = new Dictionary<str, obj?>();
-			R[nameof(IJnWord.Word)] = DictMapper.ToDictShallowT(z.Word);
+			R[nameof(IJnWord.Word)] = ToShallow(z.Word.GetType(), z.Word);
 			var props = new List<IDictionary<str, obj?>>();
 			R[nameof(IJnWord.Props)] = props;
 			foreach(var prop in z.Props){
-				props.Add(DictMapper.ToDictShallowT(prop));
+				props.Add(ToShallow(prop.GetType(), prop));
 			}
 			var learns = new List<IDictionary<str, obj?>>();
 			R[nameof(IJnWord.Learns)] = learns;
 			foreach(var learn in z.Learns){
-				learns.Add(DictMapper.ToDictShallowT(learn));
+				learns.Add(ToShallow(learn.GetType(), learn));
 			}
 			return R;
 		}
@@ -386,12 +400,28 @@ public static class ExtnJnWord{
 			return ESyncResult.NoNeedToSync;
 		}
 		R??=z;
-		var selfDict = CoreDictMapper.Inst.ToDictShallowT(z);
-		var otherDict = CoreDictMapper.Inst.ToDictShallowT(Other);
+		var mgr = (IPropAccessorMgr)CoreDictMapper.Inst;
+		if(!mgr.Type_PropAccessor.TryGetValue(typeof(T), out var accessor)){
+			throw new Exception($"No {nameof(IPropAccessor)} registered for type: {typeof(T)}");
+		}
+		var selfDict = new Dictionary<str, obj?>();
+		var otherDict = new Dictionary<str, obj?>();
+		foreach(var key in accessor.GetGetterNames(z)){
+			if(accessor.TryGet(z, key, out var v1)){
+				selfDict[key] = v1;
+			}
+		}
+		foreach(var key in accessor.GetGetterNames(Other)){
+			if(accessor.TryGet(Other, key, out var v2)){
+				otherDict[key] = v2;
+			}
+		}
 		foreach(var (otherK, otherV) in otherDict){
 			selfDict[otherK] = otherV;
 		}
-		CoreDictMapper.Inst.AssignShallowT(R, selfDict);
+		foreach(var (k, v) in selfDict){
+			accessor.TrySet(R, k, v);
+		}
 		return ESyncResult.Ok;
 	}
 

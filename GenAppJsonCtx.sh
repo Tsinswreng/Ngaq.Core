@@ -1,4 +1,4 @@
-# 蔿䀬ʹ叶˪IAppSerializable之類型 生成DictType註解與JsonSerializable註解
+# 蔿䀬ʹ叶˪IAppSerializable之類型 生成StrAccType註解與JsonSerializable註解
 # 需賴Tsinswreng.CsIfaceGen.Cli.exe 欲自編譯㞢則珩../CompileIfaceGenCli.sh
 # JsonSerializable註解須寫在一起、不能散落在分散之partial class、否則json源生成器不輸出
 

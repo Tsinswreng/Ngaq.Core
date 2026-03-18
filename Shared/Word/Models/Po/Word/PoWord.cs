@@ -5,6 +5,7 @@ using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsStrAcc;
 
 [Doc(@$"
 同Owner下 ({nameof(Head)}, {nameof(Lang)}) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
@@ -67,7 +68,17 @@ public partial class PoWord
 	public Tempus StoredAt{get;set;} = Tempus.Now();
 
 	public override string ToString() {
-		var Dict = CoreDictMapper.Inst.ToDictShallowT(this);
+		var Mgr = (IPropAccessorMgr)CoreDictMapper.Inst;
+		if(!Mgr.Type_PropAccessor.TryGetValue(typeof(PoWord), out var Accessor)){
+			throw new Exception($"No {nameof(IPropAccessor)} registered for type: {typeof(PoWord)}");
+		}
+		var Dict = new Dictionary<str, obj?>();
+		foreach(var Key in Accessor.GetGetterNames(this)){
+			if(!Accessor.TryGet(this, Key, out var V)){
+				continue;
+			}
+			Dict[Key] = V;
+		}
 		return ExtnIDict.Print(Dict);
 	}
 

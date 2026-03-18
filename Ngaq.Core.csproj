@@ -39,9 +39,9 @@
 
 	<ItemGroup>
 		<ProjectReference Include="../Tsinswreng.CsSql/proj/Tsinswreng.CsSql/Tsinswreng.CsSql.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsDictMapper/proj/Tsinswreng.CsDictMapper/Tsinswreng.CsDictMapper.csproj" />
+		<ProjectReference Include="../Tsinswreng.CsStrAcc/proj/Tsinswreng.CsStrAcc/Tsinswreng.CsStrAcc.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsYamlMd/proj/Tsinswreng.CsYamlMd/Tsinswreng.CsYamlMd.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsDictMapper/proj/Tsinswreng.CsDictMapper.SrcGen/Tsinswreng.CsDictMapper.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<ProjectReference Include="../Tsinswreng.CsStrAcc/proj/Tsinswreng.CsStrAcc.SrcGen/Tsinswreng.CsStrAcc.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
 		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/Tsinswreng.CsFactoryMkr.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr.SrcGen/Tsinswreng.CsFactoryMkr.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
