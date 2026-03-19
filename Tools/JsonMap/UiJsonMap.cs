@@ -4,6 +4,7 @@ namespace Ngaq.Core.Tools.JsonMap;
 
 public class IUiJsonMap{
 	public IUiJsonMap(){}
+	[Doc(@$"")]
 	public Version Version{get;set;} = new Version(1,0,0);//2026_0103_105821
 	public IJsonNode Raw{get;set;} = new JsonNode();
 	public IJsonNode? Schema{get;set;} = null;

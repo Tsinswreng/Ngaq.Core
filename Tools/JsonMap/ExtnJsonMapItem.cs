@@ -25,13 +25,5 @@ public static class ExtnJsonMapItem{
 			return Root.Raw.SetNodeByPath(pathObj, Node);
 		}
 
-		// void _(){
-		// 	List<str> a = [];
-		// 	a.Insert()
-		// 	Dictionary<str,str> a;
-		// 	a.TryAdd();
-		// 	a.Add()
-		// }
-
 	}
 }

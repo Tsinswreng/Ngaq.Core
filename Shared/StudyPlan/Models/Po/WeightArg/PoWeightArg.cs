@@ -24,7 +24,6 @@ public class PoWeightArg
 	[Doc($@"參數載荷")]
 	/// u8[]便于非文本二進制
 	/// 權重算法參數與權重算法相關、故無需如PoPreFilter之存其結構ʹ版本號
-	
 	public u8[]? Data{get;set;} = null;
 
 	[Doc($@"關聯算法名稱，參見 {nameof(PoWeightCalculator.UniqName)}")]
