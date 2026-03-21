@@ -38,7 +38,7 @@ public  partial class Pos : I_LineCol{
 	}
 }
 
-public  partial class Status{
+public partial class Status{
 	public state_t State {get; set;} = state_t.Start;
 	public I_LineCol Line_col {get; set;} = new Pos();
 	public u64 Pos {get;set;} = 0;

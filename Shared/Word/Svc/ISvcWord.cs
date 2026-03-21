@@ -11,6 +11,8 @@ using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
+using Ngaq.Core.Shared.Word.Models.Learn_;
+using Ngaq.Core.Shared.Word.Models.Po.Kv;
 
 file class DirDoc{
 	str Doc =
@@ -32,31 +34,40 @@ public partial interface ISvcWord{
 		,CT Ct
 	);
 
+	[Doc(@$"
+	從生詞表中加入單詞
+	遇到({nameof(PoWord.Head)}, {nameof(PoWord.Lang)})相同的 即合併
+	會新增{nameof(ELearn.Add)}、
+	按 新詞的總共的 新來的 {nameof(KeysProp.description)} 的數量
+	決定 新增的{nameof(ELearn.Add)}的數量
+	")]
 	public Task<nil> AddWordsFromText(
 		IUserCtx UserCtx
 		,string Text
 		,CT Ct
 	);
 
+	[Doc(@$"不新增{nameof(ELearn.Add)}")]
 	public Task<nil> AddEtMergeWords(
 		IUserCtx UserCtx
 		,IEnumerable<IJnWord> JnWords
 		,CT Ct
 	);
 
+	[Doc(@$"非遊標分頁。
+	當前 此函數ʹ用途 只有 在背單詞旹 獲取全部單詞、
+	故宜棄用此洏另置接口
+	")]
 	public Task<IPageAsyE<IJnWord>> PageWord(
 		IUserCtx UserCtx
 		,IPageQry PageQry
 		,CT Ct
 	);
 
-	public Task<nil> AddWordId_PoLearnss(
-		IUserCtx UserCtx
-		,IEnumerable<WordId_PoLearns> WordId_PoLearnss
-		,CT Ct
-	);
 
-	[Doc(@$"爲單詞插入新的學習記錄、並更新{nameof(PoWord.BizUpdatedAt)}")]
+	[Doc(@$"批量爲單詞插入新的學習記錄、並更新{nameof(PoWord.BizUpdatedAt)}。
+	用于背單詞後 儲存學習結果
+	")]
 	public Task<nil> AddWordId_LearnRecordss(
 		IUserCtx UserCtx
 		,IEnumerable<WordId_LearnRecords> WordId_LearnRecordss

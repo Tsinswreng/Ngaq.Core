@@ -8,6 +8,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Word.Models;
+using Tsinswreng.CsSql;
 using Tsinswreng.CsTools;
 
 
@@ -24,6 +25,7 @@ using Tsinswreng.CsTools;
 ///	}
 public interface IJnWord
 	:IAppSerializable
+	,IAgg
 //	,I_ClassVersion //使接口叶靜態抽象則json序列化生成器報錯
 {
 	public static readonly Version Ver = new Version(1,0);

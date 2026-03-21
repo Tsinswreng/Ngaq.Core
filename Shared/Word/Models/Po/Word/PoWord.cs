@@ -14,6 +14,7 @@ using Tsinswreng.CsStrAcc;
 public partial interface IPoWord
 	:IPoBase
 	,I_Id<IdWord>
+	,IAggRoot
 	,IHeadLangWord
 	,IBizCreateUpdateTime
 	,I_Owner

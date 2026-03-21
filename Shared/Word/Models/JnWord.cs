@@ -14,9 +14,11 @@ using Ngaq.Core.Tools.Algo;
 using Ngaq.Core.Word.Models;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Tsinswreng.CsSql;
 
 public partial class JnWord
 	:IJnWord
+	,IAgg
 	//,IPoWord
 	,IAppSerializable
 	//,IBizCreateUpdateTime

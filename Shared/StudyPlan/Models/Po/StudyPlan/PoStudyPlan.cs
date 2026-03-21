@@ -4,6 +4,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.User.Models.Po.User;
+using Tsinswreng.CsSql;
 
 namespace Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 
@@ -11,6 +12,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 public class PoStudyPlan
 	:PoBaseBizTime
 	,AppI_Id<IdStudyPlan>
+	,IAggRoot
 	,I_Owner
 {
 	[Doc($@"主鍵")]

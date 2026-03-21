@@ -5,6 +5,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Word.Svc;
+using Tsinswreng.CsSql;
 using Tsinswreng.CsTools;
 namespace Ngaq.Core.Shared.StudyPlan.Models;
 
@@ -12,6 +13,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models;
 public class JnStudyPlan
 	:IAppSerializable
 	,I_ClassVer
+	,IAgg
 {
 	public static Version ClassVer{get;set;} = new Version(1,0);
 	[Doc($@"學習方案主體")]

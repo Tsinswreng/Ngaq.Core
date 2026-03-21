@@ -21,6 +21,7 @@ public partial class PoWordProp
 	public IdWord WordId{get;set;}
 
 	public EKvType KType { get; set; } = EKvType.Str;
+	[Doc(@$"#See[{nameof(KeysProp)}]")]
 	public str? KStr { get; set; }
 	
 	/// KType非I64旹、忽略KI64。用匪空類型可免裝箱
