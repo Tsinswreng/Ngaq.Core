@@ -29,8 +29,6 @@ public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)
 		where TSelf:IJnWord
 	{
-	
-
 		public IJnWord DeepClone(){
 			var word = (PoWord)z.Word.ShallowCloneSelf();
 			var props = z.Props.Select(x=>(PoWordProp)x.ShallowCloneSelf()).ToList();
@@ -104,11 +102,13 @@ public static class ExtnJnWord{
 			get{return z.Word.DbUpdatedAt;}
 			set{z.Word.DbUpdatedAt = value;}
 		}
-
+		
+		
 
 		public IDictionary<str, obj?> ToDict(
 			IPropAccessorMgr PropAccessorMgr
 		){
+			
 			IDictionary<str, obj?> ToShallow(Type Type, obj Obj){
 				if(!PropAccessorMgr.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
 					throw new Exception($"No {nameof(IPropAccessor)} registered for type: {Type}");
@@ -300,7 +300,7 @@ public static class ExtnJnWord{
 		,IJnWord Other
 	){
 		return ItemsErr.Word.__And__IsNotSameUserWord
-		.ToErr(z.Id_(), Other.Id_())
+		.ToErr(z.Id, Other.Id)
 		.AddDebugArgs(z,Other);
 	}
 

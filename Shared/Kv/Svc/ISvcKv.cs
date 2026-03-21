@@ -9,12 +9,15 @@ using Tsinswreng.CsSql;
 [Doc(@$"#See[{nameof(PoKv)}]")]
 public partial interface ISvcKv{
 	public Task<IAsyncEnumerable<PoKv?>> BatGetByOwnerEtKI64(
-		IAsyncEnumerable<(IdUser, i64)> Owner_Key, CT Ct
+		IDbFnCtx? Ctx, IAsyncEnumerable<(IdUser, i64)> Owner_Key, CT Ct
 	);
 	
 	public Task<IAsyncEnumerable<PoKv?>> BatGetByOwnerEtKStr(
-		IAsyncEnumerable<(IdUser, str)> Owner_Key, CT Ct
+		IDbFnCtx? Ctx, IAsyncEnumerable<(IdUser, str)> Owner_Key, CT Ct
 	);
 	
-	public Task<nil> BatSet(IAsyncEnumerable<PoKv> Kvs, CT Ct);
+	public Task<nil> BatSet(
+		IDbFnCtx? Ctx
+		,IAsyncEnumerable<PoKv> Kvs, CT Ct
+	);
 }

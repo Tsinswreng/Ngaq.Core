@@ -8,17 +8,20 @@ namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
 public interface ISvcStudyPlan{
 	public Task<nil> BatAddPreFilter(
-		IUserCtx User
+		IDbFnCtx? Ctx
+		,IUserCtx User
 		,IAsyncEnumerable<PoPreFilter> Pos
 		,CT Ct
 	);
 	public Task<nil> BatAddWeightArg(
-		IUserCtx User
+		IDbFnCtx? Ctx
+		,IUserCtx User
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
 	public Task<nil> BatAddWeightCalculator(
-		IUserCtx User
+		IDbFnCtx? Ctx
+		,IUserCtx User
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
 	);
