@@ -3,9 +3,10 @@ namespace Ngaq.Core.Shared.Kv.Svc;
 using Ngaq.Core.Shared.Kv.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsTools;
 
 public partial interface ISvcKv{
-	public Task<PoKv?> GetByOwnerEtKey(IdUser Owner, obj Key, CT Ct);
+	
 	[Obsolete]
 	public Task<Func<
 		IdUser

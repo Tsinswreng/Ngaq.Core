@@ -3,6 +3,7 @@ namespace Ngaq.Core.Shared.Kv.Svc;
 using Ngaq.Core.Shared.Kv.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsTools;
 
 
 /// TODO  增接口㕥刪(軟/硬);
@@ -20,4 +21,14 @@ public partial interface ISvcKv{
 		IDbFnCtx? Ctx
 		,IAsyncEnumerable<PoKv> Kvs, CT Ct
 	);
+}
+
+public static class ExtnISvcKv{
+	extension(ISvcKv z){
+		public async Task<PoKv?> GetByOwnerEtKStr(IdUser Owner, str Key, CT Ct){
+			var kvs = await z.BatGetByOwnerEtKStr(null, ToolAsyE.ToAsyE([(Owner, Key)]), Ct);
+			var first = await kvs.FirstOrDefaultAsync(Ct);
+			return first;
+		}
+	}
 }
