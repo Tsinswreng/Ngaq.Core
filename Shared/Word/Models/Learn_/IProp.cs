@@ -21,7 +21,7 @@ public static class ExtnIProp{
 	public static IProp ToIProp(
 		this IPoKv z
 	){
-		var Mgr = (IPropAccessorMgr)CoreDictMapper.Inst;
+		var Mgr = CoreDictMapper.Inst.PropAccessorReg;
 		if(!Mgr.Type_PropAccessor.TryGetValue(z.GetType(), out var SrcAccessor)){
 			throw new Exception($"No {nameof(IPropAccessor)} registered for type: {z.GetType()}");
 		}

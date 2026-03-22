@@ -69,7 +69,7 @@ public partial class PoWord
 	public Tempus StoredAt{get;set;} = Tempus.Now();
 
 	public override string ToString() {
-		var Mgr = (IPropAccessorMgr)CoreDictMapper.Inst;
+		var Mgr = (IPropAccessorReg)CoreDictMapper.Inst;
 		if(!Mgr.Type_PropAccessor.TryGetValue(typeof(PoWord), out var Accessor)){
 			throw new Exception($"No {nameof(IPropAccessor)} registered for type: {typeof(PoWord)}");
 		}

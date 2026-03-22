@@ -257,6 +257,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.JnStudyPlan))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_StudyPlan_Models_JnStudyPlan = "global::Ngaq.Core.Shared.StudyPlan.Models.JnStudyPlan";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.JnWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_JnWord = "global::Ngaq.Core.Shared.Word.Models.JnWord";

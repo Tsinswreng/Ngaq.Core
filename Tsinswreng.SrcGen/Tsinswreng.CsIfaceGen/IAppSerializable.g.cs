@@ -97,6 +97,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.IWordsPackInfo>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.JnStudyPlan))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.JnStudyPlan>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.JnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.JnWord>))]
 

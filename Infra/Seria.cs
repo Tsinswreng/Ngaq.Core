@@ -4,7 +4,7 @@
 // using Tsinswreng.Srefl;
 
 // public class Seria{
-// 	public IPropAccessorMgr PropAccessorMgr{get;set;} = CoreDictMapper.Inst;
+// 	public IPropAccessorReg PropAccessorReg{get;set;} = CoreDictMapper.Inst;
 // 	public bool IsPrimitive(Type Type){
 // 		return Type.IsPrimitive || Type == typeof(string) || Type == typeof(decimal) || Type == typeof(DateTime) || Type == typeof(TimeSpan);
 // 	}
@@ -37,7 +37,7 @@
 // 			}
 // 		}
 // 		{
-// 			if(!PropAccessorMgr.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
+// 			if(!PropAccessorReg.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
 // 				throw new Exception($"No {nameof(IPropAccessor)} registered for type: {Type}");
 // 			}
 // 			var R = new Dictionary<str, obj>();
@@ -117,7 +117,7 @@
 // 				SrcObj is IDictionary srcDict
 // 				&& TarObj is not IDictionary
 // 			){
-// 				if(!PropAccessorMgr.Type_PropAccessor.TryGetValue(TarType, out var Accessor)){
+// 				if(!PropAccessorReg.Type_PropAccessor.TryGetValue(TarType, out var Accessor)){
 // 					throw new Exception($"No {nameof(IPropAccessor)} registered for type: {TarType}");
 // 				}
 // 				foreach(DictionaryEntry kv in srcDict){

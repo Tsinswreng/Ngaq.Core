@@ -106,11 +106,11 @@ public static class ExtnJnWord{
 		
 
 		public IDictionary<str, obj?> ToDict(
-			IPropAccessorMgr PropAccessorMgr
+			IPropAccessorReg PropAccessorReg
 		){
 			
 			IDictionary<str, obj?> ToShallow(Type Type, obj Obj){
-				if(!PropAccessorMgr.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
+				if(!PropAccessorReg.Type_PropAccessor.TryGetValue(Type, out var Accessor)){
 					throw new Exception($"No {nameof(IPropAccessor)} registered for type: {Type}");
 				}
 				var R2 = new Dictionary<str, obj?>();
@@ -400,7 +400,7 @@ public static class ExtnJnWord{
 			return ESyncResult.NoNeedToSync;
 		}
 		R??=z;
-		var mgr = (IPropAccessorMgr)CoreDictMapper.Inst;
+		var mgr = (IPropAccessorReg)CoreDictMapper.Inst;
 		if(!mgr.Type_PropAccessor.TryGetValue(typeof(T), out var accessor)){
 			throw new Exception($"No {nameof(IPropAccessor)} registered for type: {typeof(T)}");
 		}
