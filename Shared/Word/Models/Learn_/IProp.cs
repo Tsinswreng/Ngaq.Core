@@ -2,7 +2,7 @@ namespace Ngaq.Core.Shared.Word.Models.Learn_;
 
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
-using Tsinswreng.CsStrAcc;
+using Tsinswreng.Srefl;
 
 
 

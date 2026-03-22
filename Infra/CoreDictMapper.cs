@@ -1,6 +1,6 @@
 using Ngaq.Core.Infra.IF;
 using Tsinswreng.CsIfaceGen;
-using Tsinswreng.CsStrAcc;
+using Tsinswreng.Srefl;
 namespace Ngaq.Core.Infra;
 
 public class CfgIfaceGen{
@@ -18,7 +18,7 @@ public class CfgIfaceGen{
 """
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.CsStrAcc;
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(TYPE))]
 	public partial class CoreDictMapper{
 		//public static string ID = "TYPE";

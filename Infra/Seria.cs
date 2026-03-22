@@ -1,7 +1,7 @@
 // namespace Ngaq.Core.Infra;
 
 // using System.Collections;
-// using Tsinswreng.CsStrAcc;
+// using Tsinswreng.Srefl;
 
 // public class Seria{
 // 	public IPropAccessorMgr PropAccessorMgr{get;set;} = CoreDictMapper.Inst;
