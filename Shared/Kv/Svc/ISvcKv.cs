@@ -9,11 +9,11 @@ using Tsinswreng.CsTools;
 /// TODO  增接口㕥刪(軟/硬);
 [Doc(@$"#See[{nameof(PoKv)}]")]
 public partial interface ISvcKv{
-	public Task<IAsyncEnumerable<PoKv?>> BatGetByOwnerEtKI64(
+	public IAsyncEnumerable<PoKv?> BatGetByOwnerEtKI64(
 		IDbFnCtx? Ctx, IAsyncEnumerable<(IdUser, i64)> Owner_Key, CT Ct
 	);
 	
-	public Task<IAsyncEnumerable<PoKv?>> BatGetByOwnerEtKStr(
+	public IAsyncEnumerable<PoKv?> BatGetByOwnerEtKStr(
 		IDbFnCtx? Ctx, IAsyncEnumerable<(IdUser, str)> Owner_Key, CT Ct
 	);
 	
@@ -26,7 +26,7 @@ public partial interface ISvcKv{
 public static class ExtnISvcKv{
 	extension(ISvcKv z){
 		public async Task<PoKv?> GetByOwnerEtKStr(IdUser Owner, str Key, CT Ct){
-			var kvs = await z.BatGetByOwnerEtKStr(null, ToolAsyE.ToAsyE([(Owner, Key)]), Ct);
+			var kvs = z.BatGetByOwnerEtKStr(null, ToolAsyE.ToAsyE([(Owner, Key)]), Ct);
 			var first = await kvs.FirstOrDefaultAsync(Ct);
 			return first;
 		}

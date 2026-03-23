@@ -51,7 +51,7 @@ public interface ISvcWordV2{
 	#See[{nameof(KeysClientKv.CurStudyPlanId)}]
 	//Temp 當前未實現學習方案模塊、則默認實現先返回所有單詞。
 	")]
-	public Task<IAsyncEnumerable<JnWord>> GetWordsToLearn(
+	public IAsyncEnumerable<JnWord> GetWordsToLearn(
 		IDbFnCtx? Ctx, IUserCtx User
 	);
 
@@ -61,7 +61,7 @@ public interface ISvcWordV2{
 	如果未定義篩選器 則返回用戶詞庫的所有單詞
 	#See[{nameof(KeysClientKv.CurStudyPlanId)}]
 	")]
-	public Task<IAsyncEnumerable<JnWord>> GetWordsToLearn(
+	public IAsyncEnumerable<JnWord> GetWordsToLearn(
 		IDbFnCtx? Ctx, IUserCtx User, PreFilter? Prefilter
 	);
 	
