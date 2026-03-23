@@ -1,7 +1,10 @@
+using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
+using Ngaq.Core.Shared.StudyPlan.Models.Req;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.User.UserCtx;
+using Tsinswreng.CsPage;
 using Tsinswreng.CsSql;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
@@ -23,6 +26,26 @@ public interface ISvcStudyPlan{
 		IDbFnCtx? Ctx
 		,IUserCtx User
 		,IAsyncEnumerable<PoWeightCalculator> Pos
+		,CT Ct
+	);
+	public Task<IPageAsyE<PoStudyPlan>> PageStudyPlan(
+		IDbFnCtx? Ctx
+		,ReqPageStudyPlan Req
+		,CT Ct
+	);
+	public Task<IPageAsyE<PoPreFilter>> PagePreFilter(
+		IDbFnCtx? Ctx
+		,ReqPagePreFilter Req
+		,CT Ct
+	);
+	public Task<IPageAsyE<PoWeightArg>> PageWeightArg(
+		IDbFnCtx? Ctx
+		,ReqPageWeightArg Req
+		,CT Ct
+	);
+	public Task<IPageAsyE<PoWeightCalculator>> PageWeightCalculator(
+		IDbFnCtx? Ctx
+		,ReqPageWeightCalculator Req
 		,CT Ct
 	);
 	
