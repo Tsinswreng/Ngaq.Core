@@ -25,4 +25,5 @@ public interface ISvcStudyPlan{
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
 	);
+	
 }

@@ -16,6 +16,15 @@ public class PreFilter{
 	public IList<FieldsFilter> PropFilter {get;set;} = [];
 }
 
+public static class ExtnPreFilter{
+	extension(PreFilter z){
+		[Doc(@$"從 數據庫實體 轉 業務層對象。直接原地修改。")]
+		public void FromPo(PoPreFilter Po){
+			throw new NotImplementedException();
+		}
+	}
+}
+
 
 #if false
 {
