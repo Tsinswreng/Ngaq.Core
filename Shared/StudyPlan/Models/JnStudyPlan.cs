@@ -7,6 +7,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsSql;
 using Tsinswreng.CsTools;
+using Tsinswreng.Srefl;
 namespace Ngaq.Core.Shared.StudyPlan.Models;
 
 [Doc($@"學習方案聚合")]
@@ -24,4 +25,20 @@ public class JnStudyPlan
 	public PoWeightCalculator? WeightCalculator{get;set;} = null;
 	[Doc($@"權重參數；可空表示未配置")]
 	public PoWeightArg? WeightArg{get;set;} = null;
+}
+
+public static class ExtnJnStudyPlan{
+	extension(JnStudyPlan z){
+		public IDictionary<str, obj> ToDict(
+			IPropAccessorReg? PropAcc
+		){
+			PropAcc??=CoreDictMapper.Inst.PropAccessorReg;
+			var R = new Dictionary<str, obj>();
+			R[nameof(JnStudyPlan.StudyPlan)] = PropAcc.ToPropDict(z.StudyPlan);
+			R[nameof(JnStudyPlan.PreFilter)] = PropAcc.ToPropDict(z.PreFilter);
+			R[nameof(JnStudyPlan.WeightCalculator)] = PropAcc.ToPropDict(z.WeightCalculator);
+			R[nameof(JnStudyPlan.WeightArg)] = PropAcc.ToPropDict(z.WeightArg);
+			return R;
+		}
+	}
 }

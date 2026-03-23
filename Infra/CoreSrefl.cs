@@ -44,6 +44,10 @@ public interface IIfaceGenCfg_CoreDictMapper{
 //[DictType(typeof(AppCfg))] //TargetType須惟一
 
 
+[Doc(@$"
+Ngaq.Core/GenAppJsonCtx.sh 中 引用了此類的名稱
+故謹慎重命名、留作CoreDictMapper
+")]
 public partial class CoreDictMapper{
 protected static CoreDictMapper? _Inst = null;
 public static CoreDictMapper Inst => _Inst??= new CoreDictMapper();
