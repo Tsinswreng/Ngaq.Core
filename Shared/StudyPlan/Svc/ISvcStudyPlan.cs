@@ -6,54 +6,51 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.User.UserCtx;
 using Tsinswreng.CsPage;
 using Tsinswreng.CsSql;
+using Ngaq.Core.Infra;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
 public interface ISvcStudyPlan{
 	public Task<IdStudyPlan?> GetCurStudyPlanId(
-		IDbFnCtx? Ctx, IUserCtx User, CT Ct
+		IDbUserCtx Ctx, CT Ct
 	);
 	public Task<nil> SetCurStudyPlanId(
-		IDbFnCtx? Ctx
-		,IUserCtx User
+		IDbUserCtx Ctx
 		,IdStudyPlan IdStudyPlan
 		,CT Ct
 	);
 	public Task<nil> BatAddPreFilter(
-		IDbFnCtx? Ctx
-		,IUserCtx User
+		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoPreFilter> Pos
 		,CT Ct
 	);
 	public Task<nil> BatAddWeightArg(
-		IDbFnCtx? Ctx
-		,IUserCtx User
+		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
 	public Task<nil> BatAddWeightCalculator(
-		IDbFnCtx? Ctx
-		,IUserCtx User
+		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
 	);
 	public Task<IPageAsyE<PoStudyPlan>> PageStudyPlan(
-		IDbFnCtx? Ctx
+		IDbUserCtx Ctx
 		,ReqPageStudyPlan Req
 		,CT Ct
 	);
 	public Task<IPageAsyE<PoPreFilter>> PagePreFilter(
-		IDbFnCtx? Ctx
+		IDbUserCtx Ctx
 		,ReqPagePreFilter Req
 		,CT Ct
 	);
 	public Task<IPageAsyE<PoWeightArg>> PageWeightArg(
-		IDbFnCtx? Ctx
+		IDbUserCtx Ctx
 		,ReqPageWeightArg Req
 		,CT Ct
 	);
 	public Task<IPageAsyE<PoWeightCalculator>> PageWeightCalculator(
-		IDbFnCtx? Ctx
+		IDbUserCtx Ctx
 		,ReqPageWeightCalculator Req
 		,CT Ct
 	);
