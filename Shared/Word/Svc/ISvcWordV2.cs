@@ -1,24 +1,9 @@
 /* 
-看
-Ai.typ
-再看/Spec/下
-Db.typ
-Entity.typ
-SvcDao.typ
-Test.typ
 
-然後看
-`
-E:\_code\CsNgaq\Ngaq.Core\Shared\Word\Svc\ISvcWordV2.cs
-E:\_code\CsNgaq\Ngaq.Local\Domains\Word\Svc\SvcWord.*.cs
-`
-
-我要搞 測試驅動開發
-你先給我寫測試用例 針對 ISvcWordV2。
-在這個文件夾裏面寫 E:\_code\CsNgaq\Ngaq.Test\proj\Ngaq.Local.Test\Domains\Word\SvcWord\
  */
 
 using Ngaq.Core.Frontend.Kv;
+using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 using Ngaq.Core.Shared.User.UserCtx;
@@ -27,6 +12,7 @@ using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
+using Tsinswreng.CsErr;
 using Tsinswreng.CsSql;
 
 namespace Ngaq.Core.Shared.Word.Svc;
@@ -52,7 +38,7 @@ public interface ISvcWordV2{
 	//Temp 當前未實現學習方案模塊、則默認實現先返回所有單詞。
 	")]
 	public IAsyncEnumerable<JnWord> GetWordsToLearn(
-		IDbFnCtx? Ctx, IUserCtx User
+		IDbUserCtx Ctx, CT Ct
 	);
 
 	[Doc(@$"
@@ -62,15 +48,15 @@ public interface ISvcWordV2{
 	#See[{nameof(KeysClientKv.CurStudyPlanId)}]
 	")]
 	public IAsyncEnumerable<JnWord> GetWordsToLearn(
-		IDbFnCtx? Ctx, IUserCtx User, PreFilter? Prefilter
+		IDbUserCtx Ctx, PreFilter? Prefilter, CT Ct
 	);
 	
 	[Doc(@$"批量爲單詞插入新的學習記錄、並更新{nameof(PoWord.BizUpdatedAt)}。
 	用于背單詞後 儲存學習結果
 	")]
 	public Task<nil> BatAddNewLearnRecord(
-		IDbFnCtx? Ctx, IUserCtx User
-		,IAsyncEnumerable<PoWordLearn> PoWordLearnAsyE
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoWordLearn> PoWordLearnAsyE, CT Ct
 	);
 	
 	[Doc(@$"
@@ -82,8 +68,21 @@ public interface ISvcWordV2{
 	決定 新增的{nameof(ELearn.Add)}的數量
 	")]
 	public Task<nil> BatAddNewWordToLearn(
-		IDbFnCtx? Ctx, IUserCtx User,
-		IAsyncEnumerable<PoWord> PoWordAsyE
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<PoWord> PoWordAsyE, CT Ct
+	);
+	
+	[Doc(@$"軟刪 整ʹ單詞 含附屬資產亦需被標爲軟刪")]
+	public Task<nil> SoftDelJnWordInId(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<IdWord> Ids, CT Ct
+	);
+	
+	
+	public Task<nil> BatSoftUpdJnWord(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<JnWord> JnWords
+		,CT Ct
 	);
 	
 }
