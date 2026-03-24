@@ -1,7 +1,7 @@
 /* 
 看
 Ai.typ
-再看Spec下
+再看/Spec/下
 Db.typ
 Entity.typ
 SvcDao.typ

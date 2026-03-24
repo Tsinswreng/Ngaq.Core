@@ -10,6 +10,15 @@ using Tsinswreng.CsSql;
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
 public interface ISvcStudyPlan{
+	public Task<IdStudyPlan?> GetCurStudyPlanId(
+		IDbFnCtx? Ctx, IUserCtx User, CT Ct
+	);
+	public Task<nil> SetCurStudyPlanId(
+		IDbFnCtx? Ctx
+		,IUserCtx User
+		,IdStudyPlan IdStudyPlan
+		,CT Ct
+	);
 	public Task<nil> BatAddPreFilter(
 		IDbFnCtx? Ctx
 		,IUserCtx User
