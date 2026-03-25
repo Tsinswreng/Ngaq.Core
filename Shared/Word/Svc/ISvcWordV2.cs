@@ -1,7 +1,3 @@
-/* 
-
- */
-
 using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
@@ -78,11 +74,21 @@ public interface ISvcWordV2{
 		IAsyncEnumerable<IdWord> Ids, CT Ct
 	);
 	
+	// public Task<nil> BatUpdHeadLangById(
+	// 	IDbUserCtx Ctx
+	// );
 	
-	public Task<nil> BatSoftUpdJnWord(
-		IDbUserCtx Ctx
-		,IAsyncEnumerable<JnWord> JnWords
-		,CT Ct
-	);
+	// [Doc(@$"
+	// #See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
+	// 按 根實體之Id 匹配而改。
+	// 會更新{nameof(PoWord.BizUpdatedAt)}。
+	// 不允許更新 {nameof(PoWord.Owner)}。
+	// 在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
+	// ")]
+	// public Task<nil> BatSoftUpdJnWord(
+	// 	IDbUserCtx Ctx
+	// 	,IAsyncEnumerable<JnWord> JnWords
+	// 	,CT Ct
+	// );
 	
 }

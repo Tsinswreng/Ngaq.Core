@@ -1,3 +1,4 @@
+using Ngaq.Core.Frontend.User;
 using Ngaq.Core.Shared.User.UserCtx;
 using Tsinswreng.CsSql;
 
@@ -16,4 +17,17 @@ public class DbUserCtx : IDbUserCtx{
 	}
 	public IDbFnCtx? DbFnCtx{get;set;}
 	public IUserCtx UserCtx{get;set;}
+}
+
+public static class ExtnIDbUserCtx{
+	extension(IUserCtx z){
+		public IDbUserCtx ToDbUserCtx(IDbFnCtx? DbFnCtx = null){
+			return new DbUserCtx(DbFnCtx, z);
+		}
+	}
+	extension(IFrontendUserCtxMgr z){
+		public IDbUserCtx GetDbUserCtx(IDbFnCtx? DbFnCtx = null){
+			return new DbUserCtx(DbFnCtx, z.GetUserCtx());
+		}
+	}
 }
