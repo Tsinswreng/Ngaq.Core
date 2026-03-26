@@ -22,7 +22,7 @@ public partial interface ISvcParseWordList{
 		, CT ct = default
 	);
 
-	Task<IEnumerable<JnWord>> ParseWordsFromUrlAsy(
+	Task<IEnumerable<JnWord>> ParseWordsFromUrl(
 		str Path
 		, CT ct = default
 	);
@@ -32,7 +32,7 @@ public partial interface ISvcParseWordList{
 		, CT ct = default
 	);
 
-	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncodingAsy(
+	Task<IEnumerable<JnWord>> ParseWordsByIterEtEncoding(
 		IIterable<u8> Iter
 		,Encoding Encoding
 		, CT ct = default

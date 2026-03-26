@@ -16,7 +16,7 @@ using Ngaq.Core.Shared.Word.Models.Weight;
 public partial class WeightCalculator : IWeightCalctr {
 
 	[Impl]
-	public async Task<IWeightResult> CalcAsy(
+	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Words
 		,IJsonNode? CalcArg
 		,CT Ct

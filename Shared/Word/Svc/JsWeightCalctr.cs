@@ -22,7 +22,7 @@ public class JsWeightCalctr : IWeightCalctr{
 		JsCode = jsCode;
 	}
 
-	public async Task<IWeightResult> CalcAsy(
+	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word
 		,IJsonNode? CalcArg
 		,CT Ct
