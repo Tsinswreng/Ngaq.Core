@@ -2,7 +2,13 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
+using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
+using Ngaq.Core.Shared.Word.Svc;
+using Ngaq.Core.Tools;
+using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.Svc;
+using System.Text;
+using System.Text.Json;
 using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Shared.StudyPlan.Models;
@@ -40,8 +46,86 @@ public static class ExtnBoStudyPlan{
 		public void FromJnStudyPlan(
 			JnStudyPlan JnStudyPlan
 		){
-			//TODO
-			throw new NotImplementedException();
+			z.PoStudyPlan = JnStudyPlan.StudyPlan;
+			z.PoPreFilter = JnStudyPlan.PreFilter;
+			z.PoWeightCalculator = JnStudyPlan.WeightCalculator;
+			z.PoWeightArg = JnStudyPlan.WeightArg;
+
+			z.PreFilter = null;
+			if(z.PoPreFilter is { } poPreFilter){
+				var preFilter = new PreFilter.PreFilter();
+				preFilter.FromPo(poPreFilter);
+				z.PreFilter = preFilter;
+			}
+
+			z.WeightArg = null;
+			if(
+				z.PoWeightArg is { } poWeightArg
+				&& poWeightArg.Type == EWeightArgType.Json
+				&& poWeightArg.Data is { Length: > 0 }
+			){
+				var json = Encoding.UTF8.GetString(poWeightArg.Data);
+				if(!string.IsNullOrWhiteSpace(json)){
+					z.WeightArg = ParseJsonObjDict(json);
+				}
+			}
+
+			z.WeightCalctr = null;
+			if(
+				z.PoWeightCalculator is { } poWeightCalculator
+				&& poWeightCalculator.Type == EWeightCalculatorType.Js
+				&& poWeightCalculator.Data is { Length: > 0 }
+			){
+				var jsCode = Encoding.UTF8.GetString(poWeightCalculator.Data);
+				if(!string.IsNullOrWhiteSpace(jsCode)){
+					z.WeightCalctr = new JsWeightCalctr(AppJsonSerializer.Inst, jsCode);
+				}
+			}
+		}
+
+		static IDictionary<str, obj?> ParseJsonObjDict(str Json){
+			using var doc = JsonDocument.Parse(Json);
+			if(doc.RootElement.ValueKind != JsonValueKind.Object){
+				return new Dictionary<str, obj?>();
+			}
+			return (Dictionary<str, obj?>)JsonElementToObj(doc.RootElement)!;
+		}
+
+		static obj? JsonElementToObj(JsonElement Element){
+			switch(Element.ValueKind){
+				case JsonValueKind.Object:{
+					var dict = new Dictionary<str, obj?>();
+					foreach(var p in Element.EnumerateObject()){
+						dict[p.Name] = JsonElementToObj(p.Value);
+					}
+					return dict;
+				}
+				case JsonValueKind.Array:{
+					var list = new List<obj?>();
+					foreach(var x in Element.EnumerateArray()){
+						list.Add(JsonElementToObj(x));
+					}
+					return list;
+				}
+				case JsonValueKind.String:
+					return Element.GetString();
+				case JsonValueKind.Number:
+					if(Element.TryGetInt64(out var i64v)){
+						return i64v;
+					}
+					if(Element.TryGetDouble(out var f64v)){
+						return f64v;
+					}
+					return Element.ToString();
+				case JsonValueKind.True:
+					return true;
+				case JsonValueKind.False:
+					return false;
+				case JsonValueKind.Null:
+					return null;
+				default:
+					return Element.ToString();
+			}
 		}
 	}
 }

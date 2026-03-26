@@ -1,6 +1,7 @@
 namespace Ngaq.Core.Tools.Json;
 
 public class AppJsonSerializer:IJsonSerializer{
+	public static AppJsonSerializer Inst => field??=new();
 	[Impl]
 	public str Stringify<T>(T O){
 		return JSON.Stringify(O);

@@ -15,9 +15,7 @@ namespace Ngaq.Core.Shared.Word.Svc;
 [Doc(@$"Jint Js引擎 權重算法。Js代碼來自用戶編寫。")]
 public class JsWeightCalctr : IWeightCalctr{
 	public IJsonSerializer JsonSerializer { get; set; }
-
 	public str JsCode { get; set; }
-
 	public JsWeightCalctr(IJsonSerializer jsonSerializer, str jsCode){
 		JsonSerializer = jsonSerializer;
 		JsCode = jsCode;
@@ -28,7 +26,8 @@ public class JsWeightCalctr : IWeightCalctr{
 		,IDictionary<str, obj?>? CalcArg
 		,CT Ct
 	){
-		throw new NotImplementedException();
+		var calcArgNode = new JsonNode(CalcArg);
+		return Calc(Word, calcArgNode, Ct);
 	}
 
 	public async Task<IWeightResult> Calc(

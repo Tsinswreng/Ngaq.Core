@@ -3,10 +3,12 @@ using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Tools.Json;
 namespace Ngaq.Core.Tools;
 
 
 public static class JSON {
+	
 	/// 縱Opt中指定了TypeInfoResolver亦不效、肰直ᵈ傳TypeInfo又不可兼傳Opt。故需把選項加于appJsonCtxʹ註解
 	static JsonSerializerOptions Opt = new JsonSerializerOptions{
 		//WriteIndented = true

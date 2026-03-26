@@ -21,7 +21,8 @@ public partial class WeightCalculator : IWeightCalctr {
 		,IDictionary<str, obj?>? CalcArg
 		,CT Ct
 	){
-		throw new NotImplementedException();
+		var calcArgNode = new JsonNode(CalcArg);
+		return Calc(Word, calcArgNode, Ct);
 	}
 
 	[Impl]

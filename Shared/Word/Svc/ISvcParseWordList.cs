@@ -7,10 +7,7 @@ using Ngaq.Core.Iter;
 using Ngaq.Core.Tools.Io;
 
 
-
-
 /// 從 路經/字串/字節生產者 解析單詞表文本、得Bo_Word列表。
-
 public partial interface ISvcParseWordList{
 
 	// Task<I_Answer<IList<Bo_Word>>> ParseWordsByIterEtEncoding(
@@ -19,11 +16,6 @@ public partial interface ISvcParseWordList{
 
 	Task<IEnumerable<JnWord>> ParseWordsFromFilePath(
 		Path_Encode Path_Encode
-		, CT ct = default
-	);
-
-	Task<IEnumerable<JnWord>> ParseWordsFromUrl(
-		str Path
 		, CT ct = default
 	);
 

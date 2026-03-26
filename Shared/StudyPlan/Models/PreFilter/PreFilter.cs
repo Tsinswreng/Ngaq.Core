@@ -1,5 +1,7 @@
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
+using Ngaq.Core.Tools;
+using System.Text;
 
 namespace Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 
@@ -21,7 +23,30 @@ public static class ExtnPreFilter{
 	extension(PreFilter z){
 		[Doc(@$"從 數據庫實體 轉 業務層對象。直接原地修改。")]
 		public void FromPo(PoPreFilter Po){
-			throw new NotImplementedException();
+			z.Version = Po.DataSchemaVer;
+			z.CoreFilter = [];
+			z.PropFilter = [];
+
+			if(Po.Type != EPreFilterType.Json){
+				return;
+			}
+			if(Po.Data is not { Length: > 0 }){
+				return;
+			}
+
+			var json = Encoding.UTF8.GetString(Po.Data);
+			if(string.IsNullOrWhiteSpace(json)){
+				return;
+			}
+
+			var parsed = JSON.Parse<PreFilter>(json);
+			if(parsed is null){
+				return;
+			}
+
+			z.Version = parsed.Version;
+			z.CoreFilter = parsed.CoreFilter ?? [];
+			z.PropFilter = parsed.PropFilter ?? [];
 		}
 	}
 }
