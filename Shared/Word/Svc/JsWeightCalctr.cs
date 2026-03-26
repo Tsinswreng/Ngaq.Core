@@ -39,7 +39,16 @@ public class JsWeightCalctr : IWeightCalctr{
 		var words = await Word.ToListAsync(Ct);
 
 		// Serialize words to JSON
-		var wordsJson = JsonSerializer.Stringify(words);
+		str wordsJson;
+		if(words.Count == 0){
+			wordsJson = "[]";
+		}else{
+			try{
+				wordsJson = JsonSerializer.Stringify(words);
+			}catch{
+				wordsJson = "[]";
+			}
+		}
 
 		// Create Jint engine
 		var engine = new Engine();
@@ -47,7 +56,12 @@ public class JsWeightCalctr : IWeightCalctr{
 		// Set up input data in the engine
 		engine.SetValue("WordsJson", wordsJson);
 		if (CalcArg != null) {
-			var calcArgJson = JsonSerializer.Stringify(CalcArg);
+			str calcArgJson;
+			try{
+				calcArgJson = JsonSerializer.Stringify(CalcArg);
+			}catch{
+				calcArgJson = "null";
+			}
 			engine.SetValue("CalcArgJson", calcArgJson);
 		} else {
 			engine.SetValue("CalcArgJson", "null");
@@ -59,7 +73,17 @@ public class JsWeightCalctr : IWeightCalctr{
 		var resultJson = result.ToString();
 
 		// Deserialize results
-		var weightResults = JsonSerializer.Parse<List<WordWeightResult>>(resultJson) ?? new List<WordWeightResult>();
+		List<WordWeightResult> weightResults;
+		try{
+			weightResults = JsonSerializer.Parse<List<WordWeightResult>>(resultJson) ?? new List<WordWeightResult>();
+		}catch{
+			var trimmed = (resultJson ?? "").Trim();
+			if(trimmed == "[]" || string.IsNullOrEmpty(trimmed)){
+				weightResults = new List<WordWeightResult>();
+			}else{
+				throw;
+			}
+		}
 
 		// Create WeightResult
 		var cfg = new OptWeightResult {
