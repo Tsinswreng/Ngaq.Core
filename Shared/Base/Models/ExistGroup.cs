@@ -1,24 +1,24 @@
+using Tsinswreng.CsFactoryMkr;
+
 namespace Ngaq.Core.Shared.Base.Models;
 
-public partial struct Existing_Duplication<T>{
-
-	public Existing_Duplication(
+public partial struct Existing_Dupli<T>{
+	public Existing_Dupli(
 		T Existing
 		,T Duplication
 	){
 		this.Existing = Existing;
-		this.Duplication = Duplication;
+		this.Dupli = Duplication;
 	}
 
 	/// 既存于數據源中者
 	public T Existing { get; set; }
 	/// 與[既存]者褈者
-	public T Duplication { get; set; }
+	public T Dupli { get; set; }
 }
 
-//TODO 用IEnumerable成員?
-public partial struct DuplicationGroup<T>{
-	public IList<Existing_Duplication<T>> Existing_Duplications{get;set;}
+public partial class DupliGroupList<T>{
+	public IList<Existing_Dupli<T>> Existing_Dupli{get;set;}
 	// /// 原已存在(當是得從數據源)
 	// public IEnumerable<T>? Existings { get; set; }
 
@@ -27,4 +27,10 @@ public partial struct DuplicationGroup<T>{
 
 	/// 未存在(待添加)
 	public IList<T>? NonExistings { get; set; }
+}
+
+
+public partial class DupliGroupAsyE<T>{
+	public IAsyncEnumerable<Existing_Dupli<T>> Existing_Dupli{get;set;}
+	public IAsyncEnumerable<T>? NonExistings { get; set; }
 }

@@ -65,7 +65,7 @@ public interface ISvcWordV2{
 	")]
 	public Task<nil> BatAddNewWordToLearn(
 		IDbUserCtx Ctx,
-		IAsyncEnumerable<PoWord> PoWordAsyE, CT Ct
+		IAsyncEnumerable<JnWord> PoWordAsyE, CT Ct
 	);
 	
 	[Doc(@$"軟刪 整ʹ單詞 含附屬資產亦需被標爲軟刪")]
