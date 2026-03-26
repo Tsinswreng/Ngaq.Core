@@ -31,7 +31,6 @@ public interface ISvcWordV2{
 	如果未定義學習方案 則返回用戶詞庫的所有單詞
 	#See[{nameof(PreFilter)}]
 	#See[{nameof(KeysClientKv.CurStudyPlanId)}]
-	//Temp 當前未實現學習方案模塊、則默認實現先返回所有單詞。
 	")]
 	public IAsyncEnumerable<JnWord> GetWordsToLearn(
 		IDbUserCtx Ctx, CT Ct
@@ -58,7 +57,8 @@ public interface ISvcWordV2{
 	[Doc(@$"
 	從生詞表中加入單詞 用于學習。
 	來自生詞表的生單詞不應具有{nameof(JnWord.Learns)}、只有 {nameof(JnWord.Word)} 與 {nameof(JnWord.Props)}。
-	遇到({nameof(PoWord.Head)}, {nameof(PoWord.Lang)})相同的 即合併其{nameof(JnWord.Props)}
+	遇到({nameof(PoWord.Head)}, {nameof(PoWord.Lang)})相同的 即合併其{nameof(JnWord.Props)}。
+	//TODO 釋 合併理則
 	會新增{nameof(ELearn.Add)}、
 	按 新詞的總共的 新來的 {nameof(KeysProp.description)} 的數量
 	決定 新增的{nameof(ELearn.Add)}的數量
