@@ -91,10 +91,7 @@ public partial class LearnEventArgs :EventArgs{
 
 /// 只會在前端運行
 public partial class MgrLearn{
-
 	//public MgrLearn(){}
-
-
 	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
@@ -166,9 +163,6 @@ public partial class MgrLearn{
 
 
 	/// 取諸詞
-
-	/// <param name="JWords"></param>
-	/// <returns></returns>
 	[Obsolete("用LoadEtCalcWeightAsy更快")]
 	public nil Load(IEnumerable<IJnWord> JWords){
 		State.WordsToLearn.Clear();

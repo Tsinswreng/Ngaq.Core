@@ -11,18 +11,6 @@ using Tsinswreng.CsTools;
 
 
 public partial interface IWeightCalctr{
-	// public Task<IEnumerable<WordStrId_Weight>> CalcAsy(
-	// 	IEnumerable<IWordForLearn> Words
-	// 	,CT Ct
-	// );
-
-	// [Obsolete]
-	// public Task<IWeightResult> CalcAsy(
-	// 	IEnumerable<IWordForLearn> Word
-	// 	,IKvNode? CalcArg
-	// 	,CT Ct
-	// );
-
 	public Task<IWeightResult> CalcAsy(
 		IAsyncEnumerable<IWordForLearn> Word
 		,IJsonNode? CalcArg

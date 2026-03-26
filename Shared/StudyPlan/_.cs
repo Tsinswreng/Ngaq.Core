@@ -17,6 +17,7 @@ $$"""
 - {{nameof(Ngaq.Core.Shared.StudyPlan.Models.PreFilter.PreFilter)}}：
 - {{nameof(PoPreFilter)}}
 支持按語言、標籤、來源等條件篩選單詞，用戶可定義多個篩選條件及其組合邏輯，精確控制哪些單詞納入當前學習範圍；
+應當在Sql層實現 而不是把單詞載入內存後再在內存中過濾篩選
 ]
 
 #H[權重算法選擇][

@@ -1,11 +1,14 @@
+using Ngaq.Core.Word.Models.Weight;
+
 namespace Ngaq.Core.Shared.Word.Models.Weight;
 
-public enum ESortBy:i64{
-	Weight = 1
-	,Pos = 2
+public enum ESortBy{
+	Weight = 1,
+	[Doc(@$"#See[{nameof(IWordWeightResult.Index)}]")]
+	Index = 2,
 }
 
-public enum EResultType:i64{
+public enum EResultType{
 	ItblIWordWeightResult = 1
 	,AsyEIWordWeightResult =2
 }
