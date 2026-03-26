@@ -46,7 +46,7 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 	// }
 
 
-	public static string stringify<T>(T o){
+	public static string Stringify<T>(T o){
 		//return JsonSerializer.Serialize(o, Opt);
 		// if (jsonTypeInfo != null){
 		// 	return JsonSerializer.Serialize(o, jsonTypeInfo);
@@ -61,7 +61,7 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 		return JsonSerializer.Serialize(o, typeInfo);
 	}
 
-	public static T? parse<T>(string json){
+	public static T? Parse<T>(string json){
 		// if (jsonTypeInfo != null)
 		// 	return JsonSerializer.Deserialize(json, jsonTypeInfo);
 
@@ -69,6 +69,14 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 		var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
+		}
+		return JsonSerializer.Deserialize(json, typeInfo);
+	}
+	
+	public static obj? Parse(string json, Type T){
+		var typeInfo = AppJsonCtx.Default.GetTypeInfo(T);
+		if (typeInfo == null){
+			throw new InvalidOperationException($"Type {T} is not registered in AppJsonCtx");
 		}
 		return JsonSerializer.Deserialize(json, typeInfo);
 	}

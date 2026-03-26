@@ -1,18 +1,18 @@
 namespace Ngaq.Core.Tools.Json;
 
-public class JsonSerializer:IJsonSerializer{
+public class AppJsonSerializer:IJsonSerializer{
 	[Impl]
-	public str Stringify<T>(T o){
-		return JSON.stringify(o);
+	public str Stringify<T>(T O){
+		return JSON.Stringify(O);
 	}
 
 	[Impl]
-	public T Parse<T>(str json){
-		return JSON.parse<T>(json);
+	public T? Parse<T>(str Json){
+		return JSON.Parse<T>(Json);
 	}
 
 	[Impl]
-	public obj? Parse(str json, Type Type){
-		throw new NotImplementedException();
+	public obj? Parse(str Json, Type Type){
+		return JSON.Parse(Json, Type);
 	}
 }

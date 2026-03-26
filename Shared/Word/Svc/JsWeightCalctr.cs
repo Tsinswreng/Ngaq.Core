@@ -12,6 +12,7 @@ using Ngaq.Core.Shared.Word.Models.Weight;
 
 namespace Ngaq.Core.Shared.Word.Svc;
 
+[Doc(@$"Jint Js引擎 權重算法。Js代碼來自用戶編寫。")]
 public class JsWeightCalctr : IWeightCalctr{
 	public IJsonSerializer JsonSerializer { get; set; }
 

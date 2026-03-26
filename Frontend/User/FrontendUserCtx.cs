@@ -28,14 +28,14 @@ public class FrontendUserCtx : IFrontendUserCtx{
 
 }
 
-public static class ExtnUserCtxMgr{
-	public static IFrontendUserCtx GetFrontendUserCtx(
-		this IUserCtxMgr z
-	){
-		var userCtx = z.GetUserCtx();
-		if(userCtx is IFrontendUserCtx f){
-			return f;
-		}
-		throw new NotImplementedException();
-	}
-}
+// public static class ExtnUserCtxMgr{
+// 	public static IFrontendUserCtx GetFrontendUserCtx(
+// 		this IUserCtxMgr z
+// 	){
+// 		var userCtx = z.GetUserCtx();
+// 		if(userCtx is IFrontendUserCtx f){
+// 			return f;
+// 		}
+// 		throw new NotSupportedException("UserCtx is not a FrontendUserCtx");
+// 	}
+// }

@@ -13,7 +13,7 @@ public static class DiCore{
 		z.AddSingleton<ICfgAccessor>(AppCfg.Inst);
 		z.AddTransient<MgrLearn, MgrLearn>();
 		z.AddScoped<IWeightCalctr, SvcWeight>();
-		z.AddTransient<IJsonSerializer, JsonSerializer>();
+		z.AddTransient<IJsonSerializer, AppJsonSerializer>();
 
 		using var loggerFactory = LoggerFactory.Create(b=>{
 			b.AddConsole()

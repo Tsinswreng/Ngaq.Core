@@ -16,7 +16,7 @@ public partial class WordListTxtMetadata: IAppSerializable{
 
 	public static WordListTxtMetadata Parse(str txt){
 		//var ans = System.Text.Json.JsonSerializer.Deserialize<WordListTxtMetadata>(txt);
-		var ans = JSON.parse<WordListTxtMetadata>(txt);
+		var ans = JSON.Parse<WordListTxtMetadata>(txt);
 		if(ans?.belong == null || ans?.delimiter == null){
 			throw new Exception("ans?.belong == null || ans?.delimiter == null");
 		}
