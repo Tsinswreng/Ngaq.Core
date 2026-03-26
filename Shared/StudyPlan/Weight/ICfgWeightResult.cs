@@ -15,7 +15,6 @@ public enum EResultType{
 
 
 public partial interface IOptWeightResult{
-
 	public ESortBy SortBy{get;set;}
 	#if Impl
 		= ESortBy.Weight;
