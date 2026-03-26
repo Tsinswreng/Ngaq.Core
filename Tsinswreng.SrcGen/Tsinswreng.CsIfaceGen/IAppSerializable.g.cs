@@ -160,6 +160,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.Kv.PoWordProp))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.Kv.PoWordProp>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.PreFilter.PreFilter))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.PreFilter.PreFilter>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Learn_.Prop))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Learn_.Prop>))]
 
