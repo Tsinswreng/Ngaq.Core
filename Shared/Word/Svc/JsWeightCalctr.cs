@@ -21,6 +21,14 @@ public class JsWeightCalctr : IWeightCalctr{
 		JsonSerializer = jsonSerializer;
 		JsCode = jsCode;
 	}
+	
+	public Task<IWeightResult> Calc(
+		IAsyncEnumerable<IWordForLearn> Word
+		,IDictionary<str, obj?>? CalcArg
+		,CT Ct
+	){
+		throw new NotImplementedException();
+	}
 
 	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word

@@ -3,15 +3,33 @@ using Ngaq.Core.Shared.StudyPlan.Models.Req;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
-using Ngaq.Core.Shared.User.UserCtx;
 using Tsinswreng.CsPage;
-using Tsinswreng.CsSql;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Word.Svc;
+using Ngaq.Core.Shared.StudyPlan.Models;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
 public interface ISvcStudyPlan{
+	public Task<IWeightCalctr?> GetCurWeightCalctr(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
 	public Task<IdStudyPlan?> GetCurStudyPlanId(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	public Task<JnStudyPlan?> GetCurJnStudyPlan(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	[Doc(@$"
+	#See[{nameof(ExtnBoStudyPlan.FromJnStudyPlan)}]
+	要帶緩存、在此接口之實現類中維護 CurBoStudyPlanCache、
+	如後續再調用 {nameof(GetCurBoStudyPlan)}、先用 {nameof(GetCurStudyPlanId)}、
+	若其Id與緩存之ID相同 且 {nameof(PoStudyPlan.BizUpdatedAt)} 未變 則返緩存
+	")]
+	public Task<BoStudyPlan?> GetCurBoStudyPlan(
 		IDbUserCtx Ctx, CT Ct
 	);
 	public Task<nil> SetCurStudyPlanId(
@@ -29,6 +47,7 @@ public interface ISvcStudyPlan{
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
+	
 	public Task<nil> BatAddWeightCalculator(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightCalculator> Pos

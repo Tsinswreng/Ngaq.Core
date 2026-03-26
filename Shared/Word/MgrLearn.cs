@@ -17,6 +17,7 @@ using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Shared.Word.Svc;
 using Ngaq.Core.Shared.Word.Models.Dto;
+using System.Collections;
 
 public enum ELearnOpRtn{
 	Learn = 0
@@ -96,7 +97,8 @@ public partial class MgrLearn{
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
 	public IWeightCalctr WeightCalctr{get;set;}
-	public IJsonNode? WeightArg {get;set;}   // ← 新加
+	public IJsonNode? WeightArgOld {get;set;}
+	public IDictionary<str, obj?> WeightArg{get;set;}
 	ILogger? Logger;
 	public MgrLearn(
 		ISvcWord SvcWord
@@ -147,7 +149,7 @@ public partial class MgrLearn{
 		var z = this;
 		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
 		var sw = Stopwatch.StartNew();
-		var WeightResult = await WeightCalctr.Calc(WordsForLearn, WeightArg, Ct);
+		var WeightResult = await WeightCalctr.Calc(WordsForLearn, WeightArgOld, Ct);
 		sw.Stop();
 		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
 
@@ -178,7 +180,7 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		var WeightResult = await WeightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), WeightArg, Ct);//TODO 傳權重參數
+		var WeightResult = await WeightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), WeightArgOld, Ct);//TODO 傳權重參數
 		await HandleWeightResult(WeightResult, Ct);
 
 		return NIL;

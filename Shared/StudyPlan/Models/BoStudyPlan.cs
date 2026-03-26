@@ -31,7 +31,7 @@ public class BoStudyPlan{
 	public PoWeightArg? PoWeightArg{get;set;} = null;
 
 	[Doc($@"反序列化後的權重參數節點")]
-	public IJsonNode? WeightArg{get;set;} = null;
+	public IDictionary<str, obj>? WeightArg{get;set;} = null;
 }
 
 public static class ExtnBoStudyPlan{
@@ -40,6 +40,7 @@ public static class ExtnBoStudyPlan{
 		public void FromJnStudyPlan(
 			JnStudyPlan JnStudyPlan
 		){
+			//TODO
 			throw new NotImplementedException();
 		}
 	}
