@@ -8,7 +8,6 @@ using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Frontend.User;
-using MoonSharp.Interpreter;
 using System.Diagnostics;
 using Microsoft.Extensions.Logging;
 using Tsinswreng.CsErr;
@@ -149,7 +148,7 @@ public partial class MgrLearn{
 		var z = this;
 		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
 		var sw = Stopwatch.StartNew();
-		var WeightResult = await WeightCalctr.Calc(WordsForLearn, WeightArgOld, Ct);
+		var WeightResult = await WeightCalctr.Calc(WordsForLearn, WeightArg, Ct);
 		sw.Stop();
 		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
 
@@ -180,7 +179,7 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		var WeightResult = await WeightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), WeightArgOld, Ct);//TODO 傳權重參數
+		var WeightResult = await WeightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), WeightArg, Ct);//TODO 傳權重參數
 		await HandleWeightResult(WeightResult, Ct);
 
 		return NIL;
@@ -188,12 +187,15 @@ public partial class MgrLearn{
 
 	protected async Task<nil> HandleWeightResult(IWeightResult WeightResult, CT Ct){
 		IDictionary<IdWord, IWordWeightResult> Id_Result;
-		if(WeightResult.Opt.ResultType == EResultType.ItblIWordWeightResult){
-			var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
-			Id_Result = Result.ToDictionary(
-				x=>IdWord.FromLow64Base(x.StrId)
-				,x=>x
-			);
+		if(
+			//WeightResult.Opt.ResultType == EResultType.ItblIWordWeightResult
+			false
+		){
+			// var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
+			// Id_Result = Result.ToDictionary(
+			// 	x=>IdWord.FromLow64Base(x.StrId)
+			// 	,x=>x
+			// );
 		}else{
 			var Result = (IAsyncEnumerable<IWordWeightResult>)WeightResult.Results!;
 			var dict = new Dictionary<IdWord, IWordWeightResult>();
@@ -240,11 +242,6 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-
-
-///
-/// <param name="Word"></param>
-/// <param name="Learn"></param>
 /// <returns>見ELearnOpRtn</returns>
 	ELearnOpRtn _Learn(
 		IWordForLearn Word
@@ -327,9 +324,5 @@ public partial class MgrLearn{
 		//ResetLearnedState();
 		State = new();
 		return NIL;
-	}
-
-	void Filter(){
-		//var sc = new Script();
 	}
 }

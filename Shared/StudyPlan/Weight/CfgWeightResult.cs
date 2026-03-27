@@ -9,7 +9,7 @@ public partial class OptWeightResult: IOptWeightResult{
 	#endif
 	public EResultType ResultType{get;set;}
 	#if Impl
-		= EResultType.ItblIWordWeightResult;
+		= EResultType.AsyEIWordWeightResult;
 	#endif
 
 }

@@ -9,8 +9,7 @@ public enum ESortBy{
 }
 
 public enum EResultType{
-	ItblIWordWeightResult = 1
-	,AsyEIWordWeightResult =2
+	AsyEIWordWeightResult
 }
 
 
