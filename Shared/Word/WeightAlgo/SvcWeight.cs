@@ -4,7 +4,7 @@ namespace Ngaq.Core.Shared.Word.WeightAlgo;
 
 
 public partial class SvcWeight
-	:WeightCalculator
+	:DfltWeightCalculator
 	,IWeightCalctr
 {
 

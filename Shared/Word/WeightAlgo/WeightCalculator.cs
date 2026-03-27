@@ -13,7 +13,9 @@ using Ngaq.Core.Tools.Json;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Word.Models.Weight;
 
-public partial class WeightCalculator : IWeightCalctr {
+
+[Doc(@$"默認內置權重算法")]
+public partial class DfltWeightCalculator : IWeightCalctr {
 
 	[Impl]
 	public Task<IWeightResult> Calc(
