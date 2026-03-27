@@ -103,6 +103,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.JnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.JnWord>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Svc.JsWeightResult))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Svc.JsWeightResult>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.License>))]
 
@@ -219,6 +222,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Dto.WordsPackInfo>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Weight.WordWeightResult))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Weight.WordWeightResult>))]
 //額外類型
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]

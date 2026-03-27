@@ -7,9 +7,6 @@ namespace Ngaq.Core.Word.Models.Weight;
 public partial interface IWeightResult{
 	[Doc(@$"Option")]
 	public IOptWeightResult Opt{get;set;}
-	#if Impl
-		 = new CfgWeight();
-	#endif
 	[Doc(@$"Results of each word")]
 	public IAsyncEnumerable<IWordWeightResult>? Results{get;set;}
 	public IDictionary<str, obj?>? Props{get;set;}
