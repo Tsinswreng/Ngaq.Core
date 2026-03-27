@@ -1,3 +1,29 @@
+#if false
+	/*
+	JS sample:
+	const words = JSON.parse(WordsJson ?? "[]");
+	const arg = JSON.parse(CalcArgJson ?? "{}");
+	const baseWeight = Number(arg.BaseWeight ?? 0);
+	const step = Number(arg.Step ?? 1);
+
+	const results = words.map((w, i) => ({
+		StrId: String(w.StrId ?? ""),
+		Weight: baseWeight + i * step,
+		Index: i
+	}));
+
+	return JSON.stringify({
+		Opt: {
+			SortBy: "Weight",
+			ResultType: "AsyEIWordWeightResult"
+		},
+		Results: results,
+		Props: {
+			Algo: "SampleFromWordsAndArg"
+		}
+	});
+	*/
+#endif
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Weight;
@@ -25,16 +51,17 @@ public class JsWeightCalctr : IWeightCalctr{
 
 	public Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word,
-		IDictionary<str, obj?>? CalcArg,
+		IJsonNode? CalcArg,
 		CT Ct
 	){
-		var calcArgNode = new JsonNode(CalcArg);
-		return Calc(Word, calcArgNode, Ct);
+		throw new InvalidOperationException(
+			$"Obsolete overload called: {nameof(Calc)}(IAsyncEnumerable<IWordForLearn>, IJsonNode?, CT). Use IDictionary overload instead."
+		);
 	}
 
 	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word,
-		IJsonNode? CalcArg,
+		IDictionary<str, obj?>? CalcArg,
 		CT Ct
 	){
 		var words = await Word.ToListAsync(Ct);
