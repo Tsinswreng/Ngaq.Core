@@ -192,7 +192,7 @@ public partial class MgrLearn{
 	}
 
 	async Task<(IWeightCalctr WeightCalctr, IDictionary<str, obj?> WeightArg)> GetCurWeightAlgo(CT Ct){
-		var studyPlan = await StudyPlanGetter.GetStudyPlan(Ct);
+		var studyPlan = await StudyPlanGetter.GetStudyPlan(UserCtxMgr.GetUserCtx(), Ct);
 		WeightCalctr = studyPlan.WeightCalctr ?? new DfltWeightCalculator();
 		WeightArg = new Dictionary<str, obj?>();
 		if(studyPlan.WeightArg is not null){
