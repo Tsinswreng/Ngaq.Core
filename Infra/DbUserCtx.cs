@@ -11,6 +11,11 @@ public interface IDbUserCtx{
 }
 
 public class DbUserCtx : IDbUserCtx{
+	public DbUserCtx(IUserCtx UserCtx, IDbFnCtx? DbFnCtx = null){
+		this.DbFnCtx = DbFnCtx;
+		this.UserCtx = UserCtx;
+	}
+	[Obsolete]
 	public DbUserCtx(IDbFnCtx? DbFnCtx, IUserCtx UserCtx){
 		this.DbFnCtx = DbFnCtx;
 		this.UserCtx = UserCtx;

@@ -1,4 +1,4 @@
-namespace Ngaq.Core.Shared.Word;
+﻿namespace Ngaq.Core.Shared.Word;
 
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
@@ -17,6 +17,8 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Shared.Word.Svc;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using System.Collections;
+using Ngaq.Core.Shared.StudyPlan.Svc;
+using Ngaq.Core.Shared.Word.WeightAlgo;
 
 public enum ELearnOpRtn{
 	Learn = 0
@@ -89,23 +91,25 @@ public partial class LearnEventArgs :EventArgs{
 	public bool IsUndo{get;set;} = false;
 }
 
-/// 只會在前端運行
+/// 鍙渻鍦ㄥ墠绔亱琛?
 public partial class MgrLearn{
 	//public MgrLearn(){}
-	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
+	public ISvcWord SvcWord{get;set;}//TODO 鎺ュ彛闅旈洟
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
+	IStudyPlanGetter StudyPlanGetter;
 	public IWeightCalctr WeightCalctr{get;set;}
 	public IJsonNode? WeightArgOld {get;set;}
-	public IDictionary<str, obj?> WeightArg{get;set;}
+	public IDictionary<str, obj?> WeightArg{get;set;} = new Dictionary<str, obj?>();
 	ILogger? Logger;
 	public MgrLearn(
 		ISvcWord SvcWord
-		,IWeightCalctr WeightCalctr
+		,IStudyPlanGetter StudyPlanGetter
 		,IFrontendUserCtxMgr UserCtxMgr
 		,ILogger? Logger
 	){
-		this.WeightCalctr = WeightCalctr;
+		this.WeightCalctr = new DfltWeightCalculator();
+		this.StudyPlanGetter = StudyPlanGetter;
 		this.SvcWord = SvcWord;
 		this.UserCtxMgr = UserCtxMgr;
 		this.Logger = Logger;
@@ -147,8 +151,9 @@ public partial class MgrLearn{
 	){
 		var z = this;
 		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
+		var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
 		var sw = Stopwatch.StartNew();
-		var WeightResult = await WeightCalctr.Calc(WordsForLearn, WeightArg, Ct);
+		var WeightResult = await weightCalctr.Calc(WordsForLearn, weightArg, Ct);
 		sw.Stop();
 		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
 
@@ -163,8 +168,8 @@ public partial class MgrLearn{
 	}
 
 
-	/// 取諸詞
-	[Obsolete("用LoadEtCalcWeightAsy更快")]
+	/// 鍙栬瑭?
+	[Obsolete("鐢↙oadEtCalcWeightAsy鏇村揩")]
 	public nil Load(IEnumerable<IJnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var (i,JWord) in JWords.Index()){
@@ -179,10 +184,23 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		var WeightResult = await WeightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), WeightArg, Ct);//TODO 傳權重參數
+		var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
+		var WeightResult = await weightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), weightArg, Ct);
 		await HandleWeightResult(WeightResult, Ct);
 
 		return NIL;
+	}
+
+	async Task<(IWeightCalctr WeightCalctr, IDictionary<str, obj?> WeightArg)> GetCurWeightAlgo(CT Ct){
+		var studyPlan = await StudyPlanGetter.GetStudyPlan(Ct);
+		WeightCalctr = studyPlan.WeightCalctr ?? new DfltWeightCalculator();
+		WeightArg = new Dictionary<str, obj?>();
+		if(studyPlan.WeightArg is not null){
+			foreach(var (k, v) in studyPlan.WeightArg){
+				WeightArg[k] = v;
+			}
+		}
+		return (WeightCalctr, WeightArg);
 	}
 
 	protected async Task<nil> HandleWeightResult(IWeightResult WeightResult, CT Ct){
@@ -201,8 +219,8 @@ public partial class MgrLearn{
 			var dict = new Dictionary<IdWord, IWordWeightResult>();
 			await foreach (var item in Result.WithCancellation(Ct)){
 				var key = IdWord.FromLow64Base(item.StrId);
-				// 如果有重复 key 需求，自己决定是覆盖还是抛异常
-				dict[key] = item;          // 或 dict.TryAdd(key, item);
+				// 濡傛灉鏈夐噸澶?key 闇€姹傦紝鑷繁鍐冲畾鏄鐩栬繕鏄姏寮傚父
+				dict[key] = item;          // 鎴?dict.TryAdd(key, item);
 			}
 			Id_Result = dict;
 		}
@@ -242,7 +260,7 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-/// <returns>見ELearnOpRtn</returns>
+/// <returns>瑕婨LearnOpRtn</returns>
 	ELearnOpRtn _Learn(
 		IWordForLearn Word
 		,ELearn Learn
@@ -326,3 +344,5 @@ public partial class MgrLearn{
 		return NIL;
 	}
 }
+
+

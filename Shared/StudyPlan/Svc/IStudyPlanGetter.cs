@@ -1,4 +1,5 @@
 using Ngaq.Core.Shared.StudyPlan.Models;
+using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word;
 using Ngaq.Core.Shared.Word.WeightAlgo;
 
@@ -16,5 +17,8 @@ public interface IStudyPlanGetter{
 	- 權重參數留空不傳
 	- 前置過濾器也不傳
 	")]
-	public Task<BoStudyPlan> GetStudyPlan(CT Ct);
+	public Task<BoStudyPlan> GetStudyPlan(
+		IUserCtx User
+		,CT Ct
+	);
 }
