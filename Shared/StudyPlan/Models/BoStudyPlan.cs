@@ -36,7 +36,7 @@ public class BoStudyPlan{
 	public PoWeightArg? PoWeightArg{get;set;} = null;
 
 	[Doc($@"反序列化後的權重參數節點")]
-	public IDictionary<str, obj>? WeightArg{get;set;} = null;
+	public IDictionary<str, obj?>? WeightArg{get;set;} = null;
 }
 
 public static class ExtnBoStudyPlan{

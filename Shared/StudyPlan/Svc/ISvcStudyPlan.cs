@@ -11,6 +11,7 @@ using Ngaq.Core.Shared.Word.WeightAlgo;
 using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Ngaq.Core.Shared.Word.WeightAlgo.Models;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
@@ -80,17 +81,22 @@ public interface ISvcStudyPlan{
 		,CT Ct
 	);
 	
-	[Doc(@$"確保內置權重算法 在數據庫中。
-	內置的 {nameof(I_UniqName.UniqName)}要有前綴{nameof(Consts.BuiltinPrefix)}
+	[Doc(@$"生成內置權重算法。
+	內置的 {nameof(I_UniqName.UniqName)}要有前綴{nameof(Consts.BuiltinPrefix)}。
+	- 默認權重算法: {nameof(DfltWeightCalculator)}
+		- 名稱: 內置前綴 拼上 {nameof(DfltWeightCalculator.Name)}
+	- 默認權重算法參數: {nameof(DfltWeightCfg)}
+	- 默認學習方案名稱: 內置前綴 拼上 `Default`
+	內置的都不需要 {nameof(PoStudyPlan.Descr)}
 	")]
-	public Task<bool> EnsureBuiltinStudyPlan(
+	public Task<BoStudyPlan> GetBuiltinStudyPlan(
 		IDbUserCtx Ctx, CT Ct
 	);
 	
 	[Doc(@$"確保用戶當前學習方案存在。
 	當用戶未添加任何學習方案旹、
-	先 調{nameof(EnsureBuiltinStudyPlan)}、
-	再設{nameof(KeysClientKv.CurStudyPlanId)}
+	先 調{nameof(GetBuiltinStudyPlan)}、
+	再設{nameof(KeysClientKv.CurStudyPlanId)} 設爲默認權重算法的id。
 	")]
 	public Task<bool> EnsureCurStudyPlan(
 		IDbUserCtx Ctx, CT Ct

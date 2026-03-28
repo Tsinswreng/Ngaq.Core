@@ -13,9 +13,7 @@ public interface IStudyPlanGetter{
 	要帶緩存、當學習方案未變時 則直接返回緩存的。不要每次都重新讀取並裝配。
 	
 	若用戶未配置 StudyPlan 則:
-	- 權重算法用默認 {nameof(DfltWeightCalculator)}
-	- 權重參數留空不傳
-	- 前置過濾器也不傳
+	{nameof(ISvcStudyPlan.EnsureCurStudyPlan)}
 	")]
 	public Task<BoStudyPlan> GetStudyPlan(
 		IUserCtx User
