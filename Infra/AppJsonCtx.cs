@@ -116,13 +116,28 @@ public partial class AppJsonCtx : JsonSerializerContext {
 }
 
 
-#if false
+#if false //額外類型 自己手動複製粘貼到 Ngaq.Core/GenAppJsonCtx.sh
+
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.IAppErrView>))]
 
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.AppErrView))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.AppErrView>))]
+
+[JsonSerializable(typeof(IList<i8>))]
+[JsonSerializable(typeof(IList<u8>))]
+[JsonSerializable(typeof(IList<i16>))]
+[JsonSerializable(typeof(IList<u16>))]
+[JsonSerializable(typeof(IList<i32>))]
+[JsonSerializable(typeof(IList<i64>))]
+[JsonSerializable(typeof(IList<u32>))]
+[JsonSerializable(typeof(IList<u64>))]
+[JsonSerializable(typeof(IList<f32>))]
+[JsonSerializable(typeof(IList<f64>))]
+[JsonSerializable(typeof(IList<bool>))]
+[JsonSerializable(typeof(IList<char>))]
+[JsonSerializable(typeof(IList<str>))]
 file class Test{
 
 }

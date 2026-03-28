@@ -25,6 +25,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.WeightAlgo.Models.DfltWeightCfg))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_WeightAlgo_Models_DfltWeightCfg = "global::Ngaq.Core.Shared.Word.WeightAlgo.Models.DfltWeightCfg";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_DictionaryApiWord = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.DictionaryApiWord";

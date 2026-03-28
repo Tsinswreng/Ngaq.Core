@@ -1,11 +1,12 @@
 using System.Collections;
+using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.WeightAlgo.Models;
 using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Shared.Word.WeightAlgo.Models;
 
-public partial class DfltWeightCfg{
+public partial class DfltWeightCfg:IAppSerializable{
 	public static str ForName => DfltWeightCalculator.Name;
 	public static str Name => "Tswg-EventFlowV1";
 	// public IDictionary<u64, f64> AddCnt_Bonus = new Dictionary<u64, f64>(){
