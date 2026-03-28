@@ -82,6 +82,7 @@ public interface ISvcStudyPlan{
 	);
 	
 	[Doc(@$"生成內置權重算法。
+	不操作數據庫。
 	內置的 {nameof(I_UniqName.UniqName)}要有前綴{nameof(Consts.BuiltinPrefix)}。
 	- 默認權重算法: {nameof(DfltWeightCalculator)}
 		- 名稱: 內置前綴 拼上 {nameof(DfltWeightCalculator.Name)}
@@ -95,8 +96,8 @@ public interface ISvcStudyPlan{
 	
 	[Doc(@$"確保用戶當前學習方案存在。
 	當用戶未添加任何學習方案旹、
-	先 調{nameof(GetBuiltinStudyPlan)}、
-	再設{nameof(KeysClientKv.CurStudyPlanId)} 設爲默認權重算法的id。
+	先 調{nameof(GetBuiltinStudyPlan)}、再寫入數據庫庫、
+	再{nameof(KeysClientKv.CurStudyPlanId)} 設爲默認權重算法的id。
 	")]
 	public Task<bool> EnsureCurStudyPlan(
 		IDbUserCtx Ctx, CT Ct
