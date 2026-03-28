@@ -27,6 +27,7 @@
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Weight;
+using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.Models.Weight;
 using Ngaq.Core.Word.Svc;
@@ -35,6 +36,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using Tsinswreng.CsErr;
 using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Shared.Word.Svc;
@@ -54,7 +56,7 @@ public class JsWeightCalctr : IWeightCalctr{
 		IJsonNode? CalcArg,
 		CT Ct
 	){
-		throw new InvalidOperationException(
+		throw ItemsErr.Word.WeightCalcInvalidAlgorithm.ToErr(
 			$"Obsolete overload called: {nameof(Calc)}(IAsyncEnumerable<IWordForLearn>, IJsonNode?, CT). Use IDictionary overload instead."
 		);
 	}
@@ -64,25 +66,51 @@ public class JsWeightCalctr : IWeightCalctr{
 		IDictionary<str, obj?>? CalcArg,
 		CT Ct
 	){
-		var words = await Word.ToListAsync(Ct);
-
-		str wordsJson;
-		if(words.Count == 0){
-			wordsJson = "[]";
-		}else{
-			wordsJson = JsonSerializer.Stringify(words);
+		// Js 算法代碼為空屬於可預期業務配置錯誤，直接轉業務異常。
+		if(string.IsNullOrWhiteSpace(JsCode)){
+			throw ItemsErr.Word.JsWeightCalcCodeEmpty.ToErr();
 		}
 
-		var engine = new Engine();
-		engine.SetValue("WordsJson", wordsJson);
-		engine.SetValue("CalcArgJson", CalcArg is null ? "null" : JsonSerializer.Stringify(CalcArg));
+		try{
+			var words = await Word.ToListAsync(Ct);
 
-		var result = engine.Evaluate(JsCode);
-		var resultJson = result.ToString() ?? "";
-		var jsWeightResult = JsonSerializer.Parse<JsWeightResult>(resultJson)
-			?? throw new InvalidOperationException("JS weight calculator returned null/empty JSON object.");
+			str wordsJson;
+			if(words.Count == 0){
+				wordsJson = "[]";
+			}else{
+				wordsJson = JsonSerializer.Stringify(words);
+			}
 
-		return jsWeightResult.ToWeightResult();
+			var engine = new Engine();
+			engine.SetValue("WordsJson", wordsJson);
+			engine.SetValue("CalcArgJson", CalcArg is null ? "null" : JsonSerializer.Stringify(CalcArg));
+
+			var result = engine.Evaluate(JsCode);
+			var resultJson = result.ToString() ?? "";
+			if(string.IsNullOrWhiteSpace(resultJson)){
+				throw ItemsErr.Word.JsWeightCalcReturnedEmpty.ToErr();
+			}
+
+			var jsWeightResult = JsonSerializer.Parse<JsWeightResult>(resultJson);
+			if(jsWeightResult is null){
+				throw ItemsErr.Word.JsWeightCalcReturnedInvalidJson.ToErr()
+					.AddDebugArgs(resultJson);
+			}
+			return jsWeightResult.ToWeightResult();
+		}catch(OperationCanceledException){
+			// 取消不包裝為業務異常，沿用取消語義。
+			throw;
+		}catch(AppErr){
+			// 已是業務異常，不重複包裝。
+			throw;
+		}catch(Exception e){
+			throw ItemsErr.Word.JsWeightCalcExecFailed.ToErr()
+				.AddErr(e)
+				.AddDebugArgs(new {
+					JsCode = JsCode,
+					HasCalcArg = CalcArg is not null,
+				});
+		}
 	}
 }
 

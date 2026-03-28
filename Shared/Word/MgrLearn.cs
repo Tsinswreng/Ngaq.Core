@@ -149,21 +149,33 @@ public partial class MgrLearn{
 		IAsyncEnumerable<IJnWord> JnWords
 		,CT Ct
 	){
-		var z = this;
-		var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
-		var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
-		var sw = Stopwatch.StartNew();
-		var WeightResult = await weightCalctr.Calc(WordsForLearn, weightArg, Ct);
-		sw.Stop();
-		z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
+		try{
+			// 每次重算前先清理上一輪錯誤，避免舊錯誤阻塞後續流程。
+			LastErr = null;
+			var z = this;
+			var WordsForLearn = JnWords.Select(x=>new WordForLearn(x));
+			var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
+			var sw = Stopwatch.StartNew();
+			var WeightResult = await weightCalctr.Calc(WordsForLearn, weightArg, Ct);
+			sw.Stop();
+			z.Logger?.LogInformation($"WeightCalctr.CalcAsy: {sw.ElapsedMilliseconds}ms");
 
-
-		State.WordsToLearn.Clear();
-		await foreach(var Word in WordsForLearn){
-			State.WordsToLearn.Add(Word);
+			State.WordsToLearn.Clear();
+			await foreach(var Word in WordsForLearn){
+				State.WordsToLearn.Add(Word);
+			}
+			State.OperationStatus.Load = true;
+			await HandleWeightResult(WeightResult, Ct);
+		}catch(OperationCanceledException){
+			throw;
+		}catch(AppErr appErr){
+			Err(appErr);
+		}catch(Exception e){
+			var appErr = ItemsErr.Word.LoadWordCalcWeightFailed.ToErr();
+			appErr.AddErr(e);
+			appErr.AddDebugArgs("Phase=LoadEtCalcWeight");
+			Err(appErr);
 		}
-		State.OperationStatus.Load = true;
-		await HandleWeightResult(WeightResult, Ct);
 		return NIL;
 	}
 
@@ -184,61 +196,102 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
-		var WeightResult = await weightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), weightArg, Ct);
-		await HandleWeightResult(WeightResult, Ct);
+		try{
+			LastErr = null;
+			var (weightCalctr, weightArg) = await GetCurWeightAlgo(Ct);
+			var WeightResult = await weightCalctr.Calc(State.WordsToLearn.ToAsyncEnumerable(), weightArg, Ct);
+			await HandleWeightResult(WeightResult, Ct);
+		}catch(OperationCanceledException){
+			throw;
+		}catch(AppErr appErr){
+			Err(appErr);
+		}catch(Exception e){
+			var appErr = ItemsErr.Word.WeightCalcRunFailed.ToErr();
+			appErr.AddErr(e);
+			appErr.AddDebugArgs("Phase=CalcWeight");
+			Err(appErr);
+		}
 
 		return NIL;
 	}
 
 	async Task<(IWeightCalctr WeightCalctr, IDictionary<str, obj?> WeightArg)> GetCurWeightAlgo(CT Ct){
-		var studyPlan = await StudyPlanGetter.GetStudyPlan(UserCtxMgr.GetUserCtx(), Ct);
-		WeightCalctr = studyPlan.WeightCalctr ?? new DfltWeightCalculator();
-		WeightArg = new Dictionary<str, obj?>();
-		if(studyPlan.WeightArg is not null){
-			foreach(var (k, v) in studyPlan.WeightArg){
-				WeightArg[k] = v;
+		try{
+			var studyPlan = await StudyPlanGetter.GetStudyPlan(UserCtxMgr.GetUserCtx(), Ct);
+			WeightCalctr = studyPlan.WeightCalctr ?? new DfltWeightCalculator();
+			WeightArg = new Dictionary<str, obj?>();
+			if(studyPlan.WeightArg is not null){
+				foreach(var (k, v) in studyPlan.WeightArg){
+					WeightArg[k] = v;
+				}
 			}
+			return (WeightCalctr, WeightArg);
+		}catch(OperationCanceledException){
+			throw;
+		}catch(AppErr){
+			throw;
+		}catch(Exception e){
+			throw ItemsErr.Word.WeightCalcGetStudyPlanFailed.ToErr()
+				.AddErr(e);
 		}
-		return (WeightCalctr, WeightArg);
 	}
 
 	protected async Task<nil> HandleWeightResult(IWeightResult WeightResult, CT Ct){
-		IDictionary<IdWord, IWordWeightResult> Id_Result;
-		if(
-			//WeightResult.Opt.ResultType == EResultType.ItblIWordWeightResult
-			false
-		){
-			// var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
-			// Id_Result = Result.ToDictionary(
-			// 	x=>IdWord.FromLow64Base(x.StrId)
-			// 	,x=>x
-			// );
-		}else{
-			var Result = (IAsyncEnumerable<IWordWeightResult>)WeightResult.Results!;
-			var dict = new Dictionary<IdWord, IWordWeightResult>();
-			await foreach (var item in Result.WithCancellation(Ct)){
-				var key = IdWord.FromLow64Base(item.StrId);
-				// 濡傛灉鏈夐噸澶?key 闇€姹傦紝鑷繁鍐冲畾鏄鐩栬繕鏄姏寮傚父
-				dict[key] = item;          // 鎴?dict.TryAdd(key, item);
+		try{
+			IDictionary<IdWord, IWordWeightResult> Id_Result;
+			if(
+				//WeightResult.Opt.ResultType == EResultType.ItblIWordWeightResult
+				false
+			){
+				// var Result = (IEnumerable<IWordWeightResult>)WeightResult.Results!;
+				// Id_Result = Result.ToDictionary(
+				// 	x=>IdWord.FromLow64Base(x.StrId)
+				// 	,x=>x
+				// );
+				Id_Result = new Dictionary<IdWord, IWordWeightResult>();
+			}else{
+				var Result = WeightResult.Results as IAsyncEnumerable<IWordWeightResult>;
+				if(Result is null){
+					throw ItemsErr.Word.WeightCalcResultStreamNull.ToErr()
+						.AddDebugArgs(WeightResult.Opt);
+				}
+				var dict = new Dictionary<IdWord, IWordWeightResult>();
+				await foreach (var item in Result.WithCancellation(Ct)){
+					IdWord key;
+					try{
+						key = IdWord.FromLow64Base(item.StrId);
+					}catch(Exception e){
+						throw ItemsErr.Word.WeightCalcResultWordIdInvalid__.ToErr(item.StrId)
+							.AddErr(e);
+					}
+					// 如果有重複 key 需求，自行決定是覆蓋還是拋異常
+					dict[key] = item;          // 或 dict.TryAdd(key, item);
+				}
+				Id_Result = dict;
 			}
-			Id_Result = dict;
-		}
 
-		foreach(var Word in State.WordsToLearn){
-			if(Id_Result.TryGetValue(Word.Id, out var Result)){
-				Word.Weight = Result.Weight;
-				Word.Index  = Result.Index;
+			foreach(var Word in State.WordsToLearn){
+				if(Id_Result.TryGetValue(Word.Id, out var Result)){
+					Word.Weight = Result.Weight;
+					Word.Index  = Result.Index;
+				}
 			}
-		}
-		if(WeightResult.Opt.SortBy == ESortBy.Weight){
-			State.WordsToLearn.Sort((b,a)=>(a.Weight??0).CompareTo(b.Weight));
-		}else{
-			State.WordsToLearn.Sort((a,b)=>(a.Index??0).CompareTo(b.Index));
-		}
-		u64 i = 0;
-		foreach(var Word in State.WordsToLearn){
-			Word.Index = i++;
+			if(WeightResult.Opt.SortBy == ESortBy.Weight){
+				State.WordsToLearn.Sort((b,a)=>(a.Weight??0).CompareTo(b.Weight));
+			}else{
+				State.WordsToLearn.Sort((a,b)=>(a.Index??0).CompareTo(b.Index));
+			}
+			u64 i = 0;
+			foreach(var Word in State.WordsToLearn){
+				Word.Index = i++;
+			}
+		}catch(OperationCanceledException){
+			throw;
+		}catch(AppErr){
+			throw;
+		}catch(Exception e){
+			throw ItemsErr.Word.WeightCalcResultHandleFailed.ToErr()
+				.AddErr(e);
 		}
 		return NIL;
 	}
@@ -247,7 +300,23 @@ public partial class MgrLearn{
 		if(!State.OperationStatus.Load){
 			return NIL;
 		}
-		await CalcWeight(Ct);
+		try{
+			await CalcWeight(Ct);
+		}catch(OperationCanceledException){
+			throw;
+		}catch(AppErr appErr){
+			Err(appErr);
+			return NIL;
+		}catch(Exception e){
+			var appErr = ItemsErr.Word.StartLearnWithWeightCalcFailed.ToErr();
+			appErr.AddErr(e);
+			Err(appErr);
+			return NIL;
+		}
+		// 算權重失敗時不啟動學習流程，避免 UI 進入錯誤狀態。
+		if(LastErr is not null){
+			return NIL;
+		}
 		await Start(Ct);
 		return NIL;
 	}
