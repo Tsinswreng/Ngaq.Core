@@ -14,7 +14,7 @@ using Ngaq.Core.Tools.Json;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Word.Models.Weight;
-
+using Ngaq.Core.Shared.Word.WeightAlgo.Models;
 
 [Doc(@$"默認內置權重算法")]
 public partial class DfltWeightCalculator : IWeightCalctr {
@@ -22,16 +22,15 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 	[Impl]
 	public Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word
-		,IDictionary<str, obj?>? CalcArg
+		,IJsonNode? CalcArg
 		,CT Ct
 	){
-		var calcArgNode = new JsonNode(CalcArg);
-		return Calc(Word, calcArgNode, Ct);
+		throw new NotImplementedException();
 	}
 
 	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Words
-		,IJsonNode? CalcArg
+		,IDictionary<str, obj?>? CalcArg
 		,CT Ct
 	){
 		var cfg = new OptWeightResult {
@@ -64,8 +63,7 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 					var calc = new CalculatorForOne();
 					if(CalcArg is not null){
 						try{
-							calc.Cfg = new();
-							calc.Cfg.InitFromKv(CalcArg);
+							calc.Cfg = DfltWeightCfg.FromDict(CalcArg);
 						}catch(Exception e){
 							throw ItemsErr.Word.BuiltinWeightCalcArgParseFailed.ToErr()
 								.AddErr(e)

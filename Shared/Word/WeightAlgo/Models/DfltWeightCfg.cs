@@ -1,5 +1,6 @@
 using System.Collections;
 using Ngaq.Core.Infra.IF;
+using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.WeightAlgo.Models;
 using Tsinswreng.CsTools;
@@ -15,47 +16,20 @@ public partial class DfltWeightCfg:IAppSerializable{
 	// 	,[2] = 0xfff
 	// 	,[3] = 0xffff
 	// };
-	public IList<f64> AddCnt_Bonus = new List<f64>(){
+	public IList<f64> AddCnt_Bonus{get;set;} = new List<f64>(){
 		0xff,0xfff,0xffff,0xfffff //對應 舊版ʹaddWeight
 	};
-	public f64 DfltAddBonus = 0xffffffff;
+	public f64 DfltAddBonus{get;set;} = 0xffffffff;
 	
 	/// ʃᶤ削弱 ʹ分母
 	
-	public f64 DebuffNumerator = 36*ETimeInMs.Day;
-	public f64 Base = 20;
-	public f64 FinalAddBonusDenominator = ETimeInMs.Day*3000;
+	public f64 DebuffNumerator{get;set;} = 36*ETimeInMs.Day;
+	public f64 Base{get;set;} = 20;
+	public f64 FinalAddBonusDenominator{get;set;} = ETimeInMs.Day*3000;
 
-	public void InitFromKv(IJsonNode Kv){
-		var z = this;
-		var AddCnt_Bonus = Kv[nameof(z.AddCnt_Bonus)];
-		if(AddCnt_Bonus is IList L){
-			var bonusList = new List<f64>();
-			foreach(var ele in L){
-				var toAdd = ToF64(ele);
-				if(toAdd is not null){
-					bonusList.Add(toAdd.Value);
-				}
-			}
-			z.AddCnt_Bonus = bonusList;
-		}
-		Asn(ref z.DfltAddBonus, Kv[nameof(DfltAddBonus)]);
-		Asn(ref z.DebuffNumerator, Kv[nameof(DebuffNumerator)]);
-		Asn(ref z.Base, Kv[nameof(Base)]);
-		Asn(ref z.FinalAddBonusDenominator, Kv[nameof(FinalAddBonusDenominator)]);
-		static f64? ToF64(obj? V){
-			if(V is not null){
-				if(V is i64 || V is f64){
-					return (f64)V;
-				}
-			}
-			return null;
-		}
-		static void Asn(ref f64 ToBeAssign, obj? V){
-			var f = ToF64(V);
-			if(f is not null){
-				ToBeAssign = f.Value;
-			}
-		}
+	public static DfltWeightCfg FromDict(IDictionary<str, obj?> Dict){
+		var json = ToolJson.DictToJson(Dict);
+		var r = JSON.Parse<DfltWeightCfg>(json);
+		return r!;
 	}
 }
