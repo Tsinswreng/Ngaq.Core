@@ -8,6 +8,9 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Word.Svc;
 using Ngaq.Core.Shared.StudyPlan.Models;
 using Ngaq.Core.Shared.Word.WeightAlgo;
+using Ngaq.Core.Frontend.Kv;
+using Ngaq.Core.Shared.User.UserCtx;
+using Ngaq.Core.Shared.Base.Models.Po;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
@@ -75,6 +78,22 @@ public interface ISvcStudyPlan{
 		IDbUserCtx Ctx
 		,ReqPageWeightCalculator Req
 		,CT Ct
+	);
+	
+	[Doc(@$"確保內置權重算法 在數據庫中。
+	內置的 {nameof(I_UniqName.UniqName)}要有前綴{nameof(Consts.BuiltinPrefix)}
+	")]
+	public Task<bool> EnsureBuiltinStudyPlan(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	[Doc(@$"確保用戶當前學習方案存在。
+	當用戶未添加任何學習方案旹、
+	先 調{nameof(EnsureBuiltinStudyPlan)}、
+	再設{nameof(KeysClientKv.CurStudyPlanId)}
+	")]
+	public Task<bool> EnsureCurStudyPlan(
+		IDbUserCtx Ctx, CT Ct
 	);
 	
 }

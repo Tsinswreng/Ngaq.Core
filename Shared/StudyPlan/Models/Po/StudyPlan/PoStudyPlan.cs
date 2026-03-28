@@ -14,6 +14,7 @@ public class PoStudyPlan
 	,AppI_Id<IdStudyPlan>
 	,IAggRoot
 	,I_Owner
+	,I_UniqName
 {
 	[Doc($@"主鍵")]
 	public IdStudyPlan Id{get;set;} = new();

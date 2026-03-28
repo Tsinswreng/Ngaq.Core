@@ -16,7 +16,7 @@ using Ngaq.Core.Shared.Word.Models.Weight;
 
 [Doc(@$"默認內置權重算法")]
 public partial class DfltWeightCalculator : IWeightCalctr {
-
+	public static str Name=>"Tswg-EventFlowV1";
 	[Impl]
 	public Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word
@@ -27,7 +27,6 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 		return Calc(Word, calcArgNode, Ct);
 	}
 
-	[Impl]
 	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Words
 		,IJsonNode? CalcArg

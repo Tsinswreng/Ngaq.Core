@@ -8,7 +8,7 @@ using Tsinswreng.CsTools;
 
 
 public partial class CalculatorForOne{
-	public WeightCfg Cfg{get;set;} = new();
+	public DfltWeightCfg Cfg{get;set;} = new();
 	public partial class State_{
 		public IWeightWord Word{get;set;} = null!;
 		public WeightWordState WordState{get;set;} = new();

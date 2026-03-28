@@ -5,7 +5,9 @@ using Tsinswreng.CsTools;
 
 namespace Ngaq.Core.Shared.Word.WeightAlgo.Models;
 
-public partial class WeightCfg{
+public partial class DfltWeightCfg{
+	public static str ForName => DfltWeightCalculator.Name;
+	public static str Name => "Tswg-EventFlowV1";
 	// public IDictionary<u64, f64> AddCnt_Bonus = new Dictionary<u64, f64>(){
 	// 	[0] = 0x1
 	// 	,[1] = 0xff

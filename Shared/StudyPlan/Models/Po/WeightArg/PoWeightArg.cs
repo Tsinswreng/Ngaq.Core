@@ -10,6 +10,7 @@ public class PoWeightArg
 	:PoBaseBizTime
 	,AppI_Id<IdWeightArg>
 	,I_Owner
+	,I_UniqName
 {
 	[Doc($@"主鍵")]
 	public IdWeightArg Id{get;set;} = new();
@@ -17,7 +18,6 @@ public class PoWeightArg
 	public IdUser Owner{get;set;} = IdUser.Zero;
 	[Doc($@"用戶側唯一名")]
 	public str? UniqName{get;set;} = null;
-
 	[Doc($@"參數數據格式")]
 	public EWeightArgType Type{get;set;} = EWeightArgType.Json;
 	

@@ -5,5 +5,5 @@ public enum EWeightArgType{
 	[Doc($@"未知")]
 	Unknown,
 	[Doc($@"JSON")]
-	Json
+	Json,
 }

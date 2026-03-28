@@ -10,6 +10,7 @@ public class PoWeightCalculator
 	:PoBase
 	,AppI_Id<IdWeightCalculator>
 	,I_Owner
+	,I_UniqName
 {
 	[Doc($@"主鍵")]
 	public IdWeightCalculator Id{get;set;} = new();

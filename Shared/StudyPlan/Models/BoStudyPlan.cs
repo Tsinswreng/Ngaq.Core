@@ -18,7 +18,6 @@ namespace Ngaq.Core.Shared.StudyPlan.Models;
 #Descr[聚合一套學習方案在運行期所需的持久化實體、業務模型與權重參數。]
 """)]
 public class BoStudyPlan{
-	
 	[Doc($@"學習方案實體")]
 	public PoStudyPlan? PoStudyPlan{get;set;} = null;
 	[Doc($@"前置篩選器實體")]

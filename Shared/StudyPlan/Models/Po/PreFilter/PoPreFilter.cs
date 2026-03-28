@@ -12,6 +12,7 @@ public class PoPreFilter
 	:PoBaseBizTime
 	,AppI_Id<IdPreFilter>
 	,I_Owner
+	,I_UniqName
 {
 	[Doc($@"主鍵")]
 	public IdPreFilter Id{get;set;} = new();
