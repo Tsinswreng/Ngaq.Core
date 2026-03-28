@@ -15,6 +15,11 @@ using Ngaq.Core.Shared.Word.WeightAlgo.Models;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
+[Doc(@$"
+名詞辯析:
+- 內置: 即內置、可能有多套
+- 默認: 只能有一套。默認的一定是內置的、內置的不一定是默認的
+")]
 public interface ISvcStudyPlan{
 	public Task<IWeightCalctr?> GetCurWeightCalctr(
 		IDbUserCtx Ctx, CT Ct
@@ -90,16 +95,27 @@ public interface ISvcStudyPlan{
 	- 默認學習方案名稱: 內置前綴 拼上 `Default`
 	內置的都不需要 {nameof(PoStudyPlan.Descr)}
 	")]
-	public Task<BoStudyPlan> GetBuiltinStudyPlan(
+	public Task<BoStudyPlan> GetDfltStudyPlan(
 		IDbUserCtx Ctx, CT Ct
 	);
 	
 	[Doc(@$"確保用戶當前學習方案存在。
 	當用戶未添加任何學習方案旹、
-	先 調{nameof(GetBuiltinStudyPlan)}、再寫入數據庫庫、
+	先 調{nameof(GetDfltStudyPlan)}、再寫入數據庫庫、
 	再{nameof(KeysClientKv.CurStudyPlanId)} 設爲默認權重算法的id。
 	")]
 	public Task<bool> EnsureCurStudyPlan(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	[Doc(@$"把內置學習方案恢復回數據庫。
+	初始情況下、數據庫中應該有內置學習方案。
+	但是用戶可能原地更改內置學習方案、如改值 等。
+	此函數用於恢復內置學習方案、把程序中定義的內置學習方案 原樣寫回數據庫中、
+	確保{nameof(I_UniqName.UniqName)}相同的實體、除Id與時間不同之外 其他字段皆一致。
+	若有衝突 則把舊值軟刪除。
+	")]
+	public Task<nil> RestoreBuiltinStudyPlan(
 		IDbUserCtx Ctx, CT Ct
 	);
 	
