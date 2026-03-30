@@ -22,38 +22,7 @@ public static class JSON {
 		// }
 	};
 
-/*
-Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSerializerOptions)' which has 'RequiresUnreferencedCodeAttribute' can break functionality when trimming application code. JSON serialization and deserialization might require types that cannot be statically analyzed. Use the overload that takes a JsonTypeInfo or JsonSerializerContext, or make sure all of the required types are preserved.(IL2026)
-Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSerializerOptions)' which has 'RequiresDynamicCodeAttribute' can break functionality when AOT compiling. JSON serialization and deserialization might require types that cannot be statically analyzed and might need runtime code generation. Use System.Text.Json source generation for native AOT applications.(IL3050)
- */
-	// public static str stringify<T>(
-	// 	T o
-	// 	,JsonTypeInfo? jsonTypeInfo = null
-	// ){
-	// 	if(jsonTypeInfo == null){
-	// 		var ans = JsonSerializer.Serialize(o, Opt);
-	// 		return ans;
-	// 	}
-	// 	return JsonSerializer.Serialize(o, jsonTypeInfo);
-	// }
-
-	// public static T? parse<T>(
-	// 	str json
-	// 	,JsonTypeInfo<T>? jsonTypeInfo = null
-	// ){
-	// 	if(jsonTypeInfo == null){
-	// 		return JsonSerializer.Deserialize<T>(json, Opt);
-	// 	}
-	// 	return JsonSerializer.Deserialize(json, jsonTypeInfo);
-	// }
-
-
 	public static string Stringify<T>(T o){
-		//return JsonSerializer.Serialize(o, Opt);
-		// if (jsonTypeInfo != null){
-		// 	return JsonSerializer.Serialize(o, jsonTypeInfo);
-		// }
-
 		// ✅ 使用 AppJsonCtx 提供的 type info
 		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
 		if (typeInfo == null){
@@ -64,9 +33,6 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 	}
 
 	public static T? Parse<T>(string json){
-		// if (jsonTypeInfo != null)
-		// 	return JsonSerializer.Deserialize(json, jsonTypeInfo);
-
 		// ✅ 使用 AppJsonCtx 提供的 type info
 		var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
 		if (typeInfo == null){
@@ -82,6 +48,8 @@ Using member 'System.Text.Json.JsonSerializer.Serialize<TValue>(TValue, JsonSeri
 		}
 		return JsonSerializer.Deserialize(json, typeInfo);
 	}
+	
+	
 }
 
 
