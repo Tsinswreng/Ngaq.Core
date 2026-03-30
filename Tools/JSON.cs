@@ -48,6 +48,24 @@ public static class JSON {
 		}
 		return JsonSerializer.Deserialize(json, typeInfo);
 	}
+
+	/// 使用源生成的 TypeInfo 把对象直接序列化为 JsonElement，避免中间 JSON 字符串。
+	public static JsonElement ToElement<T>(T o){
+		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
+		if (typeInfo == null){
+			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
+		}
+		return JsonSerializer.SerializeToElement(o, typeInfo);
+	}
+
+	/// 使用源生成的 TypeInfo 从 JsonElement 反序列化到目标类型，避免中间 JSON 字符串。
+	public static obj? Parse(JsonElement element, Type T){
+		var typeInfo = AppJsonCtx.Default.GetTypeInfo(T);
+		if (typeInfo == null){
+			throw new InvalidOperationException($"Type {T} is not registered in AppJsonCtx");
+		}
+		return JsonSerializer.Deserialize(element, typeInfo);
+	}
 	
 	
 }

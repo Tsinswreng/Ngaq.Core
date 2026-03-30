@@ -1,4 +1,5 @@
 using Tsinswreng.CsTools;
+using System.Text.Json;
 
 namespace Ngaq.Core.Tools.Json;
 
@@ -23,21 +24,24 @@ public class AppJsonSerializer
 	}
 	
 	public obj? ToDictJson<T>(T O){
-		var json = this.Stringify(O);
-		var dict = ToolJson.JsonStrToDict(json);
-		return dict;
+		var jsonElement = JSON.ToElement(O);
+		if(jsonElement.ValueKind != JsonValueKind.Object){
+			throw new NotSupportedException("ToDictJson only supports object root.");
+		}
+		return ToolJson.ParseJsonElement(jsonElement);
 	}
 	public obj? FromDictJson(obj? DictJson, Type Type){
 		if(DictJson is null){
 			return null;
 		}
 		if(DictJson is IDictionary<str, obj?> dict){
-			var json = ToolJson.DictToJson(dict);
-			return this.Parse(json, Type);
+			var jsonElement = JsonSerializer.SerializeToElement(dict, DictJsonCtx.Default.IDictionaryStringObject);
+			return JSON.Parse(jsonElement, Type);
 		}
 		if(DictJson is IList<obj?> list){
-			var json = ToolJson.ItblToJson(list);
-			return this.Parse(json, Type);
+			var listForSer = list as List<obj?> ?? [..list];
+			var jsonElement = JsonSerializer.SerializeToElement(listForSer, DictJsonCtx.Default.ListObject);
+			return JSON.Parse(jsonElement, Type);
 		}
 		throw new NotSupportedException("DictJson should be a dictionary or a list.");
 	}
