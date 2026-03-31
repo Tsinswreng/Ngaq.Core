@@ -15,11 +15,6 @@ public class DbUserCtx : IDbUserCtx{
 		this.DbFnCtx = DbFnCtx;
 		this.UserCtx = UserCtx;
 	}
-	[Obsolete]
-	public DbUserCtx(IDbFnCtx? DbFnCtx, IUserCtx UserCtx){
-		this.DbFnCtx = DbFnCtx;
-		this.UserCtx = UserCtx;
-	}
 	public IDbFnCtx? DbFnCtx{get;set;}
 	public IUserCtx UserCtx{get;set;}
 }
@@ -27,12 +22,12 @@ public class DbUserCtx : IDbUserCtx{
 public static class ExtnIDbUserCtx{
 	extension(IUserCtx z){
 		public IDbUserCtx ToDbUserCtx(IDbFnCtx? DbFnCtx = null){
-			return new DbUserCtx(DbFnCtx, z);
+			return new DbUserCtx(z, DbFnCtx);
 		}
 	}
 	extension(IFrontendUserCtxMgr z){
 		public IDbUserCtx GetDbUserCtx(IDbFnCtx? DbFnCtx = null){
-			return new DbUserCtx(DbFnCtx, z.GetUserCtx());
+			return new DbUserCtx(z.GetUserCtx());
 		}
 	}
 }
