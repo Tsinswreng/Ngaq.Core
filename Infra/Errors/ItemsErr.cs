@@ -13,6 +13,7 @@ public static class ItemsErr{
 		public static K _R = Mk(null, [nameof(Common)]);
 		public static K ArgErr = MkB(_R, [nameof(ArgErr)]);
 		public static K UnknownErr = MkB(_R, [nameof(UnknownErr)]);
+		public static K AddFailed = MkB(_R, [nameof(AddFailed)]);
 	}
 	public class User{
 		public static K _R = Mk(null, [nameof(User)]);
@@ -50,7 +51,9 @@ public static class ItemsErr{
 	public class StudyPlan{
 		public static K _R = Mk(null, [nameof(StudyPlan)]);
 		[Doc(@$"佔位符: [1]->褈複的UniqName")]
+		[Obsolete(@$"實現複雜。直接用 {nameof(AddFailedDataMayConflict)}")]
 		public static K UniqNameDuplicated__ = MkB(_R, [nameof(UniqNameDuplicated__)]);
+		public static K AddFailedDataMayConflict = MkB(_R, [nameof(AddFailedDataMayConflict)]);
 	}
 
 	/// 字典服務相關異常
