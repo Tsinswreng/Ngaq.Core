@@ -30,11 +30,11 @@ public static class ExtnPreFilter{
 			if(Po.Type != EPreFilterType.Json){
 				return;
 			}
-			if(Po.Data is not { Length: > 0 }){
+			if(Po.Binary is not { Length: > 0 }){
 				return;
 			}
 
-			var json = Encoding.UTF8.GetString(Po.Data);
+			var json = Encoding.UTF8.GetString(Po.Binary);
 			if(string.IsNullOrWhiteSpace(json)){
 				return;
 			}

@@ -1,5 +1,6 @@
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.User.Models.Po.User;
 
@@ -21,11 +22,17 @@ public class PoWeightArg
 	[Doc($@"參數數據格式")]
 	public EWeightArgType Type{get;set;} = EWeightArgType.Json;
 	
-	[Doc($@"參數載荷")]
-	/// u8[]便于非文本二進制
-	/// 權重算法參數與權重算法相關、故無需如PoPreFilter之存其結構ʹ版本號
-	public u8[]? Data{get;set;} = null;
+	[Doc($@"字符串參數載荷。
+	權重算法參數與權重算法相關、
+	故無需如 `{nameof(PoPreFilter)}.{nameof(PoPreFilter.DataSchemaVer)}`
+	之存其結構ʹ版本號
+	")]
+	public str? Text{get;set;}
 
+	[Doc($@"二進制參數載荷(今未用及 預留備用)")]
+	public u8[]? Binary{get;set;} = null;
+	
+	
 	[Doc($@"關聯算法名稱，參見 {nameof(PoWeightCalculator.UniqName)}")]
 	public str WeightCalculatorName{get;set;} = "";
 

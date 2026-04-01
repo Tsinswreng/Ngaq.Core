@@ -24,13 +24,15 @@ public class PoPreFilter
 	public str Descr{get;set;} = "";
 	[Doc($@"數據格式類型")]
 	public EPreFilterType Type{get;set;}
-	[Doc($@"{nameof(Data)} 的結構版本")]
+	[Doc($@"{nameof(Binary)} 的結構版本")]
 	/// Dataʹ 結構ʹ版本號。如 若Data潙Json旹 斯Ver即其Json結構ʹ版本號
 	public Version DataSchemaVer{get;set;} = new();
 	[Doc($@"篩選器二進制載荷")]
 	/// u8[] 便于存 字符以外之數據
-	/// 後續可能支持 腳本/可執行文件/程序 形式之prefilter
-	public u8[]? Data{get;set;} = [];
+	/// 後續可能支持 腳本/可執行文件/程序 形式之prefilter。今尚未用及。
+	public u8[]? Binary{get;set;} = null;
+	[Doc(@$"")]
+	public str? Text{get;set;}
 
 
 }

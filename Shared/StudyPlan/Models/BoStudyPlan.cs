@@ -61,9 +61,9 @@ public static class ExtnBoStudyPlan{
 			if(
 				z.PoWeightArg is { } poWeightArg
 				&& poWeightArg.Type == EWeightArgType.Json
-				&& poWeightArg.Data is { Length: > 0 }
+				&& poWeightArg.Binary is { Length: > 0 }
 			){
-				var json = Encoding.UTF8.GetString(poWeightArg.Data);
+				var json = Encoding.UTF8.GetString(poWeightArg.Binary);
 				if(!string.IsNullOrWhiteSpace(json)){
 					z.WeightArg = ParseJsonObjDict(json);
 				}
@@ -73,9 +73,9 @@ public static class ExtnBoStudyPlan{
 			if(
 				z.PoWeightCalculator is { } poWeightCalculator
 				&& poWeightCalculator.Type == EWeightCalculatorType.Js
-				&& poWeightCalculator.Data is { Length: > 0 }
+				&& poWeightCalculator.Binary is { Length: > 0 }
 			){
-				var jsCode = Encoding.UTF8.GetString(poWeightCalculator.Data);
+				var jsCode = Encoding.UTF8.GetString(poWeightCalculator.Binary);
 				if(!string.IsNullOrWhiteSpace(jsCode)){
 					z.WeightCalctr = new JsWeightCalctr(AppJsonSerializer.Inst, jsCode);
 				}

@@ -20,9 +20,12 @@ public class PoWeightCalculator
 	public str? UniqName{get;set;} = null;
 	[Doc($@"算法實現類型")]
 	public EWeightCalculatorType Type{get;set;} = EWeightCalculatorType.Unknown;
-	[Doc($@"算法載荷，可為腳本或二進制.
-	u8[]便于非文本二進制")]
-	public u8[]? Data{get;set;} = null;
+	
+	[Doc(@$"文本載荷")]
+	public str? Text{get;set;} = null;
+	
+	[Doc($@"二進制載荷")]
+	public u8[]? Binary{get;set;} = null;
 	[Doc($@"描述")]
 	public str Descr{get;set;} = "";
 }
