@@ -1,7 +1,6 @@
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Tools;
-using System.Text;
 
 namespace Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 
@@ -30,11 +29,11 @@ public static class ExtnPreFilter{
 			if(Po.Type != EPreFilterType.Json){
 				return;
 			}
-			if(Po.Binary is not { Length: > 0 }){
+			if(string.IsNullOrWhiteSpace(Po.Text)){
 				return;
 			}
 
-			var json = Encoding.UTF8.GetString(Po.Binary);
+			var json = Po.Text;
 			if(string.IsNullOrWhiteSpace(json)){
 				return;
 			}

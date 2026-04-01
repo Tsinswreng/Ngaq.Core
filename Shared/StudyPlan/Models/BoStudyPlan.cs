@@ -7,7 +7,6 @@ using Ngaq.Core.Shared.Word.Svc;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Tools.Json;
 using Ngaq.Core.Word.Svc;
-using System.Text;
 using System.Text.Json;
 using Tsinswreng.CsTools;
 
@@ -61,9 +60,9 @@ public static class ExtnBoStudyPlan{
 			if(
 				z.PoWeightArg is { } poWeightArg
 				&& poWeightArg.Type == EWeightArgType.Json
-				&& poWeightArg.Binary is { Length: > 0 }
+				&& !string.IsNullOrWhiteSpace(poWeightArg.Text)
 			){
-				var json = Encoding.UTF8.GetString(poWeightArg.Binary);
+				var json = poWeightArg.Text;
 				if(!string.IsNullOrWhiteSpace(json)){
 					z.WeightArg = ParseJsonObjDict(json);
 				}
@@ -73,9 +72,9 @@ public static class ExtnBoStudyPlan{
 			if(
 				z.PoWeightCalculator is { } poWeightCalculator
 				&& poWeightCalculator.Type == EWeightCalculatorType.Js
-				&& poWeightCalculator.Binary is { Length: > 0 }
+				&& !string.IsNullOrWhiteSpace(poWeightCalculator.Text)
 			){
-				var jsCode = Encoding.UTF8.GetString(poWeightCalculator.Binary);
+				var jsCode = poWeightCalculator.Text;
 				if(!string.IsNullOrWhiteSpace(jsCode)){
 					z.WeightCalctr = new JsWeightCalctr(AppJsonSerializer.Inst, jsCode);
 				}
