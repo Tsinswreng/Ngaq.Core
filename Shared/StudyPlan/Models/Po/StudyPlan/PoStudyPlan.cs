@@ -24,11 +24,11 @@ public class PoStudyPlan
 	public str? UniqName{get;set;} = null;
 	[Doc($@"描述")]
 	public str Descr{get;set;} = "";
-	[Doc($@"關聯的前置篩選器ID")]
+	[Doc($@"關聯的前置篩選器ID(非獨占)")]
 	public IdPreFilter PreFilterId{get;set;} = IdPreFilter.Zero;
-	[Doc($@"關聯的權重算法ID")]
+	[Doc($@"關聯的權重算法ID(非獨占)")]
 	public IdWeightCalculator WeightCalculatorId{get;set;} = IdWeightCalculator.Zero;
-	[Doc($@"關聯的權重參數ID")]
+	[Doc($@"關聯的權重參數ID(非獨占)")]
 	public IdWeightArg WeightArgId{get;set;} = IdWeightArg.Zero;
 
 }

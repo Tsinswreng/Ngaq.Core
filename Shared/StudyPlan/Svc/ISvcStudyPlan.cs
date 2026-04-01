@@ -123,6 +123,21 @@ public interface ISvcStudyPlan{
 		,CT Ct
 	);
 	
+	public Task<nil> BatUpdStudyPlan(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoStudyPlan> Pos
+		,CT Ct
+	);
+	
+	[Doc(@$"只把Po.Id對應之{nameof(PoStudyPlan)}標記爲軟刪除、
+	不要動其關聯的資產實體
+	")]
+	public Task<nil> BatSoftDelStudyPlan(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoStudyPlan> Pos
+		,CT Ct
+	);
+	
 	
 	[Doc(@$"生成內置權重算法。
 	不操作數據庫。
