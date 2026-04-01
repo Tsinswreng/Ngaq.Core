@@ -54,6 +54,7 @@ public static class ItemsErr{
 		[Obsolete(@$"實現複雜。直接用 {nameof(AddFailedDataMayConflict)}")]
 		public static K UniqNameDuplicated__ = MkB(_R, [nameof(UniqNameDuplicated__)]);
 		public static K AddFailedDataMayConflict = MkB(_R, [nameof(AddFailedDataMayConflict)]);
+		public static K UpdateFailedDataMayConflict = MkB(_R, [nameof(UpdateFailedDataMayConflict)]);
 	}
 
 	/// 字典服務相關異常
