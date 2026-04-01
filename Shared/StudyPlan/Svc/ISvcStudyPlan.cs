@@ -19,6 +19,8 @@ namespace Ngaq.Core.Shared.StudyPlan.Svc;
 名詞辯析:
 - 內置: 即內置、可能有多套
 - 默認: 只能有一套。默認的一定是內置的、內置的不一定是默認的
+
+涉及刪改的、要先去數據庫裏按Id把實體查出來、比較Owner是否一致。若
 ")]
 public interface ISvcStudyPlan{
 	public Task<IWeightCalctr?> GetCurWeightCalctr(
