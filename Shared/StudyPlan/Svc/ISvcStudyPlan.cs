@@ -12,6 +12,7 @@ using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.WeightAlgo.Models;
+using Ngaq.Core.Infra.Errors;
 
 namespace Ngaq.Core.Shared.StudyPlan.Svc;
 
@@ -20,7 +21,10 @@ namespace Ngaq.Core.Shared.StudyPlan.Svc;
 - 內置: 即內置、可能有多套
 - 默認: 只能有一套。默認的一定是內置的、內置的不一定是默認的
 
-涉及刪改的、要先去數據庫裏按Id把實體查出來、比較Owner是否一致。若
+- 涉及刪改的、要先去數據庫裏按Id把實體查出來、比較Owner是否一致。若不一致則拋異常。
+
+- 涉及新增的、如已有的 ({nameof(I_Owner)},{nameof(I_UniqName)}) 與新增的沖突、
+	則應拋出 {nameof(ItemsErr.StudyPlan.UniqNameDuplicated__)}
 ")]
 public interface ISvcStudyPlan{
 	public Task<IWeightCalctr?> GetCurWeightCalctr(

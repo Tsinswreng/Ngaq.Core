@@ -47,6 +47,11 @@ public static class ItemsErr{
 		public static K __And__IsNotSameUserWord = MkB(_R, [nameof(__And__IsNotSameUserWord)]);
 		public static K BackgroundImageServiceFailedToInit = MkB(_R, [nameof(BackgroundImageServiceFailedToInit)]);
 	}
+	public class StudyPlan{
+		public static K _R = Mk(null, [nameof(StudyPlan)]);
+		[Doc(@$"佔位符: [1]->褈複的UniqName")]
+		public static K UniqNameDuplicated__ = MkB(_R, [nameof(UniqNameDuplicated__)]);
+	}
 
 	/// 字典服務相關異常
 	public class Dictionary{
