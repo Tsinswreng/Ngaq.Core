@@ -86,6 +86,44 @@ public interface ISvcStudyPlan{
 		,CT Ct
 	);
 	
+	public Task<nil> BatUpdPreFilter(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoPreFilter> Pos
+		,CT Ct
+	);
+	
+	public Task<nil> BatUpdWeightCalculator(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoWeightCalculator> Pos
+		,CT Ct
+	);
+	
+	public Task<nil> BatUpdWeightArg(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoWeightArg> Pos
+		,CT Ct
+	);
+	
+	
+	public Task<nil> BatSoftDelPreFilter(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoPreFilter> Pos
+		,CT Ct
+	);
+	
+	public Task<nil> BatSoftDelWeightCalculator(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoWeightCalculator> Pos
+		,CT Ct
+	);
+	
+	public Task<nil> BatSoftDelWeightArg(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<PoWeightArg> Pos
+		,CT Ct
+	);
+	
+	
 	[Doc(@$"生成內置權重算法。
 	不操作數據庫。
 	內置的 {nameof(I_UniqName.UniqName)}要有前綴{nameof(Consts.BuiltinPrefix)}。
