@@ -26,6 +26,8 @@ namespace Ngaq.Core.Shared.StudyPlan.Svc;
 - 涉及新增的、如已有的 ({nameof(I_Owner)},{nameof(I_UniqName)}) 與新增的沖突、
 	則應拋出 {nameof(ItemsErr.StudyPlan.AddFailedDataMayConflict)}。
 	若是修改則 {nameof(ItemsErr.StudyPlan.UpdateFailedDataMayConflict)}。
+
+若操作的實體 不屬于該用戶則拋異常 {nameof(ItemsErr.Common.PermissionDenied)}
 ")]
 public interface ISvcStudyPlan{
 	public Task<IWeightCalctr?> GetCurWeightCalctr(

@@ -24,7 +24,7 @@ public class PoWeightCalculator
 	[Doc(@$"文本載荷")]
 	public str? Text{get;set;} = null;
 	
-	[Doc($@"二進制載荷")]
+	[Doc($@"二進制載荷(當前版本不支持)")]
 	public u8[]? Binary{get;set;} = null;
 	[Doc($@"描述")]
 	public str Descr{get;set;} = "";
