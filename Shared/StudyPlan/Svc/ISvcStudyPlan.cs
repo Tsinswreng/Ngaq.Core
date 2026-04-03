@@ -58,6 +58,13 @@ public interface ISvcStudyPlan{
 		,IdStudyPlan IdStudyPlan
 		,CT Ct
 	);
+	
+	
+	public IAsyncEnumerable<PoWeightCalculator?> BatGetWeightCalculatorById(
+		IDbUserCtx Ctx, IAsyncEnumerable<IdWeightCalculator> Ids, CT Ct
+	);
+	
+
 	public Task<nil> BatAddPreFilter(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoPreFilter> Pos
