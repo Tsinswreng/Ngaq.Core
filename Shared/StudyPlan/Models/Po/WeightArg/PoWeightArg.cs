@@ -33,8 +33,8 @@ public class PoWeightArg
 	public u8[]? Binary{get;set;} = null;
 	
 	
-	[Doc($@"關聯算法名稱，參見 {nameof(PoWeightCalculator.UniqName)}")]
-	public str WeightCalculatorName{get;set;} = "";
+	[Doc($@"關聯算法Id，參見 {nameof(PoWeightCalculator.Id)}")]
+	public IdWeightCalculator WeightCalculatorId{get;set;} = IdWeightCalculator.Zero;
 
 	[Doc($@"描述")]
 	public str Descr{get;set;} = "";
