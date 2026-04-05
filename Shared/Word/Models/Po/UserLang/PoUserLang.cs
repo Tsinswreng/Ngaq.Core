@@ -9,6 +9,7 @@ namespace Ngaq.Core.Shared.Word.Models.Po.UserLang;
 [Doc(@$"
 此實體中定義 用戶自定義的語言(即 {nameof(PoWord.Lang)})
 與 標準化的語言標識 的關聯。 用于查字典。
+(同 {nameof(Owner)}、 從{nameof(RelLang)} 查詢 {nameof(UniqName)} )
 ")]
 public partial class PoUserLang
 	:PoBaseBizTime
