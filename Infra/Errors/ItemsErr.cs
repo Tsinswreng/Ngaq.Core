@@ -15,6 +15,8 @@ public static class ItemsErr{
 		public static K UnknownErr = MkB(_R, [nameof(UnknownErr)]);
 		public static K AddFailed = MkB(_R, [nameof(AddFailed)]);
 		public static K PermissionDenied = MkB(_R, [nameof(PermissionDenied)]);
+		[Doc(@$"數據不合法或衝突")]
+		public static K DataIllegalOrConflict = MkB(_R, [nameof(PermissionDenied)]);
 	}
 	public class User{
 		public static K _R = Mk(null, [nameof(User)]);
