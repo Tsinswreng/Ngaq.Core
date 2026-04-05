@@ -48,4 +48,34 @@ public static class ExtnBizTime{
 			}
 		}
 	}
+	extension<TPo>(TPo z)
+		where TPo : IBizCreateUpdateTime
+	{
+		public TPo Touch(Tempus? NeoUpdTime = null){
+			NeoUpdTime??=Tempus.Now();
+			z.BizUpdatedAt = NeoUpdTime.Value;
+			return z;
+		}
+	}
+	extension<TPo>(IEnumerable<TPo> z)
+		where TPo : IBizCreateUpdateTime
+	{
+		public IEnumerable<TPo> Touch(Tempus? NeoUpdTime = null){
+			return z.Select(x=>{
+				x.Touch(NeoUpdTime);
+				return x;
+			});
+		}
+	}
+	
+	extension<TPo>(IAsyncEnumerable<TPo> z)
+		where TPo : IBizCreateUpdateTime
+	{
+		public IAsyncEnumerable<TPo> Touch(Tempus? NeoUpdTime = null){
+			return z.Select(x=>{
+				x.Touch(NeoUpdTime);
+				return x;
+			});
+		}
+	}
 }

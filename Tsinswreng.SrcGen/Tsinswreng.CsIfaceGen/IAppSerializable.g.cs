@@ -49,6 +49,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.IdUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.IdUser>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.UserLang.IdUserLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.UserLang.IdUserLang>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.UserRole.IdUserRole>))]
 
@@ -150,6 +153,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.User.PoUser))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.User.PoUser>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.UserLang.PoUserLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.UserLang.PoUserLang>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg.PoWeightArg>))]
