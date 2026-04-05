@@ -4,6 +4,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightArg;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 using Ngaq.Core.Shared.Word;
+using Ngaq.Core.Shared.Word.WeightAlgo;
 
 namespace Ngaq.Core.Shared.StudyPlan;
 
@@ -75,6 +76,16 @@ $$"""
 			程序內置一套JavaScript引擎(Jint)，
 			將單詞信息及相關API暴露給用戶，
 			支持用戶自己編寫JavaScript代碼來定義自己的權重算法。]
+
+#[
+2. 权重计算模块
+默認權重算法: {{nameof(DfltWeightCalculator)}}
+  - 基于添加次数（AddCnt）的加成系数；
+  - 基于时间间隔的记忆（Rmb）减权/忘记（Fgt）加权；
+  - 末次添加时间的额外加成；
+  - 长时间未复习的权重惩罚。
+]
+
 	]
 ]
 """;

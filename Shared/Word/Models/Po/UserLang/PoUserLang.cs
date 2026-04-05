@@ -14,10 +14,13 @@ public partial class PoUserLang
 	:PoBaseBizTime
 	,I_Id<IdUserLang>
 	,I_Owner
+	,I_UniqName
 {
 	public IdUserLang Id { get; set; } = new();
 	public IdUser Owner { get; set; }
-	public str UserLang {get;set;} = "";
+	[Doc("用戶自定義的語言 唯一名 (Owner, UniqName)唯一")]
+	public str? UniqName {get;set;} = "";
+	public str? Descr {get;set;} = "";
 	
 	[Doc(@$"關聯的 標準化的 語言標識 類型 如 {nameof(ELangIdentType.Bcp47)}")]
 	public ELangIdentType RelLangType{get;set;} = ELangIdentType.Bcp47;
