@@ -1,3 +1,5 @@
+using Ngaq.Core.Shared.Dictionary.Models;
+
 namespace Ngaq.Core.Shared.Word.Models.DictionaryApi;
 
 public static class ExtnPhonetic{

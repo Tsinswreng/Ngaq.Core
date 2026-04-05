@@ -1,5 +1,7 @@
-namespace Ngaq.Core.Shared.Word.Models;
+namespace Ngaq.Core.Shared.Dictionary.Models;
+
 using Ngaq.Core.Shared.Audio;
+using Ngaq.Core.Shared.Word.Models;
 using Tsinswreng.CsErr;
 
 [Doc(@$"""

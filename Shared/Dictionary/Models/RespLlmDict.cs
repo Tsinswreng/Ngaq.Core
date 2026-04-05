@@ -1,5 +1,4 @@
 using Ngaq.Core.Shared.Base.Models.Resp;
-using Ngaq.Core.Shared.Word.Models;
 
 namespace Ngaq.Core.Shared.Dictionary.Models;
 

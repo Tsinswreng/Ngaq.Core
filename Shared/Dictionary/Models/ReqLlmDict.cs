@@ -21,17 +21,15 @@ public class DtoOnDone{
 /// 词典查询请求接口
 public interface IReqLlmDict:IReq{
 	/// 唯一请求ID，用于追踪/缓存
-	string Id { get; set; }
-	Tempus UnixMs { get; set; }
-
+	public string Id { get; set; }
+	public Tempus UnixMs { get; set; }
 	/// 核心查询内容
-	Query Query { get; set; }
-
+	public Query Query { get; set; }
 	/// 语言配置
-	OptLang OptLang { get; set; }
+	public OptLang OptLang { get; set; }
 
 	/// 用户偏好配置
-	Preferences? Preferences { get; set; }
+	public Preferences? Preferences { get; set; }
 }
 
 public interface IReqLlmDictEvt{
@@ -100,17 +98,12 @@ public class OptLang {
 
 /// 用户偏好配置
 public class Preferences {
-	public QueryMode QueryMode { get; set; } = QueryMode.Standard;
-	public DetailLevel DetailLevel { get; set; } = DetailLevel.Comprehensive;
-
+	//public DetailLevel DetailLevel { get; set; } = DetailLevel.Comprehensive;
 	public bool TryIncludeExamples { get; set; } = true;
-
 	public bool TryIncludeSynonyms { get; set; } = true;
-
 	public bool TryIncludeAntonyms { get; set; } = false;
-
+	//詞源
 	public bool TryIncludeEtymology { get; set; } = true;
-
 	public int MaxExamples { get; set; } = 3;
 }
 
@@ -123,30 +116,7 @@ public class Preferences {
 // 	//public IList<string> PreviousQueries { get; set; } = new List<string>();
 // }
 
-/// 查询模式枚举
-public enum QueryMode {
-	Standard,
-	Etymology,
-	Usage,
-	Collocation,
-	Encyclopedia
-}
 
-/// 释义详细程度枚举
-public enum DetailLevel {
-	Brief,
-	Standard,
-	Comprehensive,
-	Academic
-}
-
-/// 用户语言水平枚举
-public enum ProficiencyLevel {
-	Beginner,
-	Intermediate,
-	Advanced,
-	Expert
-}
 
 #if false
 class Sample{
