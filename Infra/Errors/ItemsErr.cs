@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Infra.Errors;
 
-using K = Tsinswreng.CsErr.IErrItem;
-using static Tsinswreng.CsErr.ErrItem;
+using K = Tsinswreng.CsErr.IErrNode;
+using static Tsinswreng.CsErr.ErrNode;
 
 [Doc(@$"異常項
 內部類按領域劃分
