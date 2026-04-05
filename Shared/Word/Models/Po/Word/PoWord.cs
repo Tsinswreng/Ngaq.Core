@@ -93,14 +93,6 @@ public partial class PoWord
 		public str Lang = nameof(PoWord.Lang);
 		[Obsolete]
 		public str Owner = nameof(PoWord.Owner);
-		[Obsolete]
-		public str StoredAt = nameof(PoWord.StoredAt);
-		[Obsolete]
-		public str CreatedAt = nameof(DbCreatedAt);
-		[Obsolete]
-		public str UpdatedAt = nameof(DbUpdatedAt);
-		[Obsolete]
-		public str DelAt = nameof(PoWord.DelAt);
 	}
 
 
