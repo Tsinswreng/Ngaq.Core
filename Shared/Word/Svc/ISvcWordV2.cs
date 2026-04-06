@@ -1,5 +1,6 @@
 using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 using Ngaq.Core.Shared.User.UserCtx;
@@ -72,6 +73,14 @@ public interface ISvcWordV2{
 	public Task<nil> SoftDelJnWordInId(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<IdWord> Ids, CT Ct
+	);
+	
+	[Doc(@$"大模型詞典 轉 用戶單詞。
+	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}
+	")]
+	public JnWord LlmDictWordToJnWord(
+		IDbUserCtx Ctx
+		,IRespLlmDict LlmDict, CT Ct
 	);
 	
 	// public Task<nil> BatUpdHeadLangById(

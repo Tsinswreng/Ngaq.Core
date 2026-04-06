@@ -3,6 +3,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Cfg;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang;
 using Ngaq.Core.Shared.Word.Models.Po.UserLang;
 using Ngaq.Core.Tools;
 using Tsinswreng.CsYamlMd;
@@ -24,7 +25,7 @@ $"""
 第二項爲 除IPA以外 該語種最常用的標音格式??
 
 支持把詞典查詢結果轉成 {nameof(JnWord)}然後導入用戶詞庫。
-需要用戶配置{nameof(PoUserLang)} 作語言關聯。
+需要用戶配置{nameof(PoNormLangToUserLang)} 作語言關聯。
 ]
 """;
 

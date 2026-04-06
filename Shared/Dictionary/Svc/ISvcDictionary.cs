@@ -7,4 +7,5 @@ namespace Ngaq.Core.Shared.Dictionary.Svc;
 [Doc("Llm Dictionary")]
 public interface ISvcDictionary{
 	public Task<IRespLlmDict> Lookup(IUserCtx User, IReqLlmDict Req, CT Ct);
+	
 }

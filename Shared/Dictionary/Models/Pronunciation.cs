@@ -15,7 +15,6 @@ public class TextedPronunciation{
 }
 
 public class Pronunciation:TextedPronunciation{
-	[See(nameof(ELang))]
 	public str Lang{get;set;} = "";
 	public str? AudioUrl{get;set;}
 	public Audio? Audio{get;set;}
@@ -52,14 +51,3 @@ public static class ExtnPronunciation{
 		}
 	}
 }
-
-public enum ELang{
-	Unknown,
-	English,
-	Chinese,
-	Japanese,
-	Italian,
-	Spanish,
-	French,
-}
-
