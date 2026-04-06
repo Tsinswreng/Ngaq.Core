@@ -9,6 +9,8 @@ public class InitNormLang{
 		R.NativeName = NativeName;
 		return R;
 	}
+	
+	[Doc(@$"內容不固定、後續可能增改")]
 	public static IList<PoNormLang> GetNormLangList(){
 		return new List<PoNormLang> {
 			Mk("en", "English"),
