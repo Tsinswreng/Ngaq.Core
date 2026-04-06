@@ -65,6 +65,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.IdNormLang))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_Po_NormLang_IdNormLang = "global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.IdNormLang";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_Po_NormLangToUserLang_IdNormLangToUserLang = "global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang";
@@ -348,6 +356,14 @@ using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Kv.Models.PoKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Kv_Models_PoKv = "global::Ngaq.Core.Shared.Kv.Models.PoKv";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.PoNormLang))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_Po_NormLang_PoNormLang = "global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.PoNormLang";
 	}
 }
 

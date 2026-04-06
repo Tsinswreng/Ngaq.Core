@@ -11,6 +11,7 @@ using System.Text.Json.Serialization;
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.IdDel>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Sys.Models.IdKv>),
+typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.IdNormLang>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>),
