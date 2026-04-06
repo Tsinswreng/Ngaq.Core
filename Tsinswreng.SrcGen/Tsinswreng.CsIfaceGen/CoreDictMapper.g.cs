@@ -65,6 +65,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Po_NormLangToUserLang_IdNormLangToUserLang = "global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_Password_IdPassword = "global::Ngaq.Core.Model.Sys.Po.Password.IdPassword";
@@ -340,6 +348,14 @@ using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Kv.Models.PoKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Kv_Models_PoKv = "global::Ngaq.Core.Shared.Kv.Models.PoKv";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.PoNormLangToUserLang))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Word_Models_Po_NormLangToUserLang_PoNormLangToUserLang = "global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.PoNormLangToUserLang";
 	}
 }
 

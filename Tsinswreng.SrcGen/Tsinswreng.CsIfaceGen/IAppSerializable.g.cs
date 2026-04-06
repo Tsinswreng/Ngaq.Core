@@ -25,6 +25,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Sys.Models.IdKv))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Sys.Models.IdKv>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.Password.IdPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>))]
 
@@ -129,6 +132,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Kv.Models.PoKv))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Kv.Models.PoKv>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.PoNormLangToUserLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.PoNormLangToUserLang>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Models.Sys.Po.Password.PoPassword))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Models.Sys.Po.Password.PoPassword>))]
