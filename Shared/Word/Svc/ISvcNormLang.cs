@@ -11,7 +11,7 @@ namespace Ngaq.Core.Shared.Word.Svc;
 ")]
 public interface ISvcNormLang{
 	[Doc("根據標準語言標識與類型查詢單個語言。")]
-	public Task<PoNormLang?> BatGetNormLangByTypeCode(
+	public IAsyncEnumerable<PoNormLang?> BatGetNormLangByTypeCode(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<(ELangIdentType, str)> Type_Code,
 		CT Ct
