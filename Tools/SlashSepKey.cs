@@ -3,7 +3,6 @@ using Tsinswreng.CsTools;
 using TStruct = SlashSepKey;
 
 ///開頭不帶斜槓
-/// <param name="V"></param>
 public record struct SlashSepKey(str V){
 	public str Value => V;
 	public static implicit operator str(TStruct e){
