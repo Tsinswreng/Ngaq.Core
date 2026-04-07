@@ -1,28 +1,18 @@
+using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.Dictionary.Models.Po.NormLang;
-using Ngaq.Core.Shared.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang;
 using Ngaq.Core.Tools;
 
-namespace Ngaq.Core.Frontend.Kv;
+namespace Ngaq.Core.Shared.Kv;
 
 using static Ngaq.Core.Tools.SlashSepKey;
 using K = SlashSepKey;
 
-[Doc(@$"客戶端鍵值。
-僅存客戶端相關物 如令牌等。
-如需存他物 慮用 {nameof(KeysKv)}
+[Doc(@$"鍵值。
+如所存物 僅客戶端相關 應用 {nameof(KeysClientKv)}
 ")]
-public partial class KeysClientKv{
-	public static K ClientId = Mk(null, [nameof(ClientId)]);
-	public static K CurLocalUserId = Mk(null, [nameof(CurLocalUserId)]);
-	public static K CurLoginUserId = Mk(null, [nameof(CurLoginUserId)]);
-	
-	/// 未必潙明文
-	
-	public static K RefreshToken = Mk(null, [nameof(RefreshToken)]);
-	public static K RefreshTokenExpireAt = Mk(null, [nameof(RefreshTokenExpireAt)]);//i64
-	public static K CurStudyPlanId = Mk(null, [nameof(CurStudyPlanId)]);
+public partial class KeysKv{
 	public class Dictionary{
 		public static K _R = Mk(null, [nameof(Dictionary)]);
 		// [Doc(@$"

@@ -10,8 +10,9 @@ namespace Ngaq.Core.Shared.Dictionary.Svc;
 public interface ISvcDictionary{
 	public Task<IRespLlmDict> Lookup(IUserCtx User, IReqLlmDict Req, CT Ct);
 	
-	[Doc(@$"#See[{nameof(KeysClientKv.Dictionary.RecentUsedNormLangs)}]")]
-	public Task<IList<NormLang>> GetRecentUsedNormLangs(
-		IDbUserCtx Ctx, CT Ct
-	);
+	// [Doc(@$"#See[{nameof(KeysClientKv.Dictionary.RecentUsedNormLangs)}]")]
+	// public Task<IList<NormLang>> GetRecentUsedNormLangs(
+	// 	IDbUserCtx Ctx, CT Ct
+	// );
+	
 }

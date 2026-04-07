@@ -1,3 +1,4 @@
+using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.Dictionary.Models.Po.NormLang;
@@ -47,4 +48,7 @@ public interface ISvcNormLang{
 	如果數據庫中已有衝突的 則跳過。
 	")]
 	public Task<nil> InitBuiltinNormLang(IDbUserCtx Ctx, CT Ct);
+	
+	[Doc(@$"#See[{nameof(KeysClientKv)}]")]
+	public Task<PoNormLang?> GetCurSrcNormLang(IDbUserCtx Ctx, CT Ct);
 }
