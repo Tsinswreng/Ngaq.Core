@@ -10,6 +10,7 @@ new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Word.Models.Po.N
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Models.Sys.Po.Permission.IdPermission>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter>(),
+new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.IdRecentUse>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Po.Role.IdRole>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.RolePermission.IdRolePermission>(),

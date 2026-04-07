@@ -40,6 +40,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.IdPreFilter>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.IdRecentUse))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.IdRecentUse>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken>))]
 
@@ -124,6 +127,12 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Meaning>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLang>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic>))]
 
@@ -150,6 +159,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.PoRecentUse))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.PoRecentUse>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.User.Models.Po.RefreshToken.PoRefreshToken>))]

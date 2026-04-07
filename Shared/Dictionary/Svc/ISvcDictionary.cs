@@ -1,4 +1,4 @@
-using Ngaq.Core.Frontend.Kv;
+﻿using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.Dictionary.Models.Po.NormLang;
@@ -41,6 +41,8 @@ public interface ISvcDictionary{
 		詞典當前設定的目標語言
 		#See[{nameof(KeysKv.Dictionary.CurTgtLang)}]
 	")]
-	public Task<PoNormLang?> SetCurTgtNormLang(IDbUserCtx Ctx, CT Ct);
+	public Task<PoNormLang?> SetCurTgtNormLang(
+		IDbUserCtx Ctx, PoNormLang Po, CT Ct
+	);
 	
 }

@@ -105,6 +105,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.IdRecentUse))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_RecentUse_Models_Po_RecentUse_IdRecentUse = "global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.IdRecentUse";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Model_Sys_Po_RefreshToken_IdRefreshToken = "global::Ngaq.Core.Model.Sys.Po.RefreshToken.IdRefreshToken";
@@ -329,6 +337,22 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLang))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_NormLang = "global::Ngaq.Core.Shared.Dictionary.Models.NormLang";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Dictionary_Models_NormLangWithName = "global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Word_Models_DictionaryApi_Phonetic = "global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic";
@@ -396,6 +420,14 @@ using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_StudyPlan_Models_Po_PreFilter_PoPreFilter = "global::Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter.PoPreFilter";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.PoRecentUse))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_RecentUse_Models_Po_RecentUse_PoRecentUse = "global::Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse.PoRecentUse";
 	}
 }
 
