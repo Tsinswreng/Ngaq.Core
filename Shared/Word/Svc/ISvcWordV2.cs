@@ -1,5 +1,6 @@
 using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
@@ -77,6 +78,9 @@ public interface ISvcWordV2{
 	
 	[Doc(@$"大模型詞典 轉 用戶單詞。
 	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}
+	#Throw[{nameof(ItemsErr.Word.NormLangToUserLangIsNotMapped)}][
+		用戶未配置映射
+	]
 	")]
 	public Task<JnWord> LlmDictWordToJnWord(
 		IDbUserCtx Ctx

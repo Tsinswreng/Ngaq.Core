@@ -2,6 +2,7 @@ namespace Ngaq.Core.Infra.Errors;
 
 using K = Tsinswreng.CsErr.IErrNode;
 using static Tsinswreng.CsErr.ErrNode;
+using Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang;
 
 [Doc(@$"異常項
 內部類按領域劃分
@@ -50,6 +51,8 @@ public static class ItemsErr{
 		public static K __NotBelongToLang__ = MkB(_R, [nameof(__NotBelongToLang__)]);
 		public static K __And__IsNotSameUserWord = MkB(_R, [nameof(__And__IsNotSameUserWord)]);
 		public static K BackgroundImageServiceFailedToInit = MkB(_R, [nameof(BackgroundImageServiceFailedToInit)]);
+		[Doc(@$"{nameof(PoNormLangToUserLang)}未設置。")]
+		public static K NormLangToUserLangIsNotMapped = MkB(_R, [nameof(NormLangToUserLangIsNotMapped)]);
 	}
 	public class StudyPlan{
 		public static K _R = Mk(null, [nameof(StudyPlan)]);
