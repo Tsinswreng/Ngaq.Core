@@ -1,6 +1,6 @@
 namespace Ngaq.Core.Shared.Dictionary.Models;
 /// 语言信息（源/目标/额外目标语言通用结构）
-[Obsolete(@$"use {nameof(NormLang)}")]
+[Obsolete(@$"use {nameof(NormLangWithName)}")]
 public class LangInfo {
 	/// ISO 639-1 语言代码（如en、zh、ja）
 	public string Iso639_1 { get; set; } = "";
