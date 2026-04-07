@@ -2,6 +2,7 @@ using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.Dictionary.Models.Po.NormLang;
+using Ngaq.Core.Shared.Kv;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Tsinswreng.CsPage;
 
@@ -49,6 +50,4 @@ public interface ISvcNormLang{
 	")]
 	public Task<nil> InitBuiltinNormLang(IDbUserCtx Ctx, CT Ct);
 	
-	[Doc(@$"#See[{nameof(KeysClientKv)}]")]
-	public Task<PoNormLang?> GetCurSrcNormLang(IDbUserCtx Ctx, CT Ct);
 }
