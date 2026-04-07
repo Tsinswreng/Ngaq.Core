@@ -78,8 +78,9 @@ public interface ISvcWordV2{
 	[Doc(@$"大模型詞典 轉 用戶單詞。
 	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}
 	")]
-	public JnWord LlmDictWordToJnWord(
+	public Task<JnWord> LlmDictWordToJnWord(
 		IDbUserCtx Ctx
+		,IReqLlmDict Req
 		,IRespLlmDict LlmDict, CT Ct
 	);
 	

@@ -1,4 +1,5 @@
-﻿using Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang;
+﻿using Ngaq.Core.Shared.Dictionary.Models.Po.NormLang;
+using Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang;
 using Tsinswreng.CsPage;
 
 namespace Ngaq.Core.Shared.Word.Models.Dto;
@@ -8,8 +9,11 @@ namespace Ngaq.Core.Shared.Word.Models.Dto;
 ")]
 public class ReqPageNormLangToUserLang{
 	public IPageQry PageQry { get; set; }
-	[Doc(@$"根據用戶自定義語言名稱做模糊查詢。
+	[Doc(@$"
+	同時按以下字段查詢。是取並集的關係 而不是交集。
 	#See[{nameof(PoNormLangToUserLang.UserLang)}]
+	#See[{nameof(PoNormLangToUserLang.NormLang)}]
 	")]
-	public str? UserLang { get; set; } = null;
+	public str? SearchText { get; set; } = null;
+	
 }

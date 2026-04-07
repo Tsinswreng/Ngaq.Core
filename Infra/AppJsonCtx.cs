@@ -8,7 +8,6 @@ using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Ngaq.Core.Sys.Models;
 using Ngaq.Core.Tools;
 using Tsinswreng.CsIfaceGen;
 using Tsinswreng.CsTools;
