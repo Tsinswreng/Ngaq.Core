@@ -56,8 +56,8 @@ using Tsinswreng.Srefl;
 }
 
 namespace Ngaq.Core.Infra{
-using Tsinswreng.Srefl;
-	[StrAccType(typeof(global::Ngaq.Core.Sys.Models.IdKv))]
+	using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Kv.Models.IdKv))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Sys_Models_IdKv = "global::Ngaq.Core.Sys.Models.IdKv";
 	}

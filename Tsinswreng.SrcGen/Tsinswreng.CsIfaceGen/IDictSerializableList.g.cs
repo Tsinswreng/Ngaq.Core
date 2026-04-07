@@ -1,10 +1,12 @@
 namespace Ngaq.Core.Infra;
+
 using System.Text.Json.Serialization;
+
 public partial class AppJsonCtx : JsonSerializerContext {
 	public static IList<JsonConverter> JsonConverters = [
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.IdDel>(),
-new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Sys.Models.IdKv>(),
+new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Kv.Models.IdKv>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.IdNormLang>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang>(),
 new global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>(),

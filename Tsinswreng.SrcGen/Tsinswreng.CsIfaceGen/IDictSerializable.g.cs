@@ -1,7 +1,9 @@
 namespace Ngaq.Core.Infra;
+
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+
 [JsonSourceGenerationOptions(
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
@@ -10,7 +12,7 @@ using System.Text.Json.Serialization;
 	Converters = [
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.Device.IdClient>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.User.Models.Po.IdDel>),
-typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Sys.Models.IdKv>),
+typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Kv.Models.IdKv>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Dictionary.Models.Po.NormLang.IdNormLang>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Shared.Word.Models.Po.NormLangToUserLang.IdNormLangToUserLang>),
 typeof(global::Ngaq.Core.Tools.JsonConvtr<global::Ngaq.Core.Model.Sys.Po.Password.IdPassword>),
