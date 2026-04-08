@@ -13,7 +13,6 @@ public class OnlineAudio {
 
 	
 	/// 下載一次，之後交給 Audio 的工廠無限重讀。
-	
 	public async Task<Audio> Get(string url, CT Ct = default) {
 		if (string.IsNullOrWhiteSpace(url))
 			throw new ArgumentException("Url is empty.");

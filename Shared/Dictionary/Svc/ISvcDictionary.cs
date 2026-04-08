@@ -11,6 +11,8 @@ namespace Ngaq.Core.Shared.Dictionary.Svc;
 [Doc("Llm Dictionary")]
 public interface ISvcDictionary{
 	public Task<IRespLlmDict> Lookup(IUserCtx User, IReqLlmDict Req, CT Ct);
+	/// 直接用原始 LLM 響應文本重新解析詞典結構（不再次調用 LLM）。
+	public IRespLlmDict ParseRawOutput(str RawOutput);
 	
 	// [Doc(@$"#See[{nameof(KeysClientKv.Dictionary.RecentUsedNormLangs)}]")]
 	// public Task<IList<NormLang>> GetRecentUsedNormLangs(

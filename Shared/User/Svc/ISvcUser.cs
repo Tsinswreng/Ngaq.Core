@@ -15,6 +15,8 @@ public partial interface ISvcUser{
 	public Task<RespLogin> Login(IUserCtx User, ReqLogin ReqLogin, CT Ct);
 
 	public Task<nil> Logout(IUserCtx User, ReqLogout ReqLogout, CT Ct);
+	
+	
 }
 
 
