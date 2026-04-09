@@ -89,7 +89,7 @@ public partial class JnWord
 	){
 		var diff = Algo.DiffListIntoDict(
 			LearnsOfNeo, ExistingLearns
-			,(e)=> e.Time_()
+			,(e)=> e.Time()
 		);
 		return diff.SelectMany(Time_Learns=>Time_Learns.Value).ToList();
 	}

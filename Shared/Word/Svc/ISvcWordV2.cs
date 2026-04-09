@@ -77,12 +77,23 @@ public interface ISvcWordV2{
 	);
 	
 	[Doc(@$"大模型詞典 轉 用戶單詞。
-	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}
+	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}。
+	不額外添加 {nameof(JnWord.Learns)}。
 	#Throw[{nameof(ItemsErr.Word.NormLangToUserLangIsNotMapped)}][
 		用戶未配置映射
 	]
 	")]
 	public Task<JnWord> LlmDictWordToJnWord(
+		IDbUserCtx Ctx
+		,IReqLlmDict Req
+		,IRespLlmDict LlmDict, CT Ct
+	);
+	
+	[Doc(@$"在{nameof(LlmDictWordToJnWord)}基礎上、
+	爲 {nameof(JnWord.Learns)}添加一項 {nameof(ELearn.Add)}。
+	時間設爲當前時間。
+	")]
+	public Task<JnWord> LlmDictWordToJnWordWithLearn(
 		IDbUserCtx Ctx
 		,IReqLlmDict Req
 		,IRespLlmDict LlmDict, CT Ct

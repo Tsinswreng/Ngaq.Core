@@ -31,8 +31,15 @@ public partial class PoUserLang
 	[Doc(@$"關聯的 標準化的 語言標識
 	如 當使用 {nameof(ELangIdentType.Bcp47)}時的 `zh-Hant-TW`")]
 	public str RelLang{get;set;} = "";
-	
-	
-	
-	
+}
+
+public static class ExtnPoUserLang{
+	extension(PoUserLang z){
+		public INormLang ToNormLang(){
+			return new NormLang{
+				Code = z.RelLang,
+				Type = z.RelLangType
+			};
+		}
+	}
 }

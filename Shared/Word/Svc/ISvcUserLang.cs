@@ -15,6 +15,10 @@ public interface ISvcUserLang{
 	public Task<IPageAsyE<PoUserLang>> PageUserLang(
 		IDbUserCtx Ctx, ReqPageUserLang Req, CT Ct
 	);
+
+	public IAsyncEnumerable<PoUserLang?> BatGetUserLang(
+		IDbUserCtx Ctx, IAsyncEnumerable<str> UniqNames, CT Ct
+	);
 	
 	public Task<nil> BatUpdUserLang(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoUserLang> Pos, CT Ct
