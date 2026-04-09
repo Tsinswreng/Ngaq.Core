@@ -36,9 +36,12 @@ public class ItemsClientCfg{
 		public static ICfgNode _R = Mk(null, [nameof(Word)]);
 		public static ICfgNode<str> WordsPackExportPath = Mk(_R, [nameof(WordsPackExportPath)], "");
 		public static ICfgNode<str> WordsPackImportPath = Mk(_R, [nameof(WordsPackImportPath)], "");
-		public static ICfgNode<u64> MaxDisplayedWordCount = Mk(_R, [nameof(MaxDisplayedWordCount)], 50ul);
-		public static ICfgNode<IList<obj?>?> FilterLanguage = Mk(_R, [nameof(FilterLanguage)], (IList<obj?>)null);
+		public static ICfgNode<u64> MaxDisplayedWordCount = Mk(_R, [nameof(MaxDisplayedWordCount)], 500ul);
+		[Obsolete]
+		public static ICfgNode<IList<obj?>?> FilterLanguage = Mk(_R, [nameof(FilterLanguage)], (IList<obj?>?)null);
 		public static ICfgNode<bool> EnableRandomBackground = Mk(_R, [nameof(EnableRandomBackground)], false);
+		[Doc("背單詞旹 點擊單詞後是否自動發音")]
+		public static ICfgNode<bool> EnableAutoPronounce = Mk(_R, [nameof(EnableAutoPronounce)], false);
 	}
 
 	public class LlmDictionary{
