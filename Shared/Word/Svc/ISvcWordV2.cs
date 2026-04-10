@@ -8,6 +8,7 @@ using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
@@ -186,15 +187,19 @@ public interface ISvcWordV2{
 		BizId指業務層面之唯一標識、而非Id字段
 		
 		對每個元素:
-		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local;
-		if Local 不存在則 直接用{nameof(BatAddJnWord)};
+		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local(可能爲null);
 		
-		如果Local存在 則調用{nameof(ISvcWordInMem.SyncJnWord)}。
-		{nameof(ISvcWordInMem.SyncJnWord)}調用後 返回的JnWord的Id和Local的Id相同則
+		然後調用{nameof(ISvcWordInMem.SyncJnWord)}。
+		
 		
 	")]
 	public Task<nil> BizSyncJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
+	);
+	
+	public Task<nil> BatSyncByDto(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 
 	

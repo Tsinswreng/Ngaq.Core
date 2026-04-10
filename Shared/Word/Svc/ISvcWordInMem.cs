@@ -81,10 +81,13 @@ public interface ISvcWordInMem{
 對其餘 {nameof(JnWord.Props)} 和 {nameof(JnWord.Learns)}的每項:
 	- 對于Id匹配者、則各自用 {nameof(SyncProp)}和{nameof(SyncLearn)}
 	- 對于 {nameof(Remote)} 比 {nameof(Local)} 多出來的資產、則要加到反回值中。
-	- 對于 {nameof(Remote)} 比 {nameof(Local)} 多出來的資產、不管。
+	- 對于 {nameof(Local)} 比 {nameof(Remote)} 多出來的資產、不管。
+	
+	合併時、除了可能把Local的{nameof(PoWord.BizUpdatedAt)}改成和Remote一樣之外、
+	本身不會再另外修改 業務更新時間。
 	")]
 	[Pure]
-	public DtoJnWordSyncResult SyncJnWord(JnWord Local, JnWord? Remote);
+	public DtoJnWordSyncResult SyncJnWord(JnWord? Local, JnWord Remote);
 	
 	[Doc(@$"
 	若{nameof(PoWordProp.Id)}不同則拒絕合併。
