@@ -1,6 +1,8 @@
 using Ngaq.Core.Frontend.Kv;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.Errors;
+using Ngaq.Core.Model.Po.Kv;
+using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Shared.Dictionary.Models;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
@@ -10,6 +12,7 @@ using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
+using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsSql;
 
@@ -99,21 +102,85 @@ public interface ISvcWordV2{
 		,IRespLlmDict LlmDict, CT Ct
 	);
 	
-	// public Task<nil> BatUpdHeadLangById(
-	// 	IDbUserCtx Ctx
-	// );
 	
-	// [Doc(@$"
-	// #See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
-	// 按 根實體之Id 匹配而改。
-	// 會更新{nameof(PoWord.BizUpdatedAt)}。
-	// 不允許更新 {nameof(PoWord.Owner)}。
-	// 在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
-	// ")]
-	// public Task<nil> BatSoftUpdJnWord(
-	// 	IDbUserCtx Ctx
-	// 	,IAsyncEnumerable<JnWord> JnWords
-	// 	,CT Ct
-	// );
+	public Task<nil> BatUpdWordProp(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWordProp> WordProps, CT Ct
+	);
+	
+	public Task<nil> DelWordPropInId(
+		IDbUserCtx Ctx, IAsyncEnumerable<IdWordProp> Ids, CT Ct
+	);
+	
+	
+	public Task<nil> DelWordLearnInId(
+		IDbUserCtx Ctx, IAsyncEnumerable<IdWordLearn> Ids, CT Ct
+	);
+	
+	[Doc(@$"
+	先用傳入的{nameof(PoWord.Id)} 去庫裏查單詞、設查得的單詞爲 Old
+	
+	若Old和傳入的{nameof(PoWord.Id)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}都相同、
+	則直接更新其他不同字段、返回原本的{nameof(PoWord.Id)}。
+	
+	若 Old和New 的 ({nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同、
+	")]
+	public Task<IAsyncEnumerable<IdWord?>> BatUpdPoWord(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct
+	);
+	
+	[Doc(@$"
+	對入參中每項(Arg)、先用Arg.Id 查得數據庫中己存之實體 WordOfId;
+	若WordOfId不存在則拋{nameof(ItemsErr.Word.WordOfId__NotFound)}
+	若WordOfId存在但Owner不同則拋{nameof(ItemsErr.Common.PermissionDenied)};
+	
+	若WordOfId存在且WordOfId的(Head,Lang)與Arg的相同則不管、返null;
+	
+	若WordOfId存在且WordOfId的(Head,Lang)與Arg不同[
+		先用WordOfId.(Head,Lang)查庫得到 WordOfHeadLang ;
+		if WordOfHeadLang 已被軟刪除 先取消他的軟刪除狀態;
+		if WordOfHeadLang is null [ 即 作爲更改目標的(Head,Lang)不存在,更改不衝突
+			直接把 WordOfId 的 (Head,Lang) 改成 Arg的 (Head,Lang) ;
+			改 業務更新時間;
+			返null;
+		]else[ 即 WordOfHeadLang 不爲空 作爲更改目標的(Head,Lang)已存在,更改衝突
+			把 WordOfId 設成已軟刪除;
+			把WordOfId的資產({nameof(JnWord.Props)},{nameof(JnWord.Learns)})
+			算成 WordOfHeadLang 的資產(改{nameof(I_WordId.WordId)}外鍵、爲移動洏非複製);改完之後WordOfId不再有任何資產
+			更改有變動的實體的{nameof(PoWord.BizUpdatedAt)}。(資產實體不需要改更新時間、因爲 只是外鍵變了 內容沒變)
+			返 WordOfHeadLang.Id
+		]
+	]
+	#Rtn[單詞主鍵Id、同位置的每個元素與入參一一對應、
+	返回的Id都是 有變化時最終 (Head,Lang)所屬單詞的Id。如果最終的Id和對應入參的Id一樣那就返null
+	]
+	")]
+	public IAsyncEnumerable<IdWord?> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
+	
+	[Doc(@$"
+	#See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
+	按 根實體之Id 匹配而改。
+	會更新{nameof(PoWord.BizUpdatedAt)}。
+	不允許更新 {nameof(PoWord.Owner)}。
+	在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
+	")]
+	public Task<nil> BatSoftUpdJnWord(
+		IDbUserCtx Ctx
+		,IAsyncEnumerable<JnWord> JnWords
+		,CT Ct
+	);
+	
+	[Doc(@$"
+		對每個元素:
+		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local;
+		如果Local存在 則調用{nameof(ISvcWordInMem.MergeJnWord)}。
+		{nameof(ISvcWordInMem.MergeJnWord)}調用後 返回的JnWord的Id和Local的Id相同則
+		
+	")]
+	public Task<nil> MergeJnWord(
+		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
+	);
+
+	
+
 	
 }

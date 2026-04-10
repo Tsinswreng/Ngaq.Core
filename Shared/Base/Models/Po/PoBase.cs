@@ -45,4 +45,15 @@ public static class ExtnPoBase{
 	public static bool IsDeleted(this IPoBase z){
 		return !z.DelAt.IsNullOrDefault();
 	}
+	
+	[Doc(@$"從業務層之 創建時間, 修改時間 與 被軟先除之時間 取 最晚近者")]
+	public static Tempus GetNewestBizTime<TSelf>(
+		this TSelf z
+	)where TSelf:IBizCreateUpdateTime, I_DelAt{
+		i64 c = z.BizCreatedAt;
+		i64 u = z.BizUpdatedAt;
+		i64 d = z.DelAt;
+		return Math.Max(c,Math.Max(u,d));
+	}
+	
 }

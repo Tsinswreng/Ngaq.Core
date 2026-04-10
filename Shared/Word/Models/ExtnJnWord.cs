@@ -21,11 +21,6 @@ using Ngaq.Core.Shared.User.Models.Po;
 
 
 public static class ExtnJnWord{
-	[Obsolete("用擴展屬性")]
-	public static IdWord Id_(this IJnWord z){
-		return z.Word.Id;
-	}
-
 	extension<TSelf>(TSelf z)
 		where TSelf:IJnWord
 	{
@@ -140,19 +135,10 @@ public static class ExtnJnWord{
 
 		/// 把諸資產之外鍵設潙主Word之id
 		public TSelf EnsureForeignId(){
-			// if(z.Po_Word.Id.Value == 0){
-			// 	z.Po_Word.Id = new Id_Word(IdTool.NewUlid_UInt128());
-			// }
 			foreach(var prop in z.Props){
-				// if(prop.Id.Value == 0){
-				// 	prop.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-				// }
 				prop.WordId = z.Word.Id;
 			}
 			foreach(var learn in z.Learns){
-				// if(learn.Id.Value == 0){
-				// 	learn.Id = new Id_Kv(IdTool.NewUlid_UInt128());
-				// }
 				learn.WordId = z.Word.Id.Value;
 			}
 			return z;
@@ -197,7 +183,7 @@ public static class ExtnJnWord{
 			}
 			if(JWord.Word.Lang != Lang){
 				throw ItemsErr.Word.__NotBelongToLang__
-				.ToErr(JWord.Id_(), Lang)
+				.ToErr(JWord.Id, Lang)
 				.AddDebugArgs(JWord);
 			}
 			if(Dict.TryGetValue(JWord.Word.Head, out var List)){

@@ -33,6 +33,7 @@ public static class ItemsErr{
 	}
 	public class Word{
 		public static K _R = Mk(null, [nameof(Word)]);
+		public static K WordOfId__NotFound = MkB(_R, [nameof(WordOfId__NotFound)]);
 		public static K LoadWordListFailed = MkB(_R, [nameof(LoadWordListFailed)]);
 		public static K SaveWordListFailed = MkB(_R, [nameof(SaveWordListFailed)]);
 		public static K LoadWordCalcWeightFailed = MkB(_R, [nameof(LoadWordCalcWeightFailed)]);

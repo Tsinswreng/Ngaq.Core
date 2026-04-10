@@ -47,9 +47,6 @@ public partial class JnWord
 	[Impl(typeof(IJnWord))]
 	public IList<PoWordLearn> Learns{get;set;} = new List<PoWordLearn>();
 
-	
-
-
 	public PoWordLearn AddLearn(PoWordLearn Learn){
 		Learn.WordId = Word.Id.Value;
 		Learns.Add(Learn);
