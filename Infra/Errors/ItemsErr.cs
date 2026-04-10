@@ -55,6 +55,11 @@ public static class ItemsErr{
 		public static K BackgroundImageServiceFailedToInit = MkB(_R, [nameof(BackgroundImageServiceFailedToInit)]);
 		[Doc(@$"{nameof(PoNormLangToUserLang)}未設置。")]
 		public static K NormLangToUserLangIsNotMapped = MkB(_R, [nameof(NormLangToUserLangIsNotMapped)]);
+		
+		[Doc(@$"單詞同步失敗。
+		參數填入 WordId字符串。
+		")]
+		public static K Word__And__SyncFailed = MkB(_R, [nameof(Word__And__SyncFailed)]);
 	}
 	public class StudyPlan{
 		public static K _R = Mk(null, [nameof(StudyPlan)]);

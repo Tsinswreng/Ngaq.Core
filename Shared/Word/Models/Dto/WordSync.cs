@@ -8,7 +8,7 @@ public enum EWordDiffResultForSync{
 	NoChange,
 	
 	[Doc(@$"常見情況")]
-	RemoteIdNew,
+	RemoteIdNewer,
 	
 	[Doc(@$"Remote更舊、不需要改動Local。
 	==true時 忽略其他字段的值 因爲已經不需操作了
@@ -23,7 +23,10 @@ public enum EWordDiffResultForSync{
 	[Doc(@$"Remote和Local在各自的節點
 	在不同時間初次被添加再合併。導致Head,Lang相同但Id不同。
 	此時 理論上Local和Remote不會有重合的資產。
-	需 Local接收Remote的合入。下次Remote再從Local合入其兩端即可真同步。
+	Local的資產需接收Remote的資產的合入(不會)。下次Remote再從Local合入其兩端資產即可同步。
+	
+	Local的{nameof(JnWord.Word)}改爲
+	Local和Remote中{nameof(PoWord.BizCreatedAt)}最小者的PoWord
 	")]
 	[Doc(@$"Remote和Local的Id不一致、
 	可能是 本來 要合併的兩個節點 根本就不存在 Remote 和 Local、
@@ -35,7 +38,7 @@ public enum EWordDiffResultForSync{
 }
 
 [Doc(@$"
-適用于當{nameof(EWordDiffResultForSync.RemoteIdNew)}時。
+適用于當{nameof(EWordDiffResultForSync.RemoteIdNewer)}時。
 {nameof(JnWord)}比較情況、用于同步。
 設把Remote合入Local。
 
@@ -84,7 +87,7 @@ Remote合入Local。
 public class DtoJnWordSyncResult{
 	public EWordDiffResultForSync DiffResult{get;set;}
 	
-	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIdNew)}時。")]
+	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIdNewer)}時。")]
 	public WordDiffCaseForSync? DiffCase{get;set;}
 	
 	public JnWord? Local{get;set;}

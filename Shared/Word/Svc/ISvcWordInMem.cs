@@ -7,6 +7,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Tools;
+using Tsinswreng.CsErr;
 
 namespace Ngaq.Core.Shared.Word.Svc;
 
@@ -15,9 +16,9 @@ namespace Ngaq.Core.Shared.Word.Svc;
 ")]
 public interface ISvcWordInMem{
 	
-	[Doc(@$"只")]
+	[Doc(@$"只適用于資產。確保{nameof(X)}與{nameof(Y)}之Id相同、本函數不再校驗。")]
 	[Pure]
-	public int DiffByTime<TSelf>(
+	public int DiffWordAssetByTime<TSelf>(
 		TSelf X, TSelf Y
 	)where TSelf:IBizCreateUpdateTime, I_DelAt
 	{
@@ -32,28 +33,44 @@ public interface ISvcWordInMem{
 		if(X.BizCreatedAt == Y.BizCreatedAt){
 			return xUpd.CompareTo(yUpd);
 		}
-		throw new Exception(Todo.I18n("BizCreatedAt 不相等"));
+		throw new Exception(Todo.I18n("Id相同時 BizCreatedAt 不相等"));
 	}
 	
 	[Doc(@$"確保兩詞之{nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}相同。
 	此函數中則不再重複校驗。
 	")]
-	public int CompareJnWord(JnWord X, JnWord Y){
+	[Pure]
+	public EWordDiffResultForSync CompareJnWord(JnWord Local, JnWord Remote){
+		var X = Local;
+		var Y = Remote;
+		if(!X.Word.IsSameUserWord(Y.Word)){
+			throw ItemsErr.Word.__And__IsNotSameUserWord.ToErr(X.Id,Y.Id);
+		}
+		if(X.Id != Y.Id){
+			return EWordDiffResultForSync.AddedIndependently;
+		}
+		
 		if(X.BizUpdatedAt == Y.BizUpdatedAt
 			&& X.BizCreatedAt == Y.BizCreatedAt
 			&& X.DelAt == Y.DelAt
+			//資產變更時 聚合根之 BizUpdatedAt 也會變、只比較資產數量已足夠
+			&& X.Props.Count == Y.Props.Count
+			&& X.Learns.Count == Y.Learns.Count
 		){
-			return 0;
+			return EWordDiffResultForSync.NoChange;
 		}
 		var xUpd = X.Word.GetNewestBizUpdOrDelTime();
 		var yUpd = Y.Word.GetNewestBizUpdOrDelTime();
 		if(X.BizCreatedAt == Y.BizCreatedAt){
-			return xUpd.CompareTo(yUpd);
+			if(yUpd > xUpd){
+				return EWordDiffResultForSync.RemoteIdNewer;
+			}else{
+				return EWordDiffResultForSync.RemoteIsOlder;
+			}
 		}
-		// 兩 BizCreatedAt 不相同、說明是 新單詞 在兩節點中各自新添。
-		// 此時則接收遠端合入。如是則當遠端再發起一次合入時 兩
-		return -1;
-		
+		// 兩單詞 Id相同但 BizCreatedAt 不同。
+		//不應該進入此分支。
+		throw ItemsErr.Word.Word__And__SyncFailed.ToErr(X.Id, Y.Id);
 	}
 	
 	[Doc(@$"
@@ -73,7 +90,7 @@ public interface ISvcWordInMem{
 	
 	[Doc(@$"
 	若{nameof(PoWordProp.Id)}不同則拒絕合併。
-	以{nameof(DiffByTime)}決定誰最新。若Remote不比Local更加新則不動。
+	以{nameof(DiffWordAssetByTime)}決定誰最新。若Remote不比Local更加新則不動。
 	")]
 	[Pure]
 	public DtoEntityDiffEtSync<PoWordProp> SyncProp(PoWordProp Local, PoWordProp Remote);
@@ -86,8 +103,8 @@ public interface ISvcWordInMem{
 	若({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同則拒絕合併、
 	拋出 {nameof(ItemsErr.Word.__And__IsNotSameUserWord)};
 	
-	以{nameof(DiffByTime)}決定誰最新。若Remote不比Local更加新則不動。。
-	若{nameof(PoWord.Id)}不同 則返回值的Id爲 {nameof(PoWord.BizCreatedAt)}更小者 的Id。
+	以{nameof(DiffWordAssetByTime)}決定誰最新。若Remote不比Local更加新則不動。
+	若{nameof(PoWord.Id)}不同 則同步結果爲 {nameof(PoWord.BizCreatedAt)}更小者。
 	")]
 	[Pure]
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote);

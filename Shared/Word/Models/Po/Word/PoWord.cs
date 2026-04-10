@@ -63,12 +63,13 @@ public partial class PoWord
 
 	#endregion IPoWord
 
-	/// 
-	/// 
+	
 	/// 用于詞庫同步旹 比對㕥篩改˪ʹ詞
 	[Doc(@$"最早入庫之時間。
 	辨: {nameof(BizCreatedAt)} 爲 最早創建時間
 	(比如被記于文本詞表之時。先記在生詞表上再導入、則其{nameof(BizCreatedAt)}被視爲文本生詞表上記錄的時間。)
+	目前只在 DaoWord.FnPageChangedWordIdsWithDelWordsAfterTime中有使用。
+	
 	")]
 	public Tempus StoredAt{get;set;} = Tempus.Now();
 
