@@ -70,7 +70,18 @@ public interface ISvcWordV2{
 	")]
 	public Task<nil> BatAddNewWordToLearn(
 		IDbUserCtx Ctx,
-		IAsyncEnumerable<JnWord> PoWordAsyE, CT Ct
+		IAsyncEnumerable<JnWord> Words, CT Ct
+	);
+	
+	[Doc(@$"先把每個元素的Owner改成和Ctx中的用戶一致。
+	然後用{nameof(IRepo<,>.BatAddAgg)}。
+	#Throw[{nameof(ItemsErr.Common.DataIllegalOrConflict)}][
+		添加失敗時即拋。不做合併等處理
+	]
+	")]
+	public Task<nil> BatAddJnWord(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<JnWord> Words, CT Ct
 	);
 	
 	[Doc(@$"軟刪 整ʹ單詞 含附屬資產亦需被標爲軟刪")]
@@ -156,27 +167,33 @@ public interface ISvcWordV2{
 	")]
 	public IAsyncEnumerable<IdWord?> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
 	
-	[Doc(@$"
-	#See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
-	按 根實體之Id 匹配而改。
-	會更新{nameof(PoWord.BizUpdatedAt)}。
-	不允許更新 {nameof(PoWord.Owner)}。
-	在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
-	")]
-	public Task<nil> BatSoftUpdJnWord(
-		IDbUserCtx Ctx
-		,IAsyncEnumerable<JnWord> JnWords
-		,CT Ct
-	);
+	// [Doc(@$"
+	// #See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
+	// 按 根實體之Id 匹配而改。
+	// 會更新{nameof(PoWord.BizUpdatedAt)}。
+	// 不允許更新 {nameof(PoWord.Owner)}。
+	// 在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
+	// ")]
+	// public Task<nil> BatSoftUpdJnWord(
+	// 	IDbUserCtx Ctx
+	// 	,IAsyncEnumerable<JnWord> JnWords
+	// 	,CT Ct
+	// );
+	
 	
 	[Doc(@$"
+		把{nameof(JnWords)}合入數據庫。
+		BizId指業務層面之唯一標識、而非Id字段
+		
 		對每個元素:
 		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local;
-		如果Local存在 則調用{nameof(ISvcWordInMem.MergeJnWord)}。
-		{nameof(ISvcWordInMem.MergeJnWord)}調用後 返回的JnWord的Id和Local的Id相同則
+		if Local 不存在則 直接用{nameof(BatAddJnWord)};
+		
+		如果Local存在 則調用{nameof(ISvcWordInMem.SyncJnWord)}。
+		{nameof(ISvcWordInMem.SyncJnWord)}調用後 返回的JnWord的Id和Local的Id相同則
 		
 	")]
-	public Task<nil> MergeJnWord(
+	public Task<nil> MergeJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
 	);
 

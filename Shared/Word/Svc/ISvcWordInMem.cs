@@ -2,6 +2,7 @@ using System.Diagnostics.Contracts;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models;
+using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
@@ -21,25 +22,25 @@ public interface ISvcWordInMem{
 若({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同則拒絕合併、
 拋出 {nameof(ItemsErr.Word.__And__IsNotSameUserWord)};
 		
-返回值的{nameof(JnWord.Word)}按{nameof(MergePoWord)}處理。
+返回值的{nameof(JnWord.Word)}按{nameof(SyncPoWord)}處理。
 對其餘 {nameof(JnWord.Props)} 和 {nameof(JnWord.Learns)}的每項:
-	- 對于Id匹配者、則各自用 {nameof(MergeProp)}和{nameof(MergeLearn)}
+	- 對于Id匹配者、則各自用 {nameof(SyncProp)}和{nameof(SyncLearn)}
 	- 對于 {nameof(Other)} 比 {nameof(Src)} 多出來的資產、則要加到反回值中。
 	- 對于 {nameof(Other)} 比 {nameof(Src)} 多出來的資產、不管。
 	")]
 	[Pure]
-	public JnWord MergeJnWord(JnWord Src, JnWord Other);
+	public DtoSyncResult SyncJnWord(JnWord Src, JnWord Other);
 	
 	[Doc(@$"
 	若{nameof(PoWordProp.Id)}不同則拒絕合併。
 	以{nameof(ExtnPoBase.GetNewestBizTime)}更大者爲準
 	")]
 	[Pure]
-	public PoWordProp MergeProp(PoWordProp Src, PoWordProp Other);
+	public PoWordProp SyncProp(PoWordProp Src, PoWordProp Other);
 	
-	[Doc(@$"見{nameof(MergeProp)} for {nameof(PoWordProp)}")]
+	[Doc(@$"見{nameof(SyncProp)} for {nameof(PoWordProp)}")]
 	[Pure]
-	public PoWordLearn MergeLearn(PoWordLearn Src, PoWordLearn Other);
+	public PoWordLearn SyncLearn(PoWordLearn Src, PoWordLearn Other);
 	
 	[Doc(@$"
 	若({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同則拒絕合併、
@@ -49,7 +50,7 @@ public interface ISvcWordInMem{
 	若{nameof(PoWord.Id)}不同 則返回值的Id爲 {nameof(PoWord.BizCreatedAt)}更小者 的Id。
 	")]
 	[Pure]
-	public PoWord MergePoWord(PoWord Src, PoWord Other);
+	public PoWord SyncPoWord(PoWord Src, PoWord Other);
 	
 	
 }
