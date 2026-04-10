@@ -61,16 +61,14 @@ public interface ISvcWordInMem{
 		}
 		var xUpd = X.Word.GetNewestBizUpdOrDelTime();
 		var yUpd = Y.Word.GetNewestBizUpdOrDelTime();
-		if(X.BizCreatedAt == Y.BizCreatedAt){
-			if(yUpd > xUpd){
-				return EWordDiffResultForSync.RemoteIdNewer;
-			}else{
-				return EWordDiffResultForSync.RemoteIsOlder;
-			}
+		if(yUpd > xUpd){
+			return EWordDiffResultForSync.RemoteIdNewer;
+		}else{
+			return EWordDiffResultForSync.RemoteIsOlder;
 		}
 		// 兩單詞 Id相同但 BizCreatedAt 不同。
 		//不應該進入此分支。
-		throw ItemsErr.Word.Word__And__SyncFailed.ToErr(X.Id, Y.Id);
+		//throw ItemsErr.Word.Word__And__SyncFailed.ToErr(X.Id, Y.Id);
 	}
 	
 	[Doc(@$"

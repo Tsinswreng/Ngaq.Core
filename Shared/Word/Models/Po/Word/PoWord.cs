@@ -10,6 +10,12 @@ using Tsinswreng.Srefl;
 [Doc(@$"
 同Owner下 ({nameof(Head)}, {nameof(Lang)}) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
 (如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ({nameof(Head)}, {nameof(Lang)})、則雖同ʹ詞、猶將被予異ʹId)
+
+
+{nameof(PoWord.BizCreatedAt)}可能變早。
+當從生詞表加詞時、生詞表中記錄的時間比數據庫中已有的同個詞的{nameof(PoWord.BizCreatedAt)}更早
+再要以更早者爲準、用于算權重。
+{nameof(PoWord.BizCreatedAt)}可能變早時 {nameof(BizUpdatedAt)}一定會變。
 ")]
 public partial interface IPoWord
 	:IPoBase
