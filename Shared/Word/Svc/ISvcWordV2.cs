@@ -197,12 +197,43 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
 	);
 	
+	[Doc(@$"調用{nameof(ISvcWordSync)}裏面的API來實現。")]
 	public Task<nil> BatSyncByDto(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
-
+	
+	
 	
 
+}
+
+[Doc(@$"此接口下函數不作爲公共API。
+只是把同步單詞時 按 遇到的不同分類 分成不同函數處理、方便測試
+")]
+public interface ISvcWordSync{
+	[Doc(@$"{nameof(EWordDiffResultForSync.NoChange)}")]
+	public Task<nil> BatSync_NoChange(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
+	);
+	
+	[Doc(@$"{nameof(EWordDiffResultForSync.RemoteIsOlder)}")]
+	public Task<nil> BatSync_RemoteIsOlder(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
+	);
+	
+	[Doc(@$"{nameof(EWordDiffResultForSync.LocalNotExist)}")]
+	public Task<nil> BatSync_LocalNotExist(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
+	);
+	
+	[Doc(@$"{nameof(EWordDiffResultForSync.AddedIndependently)}")]
+	public Task<nil> BatSync_AddedIndependently(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
+	);
 	
 }

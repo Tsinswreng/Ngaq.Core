@@ -62,7 +62,7 @@ public interface ISvcWordInMem{
 		var xUpd = X.Word.GetNewestBizUpdOrDelTime();
 		var yUpd = Y.Word.GetNewestBizUpdOrDelTime();
 		if(yUpd > xUpd){
-			return EWordDiffResultForSync.RemoteIdNewer;
+			return EWordDiffResultForSync.RemoteIsNewer;
 		}else{
 			return EWordDiffResultForSync.RemoteIsOlder;
 		}
@@ -78,9 +78,10 @@ public interface ISvcWordInMem{
 拋出 {nameof(ItemsErr.Word.__And__IsNotSameUserWord)};
 		
 返回值的{nameof(JnWord.Word)}按{nameof(SyncPoWord)}處理。
-對其餘 {nameof(JnWord.Props)} 和 {nameof(JnWord.Learns)}的每項:
-	- 對于Id匹配者、則各自用 {nameof(SyncProp)}和{nameof(SyncLearn)}
-	- 對于 {nameof(Remote)} 比 {nameof(Local)} 多出來的資產、則要加到反回值中。
+
+	對其餘 {nameof(JnWord.Props)} 和 {nameof(JnWord.Learns)}的每項:
+	- 按Id尋匹配者、然後各自用 {nameof(SyncProp)}和{nameof(SyncLearn)}
+	- 對于 {nameof(Remote)} 比 {nameof(Local)} 多出來的資產、則要合入。
 	- 對于 {nameof(Local)} 比 {nameof(Remote)} 多出來的資產、不管。
 	
 	合併時、除了可能把Local的{nameof(PoWord.BizUpdatedAt)}改成和Remote一樣之外、

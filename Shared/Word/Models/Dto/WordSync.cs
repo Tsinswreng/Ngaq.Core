@@ -8,7 +8,7 @@ public enum EWordDiffResultForSync{
 	NoChange,
 	
 	[Doc(@$"常見情況")]
-	RemoteIdNewer,
+	RemoteIsNewer,
 	
 	[Doc(@$"Remote更舊、不需要改動Local。
 	==true時 忽略其他字段的值 因爲已經不需操作了
@@ -38,7 +38,7 @@ public enum EWordDiffResultForSync{
 }
 
 [Doc(@$"
-適用于當{nameof(EWordDiffResultForSync.RemoteIdNewer)}時。
+適用于當{nameof(EWordDiffResultForSync.RemoteIsNewer)}時。
 {nameof(JnWord)}比較情況、用于同步。
 設把Remote合入Local。
 
@@ -87,7 +87,7 @@ Remote合入Local。
 public class DtoJnWordSyncResult{
 	public EWordDiffResultForSync DiffResult{get;set;}
 	
-	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIdNewer)}時。")]
+	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIsNewer)}時。")]
 	public WordDiffCaseForSync? DiffCase{get;set;}
 	
 	[Doc(@$"同步前的Local 原詞")]
