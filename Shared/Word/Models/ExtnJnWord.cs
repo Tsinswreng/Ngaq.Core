@@ -98,6 +98,11 @@ public static class ExtnJnWord{
 			set{z.Word.DbUpdatedAt = value;}
 		}
 		
+		public IdDel DelAt{
+			get{return z.Word.DelAt;}
+			set{z.Word.DelAt = value;}
+		}
+		
 		
 
 		public IDictionary<str, obj?> ToDict(

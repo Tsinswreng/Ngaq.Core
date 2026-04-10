@@ -2,11 +2,44 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 namespace Ngaq.Core.Shared.Word.Models.Dto;
 
-[Doc(@$"{nameof(JnWord)}比較情況、用于同步。
+[Doc(@$"用于兩{nameof(JnWord)}同步")]
+public enum EWordDiffResultForSync{
+	[Doc(@$"兩個單詞都沒有變化。不用做。")]
+	NoChange,
+	
+	[Doc(@$"常見情況")]
+	RemoteIdNew,
+	
+	[Doc(@$"Remote更舊、不需要改動Local。
+	==true時 忽略其他字段的值 因爲已經不需操作了
+	")]
+	RemoteIsOlder,
+	
+	[Doc(@$"Remote 在 接收合入的一方 沒有對應的Local。
+	直接把Remote入庫即可。
+	")]
+	LocalNotExist,
+	
+	[Doc(@$"Remote和Local在各自的節點
+	在不同時間初次被添加再合併。導致Head,Lang相同但Id不同。
+	此時 理論上Local和Remote不會有重合的資產。
+	需 Local接收Remote的合入。下次Remote再從Local合入其兩端即可真同步。
+	")]
+	[Doc(@$"Remote和Local的Id不一致、
+	可能是 本來 要合併的兩個節點 根本就不存在 Remote 和 Local、
+	在合併前、他們各自在不同時刻添加了 相同(Head,Lang)的單詞。
+	于是會各自形成兩個 Id不同的JnWord。
+	此時應取更老者的Id作最終Id。
+	")]
+	AddedIndependently,
+}
+
+[Doc(@$"
+適用于當{nameof(EWordDiffResultForSync.RemoteIdNew)}時。
+{nameof(JnWord)}比較情況、用于同步。
 設把Remote合入Local。
 
-當{nameof(RemoteIsOlder)}==true時 忽略其他字段的值 因爲已經不需操作了。
-除此之外、兩個單詞有不同時、默認Remote更加新。
+兩個單詞有不同時、默認Remote更加新。
 
 合併操作 只能對Local做改動。
 
@@ -20,18 +53,7 @@ Remote和Local的 ({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.L
 - 對于單個資產、軟刪除也屬于Change
 ")]
 public class WordDiffCaseForSync{
-	[Doc(@$"兩個單詞都沒有變化。不用做。")]
-	public bool NoChange{get;set;}
-	[Doc(@$"Remote更舊、不需要改動Local。
-	==true時 忽略其他字段的值 因爲已經不需操作了
-	")]
-	public bool RemoteIsOlder{get;set;}
-	
-	[Doc(@$"Remote 在 接收合入的一方 沒有對應的Local。
-	直接把Remote入庫即可。
-	")]
-	public bool LocalNotExist {get;set;}
-	
+
 	[Doc(@$"
 	Remote中有新增之資產 which is Local中沒有的。
 	需把Local缺少的部分入庫。
@@ -43,14 +65,6 @@ public class WordDiffCaseForSync{
 	需把有改變的部分在庫中對應更改。
 	")]
 	public bool RemoteHasChangedAssets{get;set;}
-	
-	[Doc(@$"Remote和Local的Id不一致、
-	可能是 本來 要合併的兩個節點 根本就不存在 Remote 和 Local、
-	在合併前、他們各自在不同時刻添加了 相同(Head,Lang)的單詞。
-	于是會各自形成兩個 Id不同的JnWord。
-	此時應取更老者的Id作最終Id。
-	")]
-	public bool RemoteEtLocalNotHaveSameId{get;set;}
 	
 	[Doc(@$"需把Local也同步軟刪除。資產若有不同也要合併。")]
 	public bool RemoteIsSoftDeleted{get;set;}
@@ -67,8 +81,12 @@ public class WordDiffCaseForSync{
 Remote合入Local。
 #See[{nameof(WordDiffCaseForSync)}]
 ")]
-public class DtoSyncResult{
-	public WordDiffCaseForSync DiffCase{get;set;} = new();
+public class DtoJnWordSyncResult{
+	public EWordDiffResultForSync DiffResult{get;set;}
+	
+	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIdNew)}時。")]
+	public WordDiffCaseForSync? DiffCase{get;set;}
+	
 	public JnWord? Local{get;set;}
 	public JnWord? Remote{get;set;}
 	[Doc(@$"僅含 Remote 比 Local多出的新資產。
@@ -79,4 +97,27 @@ public class DtoSyncResult{
 	不考慮其{nameof(JnWord.Word)}
 	")]
 	public JnWord? ChangedAssets{get;set;}
+}
+
+
+[Doc(@$"比較單個實體。
+用于同步。
+設把Remote合入Local。
+")]
+public class DtoEntityDiffEtSync<T>{
+	[Doc(@$"
+	0:一樣新;
+	正數:Local更加新;
+	負數:Remote更加新
+	")]
+	public i32 LocalCompareToRemote{get;set;}
+	[Doc(@$"同步後的實體")]
+	public T? SyncedEntity{get;set;}
+}
+
+
+[Doc(@$"兩 {nameof(PoWord)} 按時間比較")]
+public enum EPoWordCompare{
+	[Doc(@$"{nameof(PoWord.BizCreatedAt)}, {nameof(PoWord.BizUpdatedAt)}")]
+	Equal,
 }

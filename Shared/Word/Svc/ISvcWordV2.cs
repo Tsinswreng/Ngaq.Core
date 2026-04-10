@@ -193,7 +193,7 @@ public interface ISvcWordV2{
 		{nameof(ISvcWordInMem.SyncJnWord)}調用後 返回的JnWord的Id和Local的Id相同則
 		
 	")]
-	public Task<nil> MergeJnWordByBizId(
+	public Task<nil> BizSyncJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
 	);
 
