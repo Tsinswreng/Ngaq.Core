@@ -22,7 +22,7 @@ Id可能不一致。
 
 比較一對資產實體時是按Id比較。資產實體可能沒有BizId。
 ")]
-public class AggDiffCaseForSync{
+public interface IAggDiffCaseForSync{
 	[Doc(@$"
 	Remote中有新增之資產 which is Local中沒有的。
 	需把Local缺少的部分入庫。
@@ -47,3 +47,12 @@ public class AggDiffCaseForSync{
 	public bool AggRootIsChanged{get;set;}
 	
 }
+
+public class AggDiffCaseForSync:IAggDiffCaseForSync{
+	public bool RemoteHasNewAssets{get;set;}
+	public bool RemoteHasChangedAssets{get;set;}
+	public bool RemoteIsSoftDeleted{get;set;}
+	public bool LocalIsSoftDeleted{get;set;}
+	public bool AggRootIsChanged{get;set;}
+}
+

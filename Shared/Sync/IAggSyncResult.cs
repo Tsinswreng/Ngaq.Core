@@ -38,3 +38,16 @@ public interface IAggSyncResult<T>{
 	")]
 	public T? SyncedPoWord{get;set;}
 }
+
+
+public class AggSyncResult<T>: IAggSyncResult<T>{
+	public EDiffByBizIdResultForSync DiffResult{get;set;}
+	
+	public AggDiffCaseForSync? DiffCase{get;set;}
+	
+	public T? Local{get;set;}
+	public T? Remote{get;set;}
+	public T? NewAssets{get;set;}
+	public T? ChangedAssets{get;set;}
+	public T? SyncedPoWord{get;set;}
+}
