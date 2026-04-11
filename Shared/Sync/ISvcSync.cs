@@ -2,6 +2,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
+using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Sync;
 
@@ -21,5 +22,5 @@ public interface IEntitySyncer<T>
 		IDbUserCtx Ctx, IAsyncEnumerable<T> Pos, CT Ct
 	);
 	
-	
+
 }

@@ -115,16 +115,16 @@ public interface ISvcWordInMem{
 	
 	[Doc(@$"
 	#Rtn[
-	- {nameof(ITextWithBlob.Text)}爲{nameof(PackInfo)}之json;
-	- {nameof(ITextWithBlob.Blob)} 見 {nameof(PackInfo.Type)};
+	- {nameof(ITextWithMemory.Text)}爲{nameof(PackInfo)}之json;
+	- {nameof(ITextWithMemory.Blob)} 見 {nameof(PackInfo.Type)};
 	]
 	")]
-	public Task<ITextWithBlob> PackWords(
+	public Task<ITextWithMemory> PackWords(
 		IAsyncEnumerable<JnWord> Words, IWordsPackInfo PackInfo, CT Ct
 	);
 	
 	[Doc(@$"暫時不需要校驗版本如{nameof(IWordsPackInfo.Ver)}等")]
 	public IAnswer<IAsyncEnumerable<PoWord>> UnpackWords(
-		ITextWithBlob Pack, CT Ct
+		ITextWithMemory Pack, CT Ct
 	);
 }

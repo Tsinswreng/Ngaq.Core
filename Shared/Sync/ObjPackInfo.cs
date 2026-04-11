@@ -1,0 +1,38 @@
+using Ngaq.Core.Infra;
+using Tsinswreng.CsTextWithBlob;
+
+namespace Ngaq.Core.Shared.Sync;
+
+
+
+[Doc(@$"對象打包 元數據。
+適用于作{nameof(ITextWithMemory.Text)}
+")]
+public interface IObjPackInfo{
+	public static Version ClassVer = new Version(1,0,0);
+	
+	[Doc(@$"{nameof(ITextWithMemory.Blob)}。
+	建議用字符串作其實現類型。
+	")]
+	public obj? PayloadTypeObj{get;set;}
+	
+	public Tempus CreatedAt{get;set;}
+	
+	[Doc(@"DTO版本")]
+	public Version? Ver{get;set;}
+	#if Impl
+	= IObjPackInfo.ClassVer;
+	#endif
+	
+	[Doc(@$"對象版本。
+	#See[{nameof(I_ClassVer)}]
+	")]
+	public Version? ObjVer{get;set;}
+}
+
+public class ObjPackInfo:IObjPackInfo{
+	public Tempus CreatedAt{get;set;}
+	public obj? PayloadTypeObj{get;set;}
+	public Version? Ver{get;set;} = IObjPackInfo.ClassVer;
+	public Version? ObjVer{get;set;}
+}
