@@ -236,4 +236,5 @@ public interface ISvcWordSync{
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
+
 }
