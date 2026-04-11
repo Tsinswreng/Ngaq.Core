@@ -125,9 +125,9 @@ public partial interface ISvcWord{
 
 	public Task<nil> SyncCompressedWord(IUserCtx User, DtoCompressedWords Dto, CT Ct);
 
-	public Task<TextWithBlob> PackAllWordsToTextWithBlobNoStream(IUserCtx User, ReqPackWords Req, CT Ct);
+	public Task<NgaqTextWithBlob> PackAllWordsToTextWithBlobNoStream(IUserCtx User, ReqPackWords Req, CT Ct);
 
-	public Task<nil> SyncFromTextWithBlob(IUserCtx User, TextWithBlob TextWithBlob, CT Ct);
+	public Task<nil> SyncFromTextWithBlob(IUserCtx User, NgaqTextWithBlob TextWithBlob, CT Ct);
 
 	[Doc("用于統計")]
 	public Task<RespScltWordsOfLearnResultByTimeInterval> ScltAddedWordsByTimeInterval(

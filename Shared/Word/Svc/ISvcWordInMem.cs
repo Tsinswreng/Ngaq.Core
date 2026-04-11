@@ -8,6 +8,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Tools;
 using Tsinswreng.CsErr;
+using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Word.Svc;
 
@@ -111,5 +112,18 @@ public interface ISvcWordInMem{
 	[Pure]
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote);
 	
+	[Doc(@$"
+	#Rtn[
+	- {nameof(ITextWithBlob.Text)}爲{nameof(PackInfo)}之json;
+	- {nameof(ITextWithBlob.Blob)} 見 {nameof(PackInfo.Type)};
+	]
+	")]
+	public Task<ITextWithBlob> PackWords(
+		IAsyncEnumerable<JnWord> Words, IWordsPackInfo PackInfo, CT Ct
+	);
 	
+	[Doc(@$"暫時不需要校驗版本如{nameof(IWordsPackInfo.Ver)}等")]
+	public IAnswer<IAsyncEnumerable<PoWord>> UnpackWords(
+		ITextWithBlob Pack, CT Ct
+	);
 }

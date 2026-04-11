@@ -5,14 +5,30 @@ using Ngaq.Core.Tools;
 
 
 public enum EWordsPack{
-	None,
-/// 按行分隔之獨立JnWord Json、非Json數組
-/// {}
-/// {}
-/// {}
-///
+	
+	None = 0,
+	[Doc($$"""
+	按行分隔之獨立JnWord Json、非Json數組。
+	#Examples([
+	```
+		{"Id": "xxx",...}
+		{"Id": "yyy",...}
+	```
+	])
+	""")]
 	LineSepJnWordJsonGZip,
-	/// Json數組
+	[Doc($$"""
+	Json數組
+	#Examples([
+	```
+		[
+			{"Id": "xxx",...},
+			{"Id": "yyy",...},
+			...
+		]
+	```
+	])
+	""")]
 	JnWordArrJsonGZip
 }
 
@@ -21,19 +37,15 @@ public interface IWordsPackInfo
 	,I_VerApp
 {
 	public static Version ClassVer = new Version(1,0,0);
-	[EnumOf(typeof(EWordsPack))]
 	public EWordsPack Type{get;set;}
 	public Tempus CreatedAt{get;set;}
-	/// DTO版本
+	[Doc(@"DTO版本")]
 	public Version? Ver{get;set;}
 	#if Impl
 	= IWordsPackInfo.ClassVer;
 	#endif
-	/// 應用程式版本
-	/// 雖請求頭會自動帶AppVer、肰WordsPack亦有本地導出之況
-	//public Version? VerApp{get;set;}
-
-	/// JnWord聚合根版本
+	
+	[Doc(@$"{nameof(JnWord.ClassVer)}")]
 	public Version? VerJnWord{get;set;}
 
 

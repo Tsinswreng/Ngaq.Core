@@ -41,6 +41,7 @@
 		<ProjectReference Include="../Tsinswreng.CsSql/proj/Tsinswreng.CsSql/Tsinswreng.CsSql.csproj" />
 		<ProjectReference Include="../Tsinswreng.Srefl/proj/Tsinswreng.Srefl/Tsinswreng.Srefl.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsYamlMd/proj/Tsinswreng.CsYamlMd/Tsinswreng.CsYamlMd.csproj" />
+		<ProjectReference Include="../Tsinswreng.CsTextWithBlob/proj/Tsinswreng.CsTextWithBlob/Tsinswreng.CsTextWithBlob.csproj" />
 		<ProjectReference Include="../Tsinswreng.Srefl/proj/Tsinswreng.Srefl.SrcGen/Tsinswreng.Srefl.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
 		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/Tsinswreng.CsFactoryMkr.csproj" />

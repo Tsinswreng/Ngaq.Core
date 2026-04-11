@@ -16,6 +16,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Word.Svc;
 
@@ -167,21 +168,7 @@ public interface ISvcWordV2{
 	]
 	")]
 	public IAsyncEnumerable<IdWord?> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
-	
-	// [Doc(@$"
-	// #See[{nameof(IRepo<,>.BatSoftUpdAgg)}]
-	// 按 根實體之Id 匹配而改。
-	// 會更新{nameof(PoWord.BizUpdatedAt)}。
-	// 不允許更新 {nameof(PoWord.Owner)}。
-	// 在執行更新之前先把入參的 {nameof(PoWord.Owner)}改成與 {nameof(Ctx)}中的用戶相同。
-	// ")]
-	// public Task<nil> BatSoftUpdJnWord(
-	// 	IDbUserCtx Ctx
-	// 	,IAsyncEnumerable<JnWord> JnWords
-	// 	,CT Ct
-	// );
-	
-	
+
 	[Doc(@$"
 		把{nameof(JnWords)}合入數據庫。
 		BizId指業務層面之唯一標識、而非Id字段
@@ -190,21 +177,23 @@ public interface ISvcWordV2{
 		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local(可能爲null);
 		
 		然後調用{nameof(ISvcWordInMem.SyncJnWord)}。
-		
-		
+		然後調用{nameof(BatSyncByDto)}。
+		#Rtn[亦返{nameof(DtoJnWordSyncResult)} 便于審計等]
 	")]
-	public Task<nil> BizSyncJnWordByBizId(
+	public IAsyncEnumerable<DtoJnWordSyncResult> BizSyncJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
 	);
 	
-	[Doc(@$"調用{nameof(ISvcWordSync)}裏面的API來實現。")]
+	[Doc(@$"調用{nameof(ISvcWordSync)}裏面的API來實現。
+	
+	")]
 	public Task<nil> BatSyncByDto(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
 	
-	
+
 
 }
 
