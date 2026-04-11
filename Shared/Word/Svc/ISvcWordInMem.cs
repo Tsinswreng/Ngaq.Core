@@ -41,14 +41,14 @@ public interface ISvcWordInMem{
 	此函數中則不再重複校驗。
 	")]
 	[Pure]
-	public EWordDiffResultForSync CompareJnWord(JnWord Local, JnWord Remote){
+	public EDiffByBizIdResultForSync CompareJnWord(JnWord Local, JnWord Remote){
 		var X = Local;
 		var Y = Remote;
 		if(!X.Word.IsSameUserWord(Y.Word)){
 			throw ItemsErr.Word.__And__IsNotSameUserWord.ToErr(X.Id,Y.Id);
 		}
 		if(X.Id != Y.Id){
-			return EWordDiffResultForSync.AddedIndependently;
+			return EDiffByBizIdResultForSync.IdNotEqual;
 		}
 		
 		if(X.BizUpdatedAt == Y.BizUpdatedAt
@@ -58,14 +58,14 @@ public interface ISvcWordInMem{
 			&& X.Props.Count == Y.Props.Count
 			&& X.Learns.Count == Y.Learns.Count
 		){
-			return EWordDiffResultForSync.NoChange;
+			return EDiffByBizIdResultForSync.NoChange;
 		}
 		var xUpd = X.Word.GetNewestBizUpdOrDelTime();
 		var yUpd = Y.Word.GetNewestBizUpdOrDelTime();
 		if(yUpd > xUpd){
-			return EWordDiffResultForSync.RemoteIsNewer;
+			return EDiffByBizIdResultForSync.RemoteIsNewer;
 		}else{
-			return EWordDiffResultForSync.RemoteIsOlder;
+			return EDiffByBizIdResultForSync.RemoteIsOlder;
 		}
 		// 兩單詞 Id相同但 BizCreatedAt 不同。
 		//不應該進入此分支。

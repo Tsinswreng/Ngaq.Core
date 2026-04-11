@@ -201,25 +201,25 @@ public interface ISvcWordV2{
 只是把同步單詞時 按 遇到的不同分類 分成不同函數處理、方便測試
 ")]
 public interface ISvcWordSync{
-	[Doc(@$"{nameof(EWordDiffResultForSync.NoChange)}")]
+	[Doc(@$"{nameof(EDiffByBizIdResultForSync.NoChange)}")]
 	public Task<nil> BatSync_NoChange(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
-	[Doc(@$"{nameof(EWordDiffResultForSync.RemoteIsOlder)}")]
+	[Doc(@$"{nameof(EDiffByBizIdResultForSync.RemoteIsOlder)}")]
 	public Task<nil> BatSync_RemoteIsOlder(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
-	[Doc(@$"{nameof(EWordDiffResultForSync.LocalNotExist)}")]
+	[Doc(@$"{nameof(EDiffByBizIdResultForSync.LocalNotExist)}")]
 	public Task<nil> BatSync_LocalNotExist(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
-	[Doc(@$"{nameof(EWordDiffResultForSync.AddedIndependently)}")]
+	[Doc(@$"{nameof(EDiffByBizIdResultForSync.IdNotEqual)}")]
 	public Task<nil> BatSync_AddedIndependently(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct

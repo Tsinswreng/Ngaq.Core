@@ -2,9 +2,11 @@ using Ngaq.Core.Shared.Word.Models.Po.Word;
 
 namespace Ngaq.Core.Shared.Word.Models.Dto;
 
-[Doc(@$"用于兩{nameof(JnWord)}同步")]
-public enum EWordDiffResultForSync{
-	[Doc(@$"兩個單詞都沒有變化。不用做。")]
+[Doc(@$"用于兩持久對象同步。
+按業務層唯一標識(BizId)比較、而不是按數據庫中生成的Id。
+")]
+public enum EDiffByBizIdResultForSync{
+	[Doc(@$"兩個對象都沒有變化。不用做。")]
 	NoChange,
 	
 	[Doc(@$"常見情況")]
@@ -20,43 +22,44 @@ public enum EWordDiffResultForSync{
 	")]
 	LocalNotExist,
 	
-	[Doc(@$"Remote和Local在各自的節點
-	在不同時間初次被添加再合併。導致Head,Lang相同但Id不同。
+	[Doc(@$"
+	Remote和Local的Id不一致、
+	可能是 本來 要合併的兩個節點 根本就不存在 Remote 和 Local、
+	在合併前、他們各自在不同時刻添加了 相同BizId的實體。
+	于是會各自形成兩個 Id不同的對象。
 	此時 理論上Local和Remote不會有重合的資產。
 	Local的資產需接收Remote的資產的合入(不會)。下次Remote再從Local合入其兩端資產即可同步。
 	
+	假如場景爲 {nameof(JnWord)}的同步、則
 	Local的{nameof(JnWord.Word)}改爲
 	Local和Remote中{nameof(PoWord.BizCreatedAt)}最小者的PoWord
 	")]
-	[Doc(@$"Remote和Local的Id不一致、
-	可能是 本來 要合併的兩個節點 根本就不存在 Remote 和 Local、
-	在合併前、他們各自在不同時刻添加了 相同(Head,Lang)的單詞。
-	于是會各自形成兩個 Id不同的JnWord。
-	此時應取更老者的Id作最終Id。
-	")]
-	AddedIndependently,
+	
+	IdNotEqual,
 }
 
 [Doc(@$"
-適用于當{nameof(EWordDiffResultForSync.RemoteIsNewer)}時。
-{nameof(JnWord)}比較情況、用于同步。
+適用于當{nameof(EDiffByBizIdResultForSync.RemoteIsNewer)}時。
+聚合類的比較情況、用于同步。
 設把Remote合入Local。
 
-兩個單詞有不同時、默認Remote更加新。
+兩個聚合類有不同時、默認Remote更加新。
 
 合併操作 只能對Local做改動。
 
-Remote和Local的 ({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})須一致、
-{nameof(PoWord.Id)}可能不一致。
+Remote和Local的BizId(業務層唯一標識、非Id字段)須一致、
+Id可能不一致。
 
-下面的條目未必是互拆的、可能有同時滿足的項目。
+下面的條目未必是互斥的、可能有同時滿足的項目。
 
 名詞解釋:
-- 資產(Assets)指 {nameof(JnWord.Props)} 或 {nameof(JnWord.Learns)};
-- 對于單個資產、軟刪除也屬于Change
-")]
-public class WordDiffCaseForSync{
+- 資產(Assets): 指聚合對象中 除了聚合根之外的實體(或實體列表)
+	例:對于{nameof(JnWord)}而言、其資產即 {nameof(JnWord.Props)} 和 {nameof(JnWord.Learns)};
+- 對于單個資產、軟刪除也屬于Change。
 
+比較一對資產實體時是按Id比較。資產實體可能沒有BizId。
+")]
+public class AggDiffCaseForSync{
 	[Doc(@$"
 	Remote中有新增之資產 which is Local中沒有的。
 	需把Local缺少的部分入庫。
@@ -75,20 +78,60 @@ public class WordDiffCaseForSync{
 	[Doc(@$"Local被軟刪除。需把Local的軟刪除狀態去除。")]
 	public bool LocalIsSoftDeleted{get;set;}
 	
-	[Doc(@$"{nameof(JnWord.Word)}有變化。")]
-	public bool WordCoreIsChanged{get;set;}
+	[Doc(@$"聚合根有變化。
+	對 {nameof(JnWord)}而言、 其聚合根即 {nameof(JnWord.Word)}
+	")]
+	public bool AggRootIsChanged{get;set;}
 	
+}
+
+
+[Doc(@$"一對聚合實體(也可能是單個Po)同步結果。
+Remote合入Local。
+#See[{nameof(AggDiffCaseForSync)}]
+")]
+public interface IAggSyncResult<T>{
+	public EDiffByBizIdResultForSync DiffResult{get;set;}
+	
+	[Doc(@$"適用于當{nameof(EDiffByBizIdResultForSync.RemoteIsNewer)}時。")]
+	public AggDiffCaseForSync? DiffCase{get;set;}
+	
+	[Doc(@$"同步前的Local 原對象")]
+	public T? Local{get;set;}
+	[Doc(@$"Remote對象")]
+	public T? Remote{get;set;}
+	
+	[Doc(@$"僅含 Remote 比 Local多出的新資產。
+	不考慮此字段之聚合根
+	#Example([
+	假設{nameof(T)}是{nameof(JnWord)}、
+	則此字段爲多出的{nameof(JnWord.Props)}和{nameof(JnWord.Learns)}、
+	不要管這個字段的{nameof(JnWord.Word)}(聚合根)
+	])
+	")]
+	public T? NewAssets{get;set;}
+	
+	[Doc(@$"僅含 Remote 比 Local 更改的資產。
+	不考慮此字段之聚合根
+	#See[{nameof(NewAssets)}]
+	")]
+	public T? ChangedAssets{get;set;}
+	
+	[Doc(@$"同步後的聚合根。
+	用來對應更新Local的聚合根。
+	")]
+	public T? SyncedPoWord{get;set;}
 }
 
 [Doc(@$"一對{nameof(JnWord)}同步結果。
 Remote合入Local。
-#See[{nameof(WordDiffCaseForSync)}]
+#See[{nameof(AggDiffCaseForSync)}]
 ")]
 public class DtoJnWordSyncResult{
-	public EWordDiffResultForSync DiffResult{get;set;}
+	public EDiffByBizIdResultForSync DiffResult{get;set;}
 	
-	[Doc(@$"適用于當{nameof(EWordDiffResultForSync.RemoteIsNewer)}時。")]
-	public WordDiffCaseForSync? DiffCase{get;set;}
+	[Doc(@$"適用于當{nameof(EDiffByBizIdResultForSync.RemoteIsNewer)}時。")]
+	public AggDiffCaseForSync? DiffCase{get;set;}
 	
 	[Doc(@$"同步前的Local 原詞")]
 	public JnWord? Local{get;set;}
