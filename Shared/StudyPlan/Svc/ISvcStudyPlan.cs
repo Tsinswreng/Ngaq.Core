@@ -202,5 +202,22 @@ public interface ISvcStudyPlan{
 	);
 	
 	
+	public Task<nil> SyncWeightArg(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWeightArg> Pos, CT Ct
+	);
 	
+	public Task<nil> SyncWeightCalculator(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWeightCalculator> Pos, CT Ct
+	);
+	
+	public Task<nil> SyncPreFilter(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoPreFilter> Pos, CT Ct
+	);
+	
+	public Task<nil> SyncStudyPlan(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoStudyPlan> Pos, CT Ct
+	);
+	
+	
+
 }

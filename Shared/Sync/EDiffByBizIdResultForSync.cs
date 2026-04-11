@@ -8,6 +8,7 @@ using E = EDiffByBizIdResultForSync;
 按業務層唯一標識(BizId)比較、而不是按數據庫中生成的Id。
 ")]
 public class EDiffByBizIdResultForSync{
+	public static readonly E Unknown = new();
 	[Doc(@$"兩個對象都沒有變化。不用做。")]
 	public static readonly E NoChange = new();
 	

@@ -1,6 +1,7 @@
 using System.Diagnostics.Contracts;
 using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Ngaq.Core.Shared.Sync;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;

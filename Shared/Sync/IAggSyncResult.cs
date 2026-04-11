@@ -41,8 +41,7 @@ public interface IAggSyncResult<T>{
 
 
 public class AggSyncResult<T>: IAggSyncResult<T>{
-	public EDiffByBizIdResultForSync DiffResult{get;set;}
-	
+	public EDiffByBizIdResultForSync DiffResult{get;set;} = EDiffByBizIdResultForSync.Unknown;
 	public AggDiffCaseForSync? DiffCase{get;set;}
 	
 	public T? Local{get;set;}
