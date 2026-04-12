@@ -3,6 +3,7 @@ using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
+using Tsinswreng.CsSql;
 using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Sync;
@@ -63,8 +64,10 @@ public interface IEntitySyncerInMem<T>
 }
 
 [Doc(@$"實際操作數據庫")]
-public interface IEntitySyncerDb<T>{
+public interface IEntitySyncerDb<T>
+	where T: class, IPoBase, IBizCreateUpdateTime, new()
+{
 	public IAsyncEnumerable<DtoEntityDiffEtSync<T>> BatSyncPo(
-		IDbUserCtx Ctx, IAsyncEnumerable<T> Pos, CT Ct
+		IDbFnCtx Ctx, IAsyncEnumerable<T> Pos, CT Ct
 	);
 }
