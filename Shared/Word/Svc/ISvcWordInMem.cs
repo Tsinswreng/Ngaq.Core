@@ -18,25 +18,7 @@ namespace Ngaq.Core.Shared.Word.Svc;
 ")]
 public interface ISvcWordInMem{
 	
-	[Doc(@$"只適用于資產。確保{nameof(X)}與{nameof(Y)}之Id相同、本函數不再校驗。")]
-	[Pure]
-	public int DiffWordAssetByTime<TSelf>(
-		TSelf X, TSelf Y
-	)where TSelf:IBizCreateUpdateTime, I_DelAt
-	{
-		if(X.BizUpdatedAt == Y.BizUpdatedAt
-			&& X.BizCreatedAt == Y.BizCreatedAt
-			&& X.DelAt == Y.DelAt
-		){
-			return 0;
-		}
-		var xUpd = X.GetNewestBizUpdOrDelTime();
-		var yUpd = Y.GetNewestBizUpdOrDelTime();
-		if(X.BizCreatedAt == Y.BizCreatedAt){
-			return xUpd.CompareTo(yUpd);
-		}
-		throw new Exception(Todo.I18n("Id相同時 BizCreatedAt 不相等"));
-	}
+
 	
 	[Doc(@$"確保兩詞之{nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}相同。
 	此函數中則不再重複校驗。

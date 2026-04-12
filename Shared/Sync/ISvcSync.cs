@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.Word.Models;
@@ -14,9 +15,45 @@ public interface IEntitySyncerInMem<T>
 	where T: IPoBase, IBizCreateUpdateTime, I_Owner
 {
 	
-	public DtoEntityDiffEtSync<T> Sync(
+	[Doc(@$"只適用于資產。確保{nameof(X)}與{nameof(Y)}之Id相同、本函數不再校驗。")]
+	[Pure]
+	public int DiffPoByTime(
+		T X, T Y
+	){
+		if(X.BizUpdatedAt == Y.BizUpdatedAt
+			&& X.BizCreatedAt == Y.BizCreatedAt
+			&& X.DelAt == Y.DelAt
+		){
+			return 0;
+		}
+		var xUpd = X.GetNewestBizUpdOrDelTime();
+		var yUpd = Y.GetNewestBizUpdOrDelTime();
+		return xUpd.CompareTo(yUpd);
+		//throw new Exception(Todo.I18n("Id相同時 BizCreatedAt 不相等"));
+	}
+	
+	
+	
+	public IDtoEntityDiffEtSync<T> Sync(
 		T Local, T Remote
-	);
+	){
+		if(Local.Id){
+			
+		}
+		var diff = DiffPoByTime(Local, Remote);
+		var r = new DtoEntityDiffEtSync<T>();
+		r.LocalCompareToRemote = diff;
+		if(diff == 0){
+			r.SyncedEntity = default;
+		}
+		else if(diff > 0){
+			r.SyncedEntity = Remote;
+		}
+		else{
+			r.SyncedEntity = default;
+		}
+		return r;
+	}
 	
 
 }

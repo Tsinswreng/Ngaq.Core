@@ -37,6 +37,7 @@ public interface IBizCreateUpdateTime{
 
 }
 
+
 public static class ExtnBizTime{
 	extension(IBizCreateUpdateTime z){
 		public Tempus LatestBizTime{

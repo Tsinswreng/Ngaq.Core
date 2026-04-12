@@ -1,8 +1,10 @@
 #define Impl
 namespace Ngaq.Core.Shared.Base.Models.Po;
+using Tsinswreng.Srefl;
 using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Tools;
+using Tsinswreng.CsSql;
 
 public partial class PoBase:IPoBase{
 	public object ShallowCloneSelf()
@@ -42,6 +44,23 @@ public partial class PoBaseBizTime: PoBase, IBizCreateUpdateTime{
 
 
 public static class ExtnPoBase{
+	extension<T>(T z)
+		where T:IPoBase
+	{
+		public obj? Id_(){
+			if(CoreDictMapper.Inst.PropAccessorReg.TryGet<T>(z, nameof(I_Id<>), out var Id)){
+				return Id;
+			}
+			throw new InvalidOperationException($@"{typeof(T)} {z} does not have {nameof(I_Id<>)}
+			or it is not registered in {nameof(CoreDictMapper.Inst.PropAccessorReg)}
+			");
+		}
+		public bool Id_(obj? Id){
+			return CoreDictMapper.Inst.PropAccessorReg.TrySet<T>(z, nameof(I_Id<>), Id);
+		}
+		
+	}
+	
 	public static bool IsDeleted(this IPoBase z){
 		return !z.DelAt.IsNullOrDefault();
 	}
