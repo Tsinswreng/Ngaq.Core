@@ -7,6 +7,12 @@ using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Sync;
 
+public class EntitySyncerInMem<T>: IEntitySyncerInMem<T>
+	where T: IPoBase, IBizCreateUpdateTime, I_Owner
+{
+	
+}
+
 [Doc(@$"適用於獨立的實體。
 不適用于有資產實體的聚合(如{nameof(JnWord)})
 也不適用于 屬于聚合的資產實體(如{nameof(PoWordProp)})
@@ -33,12 +39,12 @@ public interface IEntitySyncerInMem<T>
 	}
 	
 	
-	
+	[Doc(@$"適用于單個獨立的實體、不適用于聚合類(如{nameof(JnWord)})")]
 	public IDtoEntityDiffEtSync<T> Sync(
 		T Local, T Remote
 	){
-		if(Local.Id){
-			
+		if(!Local.Id_().EqObj(Remote.Id_())){
+			throw new InvalidOperationException(Todo.I18n("Id不同時不應該同步"));
 		}
 		var diff = DiffPoByTime(Local, Remote);
 		var r = new DtoEntityDiffEtSync<T>();
@@ -54,8 +60,6 @@ public interface IEntitySyncerInMem<T>
 		}
 		return r;
 	}
-	
-
 }
 
 [Doc(@$"實際操作數據庫")]

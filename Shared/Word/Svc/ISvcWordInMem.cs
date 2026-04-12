@@ -55,6 +55,11 @@ public interface ISvcWordInMem{
 		//throw ItemsErr.Word.Word__And__SyncFailed.ToErr(X.Id, Y.Id);
 	}
 	
+	public int DiffWordAssetByTime(PoWord Local, PoWord Remote){
+		IEntitySyncerInMem<PoWord> syncer = new EntitySyncerInMem<PoWord>();
+		return syncer.DiffPoByTime(Local, Remote);
+	}
+	
 	[Doc(@$"
 把{nameof(Remote)}合入{nameof(Local)}、純函數、返回新的合併後的對象。
 
@@ -95,18 +100,5 @@ public interface ISvcWordInMem{
 	[Pure]
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote);
 	
-	// [Doc(@$"
-	// #Rtn[
-	// - {nameof(ITextWithStream.Text)}爲{nameof(PackInfo)}之json;
-	// - {nameof(ITextWithStream.Payload)} 見 {nameof(PackInfo.Type)};
-	// ]
-	// ")]
-	// public Task<ITextWithStream> PackWords(
-	// 	IAsyncEnumerable<JnWord> Words, IWordsPackInfo PackInfo, CT Ct
-	// );
-	
-	// [Doc(@$"暫時不需要校驗版本如{nameof(IWordsPackInfo.Ver)}等")]
-	// public IAnswer<IAsyncEnumerable<PoWord>> UnpackWords(
-	// 	ITextWithStream Pack, CT Ct
-	// );
+
 }

@@ -47,6 +47,7 @@ public static class ExtnPoBase{
 	extension<T>(T z)
 		where T:IPoBase
 	{
+		[Doc(@$"用Equals比較 而非等号")]
 		public obj? Id_(){
 			if(CoreDictMapper.Inst.PropAccessorReg.TryGet<T>(z, nameof(I_Id<>), out var Id)){
 				return Id;

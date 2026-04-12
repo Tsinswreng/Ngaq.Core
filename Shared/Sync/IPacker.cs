@@ -50,8 +50,7 @@ public class Packer<T>:IPacker<T>{
 	public IAnswer<IAsyncEnumerable<T>> Unpack(
 		ITextWithStream TextWithBlob, CT Ct
 	){
-		
-		
+		throw new NotImplementedException();
 	}
 	
 	

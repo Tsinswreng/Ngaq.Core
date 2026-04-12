@@ -20,6 +20,7 @@ public static class ItemsErr{
 		[Doc(@$"數據不合法或衝突")]
 		public static K DataIllegalOrConflict = MkB(_R, [nameof(PermissionDenied)]);
 	}
+	
 	public class User{
 		public static K _R = Mk(null, [nameof(User)]);
 		[Doc(@$"慎用、防止用戶枚舉漏洞")]
