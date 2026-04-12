@@ -8,7 +8,7 @@ using Tsinswreng.CsTextWithBlob;
 namespace Ngaq.Core.Shared.Sync;
 
 public class EntitySyncerInMem<T>: IEntitySyncerInMem<T>
-	where T: IPoBase, IBizCreateUpdateTime, I_Owner
+	where T: IPoBase, IBizCreateUpdateTime
 {
 	
 }
@@ -18,7 +18,7 @@ public class EntitySyncerInMem<T>: IEntitySyncerInMem<T>
 也不適用于 屬于聚合的資產實體(如{nameof(PoWordProp)})
 ")]
 public interface IEntitySyncerInMem<T>
-	where T: IPoBase, IBizCreateUpdateTime, I_Owner
+	where T: IPoBase, IBizCreateUpdateTime
 {
 	
 	[Doc(@$"只適用于資產。確保{nameof(X)}與{nameof(Y)}之Id相同、本函數不再校驗。")]
