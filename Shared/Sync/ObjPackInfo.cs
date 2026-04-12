@@ -6,13 +6,13 @@ namespace Ngaq.Core.Shared.Sync;
 
 
 [Doc(@$"對象打包 元數據。
-適用于作{nameof(ITextWithMemory.Text)}
+適用于作{nameof(ITextWithStream.Text)}
 ")]
 public interface IObjPackInfo{
 	public static Version ClassVer = new Version(1,0,0);
 	
-	[Doc(@$"{nameof(ITextWithMemory.Blob)}。
-	建議用字符串作其實現類型。
+	[Doc(@$"{nameof(ITextWithStream.Payload)}。
+	建議用字符串作此字段之實現類型。
 	")]
 	public obj? PayloadTypeObj{get;set;}
 	

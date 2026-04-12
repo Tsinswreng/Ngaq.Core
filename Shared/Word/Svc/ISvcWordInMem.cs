@@ -113,18 +113,18 @@ public interface ISvcWordInMem{
 	[Pure]
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote);
 	
-	[Doc(@$"
-	#Rtn[
-	- {nameof(ITextWithMemory.Text)}爲{nameof(PackInfo)}之json;
-	- {nameof(ITextWithMemory.Blob)} 見 {nameof(PackInfo.Type)};
-	]
-	")]
-	public Task<ITextWithMemory> PackWords(
-		IAsyncEnumerable<JnWord> Words, IWordsPackInfo PackInfo, CT Ct
-	);
+	// [Doc(@$"
+	// #Rtn[
+	// - {nameof(ITextWithStream.Text)}爲{nameof(PackInfo)}之json;
+	// - {nameof(ITextWithStream.Payload)} 見 {nameof(PackInfo.Type)};
+	// ]
+	// ")]
+	// public Task<ITextWithStream> PackWords(
+	// 	IAsyncEnumerable<JnWord> Words, IWordsPackInfo PackInfo, CT Ct
+	// );
 	
-	[Doc(@$"暫時不需要校驗版本如{nameof(IWordsPackInfo.Ver)}等")]
-	public IAnswer<IAsyncEnumerable<PoWord>> UnpackWords(
-		ITextWithMemory Pack, CT Ct
-	);
+	// [Doc(@$"暫時不需要校驗版本如{nameof(IWordsPackInfo.Ver)}等")]
+	// public IAnswer<IAsyncEnumerable<PoWord>> UnpackWords(
+	// 	ITextWithStream Pack, CT Ct
+	// );
 }
