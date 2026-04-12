@@ -7,7 +7,7 @@ namespace Ngaq.Core.Shared.StudyPlan.Models.Po.WeightCalculator;
 
 [Doc($@"權重算法持久化實體")]
 public class PoWeightCalculator
-	:PoBase
+	:PoBaseBizTime
 	,AppI_Id<IdWeightCalculator>
 	,I_Owner
 	,I_UniqName
