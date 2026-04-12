@@ -47,7 +47,9 @@ public static class ExtnPoBase{
 	extension<T>(T z)
 		where T:IPoBase
 	{
-		[Doc(@$"用Equals比較 而非等号")]
+		[Doc(@$"用Equals比較 而非等号。
+		推薦用 {nameof(Extn.EqObj)}來比較、因佢能比較null、不致空指針。
+		")]
 		public obj? Id_(){
 			if(CoreDictMapper.Inst.PropAccessorReg.TryGet<T>(z, nameof(I_Id<>), out var Id)){
 				return Id;

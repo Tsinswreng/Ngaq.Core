@@ -64,10 +64,10 @@ public interface IEntitySyncerInMem<T>
 }
 
 [Doc(@$"實際操作數據庫")]
-public interface IEntitySyncerDb<T>
-	where T: class, IPoBase, IBizCreateUpdateTime, new()
+public interface IEntitySyncerDb<TPo, TId>
+	where TPo: class, IPoBase, IBizCreateUpdateTime, new()
 {
-	public IAsyncEnumerable<DtoEntityDiffEtSync<T>> BatSyncPo(
-		IDbFnCtx Ctx, IAsyncEnumerable<T> Pos, CT Ct
+	public IAsyncEnumerable<DtoEntityDiffEtSync<TPo>> BatSyncPo(
+		IDbFnCtx Ctx, IAsyncEnumerable<TPo> Pos, CT Ct
 	);
 }
