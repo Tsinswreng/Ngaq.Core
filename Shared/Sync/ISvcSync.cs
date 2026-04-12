@@ -10,7 +10,7 @@ namespace Ngaq.Core.Shared.Sync;
 不適用于有資產實體的聚合(如{nameof(JnWord)})
 也不適用于 屬于聚合的資產實體(如{nameof(PoWordProp)})
 ")]
-public interface IEntitySyncer<T>
+public interface IEntitySyncerInMem<T>
 	where T: IPoBase, IBizCreateUpdateTime, I_Owner
 {
 	
@@ -18,9 +18,12 @@ public interface IEntitySyncer<T>
 		T Local, T Remote
 	);
 	
-	public Task<nil> SyncPo(
+
+}
+
+[Doc(@$"實際操作數據庫")]
+public interface IEntitySyncerDb<T>{
+	public IAsyncEnumerable<DtoEntityDiffEtSync<T>> BatSyncPo(
 		IDbUserCtx Ctx, IAsyncEnumerable<T> Pos, CT Ct
 	);
-	
-
 }

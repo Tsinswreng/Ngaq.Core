@@ -1,4 +1,5 @@
 using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.IF;
 using Tsinswreng.CsTextWithBlob;
 
 namespace Ngaq.Core.Shared.Sync;
@@ -8,7 +9,7 @@ namespace Ngaq.Core.Shared.Sync;
 [Doc(@$"對象打包 元數據。
 適用于作{nameof(ITextWithStream.Text)}
 ")]
-public interface IObjPackInfo{
+public interface IObjPackInfo:IAppSerializable{
 	public static Version ClassVer = new Version(1,0,0);
 	
 	[Doc(@$"{nameof(ITextWithStream.Payload)}。
