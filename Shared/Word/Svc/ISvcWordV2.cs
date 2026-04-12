@@ -137,9 +137,17 @@ public interface ISvcWordV2{
 	則直接更新其他不同字段、返回原本的{nameof(PoWord.Id)}。
 	
 	若 Old和New 的 ({nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同、
+	就先調{nameof(BatUpdHeadLang)}、再以返回的Id爲基準、更新其他字段
 	")]
 	public Task<IAsyncEnumerable<IdWord?>> BatUpdPoWord(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct
+	);
+	
+	[Doc(@$"更新單詞Id。
+	用于同步旹 {nameof(EDiffByBizIdResultForSync.IdNotEqual)} 按Id更小者爲準。
+	")]
+	public Task<nil> BatChangeId(
+		IDbUserCtx Ctx, IAsyncEnumerable<(IdWord Old, IdWord New)> Ids, CT Ct
 	);
 	
 	[Doc(@$"
@@ -194,6 +202,7 @@ public interface ISvcWordV2{
 	);
 	
 	
+	
 
 
 }
@@ -221,7 +230,7 @@ public interface ISvcWordSync{
 	);
 	
 	[Doc(@$"{nameof(EDiffByBizIdResultForSync.IdNotEqual)}")]
-	public Task<nil> BatSync_AddedIndependently(
+	public Task<nil> BatSync_IdNotEqual(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);

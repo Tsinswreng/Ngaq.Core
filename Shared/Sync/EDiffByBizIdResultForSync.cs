@@ -33,9 +33,7 @@ public class EDiffByBizIdResultForSync{
 	此時 理論上Local和Remote不會有重合的資產。
 	Local的資產需接收Remote的資產的合入(不會)。下次Remote再從Local合入其兩端資產即可同步。
 	
-	假如場景爲 {nameof(JnWord)}的同步、則
-	Local的{nameof(JnWord.Word)}改爲
-	Local和Remote中{nameof(PoWord.BizCreatedAt)}最小者的PoWord
+	合併後實體的Id 以 Id更小者 爲準。
 	")]
 	
 	public static readonly E IdNotEqual = new();
