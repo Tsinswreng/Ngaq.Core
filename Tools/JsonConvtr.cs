@@ -1,6 +1,7 @@
 namespace Ngaq.Core.Tools;
 using System.Text.Json.Serialization;
 using System.Text.Json;
+using Tsinswreng.CsTempus;
 
 // 非泛型抽象基类，避免反射 MakeGenericType
 // internal abstract class AotSafeInterfaceConverter : JsonConverterFactory {
@@ -12,6 +13,26 @@ using System.Text.Json;
 // 	// 由源生成器在编译期生成并注册到 Converters 中
 // 	protected abstract JsonConverter? CreateConverterCore(Type type);
 // }
+
+[Doc(@$"TODO 複用")]
+public partial class JsonConvtr_Tempus : JsonConverter<Tempus> {
+	public override Tempus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+		System.Console.WriteLine("\nBBB\n");
+		using JsonDocument doc = JsonDocument.ParseValue(ref reader);
+		JsonElement ele = doc.RootElement;
+		if(ele.ValueKind == JsonValueKind.Number
+			&& ele.TryGetInt64(out long l)
+		){
+			return new Tempus(l);
+		}
+		return default;
+	}
+
+	public override void Write(Utf8JsonWriter writer, Tempus value, JsonSerializerOptions options) {
+		System.Console.WriteLine("\nAAA\n");
+		JsonSerializer.Serialize(writer, value.Value, RawValueCtx.Default.Object);
+	}
+}
 
 // 源生成器会针对每个 T 生成一个 partial 方法实现
 public partial class JsonConvtr<T> : JsonConverter<T>
