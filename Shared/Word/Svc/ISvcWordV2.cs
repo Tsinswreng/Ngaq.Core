@@ -134,13 +134,13 @@ public interface ISvcWordV2{
 	先用傳入的{nameof(PoWord.Id)} 去庫裏查單詞、設查得的單詞爲 Old
 	
 	若Old和傳入的{nameof(PoWord.Id)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}都相同、
-	則直接更新其他不同字段、返回原本的{nameof(PoWord.Id)}。
+	則直接更新其他不同字段、{nameof(RespUpdPoWord.HasUpdatedBizId)}=false
 	
 	若 Old和New 的 ({nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同、
 	就先調{nameof(BatUpdHeadLang)}、再以返回的Id爲基準、更新其他字段
-	#Rtn[更新後的Id (可能與原Id不同)]
+	#Rtn[更新結果Dto。其{nameof(RespUpdPoWord.FinalId)}一定有值]
 	")]
-	public Task<IAsyncEnumerable<IdWord?>> BatUpdPoWord(
+	public Task<IAsyncEnumerable<RespUpdPoWord>> BatUpdPoWord(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct
 	);
 	
@@ -173,14 +173,14 @@ public interface ISvcWordV2{
 			把WordOfId的資產({nameof(JnWord.Props)},{nameof(JnWord.Learns)})
 			算成 WordOfHeadLang 的資產(改{nameof(I_WordId.WordId)}外鍵、爲移動洏非複製);改完之後WordOfId不再有任何資產
 			更改有變動的實體的{nameof(PoWord.BizUpdatedAt)}。(資產實體不需要改更新時間、因爲 只是外鍵變了 內容沒變)
-			設 返值Dto的{nameof(RespUpdHeadLang.FinalId)}爲 WordOfHeadLang.Id
+			設 返值Dto的{nameof(RespUpdBizId.FinalId)}爲 WordOfHeadLang.Id
 		]
 	]
 	#Rtn[同位置的每個元素與入參一一對應、
 	返回的Id都是最終基準Id
 	]
 	")]
-	public IAsyncEnumerable<RespUpdHeadLang> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
+	public IAsyncEnumerable<RespUpdBizId> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
 
 	[Doc(@$"
 		把{nameof(JnWords)}合入數據庫。
