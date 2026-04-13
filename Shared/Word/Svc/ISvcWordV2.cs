@@ -138,6 +138,7 @@ public interface ISvcWordV2{
 	
 	若 Old和New 的 ({nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同、
 	就先調{nameof(BatUpdHeadLang)}、再以返回的Id爲基準、更新其他字段
+	#Rtn[更新後的Id (可能與原Id不同)]
 	")]
 	public Task<IAsyncEnumerable<IdWord?>> BatUpdPoWord(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct
@@ -152,32 +153,34 @@ public interface ISvcWordV2{
 	);
 	
 	[Doc(@$"
+	BizId即({nameof(PoWord.Head)},{nameof(PoWord.Lang)})。
+	
 	對入參中每項(Arg)、先用Arg.Id 查得數據庫中己存之實體 WordOfId;
 	若WordOfId不存在則拋{nameof(ItemsErr.Word.WordOfId__NotFound)}
 	若WordOfId存在但Owner不同則拋{nameof(ItemsErr.Common.PermissionDenied)};
 	
-	若WordOfId存在且WordOfId的(Head,Lang)與Arg的相同則不管、返null;
+	若WordOfId存在且WordOfId的BizId與Arg的相同則不管({nameof(EUpdBizIdResult.BizIdAlreadyEqual)});
 	
-	若WordOfId存在且WordOfId的(Head,Lang)與Arg不同[
-		先用WordOfId.(Head,Lang)查庫得到 WordOfHeadLang ;
+	若WordOfId存在且WordOfId的BizId與Arg不同
+	[
+		先用WordOfId.BizId查庫得到 WordOfHeadLang ;
 		if WordOfHeadLang 已被軟刪除 先取消他的軟刪除狀態;
-		if WordOfHeadLang is null [ 即 作爲更改目標的(Head,Lang)不存在,更改不衝突
-			直接把 WordOfId 的 (Head,Lang) 改成 Arg的 (Head,Lang) ;
+		if WordOfHeadLang is null [ 即 作爲更改目標的BizId不存在,更改不衝突({nameof(EUpdBizIdResult.DataOfBizIdNotExist)})
+			直接把 WordOfId 的 BizId 改成 Arg的 BizId ;
 			改 業務更新時間;
-			返null;
-		]else[ 即 WordOfHeadLang 不爲空 作爲更改目標的(Head,Lang)已存在,更改衝突
+		]else[ 即 WordOfHeadLang 不爲空 作爲更改目標的BizId已存在,更改衝突({nameof(EUpdBizIdResult.BizIdNotEqual)})
 			把 WordOfId 設成已軟刪除;
 			把WordOfId的資產({nameof(JnWord.Props)},{nameof(JnWord.Learns)})
 			算成 WordOfHeadLang 的資產(改{nameof(I_WordId.WordId)}外鍵、爲移動洏非複製);改完之後WordOfId不再有任何資產
 			更改有變動的實體的{nameof(PoWord.BizUpdatedAt)}。(資產實體不需要改更新時間、因爲 只是外鍵變了 內容沒變)
-			返 WordOfHeadLang.Id
+			設 返值Dto的{nameof(RespUpdHeadLang.FinalId)}爲 WordOfHeadLang.Id
 		]
 	]
-	#Rtn[單詞主鍵Id、同位置的每個元素與入參一一對應、
-	返回的Id都是 有變化時最終 (Head,Lang)所屬單詞的Id。如果最終的Id和對應入參的Id一樣那就返null
+	#Rtn[同位置的每個元素與入參一一對應、
+	返回的Id都是最終基準Id
 	]
 	")]
-	public IAsyncEnumerable<IdWord?> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
+	public IAsyncEnumerable<RespUpdHeadLang> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
 
 	[Doc(@$"
 		把{nameof(JnWords)}合入數據庫。
