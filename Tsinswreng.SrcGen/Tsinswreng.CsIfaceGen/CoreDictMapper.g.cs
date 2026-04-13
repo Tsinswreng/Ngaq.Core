@@ -56,10 +56,10 @@ using Tsinswreng.Srefl;
 }
 
 namespace Ngaq.Core.Infra{
-	using Tsinswreng.Srefl;
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Kv.Models.IdKv))]
 	public partial class CoreDictMapper{
-		//public static string Ngaq_Core_Sys_Models_IdKv = "global::Ngaq.Core.Sys.Models.IdKv";
+		//public static string Ngaq_Core_Shared_Kv_Models_IdKv = "global::Ngaq.Core.Shared.Kv.Models.IdKv";
 	}
 }
 
@@ -225,6 +225,14 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Sync.IObjPackInfo))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Sync_IObjPackInfo = "global::Ngaq.Core.Shared.Sync.IObjPackInfo";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Base.Models.Po.IPoBase))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Base_Models_Po_IPoBase = "global::Ngaq.Core.Shared.Base.Models.Po.IPoBase";
@@ -348,6 +356,14 @@ using Tsinswreng.Srefl;
 	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Dictionary_Models_NormLangWithName = "global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName";
+	}
+}
+
+namespace Ngaq.Core.Infra{
+using Tsinswreng.Srefl;
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Sync.ObjPackInfo))]
+	public partial class CoreDictMapper{
+		//public static string Ngaq_Core_Shared_Sync_ObjPackInfo = "global::Ngaq.Core.Shared.Sync.ObjPackInfo";
 	}
 }
 

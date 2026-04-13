@@ -1,5 +1,4 @@
 namespace Ngaq.Core.Infra;
-
 using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Req.BaseReq))]
@@ -86,6 +85,9 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.IJnWord>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Sync.IObjPackInfo))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Sync.IObjPackInfo>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Base.Models.Po.IPoBase))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Base.Models.Po.IPoBase>))]
 
@@ -133,6 +135,9 @@ using System.Text.Json.Serialization;
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Sync.ObjPackInfo))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Sync.ObjPackInfo>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.DictionaryApi.Phonetic>))]
