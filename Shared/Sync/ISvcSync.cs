@@ -1,6 +1,7 @@
 using System.Diagnostics.Contracts;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Tsinswreng.CsSql;
@@ -14,15 +15,15 @@ public class EntitySyncerInMem<T>: IEntitySyncerInMem<T>
 	
 }
 
-[Doc(@$"適用於獨立的實體。
-不適用于有資產實體的聚合(如{nameof(JnWord)})
-也不適用于 屬于聚合的資產實體(如{nameof(PoWordProp)})
+[Doc(@$"實體(Po)內存中 同步邏輯。
+每個成員都是純函數。
 ")]
 public interface IEntitySyncerInMem<T>
 	where T: IPoBase, IBizCreateUpdateTime
 {
 	
-	[Doc(@$"只適用于資產。確保{nameof(X)}與{nameof(Y)}之Id相同、本函數不再校驗。")]
+	[Doc(@$"適用于單個獨立的實體(包括聚合類的資產)、
+	不適用于聚合類(如{nameof(JnWord)})")]
 	[Pure]
 	public int DiffPoByTime(
 		T X, T Y
@@ -40,7 +41,8 @@ public interface IEntitySyncerInMem<T>
 	}
 	
 	
-	[Doc(@$"適用于單個獨立的實體、不適用于聚合類(如{nameof(JnWord)})")]
+	[Doc(@$"適用于單個獨立的實體(包括聚合類的資產)、
+	不適用于聚合類(如{nameof(JnWord)})")]
 	public IDtoEntityDiffEtSync<T> Sync(
 		T Local, T Remote
 	){

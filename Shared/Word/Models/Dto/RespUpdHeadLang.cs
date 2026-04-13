@@ -23,5 +23,5 @@ public enum EUpdBizIdResult{
 public class RespUpdHeadLang{
 	public EUpdBizIdResult Result{get;set;}
 	[Doc(@$"操作後 最終對應BizId 的 Id字段")]
-	public IdWord? FinalId{get;set;}
+	public IdWord FinalId{get;set;}
 }
