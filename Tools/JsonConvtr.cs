@@ -17,7 +17,6 @@ using Tsinswreng.CsTempus;
 [Doc(@$"TODO 複用")]
 public partial class JsonConvtr_Tempus : JsonConverter<Tempus> {
 	public override Tempus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
-		System.Console.WriteLine("\nBBB\n");
 		using JsonDocument doc = JsonDocument.ParseValue(ref reader);
 		JsonElement ele = doc.RootElement;
 		if(ele.ValueKind == JsonValueKind.Number
@@ -29,7 +28,6 @@ public partial class JsonConvtr_Tempus : JsonConverter<Tempus> {
 	}
 
 	public override void Write(Utf8JsonWriter writer, Tempus value, JsonSerializerOptions options) {
-		System.Console.WriteLine("\nAAA\n");
 		JsonSerializer.Serialize(writer, value.Value, RawValueCtx.Default.Object);
 	}
 }

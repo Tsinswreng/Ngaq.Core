@@ -10,20 +10,20 @@ namespace Ngaq.Core.Tools;
 public static class JSON {
 	
 	/// 縱Opt中指定了TypeInfoResolver亦不效、肰直ᵈ傳TypeInfo又不可兼傳Opt。故需把選項加于appJsonCtxʹ註解
-	static JsonSerializerOptions Opt = new JsonSerializerOptions{
-		//WriteIndented = true
-		Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出
-		,PropertyNamingPolicy = null  // 关闭命名策略
-		,TypeInfoResolver = AppJsonCtx.Default
-		,ReadCommentHandling = JsonCommentHandling.Skip
-		//,Converters = { new CustomJsonConvtrFctry() }
-		// ,Converters = {
+	// static JsonSerializerOptions Opt = new JsonSerializerOptions{
+	// 	//WriteIndented = true
+	// 	Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping // 允許原樣輸出
+	// 	,PropertyNamingPolicy = null  // 关闭命名策略
+	// 	,TypeInfoResolver = AppJsonCtx.Default
+	// 	,ReadCommentHandling = JsonCommentHandling.Skip
+	// 	//,Converters = { new CustomJsonConvtrFctry() }
+	// 	// ,Converters = {
 
-		// }
-	};
+	// 	// }
+	// };
 
 	public static string Stringify<T>(T o){
-		// ✅ 使用 AppJsonCtx 提供的 type info
+		//勿用 AppJsonCtx.Default
 		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
@@ -33,8 +33,8 @@ public static class JSON {
 	}
 
 	public static T? Parse<T>(string json){
-		// ✅ 使用 AppJsonCtx 提供的 type info
-		var typeInfo = AppJsonCtx.Default.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
+		//勿用 AppJsonCtx.Default
+		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(typeof(T)) as JsonTypeInfo<T>;
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
 		}
@@ -42,7 +42,7 @@ public static class JSON {
 	}
 	
 	public static obj? Parse(string json, Type T){
-		var typeInfo = AppJsonCtx.Default.GetTypeInfo(T);
+		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(T);
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {T} is not registered in AppJsonCtx");
 		}
@@ -60,7 +60,7 @@ public static class JSON {
 
 	/// 使用源生成的 TypeInfo 从 JsonElement 反序列化到目标类型，避免中间 JSON 字符串。
 	public static obj? Parse(JsonElement element, Type T){
-		var typeInfo = AppJsonCtx.Default.GetTypeInfo(T);
+		var typeInfo = AppJsonCtx.Inst.GetTypeInfo(T);
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {T} is not registered in AppJsonCtx");
 		}
