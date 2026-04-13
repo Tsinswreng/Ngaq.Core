@@ -1,10 +1,10 @@
 namespace Ngaq.Core.Frontend.User;
 
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Tools;
+using Tsinswreng.CsTempus;
 
 public class FrontendUserCtx : IFrontendUserCtx{
 	[Obsolete("use LocalUserId or LoginUserId")]

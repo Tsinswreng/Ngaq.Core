@@ -1,8 +1,8 @@
 namespace Ngaq.Core.Shared.Word.Models.Dto;
 
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Req;
 using Tsinswreng.CsPage;
+using Tsinswreng.CsTempus;
 
 public class ReqScltWordsOfLearnResultByTimeInterval:IReq{
 	public Tempus TimeStart{get;set;}

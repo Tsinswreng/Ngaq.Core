@@ -6,6 +6,7 @@ using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Infra;
 using Tsinswreng.CsSql;
 using Tsinswreng.Srefl;
+using Tsinswreng.CsTempus;
 
 [Doc(@$"
 同Owner下 ({nameof(Head)}, {nameof(Lang)}) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id

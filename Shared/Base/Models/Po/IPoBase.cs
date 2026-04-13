@@ -3,9 +3,9 @@ namespace Ngaq.Core.Shared.Base.Models.Po;
 
 using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Tools;
+using Tsinswreng.CsTempus;
 
 public partial interface IPoBase
 	:I_ShallowCloneSelf

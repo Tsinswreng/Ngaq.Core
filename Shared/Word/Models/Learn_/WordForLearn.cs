@@ -7,9 +7,9 @@ using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
-using Ngaq.Core.Infra;
 using Tsinswreng.CsTools;
 using Ngaq.Core.Shared.Base.Models.Po;
+using Tsinswreng.CsTempus;
 
 public partial class WordForLearn
 	:IWordForLearn

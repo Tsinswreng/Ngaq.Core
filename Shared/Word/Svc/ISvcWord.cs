@@ -1,6 +1,5 @@
 namespace Ngaq.Core.Shared.Word.Svc;
 
-using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Tools.Io;
 using Ngaq.Core.Iter;
@@ -13,6 +12,7 @@ using Ngaq.Core.Tools;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
+using Tsinswreng.CsTempus;
 
 file class DirDoc{
 	str Doc =

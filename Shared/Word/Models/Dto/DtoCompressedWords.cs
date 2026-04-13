@@ -3,7 +3,7 @@ namespace Ngaq.Core.Shared.Word.Models.Dto;
 
 using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
-
+using Tsinswreng.CsTempus;
 
 public class DtoCompressedWords
 	:IWordsPackInfo

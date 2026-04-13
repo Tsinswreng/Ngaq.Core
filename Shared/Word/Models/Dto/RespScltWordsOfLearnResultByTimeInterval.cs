@@ -1,10 +1,8 @@
 namespace Ngaq.Core.Shared.Word.Models.Dto;
 
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Resp;
 using Tsinswreng.CsPage;
-
-
+using Tsinswreng.CsTempus;
 
 public class TimeIntervalCnt{
 	public Tempus TimeStart{get;set;}

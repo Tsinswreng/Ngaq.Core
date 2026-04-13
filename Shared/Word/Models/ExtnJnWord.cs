@@ -17,8 +17,7 @@ using Tsinswreng.Srefl;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.User.Models.Po;
-
-
+using Tsinswreng.CsTempus;
 
 public static class ExtnJnWord{
 	extension<TSelf>(TSelf z)

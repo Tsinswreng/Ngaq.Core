@@ -3,10 +3,8 @@ namespace Ngaq.Core.Shared.Dictionary.Models;
 using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Req;
-
-
+using Tsinswreng.CsTempus;
 
 public class DtoOnNewSeg{
 	public str? NewSeg{get;set;}

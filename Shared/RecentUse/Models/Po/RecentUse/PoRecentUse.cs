@@ -1,8 +1,8 @@
-using Ngaq.Core.Infra;
 using Ngaq.Core.Infra.IF;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsTempus;
 
 namespace Ngaq.Core.Shared.RecentUse.Models.Po.RecentUse;
 

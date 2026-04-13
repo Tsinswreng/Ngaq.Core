@@ -40,6 +40,7 @@
 
 
 	<ItemGroup>
+		<ProjectReference Include="../Tsinswreng.CsTempus/proj/Tsinswreng.CsTempus/Tsinswreng.CsTempus.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsSql/proj/Tsinswreng.CsSql/Tsinswreng.CsSql.csproj" />
 		<ProjectReference Include="../Tsinswreng.Srefl/proj/Tsinswreng.Srefl/Tsinswreng.Srefl.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsYamlMd/proj/Tsinswreng.CsYamlMd/Tsinswreng.CsYamlMd.csproj" />

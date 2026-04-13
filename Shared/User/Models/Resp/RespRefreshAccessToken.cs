@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Shared.User.Models.Resp;
 
 using Ngaq.Core.Shared.Base.Models.Resp;
-using Ngaq.Core.Infra;
+using Tsinswreng.CsTempus;
 
 public class RespRefreshBothToken:BaseResp{
 	public str AccessToken{get;set;} = "";

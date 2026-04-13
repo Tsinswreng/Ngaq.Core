@@ -3,6 +3,7 @@ namespace Ngaq.Core.Shared.Word.Models.Dto;
 
 using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Req;
+using Tsinswreng.CsTempus;
 
 public class ReqPackWords : BaseReq, IWordsPackInfo{
 	public Tempus CreatedAt{get;set;} = Tempus.Now();

@@ -1,7 +1,7 @@
 namespace Ngaq.Core.Frontend.User.Svc;
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Tsinswreng.CsFactoryMkr;
+using Tsinswreng.CsTempus;
 
 [MkFactory(For=typeof(ReqSetRefreshToken))]
 public partial class ReqSetRefreshToken{

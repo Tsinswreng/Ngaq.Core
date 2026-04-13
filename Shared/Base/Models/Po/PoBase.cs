@@ -5,6 +5,7 @@ using Ngaq.Core.Shared.User.Models.Po;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Tools;
 using Tsinswreng.CsSql;
+using Tsinswreng.CsTempus;
 
 public partial class PoBase:IPoBase{
 	public object ShallowCloneSelf()

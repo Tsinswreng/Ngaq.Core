@@ -5,12 +5,12 @@ using Ngaq.Core.Shared.User.Models.Bo.Device;
 using Ngaq.Core.Shared.User.Models.Bo.Jwt;
 using Ngaq.Core.Shared.User.Models.Po.Device;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Ngaq.Core.Infra;
 using Ngaq.Core.Model.Sys.Po.RefreshToken;
 using Ngaq.Core.Models.Po;
 using System.Security.Cryptography;
 using System.Text;
 using Tsinswreng.CsFactoryMkr;
+using Tsinswreng.CsTempus;
 
 /// 刷新令牌
 public class PoRefreshToken

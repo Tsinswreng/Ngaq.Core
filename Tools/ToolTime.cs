@@ -1,4 +1,4 @@
-using Ngaq.Core.Infra;
+using Tsinswreng.CsTempus;
 
 namespace Ngaq.Core.Tools;
 

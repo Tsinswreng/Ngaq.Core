@@ -1,10 +1,8 @@
 namespace Ngaq.Core.Shared.User.Models.Resp;
 
-using Ngaq.Core.Infra;
 using Ngaq.Core.Shared.Base.Models.Resp;
 using Ngaq.Core.Shared.User.Models.Po.User;
-
-
+using Tsinswreng.CsTempus;
 
 public partial class RespLogin: BaseResp{
 	public str AccessToken{get;set;} = "";

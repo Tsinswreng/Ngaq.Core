@@ -1,8 +1,6 @@
 namespace Ngaq.Core.Shared.Base.Models.Po;
 
-using Ngaq.Core.Infra;
-
-
+using Tsinswreng.CsTempus;
 
 public partial interface I_BizTimeVer{
 
