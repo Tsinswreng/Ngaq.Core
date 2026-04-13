@@ -65,9 +65,12 @@ public static class ItemsErr{
 	public class StudyPlan{
 		public static K _R = Mk(null, [nameof(StudyPlan)]);
 		[Doc(@$"佔位符: [1]->褈複的UniqName")]
-		[Obsolete(@$"實現複雜。直接用 {nameof(AddFailedDataMayConflict)}")]
+		[Obsolete(@$"實現複雜。直接用 {nameof(Common.DataIllegalOrConflict)}")]
 		public static K UniqNameDuplicated__ = MkB(_R, [nameof(UniqNameDuplicated__)]);
+		
+		[Obsolete(@$"直接用 {nameof(Common.DataIllegalOrConflict)}")]
 		public static K AddFailedDataMayConflict = MkB(_R, [nameof(AddFailedDataMayConflict)]);
+		[Obsolete(@$"直接用 {nameof(Common.DataIllegalOrConflict)}")]
 		public static K UpdateFailedDataMayConflict = MkB(_R, [nameof(UpdateFailedDataMayConflict)]);
 	}
 
