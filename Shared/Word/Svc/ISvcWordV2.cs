@@ -204,11 +204,6 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
-	
-	
-	
-
-
 }
 
 [Doc(@$"此接口下函數不作爲公共API。

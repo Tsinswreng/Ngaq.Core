@@ -60,6 +60,13 @@ public partial struct Tempus(TPrimitive V)
 	public static implicit operator TStruct(TPrimitive s){
 		return new TStruct(s);
 	}
+	public static implicit operator DateTime(Tempus Tempus){
+		return DateTimeOffset.FromUnixTimeMilliseconds(Tempus.Value).LocalDateTime;
+	}
+
+	public static implicit operator Tempus(DateTime DateTime){
+		return new DateTimeOffset(DateTime).ToUnixTimeMilliseconds();
+	}
 
 	public override bool Equals([NotNullWhen(true)] object? obj) {
 		return obj is TStruct learn && Value.Equals(learn.Value);
