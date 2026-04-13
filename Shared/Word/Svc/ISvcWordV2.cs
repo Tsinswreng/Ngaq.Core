@@ -144,7 +144,8 @@ public interface ISvcWordV2{
 	);
 	
 	[Doc(@$"更新單詞Id。
-	用于同步旹 {nameof(EDiffByBizIdResultForSync.IdNotEqual)} 按Id更小者爲準。
+	此函數一般用于同步旹 {nameof(EDiffByBizIdResultForSync.IdNotEqual)} 按Id更小者爲準。
+	(函數實現規則是把{nameof(Ids)}的Old改成New、上面只是說用途、不代表此函數的實現規則是按Id更小)
 	")]
 	public Task<nil> BatChangeId(
 		IDbUserCtx Ctx, IAsyncEnumerable<(IdWord Old, IdWord New)> Ids, CT Ct

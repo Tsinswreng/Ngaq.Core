@@ -28,11 +28,13 @@
 		<PackageReference Include="MoonSharp" Version="2.0.0" />
 		<!-- <PackageReference Include="System.Linq.Async" Version="6.0.1" /> -->
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+		<PackageReference Include="TestableIO.System.IO.Abstractions" Version="22.1.1" />
 		<PackageReference Include="Ulid" Version="1.3.4" />
 		<!-- <PackageReference Include="YamlDotNet" Version="16.3.0" /> -->
 		
 		<!-- <ProjectReference Include="../YamlDotNet/YamlDotNet/YamlDotNet.csproj" /> -->
 		<PackageReference Include="Tsinswreng.YamlDotNet" Version="1.0.0" />
+		
 
 	</ItemGroup>
 
