@@ -1,5 +1,6 @@
 using Tsinswreng.CsTools;
 using System.Text.Json;
+using Ngaq.Core.Infra;
 
 namespace Ngaq.Core.Tools.Json;
 
@@ -35,12 +36,12 @@ public class AppJsonSerializer
 			return null;
 		}
 		if(DictJson is IDictionary<str, obj?> dict){
-			var jsonElement = JsonSerializer.SerializeToElement(dict, DictJsonCtx.Default.IDictionaryStringObject);
+			var jsonElement = JsonSerializer.SerializeToElement(dict, AppJsonCtx.Inst.IDictionaryStringObject);
 			return JSON.Parse(jsonElement, Type);
 		}
 		if(DictJson is IList<obj?> list){
 			var listForSer = list as List<obj?> ?? [..list];
-			var jsonElement = JsonSerializer.SerializeToElement(listForSer, DictJsonCtx.Default.ListObject);
+			var jsonElement = JsonSerializer.SerializeToElement(listForSer, AppJsonCtx.Inst.IListObject);
 			return JSON.Parse(jsonElement, Type);
 		}
 		throw new NotSupportedException("DictJson should be a dictionary or a list.");

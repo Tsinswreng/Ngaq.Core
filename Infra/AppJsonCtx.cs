@@ -38,25 +38,6 @@ public interface IIfaceGenCfg_AppJsonCtx{
 
 }
 
-[IfaceGen(
-	ParentType = typeof(IDictSerializable)
-	//ParentType = typeof(INull)
-	,Name = nameof(IDictSerializable)
-	,OutDir = CfgIfaceGen.OutDir+nameof(IDictSerializable)
-	,PhFullType = "TYPE"
-	,PhIdentifierSafeFullType = "ID"
-	,Template =
-"""
-typeof(global::Ngaq.Core.Tools.JsonConvtr<TYPE>),
-
-"""
-
-)]
-public interface IIfaceGenCfg_JsonCustomConverter{
-
-}
-
-
 /// ASP.net 內置Json序列化器專用。
 /// 縱既配opt =>opt.SerializerOptions.TypeInfoResolverChain.Insert(0, AppJsonCtx.Default);
 /// 猶需手上 opt.SerializerOptions.Converters.Add(new MyConverter()......)
@@ -98,6 +79,7 @@ public partial class AppJsonCtx : JsonSerializerContext {
 	public static AppJsonCtx Inst => _Inst??= new AppJsonCtx(Opt);
 
 	static AppJsonCtx(){
+		Opt.Converters.Add(new JsonStringEnumConverter());
 		Opt.Converters.AddRange(JsonConverters);
 	}
 

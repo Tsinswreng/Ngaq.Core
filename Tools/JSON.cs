@@ -1,6 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 using System.Text.Json.Serialization.Metadata;
 using Ngaq.Core.Infra;
 using Ngaq.Core.Tools.Json;
@@ -28,7 +29,6 @@ public static class JSON {
 		if (typeInfo == null){
 			throw new InvalidOperationException($"Type {typeof(T)} is not registered in AppJsonCtx");
 		}
-
 		return JsonSerializer.Serialize(o, typeInfo);
 	}
 

@@ -61,19 +61,13 @@ using System.Text.Json.Serialization;
 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
 	ReadCommentHandling = JsonCommentHandling.Skip,
-	UseStringEnumConverter = true,
-	Converters = [
+	UseStringEnumConverter = true
 EOF
 
-cat IDictSerializable/* >> $IDictSerializable
-
 cat >> $IDictSerializable <<'EOF'
-	]
 )]
 public partial class AppJsonCtx{}
 EOF
-
-rm IDictSerializable/*
 ##~IDictSerializable
 
 
@@ -104,4 +98,3 @@ rm IDictSerializableList/*
 rm CoreDictMapper.g.cs
 cat CoreDictMapper/* >>  CoreDictMapper.g.cs
 rm CoreDictMapper/*
-
