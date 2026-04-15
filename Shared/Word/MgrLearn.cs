@@ -171,7 +171,7 @@ public partial class MgrLearn{
 		}catch(AppErr appErr){
 			Err(appErr);
 		}catch(Exception e){
-			var appErr = ItemsErr.Word.LoadWordCalcWeightFailed.ToErr();
+			var appErr = KeysErr.Word.LoadWordCalcWeightFailed.ToErr();
 			appErr.AddErr(e);
 			appErr.AddDebugArgs("Phase=LoadEtCalcWeight");
 			Err(appErr);
@@ -206,7 +206,7 @@ public partial class MgrLearn{
 		}catch(AppErr appErr){
 			Err(appErr);
 		}catch(Exception e){
-			var appErr = ItemsErr.Word.WeightCalcRunFailed.ToErr();
+			var appErr = KeysErr.Word.WeightCalcRunFailed.ToErr();
 			appErr.AddErr(e);
 			appErr.AddDebugArgs("Phase=CalcWeight");
 			Err(appErr);
@@ -231,7 +231,7 @@ public partial class MgrLearn{
 		}catch(AppErr){
 			throw;
 		}catch(Exception e){
-			throw ItemsErr.Word.WeightCalcGetStudyPlanFailed.ToErr()
+			throw KeysErr.Word.WeightCalcGetStudyPlanFailed.ToErr()
 				.AddErr(e);
 		}
 	}
@@ -252,7 +252,7 @@ public partial class MgrLearn{
 			}else{
 				var Result = WeightResult.Results as IAsyncEnumerable<IWordWeightResult>;
 				if(Result is null){
-					throw ItemsErr.Word.WeightCalcResultStreamNull.ToErr()
+					throw KeysErr.Word.WeightCalcResultStreamNull.ToErr()
 						.AddDebugArgs(WeightResult.Opt);
 				}
 				var dict = new Dictionary<IdWord, IWordWeightResult>();
@@ -261,7 +261,7 @@ public partial class MgrLearn{
 					try{
 						key = IdWord.FromLow64Base(item.StrId);
 					}catch(Exception e){
-						throw ItemsErr.Word.WeightCalcResultWordIdInvalid__.ToErr(item.StrId)
+						throw KeysErr.Word.WeightCalcResultWordIdInvalid__.ToErr(item.StrId)
 							.AddErr(e);
 					}
 					// 如果有重複 key 需求，自行決定是覆蓋還是拋異常
@@ -290,7 +290,7 @@ public partial class MgrLearn{
 		}catch(AppErr){
 			throw;
 		}catch(Exception e){
-			throw ItemsErr.Word.WeightCalcResultHandleFailed.ToErr()
+			throw KeysErr.Word.WeightCalcResultHandleFailed.ToErr()
 				.AddErr(e);
 		}
 		return NIL;
@@ -308,7 +308,7 @@ public partial class MgrLearn{
 			Err(appErr);
 			return NIL;
 		}catch(Exception e){
-			var appErr = ItemsErr.Word.StartLearnWithWeightCalcFailed.ToErr();
+			var appErr = KeysErr.Word.StartLearnWithWeightCalcFailed.ToErr();
 			appErr.AddErr(e);
 			Err(appErr);
 			return NIL;
@@ -400,7 +400,7 @@ public partial class MgrLearn{
 			State.OperationStatus.Save = true;
 		}
 		catch (Exception e){
-			var E = ItemsErr.Word.SaveWordListFailed.ToErr();
+			var E = KeysErr.Word.SaveWordListFailed.ToErr();
 			E.AddErr(e);
 			Err(E);
 		}

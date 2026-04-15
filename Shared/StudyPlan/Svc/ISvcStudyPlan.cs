@@ -24,9 +24,9 @@ namespace Ngaq.Core.Shared.StudyPlan.Svc;
 - 涉及刪改的、要先去數據庫裏按Id把實體查出來、比較Owner是否一致。若不一致則拋異常。
 
 - 涉及新增或修改的、如已有的 ({nameof(I_Owner)},{nameof(I_UniqName)}) 與入參衝突、
-	則應拋出 {nameof(ItemsErr.Common.DataIllegalOrConflict)}。
+	則應拋出 {nameof(KeysErr.Common.DataIllegalOrConflict)}。
 
-若操作的實體 不屬于該用戶則拋異常 {nameof(ItemsErr.Common.PermissionDenied)}
+若操作的實體 不屬于該用戶則拋異常 {nameof(KeysErr.Common.PermissionDenied)}
 ")]
 public interface ISvcStudyPlan{
 	public Task<IWeightCalctr?> GetCurWeightCalctr(

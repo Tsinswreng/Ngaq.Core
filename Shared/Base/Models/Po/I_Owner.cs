@@ -18,7 +18,7 @@ public static class ExtnI_Owner{
 		){
 			var x = z;
 			if(x.Owner != UserId){
-				throw ItemsErr.Common.PermissionDenied.ToErr();
+				throw KeysErr.Common.PermissionDenied.ToErr();
 			}
 			return x;
 		}
@@ -35,7 +35,7 @@ public static class ExtnI_Owner{
 		){
 			return z.Select(x=>{
 				if(x.Owner != UserId){
-					throw ItemsErr.Common.PermissionDenied.ToErr();
+					throw KeysErr.Common.PermissionDenied.ToErr();
 				}
 				return x;
 			});
@@ -55,7 +55,7 @@ public static class ExtnI_Owner{
 		){
 			return z.Select(x=>{
 				if(x.Owner != UserId){
-					throw ItemsErr.Common.PermissionDenied.ToErr();
+					throw KeysErr.Common.PermissionDenied.ToErr();
 				}
 				return x;
 			});

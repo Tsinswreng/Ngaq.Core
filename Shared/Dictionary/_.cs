@@ -19,7 +19,7 @@ $"""
 - 輸出格式{nameof(IRespLlmDict)}
 - 大模型輸出 使用的結構化標記語言格式: YamlMd {nameof(YamlMd.Inst.ToYaml)}
 - 序列化 {nameof(ToolYaml.YamlStrToDict)} {nameof(CoreDictMapper)}
-- 相關配置{nameof(ItemsClientCfg.LlmDictionary)}
+- 相關配置{nameof(KeysClientCfg.LlmDictionary)}
 
 輸出Pronunciation列表中、第一項 固定爲IPA
 第二項爲 除IPA以外 該語種最常用的標音格式??

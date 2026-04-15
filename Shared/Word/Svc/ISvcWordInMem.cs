@@ -28,7 +28,7 @@ public interface ISvcWordInMem{
 		var X = Local;
 		var Y = Remote;
 		if(!X.Word.IsSameUserWord(Y.Word)){
-			throw ItemsErr.Word.__And__IsNotSameUserWord.ToErr(X.Id,Y.Id);
+			throw KeysErr.Word.__And__IsNotSameUserWord.ToErr(X.Id,Y.Id);
 		}
 		if(X.Id != Y.Id){
 			return EDiffByBizIdResultForSync.IdNotEqual;
@@ -64,7 +64,7 @@ public interface ISvcWordInMem{
 把{nameof(Remote)}合入{nameof(Local)}、純函數、返回新的合併後的對象。
 
 若({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同則拒絕合併、
-拋出 {nameof(ItemsErr.Word.__And__IsNotSameUserWord)};
+拋出 {nameof(KeysErr.Word.__And__IsNotSameUserWord)};
 		
 返回值的{nameof(JnWord.Word)}按{nameof(SyncPoWord)}處理。
 
@@ -92,7 +92,7 @@ public interface ISvcWordInMem{
 	
 	[Doc(@$"
 	若({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同則拒絕合併、
-	拋出 {nameof(ItemsErr.Word.__And__IsNotSameUserWord)};
+	拋出 {nameof(KeysErr.Word.__And__IsNotSameUserWord)};
 	
 	以{nameof(DiffWordAssetByTime)}決定誰最新。若Remote不比Local更加新則不動。
 	若{nameof(PoWord.Id)}不同 則同步結果爲 {nameof(PoWord.BizCreatedAt)}更小者。

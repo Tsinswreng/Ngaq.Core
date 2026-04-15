@@ -186,7 +186,7 @@ public static class ExtnJnWord{
 				Lang = JWord.Word.Lang;
 			}
 			if(JWord.Word.Lang != Lang){
-				throw ItemsErr.Word.__NotBelongToLang__
+				throw KeysErr.Word.__NotBelongToLang__
 				.ToErr(JWord.Id, Lang)
 				.AddDebugArgs(JWord);
 			}
@@ -289,7 +289,7 @@ public static class ExtnJnWord{
 		IJnWord z
 		,IJnWord Other
 	){
-		return ItemsErr.Word.__And__IsNotSameUserWord
+		return KeysErr.Word.__And__IsNotSameUserWord
 		.ToErr(z.Id, Other.Id)
 		.AddDebugArgs(z,Other);
 	}

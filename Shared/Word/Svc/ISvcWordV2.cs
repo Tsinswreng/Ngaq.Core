@@ -78,7 +78,7 @@ public interface ISvcWordV2{
 	
 	[Doc(@$"先把每個元素的Owner改成和Ctx中的用戶一致。
 	然後用{nameof(IRepo<,>.BatAddAgg)}。
-	#Throw[{nameof(ItemsErr.Common.DataIllegalOrConflict)}][
+	#Throw[{nameof(KeysErr.Common.DataIllegalOrConflict)}][
 		添加失敗時即拋。不做合併等處理
 	]
 	")]
@@ -96,7 +96,7 @@ public interface ISvcWordV2{
 	[Doc(@$"大模型詞典 轉 用戶單詞。
 	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}。
 	不額外添加 {nameof(JnWord.Learns)}。
-	#Throw[{nameof(ItemsErr.Word.NormLangToUserLangIsNotMapped)}][
+	#Throw[{nameof(KeysErr.Word.NormLangToUserLangIsNotMapped)}][
 		用戶未配置映射
 	]
 	")]
@@ -156,8 +156,8 @@ public interface ISvcWordV2{
 	BizId即({nameof(PoWord.Head)},{nameof(PoWord.Lang)})。
 	
 	對入參中每項(Arg)、先用Arg.Id 查得數據庫中己存之實體 WordOfId;
-	若WordOfId不存在則拋{nameof(ItemsErr.Word.WordOfId__NotFound)}
-	若WordOfId存在但Owner不同則拋{nameof(ItemsErr.Common.PermissionDenied)};
+	若WordOfId不存在則拋{nameof(KeysErr.Word.WordOfId__NotFound)}
+	若WordOfId存在但Owner不同則拋{nameof(KeysErr.Common.PermissionDenied)};
 	
 	若WordOfId存在且WordOfId的BizId與Arg的相同則不管({nameof(EUpdBizIdResult.BizIdAlreadyEqual)});
 	

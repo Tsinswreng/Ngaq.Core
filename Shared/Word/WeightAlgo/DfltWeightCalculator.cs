@@ -65,7 +65,7 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 						try{
 							calc.Cfg = DfltWeightCfg.FromDict(CalcArg);
 						}catch(Exception e){
-							throw ItemsErr.Word.BuiltinWeightCalcArgParseFailed.ToErr()
+							throw KeysErr.Word.BuiltinWeightCalcArgParseFailed.ToErr()
 								.AddErr(e)
 								.AddDebugArgs(CalcArg);
 						}
@@ -86,7 +86,7 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 				channel.Writer.TryComplete(appErr);
 			}catch(Exception e){
 				channel.Writer.TryComplete(
-					ItemsErr.Word.BuiltinWeightCalcExecFailed.ToErr()
+					KeysErr.Word.BuiltinWeightCalcExecFailed.ToErr()
 					.AddErr(e)
 				);
 			}finally {
@@ -126,7 +126,7 @@ public partial class DfltWeightCalculator : IWeightCalctr {
 		}catch(AppErr){
 			throw;
 		}catch(Exception e){
-			throw ItemsErr.Word.BuiltinWeightCalcExecFailed.ToErr()
+			throw KeysErr.Word.BuiltinWeightCalcExecFailed.ToErr()
 				.AddErr(e);
 		}
 	}

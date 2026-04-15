@@ -15,7 +15,7 @@ public partial class UserCtx
 	public IdUser _UserId = IdUser.Zero;
 	public IdUser UserId{get{
 		if(_UserId.IsNullOrDefault()){
-			throw ItemsErr.User.AuthenticationFailed.ToErr();
+			throw KeysErr.User.AuthenticationFailed.ToErr();
 		}
 		return _UserId;
 	}set{

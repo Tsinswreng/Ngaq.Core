@@ -35,7 +35,7 @@ public class SvcWordInMem:ISvcWordInMem{
 	/// 比較聚合根 PoWord；僅當 Remote 更新時返回需要寫回的實體。
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote){
 		if(Local.IsSameUserWord(Remote) == false){
-			throw ItemsErr.Word.__And__IsNotSameUserWord.ToErr(Local.Id, Remote.Id);
+			throw KeysErr.Word.__And__IsNotSameUserWord.ToErr(Local.Id, Remote.Id);
 		}
 		if(Local.Id != Remote.Id){
 			var keep = Local.BizCreatedAt <= Remote.BizCreatedAt ? Local : Remote;

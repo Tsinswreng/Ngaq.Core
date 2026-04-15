@@ -5,7 +5,7 @@ using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgNode<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
 
-public class ItemsClientCfg{
+public class KeysClientCfg{
 	public static ICfgNode<str> Lang = Mk(null, [nameof(Lang)], "default");
 
 #if DEBUG&&false

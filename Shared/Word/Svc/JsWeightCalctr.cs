@@ -56,7 +56,7 @@ public class JsWeightCalctr : IWeightCalctr{
 		IJsonNode? CalcArg,
 		CT Ct
 	){
-		throw ItemsErr.Word.WeightCalcInvalidAlgorithm.ToErr(
+		throw KeysErr.Word.WeightCalcInvalidAlgorithm.ToErr(
 			$"Obsolete overload called: {nameof(Calc)}(IAsyncEnumerable<IWordForLearn>, IJsonNode?, CT). Use IDictionary overload instead."
 		);
 	}
@@ -68,7 +68,7 @@ public class JsWeightCalctr : IWeightCalctr{
 	){
 		// Js 算法代碼為空屬於可預期業務配置錯誤，直接轉業務異常。
 		if(string.IsNullOrWhiteSpace(JsCode)){
-			throw ItemsErr.Word.JsWeightCalcCodeEmpty.ToErr();
+			throw KeysErr.Word.JsWeightCalcCodeEmpty.ToErr();
 		}
 
 		try{
@@ -88,12 +88,12 @@ public class JsWeightCalctr : IWeightCalctr{
 			var result = engine.Evaluate(JsCode);
 			var resultJson = result.ToString() ?? "";
 			if(string.IsNullOrWhiteSpace(resultJson)){
-				throw ItemsErr.Word.JsWeightCalcReturnedEmpty.ToErr();
+				throw KeysErr.Word.JsWeightCalcReturnedEmpty.ToErr();
 			}
 
 			var jsWeightResult = JsonSerializer.Parse<JsWeightResult>(resultJson);
 			if(jsWeightResult is null){
-				throw ItemsErr.Word.JsWeightCalcReturnedInvalidJson.ToErr()
+				throw KeysErr.Word.JsWeightCalcReturnedInvalidJson.ToErr()
 					.AddDebugArgs(resultJson);
 			}
 			return jsWeightResult.ToWeightResult();
@@ -104,7 +104,7 @@ public class JsWeightCalctr : IWeightCalctr{
 			// 已是業務異常，不重複包裝。
 			throw;
 		}catch(Exception e){
-			throw ItemsErr.Word.JsWeightCalcExecFailed.ToErr()
+			throw KeysErr.Word.JsWeightCalcExecFailed.ToErr()
 				.AddErr(e)
 				.AddDebugArgs(new {
 					JsCode = JsCode,
