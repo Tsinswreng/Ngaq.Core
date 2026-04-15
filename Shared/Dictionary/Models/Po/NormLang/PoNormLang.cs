@@ -13,6 +13,7 @@ public partial class PoNormLang
 	:PoBaseBizTime
 	,I_Id<IdNormLang>
 	,I_Owner
+	,INormLangDetail
 {
 	[Doc(@$"無實體業務含義、不要用來做持久關聯。
 	相同的語言 被刪除又重新添加後、 {nameof(Id)}會變、
@@ -23,5 +24,6 @@ public partial class PoNormLang
 	public ELangIdentType Type{get;set;} = ELangIdentType.Bcp47;
 	public str Code {get;set;} = "";
 	public str NativeName {get;set;} = "";
-
+	public str EnglishName {get;set;} = "";
+	public f64 Weight {get;set;} = 0;
 }

@@ -65,6 +65,7 @@
 		<ProjectReference Include="../Tsinswreng.CsPage/proj/Tsinswreng.CsPage/Tsinswreng.CsPage.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj" />
 		<ProjectReference Include="../Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj" />
+		<ProjectReference Include="../Tsinswreng.CsI18n/proj/Tsinswreng.CsI18n/Tsinswreng.CsI18n.csproj" />
 	</ItemGroup>
 
 

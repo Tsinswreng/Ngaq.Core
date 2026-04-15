@@ -133,8 +133,8 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLang))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLang>))]
 
-[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
-[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName>))]
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangDetail))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.NormLangDetail>))]
 
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Sync.ObjPackInfo))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Sync.ObjPackInfo>))]

@@ -353,7 +353,7 @@ using Tsinswreng.Srefl;
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
-	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName))]
+	[StrAccType(typeof(global::Ngaq.Core.Shared.Dictionary.Models.NormLangDetail))]
 	public partial class CoreDictMapper{
 		//public static string Ngaq_Core_Shared_Dictionary_Models_NormLangWithName = "global::Ngaq.Core.Shared.Dictionary.Models.NormLangWithName";
 	}

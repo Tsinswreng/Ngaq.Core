@@ -87,10 +87,10 @@ public class Query {
 /// 语言配置（核心动态配置）
 public class OptLang {
 	/// 源语言配置
-	public NormLangWithName SrcLang { get; set; } = new NormLangWithName();
+	public NormLangDetail SrcLang { get; set; } = new NormLangDetail();
 
 	/// 目标语言配置
-	public IList<NormLangWithName> TgtLangs { get; set; } = [];
+	public IList<NormLangDetail> TgtLangs { get; set; } = [];
 }
 
 
