@@ -5,6 +5,7 @@ using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
+using Tsinswreng.CsErr;
 using Tsinswreng.CsSql;
 using Tsinswreng.CsTextWithBlob;
 
