@@ -88,4 +88,9 @@ public static class KeysErr{
 		/// 解析 LLM 響應失敗
 		public static K LlmResponseParseFailed = MkB(_R, [nameof(LlmResponseParseFailed)]);
 	}
+	public class Sync{
+		public static K _R = Mk(null, [nameof(Sync)]);
+		public static K BatchGetByIdCountMismatch = MkB(_R, [nameof(BatchGetByIdCountMismatch)]);
+		public static K SyncShouldUseSameId = MkB(_R, [nameof(SyncShouldUseSameId)]);
+	}
 }

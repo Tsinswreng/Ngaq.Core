@@ -15,105 +15,105 @@ public class InitNormLang {
 	[Doc(@$"內容不固定、後續可能增改")]
 	public static IList<INormLangDetail> GetNormLangList() {
 		return new List<INormLangDetail> {
-			// 英语及变体 (高权重)
+			// 英语及变体 //帶地區變體的默認0權重
 			Mk("en", "English", "English", 100),
-			Mk("en-US", "American English", "American English", 95),
-			Mk("en-GB", "British English", "British English", 94),
-			Mk("en-AU", "Australian English", "Australian English", 80),
-			Mk("en-CA", "Canadian English", "Canadian English", 82),
-			Mk("en-IN", "Indian English", "Indian English", 88),
+			Mk("en-US", "American English", "American English", 0),
+			Mk("en-GB", "British English", "British English", 0),
+			Mk("en-AU", "Australian English", "Australian English", 0),
+			Mk("en-CA", "Canadian English", "Canadian English", 0),
+			Mk("en-IN", "Indian English", "Indian English", 0),
 
 			// 中文及变体
-			Mk("zh", "中文", "Chinese", 100),
+			Mk("zh", "中文", "Chinese", 0),
 			Mk("zh-CN", "简体中文", "Simplified Chinese", 99),
 			Mk("zh-TW", "繁體中文", "Traditional Chinese (Taiwan)", 95),
-			Mk("zh-HK", "香港繁體中文", "Traditional Chinese (Hong Kong)", 93),
-			Mk("zh-SG", "新加坡简体中文", "Simplified Chinese (Singapore)", 85),
+			Mk("zh-HK", "香港繁體中文", "Traditional Chinese (Hong Kong)", 0),
+			Mk("zh-SG", "新加坡简体中文", "Simplified Chinese (Singapore)", 0),
 
 			// 西班牙语及变体
 			Mk("es", "Español", "Spanish", 98),
-			Mk("es-ES", "Español (España)", "Spanish (Spain)", 96),
-			Mk("es-MX", "Español (México)", "Spanish (Mexico)", 92),
-			Mk("es-AR", "Español (Argentina)", "Spanish (Argentina)", 88),
-			Mk("es-CO", "Español (Colombia)", "Spanish (Colombia)", 86),
+			Mk("es-ES", "Español (España)", "Spanish (Spain)", 0),
+			Mk("es-MX", "Español (México)", "Spanish (Mexico)", 0),
+			Mk("es-AR", "Español (Argentina)", "Spanish (Argentina)", 0),
+			Mk("es-CO", "Español (Colombia)", "Spanish (Colombia)", 0),
 
 			// 法语及变体
 			Mk("fr", "Français", "French", 85),
-			Mk("fr-FR", "Français (France)", "French (France)", 84),
-			Mk("fr-CA", "Français (Canada)", "French (Canada)", 80),
-			Mk("fr-BE", "Français (Belgique)", "French (Belgium)", 75),
-			Mk("fr-CH", "Français (Suisse)", "French (Switzerland)", 74),
+			Mk("fr-FR", "Français (France)", "French (France)", 0),
+			Mk("fr-CA", "Français (Canada)", "French (Canada)", 0),
+			Mk("fr-BE", "Français (Belgique)", "French (Belgium)", 0),
+			Mk("fr-CH", "Français (Suisse)", "French (Switzerland)", 0),
 
 			// 德语及变体
 			Mk("de", "Deutsch", "German", 82),
-			Mk("de-DE", "Deutsch (Deutschland)", "German (Germany)", 81),
-			Mk("de-AT", "Deutsch (Österreich)", "German (Austria)", 75),
-			Mk("de-CH", "Deutsch (Schweiz)", "German (Switzerland)", 74),
+			Mk("de-DE", "Deutsch (Deutschland)", "German (Germany)", 0),
+			Mk("de-AT", "Deutsch (Österreich)", "German (Austria)", 0),
+			Mk("de-CH", "Deutsch (Schweiz)", "German (Switzerland)", 0),
 
 			// 意大利语及变体
 			Mk("it", "Italiano", "Italian", 70),
-			Mk("it-IT", "Italiano (Italia)", "Italian (Italy)", 69),
-			Mk("it-CH", "Italiano (Svizzera)", "Italian (Switzerland)", 60),
+			Mk("it-IT", "Italiano (Italia)", "Italian (Italy)", 0),
+			Mk("it-CH", "Italiano (Svizzera)", "Italian (Switzerland)", 0),
 
 			// 葡萄牙语及变体
 			Mk("pt", "Português", "Portuguese", 90),
-			Mk("pt-PT", "Português (Portugal)", "Portuguese (Portugal)", 88),
-			Mk("pt-BR", "Português (Brasil)", "Portuguese (Brazil)", 92),
+			Mk("pt-PT", "Português (Portugal)", "Portuguese (Portugal)", 0),
+			Mk("pt-BR", "Português (Brasil)", "Portuguese (Brazil)", 0),
 
 			// 俄语及变体
 			Mk("ru", "Русский", "Russian", 87),
-			Mk("ru-RU", "Русский (Россия)", "Russian (Russia)", 86),
-			Mk("ru-UA", "Русский (Украина)", "Russian (Ukraine)", 70),
+			Mk("ru-RU", "Русский (Россия)", "Russian (Russia)", 0),
+			Mk("ru-UA", "Русский (Украина)", "Russian (Ukraine)", 0),
 
 			// 日语
 			Mk("ja", "日本語", "Japanese", 85),
-			Mk("ja-JP", "日本語 (日本)", "Japanese (Japan)", 84),
+			Mk("ja-JP", "日本語 (日本)", "Japanese (Japan)", 0),
 
 			// 韩语
 			Mk("ko", "한국어", "Korean", 80),
-			Mk("ko-KR", "한국어 (대한민국)", "Korean (South Korea)", 79),
+			Mk("ko-KR", "한국어 (대한민국)", "Korean (South Korea)", 0),
 
 			// 阿拉伯语及变体
 			Mk("ar", "العربية", "Arabic", 92),
-			Mk("ar-SA", "العربية (السعودية)", "Arabic (Saudi Arabia)", 85),
-			Mk("ar-EG", "العربية (مصر)", "Arabic (Egypt)", 84),
-			Mk("ar-AE", "العربية (الإمارات)", "Arabic (UAE)", 78),
+			Mk("ar-SA", "العربية (السعودية)", "Arabic (Saudi Arabia)", 0),
+			Mk("ar-EG", "العربية (مصر)", "Arabic (Egypt)", 0),
+			Mk("ar-AE", "العربية (الإمارات)", "Arabic (UAE)", 0),
 
 			// 印地语
 			Mk("hi", "हिन्दी", "Hindi", 94),
-			Mk("hi-IN", "हिन्दी (भारत)", "Hindi (India)", 93),
+			Mk("hi-IN", "हिन्दी (भारत)", "Hindi (India)", 0),
 
 			// 孟加拉语
 			Mk("bn", "বাংলা", "Bengali", 85),
-			Mk("bn-IN", "বাংলা (ভারত)", "Bengali (India)", 82),
-			Mk("bn-BD", "বাংলা (বাংলাদেশ)", "Bengali (Bangladesh)", 84),
+			Mk("bn-IN", "বাংলা (ভারত)", "Bengali (India)", 0),
+			Mk("bn-BD", "বাংলা (বাংলাদেশ)", "Bengali (Bangladesh)", 0),
 
 			// 旁遮普语
 			Mk("pa", "ਪੰਜਾਬੀ", "Punjabi", 75),
-			Mk("pa-IN", "ਪੰਜਾਬੀ (ਭਾਰਤ)", "Punjabi (India)", 74),
-			Mk("pa-PK", "پنجابی (پاکستان)", "Punjabi (Pakistan)", 73),
+			Mk("pa-IN", "ਪੰਜਾਬੀ (ਭਾਰਤ)", "Punjabi (India)", 0),
+			Mk("pa-PK", "پنجابی (پاکستان)", "Punjabi (Pakistan)", 0),
 
 			// 泰米尔语
 			Mk("ta", "தமிழ்", "Tamil", 72),
-			Mk("ta-IN", "தமிழ் (இந்தியா)", "Tamil (India)", 71),
-			Mk("ta-LK", "தமிழ் (இலங்கை)", "Tamil (Sri Lanka)", 65),
+			Mk("ta-IN", "தமிழ் (இந்தியா)", "Tamil (India)", 0),
+			Mk("ta-LK", "தமிழ் (இலங்கை)", "Tamil (Sri Lanka)", 0),
 
 			// 泰卢固语
 			Mk("te", "తెలుగు", "Telugu", 70),
-			Mk("te-IN", "తెలుగు (భారతదేశం)", "Telugu (India)", 69),
+			Mk("te-IN", "తెలుగు (భారతదేశం)", "Telugu (India)", 0),
 
 			// 马拉地语
 			Mk("mr", "मराठी", "Marathi", 68),
-			Mk("mr-IN", "मराठी (भारत)", "Marathi (India)", 67),
+			Mk("mr-IN", "मराठी (भारत)", "Marathi (India)", 0),
 
 			// 乌尔都语
 			Mk("ur", "اردو", "Urdu", 68),
-			Mk("ur-PK", "اردو (پاکستان)", "Urdu (Pakistan)", 67),
-			Mk("ur-IN", "اردو (بھارت)", "Urdu (India)", 60),
+			Mk("ur-PK", "اردو (پاکستان)", "Urdu (Pakistan)", 0),
+			Mk("ur-IN", "اردو (بھارت)", "Urdu (India)", 0),
 
 			// 土耳其语
 			Mk("tr", "Türkçe", "Turkish", 75),
-			Mk("tr-TR", "Türkçe (Türkiye)", "Turkish (Turkey)", 74),
+			Mk("tr-TR", "Türkçe (Türkiye)", "Turkish (Turkey)", 0),
 
 			// 荷兰语及变体
 			Mk("nl", "Nederlands", "Dutch", 60),

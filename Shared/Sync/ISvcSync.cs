@@ -1,5 +1,6 @@
 using System.Diagnostics.Contracts;
 using Ngaq.Core.Infra;
+using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.StudyPlan.Models.Po.StudyPlan;
 using Ngaq.Core.Shared.Word.Models;
@@ -37,7 +38,7 @@ public interface IEntitySyncerInMem<T>
 		var xUpd = X.GetNewestBizUpdOrDelTime();
 		var yUpd = Y.GetNewestBizUpdOrDelTime();
 		return xUpd.CompareTo(yUpd);
-		//throw new Exception(Todo.I18n("Id相同時 BizCreatedAt 不相等"));
+		//throw new Exception("Id相同時 BizCreatedAt 不相等");
 	}
 	
 	
@@ -47,7 +48,7 @@ public interface IEntitySyncerInMem<T>
 		T Local, T Remote
 	){
 		if(!Local.Id_().EqObj(Remote.Id_())){
-			throw new InvalidOperationException(Todo.I18n("Id不同時不應該同步"));
+			throw KeysErr.Sync.SyncShouldUseSameId.ToErr();
 		}
 		var diff = DiffPoByTime(Local, Remote);
 		var r = new DtoEntityDiffEtSync<T>();
@@ -73,3 +74,4 @@ public interface IEntitySyncerDb<TPo, TId>
 		IDbFnCtx Ctx, IAsyncEnumerable<TPo> Pos, CT Ct
 	);
 }
+
