@@ -6,31 +6,29 @@ using static Tsinswreng.CsCfg.CfgNode<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
 
 public class KeysClientCfg{
-	public static ICfgNode<str> Lang = Mk(null, [nameof(Lang)], "default");
-
-#if DEBUG&&false
-	public static ICfgItem<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.dev.sqlite");
-#else
+	public static ICfgNode<str> Lang = Mk(null, [nameof(Lang)], "en");
 
 	public static ICfgNode<str> SqlitePath = Mk(null, [nameof(SqlitePath)], "./Ngaq.sqlite");
-#endif
+
 	public static ICfgNode<str> RwCfgPath = Mk(null, [nameof(RwCfgPath)], "Ngaq.Rw.jsonc");
 
 	public class Background{
 		public static ICfgNode _R = Mk(null, [nameof(Background)]);
-		//[EnumOf("")]
 		public static ICfgNode<str> Mode = Mk(_R, [nameof(Mode)], "");
 		public static ICfgNode<IList<object?>> GalleryDirs = Mk(_R, [nameof(GalleryDirs)], (IList<object?>)[]);
 	}
-
-	// public static ICfgItem Background = Mk(null, [nameof(Background)], null);
-	// 	public static ICfgItem<IList<object?>> GalleryDirs = Mk(Background, [nameof(GalleryDirs)], (IList<object?>)[]);
 	public static ICfgNode<str> ServerBaseUrl = Mk(null, [nameof(ServerBaseUrl)], "");
-	public static ICfgNode Ui = Mk(null, [nameof(Ui)], null);
-		public static ICfgNode<f64> BaseFontSize = Mk(Ui, [nameof(BaseFontSize)], 16.0);
+	//public static ICfgNode Ui = Mk(null, [nameof(Ui)], null);
+	public static class Ui{
+		public static ICfgNode _R = Mk(null, [nameof(Ui)]);
+		public static ICfgNode<f64> BaseFontSize = Mk(_R, [nameof(BaseFontSize)], 16.0);
+	}
+		
 
-	public static ICfgNode User = Mk(null, [nameof(User)], null);
-		public static ICfgNode<str> CurrentUserId = Mk(User, [nameof(CurrentUserId)], "0");
+	public static class User{
+		public static ICfgNode _R = Mk(null, [nameof(User)]);
+		public static ICfgNode<str> CurrentUserId = Mk(_R, [nameof(CurrentUserId)], "0");
+	}
 
 	public class Word{
 		public static ICfgNode _R = Mk(null, [nameof(Word)]);
