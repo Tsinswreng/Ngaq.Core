@@ -16,18 +16,6 @@ public static class DiCore{
 		z.AddTransient<IJsonSerializer, AppJsonSerializer>();
 
 		//browser 不支持
-		// using var loggerFactory = LoggerFactory.Create(b=>{
-		// 	b.AddConsole()
-		// 	#if DEBUG
-		// 	.SetMinimumLevel(LogLevel.Debug)
-		// 	#else
-		// 	.SetMinimumLevel(LogLevel.Information)
-		// 	#endif
-		// 	;
-		// });
-		// var Logger = loggerFactory.CreateLogger("GlobalLogger");
-		// z.AddSingleton<ILogger>(Logger);
-
 		return z;
 	}
 }
