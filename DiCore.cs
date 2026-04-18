@@ -15,17 +15,18 @@ public static class DiCore{
 		z.AddScoped<IWeightCalctr, SvcWeight>();
 		z.AddTransient<IJsonSerializer, AppJsonSerializer>();
 
-		using var loggerFactory = LoggerFactory.Create(b=>{
-			b.AddConsole()
-			#if DEBUG
-			.SetMinimumLevel(LogLevel.Debug)
-			#else
-			.SetMinimumLevel(LogLevel.Information)
-			#endif
-			;
-		});
-		var Logger = loggerFactory.CreateLogger("GlobalLogger");
-		z.AddSingleton<ILogger>(Logger);
+		//browser 不支持
+		// using var loggerFactory = LoggerFactory.Create(b=>{
+		// 	b.AddConsole()
+		// 	#if DEBUG
+		// 	.SetMinimumLevel(LogLevel.Debug)
+		// 	#else
+		// 	.SetMinimumLevel(LogLevel.Information)
+		// 	#endif
+		// 	;
+		// });
+		// var Logger = loggerFactory.CreateLogger("GlobalLogger");
+		// z.AddSingleton<ILogger>(Logger);
 
 		return z;
 	}

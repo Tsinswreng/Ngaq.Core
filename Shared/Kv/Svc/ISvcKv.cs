@@ -17,6 +17,7 @@ public partial interface ISvcKv{
 		IDbFnCtx? Ctx, IAsyncEnumerable<(IdUser, str)> Owner_Key, CT Ct
 	);
 	
+	[Doc("Upsert")]
 	public Task<nil> BatSet(
 		IDbFnCtx? Ctx
 		,IAsyncEnumerable<PoKv> Kvs, CT Ct

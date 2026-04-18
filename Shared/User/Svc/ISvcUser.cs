@@ -16,7 +16,5 @@ public partial interface ISvcUser{
 
 	public Task<nil> Logout(IUserCtx User, ReqLogout ReqLogout, CT Ct);
 	
-	
 }
-
 
