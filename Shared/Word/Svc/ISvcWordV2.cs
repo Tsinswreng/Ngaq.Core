@@ -117,8 +117,20 @@ public interface ISvcWordV2{
 	);
 	
 	
+	public Task<nil> BatAddWordProp(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWordProp> WordProps, CT Ct
+	);
+	
 	public Task<nil> BatUpdWordProp(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWordProp> WordProps, CT Ct
+	);
+	
+	public Task<nil> BatAddWordLearn(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWordLearn> WordLearns, CT Ct
+	);
+	
+	public Task<nil> BatUpdWordLearn(
+		IDbUserCtx Ctx, IAsyncEnumerable<PoWordLearn> WordLearns, CT Ct
 	);
 	
 	public Task<nil> DelWordPropInId(
