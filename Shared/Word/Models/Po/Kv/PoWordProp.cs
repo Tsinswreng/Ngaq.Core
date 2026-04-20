@@ -29,7 +29,6 @@ public partial class PoWordProp
 	public i64 KI64 { get; set; }
 	//public str KeyType {get; set;} = "";
 
-
 	public EKvType VType { get; set; }
 
 	public str? VStr { get; set; }

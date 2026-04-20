@@ -8,6 +8,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Tsinswreng.CsErr;
+using Tsinswreng.CsTempus;
 
 /// 單詞同步的純內存實現，不直接操作數據庫。
 public class SvcWordInMem:ISvcWordInMem{
@@ -138,5 +139,123 @@ public class SvcWordInMem:ISvcWordInMem{
 		}
 
 		return (newProps, newLearns, changedProps, changedLearns);
+	}
+
+	public IJnWordMergeResult Merge(JnWord? Local, JnWord Remote) {
+		var remoteClone = CloneJnWord(Remote);
+		if(Local is null){
+			remoteClone.EnsureForeignId();
+			return new JnWordMergeResult{
+				Result = EJnWordMergeResult.LocalNotExist,
+				NewAssets = CloneJnWord(remoteClone),
+				Merged = remoteClone,
+			};
+		}
+		if(!Local.Word.IsSameUserWord(Remote.Word)){
+			throw KeysErr.Word.__And__IsNotSameUserWord.ToErr(Local.Id, Remote.Id);
+		}
+
+		var localClone = CloneJnWord(Local);
+		var localPropIds = new HashSet<Ngaq.Core.Model.Po.Kv.IdWordProp>(localClone.Props.Select(x=>x.Id));
+		var localLearnIds = new HashSet<Ngaq.Core.Model.Po.Learn_.IdWordLearn>(localClone.Learns.Select(x=>x.Id));
+		var newProps = new List<PoWordProp>();
+		var newLearns = new List<PoWordLearn>();
+
+		foreach(var remoteProp in Remote.Props){
+			if(localPropIds.Contains(remoteProp.Id)){
+				continue;
+			}
+			var neoProp = CloneProp(remoteProp, localClone.Id);
+			localClone.Props.Add(neoProp);
+			newProps.Add(neoProp);
+		}
+		foreach(var remoteLearn in Remote.Learns){
+			if(localLearnIds.Contains(remoteLearn.Id)){
+				continue;
+			}
+			var neoLearn = CloneLearn(remoteLearn, localClone.Id);
+			localClone.Learns.Add(neoLearn);
+			newLearns.Add(neoLearn);
+		}
+
+		if(newProps.Count == 0 && newLearns.Count == 0){
+			return new JnWordMergeResult{
+				Result = EJnWordMergeResult.NoChange,
+				Merged = localClone,
+			};
+		}
+
+		var mergedWord = CloneWord(localClone.Word);
+		mergedWord.BizCreatedAt = mergedWord.BizCreatedAt <= Remote.BizCreatedAt
+			? mergedWord.BizCreatedAt
+			: Remote.BizCreatedAt;
+		mergedWord.BizUpdatedAt = Tempus.Now();
+		localClone.Word = mergedWord;
+		localClone.EnsureForeignId();
+		return new JnWordMergeResult{
+			Result = EJnWordMergeResult.Changed,
+			NewAssets = new JnWord{
+				Word = CloneWord(localClone.Word),
+				Props = newProps,
+				Learns = newLearns,
+			},
+			Merged = localClone,
+		};
+	}
+
+	static JnWord CloneJnWord(JnWord Src){
+		return new JnWord{
+			Word = CloneWord(Src.Word),
+			Props = Src.Props.Select(x=>CloneProp(x, Src.Id)).ToList(),
+			Learns = Src.Learns.Select(x=>CloneLearn(x, Src.Id)).ToList(),
+		};
+	}
+
+	static PoWord CloneWord(PoWord Src){
+		return new PoWord{
+			Id = Src.Id,
+			Owner = Src.Owner,
+			Head = Src.Head,
+			Lang = Src.Lang,
+			StoredAt = Src.StoredAt,
+			DbCreatedAt = Src.DbCreatedAt,
+			BizCreatedAt = Src.BizCreatedAt,
+			BizUpdatedAt = Src.BizUpdatedAt,
+			DbUpdatedAt = Src.DbUpdatedAt,
+			DelAt = Src.DelAt,
+		};
+	}
+
+	static PoWordProp CloneProp(PoWordProp Src, IdWord WordId){
+		return new PoWordProp{
+			Id = Src.Id,
+			WordId = WordId,
+			KType = Src.KType,
+			KStr = Src.KStr,
+			KI64 = Src.KI64,
+			VType = Src.VType,
+			VStr = Src.VStr,
+			VI64 = Src.VI64,
+			VF64 = Src.VF64,
+			VBinary = Src.VBinary is null ? null : [..Src.VBinary],
+			DbCreatedAt = Src.DbCreatedAt,
+			BizCreatedAt = Src.BizCreatedAt,
+			BizUpdatedAt = Src.BizUpdatedAt,
+			DbUpdatedAt = Src.DbUpdatedAt,
+			DelAt = Src.DelAt,
+		};
+	}
+
+	static PoWordLearn CloneLearn(PoWordLearn Src, IdWord WordId){
+		return new PoWordLearn{
+			Id = Src.Id,
+			WordId = WordId,
+			LearnResult = Src.LearnResult,
+			DbCreatedAt = Src.DbCreatedAt,
+			BizCreatedAt = Src.BizCreatedAt,
+			BizUpdatedAt = Src.BizUpdatedAt,
+			DbUpdatedAt = Src.DbUpdatedAt,
+			DelAt = Src.DelAt,
+		};
 	}
 }
