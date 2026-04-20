@@ -16,14 +16,14 @@ public partial class KeysUrl{
 	//勿作深層內部類。䀬ʹ子ʹApi枚舉內部類只置于ConstUrlʹ直ʹ子層
 	public partial class OpenUser{
 		//public static Url _Root = "";
-		public static Url _R = Mk(OpenV1, ["Sys", "User"]);
+		public static Url _R = Mk(OpenV1, ["User"]);
 		public static Url Login = Mk(_R, [nameof(Login)]);
 		public static Url AddUser = Mk(_R, [nameof(AddUser)]);
 		public static Url TokenRefresh = Mk(_R, ["Token", "Refresh"]);
 	}
 
 	public partial class ApiUser{
-		public static Url _R = Mk(ApiV1, ["Sys", "User"]);
+		public static Url _R = Mk(ApiV1, ["User"]);
 		public static Url Logout = Mk(_R, [nameof(Logout)]);
 	}
 
