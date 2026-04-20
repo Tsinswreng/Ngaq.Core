@@ -152,6 +152,44 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx, IAsyncEnumerable<(IdWord Old, IdWord New)> Ids, CT Ct
 	);
 	
+	
+	[Doc(@$"
+	取單詞合併結果。 不實際寫入數據庫。
+	#See[{nameof(ISvcWordInMem.Merge)}]
+	")]
+	public IAsyncEnumerable<IJnWordMergeResult> GetWordMergeResult(
+		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> Words, CT Ct
+	);
+	
+	[Doc(@$"合併單詞。會實際寫入數據庫")]
+	public Task<nil> MergeWord(
+		IDbUserCtx Ctx, IAsyncEnumerable<IJnWordMergeResult> Words, CT Ct
+	);
+	
+	[Doc(@$"合併單詞。會實際寫入數據庫。
+	#See[{nameof(GetWordMergeResult)}]
+	")]
+	public Task<nil> MergeWord(
+		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> Words, CT Ct
+	);
+	
+	
+	[Doc(@$"合併單詞。會實際寫入數據庫。
+	
+	其中、Remote比Local多出來的 {nameof(KeysProp.description)}
+	會被當作 {nameof(PoWordLearn)}、事件爲 {nameof(ELearn.Add)}、
+	{nameof(PoWordLearn.BizCreatedAt)} 與原 Prop 一致。
+	
+	用于從生詞表文本添加生詞
+	
+	#See[{nameof(GetWordMergeResult)}]
+	")]
+	public Task<nil> MergeWord_NewDescrAsAdd(
+		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> Words, CT Ct
+	);
+
+
+	
 	[Doc(@$"
 	BizId即({nameof(PoWord.Head)},{nameof(PoWord.Lang)})。
 	
@@ -204,6 +242,8 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
+	
+	
 }
 
 [Doc(@$"此接口下函數不作爲公共API。

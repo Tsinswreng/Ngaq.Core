@@ -10,7 +10,7 @@ public interface IAggSyncResult<T>{
 	public EDiffByBizIdResultForSync DiffResult{get;set;}
 	
 	[Doc(@$"適用于當{nameof(EDiffByBizIdResultForSync.RemoteIsNewer)}時。")]
-	public AggDiffCaseForSync? DiffCase{get;set;}
+	public IAggDiffCaseForSync? DiffCase{get;set;}
 	
 	[Doc(@$"同步前的Local 原對象")]
 	public T? Local{get;set;}
@@ -36,17 +36,17 @@ public interface IAggSyncResult<T>{
 	[Doc(@$"同步後的聚合根。
 	用來對應更新Local的聚合根。
 	")]
-	public T? SyncedPoWord{get;set;}
+	public T? SyncedRoot{get;set;}
 }
 
 
 public class AggSyncResult<T>: IAggSyncResult<T>{
 	public EDiffByBizIdResultForSync DiffResult{get;set;} = EDiffByBizIdResultForSync.Unknown;
-	public AggDiffCaseForSync? DiffCase{get;set;}
+	public IAggDiffCaseForSync? DiffCase{get;set;}
 	
 	public T? Local{get;set;}
 	public T? Remote{get;set;}
 	public T? NewAssets{get;set;}
 	public T? ChangedAssets{get;set;}
-	public T? SyncedPoWord{get;set;}
+	public T? SyncedRoot{get;set;}
 }

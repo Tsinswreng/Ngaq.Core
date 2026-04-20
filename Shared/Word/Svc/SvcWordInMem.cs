@@ -60,7 +60,7 @@ public class SvcWordInMem:ISvcWordInMem{
 		};
 		if(Local is null){
 			r.DiffResult = EDiffByBizIdResultForSync.LocalNotExist;
-			r.SyncedPoWord = Remote;
+			r.SyncedRoot = Remote;
 			return r;
 		}
 
@@ -92,7 +92,7 @@ public class SvcWordInMem:ISvcWordInMem{
 			Learns = changedLearns,
 		};
 		if(rootSync.SyncedEntity is not null){
-			r.SyncedPoWord = new JnWord{
+			r.SyncedRoot = new JnWord{
 				Word = rootSync.SyncedEntity,
 				Props = [],
 				Learns = [],

@@ -8,6 +8,7 @@ using Ngaq.Core.Word.Models.Po.Word;
 using Ngaq.Core.Tools;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Tsinswreng.CsTempus;
+using Ngaq.Core.Infra.IF;
 
 
 // public  partial class Po_Learn:Po_Kv{

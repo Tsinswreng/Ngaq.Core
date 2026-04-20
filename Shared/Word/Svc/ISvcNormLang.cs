@@ -50,4 +50,6 @@ public interface ISvcNormLang{
 	")]
 	public Task<nil> InitBuiltinNormLang(IDbUserCtx Ctx, CT Ct);
 	
+	
+	
 }

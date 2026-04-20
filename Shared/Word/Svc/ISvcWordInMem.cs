@@ -17,9 +17,6 @@ namespace Ngaq.Core.Shared.Word.Svc;
 純內存操作相關API 不涉及數據庫。
 ")]
 public interface ISvcWordInMem{
-	
-
-	
 	[Doc(@$"確保兩詞之{nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}相同。
 	此函數中則不再重複校驗。
 	")]
@@ -100,5 +97,55 @@ public interface ISvcWordInMem{
 	[Pure]
 	public DtoEntityDiffEtSync<PoWord> SyncPoWord(PoWord Local, PoWord Remote);
 	
+	
+	
+	
+	public class EMergeResult{
+		[Doc(@$"該實體的BizId不在數據庫中")]
+		public static readonly EMergeResult New = new();
+		
+		[Doc(@$"該實體的BizId在數據庫中")]
+		public static readonly EMergeResult Changed = new();
+	}
+	
+	[Doc(@$"
+	合併兩單詞。
+	注意 合併(Merge) 與 同步(Sync) 語義不同。
+	合併是把 {nameof(Remote)}有 而 {nameof(Local)}無 的資產合入 {nameof(Local)}。
+	")]
+	[Pure]
+	public IJnWordMergeResult Merge(JnWord? Local, JnWord Remote);
+	
 
+}
+
+public enum EJnWordMergeResult{
+	[Doc(@$"Remote沒有比Local多出資產。
+	即 不存在 Remote有洏Local無 之 資產。
+	")]
+	NoChange,
+	[Doc("同BizId的Local不存在數據庫")]
+	LocalNotExist,
+	[Doc(@$"存在 Remote有洏Local無 之 資產")]
+	Changed,
+}
+
+public interface IJnWordMergeResult{
+	public EJnWordMergeResult Result{get;set;}
+	
+	[Doc(@$"Remote有而Local無 的新資產。")]
+	public JnWord? NewAssets{get;set;}
+	
+	[Doc(@$"完整的 合併後的對象。
+	若{nameof(Result)}=={nameof(EJnWordMergeResult.Changed)}
+	則 {nameof(JnWord.Word.BizCreatedAt)} 應取 Local 與 Remote 中之最小者。
+	且 {nameof(JnWord.Word.BizUpdatedAt)} 要設爲當前時間。
+	")]
+	public JnWord Merged{get;set;}
+}
+
+public class JnWordMergeResult : IJnWordMergeResult {
+	public EJnWordMergeResult Result {get;set;}
+	public JnWord? NewAssets {get;set;}
+	public JnWord Merged {get;set;}
 }
