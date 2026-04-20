@@ -19,7 +19,7 @@ public class Packer<T>:IPacker<T>{
 		var meta = JsonS.Stringify(PackInfo);
 		var lines = Objs.Select(x=>JsonS.Stringify(x));
 		var payload = GZipLinesUtf8.ToStream(lines, Ct);
-		return TextWithStream.PackUtf8(meta, payload);
+		return TextWithStream.MkUtf8(meta, payload);
 	}
 	
 	public IAnswer<IAsyncEnumerable<T>> Unpack(

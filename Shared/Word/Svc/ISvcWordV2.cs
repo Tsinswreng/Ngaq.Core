@@ -32,7 +32,7 @@ RepoWord.AsAppRepo().BatBizTouch()
 ```
 ")]
 public interface ISvcWordV2{
-	
+
 	[Doc(@$"
 	獲取全部待學習單詞。
 	會被當前學習方案定義的預篩選器篩選。
@@ -243,8 +243,16 @@ public interface ISvcWordV2{
 		然後調用{nameof(BatSyncByDto)}。
 		#Rtn[亦返{nameof(DtoJnWordSyncResult)} 便于審計等]
 	")]
-	public IAsyncEnumerable<DtoJnWordSyncResult> BizSyncJnWordByBizId(
+	public IAsyncEnumerable<DtoJnWordSyncResult> BatSyncJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
+	);
+	
+	[Doc(@$"
+	#See[{nameof(BatSyncJnWordByBizId)}]
+	#See[{nameof(UnpackJnWords)}]
+	")]
+	public IAsyncEnumerable<DtoJnWordSyncResult> BatSyncJnWordByBizIdFromStream(
+		IDbUserCtx Ctx, Stream TextWithStream, CT Ct
 	);
 	
 	[Doc(@$"調用{nameof(ISvcWordSync)}裏面的API來實現。
@@ -254,6 +262,27 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
+	
+	public IAsyncEnumerable<JnWord> GetAllWordsWithDel(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	[Doc(@$"
+	#See[{nameof(IPacker<>)}]
+	#Rtn[{nameof(ITextWithStream)}, {nameof(ExtnTextWithStream.ToStream)}]
+	")]
+	public Task<Stream> PackAllWordsWithDel(
+		IDbUserCtx Ctx, CT Ct
+	);
+	
+	[Doc(@$"
+	#Params([{nameof(ITextWithStream)}])
+	")]
+	public IAsyncEnumerable<JnWord> UnpackJnWords(
+		Stream TextWithStream, CT Ct
+	);
+	
+	
 	
 	
 }

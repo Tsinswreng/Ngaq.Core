@@ -10,8 +10,8 @@ public static class ExtnWebAns2{
 		public static IWebAns<T> Deserialize<T>(str Json){
 			return WebAns.Deserialize<T>(
 				Json
-				,AppJsonCtx.Default.IListAppErrView
-				,AppJsonCtx.Default.GetTypeInfo
+				,AppJsonCtx.Inst.IListAppErrView
+				,AppJsonCtx.Inst.GetTypeInfo
 			);
 		}
 	}
