@@ -1,6 +1,7 @@
 namespace Ngaq.Core.Infra.Cfg;
 
 using System.Collections;
+using Ngaq.Core.Frontend.Kv;
 using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgNode<obj?>;
 //TODO 異常處理 勿緣用戶配置ʹ謬而致整程序崩
@@ -32,7 +33,9 @@ public class KeysClientCfg{
 
 	public class Word{
 		public static ICfgNode _R = Mk(null, [nameof(Word)]);
+		[Obsolete(@$"宜置于{nameof(KeysClientKv)}中")]
 		public static ICfgNode<str> WordsPackExportPath = Mk(_R, [nameof(WordsPackExportPath)], "");
+		[Obsolete(@$"宜置于{nameof(KeysClientKv)}中")]
 		public static ICfgNode<str> WordsPackImportPath = Mk(_R, [nameof(WordsPackImportPath)], "");
 		public static ICfgNode<u64> MaxDisplayedWordCount = Mk(_R, [nameof(MaxDisplayedWordCount)], 500ul);
 		[Obsolete]
@@ -47,6 +50,7 @@ public class KeysClientCfg{
 		public static ICfgNode<str> ApiUrl = Mk(_R, [nameof(ApiUrl)], "");
 		public static ICfgNode<str> ApiKey = Mk(_R, [nameof(ApiKey)], "");
 		public static ICfgNode<str> Model = Mk(_R, [nameof(Model)], "");
+		public static ICfgNode<str> Prompt = Mk(_R, [nameof(Prompt)], "");
 	}
 }
 
