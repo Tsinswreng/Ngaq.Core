@@ -62,19 +62,7 @@ public interface ISvcWordV2{
 		,IAsyncEnumerable<PoWordLearn> PoWordLearnAsyE, CT Ct
 	);
 	
-	[Doc(@$"
-	從生詞表中加入單詞 用于學習。
-	來自生詞表的生單詞不應具有{nameof(JnWord.Learns)}、只有 {nameof(JnWord.Word)} 與 {nameof(JnWord.Props)}。
-	遇到({nameof(PoWord.Head)}, {nameof(PoWord.Lang)})相同的 即合併其{nameof(JnWord.Props)}。
-	//TODO 釋 合併理則
-	會新增{nameof(ELearn.Add)}、
-	按 新詞的總共的 新來的 {nameof(KeysProp.description)} 的數量
-	決定 新增的{nameof(ELearn.Add)}的數量
-	")]
-	public Task<nil> BatAddNewWordToLearn(
-		IDbUserCtx Ctx,
-		IAsyncEnumerable<JnWord> Words, CT Ct
-	);
+
 	
 	[Doc(@$"先把每個元素的Owner改成和Ctx中的用戶一致。
 	然後用{nameof(IRepo<,>.BatAddAgg)}。
