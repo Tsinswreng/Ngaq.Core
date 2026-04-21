@@ -12,6 +12,7 @@ using static Ngaq.Core.Tools.Url;
 public partial class KeysUrl{
 	public static Url OpenV1 = Mk(null, ["Open", "V1"]);
 	public static Url ApiV1 = Mk(null, ["Api", "V1"]);
+	public static Url ApiV2 = Mk(null, ["Api", "V2"]);
 
 	//勿作深層內部類。䀬ʹ子ʹApi枚舉內部類只置于ConstUrlʹ直ʹ子層
 	public partial class OpenUser{
@@ -30,6 +31,13 @@ public partial class KeysUrl{
 
 	public partial class Word{
 		public static Url _R = Mk(ApiV1, [nameof(Word)]);
+		public static Url Push = Mk(_R, [nameof(Push)]);
+		public static Url Pull = Mk(_R, [nameof(Pull)]);
+	}
+
+	[Doc(@$"單詞同步 V2 接口路由鍵。根路徑爲 /Api/V2/Word")]
+	public partial class WordV2{
+		public static Url _R = Mk(ApiV2, ["Word"]);
 		public static Url Push = Mk(_R, [nameof(Push)]);
 		public static Url Pull = Mk(_R, [nameof(Pull)]);
 	}
