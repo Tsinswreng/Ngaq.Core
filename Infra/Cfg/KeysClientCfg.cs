@@ -1,6 +1,7 @@
 namespace Ngaq.Core.Infra.Cfg;
 
 using System.Collections;
+using Ngaq.Core.Frontend.Hotkey;
 using Ngaq.Core.Frontend.Kv;
 using Tsinswreng.CsCfg;
 using static Tsinswreng.CsCfg.CfgNode<obj?>;
@@ -51,6 +52,20 @@ public class KeysClientCfg{
 		public static ICfgNode<str> ApiKey = Mk(_R, [nameof(ApiKey)], "");
 		public static ICfgNode<str> Model = Mk(_R, [nameof(Model)], "");
 		public static ICfgNode<str> Prompt = Mk(_R, [nameof(Prompt)], "");
+	}
+
+	/// 快捷鍵配置。
+	public class Hotkey{
+		public static ICfgNode _R = Mk(null, [nameof(Hotkey)]);
+
+		/// 查詞快捷鍵：觸發後讀剪貼板並打開字典查詢。
+		public class DictionaryLookup{
+			public static ICfgNode _R = Mk(Hotkey._R, [nameof(DictionaryLookup)]);
+			/// 修飾鍵，支持多值，使用 "|" 分隔，如 Ctrl|Shift。
+			public static ICfgNode<str> Modifiers = Mk(_R, [nameof(Modifiers)], nameof(EHotkeyModifiers.Alt));
+			/// 主鍵，值為 EHotkeyKey 枚舉名稱，如 E/F1/Enter。
+			public static ICfgNode<str> Key = Mk(_R, [nameof(Key)], nameof(EHotkeyKey.E));
+		}
 	}
 }
 
