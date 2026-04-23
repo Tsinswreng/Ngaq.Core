@@ -52,13 +52,16 @@ public interface ISvcNormLang{
 	
 	[Doc(@$"批量查询标准语言的翻译名称。
 	#Params([],[將翻譯爲何種語言], [待被翻譯的諸語言],[])
+	#Rtn[
+	返值 元素 須與 {nameof(NormLangs)} 一一對應。 查不到者 對應位置即null
+	]
 	#Examples([
 	fn(ctx, zh-TW, [en, en-US, ja])
 	-> ['英語', '英語(美國)', '日語']
 	])
 	實 返 格式 未必 與 例 全一致。 TranslatedName僅用于界面顯示。
 	")]
-	public IAsyncEnumerable<str> BatGetTranslatedName(
+	public IAsyncEnumerable<str?> BatGetTranslatedName(
 		IDbUserCtx Ctx, 
 		INormLang TargetLang,
 		IAsyncEnumerable<INormLang> NormLangs, CT Ct
