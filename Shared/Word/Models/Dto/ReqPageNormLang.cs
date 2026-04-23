@@ -8,11 +8,5 @@ namespace Ngaq.Core.Shared.Word.Models.Dto;
 ")]
 public class ReqPageNormLang{
 	public IPageQry PageQry{get;set;}
-	[Doc(@$"按 
-	{nameof(PoNormLang.Code)}
-	{nameof(PoNormLang.NativeName)}
-	TranslatedName
-	模糊查詢。
-	")]
 	public str? SearchText{get;set;} = null;
 }
