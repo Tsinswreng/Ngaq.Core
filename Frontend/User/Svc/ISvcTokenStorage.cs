@@ -7,7 +7,7 @@ using Tsinswreng.CsTempus;
 public partial class ReqSetRefreshToken{
 	public IdUser LoginUserId{get;set;}
 	public str RefreshToken{get;set;} = "";
-	public Tempus RefreshTokenExpireAt{get;set;}
+	public UnixMs RefreshTokenExpireAt{get;set;}
 }
 
 public interface ISvcTokenStorage{

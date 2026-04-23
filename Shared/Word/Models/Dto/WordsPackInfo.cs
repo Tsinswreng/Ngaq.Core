@@ -12,7 +12,7 @@ public class WordsPackInfo
 	[EnumOf(typeof(EWordsPack))]
 
 	public EWordsPack Type{get;set;}
-	public Tempus CreatedAt{get;set;} = Tempus.Now();
+	public UnixMs CreatedAt{get;set;} = UnixMs.Now();
 	public Version? Ver{get;set;} = IWordsPackInfo.ClassVer;
 	public Version? VerJnWord{get;set;} = JnWord.ClassVer;
 	public Version? VerApp{get;set;} = AppVer.Inst.Ver;

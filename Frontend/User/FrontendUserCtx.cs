@@ -11,9 +11,9 @@ public class FrontendUserCtx : IFrontendUserCtx{
 	public IdUser UserId{get=>LocalUserId; set=>LocalUserId= value;}
 	public IDictionary<str, obj?>? Props{get;set;}
 	public str? AccessToken{get;set;}
-	public Tempus AccessTokenExpireAt{get;set;}
+	public UnixMs AccessTokenExpireAt{get;set;}
 	public str? RefreshToken{get;set;}
-	public Tempus RefreshTokenExpireAt{get;set;}
+	public UnixMs RefreshTokenExpireAt{get;set;}
 	public IdUser LocalUserId{
 		get;
 		set{

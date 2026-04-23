@@ -72,27 +72,27 @@ public static class ExtnJnWord{
 		}
 
 		[Impl(typeof(IPoWord))]
-		public Tempus StoredAt{
+		public UnixMs StoredAt{
 			get{return z.Word.StoredAt;}
 			set{z.Word.StoredAt = value;}
 		}
 
-		public Tempus DbCreatedAt{
+		public UnixMs DbCreatedAt{
 			get{return z.Word.DbCreatedAt;}
 			set{z.Word.DbCreatedAt = value;}
 		}
 
-		public Tempus BizCreatedAt{
+		public UnixMs BizCreatedAt{
 			get{return z.Word.BizCreatedAt;}
 			set{z.Word.BizCreatedAt = value;}
 		}
 
 		/// 當關聯ʹ他表 更新旹、亦當更新此字段
-		public Tempus BizUpdatedAt{
+		public UnixMs BizUpdatedAt{
 			get{return z.Word.BizUpdatedAt;}
 			set{z.Word.BizUpdatedAt = value;}
 		}
-		public Tempus DbUpdatedAt{
+		public UnixMs DbUpdatedAt{
 			get{return z.Word.DbUpdatedAt;}
 			set{z.Word.DbUpdatedAt = value;}
 		}

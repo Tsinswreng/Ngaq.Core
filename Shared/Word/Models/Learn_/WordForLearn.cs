@@ -117,26 +117,26 @@ public partial class WordForLearn
 	}
 
 	[Impl(typeof(IPoBase))]
-	public Tempus DbCreatedAt{
+	public UnixMs DbCreatedAt{
 		get{return PoWord.DbCreatedAt;}
 		set{PoWord.DbCreatedAt = value;}
 	}
 
 	[Impl(typeof(IPoBase))]
-	public Tempus BizCreatedAt{
+	public UnixMs BizCreatedAt{
 		get{return PoWord.BizCreatedAt;}
 		set{PoWord.BizCreatedAt = value;}
 	}
 
 	[Impl(typeof(IPoBase))]
-	public Tempus DbUpdatedAt{
+	public UnixMs DbUpdatedAt{
 		get{return PoWord.DbUpdatedAt;}
 		set{PoWord.DbUpdatedAt = value;}
 	}
 
 	/// 當關聯ʹ他表 更新旹、亦當更新此字段
 	[Impl]
-	public Tempus BizUpdatedAt{
+	public UnixMs BizUpdatedAt{
 		get{return PoWord.BizUpdatedAt;}
 		set{PoWord.BizUpdatedAt = value;}
 	}

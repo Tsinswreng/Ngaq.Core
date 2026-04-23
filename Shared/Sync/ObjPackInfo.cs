@@ -18,7 +18,7 @@ public interface IObjPackInfo:IAppSerializable{
 	")]
 	public obj? PayloadTypeObj{get;set;}
 	
-	public Tempus CreatedAt{get;set;}
+	public UnixMs CreatedAt{get;set;}
 	
 	[Doc(@"DTO版本")]
 	public Version? Ver{get;set;}
@@ -33,7 +33,7 @@ public interface IObjPackInfo:IAppSerializable{
 }
 
 public class ObjPackInfo:IObjPackInfo{
-	public Tempus CreatedAt{get;set;}
+	public UnixMs CreatedAt{get;set;}
 	public obj? PayloadTypeObj{get;set;}
 	public Version? Ver{get;set;} = IObjPackInfo.ClassVer;
 	public Version? ObjVer{get;set;}

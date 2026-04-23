@@ -265,7 +265,7 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Word.Models.Weight.WordWeightResult))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Word.Models.Weight.WordWeightResult>))]
 //額外類型
-[JsonSerializable(typeof(global::Tsinswreng.CsTempus.Tempus))]
+[JsonSerializable(typeof(global::Tsinswreng.CsTempus.UnixMs))]
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IWebAns<obj>))]
 [JsonSerializable(typeof(global::Tsinswreng.CsErr.IAppErrView))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Tsinswreng.CsErr.IAppErrView>))]

@@ -189,7 +189,7 @@ public class SvcWordInMem:ISvcWordInMem{
 		mergedWord.BizCreatedAt = mergedWord.BizCreatedAt <= Remote.BizCreatedAt
 			? mergedWord.BizCreatedAt
 			: Remote.BizCreatedAt;
-		mergedWord.BizUpdatedAt = Tempus.Now();
+		mergedWord.BizUpdatedAt = UnixMs.Now();
 		localClone.Word = mergedWord;
 		localClone.EnsureForeignId();
 		return new JnWordMergeResult{

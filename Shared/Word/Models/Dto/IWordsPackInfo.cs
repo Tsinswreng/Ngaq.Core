@@ -38,7 +38,7 @@ public interface IWordsPackInfo
 {
 	public static Version ClassVer = new Version(1,0,0);
 	public EWordsPack Type{get;set;}
-	public Tempus CreatedAt{get;set;}
+	public UnixMs CreatedAt{get;set;}
 	[Doc(@"DTO版本")]
 	public Version? Ver{get;set;}
 	#if Impl

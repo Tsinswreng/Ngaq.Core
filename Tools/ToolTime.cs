@@ -3,7 +3,7 @@ using Tsinswreng.CsTempus;
 namespace Ngaq.Core.Tools;
 
 public static class ToolTime{
-	extension(Tempus z){
+	extension(UnixMs z){
 	[Doc(@$"
 	用于簡單顯示 不佔太多空間
 	#Examples([26-03-30])

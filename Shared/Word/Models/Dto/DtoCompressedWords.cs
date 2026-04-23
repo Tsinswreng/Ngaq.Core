@@ -10,7 +10,7 @@ public class DtoCompressedWords
 	,IAppSerializable
 {
 	public u8[]? Data{get;set;}
-	public Tempus CreatedAt{get;set;} = Tempus.Now();
+	public UnixMs CreatedAt{get;set;} = UnixMs.Now();
 	public EWordsPack Type{get;set;} = EWordsPack.None;
 	public Version? VerJnWord{get;set;} = JnWord.ClassVer;
 	public Version? Ver{get;set;}

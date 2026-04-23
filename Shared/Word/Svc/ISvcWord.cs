@@ -103,7 +103,7 @@ public partial interface ISvcWord{
 	public Task<IPage<IJnWord>> PageChangedWordsWithDelWordsAfterTime(
 		IUserCtx User
 		,IPageQry PageQry
-		,Tempus Tempus
+		,UnixMs Tempus
 		,CT Ct
 	);
 

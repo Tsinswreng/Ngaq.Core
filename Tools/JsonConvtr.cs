@@ -15,19 +15,19 @@ using Tsinswreng.CsTempus;
 // }
 
 [Doc(@$"TODO 複用")]
-public partial class JsonConvtr_Tempus : JsonConverter<Tempus> {
-	public override Tempus Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
+public partial class JsonConvtr_Tempus : JsonConverter<UnixMs> {
+	public override UnixMs Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
 		using JsonDocument doc = JsonDocument.ParseValue(ref reader);
 		JsonElement ele = doc.RootElement;
 		if(ele.ValueKind == JsonValueKind.Number
 			&& ele.TryGetInt64(out long l)
 		){
-			return new Tempus(l);
+			return new UnixMs(l);
 		}
 		return default;
 	}
 
-	public override void Write(Utf8JsonWriter writer, Tempus value, JsonSerializerOptions options) {
+	public override void Write(Utf8JsonWriter writer, UnixMs value, JsonSerializerOptions options) {
 		JsonSerializer.Serialize(writer, value.Value, RawValueCtx.Default.Object);
 	}
 }

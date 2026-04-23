@@ -35,7 +35,7 @@ public partial class PoWordLearn
 }
 
 public static partial class ExtnPoWordLearn{
-	public static Tempus Time(
+	public static UnixMs Time(
 		this PoWordLearn z
 	){
 		if(z.BizUpdatedAt.IsNullOrDefault()){

@@ -5,9 +5,9 @@ using Tsinswreng.CsPage;
 using Tsinswreng.CsTempus;
 
 public class ReqScltWordsOfLearnResultByTimeInterval:IReq{
-	public Tempus TimeStart{get;set;}
-	public Tempus TimeEnd{get;set;}
-	public Tempus TimeInterval{get;set;}
+	public UnixMs TimeStart{get;set;}
+	public UnixMs TimeEnd{get;set;}
+	public UnixMs TimeInterval{get;set;}
 	public str LearnResult{get;set;}
 	public IPageQry PageQry{get;set;}
 }

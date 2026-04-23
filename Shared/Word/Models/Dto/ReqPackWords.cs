@@ -6,7 +6,7 @@ using Ngaq.Core.Shared.Base.Models.Req;
 using Tsinswreng.CsTempus;
 
 public class ReqPackWords : BaseReq, IWordsPackInfo{
-	public Tempus CreatedAt{get;set;} = Tempus.Now();
+	public UnixMs CreatedAt{get;set;} = UnixMs.Now();
 	public EWordsPack Type{get;set;} = EWordsPack.None;
 	public Version? VerJnWord{get;set;} = JnWord.ClassVer;
 	public Version? Ver{get;set;}

@@ -34,6 +34,6 @@ public partial class PoRecentUse
 
 	/// 累計使用次數。可用於同時間戳下的次級排序或分析。
 	public u64 UsedCount { get; set; } = 0;
-	public override Tempus BizUpdatedAt{get;set;} = Tempus.Now();
+	public override UnixMs BizUpdatedAt{get;set;} = UnixMs.Now();
 }
 

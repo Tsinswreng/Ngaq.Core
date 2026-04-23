@@ -32,7 +32,7 @@ public partial interface IPoWord
 	/// DbCreatedAt: 實體插入數據庫旹
 	/// StoredAt: 詞ˋ始被錄入數據庫旹
 	/// 備份同步旹、于同一詞、同步後本地與遠端之StoredAt當一致、DbCreatedAt可不一致
-	public Tempus StoredAt{get;set;}
+	public UnixMs StoredAt{get;set;}
 }
 
 public partial class PoWord
@@ -77,7 +77,7 @@ public partial class PoWord
 	(比如被記于文本詞表之時。先記在生詞表上再導入、則其{nameof(BizCreatedAt)}被視爲文本生詞表上記錄的時間。)
 	目前只在 DaoWord.FnPageChangedWordIdsWithDelWordsAfterTime中被讀取、
 	")]
-	public Tempus StoredAt{get;set;} = Tempus.Now();
+	public UnixMs StoredAt{get;set;} = UnixMs.Now();
 
 	public override string ToString() {
 		var Mgr = (IPropAccessorReg)CoreDictMapper.Inst;

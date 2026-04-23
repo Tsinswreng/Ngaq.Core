@@ -5,7 +5,7 @@ using Tsinswreng.CsTempus;
 
 public class RespRefreshBothToken:BaseResp{
 	public str AccessToken{get;set;} = "";
-	public Tempus AccessTokenExpireAt{get;set;}
+	public UnixMs AccessTokenExpireAt{get;set;}
 	public str RefreshToken{get;set;} = "";
-	public Tempus RefreshTokenExpireAt{get;set;}
+	public UnixMs RefreshTokenExpireAt{get;set;}
 }

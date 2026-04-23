@@ -20,7 +20,7 @@ public class DtoOnDone{
 public interface IReqLlmDict:IReq{
 	/// 唯一请求ID，用于追踪/缓存
 	public string Id { get; set; }
-	public Tempus UnixMs { get; set; }
+	public UnixMs UnixMs { get; set; }
 	/// 核心查询内容
 	public Query Query { get; set; }
 	/// 语言配置
@@ -44,7 +44,7 @@ public interface IReqLlmDictEvt{
 public class ReqLlmDict:IReqLlmDict{
 	/// 唯一请求ID，用于追踪/缓存
 	public string Id { get; set; } = "";
-	public Tempus UnixMs { get; set; }
+	public UnixMs UnixMs { get; set; }
 
 	/// 核心查询内容
 	public Query Query { get; set; } = new Query();

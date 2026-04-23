@@ -5,8 +5,8 @@ using Tsinswreng.CsPage;
 using Tsinswreng.CsTempus;
 
 public class TimeIntervalCnt{
-	public Tempus TimeStart{get;set;}
-	public Tempus TimeEnd{get;set;}
+	public UnixMs TimeStart{get;set;}
+	public UnixMs TimeEnd{get;set;}
 	public i64 Cnt{get;set;}
 }
 

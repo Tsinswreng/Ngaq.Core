@@ -44,7 +44,7 @@ public partial class SampleWord{
 		{
 			var o = new PoWordProp();
 			Ans.Props.Add(o);
-			o.BizUpdatedAt = Tempus.FromIso("2024-11-21T21:50:14.648+08:00");
+			o.BizUpdatedAt = UnixMs.FromIso("2024-11-21T21:50:14.648+08:00");
 			o.SetStrToken(
 				null,P.description,
 """
@@ -60,7 +60,7 @@ public partial class SampleWord{
 		{
 			var o = new PoWordProp();
 			Ans.Props.Add(o);
-			o.BizUpdatedAt = Tempus.FromIso("2025-06-21T21:50:14.648+08:00");
+			o.BizUpdatedAt = UnixMs.FromIso("2025-06-21T21:50:14.648+08:00");
 			o.SetStrToken(
 				null,P.description,
 """
