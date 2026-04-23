@@ -78,4 +78,12 @@ public interface ISvcNormLang{
 		IAsyncEnumerable<INormLang> NormLangs, CT Ct
 	);
 	
+	
+	[Doc(@$"取 UI 支持的語言。
+	放10種最常用的就夠 除中文 分 簡體繁體外 其他語言不用細分變體
+	")]
+	public IAsyncEnumerable<INormLangDetail> BatGetUiLangs(
+		CT CT
+	);
+	
 }
