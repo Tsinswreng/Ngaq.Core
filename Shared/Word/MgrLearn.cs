@@ -91,10 +91,10 @@ public partial class LearnEventArgs :EventArgs{
 	public bool IsUndo{get;set;} = false;
 }
 
-/// 鍙渻鍦ㄥ墠绔亱琛?
+/// 只會在前端運行
 public partial class MgrLearn{
 	//public MgrLearn(){}
-	public ISvcWord SvcWord{get;set;}//TODO 鎺ュ彛闅旈洟
+	public ISvcWord SvcWord{get;set;}//TODO 接口隔離
 	//IUserCtx UserCtx;
 	IFrontendUserCtxMgr UserCtxMgr;
 	IStudyPlanGetter StudyPlanGetter;
@@ -180,8 +180,8 @@ public partial class MgrLearn{
 	}
 
 
-	/// 鍙栬瑭?
-	[Obsolete("鐢↙oadEtCalcWeightAsy鏇村揩")]
+	/// 取諸詞
+	[Obsolete("用LoadEtCalcWeightAsy更快")]
 	public nil Load(IEnumerable<IJnWord> JWords){
 		State.WordsToLearn.Clear();
 		foreach(var (i,JWord) in JWords.Index()){
@@ -329,7 +329,7 @@ public partial class MgrLearn{
 		return NIL;
 	}
 
-/// <returns>瑕婨LearnOpRtn</returns>
+
 	ELearnOpRtn _Learn(
 		IWordForLearn Word
 		,ELearn Learn
