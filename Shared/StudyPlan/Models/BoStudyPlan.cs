@@ -71,7 +71,7 @@ public static class ExtnBoStudyPlan{
 			z.WeightCalctr = null;
 			if(
 				z.PoWeightCalculator is { } poWeightCalculator
-				&& poWeightCalculator.Type == EWeightCalculatorType.Js
+				&& poWeightCalculator.Type == EWeightCalculatorType.JsV1
 				&& !string.IsNullOrWhiteSpace(poWeightCalculator.Text)
 			){
 				var jsCode = poWeightCalculator.Text;

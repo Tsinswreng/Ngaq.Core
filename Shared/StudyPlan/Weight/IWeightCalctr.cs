@@ -13,12 +13,12 @@ Words weight calculator interface.
 ")]
 
 public partial interface IWeightCalctr{
-	[Obsolete(@$"use {nameof(Calc)} instead")]
-	public Task<IWeightResult> Calc(
-		IAsyncEnumerable<IWordForLearn> Word
-		,IJsonNode? CalcArg
-		,CT Ct
-	);
+	// [Obsolete(@$"use {nameof(Calc)} instead")]
+	// public Task<IWeightResult> Calc(
+	// 	IAsyncEnumerable<IWordForLearn> Word
+	// 	,IJsonNode? CalcArg
+	// 	,CT Ct
+	// );
 	
 	public Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word

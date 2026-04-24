@@ -1,8 +1,8 @@
 #if false
 	/*
 	JS sample:
-	const words = JSON.parse(WordsJson ?? "[]");
-	const arg = JSON.parse(CalcArgJson ?? "{}");
+	const words = JSON.parse(Ngaq.WordsJson ?? "[]");
+	const arg = JSON.parse(Ngaq.CalcArgJson ?? "{}");
 	const baseWeight = Number(arg.BaseWeight ?? 0);
 	const step = Number(arg.Step ?? 1);
 
@@ -38,6 +38,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Tsinswreng.CsErr;
 using Tsinswreng.CsTools;
+using Microsoft.Extensions.Logging;
 
 namespace Ngaq.Core.Shared.Word.Svc;
 
@@ -45,6 +46,7 @@ namespace Ngaq.Core.Shared.Word.Svc;
 public class JsWeightCalctr : IWeightCalctr{
 	public IJsonSerializer JsonSerializer { get; set; }
 	public str JsCode { get; set; }
+	public ILogger? Logger{get;set;}
 
 	public JsWeightCalctr(IJsonSerializer jsonSerializer, str jsCode){
 		JsonSerializer = jsonSerializer;
@@ -82,8 +84,16 @@ public class JsWeightCalctr : IWeightCalctr{
 			}
 
 			var engine = new Engine();
-			engine.SetValue("WordsJson", wordsJson);
-			engine.SetValue("CalcArgJson", CalcArg is null ? "null" : JsonSerializer.Stringify(CalcArg));
+			Action<str>? jsLog = null;
+			if(Logger is not null){
+				jsLog = message => Logger.LogInformation("[JsWeightCalctr] {JsLog}", message);
+			}
+
+			engine.SetValue("Ngaq", new {
+				WordsJson = wordsJson,
+				CalcArgJson = CalcArg is null ? "null" : JsonSerializer.Stringify(CalcArg),
+			});
+			engine.SetValue("console", new JsConsoleBridge(jsLog));
 
 			var result = engine.Evaluate(JsCode);
 			var resultJson = result.ToString() ?? "";
@@ -111,6 +121,23 @@ public class JsWeightCalctr : IWeightCalctr{
 					HasCalcArg = CalcArg is not null,
 				});
 		}
+	}
+}
+
+public class JsConsoleBridge{
+	private readonly Action<str>? _log;
+
+	public JsConsoleBridge(Action<str>? log){
+		_log = log;
+	}
+
+	public void log(params obj?[] args){
+		if(_log is null){
+			return;
+		}
+
+		var msg = string.Join(" ", args.Select(x => x?.ToString() ?? "null"));
+		_log(msg);
 	}
 }
 
