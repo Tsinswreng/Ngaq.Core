@@ -18,7 +18,7 @@ public class Packer<T>:IPacker<T>{
 	){
 		var meta = JsonS.Stringify(PackInfo);
 		var lines = Objs.Select(x=>JsonS.Stringify(x));
-		var payload = GZipLinesUtf8.ToStream(lines, Ct);
+		var payload = GZipLinesUtf8.ToStream(lines, Ct).GetAwaiter().GetResult();
 		return TextWithStream.MkUtf8(meta, payload);
 	}
 	

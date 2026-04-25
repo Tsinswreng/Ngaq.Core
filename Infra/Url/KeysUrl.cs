@@ -40,6 +40,7 @@ public partial class KeysUrl{
 		public static Url _R = Mk(ApiV2, ["Word"]);
 		public static Url Push = Mk(_R, [nameof(Push)]);
 		public static Url Pull = Mk(_R, [nameof(Pull)]);
+		public static Url BatSyncJnWordByBizId = Mk(_R, [nameof(BatSyncJnWordByBizId)]);
 	}
 
 }
