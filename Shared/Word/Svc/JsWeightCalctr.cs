@@ -53,16 +53,6 @@ public class JsWeightCalctr : IWeightCalctr{
 		JsCode = jsCode;
 	}
 
-	public Task<IWeightResult> Calc(
-		IAsyncEnumerable<IWordForLearn> Word,
-		IJsonNode? CalcArg,
-		CT Ct
-	){
-		throw KeysErr.Word.WeightCalcInvalidAlgorithm.ToErr(
-			$"Obsolete overload called: {nameof(Calc)}(IAsyncEnumerable<IWordForLearn>, IJsonNode?, CT). Use IDictionary overload instead."
-		);
-	}
-
 	public async Task<IWeightResult> Calc(
 		IAsyncEnumerable<IWordForLearn> Word,
 		IDictionary<str, obj?>? CalcArg,
@@ -74,7 +64,8 @@ public class JsWeightCalctr : IWeightCalctr{
 		}
 
 		try{
-			var words = await Word.ToListAsync(Ct);
+			//不能var 必須聲明爲 IList<...> 否則會因未註冊而反序列化失敗
+			IList<IWordForLearn> words = await Word.ToListAsync(Ct);
 
 			str wordsJson;
 			if(words.Count == 0){

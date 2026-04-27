@@ -85,6 +85,12 @@ using System.Text.Json.Serialization;
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Word.Models.IJnWord))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Word.Models.IJnWord>))]
 
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.INormLang))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.INormLang>))]
+
+[JsonSerializable(typeof(global::Ngaq.Core.Shared.Dictionary.Models.INormLangDetail))]
+[JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Dictionary.Models.INormLangDetail>))]
+
 [JsonSerializable(typeof(global::Ngaq.Core.Shared.Sync.IObjPackInfo))]
 [JsonSerializable(typeof(global::System.Collections.Generic.IList<global::Ngaq.Core.Shared.Sync.IObjPackInfo>))]
 
