@@ -35,12 +35,15 @@ public partial class KeysUrl{
 		public static Url Pull = Mk(_R, [nameof(Pull)]);
 	}
 
-	[Doc(@$"單詞同步 V2 接口路由鍵。根路徑爲 /Api/V2/Word")]
 	public partial class WordV2{
 		public static Url _R = Mk(ApiV2, ["Word"]);
 		public static Url Push = Mk(_R, [nameof(Push)]);
 		public static Url Pull = Mk(_R, [nameof(Pull)]);
 		public static Url BatSyncJnWordByBizId = Mk(_R, [nameof(BatSyncJnWordByBizId)]);
+		public static Url BatAddJnWord = Mk(_R, [nameof(BatAddJnWord)]);
+		public static Url GetAllWordsWithDel = Mk(_R, [nameof(GetAllWordsWithDel)]);
+		public static Url BatUpdHeadLang = Mk(_R, [nameof(BatUpdHeadLang)]);
+		public static Url SoftDelJnWordInId = Mk(_R, [nameof(SoftDelJnWordInId)]);
 	}
 
 }
