@@ -269,10 +269,7 @@ public interface ISvcWordV2{
 	public IAsyncEnumerable<JnWord> UnpackJnWords(
 		Stream TextWithStream, CT Ct
 	);
-	
-	
-	
-	
+
 }
 
 [Doc(@$"此接口下函數不作爲公共API。
