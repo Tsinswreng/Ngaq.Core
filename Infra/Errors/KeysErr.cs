@@ -14,15 +14,17 @@ public static class KeysErr{
 		public static K _R = Mk(null, [nameof(Common)]);
 		public static K ArgErr = MkB(_R, [nameof(ArgErr)]);
 		public static K NetWorkErr = MkB(_R, [nameof(NetWorkErr)]);
-		/// 已取得音頻數據，但在播放階段失敗。
-		public static K AudioPlayFailed = MkB(_R, [nameof(AudioPlayFailed)]);
 		public static K UnknownErr = MkB(_R, [nameof(UnknownErr)]);
 		public static K AddFailed = MkB(_R, [nameof(AddFailed)]);
 		public static K PermissionDenied = MkB(_R, [nameof(PermissionDenied)]);
 		[Doc(@$"數據不合法或衝突")]
 		public static K DataIllegalOrConflict = MkB(_R, [nameof(PermissionDenied)]);
 	}
-	
+	public class Audio{
+		public static K _R = Mk(null, [nameof(Audio)]);
+		[Doc(@$"已取得音頻數據 但 播放失敗")]
+		public static K AudioPlayFailed = MkB(_R, [nameof(AudioPlayFailed)]);
+	}
 	public class User{
 		public static K _R = Mk(null, [nameof(User)]);
 		[Doc(@$"慎用、防止用戶枚舉漏洞")]

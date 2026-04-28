@@ -11,7 +11,7 @@ public static class ToolAudioErr{
 	/// <param name="DebugArgs">調試參數，不面向終端用戶。</param>
 	/// <returns>帶有統一錯誤鍵的 AppErr。</returns>
 	public static AppErr MkAudioPlayFailedErr(Exception? Inner = null, params obj?[] DebugArgs){
-		var Err = KeysErr.Common.AudioPlayFailed.ToErr();
+		var Err = KeysErr.Audio.AudioPlayFailed.ToErr();
 		if(Inner is not null){
 			Err.AddErr(Inner);
 		}
