@@ -3,6 +3,8 @@ using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Ngaq.Core.Infra.Errors;
+using Tsinswreng.CsErr;
 
 namespace Ngaq.Core.Shared.Audio;
 
@@ -17,21 +19,30 @@ public class OnlineAudio {
 		if (string.IsNullOrWhiteSpace(url))
 			throw new ArgumentException("Url is empty.");
 
-		// 1. 下載到記憶體
-		using var resp = await _http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, Ct);
-		resp.EnsureSuccessStatusCode();
+		try{
+			// 1. 下載到記憶體
+			using var resp = await _http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, Ct);
+			resp.EnsureSuccessStatusCode();
 
-		var type = DetectType(resp.Content.Headers.ContentType?.MediaType, url);
+			var type = DetectType(resp.Content.Headers.ContentType?.MediaType, url);
 
-		var ms = new MemoryStream();
-		await resp.Content.CopyToAsync(ms, Ct);
-		var bytes = ms.ToArray();          // 真正快取起來
+			var ms = new MemoryStream();
+			await resp.Content.CopyToAsync(ms, Ct);
+			var bytes = ms.ToArray();          // 真正快取起來
 
-		// 2. 包成工廠：每次給一條全新的 MemoryStream
-		Task<Stream> Factory(CancellationToken _)
-			=> Task.FromResult<Stream>(new MemoryStream(bytes));
+			// 2. 包成工廠：每次給一條全新的 MemoryStream
+			Task<Stream> Factory(CancellationToken _)
+				=> Task.FromResult<Stream>(new MemoryStream(bytes));
 
-		return new Audio(Factory, type);
+			return new Audio(Factory, type);
+		}catch(OperationCanceledException) when(Ct.IsCancellationRequested){
+			throw;
+		}catch(HttpRequestException ex){
+			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(url);
+		}catch(TaskCanceledException ex){
+			// HttpClient 超時等也可能走 TaskCanceledException，按網絡錯誤處理。
+			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(url);
+		}
 	}
 
 	#region 原本的分類邏輯保持不變

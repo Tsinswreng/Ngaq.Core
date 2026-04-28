@@ -14,6 +14,8 @@ public static class KeysErr{
 		public static K _R = Mk(null, [nameof(Common)]);
 		public static K ArgErr = MkB(_R, [nameof(ArgErr)]);
 		public static K NetWorkErr = MkB(_R, [nameof(NetWorkErr)]);
+		/// 已取得音頻數據，但在播放階段失敗。
+		public static K AudioPlayFailed = MkB(_R, [nameof(AudioPlayFailed)]);
 		public static K UnknownErr = MkB(_R, [nameof(UnknownErr)]);
 		public static K AddFailed = MkB(_R, [nameof(AddFailed)]);
 		public static K PermissionDenied = MkB(_R, [nameof(PermissionDenied)]);

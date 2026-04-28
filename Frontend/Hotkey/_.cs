@@ -25,11 +25,11 @@ $$"""
 为了避免平台判断代码散落在公共组件，新添加了 `{{nameof(I_RegisterGlobalHotKeys)}}` 接口。
 此接口位于 `Ngaq.Ui.Infra.Hotkey`，由各平台专用程序集提供实现，负责在
 对应平台启动时统一注册所有需要的全局快捷键。例如 Windows 实现为
-`WinGlobalHotkeyRegistrar`，Android 提供空实现。
+`WinGlobalHotkeyRegistrar`，Linux 实现为 `LinuxGlobalHotkeyRegistrar`。
 接口定义简单：
 ```csharp
 public interface I_RegisterGlobalHotKeys{
-    public nil RegisterGlobalHotKeys();
+    public IAnswer<obj?> RegisterGlobalHotKeys();
 }
 ```
 注册器通过 DI 注入到 App 中，仅在平台入口调用。
@@ -68,7 +68,7 @@ Ctrl、Shift、Alt、Win，可组合。
 ## DI 配置
 
 Windows：`z.AddSingleton<IHotkeyListener, WinHotkeyListener>();`
-Android：`z.AddSingleton<IHotkeyListener, AndroidHotkeyListener>();`
+Linux：`z.AddSingleton<IHotkeyListener, LinuxHotkeyListener>();`
 
 ## 技术细节
 - Windows 实现依赖窗口句柄，全局生效。
@@ -76,7 +76,8 @@ Android：`z.AddSingleton<IHotkeyListener, AndroidHotkeyListener>();`
 - 修饰符码：Ctrl=0x2；Shift=0x4；Alt=0x1；Win=0x8。
 
 ## 注意事项
-- Windows 平台才调用注册逻辑。
+- Windows / Linux 平台都会调用注册逻辑。
+- Linux 当前通过 X11/XWayland 后端提供全局热键。
 - 应用退出前调用 Cleanup。
 - 字典存储注册项，对并发需谨慎。
 
