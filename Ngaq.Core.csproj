@@ -47,8 +47,8 @@
 		<ProjectReference Include="../Tsinswreng.CsTextWithBlob/proj/Tsinswreng.CsTextWithBlob/Tsinswreng.CsTextWithBlob.csproj" />
 		<ProjectReference Include="../Tsinswreng.Srefl/proj/Tsinswreng.Srefl.SrcGen/Tsinswreng.Srefl.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
 
-		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/Tsinswreng.CsFactoryMkr.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr.SrcGen/Tsinswreng.CsFactoryMkr.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+		<!-- <ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr/Tsinswreng.CsFactoryMkr.csproj" /> -->
+		<!-- <ProjectReference Include="../Tsinswreng.CsFactoryMkr/proj/Tsinswreng.CsFactoryMkr.SrcGen/Tsinswreng.CsFactoryMkr.SrcGen.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" /> -->
 	</ItemGroup>
 
 	<ItemGroup>

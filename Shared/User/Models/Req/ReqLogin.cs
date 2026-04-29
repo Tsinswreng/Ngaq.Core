@@ -4,11 +4,10 @@ using Ngaq.Core.Infra.IF;
 
 namespace Ngaq.Core.Shared.User.Models.Req {
 	using Ngaq.Core.Shared.Base.Models.Req;
-	using Tsinswreng.CsFactoryMkr;
-[MkFactory(
-	For = typeof(ReqLogin)
-	,MethodName = "Mk"
-)]
+// [MkFactory(
+// 	For = typeof(ReqLogin)
+// 	,MethodName = "Mk"
+// )]
 public partial class ReqLogin: IReq{
 	public str? UniqName{get;set;}
 	public str? Email{get;set;}

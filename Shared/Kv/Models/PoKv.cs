@@ -4,10 +4,9 @@ using Ngaq.Core.Shared.Base.Models.Po;
 using Ngaq.Core.Shared.User.Models.Po.User;
 using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Infra;
-using Tsinswreng.CsFactoryMkr;
 using Ngaq.Core.Infra.IF;
 
-[MkFactory(For=typeof(PoKv))]
+//[MkFactory(For=typeof(PoKv))]
 public partial class PoKv
 	:PoBase
 	,AppI_Id<IdKv>

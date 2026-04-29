@@ -1,9 +1,9 @@
 namespace Ngaq.Core.Frontend.User.Svc;
 using Ngaq.Core.Shared.User.Models.Po.User;
-using Tsinswreng.CsFactoryMkr;
+
 using Tsinswreng.CsTempus;
 
-[MkFactory(For=typeof(ReqSetRefreshToken))]
+//[MkFactory(For=typeof(ReqSetRefreshToken))]
 public partial class ReqSetRefreshToken{
 	public IdUser LoginUserId{get;set;}
 	public str RefreshToken{get;set;} = "";
