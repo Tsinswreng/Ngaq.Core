@@ -37,16 +37,13 @@ public interface ISvcNormLang{
 		CT Ct
 	);
 	
-	[Doc(@$"按 
-	{nameof(PoNormLang.Code)}
-	{nameof(PoNormLang.NativeName)}
-	TranslatedName
-	
-	模糊查詢。
-	
+	[Doc(@$"按 以下優先級 模糊查詢:
+	- {nameof(PoNormLang.Code)}
+	- {nameof(PoNormLang.NativeName)}
+	- TranslatedName
+
 	按 {nameof(PoNormLang.Weight)} 降序
 	
-	後 再按字母排序。
 	")]
 	public Task<IPageAsyE<PoNormLang>> PageNormLang(
 		IDbUserCtx Ctx,

@@ -19,15 +19,34 @@ public class OnlineAudio {
 		if (string.IsNullOrWhiteSpace(url))
 			throw new ArgumentException("Url is empty.");
 
+		using var req = new HttpRequestMessage(HttpMethod.Get, url);
+		return await Get(req, Ct);
+	}
+
+	/// <summary>
+	/// 使用調用方自定義的請求頭下載音頻。
+	/// 主要給像 gTTS 這類會根據 User-Agent / Referer 做風控的來源使用。
+	/// </summary>
+	public async Task<Audio> Get(HttpRequestMessage Req, CT Ct = default) {
+		if(Req.RequestUri is null){
+			throw new ArgumentException("RequestUri is empty.");
+		}
+
+		using var req = Req;
 		try{
 			// 1. 下載到記憶體
-			using var resp = await _http.GetAsync(url, HttpCompletionOption.ResponseHeadersRead, Ct);
+			// Android 上若恢復到 UI 線程時再 Dispose 響應，可能觸發 NetworkOnMainThreadException。
+			// 因此這裡明確不捕獲同步上下文，讓後續讀取與釋放都留在後台線程。
+			using var resp = await _http
+				.SendAsync(req, HttpCompletionOption.ResponseHeadersRead, Ct)
+				.ConfigureAwait(false);
 			resp.EnsureSuccessStatusCode();
 
+			var url = req.RequestUri.ToString();
 			var type = DetectType(resp.Content.Headers.ContentType?.MediaType, url);
 
 			var ms = new MemoryStream();
-			await resp.Content.CopyToAsync(ms, Ct);
+			await resp.Content.CopyToAsync(ms, Ct).ConfigureAwait(false);
 			var bytes = ms.ToArray();          // 真正快取起來
 
 			// 2. 包成工廠：每次給一條全新的 MemoryStream
@@ -38,10 +57,10 @@ public class OnlineAudio {
 		}catch(OperationCanceledException) when(Ct.IsCancellationRequested){
 			throw;
 		}catch(HttpRequestException ex){
-			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(url);
+			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(req.RequestUri.ToString());
 		}catch(TaskCanceledException ex){
 			// HttpClient 超時等也可能走 TaskCanceledException，按網絡錯誤處理。
-			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(url);
+			throw KeysErr.Common.NetWorkErr.ToErr().AddErr(ex).AddDebugArgs(req.RequestUri.ToString());
 		}
 	}
 
