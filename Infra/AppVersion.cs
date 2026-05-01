@@ -9,11 +9,11 @@ new Version:(1, 2, 3, 261230102)
 public class AppVer{
 	protected static AppVer? _Inst = null;
 	public static AppVer Inst => _Inst??= new AppVer();
-	//2026-04-29T18:38:01.768+08:00_W18-3
-	//2026_0429_183801
-	public Version Ver {get;} = new (1, 2, 1, 261831838);
+	//2026-05-01T3:11:50.430+00:00_W18-5
+	//
+	public Version Ver {get;} = new (1, 2, 2, 261850311);
 
 	//不涉及前端
-	public Version CoreVer{get;} = new (1, 2, 1, 261831838);
+	public Version CoreVer{get;} = new (1, 2, 2, 261850311);
 }
 
