@@ -3,6 +3,7 @@ namespace Ngaq.Core.Shared.Word.WeightAlgo;
 using Ngaq.Core.Shared.Word.Models.Learn_;
 using Ngaq.Core.Shared.Word.WeightAlgo.Models;
 using Ngaq.Core.Word.WeightAlgo.Models;
+using Tsinswreng.CsTempus;
 using Tsinswreng.CsTools;
 
 
@@ -31,11 +32,13 @@ public partial class CalculatorForOne{
 		return s;
 	}
 
+	[Doc(@$"預先算好必要數據")]
 	nil _PreCount(){
 		_FindFinalAddPos();
 		return NIL;
 	}
 
+	[Doc(@$"初始化{nameof(WordState.PosFinalAdd)}")]
 	nil _FindFinalAddPos(){
 		for(var i = Word.LearnRecords.Count-1; i>=0; i--){
 			var LearnRecord = Word.LearnRecords[i];
@@ -52,20 +55,22 @@ public partial class CalculatorForOne{
 		return Run();
 	}
 
+	[Doc("計算當前單詞的權重 並賦值")]
 	public nil Run(){
 		var Word = State.Word;
 		//Word.SavedLearnRecords //TODO 確保此潙以時升序
-		var CntLearn = 0;//temp debug
+		//按時間順序遍歷所有事件
 		for(var i = 0; i < Word.LearnRecords.Count; i++, State.WordState.Pos++){
 			var LearnRecord = Word.LearnRecords[i];
+			//根據當前事件 做相應處理
 			if(LearnRecord.Learn == ELearn.Add){
-				CntLearn++;
 				_Add();
 			}else if(LearnRecord.Learn == ELearn.Rmb){
 				_Rmb();
 			}else if(LearnRecord.Learn == ELearn.Fgt){
 				_Fgt();
 			}
+			//如果是處理最後一個事件 再做額外處理
 			if(i == Word.LearnRecords.Count-1){
 				_HandleFinal();
 			}
@@ -73,60 +78,81 @@ public partial class CalculatorForOne{
 		return NIL;
 	}
 
+	[Doc(@$"處理 添加事件。
+	「添加」指一個單詞被加入詞庫。
+	一個單詞能被多次加入詞庫。「添加」事件越多代表這個單詞越重要。故「添加」事件會使權重變大
+	")]
 	nil _Add(){
 		WordState.CurCntAdd++;
-		var LearnRecord = Word.LearnRecords[WordState.Pos.AsI32()];
 		WordState.CurCntValidRmb = 0;
-		var weight0 = Cfg.AddCnt_Bonus.AtOrDefault(WordState.CurCntAdd.AsI32()-1, Cfg.DfltAddBonus);
-		var weight = weight0;
-		f64? FinalAddBonus = null;
+		var coefficient0 = Cfg.AddCnt_Bonus.AtOrDefault(WordState.CurCntAdd.AsI32()-1, Cfg.DfltAddBonus);
+		var coefficient = coefficient0;
+		
+		f64? FinalAddBonus;
 		if(WordState.Pos == WordState.PosFinalAdd){
+			//若當前處理的事件 是 所有「添加」事件中的最後一個
+			//則給權重 增益
 			FinalAddBonus = _CalcFinalAddBonus();
-			weight *= FinalAddBonus.Value;
+			coefficient *= FinalAddBonus.Value;
 		}
-		WordState.Weight *= weight;
+		WordState.Weight *= coefficient;
 		//TODO log change of weight
 
 		return NIL;
 	}
 
+	[Doc(@$"處理「記得」事件。會使權重變小")]
 	nil _Rmb(){
 		WordState.CurCntRmb++;
-		var LearnRecord = _GetCurLearnRecord();
-		var weight0 = _CalcTimeWeightForCur();
-		f64 debuff;
+		
+		var coefficient0 = _CalcTimeWeightForCur();
+		
+		f64 debuff;//負加成
 
-		//TOFIX 蠹:finalAddEventPos之前者亦有debuff
+		//TOFIX 蠹:finalAddEventPos之前者亦有debuff?
+		_ = @$"當 當前事件 在 {nameof(WordState.PosFinalAdd)} 之後
+		且 所有事件中的最後一個事件是 「記得」 事件 時、
+		算一個負加成 讓 權重變得更小。目標是使 剛背過的單詞 在短時間內 更不容易出現。
+		";
 		if(//若有debuff
 			WordState.Pos >= WordState.PosFinalAdd
 			&& _GetFinalLearnRecord().Learn == ELearn.Rmb
 		){
 			debuff = _CalcDebuff();
-			var weight = weight0 * debuff;
-			No0(ref weight);
-			WordState.Weight /= weight;
+			var coefficient = coefficient0 * debuff;
+			No0(ref coefficient);
+			WordState.Weight /= coefficient; //權重除以係數 使權重更小
 		}else{
-			No0(ref weight0);
-			WordState.Weight /= weight0;
+			No0(ref coefficient0);
+			WordState.Weight /= coefficient0;
 		}
 		//TODO log change
 		return NIL;
 	}
 
+	[Doc(@$"處理「忘記」事件。會使權重變大")]
 	nil _Fgt(){
 		WordState.CurCntFgt++;
-		var Prev = _GetPrevLearnRecord();
-		f64 weight0 = _CalcTimeWeightForCur();
-		weight0 *= WordState.CurCntAdd; // curPos之後之cnt_add不算
-		weight0 /= 10;
+		var Prev = _GetPrevLearnRecord();//上個學習事件
+		f64 coefficient0 = _CalcTimeWeightForCur();
+		_ = @$"添加次數越多表示單詞越重要。
+		對于更重要的單詞、忘記事件的權重增幅應該更大 相比于 不重要的單詞。
+		故用係數乘以 單詞添加次數
+		";
+		coefficient0 *= WordState.CurCntAdd; // curPos之後之cnt_add不算
+		//不讓係數太大 一個單詞可能會被忘記很多次。
+		// 「記得」事件與「忘記」事件使用類似的算法、使「忘記」事件的權重增長不要太大
+		coefficient0 /= 10;
+		_ = @$"如果上個事件剛好是 「添加」 事件 就讓權重更大、讓被加過的單詞更容易先被學一輪";
 		if(Prev.Learn == ELearn.Add){
-			weight0 *= 4;
+			coefficient0 *= 4;
 		}
-		WordState.Weight *= weight0;
+		WordState.Weight *= coefficient0;
 		//TODO log change
 		return NIL;
 	}
 
+	[Doc(@$"額外處理最後一個學習記錄")]
 	nil _HandleFinal(){
 		var Cur = _GetCurLearnRecord();
 		if(Cur.Learn == ELearn.Add){
@@ -197,9 +223,16 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
+	[Doc(@$"最基礎的 時間權重係數。
+	目標: 将时间差映射为权重，且权重随着时间差增大而增大，但增幅逐渐放缓
+	#Params([毫秒級時間差])
+	主要流程 : 以秒爲單位 取 時間差 的 四次方根。
+	f(t) = t^(1/4) 這個函數、隨 t 單調遞增。 符合: 時間差越大, 時間權重越大。
+	當 t 越大時, 隨着 t 增大, f(t) 增幅越不明顯 (一階導數遞減, 增长率递减)
+	")]
 	f64 _CalcTimeWeight(i64 TimeDiffMs){
 		f64 R = TimeDiffMs;
-		R /= 1000; //sec
+		R /= 1000; //轉化成秒。 毫秒級不方便理解
 		//R = Math.Pow(R, 1/4); //整數除法 1/4 得0
 		R = Math.Pow(R, 1.0/4);
 		if(R <= 1){
@@ -208,21 +241,34 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
+	[Doc(@$"
+	當前事件的時間 減去 上個事件的時間 再用時間差 去 {nameof(_CalcTimeWeight)} 算權重。
+	")]
 	f64 _CalcTimeWeightForCur(){
 		var TimeDiffMs = _TimeMsCurDiffPrev();
 		return _CalcTimeWeight(TimeDiffMs);
 	}
 
-/// 含FinalAddBonus
-/// 返值越大 debuff越有效
+
+	[Doc(@$"當 當前事件 在 {nameof(WordState.PosFinalAdd)} 之後
+	且 所有事件中的最後一個事件是 「記得」 事件 時、
+	算一個負加成 讓 權重變得更小。目標是使 剛背過的單詞 在短時間內 更不容易出現。
+	")]
 	f64 _CalcDebuff(){
 		f64 R = 1;
+		_ = @$"當前時間 到 當前學習記錄 的 時間差";
 		var Diff = _Now() - _GetCurLearnRecord().UnixMs;
 		var DebuffNumerator = Cfg.DebuffNumerator;
 		//12 小時內學過的詞，降權效果會被極大放大，讓它更不容易再次出現。
 		if((u64)Diff < ETimeInMs.Hour * 12){
 			DebuffNumerator *= 0xffffffff;
 		}
+		_ = @$" f(t) = a / (t - b) 然後 取絕對值 
+		這是 反比例函數芝、但橫軸往右偏移了 b。
+		- 在 t 屬于 (b, 正無窮) 的區間內 t越大、f(t)越小。越難以掩蓋目標單詞的出現
+		- 在 t 屬于 (0, b) 的 區間內, t越大、f(t)越大。越容易掩蓋目標單詞的出現 
+		在 t 屬于 (0, b) 的 區間內 設計比較奇怪、預期的想法是 仍然是 t越大、f(t)越小、但 下降的幅度更慢、f(t)值 比 (b, 正無窮)的 f(t) 值 遠大
+		";
 		R = DebuffNumerator/(Diff - ((i64)ETimeInMs.Min*100)); // 冀 岡憶得之詞 于100分鐘內不復出 ??
 		R = Math.Abs(R);
 		if(R < 1){
@@ -231,22 +277,35 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
+	[Doc(@$"當前Unix毫秒時間戳")]
 	i64 _Now(){
-		return DateTimeOffset.Now.ToUnixTimeMilliseconds();
+		return UnixMs.Now();
 	}
 
 
-/// 末次 加事件越近、加成越大。
-/// 非 唯末事件潙加旹纔起效
+	[Doc(@$"當 當前處理的事件 是 所有「添加」事件中的最後一個 時
+	給單詞權重乘上一個額外增益係數。
+	具體規則/目標:
+	末次 加事件越近、加成越大。
+	#Rtn[額外增益係數、 用于乘到單詞權重上]
+	")]
 	f64 _CalcFinalAddBonus(){
-		var NowDiffFinalAddTime = _NowDiffFinalAddTime();
-		f64 R = NowDiffFinalAddTime;
-		No0(ref R);
+		f64 R = _NowDiffFinalAddTime();
+		No0(ref R);//R要作除數、確保非0
+		
+		_ = @$"
+		t:= _NowDiffFinalAddTime 即 當前時間 減 最末一次添加 所發生的時間。
+		函數 f(t) = FinalAddBonusDenominator / t
+		這是反比例函數
+		隨着當前時間增大、 t 也增大、 f(t)則會變小。符合目標: 末次 加事件越近、加成越大。
+		";
 		R = Cfg.FinalAddBonusDenominator / R;
-		//var LearnedTimes = Word.LearnRecords.Count;
-		var Rmb = State.WordState.CurCntRmb+1;//使其不潙0
-		R = R / Rmb; //記得ʹ次數越多 加成越少
-		if(R < 1){
+		
+		_ = @$"再讓返回的加成係數除以一次記得次數。
+		目標: 記得ʹ次數越多 加成越少。記得次數多說明已經對這個單詞比較熟悉了、不需要這麼多加成
+		+1是蔿使其不潙0";
+		R = R / State.WordState.CurCntRmb + 1;
+		if(R < 1){//確保不小於1。小於1則 權重與係數的乘除操作 會出意外
 			R = 1;
 		}
 		return R;
@@ -265,6 +324,7 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
+	[Doc(@$"UnixMs下 當前時間 減 最末一次添加 所發生的時間")]
 	i64 _NowDiffFinalAddTime(){
 		var FinalAdd = _GetFinalAdd();
 		var R = WordState.Now - FinalAdd.UnixMs;
@@ -274,12 +334,16 @@ public partial class CalculatorForOne{
 		return R;
 	}
 
+	[Doc(@$"確保數值不爲0、若爲0則改爲1。
+	保證除法運算時不出錯
+	")]
 	static void No0(ref f64 z){
 		if(z == 0){
 			z = 1;
 		}
 	}
 
+	
 	static void No0(ref i64 z){
 		if(z == 0){
 			z = 1;
