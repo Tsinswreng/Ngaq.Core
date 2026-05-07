@@ -373,7 +373,8 @@ public partial class CalculatorForOne{
 		_ = @$"再讓返回的加成係數除以一次記得次數。
 		目標: 記得ʹ次數越多 加成越少。記得次數多說明已經對這個單詞比較熟悉了、不需要這麼多加成
 		+1是蔿使其不潙0";
-		R = R / State.WordState.CurCntRmb + 1;
+		var Rmb = State.WordState.CurCntRmb + 1;
+		R = R / Rmb;
 		if(R < 1){//確保不小於1。小於1則 權重與係數的乘除操作 會出意外
 			R = 1;
 		}
