@@ -189,10 +189,10 @@ public partial class CalculatorForOne{
 		coefficient0 *= WordState.CurCntAdd; // curPos之後之cnt_add不算
 		//不讓係數太大 一個單詞可能會被忘記很多次。
 		// 「記得」事件與「忘記」事件使用類似的算法、使「忘記」事件的權重增長不要太大
-		coefficient0 /= 10;
+		coefficient0 *= Cfg.FgtCoefficientBuff; 
 		_ = @$"如果上個事件剛好是 「添加」 事件 就讓權重更大、讓被加過的單詞更容易先被學一輪";
 		if(Prev.Learn == ELearn.Add){
-			coefficient0 *= 4;
+			coefficient0 *= Cfg.FgtCoefficientBuffIfPrevIsLearn;
 		}
 		WordState.Weight *= coefficient0;
 		//TODO log change
@@ -214,11 +214,11 @@ public partial class CalculatorForOne{
 		}//~
 		//加ʹ次ˋ大於三之詞 視潙重要單詞。 若逾幾日未學習 則增權重
 		else if(Cur.Learn == ELearn.Rmb){
-			if(WordState.CurCntAdd >= 3){
+			if((i64)WordState.CurCntAdd >= Cfg.AddCntOfImportantWord){
 				i64 Diff = _Now() - Cur.UnixMs;
-				if(Diff > (i64)ETimeInMs.Day*30){ //重要單詞超過30天未學習過了，增權重
+				if(Diff > Cfg.ImportantWordUnLearnedMs){ //重要單詞超過30天未學習過了，增權重
 					var Days = Diff/(i64)ETimeInMs.Day; // 未學習天數
-					WordState.Weight *= Days * 0xfff; 
+					WordState.Weight *= Days * Cfg.ImportantWordUnLearnedBuffPerDay;
 					//TODO Log
 				}
 			}
@@ -228,7 +228,7 @@ public partial class CalculatorForOne{
 			這種情況 和 最後事件是 add 一樣重要，故借用 add 的時間近因加成後，再疊加 add 次數相關倍率。";
 			var Bonus = _CalcBonusWhenFinalIsAdd(); //借用
 			if(Bonus < 1.1){Bonus = 1.1;}
-			Bonus *= (WordState.CurCntAdd+1)*2; // 添加次數越大、增益越大
+			Bonus *= (WordState.CurCntAdd+1)*Cfg.FinalFgtCoefficientOfAddCnt; // 添加次數越大、增益越大
 			WordState.Weight *= Bonus;
 			//TODO log
 		}
@@ -324,10 +324,10 @@ public partial class CalculatorForOne{
 		f64 R = 1;
 		_ = @$"當前時間 到 當前學習記錄 的 時間差";
 		var Diff = _Now() - _GetCurLearnRecord().UnixMs;
-		var DebuffNumerator = Cfg.DebuffNumerator;
+		var DebuffDenominator = Cfg.DebuffDenominator;
 		//12 小時內學過的詞，降權效果會被極大放大，讓它更不容易再次出現。
-		if((u64)Diff < ETimeInMs.Hour * 12){
-			DebuffNumerator *= 0xffffffff;
+		if((u64)Diff < Cfg.TimeDiffInWhatMsNeedSuperDebuff){
+			DebuffDenominator *= Cfg.SuperDebuffCoefficient;
 		}
 		_ = @$" f(t) = a / (t - b) 然後 取絕對值 
 		這是 反比例函數芝、但橫軸往右偏移了 b。
@@ -335,7 +335,7 @@ public partial class CalculatorForOne{
 		- 在 t 屬于 (0, b) 的 區間內, t越大、f(t)越大。越容易掩蓋目標單詞的出現 
 		在 t 屬于 (0, b) 的 區間內 設計比較奇怪、預期的想法是 仍然是 t越大、f(t)越小、但 下降的幅度更慢、f(t)值 比 (b, 正無窮)的 f(t) 值 遠大
 		";
-		R = DebuffNumerator/(Diff - ((i64)ETimeInMs.Min*100)); // 冀 岡憶得之詞 于100分鐘內不復出 ??
+		R = DebuffDenominator/(Diff - Cfg.DebuffRightShiftMs); // 冀 岡憶得之詞 于100分鐘內不復出 ??
 		R = Math.Abs(R);
 		if(R < 1){
 			R = 1;
@@ -396,7 +396,7 @@ public partial class CalculatorForOne{
 		No0(ref DiffS);
 		// 以時間爲 自變量 的 反比例函數。
 		// 目標: 越近的事件 其權重越大。
-		f64 R = (i64)ETimeInMs.Day*360000 / DiffS;
+		f64 R = Cfg.BonusDenominatorWhenFinalIsAdd / DiffS;
 		if(R < 1){
 			R = 1;
 		}

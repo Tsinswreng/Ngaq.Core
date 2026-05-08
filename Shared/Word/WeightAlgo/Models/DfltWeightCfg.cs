@@ -75,7 +75,7 @@ public partial class DfltWeightCfg:IAppSerializable{
 	之所以設成配置，而不是寫死在公式裡，是因爲這個量級非常依賴實際使用節奏。
 	不同場景下，使用者一天學很多詞或只學少量詞，對 debuff 強度的容忍度會很不一樣。
 	")]
-	public f64 DebuffNumerator{get;set;} = 36*ETimeInMs.Day;
+	public f64 DebuffDenominator{get;set;} = 36*ETimeInMs.Day;
 
 	[Doc(@$"保留字段。當前版本算法未直接使用。")]
 	public f64 Base{get;set;} = 20;
@@ -92,6 +92,22 @@ public partial class DfltWeightCfg:IAppSerializable{
 	若過小，則新詞剛加入後不夠容易被再次刷到。
 	")]
 	public f64 FinalAddBonusDenominator{get;set;} = ETimeInMs.Day*3000;
+	
+	public f64 FgtCoefficientBuff{get;set;} = 1.0/10.0;
+	
+	public f64 FgtCoefficientBuffIfPrevIsLearn{get;set;} = 4.0;
+	
+	public i64 AddCntOfImportantWord = 3;
+	public i64 ImportantWordUnLearnedMs = (i64)ETimeInMs.Day*30;
+	public f64 ImportantWordUnLearnedBuffPerDay = 0xfff;
+	
+	public f64 FinalFgtCoefficientOfAddCnt = 2;
+	
+	public f64 TimeDiffInWhatMsNeedSuperDebuff = ETimeInMs.Hour * 12;
+	public f64 SuperDebuffCoefficient = 0xffffffff;
+	public f64 DebuffRightShiftMs = ETimeInMs.Min*100;
+	
+	public f64 BonusDenominatorWhenFinalIsAdd = ETimeInMs.Day*360000;
 
 	[Doc(@$"從字典反序列化出配置實例。
 
