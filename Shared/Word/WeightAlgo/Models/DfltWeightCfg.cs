@@ -98,7 +98,7 @@ public partial class DfltWeightCfg:IAppSerializable{
 	public f64 FgtCoefficientBuffIfPrevIsLearn{get;set;} = 4.0;
 	
 	public i64 AddCntOfImportantWord = 3;
-	public i64 ImportantWordUnLearnedMs = (i64)ETimeInMs.Day*30;
+	public f64 ImportantWordUnLearnedMs = (i64)ETimeInMs.Day*30;
 	public f64 ImportantWordUnLearnedBuffPerDay = 0xfff;
 	
 	public f64 FinalFgtCoefficientOfAddCnt = 2;

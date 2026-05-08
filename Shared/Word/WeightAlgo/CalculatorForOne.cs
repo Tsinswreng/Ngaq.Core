@@ -7,7 +7,6 @@ using Tsinswreng.CsTempus;
 using Tsinswreng.CsTools;
 
 
-
 [Doc(@$"針對單個單詞計算權重的算法執行器。
 
 整體思路:
