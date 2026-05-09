@@ -97,17 +97,17 @@ public partial class DfltWeightCfg:IAppSerializable{
 	
 	public f64 FgtCoefficientBuffIfPrevIsLearn{get;set;} = 4.0;
 	
-	public i64 AddCntOfImportantWord = 3;
-	public f64 ImportantWordUnLearnedMs = (i64)ETimeInMs.Day*30;
-	public f64 ImportantWordUnLearnedBuffPerDay = 0xfff;
+	public i64 AddCntOfImportantWord{get;set;} = 3;
+	public f64 ImportantWordUnLearnedMs{get;set;} = (i64)ETimeInMs.Day*30;
+	public f64 ImportantWordUnLearnedBuffPerDay{get;set;} = 0xfff;
 	
-	public f64 FinalFgtCoefficientOfAddCnt = 2;
+	public f64 FinalFgtCoefficientOfAddCnt{get;set;} = 2;
 	
-	public f64 TimeDiffInWhatMsNeedSuperDebuff = ETimeInMs.Hour * 12;
-	public f64 SuperDebuffCoefficient = 0xffffffff;
-	public f64 DebuffRightShiftMs = ETimeInMs.Min*100;
+	public f64 TimeDiffInWhatMsNeedSuperDebuff{get;set;} = ETimeInMs.Hour * 12;
+	public f64 SuperDebuffCoefficient{get;set;} = 0xffffffff;
+	public f64 DebuffRightShiftMs{get;set;} = ETimeInMs.Min*100;
 	
-	public f64 BonusDenominatorWhenFinalIsAdd = ETimeInMs.Day*360000;
+	public f64 BonusDenominatorWhenFinalIsAdd{get;set;} = ETimeInMs.Day*360000;
 
 	[Doc(@$"從字典反序列化出配置實例。
 
