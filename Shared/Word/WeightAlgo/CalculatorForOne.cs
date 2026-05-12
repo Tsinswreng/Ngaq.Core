@@ -204,7 +204,7 @@ public partial class CalculatorForOne{
 		if(Cur.Learn == ELearn.Add){
 			_ = @$"若最後事件是 add、說明這個詞 在最近一次被添加之後還沒有被學習過。
 			此時要補一筆額外加成，確保它在接下來一段時間內更容易被實際刷到。";
-			var Bonus = _CalcBonusWhenFinalIsAdd();
+			var Bonus = _CalcBonusForFinal();
 			if(Bonus < 1.1){
 				Bonus = 1.1;
 			}
@@ -225,7 +225,7 @@ public partial class CalculatorForOne{
 		else if(Cur.Learn == ELearn.Fgt){
 			_ = @$"若最後事件是 fgt，代表此詞最新狀態是「目前不會」。
 			這種情況 和 最後事件是 add 一樣重要，故借用 add 的時間近因加成後，再疊加 add 次數相關倍率。";
-			var Bonus = _CalcBonusWhenFinalIsAdd(); //借用
+			var Bonus = _CalcBonusForFinal(); //借用
 			if(Bonus < 1.1){Bonus = 1.1;}
 			Bonus *= (WordState.CurCntAdd+1)*Cfg.FinalFgtCoefficientOfAddCnt; // 添加次數越大、增益越大
 			WordState.Weight *= Bonus;
@@ -354,7 +354,7 @@ public partial class CalculatorForOne{
 	末次 加事件越近、加成越大。
 	#Rtn[額外增益係數、 用于乘到單詞權重上]
 
-	這個加成不是爲了表達「重要性」，而是爲了表達「新近進入隊列後應被儘快看到」。
+	這個加成不是爲了表達「重要性」，而是爲了表達「新近添加的詞應被儘快看到」。
 	換言之，它更偏向調度優先級，而不是詞本身價值判斷。
 	")]
 	public f64 _CalcFinalAddBonus(){
@@ -389,7 +389,7 @@ public partial class CalculatorForOne{
 	這和 _CalcFinalAddBonus() 類似，但用途更偏向「最後事件是 add/fgt 時的收尾調整」，
 	而不是在遍歷到最後一個 add 當下立刻加成。
 	")]
-	f64 _CalcBonusWhenFinalIsAdd(){
+	f64 _CalcBonusForFinal(){
 		var DiffMs = _Now() - _GetCurLearnRecord().UnixMs;
 		var DiffS = DiffMs/1000;//換算成秒
 		No0(ref DiffS);
