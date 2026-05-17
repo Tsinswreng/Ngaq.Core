@@ -1,7 +1,8 @@
 namespace Ngaq.Core.Infra.IF;
 
 using Ngaq.Core.Infra.IF;
-using Tsinswreng.CsTools;
+//using Tsinswreng.CsTools;
+using Tsinswreng.CsU128Id;
 
 public partial interface IStrongId<T>: I_Value<T>{
 
@@ -22,10 +23,10 @@ public static class ExtnIIIdUInt128{
 	{
 		public static T Zero => default!;
 		public u8[] ToByteArr(){
-			return ToolUInt128.ToByteArr(z.Value);
+			return ToolU128Id.ToByteArr(z.Value);
 		}
 		public static T FromByteArr(byte[] bytes){
-			var Num = Tsinswreng.CsTools.ToolUInt128.ByteArrToUInt128(bytes);
+			var Num = ToolU128Id.ByteArrToUInt128(bytes);
 			return new T(){Value = Num};
 		}
 		public static Tsinswreng.CsSql.IUpperTypeMapFnT<u8[], T> MkTypeMapFn(){
@@ -36,7 +37,7 @@ public static class ExtnIIIdUInt128{
 			);
 		}
 		public static T FromLow64Base(string Low64Base){
-			var Num = Tsinswreng.CsTools.ToolUInt128.Low64BaseToUInt128(Low64Base);
+			var Num = ToolU128Id.Low64BaseToUInt128(Low64Base);
 			return new T(){Value = Num};
 		}
 		public static bool operator ==(T left, T right)
@@ -54,7 +55,7 @@ public static class ExtnIIIdUInt128{
 				R = default!;
 				return false;
 			}
-			if(Tsinswreng.CsTools.ToolUInt128.TryLow64BaseToUInt128(S, out var Num)){
+			if(ToolU128Id.TryLow64BaseToUInt128(S, out var Num)){
 				R = new T(){Value = Num};
 				return true;
 			}

@@ -61,12 +61,18 @@
 
 	<ItemGroup>
 		<Compile Include="../Tsinswreng.CsTypeAlias/TypeAlias.cs" />
-		<ProjectReference Include="../Tsinswreng.CsCore/proj/Tsinswreng.CsCore/Tsinswreng.CsCore.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsTools/proj/Tsinswreng.CsTools/Tsinswreng.CsTools.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsPage/proj/Tsinswreng.CsPage/Tsinswreng.CsPage.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj" />
-		<ProjectReference Include="../Tsinswreng.CsI18n/proj/Tsinswreng.CsI18n/Tsinswreng.CsI18n.csproj" />
+		<!-- <ProjectReference Include="../Tsinswreng.CsCore/proj/Tsinswreng.CsCore/Tsinswreng.CsCore.csproj" /> -->
+		<PackageReference Include="Tsinswreng.CsCore" Version="0.0.1-alpha" />
+		<PackageReference Include="Tsinswreng.CsTools" Version="0.0.1-alpha" />
+		<PackageReference Include="Tsinswreng.CsPage" Version="0.0.1-alpha" />
+		<PackageReference Include="Tsinswreng.CsI18n" Version="0.0.1-alpha" />
+		<PackageReference Include="Tsinswreng.CsCfg" Version="0.0.1-alpha" />
+		<PackageReference Include="Tsinswreng.CsErr" Version="0.0.1-alpha" />
+		<!-- <ProjectReference Include="../Tsinswreng.CsTools/proj/Tsinswreng.CsTools/Tsinswreng.CsTools.csproj" /> -->
+		<!-- <ProjectReference Include="../Tsinswreng.CsPage/proj/Tsinswreng.CsPage/Tsinswreng.CsPage.csproj" /> -->
+		<!-- <ProjectReference Include="../Tsinswreng.CsCfg/proj/Tsinswreng.CsCfg/Tsinswreng.CsCfg.csproj" /> -->
+		<!-- <ProjectReference Include="../Tsinswreng.CsErr/proj/Tsinswreng.CsErr/Tsinswreng.CsErr.csproj" /> -->
+		<!-- <ProjectReference Include="../Tsinswreng.CsI18n/proj/Tsinswreng.CsI18n/Tsinswreng.CsI18n.csproj" /> -->
 	</ItemGroup>
 
 

@@ -2,6 +2,7 @@
 //不能寫using語句 否則源生成 謬 //不能用 record struct 只能写 struct
 //叵續ˣ定義無參構造器、蓋源生成器生成旹默認已給構造器。
 
+
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
@@ -23,7 +24,9 @@ partial struct PLACEHOLDERID
 	}
 
 	public PLACEHOLDERID():this(0){
-		Value = Ngaq.Core.Tools.ToolId.NewUlidUInt128();
+		Value = Tsinswreng.CsU128Id.ToolU128Id.NewUlid<
+			Tsinswreng.CsU128Id.U128Id
+		>().Value;
 	}
 
 	public UInt128 Value { get; set; }
@@ -36,7 +39,7 @@ partial struct PLACEHOLDERID
 	public static implicit operator PLACEHOLDERID(UInt128 value) => new(value);
 
 	public override string ToString(){
-		return Tsinswreng.CsTools.ToolUInt128.ToLow64Base(Value);
+		return Tsinswreng.CsU128Id.ToolU128Id.ToLow64Base(Value);
 	}
 
 	public static bool operator ==(PLACEHOLDERID left, PLACEHOLDERID right)

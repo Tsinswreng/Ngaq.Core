@@ -4,7 +4,7 @@ public static class ExtnStruct{
 	public static bool IsNullOrDefault<T>(this T? z)
 		where T:struct, IEquatable<T>
 	{
-		return z == null || z.Value.Equals(default(T));
+		return z is null || z.Value.Equals(default(T));
 	}
 
 	public static bool IsNullOrDefault<T>(this T z)
