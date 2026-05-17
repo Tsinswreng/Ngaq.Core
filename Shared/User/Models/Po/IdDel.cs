@@ -11,7 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 public partial struct IdDel(TPrimitive V)
 	:IEquatable<IdDel>
 	,I_Value<TPrimitive>
-	,IDictSerializable
+	,IRawValueSerializable
 {
 	public TPrimitive Value{get;set;} = V;
 

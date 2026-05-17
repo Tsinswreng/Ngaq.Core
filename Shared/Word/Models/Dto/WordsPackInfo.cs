@@ -9,8 +9,6 @@ public class WordsPackInfo
 	:IWordsPackInfo
 	,IAppSerializable
 {
-	[EnumOf(typeof(EWordsPack))]
-
 	public EWordsPack Type{get;set;}
 	public UnixMs CreatedAt{get;set;} = UnixMs.Now();
 	public Version? Ver{get;set;} = IWordsPackInfo.ClassVer;

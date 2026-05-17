@@ -44,10 +44,10 @@ public interface IIfaceGenCfg_AppJsonCtx{
 /// 佢不認AppJsonCtx中 用註解配˪ʹ Converters
 
 [IfaceGen(
-	ParentType = typeof(IDictSerializable)
+	ParentType = typeof(IRawValueSerializable)
 	//ParentType = typeof(INull)
-	,Name = nameof(IDictSerializable)+"List"
-	,OutDir = CfgIfaceGen.OutDir+nameof(IDictSerializable)+"List"
+	,Name = nameof(IRawValueSerializable)+"List"
+	,OutDir = CfgIfaceGen.OutDir+nameof(IRawValueSerializable)+"List"
 	,PhFullType = "TYPE"
 	,PhIdentifierSafeFullType = "ID"
 	,Template =
@@ -62,7 +62,7 @@ public interface IIfaceGenCfg_JsonCustomConverterList{
 }
 
 
-//此註解已加在 IDictSerializableListʃ生成ʹ代碼中、勿複手動添
+//此註解已加在 IRawValueSerializableListʃ生成ʹ代碼中、勿複手動添
 // [JsonSourceGenerationOptions(
 // 	//PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase,
 // 	DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull

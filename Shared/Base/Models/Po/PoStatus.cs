@@ -14,7 +14,7 @@ using System.Diagnostics.CodeAnalysis;
 public partial struct PoStatus(TPrimitive V)
 	:IEquatable<PoStatus>
 	,I_Value<TPrimitive>
-	,IDictSerializable
+	,IRawValueSerializable
 {
 	object? I_ToSerialized.ToSerialized(object? Obj) {
 		if(Obj is TStruct s){

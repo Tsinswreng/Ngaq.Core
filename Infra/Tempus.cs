@@ -8,7 +8,7 @@
 // public partial struct Tempus(TPrimitive V)
 // 	: IEquatable<TStruct>
 // 	//,I_Value<TPrimitive>
-// 	//,IDictSerializable
+// 	//,IRawValueSerializable
 // 	, IComparable {
 // 	public static TStruct Zero = new(0);
 // 	public TPrimitive Value { get; set; } = V;

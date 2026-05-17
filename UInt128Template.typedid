@@ -4,7 +4,7 @@
 partial struct PLACEHOLDERID
 	:Ngaq.Core.Infra.IF.IIdUInt128
 	,IEquatable<PLACEHOLDERID>
-	,IDictSerializable
+	,IRawValueSerializable
 {
 
 	object? I_ToDeSerialized.ToDeSerialized(object? Obj) {

@@ -34,7 +34,7 @@ public partial class JsonConvtr_Tempus : JsonConverter<UnixMs> {
 
 // 源生成器会针对每个 T 生成一个 partial 方法实现
 public partial class JsonConvtr<T> : JsonConverter<T>
-	where T : struct, IDictSerializable {
+	where T : struct, IRawValueSerializable {
 	public sealed override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options) {
 		using JsonDocument doc = JsonDocument.ParseValue(ref reader);
 		JsonElement ele = doc.RootElement;

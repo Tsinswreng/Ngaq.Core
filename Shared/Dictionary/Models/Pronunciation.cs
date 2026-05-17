@@ -9,7 +9,7 @@ using Tsinswreng.CsErr;
 """)]
 public class TextedPronunciation{
 	//如 Ipa, 假名 等
-	[See(nameof(EPronunciationTextType))]
+	[Doc(@$"#See({nameof(EPronunciationTextType)})")]
 	public str TextType{get;set;} = "";
 	public str Text{get;set;} = "";
 }

@@ -49,10 +49,10 @@ EOF
 rm IAppSerializable/*
 ##~
 
-##IDictSerializable
-IDictSerializable=IDictSerializable.g.cs
+##IRawValueSerializable
+IRawValueSerializable=IRawValueSerializable.g.cs
 
-cat > $IDictSerializable <<'EOF'
+cat > $IRawValueSerializable <<'EOF'
 namespace Ngaq.Core.Infra;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -64,18 +64,18 @@ using System.Text.Json.Serialization;
 	UseStringEnumConverter = true
 EOF
 
-cat >> $IDictSerializable <<'EOF'
+cat >> $IRawValueSerializable <<'EOF'
 )]
 public partial class AppJsonCtx{}
 EOF
-##~IDictSerializable
+##~IRawValueSerializable
 
 
 
-##IDictSerializableList
-IDictSerializableList=IDictSerializableList.g.cs
+##IRawValueSerializableList
+IRawValueSerializableList=IRawValueSerializableList.g.cs
 
-cat > $IDictSerializableList <<'EOF'
+cat > $IRawValueSerializableList <<'EOF'
 namespace Ngaq.Core.Infra;
 using System.Text.Json.Serialization;
 public partial class AppJsonCtx : JsonSerializerContext {
@@ -83,15 +83,15 @@ public partial class AppJsonCtx : JsonSerializerContext {
 	new global::Ngaq.Core.Tools.JsonConvtr_Tempus(),
 EOF
 
-cat IDictSerializableList/* >> $IDictSerializableList
+cat IRawValueSerializableList/* >> $IRawValueSerializableList
 
-cat >> $IDictSerializableList <<'EOF'
+cat >> $IRawValueSerializableList <<'EOF'
 	];
 }
 EOF
 
-rm IDictSerializableList/*
-##~IDictSerializableList
+rm IRawValueSerializableList/*
+##~IRawValueSerializableList
 
 
 

@@ -1,12 +1,12 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Tsinswreng.CsTools;
+using Tsinswreng.CsU128Id;
 namespace Ngaq.Core.Tools;
 
 public partial class ToolId{
 	public static UInt128 NewUlidUInt128(){
 		var bytes = Ulid.NewUlid().ToByteArray();
-		return ToolUInt128.ByteArrToUInt128(bytes);
+		return ToolU128Id.ByteArrToUInt128(bytes);
 
 		// var guid = Guid.CreateVersion7(); Ulid與Guidv7不同。
 		// return *(UInt128*)&guid;

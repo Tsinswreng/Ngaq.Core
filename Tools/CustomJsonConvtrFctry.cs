@@ -15,7 +15,7 @@ public sealed class CustomJsonConvtrFctry : JsonConverterFactory {
 		return
 			// typeof(I_ToSerialized).IsAssignableFrom(typeToConvert) &&
 			// typeof(I_ToDeSerialized).IsAssignableFrom(typeToConvert)
-			typeof(IDictSerializable).IsAssignableFrom(typeToConvert)
+			typeof(IRawValueSerializable).IsAssignableFrom(typeToConvert)
 		;
 	}
 
