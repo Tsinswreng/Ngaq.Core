@@ -19,7 +19,7 @@ public class CfgIfaceGen{
 
 namespace Ngaq.Core.Infra{
 using Tsinswreng.Srefl;
-	[StrAccType(typeof(TYPE))]
+	[SreflType(typeof(TYPE))]
 	public partial class CoreDictMapper{
 		//public static string ID = "TYPE";
 	}
