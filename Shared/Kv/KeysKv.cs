@@ -27,5 +27,7 @@ public partial class KeysKv{
 		public static K CurSrcLang = Mk(_R, [nameof(CurSrcLang)]);
 		[Doc(@$"當前目標語言。值格式爲{nameof(PoNormLang)}之json")]
 		public static K CurTgtLang = Mk(_R, [nameof(CurTgtLang)]);
+		// [Doc(@$"詞典系統提示語。值格式爲字符串。")]
+		// public static K LlmDictSysPrompt = Mk(_R, [nameof(LlmDictSysPrompt)]);
 	}
 }
