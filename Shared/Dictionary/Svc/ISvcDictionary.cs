@@ -47,4 +47,11 @@ public interface ISvcDictionary{
 		IDbUserCtx Ctx, PoNormLang Po, CT Ct
 	);
 	
+
+	[Doc(@$"獲取詞典系統提示語，若未設定則返回默認提示語。")]
+	public Task<str> GetLlmDictSysPromptOrDflt(IDbUserCtx Ctx, CT Ct);
+	
+	[Doc(@$"設置詞典系統提示語。")]
+	public Task<str> SetLlmDictSysPrompt(IDbUserCtx Ctx, str Prompt, CT Ct);
+	
 }
