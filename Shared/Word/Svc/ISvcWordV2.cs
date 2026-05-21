@@ -4,10 +4,8 @@ using Ngaq.Core.Infra.Errors;
 using Ngaq.Core.Model.Po.Kv;
 using Ngaq.Core.Model.Po.Learn_;
 using Ngaq.Core.Shared.Dictionary.Models;
-using Ngaq.Core.Shared.StudyPlan.Models.Po.PreFilter;
 using Ngaq.Core.Shared.StudyPlan.Models.PreFilter;
 using Ngaq.Core.Shared.Sync;
-using Ngaq.Core.Shared.User.UserCtx;
 using Ngaq.Core.Shared.Word.Models;
 using Ngaq.Core.Shared.Word.Models.Dto;
 using Ngaq.Core.Shared.Word.Models.Learn_;
@@ -15,7 +13,6 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
-using Tsinswreng.CsErr;
 using Tsinswreng.CsSql;
 using Tsinswreng.CsTextWithBlob;
 

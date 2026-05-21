@@ -45,7 +45,6 @@ public partial class PoWord
 /// 僅用于臨時標識、詞ʹidˋ恐變
 /// 欲做持久ʹ標識、宜用(Owner, Head, Lang)
 /// 備份同步㕥合併同ʹ詞旹、當按詞頭洏非id㕥判兩詞是否潙同一詞、緣縱潙同ʹ詞、本地ʹ庫ʸ與遠端ᐪʹid恐不一
-/// //TODO 一致ˢid、以CreatedAt最早者潙準
 	public IdWord Id {get;set;} = new IdWord(); //不顯式調用構造器則內ʹValue 得零
 
 	public IdUser Owner{get;set;}

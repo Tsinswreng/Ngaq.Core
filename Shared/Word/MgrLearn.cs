@@ -99,7 +99,6 @@ public partial class MgrLearn{
 	IFrontendUserCtxMgr UserCtxMgr;
 	IStudyPlanGetter StudyPlanGetter;
 	public IWeightCalctr WeightCalctr{get;set;}
-	public IJsonNode? WeightArgOld {get;set;}
 	public IDictionary<str, obj?> WeightArg{get;set;} = new Dictionary<str, obj?>();
 	ILogger? Logger;
 	public MgrLearn(

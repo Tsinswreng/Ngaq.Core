@@ -9,9 +9,8 @@ new Version:(1, 2, 3, 261230102)
 public class AppVer{
 	protected static AppVer? _Inst = null;
 	public static AppVer Inst => _Inst??= new AppVer();
-	//2026-05-18T23:29:41.624+08:00_W21-1
-	//
-	public Version Ver {get;} = new (1, 2, 6, 262111529);
+	public const str IsoTime = "2026-05-20T23:38:07.128+08:00_W21-3";
+	public Version Ver {get;} = new (1, 2, 7, 262131538);
 
 	//不涉及前端
 	public Version CoreVer{get;} = new (1, 2, 6, 262111529);
