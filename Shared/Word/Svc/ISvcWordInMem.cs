@@ -112,6 +112,7 @@ public interface ISvcWordInMem{
 	合併兩單詞。
 	注意 合併(Merge) 與 同步(Sync) 語義不同。
 	合併是把 {nameof(Remote)}有 而 {nameof(Local)}無 的資產合入 {nameof(Local)}。
+	若{nameof(Local)} 之聚合根已經被軟刪除 則要把他恢復爲未刪除狀態。
 	")]
 	[Pure]
 	public IJnWordMergeResult Merge(JnWord? Local, JnWord Remote);

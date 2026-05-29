@@ -176,7 +176,10 @@ public interface ISvcWordV2{
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> Words, CT Ct
 	);
 	
-	[Doc(@$"合併單詞。會實際寫入數據庫")]
+	[Doc(@$"
+	合併單詞。會實際寫入數據庫
+	#See[{nameof(ISvcWordInMem.Merge)}]
+	")]
 	public Task<nil> MergeWord(
 		IDbUserCtx Ctx, IAsyncEnumerable<IJnWordMergeResult> Words, CT Ct
 	);
