@@ -72,11 +72,27 @@ public interface ISvcWordV2{
 		IAsyncEnumerable<JnWord> Words, CT Ct
 	);
 	
-	[Doc(@$"軟刪 整ʹ單詞 含附屬資產亦需被標爲軟刪")]
+	[Doc(@$"軟刪 整ʹ單詞 含附屬資產亦需被標爲軟刪。
+	用戶刪除單詞旹 當用 {nameof(SoftDelPoWordInId)} 洏非斯函數、
+	緣: 當 先刪一部分資產後刪單詞 後又欲復(撤銷刪除)旹、無法辨。
+	")]
 	public Task<nil> SoftDelJnWordInId(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<IdWord> Ids, CT Ct
 	);
+	
+	[Doc(@$"只軟刪聚合根、不刪資產。
+	用戶刪除單詞旹 當用 斯函數 洏非{nameof(SoftDelPoWordInId)}。
+	")]
+	public Task<nil> SoftDelPoWordInId(
+		IDbUserCtx Ctx,
+		IAsyncEnumerable<IdWord> Ids, CT Ct
+	);
+	
+	[Doc(@$"在{nameof(PoWord)}, {nameof(PoWordProp)}, {nameof(PoWordLearn)}三個表中
+	把已被軟刪除的實體真正從數據庫中刪除。
+	")]
+	public Task<nil> HardDelSoftDeleted(IDbUserCtx Ctx, CT Ct);
 	
 	[Doc(@$"大模型詞典 轉 用戶單詞。
 	{nameof(PoWord.Lang)} : {nameof(ISvcNormLangToUserLang.GetUserLangByNormLang)}。

@@ -24,7 +24,6 @@ public partial class PoRecentUse
 
 	/// 業務場景鍵。示例：SelectSourceLang、SelectTargetLang。
 	public str Scene { get; set; } = "";
-
 	[Doc(@$"實體類型。
 	用`nameof(PoXxx)`、不用 {nameof(ITable.DbTblName)}
 	")]
