@@ -112,7 +112,7 @@ public interface ISvcWordInMem{
 	合併兩單詞。
 	注意 合併(Merge) 與 同步(Sync) 語義不同。
 	合併是把 {nameof(Remote)}有 而 {nameof(Local)}無 的資產合入 {nameof(Local)}。
-	若{nameof(Local)} 之聚合根已經被軟刪除 則要把他恢復爲未刪除狀態。
+	若{nameof(Local)} 之聚合根已經被軟刪除 則要把他恢復爲未刪除狀態(只動聚合根 不管資產)
 	")]
 	[Pure]
 	public IJnWordMergeResult Merge(JnWord? Local, JnWord Remote);
@@ -141,6 +141,7 @@ public interface IJnWordMergeResult{
 	若{nameof(Result)}=={nameof(EJnWordMergeResult.Changed)}
 	則 {nameof(JnWord.Word.BizCreatedAt)} 應取 Local 與 Remote 中之最小者。
 	且 {nameof(JnWord.Word.BizUpdatedAt)} 要設爲當前時間。
+	若只是把已軟刪的 Local 恢復爲未刪除狀態，則 {nameof(NewAssets)} 允許爲 null。
 	")]
 	public JnWord Merged{get;set;}
 }

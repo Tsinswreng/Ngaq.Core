@@ -156,6 +156,7 @@ public class SvcWordInMem:ISvcWordInMem{
 		}
 
 		var localClone = CloneJnWord(Local);
+		var localWasSoftDeleted = Local.DelAt.Value != 0;
 		var localPropIds = new HashSet<Ngaq.Core.Model.Po.Kv.IdWordProp>(localClone.Props.Select(x=>x.Id));
 		var localLearnIds = new HashSet<Ngaq.Core.Model.Po.Learn_.IdWordLearn>(localClone.Learns.Select(x=>x.Id));
 		var newProps = new List<PoWordProp>();
@@ -178,7 +179,8 @@ public class SvcWordInMem:ISvcWordInMem{
 			newLearns.Add(neoLearn);
 		}
 
-		if(newProps.Count == 0 && newLearns.Count == 0){
+		var hasNewAssets = newProps.Count > 0 || newLearns.Count > 0;
+		if(!hasNewAssets && !localWasSoftDeleted){
 			return new JnWordMergeResult{
 				Result = EJnWordMergeResult.NoChange,
 				Merged = localClone,
@@ -186,6 +188,10 @@ public class SvcWordInMem:ISvcWordInMem{
 		}
 
 		var mergedWord = CloneWord(localClone.Word);
+		// 只恢復聚合根；資產本身保持原狀，避免把已刪資產誤恢復。
+		if(localWasSoftDeleted){
+			mergedWord.DelAt = default;
+		}
 		mergedWord.BizCreatedAt = mergedWord.BizCreatedAt <= Remote.BizCreatedAt
 			? mergedWord.BizCreatedAt
 			: Remote.BizCreatedAt;
@@ -194,11 +200,11 @@ public class SvcWordInMem:ISvcWordInMem{
 		localClone.EnsureForeignId();
 		return new JnWordMergeResult{
 			Result = EJnWordMergeResult.Changed,
-			NewAssets = new JnWord{
+			NewAssets = hasNewAssets ? new JnWord{
 				Word = CloneWord(localClone.Word),
 				Props = newProps,
 				Learns = newLearns,
-			},
+			} : null,
 			Merged = localClone,
 		};
 	}

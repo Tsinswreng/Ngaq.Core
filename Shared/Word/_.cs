@@ -42,6 +42,7 @@ $$"""
 		- `SoftDelPoWordInId` 仅软删聚合根，不改资产删除状态；
 		- `HardDelSoftDeleted` 用于清理回收站，把已软删的根词与其相关资产真正从数据库中删除；
 		- `SoftDelJnWordInId` 仍保留旧语义，表示根词与附属资产一起软删。
+		- `MergeWord` 遇到已软删的同 BizId 词时，会先恢复聚合根再合并新资产。
 	- ISvcParseWordList：单词表解析服务接口，支持从文件、URL、文本流解析单词。
 
 同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
