@@ -36,10 +36,13 @@ $$"""
   - 管理学习状态（StateLearnWords）：待学习单词列表、已学习单词管理器、操作状态（加载/启动/保存）。
 - MgrLearnedWords：管理已学习单词的分组（按学习类型ELearn），提供添加/删除/查询已学习单词的能力。
 
-5. 服务接口层
-- ISvcWord(基于舊架構 不再維護)：单词核心服务接口，定义单词的增删改查、批量添加、同步、压缩打包/解包等能力。
-- ISvcWordV2
-- ISvcParseWordList：单词表解析服务接口，支持从文件、URL、文本流解析单词。
+	5. 服务接口层
+	- ISvcWord(基于舊架構 不再維護)：单词核心服务接口，定义单词的增删改查、批量添加、同步、压缩打包/解包等能力。
+	- ISvcWordV2：
+		- `SoftDelPoWordInId` 仅软删聚合根，不改资产删除状态；
+		- `HardDelSoftDeleted` 用于清理回收站，把已软删的根词与其相关资产真正从数据库中删除；
+		- `SoftDelJnWordInId` 仍保留旧语义，表示根词与附属资产一起软删。
+	- ISvcParseWordList：单词表解析服务接口，支持从文件、URL、文本流解析单词。
 
 同Owner下 (Head, Lang) 纔是一詞ʹ 理則ʸʹ 唯一標識、洏非Id
 (如異ʹ節點蜮在同步前皆各新增一詞芝有同ʹ(Head,Lang)、則雖同ʹ詞、猶將被予異ʹId)

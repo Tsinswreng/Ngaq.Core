@@ -91,6 +91,8 @@ public interface ISvcWordV2{
 	
 	[Doc(@$"在{nameof(PoWord)}, {nameof(PoWordProp)}, {nameof(PoWordLearn)}三個表中
 	把已被軟刪除的實體真正從數據庫中刪除。
+	只刪當前用戶的數據。
+	可能導致孤兒資產
 	")]
 	public Task<nil> HardDelSoftDeleted(IDbUserCtx Ctx, CT Ct);
 	
