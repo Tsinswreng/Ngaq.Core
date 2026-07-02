@@ -12,8 +12,6 @@ public partial class ReqSetRefreshToken{
 
 public interface ISvcTokenStorage{
 	public Task<str?> GetRefreshToken(CT Ct);
-	[Obsolete]
-	public Task<nil> SetRefreshToken(str Token, CT Ct);
 	public Task<nil> SetRefreshToken(ReqSetRefreshToken Req, CT Ct);
 }
 

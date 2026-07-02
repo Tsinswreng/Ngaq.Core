@@ -52,6 +52,9 @@ public class KeysClientCfg{
 		public static ICfgNode<str> ApiKey = Mk(_R, [nameof(ApiKey)], "");
 		public static ICfgNode<str> Model = Mk(_R, [nameof(Model)], "");
 		public static ICfgNode<str> Prompt = Mk(_R, [nameof(Prompt)], "");
+		/// 透傳到 LLM 請求體頂層的額外 JSON 對象。
+		/// 用於承載 provider-specific 參數；空字符串表示不附加。
+		public static ICfgNode<str> ExtraBodyJson = Mk(_R, [nameof(ExtraBodyJson)], "");
 	}
 
 	/// 快捷鍵配置。

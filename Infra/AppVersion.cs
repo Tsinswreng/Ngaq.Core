@@ -9,10 +9,10 @@ new Version:(1, 2, 3, 261230102)
 public class AppVer{
 	protected static AppVer? _Inst = null;
 	public static AppVer Inst => _Inst??= new AppVer();
-	public const str IsoTime = "2026-05-29T11:22:21.927+08:00_W22-5";
-	public Version Ver {get;} = new (1, 2, 11, 262250322);
+	public const str IsoTime = "2026-06-02T17:14:22.627+08:00_W23-2";
+	public Version Ver {get;} = new (1, 2, 13, 262320914);
 
 	//不涉及前端
-	public Version CoreVer{get;} = new (1, 2, 11, 262250322);
+	public Version CoreVer{get;} = new (1, 2, 13, 262320914);
 }
 
