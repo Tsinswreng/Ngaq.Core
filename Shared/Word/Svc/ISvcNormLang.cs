@@ -13,25 +13,25 @@ namespace Ngaq.Core.Shared.Word.Svc;
 ")]
 public interface ISvcNormLang{
 	[Doc("根據標準語言標識與類型查詢單個語言。")]
-	public IAsyncEnumerable<PoNormLang?> BatGetNormLangByTypeCode(
+	public IAsyncEnumerable<PoNormLang?> OrdGetNormLangByTypeCode(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<(ELangIdentType, str)> Type_Code,
 		CT Ct
 	);
 
-	public Task<nil> BatAddNormLang(
+	public Task<nil> OrdAddNormLang(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<PoNormLang> Pos,
 		CT Ct
 	);
 
-	public Task<nil> BatUpdNormLang(
+	public Task<nil> OrdUpdNormLang(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<PoNormLang> Pos,
 		CT Ct
 	);
 
-	public Task<nil> BatSoftDelNormLang(
+	public Task<nil> OrdSoftDelNormLang(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<PoNormLang> Pos,
 		CT Ct
@@ -69,7 +69,7 @@ public interface ISvcNormLang{
 	])
 	實 返 格式 未必 與 例 全一致。 TranslatedName僅用于界面顯示。
 	")]
-	public IAsyncEnumerable<str?> BatGetTranslatedName(
+	public IAsyncEnumerable<str?> OrdGetTranslatedName(
 		IDbUserCtx Ctx, 
 		INormLang TargetLang,
 		IAsyncEnumerable<INormLang> NormLangs, CT Ct
@@ -79,7 +79,7 @@ public interface ISvcNormLang{
 	[Doc(@$"取 UI 支持的語言。
 	放10種最常用的就夠 除中文 分 簡體繁體外 其他語言不用細分變體
 	")]
-	public IAsyncEnumerable<INormLangDetail> BatGetUiLangs(
+	public IAsyncEnumerable<INormLangDetail> OrdGetUiLangs(
 		CT CT
 	);
 	

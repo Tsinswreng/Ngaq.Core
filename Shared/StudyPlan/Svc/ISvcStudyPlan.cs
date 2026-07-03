@@ -59,36 +59,36 @@ public interface ISvcStudyPlan{
 	);
 	
 	
-	public IAsyncEnumerable<PoWeightCalculator?> BatGetWeightCalculatorById(
+	public IAsyncEnumerable<PoWeightCalculator?> OrdGetWeightCalculatorById(
 		IDbUserCtx Ctx, IAsyncEnumerable<IdWeightCalculator> Ids, CT Ct
 	);
 	
-	public IAsyncEnumerable<PoPreFilter?> BatGetPreFilterById(
+	public IAsyncEnumerable<PoPreFilter?> OrdGetPreFilterById(
 		IDbUserCtx Ctx, IAsyncEnumerable<IdPreFilter> Ids, CT Ct
 	);
 	
-	public IAsyncEnumerable<PoWeightArg?> BatGetWeightArgById(
+	public IAsyncEnumerable<PoWeightArg?> OrdGetWeightArgById(
 		IDbUserCtx Ctx, IAsyncEnumerable<IdWeightArg> Ids, CT Ct
 	);
 	
 
-	public Task<nil> BatAddPreFilter(
+	public Task<nil> OrdAddPreFilter(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoPreFilter> Pos
 		,CT Ct
 	);
-	public Task<nil> BatAddStudyPlan(
+	public Task<nil> OrdAddStudyPlan(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoStudyPlan> Pos
 		,CT Ct
 	);
-	public Task<nil> BatAddWeightArg(
+	public Task<nil> OrdAddWeightArg(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatAddWeightCalculator(
+	public Task<nil> OrdAddWeightCalculator(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
@@ -114,44 +114,44 @@ public interface ISvcStudyPlan{
 		,CT Ct
 	);
 	
-	public Task<nil> BatUpdPreFilter(
+	public Task<nil> OrdUpdPreFilter(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoPreFilter> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatUpdWeightCalculator(
+	public Task<nil> OrdUpdWeightCalculator(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatUpdWeightArg(
+	public Task<nil> OrdUpdWeightArg(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
 	
 	
-	public Task<nil> BatSoftDelPreFilter(
+	public Task<nil> OrdSoftDelPreFilter(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoPreFilter> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatSoftDelWeightCalculator(
+	public Task<nil> OrdSoftDelWeightCalculator(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightCalculator> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatSoftDelWeightArg(
+	public Task<nil> OrdSoftDelWeightArg(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWeightArg> Pos
 		,CT Ct
 	);
 	
-	public Task<nil> BatUpdStudyPlan(
+	public Task<nil> OrdUpdStudyPlan(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoStudyPlan> Pos
 		,CT Ct
@@ -160,7 +160,7 @@ public interface ISvcStudyPlan{
 	[Doc(@$"只把Po.Id對應之{nameof(PoStudyPlan)}標記爲軟刪除、
 	不要動其關聯的資產實體
 	")]
-	public Task<nil> BatSoftDelStudyPlan(
+	public Task<nil> OrdSoftDelStudyPlan(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoStudyPlan> Pos
 		,CT Ct
@@ -216,7 +216,4 @@ public interface ISvcStudyPlan{
 	public Task<nil> SyncStudyPlan(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoStudyPlan> Pos, CT Ct
 	);
-	
-	
-
 }

@@ -54,7 +54,7 @@ public interface ISvcWordV2{
 	[Doc(@$"批量爲單詞插入新的學習記錄、並更新{nameof(PoWord.BizUpdatedAt)}。
 	用于背單詞後 儲存學習結果
 	")]
-	public Task<nil> BatAddNewLearnRecord(
+	public Task<nil> OrdAddNewLearnRecord(
 		IDbUserCtx Ctx
 		,IAsyncEnumerable<PoWordLearn> PoWordLearnAsyE, CT Ct
 	);
@@ -62,12 +62,12 @@ public interface ISvcWordV2{
 
 	
 	[Doc(@$"先把每個元素的Owner改成和Ctx中的用戶一致。
-	然後用{nameof(IRepo<,>.BatAddAgg)}。
+	然後用{nameof(IRepo<,>.OrdAddAgg)}。
 	#Throw[{nameof(KeysErr.Common.DataIllegalOrConflict)}][
 		添加失敗時即拋。不做合併等處理
 	]
 	")]
-	public Task<nil> BatAddJnWord(
+	public Task<nil> OrdAddJnWord(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<JnWord> Words, CT Ct
 	);
@@ -120,19 +120,19 @@ public interface ISvcWordV2{
 	);
 	
 	
-	public Task<nil> BatAddWordProp(
+	public Task<nil> OrdAddWordProp(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWordProp> WordProps, CT Ct
 	);
 	
-	public Task<nil> BatUpdWordProp(
+	public Task<nil> OrdUpdWordProp(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWordProp> WordProps, CT Ct
 	);
 	
-	public Task<nil> BatAddWordLearn(
+	public Task<nil> OrdAddWordLearn(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWordLearn> WordLearns, CT Ct
 	);
 	
-	public Task<nil> BatUpdWordLearn(
+	public Task<nil> OrdUpdWordLearn(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoWordLearn> WordLearns, CT Ct
 	);
 	
@@ -152,7 +152,7 @@ public interface ISvcWordV2{
 	則直接更新其他不同字段、{nameof(RespUpdPoWord.HasUpdatedBizId)}=false
 	
 	若 Old和New 的 ({nameof(PoWord.Head)},{nameof(PoWord.Lang)})不同、
-	就先調{nameof(BatUpdHeadLang)}、再以返回的Id爲基準、更新其他字段
+	就先調{nameof(OrdUpdHeadLang)}、再以返回的Id爲基準、更新其他字段
 	#Rtn[更新結果Dto。其{nameof(RespUpdPoWord.FinalId)}一定有值]
 	")]
 	public Task<IAsyncEnumerable<RespUpdPoWord>> BatUpdPoWord(
@@ -163,7 +163,7 @@ public interface ISvcWordV2{
 	此函數一般用于同步旹 {nameof(EDiffByBizIdResultForSync.IdNotEqual)} 按Id更小者爲準。
 	(函數實現規則是把{nameof(Ids)}的Old改成New、上面只是說用途、不代表此函數的實現規則是按Id更小)
 	")]
-	public Task<nil> BatChangeId(
+	public Task<nil> OrdChangeId(
 		IDbUserCtx Ctx, IAsyncEnumerable<(IdWord Old, IdWord New)> Ids, CT Ct
 	);
 	
@@ -236,7 +236,7 @@ public interface ISvcWordV2{
 	返回的Id都是最終基準Id
 	]
 	")]
-	public IAsyncEnumerable<RespUpdBizId> BatUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
+	public IAsyncEnumerable<RespUpdBizId> OrdUpdHeadLang(IDbUserCtx Ctx, IAsyncEnumerable<PoWord> PoWords, CT Ct);
 
 	[Doc(@$"
 		把{nameof(JnWords)}合入數據庫。
@@ -246,30 +246,30 @@ public interface ISvcWordV2{
 		先去數據庫中 按({nameof(PoWord.Owner)},{nameof(PoWord.Head)},{nameof(PoWord.Lang)}) 查到舊詞Local(可能爲null);
 		
 		然後調用{nameof(ISvcWordInMem.SyncJnWord)}。
-		然後調用{nameof(BatSyncByDto)}。
+		然後調用{nameof(OrdSyncByDto)}。
 		#Rtn[亦返{nameof(DtoJnWordSyncResult)} 便于審計等]
 	")]
-	public IAsyncEnumerable<DtoJnWordSyncResult> BatSyncJnWordByBizId(
+	public IAsyncEnumerable<DtoJnWordSyncResult> OrdSyncJnWordByBizId(
 		IDbUserCtx Ctx, IAsyncEnumerable<JnWord> JnWords, CT Ct
 	);
 	
 	[Doc(@$"
-	#See[{nameof(BatSyncJnWordByBizId)}]
+	#See[{nameof(OrdSyncJnWordByBizId)}]
 	#See[{nameof(UnpackJnWords)}]
 	")]
-	public IAsyncEnumerable<DtoJnWordSyncResult> BatSyncJnWordByBizIdFromStream(
+	public IAsyncEnumerable<DtoJnWordSyncResult> OrdSyncJnWordByBizIdFromStream(
 		IDbUserCtx Ctx, Stream TextWithStream, CT Ct
 	);
 	
 	[Doc(@$"調用{nameof(ISvcWordSync)}裏面的API來實現。
 	
 	")]
-	public Task<nil> BatSyncByDto(
+	public Task<nil> OrdSyncByDto(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
-	public IAsyncEnumerable<JnWord> GetAllWordsWithDel(
+	public IAsyncEnumerable<JnWord> GetAllWordWithDel(
 		IDbUserCtx Ctx, CT Ct
 	);
 	
@@ -277,7 +277,7 @@ public interface ISvcWordV2{
 	#See[{nameof(IPacker<>)}]
 	#Rtn[{nameof(ITextWithStream)}, {nameof(ExtnTextWithStream.ToStream)}]
 	")]
-	public Task<Stream> PackAllWordsWithDel(
+	public Task<Stream> PackAllWordWithDel(
 		IDbUserCtx Ctx, CT Ct
 	);
 	
@@ -295,25 +295,25 @@ public interface ISvcWordV2{
 ")]
 public interface ISvcWordSync{
 	[Doc(@$"{nameof(EDiffByBizIdResultForSync.NoChange)}")]
-	public Task<nil> BatSync_NoChange(
+	public Task<nil> OrdSync_NoChange(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
 	[Doc(@$"{nameof(EDiffByBizIdResultForSync.RemoteIsOlder)}")]
-	public Task<nil> BatSync_RemoteIsOlder(
+	public Task<nil> OrdSync_RemoteIsOlder(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
 	[Doc(@$"{nameof(EDiffByBizIdResultForSync.LocalNotExist)}")]
-	public Task<nil> BatSync_LocalNotExist(
+	public Task<nil> OrdSync_LocalNotExist(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);
 	
 	[Doc(@$"{nameof(EDiffByBizIdResultForSync.IdNotEqual)}")]
-	public Task<nil> BatSync_IdNotEqual(
+	public Task<nil> OrdSync_IdNotEqual(
 		IDbUserCtx Ctx,
 		IAsyncEnumerable<DtoJnWordSyncResult> Dtos, CT Ct
 	);

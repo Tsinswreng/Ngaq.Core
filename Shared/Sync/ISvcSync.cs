@@ -71,7 +71,7 @@ public interface IEntitySyncerInMem<T>
 public interface IEntitySyncerDb<TPo, TId>
 	where TPo: class, IPoBase, IBizCreateUpdateTime, I_Id<TId>, new()
 {
-	public IAsyncEnumerable<DtoEntityDiffEtSync<TPo>> BatSyncPo(
+	public IAsyncEnumerable<DtoEntityDiffEtSync<TPo>> OrdSyncPo(
 		IDbFnCtx Ctx, IAsyncEnumerable<TPo> Pos, CT Ct
 	);
 }

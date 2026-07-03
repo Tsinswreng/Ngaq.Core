@@ -16,15 +16,15 @@ public interface ISvcUserLang{
 		IDbUserCtx Ctx, ReqPageUserLang Req, CT Ct
 	);
 
-	public IAsyncEnumerable<PoUserLang?> BatGetUserLang(
+	public IAsyncEnumerable<PoUserLang?> OrdGetUserLang(
 		IDbUserCtx Ctx, IAsyncEnumerable<str> UniqNames, CT Ct
 	);
 	
-	public Task<nil> BatUpdUserLang(
+	public Task<nil> OrdUpdUserLang(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoUserLang> Pos, CT Ct
 	);
 	
-	public Task<nil> BatAddUserLang(
+	public Task<nil> OrdAddUserLang(
 		IDbUserCtx Ctx, IAsyncEnumerable<PoUserLang> Pos, CT Ct
 	);
 	

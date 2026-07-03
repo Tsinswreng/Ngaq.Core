@@ -17,7 +17,7 @@ public enum EUpdBizIdResult{
 }
 
 [Doc(@$"
-#See[{nameof(ISvcWordV2.BatUpdHeadLang)}]
+#See[{nameof(ISvcWordV2.OrdUpdHeadLang)}]
 ")]
 public class RespUpdBizId{
 	public EUpdBizIdResult Result{get;set;}
