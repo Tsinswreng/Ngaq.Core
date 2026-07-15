@@ -13,6 +13,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
+using Tsinswreng.CsPage;
 using Tsinswreng.CsSql;
 using Tsinswreng.CsTextWithBlob;
 
@@ -286,6 +287,34 @@ public interface ISvcWordV2{
 	")]
 	public IAsyncEnumerable<JnWord> UnpackJnWords(
 		Stream TextWithStream, CT Ct
+	);
+
+	[Doc($$"""
+	分頁搜索用戶詞庫。
+	返回強類型命中結果 {{nameof(DtoWordSearchHit)}}，
+	避免把“命中的是單詞本身還是某條資產”這類信息丟失。
+
+	搜索規則：
+	- 優先級固定爲: Id匹配 > Head精準 > Head模糊。
+	- 若 {{nameof(ReqSearchWord.RawStr)}} 可解析爲
+		{{nameof(IdWord)}} / {{nameof(IdWordProp)}} / {{nameof(IdWordLearn)}}，
+		則按 Id匹配 處理。
+	- 若未按 Id 命中，則再按 {{nameof(PoWord.Head)}} 精準匹配處理。
+	- 若未按 {{nameof(PoWord.Head)}} 精準命中，則最後再做 {{nameof(PoWord.Head)}} 模糊匹配。
+	- 只返回未軟刪除的單詞聚合，避免已刪數據回流到搜索結果。
+
+	返回約定：
+	- {{nameof(DtoWordSearchHit.JnWord)}} 始終有值，表示命中結果所屬的完整單詞聚合。
+	- {{nameof(DtoWordSearchHit.HitKind)}} 用于指示命中來源。
+	- 當命中屬性或學習記錄時，應在
+		{{nameof(DtoWordSearchHit.WordProp)}} 或 {{nameof(DtoWordSearchHit.WordLearn)}}
+		中保留精確命中的資產。
+	""")]
+	public Task<IPage<DtoWordSearchHit>> PageSearch(
+		IDbUserCtx Ctx
+		,IPageQry PageQry
+		,ReqSearchWord Req
+		,CT Ct
 	);
 
 }
