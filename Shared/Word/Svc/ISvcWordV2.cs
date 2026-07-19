@@ -13,6 +13,7 @@ using Ngaq.Core.Shared.Word.Models.Po.Kv;
 using Ngaq.Core.Shared.Word.Models.Po.Learn;
 using Ngaq.Core.Shared.Word.Models.Po.Word;
 using Ngaq.Core.Word.Models.Po.Word;
+using Tsinswreng.CsCtx;
 using Tsinswreng.CsPage;
 using Tsinswreng.CsSql;
 using Tsinswreng.CsTextWithBlob;
@@ -41,6 +42,10 @@ public interface ISvcWordV2{
 	public IAsyncEnumerable<JnWord> GetWordsToLearn(
 		IDbUserCtx Ctx, CT Ct
 	);
+	
+	// public IAsyncEnumerable<JnWord> GetWordsToLearn(
+	// 	IFnCtx Ctx, CT Ct
+	// );
 
 	[Doc(@$"
 	獲取全部待學習單詞。
@@ -309,6 +314,9 @@ public interface ISvcWordV2{
 	- 當命中屬性或學習記錄時，應在
 		{{nameof(DtoWordSearchHit.WordProp)}} 或 {{nameof(DtoWordSearchHit.WordLearn)}}
 		中保留精確命中的資產。
+	
+	其中{{nameof(DtoWordSearchHit.JnWord)}}包含 已被軟刪者、
+	但每個{{nameof(DtoWordSearchHit.JnWord)}}中的資產 不包含 已被軟刪者。
 	""")]
 	public Task<IPage<DtoWordSearchHit>> PageSearch(
 		IDbUserCtx Ctx

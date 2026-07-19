@@ -5,7 +5,7 @@ using Tsinswreng.CsSql;
 namespace Ngaq.Core.Infra;
 
 [Doc(@$"Service context, mostly used in the first param of service API methods")]
-public interface IDbUserCtx{
+public interface IDbUserCtx:IDbFnCtx{
 	[Doc(@$"前端調用後端接口時 此成員留null即可、
 	留null則 後端自動開啓連接和事務;
 	非null則會使用已有的 {nameof(IDbFnCtx)}的事務和連接
@@ -14,11 +14,13 @@ public interface IDbUserCtx{
 	public IUserCtx UserCtx{get;set;}
 }
 
-public class DbUserCtx : IDbUserCtx{
+public partial class DbUserCtx : IDbUserCtx{
 	public DbUserCtx(IUserCtx UserCtx, IDbFnCtx? DbFnCtx = null){
 		this.DbFnCtx = DbFnCtx;
 		this.UserCtx = UserCtx;
 	}
+	
+	[BeaKona.AutoInterface(IncludeBaseInterfaces = true)]
 	public IDbFnCtx? DbFnCtx{get;set;}
 	public IUserCtx UserCtx{get;set;}
 }
