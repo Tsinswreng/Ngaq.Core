@@ -57,6 +57,18 @@ public class KeysClientCfg{
 		public static ICfgNode<str> ExtraBodyJson = Mk(_R, [nameof(ExtraBodyJson)], "");
 	}
 
+	/// 詞典頁的本地界面偏好。
+	public class Dictionary{
+		public static ICfgNode _R = Mk(null, [nameof(Dictionary)]);
+		/// 源語言快捷標籤配置。
+		/// 配置文件保存為對象陣列；陣列順序即快捷欄顯示順序。
+		public static ICfgNode<IList<obj?>> SrcLangTags = Mk(
+			_R,
+			[nameof(SrcLangTags)],
+			(IList<obj?>)[]
+		);
+	}
+
 	/// 快捷鍵配置。
 	public class Hotkey{
 		public static ICfgNode _R = Mk(null, [nameof(Hotkey)]);
